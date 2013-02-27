@@ -38,9 +38,10 @@ Run `pod install` to install the dependencies.
 
 ## Usage
 
-* EasyMapping was built on top of [BWObjectMapping](https://github.com/brunow/BWObjectMapping) from [brunow](https://github.com/brunow), you can read its README.
+* Supose you have these classes:
 
-* See the example code
+
+* See the specs code
 
 ## Requirements
 
