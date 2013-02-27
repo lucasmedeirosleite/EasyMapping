@@ -1,0 +1,38 @@
+//
+//  EKObjectMapping.h
+//  EasyMappingExample
+//
+//  Created by Lucas Medeiros on 21/02/13.
+//  Copyright (c) 2013 EasyKit. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "EKMappingBlocks.h"
+
+@interface EKObjectMapping : NSObject
+
+@property (nonatomic, assign, readonly) Class objectClass;
+@property (nonatomic, strong, readonly) NSString *rootPath;
+@property (nonatomic, strong, readonly) NSMutableDictionary *fieldMappings;
+@property (nonatomic, strong, readonly) NSMutableDictionary *hasOneMappings;
+@property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
+
++ (EKObjectMapping *)mappingForClass:(Class)objectClass withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock;
++ (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
+                           withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
+
+- (id)initWithObjectClass:(Class)objectClass;
+- (id)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath;
+
+- (void)mapKey:(NSString *)key toField:(NSString *)field;
+- (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat;
+- (void)mapFieldsFromArray:(NSArray *)fieldsArray;
+- (void)mapFieldsFromDictionary:(NSDictionary *)fieldsDictionary;
+- (void)mapKey:(NSString *)key toField:(NSString *)field
+withValueBlock:(EKMappingValueBlock)valueBlock;
+- (void)mapKey:(NSString *)key toField:(NSString *)field
+withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingReverseBlock)reverseBlock;
+- (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+- (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+
+@end
