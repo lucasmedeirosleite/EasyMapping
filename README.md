@@ -155,7 +155,7 @@ Usage is provided under the [MIT License](http://http://opensource.org/licenses/
 ## The idea
 
 The idea came from:
-* [RestiKit's](https://github.com/RestKit/Restkit) mapping, its problem is that it does't transform
+* [RestiKit's](https://github.com/RestKit/Restkit) mapping, its problem is that it doesn't transform
 custom values (such as a string value to an enum)
 * [Mantle's](https://github.com/github/Mantle) mapping, but you don't need to inherit from any class
 
