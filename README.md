@@ -1,6 +1,6 @@
 # EasyMapping
 
-An easy way to map a Dictionary of attributes (which came from JSON, XML or just a NSDictionary) into a Class.
+An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML or just a NSDictionary) into a Class and vice versa.
 
 ##Contact:
 
