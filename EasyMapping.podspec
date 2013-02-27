@@ -18,6 +18,4 @@ Pod::Spec.new do |s|
 
   s.source_files = 'EasyMappingExample/EasyMapping/*.{h,m }'
   
-  s.dependency 'BWObjectMapping', :git => 'https://github.com/lucasmedeirosleite/BWObjectMapping', :tag => '0.2.2'
-  
 end
