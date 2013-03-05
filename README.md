@@ -144,7 +144,29 @@ NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withM
 
 ```
 
+* Filling an existent object
+
+Supose you have something like this:
+
+```objective-c
+	
+Person *person = [Person alloc] init]	
+	
+```
+
+To fill an already instantiated object you can do this:
+
+```objective-c
+
+[EKMapper fillObject:person fromExternalRepresentation:personRepresentation withMapping:[Mappings personMapping]];
+
+```
+
 * See the specs code
+
+## Thanks
+
+Thanks to [basitali](https://github.com/basitali) who added the fillObject functionality on EKMapper!
 
 ## Requirements
 
