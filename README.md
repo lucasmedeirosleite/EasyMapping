@@ -144,7 +144,7 @@ NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withM
 
 ```
 
-* Filling an existent object
+* Filling an existent object:
 
 Supose you have something like this:
 
