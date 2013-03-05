@@ -14,8 +14,12 @@
 
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
-    NSDictionary *representation = [self extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     id object = [[mapping.objectClass alloc] init];
+    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
+}
+
++ (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping {
+    NSDictionary *representation = [self extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [self setField:obj onObject:object fromRepresentation:representation withObjectMapping:mapping];
     }];
