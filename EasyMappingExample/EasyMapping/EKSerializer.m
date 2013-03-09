@@ -48,7 +48,7 @@
         if (fieldMapping.reverseBlock) {
             int *returnedValue = [EKPropertyHelper performSelector:selector onObject:object];
             id reverseValue = fieldMapping.reverseBlock(@(*returnedValue));
-            [representation setObject:reverseValue forKey:fieldMapping.field];
+            [representation setObject:reverseValue forKey:fieldMapping.keyPath];
         }
         
     } else {
@@ -57,9 +57,9 @@
         if (returnedValue) {
             if (fieldMapping.reverseBlock) {
                 id reverseValue = fieldMapping.reverseBlock(returnedValue);
-                [representation setObject:reverseValue forKey:fieldMapping.field];
+                [representation setObject:reverseValue forKey:fieldMapping.keyPath];
             } else {
-                [representation setObject:returnedValue forKey:fieldMapping.field];
+                [representation setObject:returnedValue forKey:fieldMapping.keyPath];
             }
         }
         
