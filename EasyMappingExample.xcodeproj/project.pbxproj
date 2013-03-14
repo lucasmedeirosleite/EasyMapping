@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0479F8253E2D4642AC45250E /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0ECF5E2FD046BAA4F63628 /* libPods-EasyMappingExampleTests.a */; };
+		A92A6FF616F1A1A4004B43D0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92A6FF516F1A1A4004B43D0 /* CoreData.framework */; };
+		A9CF83A716F1655D004F7100 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CF83A616F1655D004F7100 /* EKManagedObjectMapping.m */; };
+		A9CF83AA16F168DE004F7100 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CF83A916F168DE004F7100 /* EKManagedObjectMapper.m */; };
 		C64A696F16DB9F33009CB6D7 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = C64A696E16DB9F33009CB6D7 /* CarWithRoot.json */; };
 		C64A697116DBA7D7009CB6D7 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = C64A697016DBA7D7009CB6D7 /* CarWithNestedAttributes.json */; };
 		C64A697316DBAA4F009CB6D7 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = C64A697216DBAA4F009CB6D7 /* CarWithDate.json */; };
@@ -63,6 +66,11 @@
 
 /* Begin PBXFileReference section */
 		2FCB81AA72F140268B69F0C2 /* Pods-EasyMappingExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExampleTests.xcconfig"; path = "Pods/Pods-EasyMappingExampleTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		A92A6FF516F1A1A4004B43D0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A9CF83A516F1655D004F7100 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectMapping.h; path = EasyMapping/EKManagedObjectMapping.h; sourceTree = "<group>"; };
+		A9CF83A616F1655D004F7100 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapping.m; path = EasyMapping/EKManagedObjectMapping.m; sourceTree = "<group>"; };
+		A9CF83A816F168DE004F7100 /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectMapper.h; path = EasyMapping/EKManagedObjectMapper.h; sourceTree = "<group>"; };
+		A9CF83A916F168DE004F7100 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapper.m; path = EasyMapping/EKManagedObjectMapper.m; sourceTree = "<group>"; };
 		C64A696E16DB9F33009CB6D7 /* CarWithRoot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithRoot.json; sourceTree = "<group>"; };
 		C64A697016DBA7D7009CB6D7 /* CarWithNestedAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithNestedAttributes.json; sourceTree = "<group>"; };
 		C64A697216DBAA4F009CB6D7 /* CarWithDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithDate.json; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A92A6FF616F1A1A4004B43D0 /* CoreData.framework in Frameworks */,
 				C6BD162216DD876800CCB4F6 /* CoreLocation.framework in Frameworks */,
 				C6557E1616D6621E005D2D3E /* UIKit.framework in Frameworks */,
 				C6557E1816D6621E005D2D3E /* Foundation.framework in Frameworks */,
@@ -174,6 +183,7 @@
 		C6557E1416D6621E005D2D3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A92A6FF516F1A1A4004B43D0 /* CoreData.framework */,
 				C6BD162116DD876700CCB4F6 /* CoreLocation.framework */,
 				C6557E1516D6621E005D2D3E /* UIKit.framework */,
 				C6557E1716D6621E005D2D3E /* Foundation.framework */,
@@ -259,6 +269,10 @@
 				C6BD161C16DD016C00CCB4F6 /* EKPropertyHelper.m */,
 				C6D3777B16DBC6F000836F52 /* EKTransformer.h */,
 				C6D3777C16DBC6F000836F52 /* EKTransformer.m */,
+				A9CF83A516F1655D004F7100 /* EKManagedObjectMapping.h */,
+				A9CF83A616F1655D004F7100 /* EKManagedObjectMapping.m */,
+				A9CF83A816F168DE004F7100 /* EKManagedObjectMapper.h */,
+				A9CF83A916F168DE004F7100 /* EKManagedObjectMapper.m */,
 			);
 			name = EasyMapping;
 			sourceTree = "<group>";
@@ -446,6 +460,8 @@
 				C6D3778A16DBF0B500836F52 /* EKSerializer.m in Sources */,
 				C6BD161D16DD016C00CCB4F6 /* EKPropertyHelper.m in Sources */,
 				C6BD162016DD872400CCB4F6 /* Address.m in Sources */,
+				A9CF83A716F1655D004F7100 /* EKManagedObjectMapping.m in Sources */,
+				A9CF83AA16F168DE004F7100 /* EKManagedObjectMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
