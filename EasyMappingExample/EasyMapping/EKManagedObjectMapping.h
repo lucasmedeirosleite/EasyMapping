@@ -18,9 +18,10 @@
 @property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
 
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
-								withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
-+ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath
-								withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock;
+                                       withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
++ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
+                                    withRootPath:(NSString *)rootPath
+                                       withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock;
 
 - (id)initWithEntityName:(NSString *)entityName;
 - (id)initWithEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath;
