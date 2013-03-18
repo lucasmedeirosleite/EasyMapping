@@ -68,6 +68,8 @@
     } else {
         value = [representation valueForKeyPath:fieldMapping.keyPath];
     }
+    if (value == (id)[NSNull null])
+        value = nil;
     [object setValue:value forKeyPath:fieldMapping.field];
 }
 
