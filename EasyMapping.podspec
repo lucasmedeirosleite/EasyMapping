@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '5.0'
   s.ios.deployment_target = '5.0'
 
-  s.source_files = 'EasyMappingExample/EasyMapping/*.{h,m}'
+  s.source_files = 'EasyMapping/*.{h,m}'
   
 end

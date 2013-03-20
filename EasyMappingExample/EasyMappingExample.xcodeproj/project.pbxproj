@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		0479F8253E2D4642AC45250E /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0ECF5E2FD046BAA4F63628 /* libPods-EasyMappingExampleTests.a */; };
 		A92A6FF616F1A1A4004B43D0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92A6FF516F1A1A4004B43D0 /* CoreData.framework */; };
-		A9CF83A716F1655D004F7100 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CF83A616F1655D004F7100 /* EKManagedObjectMapping.m */; };
-		A9CF83AA16F168DE004F7100 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CF83A916F168DE004F7100 /* EKManagedObjectMapper.m */; };
+		A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		A9D16D0516F2B2770003759B /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
+		A9D16D0616F2B2770003759B /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
+		A9D16D0716F2B2770003759B /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
+		A9D16D0816F2B2770003759B /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
+		A9D16D0916F2B2770003759B /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
 		C64A696F16DB9F33009CB6D7 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = C64A696E16DB9F33009CB6D7 /* CarWithRoot.json */; };
 		C64A697116DBA7D7009CB6D7 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = C64A697016DBA7D7009CB6D7 /* CarWithNestedAttributes.json */; };
 		C64A697316DBAA4F009CB6D7 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = C64A697216DBAA4F009CB6D7 /* CarWithDate.json */; };
@@ -31,26 +35,20 @@
 		C6557E4416D6621E005D2D3E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C6557E4216D6621E005D2D3E /* InfoPlist.strings */; };
 		C6557E5516D665A7005D2D3E /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E5416D665A7005D2D3E /* EKAppDelegate.m */; };
 		C6557E5816D665C8005D2D3E /* EKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E5716D665C8005D2D3E /* EKViewController.m */; };
-		C6557E5B16D665FE005D2D3E /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E5A16D665FE005D2D3E /* EKMapper.m */; };
-		C6557E5E16D66627005D2D3E /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E5D16D66627005D2D3E /* EKObjectMapping.m */; };
 		C6557E6616D68D08005D2D3E /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6516D68D08005D2D3E /* Person.m */; };
 		C6557E6916D68D2E005D2D3E /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6816D68D2E005D2D3E /* Car.m */; };
 		C6557E6C16D68D55005D2D3E /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6B16D68D55005D2D3E /* Phone.m */; };
 		C6557E7016D68F27005D2D3E /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = C6557E6E16D68F27005D2D3E /* Person.json */; };
 		C672989516DD93040029960F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BD162116DD876700CCB4F6 /* CoreLocation.framework */; };
-		C68351D016D8634E00FA720D /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = C68351CF16D8634E00FA720D /* EKFieldMapping.m */; };
 		C68351D216D8669B00FA720D /* EKFieldMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C68351D116D8669B00FA720D /* EKFieldMappingSpec.m */; };
 		C68B2B0D16DAFCE1007E7B0C /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = C68B2B0C16DAFCE1007E7B0C /* Car.json */; };
-		C6BD161D16DD016C00CCB4F6 /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BD161C16DD016C00CCB4F6 /* EKPropertyHelper.m */; };
 		C6BD162016DD872400CCB4F6 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BD161F16DD872400CCB4F6 /* Address.m */; };
 		C6BD162216DD876800CCB4F6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BD162116DD876700CCB4F6 /* CoreLocation.framework */; };
 		C6BD162416DD892D00CCB4F6 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = C6BD162316DD892D00CCB4F6 /* Address.json */; };
 		C6C0AB3016D807EB009E3751 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0AB2F16D807EB009E3751 /* EKObjectMappingSpec.m */; };
-		C6D3777D16DBC6F000836F52 /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D3777C16DBC6F000836F52 /* EKTransformer.m */; };
 		C6D3777F16DBCD5300836F52 /* Female.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D3777E16DBCD5300836F52 /* Female.json */; };
 		C6D3778316DBCDA100836F52 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D3778216DBCDA100836F52 /* Male.json */; };
 		C6D3778516DBDF2400836F52 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D3778416DBDF2400836F52 /* Cars.json */; };
-		C6D3778A16DBF0B500836F52 /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D3778916DBF0B400836F52 /* EKSerializer.m */; };
 		C6D3778C16DBF0DB00836F52 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */; };
 /* End PBXBuildFile section */
 
@@ -67,10 +65,20 @@
 /* Begin PBXFileReference section */
 		2FCB81AA72F140268B69F0C2 /* Pods-EasyMappingExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExampleTests.xcconfig"; path = "Pods/Pods-EasyMappingExampleTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		A92A6FF516F1A1A4004B43D0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		A9CF83A516F1655D004F7100 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectMapping.h; path = EasyMapping/EKManagedObjectMapping.h; sourceTree = "<group>"; };
-		A9CF83A616F1655D004F7100 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapping.m; path = EasyMapping/EKManagedObjectMapping.m; sourceTree = "<group>"; };
-		A9CF83A816F168DE004F7100 /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectMapper.h; path = EasyMapping/EKManagedObjectMapper.h; sourceTree = "<group>"; };
-		A9CF83A916F168DE004F7100 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapper.m; path = EasyMapping/EKManagedObjectMapper.m; sourceTree = "<group>"; };
+		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
+		A9D16CF716F2B2770003759B /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFieldMapping.h; sourceTree = "<group>"; };
+		A9D16CF816F2B2770003759B /* EKFieldMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFieldMapping.m; sourceTree = "<group>"; };
+		A9D16CF916F2B2770003759B /* EKMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapper.h; sourceTree = "<group>"; };
+		A9D16CFA16F2B2770003759B /* EKMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMapper.m; sourceTree = "<group>"; };
+		A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMappingBlocks.h; sourceTree = "<group>"; };
+		A9D16CFC16F2B2770003759B /* EKObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectMapping.h; sourceTree = "<group>"; };
+		A9D16CFD16F2B2770003759B /* EKObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectMapping.m; sourceTree = "<group>"; };
+		A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPropertyHelper.h; sourceTree = "<group>"; };
+		A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyHelper.m; sourceTree = "<group>"; };
+		A9D16D0016F2B2770003759B /* EKSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSerializer.h; sourceTree = "<group>"; };
+		A9D16D0116F2B2770003759B /* EKSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializer.m; sourceTree = "<group>"; };
+		A9D16D0216F2B2770003759B /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTransformer.h; sourceTree = "<group>"; };
+		A9D16D0316F2B2770003759B /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTransformer.m; sourceTree = "<group>"; };
 		C64A696E16DB9F33009CB6D7 /* CarWithRoot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithRoot.json; sourceTree = "<group>"; };
 		C64A697016DBA7D7009CB6D7 /* CarWithNestedAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithNestedAttributes.json; sourceTree = "<group>"; };
 		C64A697216DBAA4F009CB6D7 /* CarWithDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithDate.json; sourceTree = "<group>"; };
@@ -97,10 +105,6 @@
 		C6557E5416D665A7005D2D3E /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAppDelegate.m; sourceTree = "<group>"; };
 		C6557E5616D665C8005D2D3E /* EKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKViewController.h; path = Controllers/EKViewController.h; sourceTree = "<group>"; };
 		C6557E5716D665C8005D2D3E /* EKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKViewController.m; path = Controllers/EKViewController.m; sourceTree = "<group>"; };
-		C6557E5916D665FE005D2D3E /* EKMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKMapper.h; path = EasyMapping/EKMapper.h; sourceTree = "<group>"; };
-		C6557E5A16D665FE005D2D3E /* EKMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMapper.m; path = EasyMapping/EKMapper.m; sourceTree = "<group>"; };
-		C6557E5C16D66627005D2D3E /* EKObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKObjectMapping.h; path = EasyMapping/EKObjectMapping.h; sourceTree = "<group>"; };
-		C6557E5D16D66627005D2D3E /* EKObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKObjectMapping.m; path = EasyMapping/EKObjectMapping.m; sourceTree = "<group>"; };
 		C6557E6416D68D08005D2D3E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		C6557E6516D68D08005D2D3E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		C6557E6716D68D2E005D2D3E /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
@@ -108,26 +112,16 @@
 		C6557E6A16D68D55005D2D3E /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
 		C6557E6B16D68D55005D2D3E /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
 		C6557E6E16D68F27005D2D3E /* Person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Person.json; sourceTree = "<group>"; };
-		C6557E7C16D6A3C6005D2D3E /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyMapping.h; path = EasyMapping/EasyMapping.h; sourceTree = "<group>"; };
-		C66A4E6416D9066D006492AE /* EKMappingBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKMappingBlocks.h; path = EasyMapping/EKMappingBlocks.h; sourceTree = "<group>"; };
-		C68351CE16D8634E00FA720D /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKFieldMapping.h; path = EasyMapping/EKFieldMapping.h; sourceTree = "<group>"; };
-		C68351CF16D8634E00FA720D /* EKFieldMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKFieldMapping.m; path = EasyMapping/EKFieldMapping.m; sourceTree = "<group>"; };
 		C68351D116D8669B00FA720D /* EKFieldMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFieldMappingSpec.m; sourceTree = "<group>"; };
 		C68B2B0C16DAFCE1007E7B0C /* Car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Car.json; sourceTree = "<group>"; };
-		C6BD161B16DD016C00CCB4F6 /* EKPropertyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKPropertyHelper.h; path = EasyMapping/EKPropertyHelper.h; sourceTree = "<group>"; };
-		C6BD161C16DD016C00CCB4F6 /* EKPropertyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKPropertyHelper.m; path = EasyMapping/EKPropertyHelper.m; sourceTree = "<group>"; };
 		C6BD161E16DD872400CCB4F6 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		C6BD161F16DD872400CCB4F6 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		C6BD162116DD876700CCB4F6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C6BD162316DD892D00CCB4F6 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
 		C6C0AB2F16D807EB009E3751 /* EKObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectMappingSpec.m; sourceTree = "<group>"; };
-		C6D3777B16DBC6F000836F52 /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKTransformer.h; path = EasyMapping/EKTransformer.h; sourceTree = "<group>"; };
-		C6D3777C16DBC6F000836F52 /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKTransformer.m; path = EasyMapping/EKTransformer.m; sourceTree = "<group>"; };
 		C6D3777E16DBCD5300836F52 /* Female.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Female.json; sourceTree = "<group>"; };
 		C6D3778216DBCDA100836F52 /* Male.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Male.json; sourceTree = "<group>"; };
 		C6D3778416DBDF2400836F52 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cars.json; sourceTree = "<group>"; };
-		C6D3778816DBF0B400836F52 /* EKSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKSerializer.h; path = EasyMapping/EKSerializer.h; sourceTree = "<group>"; };
-		C6D3778916DBF0B400836F52 /* EKSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKSerializer.m; path = EasyMapping/EKSerializer.m; sourceTree = "<group>"; };
 		C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializerSpec.m; sourceTree = "<group>"; };
 		FB0ECF5E2FD046BAA4F63628 /* libPods-EasyMappingExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMappingExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -213,7 +207,7 @@
 				C6557E2D16D6621E005D2D3E /* MainStoryboard.storyboard */,
 				C6557E1C16D6621E005D2D3E /* Supporting Files */,
 			);
-			path = EasyMappingExample;
+			name = EasyMappingExample;
 			sourceTree = "<group>";
 		};
 		C6557E1C16D6621E005D2D3E /* Supporting Files */ = {
@@ -255,26 +249,23 @@
 		C6557E5016D6652A005D2D3E /* EasyMapping */ = {
 			isa = PBXGroup;
 			children = (
-				C6557E7C16D6A3C6005D2D3E /* EasyMapping.h */,
-				C6557E5916D665FE005D2D3E /* EKMapper.h */,
-				C6557E5A16D665FE005D2D3E /* EKMapper.m */,
-				C6D3778816DBF0B400836F52 /* EKSerializer.h */,
-				C6D3778916DBF0B400836F52 /* EKSerializer.m */,
-				C6557E5C16D66627005D2D3E /* EKObjectMapping.h */,
-				C6557E5D16D66627005D2D3E /* EKObjectMapping.m */,
-				C68351CE16D8634E00FA720D /* EKFieldMapping.h */,
-				C68351CF16D8634E00FA720D /* EKFieldMapping.m */,
-				C66A4E6416D9066D006492AE /* EKMappingBlocks.h */,
-				C6BD161B16DD016C00CCB4F6 /* EKPropertyHelper.h */,
-				C6BD161C16DD016C00CCB4F6 /* EKPropertyHelper.m */,
-				C6D3777B16DBC6F000836F52 /* EKTransformer.h */,
-				C6D3777C16DBC6F000836F52 /* EKTransformer.m */,
-				A9CF83A516F1655D004F7100 /* EKManagedObjectMapping.h */,
-				A9CF83A616F1655D004F7100 /* EKManagedObjectMapping.m */,
-				A9CF83A816F168DE004F7100 /* EKManagedObjectMapper.h */,
-				A9CF83A916F168DE004F7100 /* EKManagedObjectMapper.m */,
+				A9D16CF616F2B2770003759B /* EasyMapping.h */,
+				A9D16CF716F2B2770003759B /* EKFieldMapping.h */,
+				A9D16CF816F2B2770003759B /* EKFieldMapping.m */,
+				A9D16CF916F2B2770003759B /* EKMapper.h */,
+				A9D16CFA16F2B2770003759B /* EKMapper.m */,
+				A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */,
+				A9D16CFC16F2B2770003759B /* EKObjectMapping.h */,
+				A9D16CFD16F2B2770003759B /* EKObjectMapping.m */,
+				A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */,
+				A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */,
+				A9D16D0016F2B2770003759B /* EKSerializer.h */,
+				A9D16D0116F2B2770003759B /* EKSerializer.m */,
+				A9D16D0216F2B2770003759B /* EKTransformer.h */,
+				A9D16D0316F2B2770003759B /* EKTransformer.m */,
 			);
 			name = EasyMapping;
+			path = ../EasyMapping;
 			sourceTree = "<group>";
 		};
 		C6557E5116D66538005D2D3E /* Delegates */ = {
@@ -449,19 +440,17 @@
 				C6557E2216D6621E005D2D3E /* main.m in Sources */,
 				C6557E5516D665A7005D2D3E /* EKAppDelegate.m in Sources */,
 				C6557E5816D665C8005D2D3E /* EKViewController.m in Sources */,
-				C6557E5B16D665FE005D2D3E /* EKMapper.m in Sources */,
-				C6557E5E16D66627005D2D3E /* EKObjectMapping.m in Sources */,
 				C6557E6616D68D08005D2D3E /* Person.m in Sources */,
 				C6557E6916D68D2E005D2D3E /* Car.m in Sources */,
 				C6557E6C16D68D55005D2D3E /* Phone.m in Sources */,
-				C68351D016D8634E00FA720D /* EKFieldMapping.m in Sources */,
 				C6500E3F16D98780009FCC67 /* MappingProvider.m in Sources */,
-				C6D3777D16DBC6F000836F52 /* EKTransformer.m in Sources */,
-				C6D3778A16DBF0B500836F52 /* EKSerializer.m in Sources */,
-				C6BD161D16DD016C00CCB4F6 /* EKPropertyHelper.m in Sources */,
 				C6BD162016DD872400CCB4F6 /* Address.m in Sources */,
-				A9CF83A716F1655D004F7100 /* EKManagedObjectMapping.m in Sources */,
-				A9CF83AA16F168DE004F7100 /* EKManagedObjectMapper.m in Sources */,
+				A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */,
+				A9D16D0516F2B2770003759B /* EKMapper.m in Sources */,
+				A9D16D0616F2B2770003759B /* EKObjectMapping.m in Sources */,
+				A9D16D0716F2B2770003759B /* EKPropertyHelper.m in Sources */,
+				A9D16D0816F2B2770003759B /* EKSerializer.m in Sources */,
+				A9D16D0916F2B2770003759B /* EKTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,8 +563,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EasyMappingExample/EasyMappingExample-Prefix.pch";
-				INFOPLIST_FILE = "EasyMappingExample/EasyMappingExample-Info.plist";
+				GCC_PREFIX_HEADER = "EasyMappingExample-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/EasyMappingExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -585,8 +574,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EasyMappingExample/EasyMappingExample-Prefix.pch";
-				INFOPLIST_FILE = "EasyMappingExample/EasyMappingExample-Info.plist";
+				GCC_PREFIX_HEADER = "EasyMappingExample-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/EasyMappingExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -605,7 +594,7 @@
 					"${inherited}",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EasyMappingExample/EasyMappingExample-Prefix.pch";
+				GCC_PREFIX_HEADER = "EasyMappingExample-Prefix.pch";
 				INFOPLIST_FILE = "EasyMappingExampleTests/EasyMappingExampleTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -626,7 +615,7 @@
 					"${inherited}",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EasyMappingExample/EasyMappingExample-Prefix.pch";
+				GCC_PREFIX_HEADER = "EasyMappingExample-Prefix.pch";
 				INFOPLIST_FILE = "EasyMappingExampleTests/EasyMappingExampleTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
