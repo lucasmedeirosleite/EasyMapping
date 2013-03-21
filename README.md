@@ -164,6 +164,11 @@ To fill an already instantiated object you can do this:
 
 * See the specs code
 
+### CoreData
+
+If you are using CoreData objects use `EKManagedObjectMapper` and `EKManagedObjectMapping` instead of `EKMapper` and `EKObjectMapping`, respectively.
+
+
 ## Thanks
 
 Thanks to [basitali](https://github.com/basitali) who added the fillObject functionality on EKMapper!
