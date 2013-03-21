@@ -1,5 +1,6 @@
 #Cocoa Pods
-Pods/
+EasyMappingExample/Pods/
+EasyMappingCoreDataExample/Pods/
 
 # Xcode
 .DS_Store
