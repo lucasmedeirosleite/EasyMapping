@@ -172,6 +172,7 @@ If you are using CoreData objects use `EKManagedObjectMapper` and `EKManagedObje
 ## Thanks
 
 Thanks to [basitali](https://github.com/basitali) who added the fillObject functionality on EKMapper!
+
 Thanks to [Alejandro](https://github.com/aleph7) who added CoreData support!
 
 ## Requirements
