@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Car.h"
-#import "EKManagedObjectMapper.h"
 #import "MappingProvider.h"
 
 

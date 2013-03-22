@@ -1,5 +1,5 @@
 //
-//  EKManagedObjectMapperTest.m
+//  EKManagedObjectMappingSpec.m
 //  EasyMappingCoreDataExample
 //
 //  Created by Alejandro Isaza on 2013-03-16.
@@ -8,7 +8,6 @@
 
 #import "Kiwi.h"
 #import "EasyMapping.h"
-#import "EKManagedObjectMapper.h"
 #import "Person.h"
 #import "Car.h"
 #import "MappingProvider.h"

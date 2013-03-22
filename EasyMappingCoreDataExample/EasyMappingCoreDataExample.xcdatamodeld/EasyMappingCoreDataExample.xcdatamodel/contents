@@ -21,7 +21,7 @@
     </entity>
     <elements>
         <element name="Car" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Person" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Phone" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Person" positionX="54" positionY="-99" width="128" height="120"/>
+        <element name="Phone" positionX="-279" positionY="9" width="128" height="105"/>
     </elements>
 </model>

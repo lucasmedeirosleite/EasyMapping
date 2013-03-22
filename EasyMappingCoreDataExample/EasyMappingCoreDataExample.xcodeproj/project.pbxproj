@@ -11,7 +11,6 @@
 		A976623516F94F95008BAD28 /* libPods-EasyMappingCoreDataExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A976623416F94F95008BAD28 /* libPods-EasyMappingCoreDataExampleTests.a */; };
 		A976623716F94FA8008BAD28 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A976623616F94FA8008BAD28 /* libPods.a */; };
 		A976623A16F950A5008BAD28 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2816F2B4E50003759B /* EKManagedObjectMapping.m */; };
-		A976623B16F950A8008BAD28 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2616F2B4E50003759B /* EKManagedObjectMapper.m */; };
 		A976623C16F950B8008BAD28 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2A16F2B4E50003759B /* EKMapper.m */; };
 		A976623D16F950B8008BAD28 /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2D16F2B4E50003759B /* EKObjectMapping.m */; };
 		A976623E16F950B8008BAD28 /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2F16F2B4E50003759B /* EKPropertyHelper.m */; };
@@ -49,7 +48,6 @@
 		A9D16D1316F2B4070003759B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D16CA816F2B03C0003759B /* Foundation.framework */; };
 		A9D16D1916F2B4070003759B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9D16D1716F2B4070003759B /* InfoPlist.strings */; };
 		A9D16D3416F2B4E50003759B /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2416F2B4E50003759B /* EKFieldMapping.m */; };
-		A9D16D3516F2B4E50003759B /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2616F2B4E50003759B /* EKManagedObjectMapper.m */; };
 		A9D16D3616F2B4E50003759B /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2816F2B4E50003759B /* EKManagedObjectMapping.m */; };
 		A9D16D3716F2B4E50003759B /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2A16F2B4E50003759B /* EKMapper.m */; };
 		A9D16D3816F2B4E50003759B /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D2D16F2B4E50003759B /* EKObjectMapping.m */; };
@@ -111,8 +109,6 @@
 		A9D16D2216F2B4E50003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
 		A9D16D2316F2B4E50003759B /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFieldMapping.h; sourceTree = "<group>"; };
 		A9D16D2416F2B4E50003759B /* EKFieldMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFieldMapping.m; sourceTree = "<group>"; };
-		A9D16D2516F2B4E50003759B /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapper.h; sourceTree = "<group>"; };
-		A9D16D2616F2B4E50003759B /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapper.m; sourceTree = "<group>"; };
 		A9D16D2716F2B4E50003759B /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
 		A9D16D2816F2B4E50003759B /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
 		A9D16D2916F2B4E50003759B /* EKMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapper.h; sourceTree = "<group>"; };
@@ -275,8 +271,6 @@
 				A9D16D2216F2B4E50003759B /* EasyMapping.h */,
 				A9D16D2316F2B4E50003759B /* EKFieldMapping.h */,
 				A9D16D2416F2B4E50003759B /* EKFieldMapping.m */,
-				A9D16D2516F2B4E50003759B /* EKManagedObjectMapper.h */,
-				A9D16D2616F2B4E50003759B /* EKManagedObjectMapper.m */,
 				A9D16D2716F2B4E50003759B /* EKManagedObjectMapping.h */,
 				A9D16D2816F2B4E50003759B /* EKManagedObjectMapping.m */,
 				A9D16D2916F2B4E50003759B /* EKMapper.h */,
@@ -446,7 +440,6 @@
 				A9D16CB916F2B03C0003759B /* AppDelegate.m in Sources */,
 				A9D16CC216F2B03D0003759B /* EasyMappingCoreDataExample.xcdatamodeld in Sources */,
 				A9D16D3416F2B4E50003759B /* EKFieldMapping.m in Sources */,
-				A9D16D3516F2B4E50003759B /* EKManagedObjectMapper.m in Sources */,
 				A9D16D3616F2B4E50003759B /* EKManagedObjectMapping.m in Sources */,
 				A9D16D3716F2B4E50003759B /* EKMapper.m in Sources */,
 				A9D16D3816F2B4E50003759B /* EKObjectMapping.m in Sources */,
@@ -466,7 +459,6 @@
 			files = (
 				A95AD0FD16F5295100641F74 /* EKManagedObjectMappingSpec.m in Sources */,
 				A976623A16F950A5008BAD28 /* EKManagedObjectMapping.m in Sources */,
-				A976623B16F950A8008BAD28 /* EKManagedObjectMapper.m in Sources */,
 				A976623C16F950B8008BAD28 /* EKMapper.m in Sources */,
 				A976623D16F950B8008BAD28 /* EKObjectMapping.m in Sources */,
 				A976623E16F950B8008BAD28 /* EKPropertyHelper.m in Sources */,

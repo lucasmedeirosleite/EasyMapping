@@ -7,12 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EKManagedObjectMapping.h"
 #import "EKObjectMapping.h"
 
 @interface EKMapper : NSObject
 
-+ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping;
-+ (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping;
-+ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation withMapping:(EKObjectMapping *)mapping;
++ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                           withMapping:(EKObjectMapping *)mapping;
++ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                           withMapping:(EKManagedObjectMapping *)mapping
+                inManagedObjectContext:(NSManagedObjectContext*)moc;
+
++ (id)fillObject:(id)object  fromExternalRepresentation:(NSDictionary *)externalRepresentation
+                                            withMapping:(EKObjectMapping *)mapping;
++ (id)fillObject:(id)object  fromExternalRepresentation:(NSDictionary *)externalRepresentation
+     withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext*)moc;
+
+
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                          withMapping:(EKObjectMapping *)mapping;
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                          withMapping:(EKManagedObjectMapping *)mapping
+                               inManagedObjectContext:(NSManagedObjectContext*)moc;
 
 @end

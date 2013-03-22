@@ -18,6 +18,12 @@
     return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
 }
 
++ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName inManagedObjectContext:moc];
+    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping inManagedObjectContext:moc];
+}
+
 + (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping {
     NSDictionary *representation = [self extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -35,11 +41,47 @@
     return object;
 }
 
++ (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
+     withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    NSDictionary *representation = [self extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
+    [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [self setField:obj onObject:object fromRepresentation:representation withObjectMapping:mapping];
+    }];
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSDictionary* externalRepresentation = [representation valueForKeyPath:key];
+        if (externalRepresentation) {
+            id result = [self objectFromExternalRepresentation:externalRepresentation withMapping:obj inManagedObjectContext:moc];
+            [object setValue:result forKeyPath:key];
+        }
+    }];
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
+        if (arrayToBeParsed) {
+            NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj inManagedObjectContext:moc];
+            [object setValue:[NSSet setWithArray:parsedArray] forKeyPath:key];
+        }
+    }];
+    return object;
+}
+
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *representation in externalRepresentation) {
         id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];
+        [array addObject:parsedObject];
+    }
+    return [NSArray arrayWithArray:array];
+}
+
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                          withMapping:(EKManagedObjectMapping *)mapping
+                               inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSDictionary *representation in externalRepresentation) {
+        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping inManagedObjectContext:moc];
         [array addObject:parsedObject];
     }
     return [NSArray arrayWithArray:array];
@@ -62,6 +104,9 @@
         value = [EKTransformer transformString:[representation valueForKeyPath:fieldMapping.keyPath] withDateFormat:fieldMapping.dateFormat];
     } else {
         value = [representation valueForKeyPath:fieldMapping.keyPath];
+    }
+    if (value == (id)[NSNull null]) {
+        value = nil;
     }
     [object setValue:value forKeyPath:fieldMapping.field];
 }

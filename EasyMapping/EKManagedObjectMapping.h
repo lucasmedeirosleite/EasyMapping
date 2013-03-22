@@ -8,14 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "EKMappingBlocks.h"
+#import "EKObjectMapping.h"
 
-@interface EKManagedObjectMapping : NSObject
+@interface EKManagedObjectMapping : EKObjectMapping
 
 @property (nonatomic, assign, readonly) NSString* entityName;
-@property (nonatomic, strong, readonly) NSString *rootPath;
-@property (nonatomic, strong, readonly) NSMutableDictionary *fieldMappings;
-@property (nonatomic, strong, readonly) NSMutableDictionary *hasOneMappings;
-@property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
 
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
                                        withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
@@ -25,16 +22,5 @@
 
 - (id)initWithEntityName:(NSString *)entityName;
 - (id)initWithEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath;
-
-- (void)mapKey:(NSString *)key toField:(NSString *)field;
-- (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat;
-- (void)mapFieldsFromArray:(NSArray *)fieldsArray;
-- (void)mapFieldsFromDictionary:(NSDictionary *)fieldsDictionary;
-- (void)mapKey:(NSString *)key toField:(NSString *)field
-withValueBlock:(EKMappingValueBlock)valueBlock;
-- (void)mapKey:(NSString *)key toField:(NSString *)field
-withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingReverseBlock)reverseBlock;
-- (void)hasOneMapping:(EKManagedObjectMapping *)mapping forKey:(NSString *)key;
-- (void)hasManyMapping:(EKManagedObjectMapping *)mapping forKey:(NSString *)key;
 
 @end
