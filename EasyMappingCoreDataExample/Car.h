@@ -12,6 +12,7 @@
 
 @interface Car : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * carID;
 @property (nonatomic, retain) NSString * model;
 @property (nonatomic, retain) NSString * year;
 @property (nonatomic, retain) NSDate * createdAt;
