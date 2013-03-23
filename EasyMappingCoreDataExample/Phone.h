@@ -13,6 +13,7 @@
 
 @interface Phone : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * phoneID;
 @property (nonatomic, retain) NSString * ddi;
 @property (nonatomic, retain) NSString * ddd;
 @property (nonatomic, retain) NSString * number;

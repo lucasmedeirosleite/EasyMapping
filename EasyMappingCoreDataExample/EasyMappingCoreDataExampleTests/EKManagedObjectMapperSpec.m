@@ -68,6 +68,56 @@ describe(@"EKManagedObjectMapper", ^{
             
         });
         
+        context(@"with existing object", ^{
+            
+            __block NSManagedObjectContext* moc;
+            __block Car *oldCar;
+            __block Car *car;
+            __block NSDictionary *externalRepresentation;
+            
+            beforeEach(^{
+                moc = [NSManagedObjectContext MR_defaultContext];
+                
+                oldCar = [NSEntityDescription insertNewObjectForEntityForName:@"Car" inManagedObjectContext:moc];
+                oldCar.carID = @(1);
+                oldCar.year = @"1980";
+                oldCar.model = @"";
+                [moc MR_saveToPersistentStoreAndWait];
+                
+                externalRepresentation = @{
+                    @"id": @(1),
+                    @"model": @"i30",
+                    @"year": @"2013"
+                };
+                
+                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carMapping] inManagedObjectContext:moc];
+            });
+            
+            specify(^{
+                [car shouldNotBeNil];
+            });
+            
+            specify(^{
+                [[car should] equal:oldCar];
+            });
+            
+            specify(^{
+                [[car.carID should] equal:oldCar.carID];
+            });
+            
+            specify(^{
+                [[car.model should] equal:[externalRepresentation objectForKey:@"model"]];
+            });
+            
+            specify(^{
+                [[car.year should] equal:[externalRepresentation objectForKey:@"year"]];
+            });
+            
+            specify(^{
+                [[[Car MR_findAll] should] haveCountOf:1];
+            });
+        });
+        
         context(@"with root key", ^{
             
             __block NSManagedObjectContext* moc;

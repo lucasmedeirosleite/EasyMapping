@@ -13,6 +13,7 @@
 @interface EKManagedObjectMapping : EKObjectMapping
 
 @property (nonatomic, assign, readonly) NSString* entityName;
+@property (nonatomic, assign) NSString *primaryKey;
 
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
                                        withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
