@@ -11,6 +11,7 @@
 
 @implementation Car
 
+@dynamic carID;
 @dynamic model;
 @dynamic year;
 @dynamic createdAt;

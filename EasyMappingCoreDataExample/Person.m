@@ -12,6 +12,7 @@
 
 @implementation Person
 
+@dynamic personID;
 @dynamic name;
 @dynamic email;
 @dynamic car;

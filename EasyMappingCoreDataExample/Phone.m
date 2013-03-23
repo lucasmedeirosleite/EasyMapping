@@ -12,6 +12,7 @@
 
 @implementation Phone
 
+@dynamic phoneID;
 @dynamic ddi;
 @dynamic ddd;
 @dynamic number;
