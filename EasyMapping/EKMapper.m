@@ -29,7 +29,7 @@
 + (id)getExistingObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc {
     EKFieldMapping *primaryKeyFieldMapping = [mapping.fieldMappings objectForKey:mapping.primaryKey];
     id primaryKeyValue = [self getValueOfField:primaryKeyFieldMapping fromRepresentation:externalRepresentation];
-    if (!primaryKeyValue)
+    if (!primaryKeyValue || primaryKeyValue == (id)[NSNull null])
         return nil;
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:mapping.entityName];
@@ -116,7 +116,10 @@
 + (void)setField:(EKFieldMapping *)fieldMapping onObject:(id)object fromRepresentation:(NSDictionary *)representation
 {
     id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
-    [object setValue:value forKeyPath:fieldMapping.field];
+    if (value == (id)[NSNull null])
+        [object setValue:nil forKeyPath:fieldMapping.field];
+    else if (value)
+        [object setValue:value forKeyPath:fieldMapping.field];
 }
 
 + (id)getValueOfField:(EKFieldMapping *)fieldMapping fromRepresentation:(NSDictionary *)representation
@@ -129,8 +132,6 @@
     } else {
         value = [representation valueForKeyPath:fieldMapping.keyPath];
     }
-    if (value == (id)[NSNull null])
-        value = nil;
     return value;
 }
 

@@ -118,6 +118,43 @@ describe(@"EKManagedObjectMapper", ^{
             });
         });
         
+        context(@"don't clear missing values", ^{
+            
+            __block NSManagedObjectContext* moc;
+            __block Car *oldCar;
+            __block Car *car;
+            __block NSDictionary *externalRepresentation;
+            
+            beforeEach(^{
+                moc = [NSManagedObjectContext MR_defaultContext];
+                
+                oldCar = [NSEntityDescription insertNewObjectForEntityForName:@"Car" inManagedObjectContext:moc];
+                oldCar.carID = @(1);
+                oldCar.year = @"1980";
+                oldCar.model = @"";
+                
+                externalRepresentation = @{ @"id": @(1), @"model": @"i30", };
+                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carMapping] inManagedObjectContext:moc];
+            });
+            
+            specify(^{
+                [[car.carID should] equal:oldCar.carID];
+            });
+            
+            specify(^{
+                [[car.model should] equal:[externalRepresentation objectForKey:@"model"]];
+            });
+            
+            specify(^{
+                [[car.year should] equal:oldCar.year];
+            });
+            
+            specify(^{
+                [[[Car MR_findAll] should] haveCountOf:1];
+            });
+            
+        });
+        
         context(@"with root key", ^{
             
             __block NSManagedObjectContext* moc;
