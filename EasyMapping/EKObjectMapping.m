@@ -100,12 +100,34 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
 {
-    [self.hasOneMappings setObject:mapping forKey:key];
+    mapping.field = key;
+    mapping.keyPath = key;
+    
+    [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+}
+
+-(void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field
+{
+    mapping.field = field;
+    mapping.keyPath = key;
+    
+    [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
 }
 
 - (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
 {
-    [self.hasManyMappings setObject:mapping forKey:key];
+    mapping.field = key;
+    mapping.keyPath = key;
+    
+    [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+}
+
+-(void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field
+{
+    mapping.field = field;
+    mapping.keyPath = key;
+    
+    [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
 }
 
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping
