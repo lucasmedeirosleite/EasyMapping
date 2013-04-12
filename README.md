@@ -174,6 +174,7 @@ Thanks to:
 
 * [basitali](https://github.com/basitali) who added the fillObject functionality on EKMapper!
 * [Alejandro](https://github.com/aleph7) who added CoreData support!
+* [DenHeadless](https://github.com/DenHeadless) who added the ability to use different naming in hasOne and hasMany mappings  
 
 ## Requirements
 
