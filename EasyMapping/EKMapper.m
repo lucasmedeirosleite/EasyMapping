@@ -49,12 +49,14 @@
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         id result = [self objectFromExternalRepresentation:[representation valueForKeyPath:key] withMapping:obj];
-        [object setValue:result forKeyPath:key];
+        EKObjectMapping * mapping = obj;
+        [object setValue:result forKeyPath:mapping.field];
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj];
-        [object setValue:parsedArray forKeyPath:key];
+        EKObjectMapping * mapping = obj;
+        [object setValue:parsedArray forKeyPath:mapping.field];
     }];
     return object;
 }
@@ -70,14 +72,16 @@
         NSDictionary* externalRepresentation = [representation valueForKeyPath:key];
         if (externalRepresentation) {
             id result = [self objectFromExternalRepresentation:externalRepresentation withMapping:obj inManagedObjectContext:moc];
-            [object setValue:result forKeyPath:key];
+            EKObjectMapping * mapping = obj;
+            [object setValue:result forKeyPath:mapping.field];
         }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         if (arrayToBeParsed) {
             NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj inManagedObjectContext:moc];
-            [object setValue:[NSSet setWithArray:parsedArray] forKeyPath:key];
+            EKObjectMapping * mapping = obj;
+            [object setValue:[NSSet setWithArray:parsedArray] forKeyPath:mapping.field];
         }
     }];
     return object;

@@ -233,6 +233,37 @@ describe(@"EKMapper", ^{
             
         });
         
+        context(@"with hasOne mapping with different names", ^{
+            __block Car * expectedCar;
+            __block Person * person;
+            beforeEach(^{
+                expectedCar = [[Car alloc] init];
+                expectedCar.model = @"i30";
+                expectedCar.year = @"2013";
+                EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
+                [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"vehicle" forField:@"car"];
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+            });
+            
+            specify(^{
+                [person.car shouldNotBeNil];
+            });
+
+            specify(^{
+                [[person.car should] beMemberOfClass:[Car class]];
+            });
+            
+            specify(^{
+                [[person.car.model should] equal:@"i30"];
+            });
+            
+            specify(^{
+                [[person.car.year should] equal:@"2013"];
+            });
+
+        });
+        
         context(@"with hasMany mapping", ^{
             
             __block Person *person;
@@ -250,6 +281,34 @@ describe(@"EKMapper", ^{
                 [[person.phones should] haveCountOf:2];
             });
             
+        });
+        
+        context(@"with hasMany mapping with different names", ^{
+            __block Person * person;
+            beforeEach(^{
+                EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
+                [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"cellphones" forField:@"phones"];
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+            });
+            
+            specify(^{
+                [person.phones shouldNotBeNil];
+            });
+            
+            specify(^{
+                [[person.phones should] haveCountOf:2];
+            });
+            
+            specify(^{
+                [[person.phones.lastObject should] beMemberOfClass:[Phone class]];
+            });
+            
+            specify(^{
+                Phone * lastPhone = person.phones.lastObject;
+                
+                [[lastPhone.number should] equal:@"2222-222"];
+            });
         });
         
     });
