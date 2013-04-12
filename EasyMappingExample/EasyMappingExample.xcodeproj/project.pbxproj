@@ -50,6 +50,7 @@
 		C6D3778316DBCDA100836F52 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D3778216DBCDA100836F52 /* Male.json */; };
 		C6D3778516DBDF2400836F52 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D3778416DBDF2400836F52 /* Cars.json */; };
 		C6D3778C16DBF0DB00836F52 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */; };
+		E6D8062C171818C40035BB7C /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		C6D3778216DBCDA100836F52 /* Male.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Male.json; sourceTree = "<group>"; };
 		C6D3778416DBDF2400836F52 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cars.json; sourceTree = "<group>"; };
 		C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializerSpec.m; sourceTree = "<group>"; };
+		E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithDifferentNaming.json; sourceTree = "<group>"; };
 		FB0ECF5E2FD046BAA4F63628 /* libPods-EasyMappingExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMappingExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -298,6 +300,7 @@
 				C6D3777E16DBCD5300836F52 /* Female.json */,
 				C6D3778216DBCDA100836F52 /* Male.json */,
 				C6557E6E16D68F27005D2D3E /* Person.json */,
+				E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				C6D3778316DBCDA100836F52 /* Male.json in Resources */,
 				C6D3778516DBDF2400836F52 /* Cars.json in Resources */,
 				C6BD162416DD892D00CCB4F6 /* Address.json in Resources */,
+				E6D8062C171818C40035BB7C /* PersonWithDifferentNaming.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

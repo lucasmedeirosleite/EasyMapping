@@ -11,8 +11,11 @@
 
 @interface EKObjectMapping : NSObject
 
-@property (nonatomic, assign, readonly) Class objectClass;
+@property (nonatomic, assign, readwrite) Class objectClass;
 @property (nonatomic, strong, readonly) NSString *rootPath;
+@property (nonatomic, strong, readwrite) NSString * field;
+@property (nonatomic, strong, readwrite) NSString * keyPath;
+
 @property (nonatomic, strong, readonly) NSMutableDictionary *fieldMappings;
 @property (nonatomic, strong, readonly) NSMutableDictionary *hasOneMappings;
 @property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
@@ -26,13 +29,19 @@
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field;
 - (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat;
+
 - (void)mapFieldsFromArray:(NSArray *)fieldsArray;
 - (void)mapFieldsFromDictionary:(NSDictionary *)fieldsDictionary;
+
 - (void)mapKey:(NSString *)key toField:(NSString *)field
 withValueBlock:(EKMappingValueBlock)valueBlock;
 - (void)mapKey:(NSString *)key toField:(NSString *)field
 withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingReverseBlock)reverseBlock;
+
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+- (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
+
 - (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+- (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
 
 @end

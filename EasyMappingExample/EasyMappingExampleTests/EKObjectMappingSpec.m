@@ -83,7 +83,15 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
+            [[mapping should] respondToSelector:@selector(hasOneMapping:forKey:forField:)];
+        });
+        
+        specify(^{
             [[mapping should] respondToSelector:@selector(hasManyMapping:forKey:)];
+        });
+        
+        specify(^{
+            [[mapping should] respondToSelector:@selector(hasManyMapping:forKey:forField:)];
         });
         
     });
@@ -101,6 +109,10 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
+            [[mapping should] respondToSelector:@selector(setObjectClass:)];
+        });
+        
+        specify(^{
             [[mapping should] respondToSelector:@selector(rootPath)];
         });
         
@@ -109,11 +121,19 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondsToSelector:@selector(hasOneMappings)];
+            [[mapping should] respondToSelector:@selector(hasOneMappings)];
         });
         
         specify(^{
-            [[mapping should] respondsToSelector:@selector(hasManyMappings)];
+            [[mapping should] respondToSelector:@selector(hasManyMappings)];
+        });
+        
+        specify(^{
+            [[mapping should] respondToSelector:@selector(field)];
+        });
+        
+        specify(^{
+            [[mapping should] respondToSelector:@selector(setField:)];
         });
         
     });
@@ -429,13 +449,48 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
+            [[[[mapping.hasOneMappings objectForKey:@"car"] field] should] equal:@"car"];
+        });
+        
+        specify(^{
             [mapping.hasManyMappings shouldNotBeNil];
         });
         
         specify(^{
             [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
         });
-             
+        
+        specify(^{
+            [[[[mapping.hasManyMappings objectForKey:@"phones"] field] should] equal:@"phones"];
+        });
+        
+    });
+    
+    describe(@"#hasOneMapping:forKey:forField:", ^{
+        __block EKObjectMapping * mapping;
+       
+        beforeEach(^{
+            mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
+            [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"car" forField:@"personCar"];
+        
+            [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"phones" forField:@"personPhones"];
+        });
+        
+        specify(^{
+            [[[[mapping.hasOneMappings objectForKey:@"car"] field] should] equal:@"personCar"];
+        });
+        
+        specify(^{
+            [[[[mapping.hasOneMappings objectForKey:@"car"] keyPath] should] equal:@"car"];
+        });
+        
+        specify(^{
+            [[[[mapping.hasManyMappings objectForKey:@"phones"] field] should] equal:@"personPhones"];
+        });
+        
+        specify(^{
+            [[[[mapping.hasManyMappings objectForKey:@"phones"] keyPath] should] equal:@"phones"];
+        });
     });
     
     describe(@"#hasManyMapping:forKey:", ^{
