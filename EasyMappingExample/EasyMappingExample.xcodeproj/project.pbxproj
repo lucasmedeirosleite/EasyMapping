@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0479F8253E2D4642AC45250E /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0ECF5E2FD046BAA4F63628 /* libPods-EasyMappingExampleTests.a */; };
+		116D80270DF540439FEF3CD4 /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3A3364B05A4216A376C757 /* libPods-EasyMappingExampleTests.a */; };
 		A92A6FF616F1A1A4004B43D0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92A6FF516F1A1A4004B43D0 /* CoreData.framework */; };
 		A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
 		A9D16D0516F2B2770003759B /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
@@ -64,7 +64,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2FCB81AA72F140268B69F0C2 /* Pods-EasyMappingExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExampleTests.xcconfig"; path = "Pods/Pods-EasyMappingExampleTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		A92A6FF516F1A1A4004B43D0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
 		A9D16CF716F2B2770003759B /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFieldMapping.h; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		A9D16D0116F2B2770003759B /* EKSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializer.m; sourceTree = "<group>"; };
 		A9D16D0216F2B2770003759B /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTransformer.h; sourceTree = "<group>"; };
 		A9D16D0316F2B2770003759B /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTransformer.m; sourceTree = "<group>"; };
+		BD3A3364B05A4216A376C757 /* libPods-EasyMappingExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMappingExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64A696E16DB9F33009CB6D7 /* CarWithRoot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithRoot.json; sourceTree = "<group>"; };
 		C64A697016DBA7D7009CB6D7 /* CarWithNestedAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithNestedAttributes.json; sourceTree = "<group>"; };
 		C64A697216DBAA4F009CB6D7 /* CarWithDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithDate.json; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 		C6D3778216DBCDA100836F52 /* Male.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Male.json; sourceTree = "<group>"; };
 		C6D3778416DBDF2400836F52 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cars.json; sourceTree = "<group>"; };
 		C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializerSpec.m; sourceTree = "<group>"; };
+		D2407EFB9A0D46D595C5CDFA /* Pods-EasyMappingExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExampleTests.xcconfig"; path = "Pods/Pods-EasyMappingExampleTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithDifferentNaming.json; sourceTree = "<group>"; };
-		FB0ECF5E2FD046BAA4F63628 /* libPods-EasyMappingExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMappingExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +149,7 @@
 				C6557E3A16D6621E005D2D3E /* SenTestingKit.framework in Frameworks */,
 				C6557E3B16D6621E005D2D3E /* UIKit.framework in Frameworks */,
 				C6557E3C16D6621E005D2D3E /* Foundation.framework in Frameworks */,
-				0479F8253E2D4642AC45250E /* libPods-EasyMappingExampleTests.a in Frameworks */,
+				116D80270DF540439FEF3CD4 /* libPods-EasyMappingExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +163,7 @@
 				C6557E3F16D6621E005D2D3E /* EasyMappingExampleTests */,
 				C6557E1416D6621E005D2D3E /* Frameworks */,
 				C6557E1316D6621E005D2D3E /* Products */,
-				2FCB81AA72F140268B69F0C2 /* Pods-EasyMappingExampleTests.xcconfig */,
+				D2407EFB9A0D46D595C5CDFA /* Pods-EasyMappingExampleTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,7 +185,7 @@
 				C6557E1716D6621E005D2D3E /* Foundation.framework */,
 				C6557E1916D6621E005D2D3E /* CoreGraphics.framework */,
 				C6557E3916D6621E005D2D3E /* SenTestingKit.framework */,
-				FB0ECF5E2FD046BAA4F63628 /* libPods-EasyMappingExampleTests.a */,
+				BD3A3364B05A4216A376C757 /* libPods-EasyMappingExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -329,11 +329,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6557E4D16D6621E005D2D3E /* Build configuration list for PBXNativeTarget "EasyMappingExampleTests" */;
 			buildPhases = (
+				E0FF677483E24D0E9E5A5858 /* Check Pods Manifest.lock */,
 				C6557E3316D6621E005D2D3E /* Sources */,
 				C6557E3416D6621E005D2D3E /* Frameworks */,
 				C6557E3516D6621E005D2D3E /* Resources */,
 				C6557E3616D6621E005D2D3E /* ShellScript */,
-				45549F3A16814F4CB5EEA870 /* Copy Pods Resources */,
+				87539F03524941B6AFBDCBF1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -407,7 +408,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		45549F3A16814F4CB5EEA870 /* Copy Pods Resources */ = {
+		87539F03524941B6AFBDCBF1 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,6 +434,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		E0FF677483E24D0E9E5A5858 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sanbox is not in sync with the Podfile.lock. Run 'pod install'.\nEOM\n    exit 1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -587,15 +602,15 @@
 		};
 		C6557E4E16D6621E005D2D3E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FCB81AA72F140268B69F0C2 /* Pods-EasyMappingExampleTests.xcconfig */;
+			baseConfigurationReference = D2407EFB9A0D46D595C5CDFA /* Pods-EasyMappingExampleTests.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = "${inherited}";
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EasyMappingExample.app/EasyMappingExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"$(SRCROOT)/EasyMappingExampleTests/Frameworks",
-					"${inherited}",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyMappingExample-Prefix.pch";
@@ -608,15 +623,15 @@
 		};
 		C6557E4F16D6621E005D2D3E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FCB81AA72F140268B69F0C2 /* Pods-EasyMappingExampleTests.xcconfig */;
+			baseConfigurationReference = D2407EFB9A0D46D595C5CDFA /* Pods-EasyMappingExampleTests.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = "${inherited}";
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EasyMappingExample.app/EasyMappingExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"$(SRCROOT)/EasyMappingExampleTests/Frameworks",
-					"${inherited}",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyMappingExample-Prefix.pch";
