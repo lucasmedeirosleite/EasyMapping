@@ -132,7 +132,12 @@
     if (fieldMapping.valueBlock) {
         value = fieldMapping.valueBlock(fieldMapping.keyPath, [representation valueForKeyPath:fieldMapping.keyPath]);
     } else if (fieldMapping.dateFormat) {
-        value = [EKTransformer transformString:[representation valueForKeyPath:fieldMapping.keyPath] withDateFormat:fieldMapping.dateFormat];
+        id tempValue = [representation valueForKeyPath:fieldMapping.keyPath];
+        if ([tempValue isKindOfClass:[NSString class]]) {
+            value = [EKTransformer transformString:tempValue withDateFormat:fieldMapping.dateFormat];
+        } else {
+            value = nil;
+        }
     } else {
         value = [representation valueForKeyPath:fieldMapping.keyPath];
     }
