@@ -9,6 +9,7 @@
 #import "EKSerializer.h"
 #import "EKFieldMapping.h"
 #import "EKPropertyHelper.h"
+#import "EKTransformer.h"
 
 @implementation EKSerializer
 
@@ -57,6 +58,9 @@
         if (returnedValue) {
             if (fieldMapping.reverseBlock) {
                 id reverseValue = fieldMapping.reverseBlock(returnedValue);
+                [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
+            } else if (fieldMapping.dateFormat && [returnedValue isKindOfClass:[NSDate class]]) {
+                NSString *reverseValue = [EKTransformer transformDate:returnedValue withDateFormat:fieldMapping.dateFormat];
                 [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
             } else {
                 [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
