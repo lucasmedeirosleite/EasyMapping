@@ -48,7 +48,7 @@
         if (fieldMapping.reverseBlock) {
             int *returnedValue = [EKPropertyHelper performSelector:selector onObject:object];
             id reverseValue = fieldMapping.reverseBlock(@(*returnedValue));
-            [representation setObject:reverseValue forKey:fieldMapping.keyPath];
+            [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
         }
         
     } else {
@@ -57,14 +57,34 @@
         if (returnedValue) {
             if (fieldMapping.reverseBlock) {
                 id reverseValue = fieldMapping.reverseBlock(returnedValue);
-                [representation setObject:reverseValue forKey:fieldMapping.keyPath];
+                [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
             } else {
-                [representation setObject:returnedValue forKey:fieldMapping.keyPath];
+                [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
             }
         }
-        
     }
+}
 
++ (void)setValue:(id)value forKeyPath:(NSString *)keyPath inRepresentation:(NSMutableDictionary *)representation {
+    NSArray *keyPathComponents = [keyPath componentsSeparatedByString:@"."];
+    if ([keyPathComponents count] == 1) {
+        [representation setObject:value forKey:keyPath];
+    } else if ([keyPathComponents count] > 1) {
+        NSString *attributeKey = [keyPathComponents lastObject];
+        NSMutableArray *subPaths = [NSMutableArray arrayWithArray:keyPathComponents];
+        [subPaths removeLastObject];
+        
+        id currentPath = representation;
+        for (NSString *key in subPaths) {
+            id subPath = [currentPath valueForKey:key];
+            if (subPath == nil) {
+                subPath = [NSMutableDictionary new];
+                [currentPath setValue:subPath forKey:key];
+            }
+            currentPath = subPath;
+        }
+        [currentPath setValue:value forKey:attributeKey];
+    }
 }
 
 + (void)setHasOneMappingObjectOn:(NSMutableDictionary *)representation withPropertyName:(NSString *)propertyName withObjectMapping:(EKObjectMapping *)mapping fromObject:(id)object
