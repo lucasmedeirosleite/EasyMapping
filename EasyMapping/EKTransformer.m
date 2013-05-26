@@ -22,6 +22,12 @@ NSString * const kDateFormatterKey = @"SCDateFormatter";
     return [format dateFromString:stringToBeTransformed];
 }
 
++ (NSString *)transformDate:(NSDate *)dateToBeTransformed withDateFormat:(NSString *)dateFormat {
+    NSDateFormatter *format = [self dateFormatter];
+    format.dateFormat = dateFormat;
+    return [format stringFromDate:dateToBeTransformed];
+}
+
 + (NSDateFormatter *)dateFormatter
 {
     NSMutableDictionary *dictionary = [[NSThread currentThread] threadDictionary];

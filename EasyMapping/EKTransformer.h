@@ -15,5 +15,6 @@ extern NSString * const EKBrazilianDefaultDateFormat;
 @interface EKTransformer : NSObject
 
 + (NSDate *)transformString:(NSString *)stringToBeTransformed withDateFormat:(NSString *)dateFormat;
++ (NSString *)transformDate:(NSDate *)dateToBeTransformed withDateFormat:(NSString *)dateFormat;
 
 @end
