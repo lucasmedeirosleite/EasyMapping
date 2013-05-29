@@ -65,6 +65,73 @@ describe(@"EKSerializer", ^{
             });
             
         });
+
+        context(@"nested keypaths", ^{
+
+            __block Car *car;
+            __block NSDictionary *representation;
+
+            beforeEach(^{
+
+                CMFactory *factory = [CMFactory forClass:[Car class]];
+                [factory addToField:@"model" value:^{
+                    return @"i30";
+                }];
+                [factory addToField:@"year" value:^{
+                    return @"2013";
+                }];
+                car = [factory build];
+                representation = [EKSerializer serializeObject:car withMapping:[MappingProvider carNestedAttributesMapping]];
+            });
+
+            specify(^{
+                [representation shouldNotBeNil];
+            });
+
+            specify(^{
+                [[[representation objectForKey:@"model"] should]equal:[car.model description]];
+            });
+
+            specify(^{
+                [[[[representation objectForKey:@"information"] objectForKey:@"year"] should] equal:[car.year description]];
+            });
+        });
+
+        context(@"serialization of dates", ^{
+
+            __block Car *car;
+            __block NSDictionary *representation;
+            __block NSDate *date = [NSDate date];
+
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            __block NSString *dateString = [formatter stringFromDate:date];
+
+            beforeEach(^{
+
+                CMFactory *factory = [CMFactory forClass:[Car class]];
+                [factory addToField:@"model" value:^{
+                    return @"i30";
+                }];
+                [factory addToField:@"createdAt" value:^{
+                    return date;
+                }];
+                car = [factory build];
+                representation = [EKSerializer serializeObject:car withMapping:[MappingProvider carWithDateMapping]];
+            });
+
+            specify(^{
+                [representation shouldNotBeNil];
+            });
+
+            specify(^{
+                [[[representation objectForKey:@"model"] should]equal:[car.model description]];
+            });
+
+            specify(^{
+                [[[representation objectForKey:@"created_at"] should] equal:dateString];
+            });
+        });
         
         context(@"with reverse block", ^{
            
