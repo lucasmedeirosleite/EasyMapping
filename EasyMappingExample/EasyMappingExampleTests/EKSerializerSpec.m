@@ -8,6 +8,7 @@
 
 #import "Kiwi.h"
 #import "CMFactory.h"
+#import "CMFixture.h"
 #import "EasyMapping.h"
 #import "MappingProvider.h"
 #import "Person.h"
@@ -263,6 +264,33 @@ describe(@"EKSerializer", ^{
                 
             });
             
+            context(@"with hasOneRelation for different naming", ^{
+                __block Person * person;
+                __block NSDictionary * representation;
+                
+                beforeEach(^{
+                    
+                    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
+                    [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"vehicle" forField:@"car"];
+                    NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
+                    person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+                    
+                    representation = [EKSerializer serializeObject:person withMapping:mapping];
+                });
+                
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
+                
+                specify(^{
+                    [[representation objectForKey:@"vehicle"] shouldNotBeNil];
+                });
+                
+                specify(^{
+                    [[[[representation objectForKey:@"vehicle"] objectForKey:@"model"] should] equal:@"i30"];
+                });
+            });
+            
             context(@"with hasManyRelation", ^{
                 
                 __block Person *person;
@@ -302,6 +330,39 @@ describe(@"EKSerializer", ^{
                     [[[representation objectForKey:@"phones"] should] beKindOfClass:[NSArray class]];
                 });
                 
+            });
+            
+            context(@"with hasManyRelation for different naming", ^{
+                __block Person * person;
+                __block NSDictionary * representation;
+                
+                beforeEach(^{
+                    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
+                    [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"cellphones" forField:@"phones"];
+                    NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
+                    person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+                    
+                    representation = [EKSerializer serializeObject:person
+                                                       withMapping:mapping];
+                });
+                
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
+                
+                specify(^{
+                    [[representation objectForKey:@"cellphones"] shouldNotBeNil];
+                    
+                    [[[representation objectForKey:@"cellphones"] should] beKindOfClass:[NSArray class]];
+                });
+                
+                specify(^{
+                    NSDictionary * lastPhone = [[representation objectForKey:@"cellphones"] lastObject];
+                    
+                    [[[lastPhone objectForKey:@"ddd"] should] equal:@"11"];
+                    
+                    [[[lastPhone objectForKey:@"number"] should] equal:@"2222-222"];
+                });
             });
                         
         });
