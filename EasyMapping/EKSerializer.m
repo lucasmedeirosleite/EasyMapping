@@ -21,10 +21,10 @@
         [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
-        [self setHasOneMappingObjectOn:representation withPropertyName:key withObjectMapping:objectMapping fromObject:object];
+        [self setHasOneMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
-        [self setHasManyMappingObjectOn:representation withPropertyName:key withObjectMapping:objectMapping fromObject:object];
+        [self setHasManyMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
     }];
     return representation;
 }
@@ -91,21 +91,25 @@
     }
 }
 
-+ (void)setHasOneMappingObjectOn:(NSMutableDictionary *)representation withPropertyName:(NSString *)propertyName withObjectMapping:(EKObjectMapping *)mapping fromObject:(id)object
++ (void)setHasOneMappingObjectOn:(NSMutableDictionary *)representation
+               withObjectMapping:(EKObjectMapping *)mapping
+                      fromObject:(id)object
 {
-    id hasOneObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(propertyName) onObject:object];
+    id hasOneObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(mapping.field) onObject:object];
     if (hasOneObject) {
         NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject withMapping:mapping];
-        [representation setObject:hasOneRepresentation forKey:propertyName];
+        [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
     }
 }
 
-+ (void)setHasManyMappingObjectOn:(NSMutableDictionary *)representation withPropertyName:(NSString *)propertyName withObjectMapping:(EKObjectMapping *)mapping fromObject:(id)object
++ (void)setHasManyMappingObjectOn:(NSMutableDictionary *)representation
+                withObjectMapping:(EKObjectMapping *)mapping
+                       fromObject:(id)object
 {
-    id hasManyObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(propertyName) onObject:object];
+    id hasManyObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(mapping.field) onObject:object];
     if (hasManyObject) {
         NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject withMapping:mapping];
-        [representation setObject:hasManyRepresentation forKey:propertyName];
+        [representation setObject:hasManyRepresentation forKey:mapping.keyPath];
     }
 }
 
