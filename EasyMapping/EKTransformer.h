@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EKFieldMapping.h"
 
-extern NSString * const EKBrazilianDefaultDateFormat;
+extern NSString * const EKRailsDefaultDatetimeFormat;
 extern NSString * const EKBrazilianDefaultDateFormat;
 
 @interface EKTransformer : NSObject
