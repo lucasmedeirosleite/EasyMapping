@@ -109,6 +109,41 @@
     return [NSArray arrayWithArray:array];
 }
 
++ (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                              withMapping:(EKManagedObjectMapping *)mapping
+                                             fetchRequest:(NSFetchRequest*)fetchRequest
+                                   inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    NSAssert(mapping.primaryKey, @"A mapping with a primary key is required");
+    EKFieldMapping* primaryKeyFieldMapping = [mapping.fieldMappings objectForKey:mapping.primaryKey];
+    
+    // Create a dictionary that maps primary keys to existing objects
+    NSArray* existing = [moc executeFetchRequest:fetchRequest error:NULL];
+    NSDictionary* existingByPK = [NSDictionary dictionaryWithObjects:existing forKeys:[existing valueForKey:primaryKeyFieldMapping.field]];
+    
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSDictionary *representation in externalRepresentation) {
+        // Look up the object by its primary key
+        id primaryKeyValue = [self getValueOfField:primaryKeyFieldMapping fromRepresentation:representation];
+        id object = [existingByPK objectForKey:primaryKeyValue];
+        
+        // Create a new object if necessary
+        if (!object)
+            object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName inManagedObjectContext:moc];
+        
+        [self fillObject:object fromExternalRepresentation:representation withMapping:mapping inManagedObjectContext:moc];
+        [array addObject:object];
+    }
+    
+    // Any object returned by the fetch request not in the external represntation has to be deleted
+    NSMutableSet* toDelete = [NSMutableSet setWithArray:existing];
+    [toDelete minusSet:[NSSet setWithArray:array]];
+    for (NSManagedObject* o in toDelete)
+        [moc deleteObject:o];
+    
+    return [NSArray arrayWithArray:array];
+}
+
 + (NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
     if (mapping.rootPath) {
