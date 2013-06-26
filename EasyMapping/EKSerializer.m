@@ -26,6 +26,10 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
         [self setHasManyMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
     }];
+    
+    if (mapping.rootPath.length > 0) {
+        representation = [@{mapping.rootPath : representation} mutableCopy];
+    }
     return representation;
 }
 
