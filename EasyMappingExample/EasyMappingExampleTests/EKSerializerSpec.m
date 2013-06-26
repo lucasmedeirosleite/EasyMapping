@@ -66,6 +66,42 @@ describe(@"EKSerializer", ^{
             });
             
         });
+        
+        context(@"a simple object with root path", ^{
+            
+            __block Car *car;
+            __block NSDictionary *representation;
+            
+            beforeEach(^{
+                
+                CMFactory *factory = [CMFactory forClass:[Car class]];
+                [factory addToField:@"model" value:^{
+                    return @"i30";
+                }];
+                [factory addToField:@"year" value:^{
+                    return @"2013";
+                }];
+                car = [factory build];
+                representation = [EKSerializer serializeObject:car withMapping:[MappingProvider carWithRootKeyMapping]];
+            });
+            
+            specify(^{
+                [representation shouldNotBeNil];
+            });
+            
+            specify(^{
+                [[representation objectForKey:@"car"] shouldNotBeNil];
+            });
+            
+            specify(^{
+                [[[[representation objectForKey:@"car"] objectForKey:@"model"] should] equal:[car.model description]];
+            });
+            
+            specify(^{
+                [[[[representation objectForKey:@"car"] objectForKey:@"year"] should] equal:[car.year description]];
+            });
+            
+        });
 
         context(@"nested keypaths", ^{
 
