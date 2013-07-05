@@ -1,27 +1,27 @@
 PODS:
-  - CMFactory (1.2.0):
-    - Mantle (= 0.2.3)
+  - CMFactory (1.3.1):
+    - Mantle (= 1.0)
     - SBJson (= 3.2)
-  - Kiwi (2.0.5)
+  - Kiwi (2.2)
   - libextobjc/EXTKeyPathCoding (0.2.5):
     - libextobjc/RuntimeExtensions
   - libextobjc/EXTScope (0.2.5):
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.2.5)
-  - Mantle (0.2.3):
+  - Mantle (1.0):
     - libextobjc/EXTKeyPathCoding
     - libextobjc/EXTScope
   - SBJson (3.2)
 
 DEPENDENCIES:
-  - CMFactory (= 1.2.0)
-  - Kiwi (= 2.0.5)
+  - CMFactory (= 1.3.1)
+  - Kiwi (= 2.2)
 
 SPEC CHECKSUMS:
-  CMFactory: 62231d22193d320249ffc93ba9afd938195ffd6c
-  Kiwi: 89ade77eb49c889178cb2779e02514a7b9b9449e
+  CMFactory: 508b53d3028b9d1b79202f6002943e6a90709973
+  Kiwi: db174bba4ee8068b15d7122f1b22fb64b7c1d378
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
-  Mantle: 4a20405b7aba3452007294badee2b3cb137825c3
+  Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
   SBJson: e60b4dc22448c2ae1e754b523a4ab53408e85c8d
 
-COCOAPODS: 0.20.2
+COCOAPODS: 0.22.1
