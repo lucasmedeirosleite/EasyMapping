@@ -14,10 +14,14 @@
 
 + (id)perfomSelector:(SEL)selector onObject:(id)object
 {
+    if ([object respondsToSelector:selector]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    return [object performSelector:selector];
+        return [object performSelector:selector];
 #pragma clang diagnostic pop
+    }
+
+    return nil;
 }
 
 + (void *)performSelector:(SEL)selector onObject:(id)object {
