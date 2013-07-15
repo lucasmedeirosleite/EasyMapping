@@ -15,6 +15,7 @@
 #import "Car.h"
 #import "Phone.h"
 #import "Address.h"
+#import "Native.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -284,7 +285,9 @@ describe(@"EKMapper", ^{
         });
         
         context(@"with hasMany mapping with different names", ^{
+            
             __block Person * person;
+            
             beforeEach(^{
                 EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
                 [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"cellphones" forField:@"phones"];
@@ -309,6 +312,87 @@ describe(@"EKMapper", ^{
                 
                 [[lastPhone.number should] equal:@"2222-222"];
             });
+        });
+        
+        context(@"with native properties", ^{
+            
+            __block Native *native;
+            
+            beforeEach(^{
+                EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Native class]];
+                [mapping mapFieldsFromArray:@[
+                 /*@"charProperty", @"unsignedCharProperty",*/ @"shortProperty", @"unsignedShortProperty", @"intProperty", @"unsignedIntProperty",
+                 @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
+                 @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty"
+                ]];
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Native"];
+                native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+            });
+            
+            specify(^{
+                [[theValue(native.charProperty) should] equal:theValue('c')];
+            });
+            
+            specify(^{
+                [[theValue(native.unsignedCharProperty) should] equal:theValue('u')];
+            });
+            
+            specify(^{
+                [[theValue(native.shortProperty) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theValue(native.unsignedShortProperty) should] equal:theValue(2)];
+            });
+            
+            specify(^{
+                [[theValue(native.intProperty) should] equal:theValue(3)];
+            });
+            
+            specify(^{
+                [[theValue(native.unsignedIntProperty) should] equal:theValue(4)];
+            });
+            
+            specify(^{
+                [[theValue(native.integerProperty) should] equal:theValue(5)];
+            });
+            
+            specify(^{
+                [[theValue(native.unsignedIntegerProperty) should] equal:theValue(6)];
+            });
+            
+            specify(^{
+                [[theValue(native.longProperty) should] equal:theValue(7)];
+            });
+            
+            specify(^{
+                [[theValue(native.unsignedLongProperty) should] equal:theValue(8)];
+            });
+            
+            specify(^{
+                [[theValue(native.longLongProperty) should] equal:theValue(9)];
+            });
+            
+            specify(^{
+                [[theValue(native.unsignedLongLongProperty) should] equal:theValue(10)];
+            });
+            
+            specify(^{
+                [[theValue(native.floatProperty) should] equal:theValue(11.1)];
+            });
+            
+            specify(^{
+                [[theValue(native.cgFloatProperty) should] equal:theValue(12.2)];
+            });
+            
+            specify(^{
+                [[theValue(native.doubleProperty) should] equal:theValue(13.3)];
+            });
+            
+            specify(^{
+                [[theValue(native.boolProperty) should] beYes];
+            });
+            
         });
         
     });

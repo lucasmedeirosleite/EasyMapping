@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		116D80270DF540439FEF3CD4 /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3A3364B05A4216A376C757 /* libPods-EasyMappingExampleTests.a */; };
 		66C458DE17944983005AF11E /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
-		66C458E117944A8D005AF11E /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 66C458E017944A8D005AF11E /* Native.json */; };
 		66C458E217944A8D005AF11E /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 66C458E017944A8D005AF11E /* Native.json */; };
 		A92A6FF616F1A1A4004B43D0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92A6FF516F1A1A4004B43D0 /* CoreData.framework */; };
 		A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
@@ -409,7 +408,6 @@
 				C6557E2A16D6621E005D2D3E /* Default@2x.png in Resources */,
 				C6557E2C16D6621E005D2D3E /* Default-568h@2x.png in Resources */,
 				C6557E2F16D6621E005D2D3E /* MainStoryboard.storyboard in Resources */,
-				66C458E117944A8D005AF11E /* Native.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
