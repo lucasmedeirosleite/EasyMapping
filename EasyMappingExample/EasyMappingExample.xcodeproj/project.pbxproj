@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		116D80270DF540439FEF3CD4 /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3A3364B05A4216A376C757 /* libPods-EasyMappingExampleTests.a */; };
+		66C458DE17944983005AF11E /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
+		66C458E117944A8D005AF11E /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 66C458E017944A8D005AF11E /* Native.json */; };
+		66C458E217944A8D005AF11E /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 66C458E017944A8D005AF11E /* Native.json */; };
 		A92A6FF616F1A1A4004B43D0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92A6FF516F1A1A4004B43D0 /* CoreData.framework */; };
 		A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
 		A9D16D0516F2B2770003759B /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
@@ -64,6 +67,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66C458DC17944983005AF11E /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
+		66C458DD17944983005AF11E /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
+		66C458E017944A8D005AF11E /* Native.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Native.json; sourceTree = "<group>"; };
 		A92A6FF516F1A1A4004B43D0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
 		A9D16CF716F2B2770003759B /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFieldMapping.h; sourceTree = "<group>"; };
@@ -83,8 +89,8 @@
 		C64A696E16DB9F33009CB6D7 /* CarWithRoot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithRoot.json; sourceTree = "<group>"; };
 		C64A697016DBA7D7009CB6D7 /* CarWithNestedAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithNestedAttributes.json; sourceTree = "<group>"; };
 		C64A697216DBAA4F009CB6D7 /* CarWithDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarWithDate.json; sourceTree = "<group>"; };
-		C6500E3D16D98780009FCC67 /* MappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappingProvider.h; sourceTree = "<group>"; };
-		C6500E3E16D98780009FCC67 /* MappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappingProvider.m; sourceTree = "<group>"; };
+		C6500E3D16D98780009FCC67 /* MappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MappingProvider.h; path = ../MappingProvider.h; sourceTree = "<group>"; };
+		C6500E3E16D98780009FCC67 /* MappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MappingProvider.m; path = ../MappingProvider.m; sourceTree = "<group>"; };
 		C6500E4016D9B07C009FCC67 /* EKMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMapperSpec.m; sourceTree = "<group>"; };
 		C6557E1216D6621E005D2D3E /* EasyMappingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyMappingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6557E1516D6621E005D2D3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -106,17 +112,17 @@
 		C6557E5416D665A7005D2D3E /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAppDelegate.m; sourceTree = "<group>"; };
 		C6557E5616D665C8005D2D3E /* EKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKViewController.h; path = Controllers/EKViewController.h; sourceTree = "<group>"; };
 		C6557E5716D665C8005D2D3E /* EKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKViewController.m; path = Controllers/EKViewController.m; sourceTree = "<group>"; };
-		C6557E6416D68D08005D2D3E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		C6557E6516D68D08005D2D3E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
-		C6557E6716D68D2E005D2D3E /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
-		C6557E6816D68D2E005D2D3E /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
-		C6557E6A16D68D55005D2D3E /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
-		C6557E6B16D68D55005D2D3E /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
+		C6557E6416D68D08005D2D3E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = ../Person.h; sourceTree = "<group>"; };
+		C6557E6516D68D08005D2D3E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = ../Person.m; sourceTree = "<group>"; };
+		C6557E6716D68D2E005D2D3E /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Car.h; path = ../Car.h; sourceTree = "<group>"; };
+		C6557E6816D68D2E005D2D3E /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Car.m; path = ../Car.m; sourceTree = "<group>"; };
+		C6557E6A16D68D55005D2D3E /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Phone.h; path = ../Phone.h; sourceTree = "<group>"; };
+		C6557E6B16D68D55005D2D3E /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Phone.m; path = ../Phone.m; sourceTree = "<group>"; };
 		C6557E6E16D68F27005D2D3E /* Person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Person.json; sourceTree = "<group>"; };
 		C68351D116D8669B00FA720D /* EKFieldMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFieldMappingSpec.m; sourceTree = "<group>"; };
 		C68B2B0C16DAFCE1007E7B0C /* Car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Car.json; sourceTree = "<group>"; };
-		C6BD161E16DD872400CCB4F6 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		C6BD161F16DD872400CCB4F6 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		C6BD161E16DD872400CCB4F6 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = ../Address.h; sourceTree = "<group>"; };
+		C6BD161F16DD872400CCB4F6 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Address.m; path = ../Address.m; sourceTree = "<group>"; };
 		C6BD162116DD876700CCB4F6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C6BD162316DD892D00CCB4F6 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
 		C6C0AB2F16D807EB009E3751 /* EKObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectMappingSpec.m; sourceTree = "<group>"; };
@@ -156,6 +162,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66C458DA179438FE005AF11E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C6BD161E16DD872400CCB4F6 /* Address.h */,
+				C6BD161F16DD872400CCB4F6 /* Address.m */,
+				C6557E6416D68D08005D2D3E /* Person.h */,
+				C6557E6516D68D08005D2D3E /* Person.m */,
+				C6557E6716D68D2E005D2D3E /* Car.h */,
+				C6557E6816D68D2E005D2D3E /* Car.m */,
+				C6557E6A16D68D55005D2D3E /* Phone.h */,
+				C6557E6B16D68D55005D2D3E /* Phone.m */,
+				66C458DC17944983005AF11E /* Native.h */,
+				66C458DD17944983005AF11E /* Native.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		66C458DB17943909005AF11E /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				C6500E3D16D98780009FCC67 /* MappingProvider.h */,
+				C6500E3E16D98780009FCC67 /* MappingProvider.m */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
 		C6557E0916D6621E005D2D3E = {
 			isa = PBXGroup;
 			children = (
@@ -196,18 +228,10 @@
 				C6557E5016D6652A005D2D3E /* EasyMapping */,
 				C6557E5216D66542005D2D3E /* Controllers */,
 				C6557E5116D66538005D2D3E /* Delegates */,
-				C6BD161E16DD872400CCB4F6 /* Address.h */,
-				C6BD161F16DD872400CCB4F6 /* Address.m */,
-				C6557E6416D68D08005D2D3E /* Person.h */,
-				C6557E6516D68D08005D2D3E /* Person.m */,
-				C6557E6716D68D2E005D2D3E /* Car.h */,
-				C6557E6816D68D2E005D2D3E /* Car.m */,
-				C6557E6A16D68D55005D2D3E /* Phone.h */,
-				C6557E6B16D68D55005D2D3E /* Phone.m */,
-				C6500E3D16D98780009FCC67 /* MappingProvider.h */,
-				C6500E3E16D98780009FCC67 /* MappingProvider.m */,
-				C6557E2D16D6621E005D2D3E /* MainStoryboard.storyboard */,
+				66C458DB17943909005AF11E /* Providers */,
+				66C458DA179438FE005AF11E /* Models */,
 				C6557E1C16D6621E005D2D3E /* Supporting Files */,
+				C6557E2D16D6621E005D2D3E /* MainStoryboard.storyboard */,
 			);
 			name = EasyMappingExample;
 			sourceTree = "<group>";
@@ -301,6 +325,7 @@
 				C6D3778216DBCDA100836F52 /* Male.json */,
 				C6557E6E16D68F27005D2D3E /* Person.json */,
 				E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */,
+				66C458E017944A8D005AF11E /* Native.json */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -384,6 +409,7 @@
 				C6557E2A16D6621E005D2D3E /* Default@2x.png in Resources */,
 				C6557E2C16D6621E005D2D3E /* Default-568h@2x.png in Resources */,
 				C6557E2F16D6621E005D2D3E /* MainStoryboard.storyboard in Resources */,
+				66C458E117944A8D005AF11E /* Native.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +428,7 @@
 				C6D3778516DBDF2400836F52 /* Cars.json in Resources */,
 				C6BD162416DD892D00CCB4F6 /* Address.json in Resources */,
 				E6D8062C171818C40035BB7C /* PersonWithDifferentNaming.json in Resources */,
+				66C458E217944A8D005AF11E /* Native.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +497,7 @@
 				A9D16D0716F2B2770003759B /* EKPropertyHelper.m in Sources */,
 				A9D16D0816F2B2770003759B /* EKSerializer.m in Sources */,
 				A9D16D0916F2B2770003759B /* EKTransformer.m in Sources */,
+				66C458DE17944983005AF11E /* Native.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
