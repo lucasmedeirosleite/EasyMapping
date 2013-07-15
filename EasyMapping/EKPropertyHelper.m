@@ -96,7 +96,7 @@
 
 static const char * getPropertyType(objc_property_t property) {
     const char *attributes = property_getAttributes(property);
-    printf("attributes=%s\n", attributes);
+//    printf("attributes=%s\n", attributes);
     char buffer[1 + strlen(attributes)];
     strcpy(buffer, attributes);
     char *state = buffer, *attribute;
