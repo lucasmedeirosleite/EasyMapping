@@ -27,7 +27,7 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
         [self setHasManyMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
     }];
-
+    
     if (mapping.rootPath.length > 0) {
         representation = [@{mapping.rootPath : representation} mutableCopy];
     }
@@ -41,7 +41,7 @@
     // Get the json map method from the core data entity userinfo dictionary
     NSManagedObject *managedObject=object;
     NSEntityDescription *entityDescription = managedObject.entity;
-    //    NSAttributeDescription *attributeDescription = entityDescription.attributesByName[@"someAttribute"];
+//    NSAttributeDescription *attributeDescription = entityDescription.attributesByName[@"someAttribute"];
     NSString *jsonMapMethod = entityDescription.userInfo[@"jsonMap"];
 
     EKObjectMapping *mapping=nil;
@@ -129,12 +129,12 @@
 + (NSArray *)serializeCollection:(NSArray *)collection withMapping:(EKObjectMapping *)mapping
 {
     NSMutableArray *array = [NSMutableArray array];
-
+    
     for (id object in collection) {
         NSDictionary *objectRepresentation = [self serializeObject:object withMapping:mapping];
         [array addObject:objectRepresentation];
     }
-
+    
     return [NSArray arrayWithArray:array];
 }
 
@@ -142,15 +142,15 @@
 {
     SEL selector = NSSelectorFromString(fieldMapping.field);
     if ([EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:object]) {
-
+    
         if (fieldMapping.reverseBlock) {
             id returnedValue = [EKPropertyHelper perfomSelector:selector onObject:object];
             id reverseValue = fieldMapping.reverseBlock(returnedValue);
             [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
         }
-
+        
     } else {
-
+        
         id returnedValue = [EKPropertyHelper perfomSelector:selector onObject:object];
         if (returnedValue) {
             if (fieldMapping.reverseBlock) {
@@ -174,7 +174,7 @@
         NSString *attributeKey = [keyPathComponents lastObject];
         NSMutableArray *subPaths = [NSMutableArray arrayWithArray:keyPathComponents];
         [subPaths removeLastObject];
-
+        
         id currentPath = representation;
         for (NSString *key in subPaths) {
             id subPath = [currentPath valueForKey:key];
@@ -239,8 +239,8 @@
 }
 
 + (void)setCoreDataHasManyMappingObjectOn:(NSMutableDictionary *)representation
-                  withParentObjectMapping:(EKObjectMapping *)mapping
-                               fromObject:(id)object
+                withParentObjectMapping:(EKObjectMapping *)mapping
+                       fromObject:(id)object
 {
     id hasManyObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(mapping.field) onObject:object];
     if (hasManyObject) {
