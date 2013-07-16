@@ -15,6 +15,7 @@
 #import "Car.h"
 #import "Phone.h"
 #import "Address.h"
+#import "Native.h"
 #import <CoreLocation/CoreLocation.h>
 
 SPEC_BEGIN(EKSerializerSpec)
@@ -401,6 +402,102 @@ describe(@"EKSerializer", ^{
                 });
             });
                         
+        });
+        
+        context(@"with native properties", ^{
+            
+            __block Native *native;
+            __block NSDictionary *representation;
+            
+            beforeEach(^{
+//                CMFactory *factory = [CMFactory forClass:[Native class]];
+//                [factory addToField:@"charProperty" value:^{ return 'c'; }];
+//                [factory addToField:@"unsignedCharProperty" value:^{ return 'u'; }];
+//                [factory addToField:@"shortProperty" value:^{ return 1; }];
+//                [factory addToField:@"unsignedShortProperty" value:^{ return 2; }];
+//                [factory addToField:@"intProperty" value:^{ return 3; }];
+//                [factory addToField:@"unsignedIntProperty" value:^{ return 4; }];
+//                [factory addToField:@"integerProperty" value:^{ return 5; }];
+//                [factory addToField:@"unsignedIntegerProperty" value:^{ return 6; }];
+//                [factory addToField:@"longProperty" value:^{ return 7; }];
+//                [factory addToField:@"unsignedLongProperty" value:^{ return 8; }];
+//                [factory addToField:@"longLongProperty" value:^{ return 9; }];
+//                [factory addToField:@"unsignedLongLongProperty" value:^{ return 10; }];
+//                [factory addToField:@"floatProperty" value:^{ return 11.1f; }];
+//                [factory addToField:@"cgFloatProperty" value:^{ return 12.2f; }];
+//                [factory addToField:@"doubleProperty" value:^{ return 13.3; }];
+//                [factory addToField:@"boolProperty" value:^{ return YES; }];
+//                car = [factory build];
+                
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Native"];
+                native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider nativeMapping]];
+                representation = [EKSerializer serializeObject:native withMapping:[MappingProvider nativeMapping]];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"charProperty"] should] equal:@('c')];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"unsignedCharProperty"] should] equal:@('u')];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"shortProperty"] should] equal:@(1)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"unsignedShortProperty"] should] equal:@(2)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"intProperty"] should] equal:@(3)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"unsignedIntProperty"] should] equal:@(4)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"integerProperty"] should] equal:@(5)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"unsignedIntegerProperty"] should] equal:@(6)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"longProperty"] should] equal:@(7)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"unsignedLongProperty"] should] equal:@(8)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"longLongProperty"] should] equal:@(9)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"unsignedLongLongProperty"] should] equal:@(10)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"floatProperty"] should] equal:@(11.1f)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"cgFloatProperty"] should] equal:@(12.2f)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"doubleProperty"] should] equal:@(13.3)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"boolProperty"] should] beYes];
+            });
+            
         });
         
     });
