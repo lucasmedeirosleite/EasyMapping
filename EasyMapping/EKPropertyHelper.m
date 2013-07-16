@@ -9,6 +9,18 @@
 #import "EKPropertyHelper.h"
 #import <objc/runtime.h>
 
+static const unichar nativeTypes[] = {
+    _C_CHR, _C_UCHR,           // BOOL, char, unsigned char
+    _C_SHT, _C_USHT,           // short, unsigned short
+    _C_INT, _C_UINT,           // int, unsigned int, NSInteger, NSUInteger
+    _C_LNG, _C_ULNG,           // long, unsigned long
+    _C_LNG_LNG, _C_ULNG_LNG,   // long long, unsigned long long
+    _C_FLT, _C_DBL             // float, CGFloat, double
+};
+
+static const char * getPropertyType(objc_property_t property) ;
+
+
 @implementation EKPropertyHelper
 
 
@@ -31,7 +43,7 @@
     
     // If method is non-void:
     if (length > 0) {
-        void *buffer = (void *)malloc(length);
+        void *buffer = malloc(length);
         [invocation getReturnValue:buffer];
         return buffer;
     }
@@ -43,30 +55,17 @@
 + (BOOL)propertyNameIsNative:(NSString *)propertyName fromObject:(id)object
 {
     NSString *typeDescription = [self getPropertyTypeFromObject:object withPropertyName:propertyName];
-    char char_type = [typeDescription characterAtIndex:0];
-    switch (char_type) {
-        case 'c':
-            return YES;
-            break;
-        case 'i':
-            return YES;
-            break;
-        case 'd':
-            return YES;
-            break;
-        case 'f':
-            return YES;
-            break;
-        case 'l':
-            return YES;
-            break;
-        case 's':
-            return YES;
-            break;
-        default:
-            return NO;
-            break;
+    
+    if (typeDescription.length == 1) {
+        unichar propertyType = [typeDescription characterAtIndex:0];
+        for (int i = 0; i < sizeof(nativeTypes); i++) {
+            if (nativeTypes[i] == propertyType) {
+                return YES;
+            }
+        }
     }
+    
+    return NO;
 }
 
 + (NSString *)getPropertyTypeFromObject:(id)object withPropertyName:(NSString *)propertyString
