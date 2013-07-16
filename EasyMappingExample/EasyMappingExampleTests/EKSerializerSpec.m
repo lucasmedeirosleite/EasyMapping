@@ -476,7 +476,7 @@ describe(@"EKSerializer", ^{
             });
             
             specify(^{
-                [[[representation objectForKey:@"boolProperty"] should] beYes];
+                [[[representation objectForKey:@"boolProperty"] should] equal:@(YES)];
             });
             
         });

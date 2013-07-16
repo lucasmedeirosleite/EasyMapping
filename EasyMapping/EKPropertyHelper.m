@@ -18,13 +18,14 @@ static const unichar nativeTypes[] = {
     _C_FLT, _C_DBL             // float, CGFloat, double
 };
 
-static const char * getPropertyType(objc_property_t property) ;
+static const char * getPropertyType(objc_property_t property);
+static id getReturnValueFromInvocation(NSInvocation * invocation);
 
 
 @implementation EKPropertyHelper
 
 
-+ (id)perfomSelector:(SEL)selector onObject:(id)object
++ (id)performSelector:(SEL)selector onObject:(id)object
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -32,24 +33,12 @@ static const char * getPropertyType(objc_property_t property) ;
 #pragma clang diagnostic pop
 }
 
-+ (void *)performSelector:(SEL)selector onObject:(id)object {
++ (id)performNativeSelector:(SEL)selector onObject:(id)object {
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:selector]];
     [invocation setSelector:selector];
     [invocation setTarget:object];
-    
     [invocation invoke];
-    
-    NSUInteger length = [[invocation methodSignature] methodReturnLength];
-    
-    // If method is non-void:
-    if (length > 0) {
-        void *buffer = malloc(length);
-        [invocation getReturnValue:buffer];
-        return buffer;
-    }
-    
-    // If method is void:
-    return NULL;
+    return getReturnValueFromInvocation(invocation);
 }
 
 + (BOOL)propertyNameIsNative:(NSString *)propertyName fromObject:(id)object
@@ -90,7 +79,7 @@ static const char * getPropertyType(objc_property_t property) ;
 
 static const char * getPropertyType(objc_property_t property) {
     const char *attributes = property_getAttributes(property);
-    printf("attributes=%s\n", attributes);
+//    printf("attributes=%s\n", attributes);
     char buffer[1 + strlen(attributes)];
     strcpy(buffer, attributes);
     char *state = buffer, *attribute;
@@ -106,6 +95,38 @@ static const char * getPropertyType(objc_property_t property) {
         }
     }
     return "";
+}
+
+static id getReturnValueFromInvocation(NSInvocation * invocation) {
+    NSValue * returnValue = nil;
+
+    NSUInteger returnSize = [[invocation methodSignature] methodReturnLength];
+    char const *returnType = [[invocation methodSignature] methodReturnType];
+
+    if ( returnSize > 0 && strlen(returnType) == 1 ) {
+        void *buffer = malloc(returnSize);
+        [invocation getReturnValue:buffer];
+
+        // For floating point numbers, use float or double
+        if ( !strcmp(returnType, @encode(float)) ) {
+            float floatValue = 0;
+            memcpy(&floatValue, buffer, returnSize);
+            returnValue = [NSNumber numberWithFloat:floatValue];
+        } else if ( !strcmp(returnType, @encode(double)) ) {
+            double doubleValue = 0;
+            memcpy(&doubleValue, buffer, returnSize);
+            returnValue = [NSNumber numberWithDouble:doubleValue];
+        } else {
+            // For other signed types use long long
+            long long longValue = 0;
+            memcpy(&longValue, buffer, returnSize);
+            returnValue = [NSNumber numberWithLongLong:longValue];
+        }
+
+        free(buffer);
+    }
+
+    return returnValue;
 }
 
 @end
