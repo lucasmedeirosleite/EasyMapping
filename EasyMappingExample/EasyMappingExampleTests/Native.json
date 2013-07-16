@@ -1,6 +1,6 @@
 {
-    "charProperty" : "c",
-    "unsignedCharProperty" : "u",
+    "charProperty" : 99,
+    "unsignedCharProperty" : 117,
     "shortProperty" : 1,
     "unsignedShortProperty" : 2,
     "intProperty" : 3,

@@ -321,7 +321,7 @@ describe(@"EKMapper", ^{
             beforeEach(^{
                 EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Native class]];
                 [mapping mapFieldsFromArray:@[
-                 /*@"charProperty", @"unsignedCharProperty",*/ @"shortProperty", @"unsignedShortProperty", @"intProperty", @"unsignedIntProperty",
+                 @"charProperty", @"unsignedCharProperty", @"shortProperty", @"unsignedShortProperty", @"intProperty", @"unsignedIntProperty",
                  @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
                  @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty"
                 ]];
@@ -330,67 +330,67 @@ describe(@"EKMapper", ^{
             });
             
             specify(^{
-                [[theValue(native.charProperty) should] equal:theValue('c')];
+                [[@(native.charProperty) should] equal:@('c')];
             });
             
             specify(^{
-                [[theValue(native.unsignedCharProperty) should] equal:theValue('u')];
+                [[@(native.unsignedCharProperty) should] equal:@('u')];
             });
             
             specify(^{
-                [[theValue(native.shortProperty) should] equal:theValue(1)];
+                [[@(native.shortProperty) should] equal:@(1)];
             });
             
             specify(^{
-                [[theValue(native.unsignedShortProperty) should] equal:theValue(2)];
+                [[@(native.unsignedShortProperty) should] equal:@(2)];
             });
             
             specify(^{
-                [[theValue(native.intProperty) should] equal:theValue(3)];
+                [[@(native.intProperty) should] equal:@(3)];
             });
             
             specify(^{
-                [[theValue(native.unsignedIntProperty) should] equal:theValue(4)];
+                [[@(native.unsignedIntProperty) should] equal:@(4)];
             });
             
             specify(^{
-                [[theValue(native.integerProperty) should] equal:theValue(5)];
+                [[@(native.integerProperty) should] equal:@(5)];
             });
             
             specify(^{
-                [[theValue(native.unsignedIntegerProperty) should] equal:theValue(6)];
+                [[@(native.unsignedIntegerProperty) should] equal:@(6)];
             });
             
             specify(^{
-                [[theValue(native.longProperty) should] equal:theValue(7)];
+                [[@(native.longProperty) should] equal:@(7)];
             });
             
             specify(^{
-                [[theValue(native.unsignedLongProperty) should] equal:theValue(8)];
+                [[@(native.unsignedLongProperty) should] equal:@(8)];
             });
             
             specify(^{
-                [[theValue(native.longLongProperty) should] equal:theValue(9)];
+                [[@(native.longLongProperty) should] equal:@(9)];
             });
             
             specify(^{
-                [[theValue(native.unsignedLongLongProperty) should] equal:theValue(10)];
+                [[@(native.unsignedLongLongProperty) should] equal:@(10)];
             });
             
             specify(^{
-                [[theValue(native.floatProperty) should] equal:theValue(11.1)];
+                [[@(native.floatProperty) should] equal:@(11.1f)];
             });
             
             specify(^{
-                [[theValue(native.cgFloatProperty) should] equal:theValue(12.2)];
+                [[@(native.cgFloatProperty) should] equal:@(12.2f)];
             });
             
             specify(^{
-                [[theValue(native.doubleProperty) should] equal:theValue(13.3)];
+                [[@(native.doubleProperty) should] equal:@(13.3)];
             });
             
             specify(^{
-                [[theValue(native.boolProperty) should] beYes];
+                [[@(native.boolProperty) should] beYes];
             });
             
         });
