@@ -12,8 +12,8 @@
 
 @interface EKSerializer : NSObject
 
-+ (NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping;
-+ (NSDictionary *)serializeUsingEntityMappingCoreDataForObject:(id)object;
++ (NSMutableDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping;
++ (NSMutableDictionary *)serializeUsingEntityMappingCoreDataForObject:(id)object withObjectMapping:(EKObjectMapping *)objectMapping;
 + (NSArray *)serializeCollection:(NSArray *)collection withMapping:(EKObjectMapping *)mapping;
 
 @end

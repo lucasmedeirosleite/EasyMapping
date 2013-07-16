@@ -14,7 +14,7 @@
 
 @implementation EKSerializer
 
-+ (NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping
++ (NSMutableDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping
 {
     NSMutableDictionary *representation = [NSMutableDictionary dictionary];
 
@@ -34,17 +34,22 @@
     return representation;
 }
 
-+ (NSDictionary *)serializeUsingEntityMappingCoreDataForObject:(id)object
++ (NSMutableDictionary *)serializeUsingEntityMappingCoreDataForObject:(id)object withObjectMapping:(EKObjectMapping *)objectMapping
 {
     NSMutableDictionary *representation = [NSMutableDictionary dictionary];
-
-    // Get the json map method from the core data entity userinfo dictionary
-    NSManagedObject *managedObject=object;
-    NSEntityDescription *entityDescription = managedObject.entity;
-//    NSAttributeDescription *attributeDescription = entityDescription.attributesByName[@"someAttribute"];
-    NSString *jsonMapMethod = entityDescription.userInfo[@"jsonMap"];
-
     EKObjectMapping *mapping=nil;
+    NSString *jsonMapMethod = nil;
+    
+    // Get the json map method from the core data entity userinfo dictionary
+    if ([object isKindOfClass:[NSManagedObject class]]){
+        NSManagedObject *managedObject=object;
+        NSEntityDescription *entityDescription = managedObject.entity;
+        //    NSAttributeDescription *attributeDescription = entityDescription.attributesByName[@"someAttribute"];
+        jsonMapMethod = entityDescription.userInfo[@"jsonMap"];
+    } else {
+        mapping = objectMapping;
+    }
+
     if (jsonMapMethod != nil) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -57,7 +62,7 @@
             [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
         }];
         [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
-            [self setHasOneMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
+            [self setCoreDataHasOneMappingObjectOn:representation withParentObjectMapping:objectMapping fromObject:object];
         }];
         [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
             [self setCoreDataHasManyMappingObjectOn:representation withParentObjectMapping:objectMapping fromObject:object];
@@ -211,6 +216,48 @@
     }
 }
 
++ (NSMutableDictionary *)serializeCoreDataObject:(id)object withMapping:(EKObjectMapping *)mapping
+{
+    NSMutableDictionary *representation = [NSMutableDictionary dictionary];
+    EKObjectMapping *objectMapping = mapping;
+    // Get the json map method from the core data entity userinfo dictionary
+    NSManagedObject *managedObject=object;
+    NSEntityDescription *entityDescription = managedObject.entity;
+    bool coreDataObject = NO;
+    //    NSAttributeDescription *attributeDescription = entityDescription.attributesByName[@"someAttribute"];
+    NSString *jsonMapMethod = entityDescription.userInfo[@"jsonMap"];
+    if (jsonMapMethod != nil) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        objectMapping = [[object class] performSelector:NSSelectorFromString(jsonMapMethod)];
+#pragma clang diagnostic pop
+        coreDataObject = YES;
+    }
+
+    [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKFieldMapping *fieldMapping, BOOL *stop) {
+        [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
+    }];
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
+        if (coreDataObject) {
+            [self setCoreDataHasOneMappingObjectOn:representation withParentObjectMapping:objectMapping fromObject:object];
+        } else {
+            [self setHasOneMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
+        }
+    }];
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
+        if (coreDataObject) {
+            [self setCoreDataHasManyMappingObjectOn:representation withParentObjectMapping:objectMapping fromObject:object];
+        } else {
+            [self setHasManyMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
+        }
+    }];
+
+    if (mapping.rootPath.length > 0) {
+        representation = [@{mapping.rootPath : representation} mutableCopy];
+    }
+    return representation;
+}
+
 + (NSArray *)serializeCoreDataCollection:(NSArray *)collection withMapping:(EKObjectMapping *)mapping
 {
     NSMutableArray *array = [NSMutableArray array];
@@ -236,6 +283,17 @@
     }
 
     return [NSArray arrayWithArray:array];
+}
+
++ (void)setCoreDataHasOneMappingObjectOn:(NSMutableDictionary *)representation
+               withParentObjectMapping:(EKObjectMapping *)mapping
+                      fromObject:(id)object
+{
+    id hasOneObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(mapping.field) onObject:object];
+    if (hasOneObject) {
+        NSDictionary *hasOneRepresentation = [self serializeCoreDataObject:hasOneObject withMapping:mapping];
+        [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
+    }
 }
 
 + (void)setCoreDataHasManyMappingObjectOn:(NSMutableDictionary *)representation
