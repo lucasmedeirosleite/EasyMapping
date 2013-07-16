@@ -319,13 +319,8 @@ describe(@"EKMapper", ^{
             __block Native *native;
             
             beforeEach(^{
-                EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Native class]];
-                [mapping mapFieldsFromArray:@[
-                 @"charProperty", @"unsignedCharProperty", @"shortProperty", @"unsignedShortProperty", @"intProperty", @"unsignedIntProperty",
-                 @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
-                 @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty"
-                ]];
-                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Native"];
+                EKObjectMapping * mapping = [MappingProvider nativeMapping];
+                NSDictionary * externalRepresentation = [CMFixture buildUsingFixture:@"Native"];
                 native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
             });
             

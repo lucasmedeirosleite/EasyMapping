@@ -11,6 +11,7 @@
 #import "Phone.h"
 #import "Person.h"
 #import "Address.h"
+#import "Native.h"
 
 @implementation MappingProvider
 
@@ -112,6 +113,17 @@
         } withReverseBlock:^(CLLocation *location) {
             return @[ @(location.coordinate.latitude), @(location.coordinate.longitude) ];
         }];
+    }];
+}
+
++ (EKObjectMapping *)nativeMapping
+{
+    return [EKObjectMapping mappingForClass:[Native class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[
+         @"charProperty", @"unsignedCharProperty", @"shortProperty", @"unsignedShortProperty", @"intProperty", @"unsignedIntProperty",
+         @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
+         @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty"
+        ]];
     }];
 }
 

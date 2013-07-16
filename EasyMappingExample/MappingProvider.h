@@ -21,5 +21,6 @@
 + (EKObjectMapping *)personWithPhonesMapping;
 + (EKObjectMapping *)personWithOnlyValueBlockMapping;
 + (EKObjectMapping *)addressMapping;
++ (EKObjectMapping *)nativeMapping;
 
 @end
