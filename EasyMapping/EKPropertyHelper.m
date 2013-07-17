@@ -19,7 +19,7 @@ static const unichar nativeTypes[] = {
 };
 
 static const char * getPropertyType(objc_property_t property);
-static id getPrivitiveReturnValueFromInvocation(NSInvocation * invocation);
+static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation);
 
 
 @implementation EKPropertyHelper
@@ -44,7 +44,7 @@ static id getPrivitiveReturnValueFromInvocation(NSInvocation * invocation);
     [invocation setSelector:selector];
     [invocation setTarget:object];
     [invocation invoke];
-    return getPrivitiveReturnValueFromInvocation(invocation);
+    return getPrimitiveReturnValueFromInvocation(invocation);
 }
 
 + (BOOL)propertyNameIsNative:(NSString *)propertyName fromObject:(id)object
@@ -103,38 +103,69 @@ static const char * getPropertyType(objc_property_t property) {
     return "";
 }
 
-static id getPrivitiveReturnValueFromInvocation(NSInvocation * invocation) {
-    id returnValue = nil;
+static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation) {
+    const char *returnType = [[invocation methodSignature] methodReturnType];
+    id resultValue = nil;
 
-    NSUInteger returnSize = [[invocation methodSignature] methodReturnLength];
-    char const *returnType = [[invocation methodSignature] methodReturnType];
-
-    if ( returnSize > 0 && strlen(returnType) == 1 ) {
-        void *buffer = malloc(returnSize);
-        [invocation getReturnValue:buffer];
-
-        // For floating point numbers, use float or double
-        if ( !strcmp(returnType, @encode(float)) ) {
-            float floatValue = 0;
-            memcpy(&floatValue, buffer, returnSize);
-            returnValue = [NSNumber numberWithFloat:floatValue];
-        } else if ( !strcmp(returnType, @encode(double)) ) {
-            double doubleValue = 0;
-            memcpy(&doubleValue, buffer, returnSize);
-            returnValue = [NSNumber numberWithDouble:doubleValue];
-        } else {
-            // For other signed types use long long
-            long long longValue = 0;
-            memcpy(&longValue, buffer, returnSize);
-            returnValue = [NSNumber numberWithLongLong:longValue];
-        }
-
-        free(buffer);
+    if ( !strcmp(returnType, @encode(char)) ) { // And this is a BOOL also
+        char result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithChar:result];
+    } else if ( !strcmp(returnType, @encode(unsigned char)) ) {
+        unsigned char result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithUnsignedChar:result];
+    } else if ( !strcmp(returnType, @encode(short)) ) {
+        short result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithShort:result];
+    } else if ( !strcmp(returnType, @encode(unsigned short)) ) {
+        unsigned short result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithUnsignedShort:result];
+    } else if ( !strcmp(returnType, @encode(int)) ) {
+        int result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithInt:result];
+    } else if ( !strcmp(returnType, @encode(unsigned int)) ) {
+        unsigned int result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithUnsignedInt:result];
+    } else if ( !strcmp(returnType, @encode(NSInteger)) ) {
+        NSInteger result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithInteger:result];
+    } else if ( !strcmp(returnType, @encode(NSUInteger)) ) {
+        NSUInteger result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithUnsignedInteger:result];
+    } else if ( !strcmp(returnType, @encode(long)) ) {
+        long result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithLong:result];
+    } else if ( !strcmp(returnType, @encode(unsigned long)) ) {
+        unsigned long result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithUnsignedLong:result];
+    } else if ( !strcmp(returnType, @encode(long long)) ) {
+        long long result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithLongLong:result];
+    } else if ( !strcmp(returnType, @encode(unsigned long long)) ) {
+        unsigned long long result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithUnsignedLongLong:result];
+    } else if ( !strcmp(returnType, @encode(float)) ) {
+        float result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithFloat:result];
+    } else if ( !strcmp(returnType, @encode(double)) ) {
+        double result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithDouble:result];
     }
 
-    return returnValue;
+    return resultValue;
 }
 
 @end
-
-

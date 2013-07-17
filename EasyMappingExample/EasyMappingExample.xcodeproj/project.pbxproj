@@ -634,7 +634,6 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EasyMappingExample.app/EasyMappingExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"$(SRCROOT)/EasyMappingExampleTests/Frameworks",
 					"$(inherited)",
 				);
@@ -655,7 +654,6 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EasyMappingExample.app/EasyMappingExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"$(SRCROOT)/EasyMappingExampleTests/Frameworks",
 					"$(inherited)",
 				);
