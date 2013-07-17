@@ -51,17 +51,14 @@
     if ([EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:object]) {
     
         id returnedValue = [EKPropertyHelper performNativeSelector:selector onObject:object];
-        id reverseValue = returnedValue;
-
-        if (fieldMapping.reverseBlock) {
-            reverseValue = fieldMapping.reverseBlock(returnedValue);
+        if (returnedValue && fieldMapping.reverseBlock) {
+            returnedValue = fieldMapping.reverseBlock(returnedValue);
         }
-
-        [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
+        [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
         
     } else {
         
-        id returnedValue = [EKPropertyHelper performSelector:selector onObject:object];
+        id returnedValue = [EKPropertyHelper performNativeSelector:selector onObject:object];
         if (returnedValue) {
             if (fieldMapping.reverseBlock) {
                 id reverseValue = fieldMapping.reverseBlock(returnedValue);

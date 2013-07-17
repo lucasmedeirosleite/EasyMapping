@@ -98,7 +98,7 @@ static const char * getPropertyType(objc_property_t property) {
 }
 
 static id getReturnValueFromInvocation(NSInvocation * invocation) {
-    NSValue * returnValue = nil;
+    id returnValue = nil;
 
     NSUInteger returnSize = [[invocation methodSignature] methodReturnLength];
     char const *returnType = [[invocation methodSignature] methodReturnType];
