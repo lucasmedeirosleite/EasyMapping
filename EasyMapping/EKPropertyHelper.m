@@ -19,7 +19,7 @@ static const unichar nativeTypes[] = {
 };
 
 static const char * getPropertyType(objc_property_t property);
-static id getReturnValueFromInvocation(NSInvocation * invocation);
+static id getPrivitiveReturnValueFromInvocation(NSInvocation * invocation);
 
 
 @implementation EKPropertyHelper
@@ -29,16 +29,22 @@ static id getReturnValueFromInvocation(NSInvocation * invocation);
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    return [object performSelector:selector];
+    NSString *propertyName = NSStringFromSelector(selector);
+    if ([self propertyNameIsNative:propertyName fromObject:object]) {
+        return [self performNativeSelector:selector onObject:object];
+    } else {
+        return [object performSelector:selector];
+    }
 #pragma clang diagnostic pop
 }
 
-+ (id)performNativeSelector:(SEL)selector onObject:(id)object {
++ (id)performNativeSelector:(SEL)selector onObject:(id)object
+{
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:selector]];
     [invocation setSelector:selector];
     [invocation setTarget:object];
     [invocation invoke];
-    return getReturnValueFromInvocation(invocation);
+    return getPrivitiveReturnValueFromInvocation(invocation);
 }
 
 + (BOOL)propertyNameIsNative:(NSString *)propertyName fromObject:(id)object
@@ -97,7 +103,7 @@ static const char * getPropertyType(objc_property_t property) {
     return "";
 }
 
-static id getReturnValueFromInvocation(NSInvocation * invocation) {
+static id getPrivitiveReturnValueFromInvocation(NSInvocation * invocation) {
     id returnValue = nil;
 
     NSUInteger returnSize = [[invocation methodSignature] methodReturnLength];

@@ -48,28 +48,17 @@
 + (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withFieldMapping:(EKFieldMapping *)fieldMapping
 {
     SEL selector = NSSelectorFromString(fieldMapping.field);
-    if ([EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:object]) {
+    id returnedValue = [EKPropertyHelper performSelector:selector onObject:object];
     
-        id returnedValue = [EKPropertyHelper performNativeSelector:selector onObject:object];
-        if (returnedValue && fieldMapping.reverseBlock) {
+    if (returnedValue) {
+        
+        if (fieldMapping.reverseBlock) {
             returnedValue = fieldMapping.reverseBlock(returnedValue);
+        } else if (fieldMapping.dateFormat && [returnedValue isKindOfClass:[NSDate class]]) {
+            returnedValue = [EKTransformer transformDate:returnedValue withDateFormat:fieldMapping.dateFormat];
         }
+        
         [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
-        
-    } else {
-        
-        id returnedValue = [EKPropertyHelper performNativeSelector:selector onObject:object];
-        if (returnedValue) {
-            if (fieldMapping.reverseBlock) {
-                id reverseValue = fieldMapping.reverseBlock(returnedValue);
-                [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
-            } else if (fieldMapping.dateFormat && [returnedValue isKindOfClass:[NSDate class]]) {
-                NSString *reverseValue = [EKTransformer transformDate:returnedValue withDateFormat:fieldMapping.dateFormat];
-                [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
-            } else {
-                [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
-            }
-        }
     }
 }
 
