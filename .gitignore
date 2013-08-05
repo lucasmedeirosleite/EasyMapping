@@ -1,6 +1,8 @@
 #Cocoa Pods
 EasyMappingExample/Pods/
+EasyMappingExample/Podfile.lock
 EasyMappingCoreDataExample/Pods/
+EasyMappingCoreDataExample/Podfile.lock
 
 # Xcode
 .DS_Store

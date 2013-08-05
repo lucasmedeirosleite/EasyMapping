@@ -48,28 +48,17 @@
 + (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withFieldMapping:(EKFieldMapping *)fieldMapping
 {
     SEL selector = NSSelectorFromString(fieldMapping.field);
-    if ([EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:object]) {
+    id returnedValue = [EKPropertyHelper performSelector:selector onObject:object];
     
+    if (returnedValue) {
+        
         if (fieldMapping.reverseBlock) {
-            int *returnedValue = [EKPropertyHelper performSelector:selector onObject:object];
-            id reverseValue = fieldMapping.reverseBlock(@(*returnedValue));
-            [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
+            returnedValue = fieldMapping.reverseBlock(returnedValue);
+        } else if (fieldMapping.dateFormat && [returnedValue isKindOfClass:[NSDate class]]) {
+            returnedValue = [EKTransformer transformDate:returnedValue withDateFormat:fieldMapping.dateFormat];
         }
         
-    } else {
-        
-        id returnedValue = [EKPropertyHelper perfomSelector:selector onObject:object];
-        if (returnedValue) {
-            if (fieldMapping.reverseBlock) {
-                id reverseValue = fieldMapping.reverseBlock(returnedValue);
-                [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
-            } else if (fieldMapping.dateFormat && [returnedValue isKindOfClass:[NSDate class]]) {
-                NSString *reverseValue = [EKTransformer transformDate:returnedValue withDateFormat:fieldMapping.dateFormat];
-                [self setValue:reverseValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
-            } else {
-                [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
-            }
-        }
+        [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
     }
 }
 
@@ -99,7 +88,7 @@
                withObjectMapping:(EKObjectMapping *)mapping
                       fromObject:(id)object
 {
-    id hasOneObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(mapping.field) onObject:object];
+    id hasOneObject = [EKPropertyHelper performSelector:NSSelectorFromString(mapping.field) onObject:object];
     if (hasOneObject) {
         NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject withMapping:mapping];
         [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
@@ -110,7 +99,7 @@
                 withObjectMapping:(EKObjectMapping *)mapping
                        fromObject:(id)object
 {
-    id hasManyObject = [EKPropertyHelper perfomSelector:NSSelectorFromString(mapping.field) onObject:object];
+    id hasManyObject = [EKPropertyHelper performSelector:NSSelectorFromString(mapping.field) onObject:object];
     if (hasManyObject) {
         NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject withMapping:mapping];
         [representation setObject:hasManyRepresentation forKey:mapping.keyPath];
