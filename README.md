@@ -73,6 +73,16 @@ typedef enum {
 
 @end
 
+@interface Native : NSObject
+
+@property (nonatomic, readwrite) NSInteger integerProperty;
+@property (nonatomic, readwrite) NSUInteger unsignedIntegerProperty;
+@property (nonatomic, readwrite) CGFloat cgFloatProperty;
+@property (nonatomic, readwrite) double doubleProperty;
+@property (nonatomic, readwrite) BOOL boolProperty;
+
+@end
+
 ```
 
 * Map your classes in any place you want. An example:
@@ -118,6 +128,17 @@ typedef enum {
         }];
         [mapping hasOneMapping:[self carMapping] forKey:@"car"];
         [mapping hasManyMapping:[self phoneMapping] forKey:@"phones"];
+    }];
+}
+
++ (EKObjectMapping *)nativeMapping
+{
+    return [EKObjectMapping mappingForClass:[Native class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[
+         @"integerProperty", @"unsignedIntegerProperty", 
+         @"cgFloatProperty", @"doubleProperty", 
+         @"boolProperty"
+        ]];
     }];
 }
 
@@ -174,7 +195,8 @@ Thanks to:
 
 * [basitali](https://github.com/basitali) who added the fillObject functionality on EKMapper!
 * [Alejandro](https://github.com/aleph7) who added CoreData support!
-* [DenHeadless](https://github.com/DenHeadless) who added the ability to use different naming in hasOne and hasMany mappings  
+* [DenHeadless](https://github.com/DenHeadless) who added the ability to use different naming in hasOne and hasMany mappings
+* [ArtFeel](https://github.com/ArtFeel) who added the ability to serialization/deserialization of primitive numbers
 
 ## Requirements
 
