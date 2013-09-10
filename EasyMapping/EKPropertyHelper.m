@@ -77,6 +77,7 @@
 + (NSString *)getPropertyTypeFromObject:(id)object withPropertyName:(NSString *)propertyString
 {
     unsigned int outCount;
+    NSString *returnString = nil;
     objc_property_t *properties = class_copyPropertyList([object class], &outCount);
     for(unsigned int i = 0; i < outCount; i++) {
     	
@@ -87,11 +88,13 @@
         if(propName) {
     		NSString *propertyName = [[NSString alloc] initWithCString:propName encoding:NSUTF8StringEncoding];
             if ([propertyName isEqualToString:propertyString]) {
-                return [[NSString alloc] initWithCString:getPropertyType(property) encoding:NSUTF8StringEncoding];
+                returnString = [[NSString alloc] initWithCString:getPropertyType(property) encoding:NSUTF8StringEncoding];
+                break;
             }
     	}
     }
-    return nil;
+    free(properties);
+    return returnString;
 }
 
 static const char * getPropertyType(objc_property_t property) {
