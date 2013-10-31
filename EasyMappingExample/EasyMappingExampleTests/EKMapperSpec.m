@@ -17,6 +17,7 @@
 #import "Address.h"
 #import "Native.h"
 #import "Plane.h"
+#import "Seaplane.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -447,6 +448,27 @@ describe(@"EKMapper", ^{
             [[plane.stars should] beKindOfClass:[NSMutableOrderedSet class]];
         });
 
+    });
+    
+    context(@"with hasMany mapping with set and different key name", ^{
+        
+        __block Seaplane * seaplane;
+        
+        beforeEach(^{
+            NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Plane"];
+            EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Seaplane class]];
+            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"persons" forField:@"passengers"];
+            seaplane = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+        });
+        
+        specify(^{
+            [seaplane.passengers shouldNotBeNil];
+        });
+
+        specify(^{
+            [[seaplane.passengers should] beKindOfClass:[NSSet class]];
+        });
+        
     });
     
 });

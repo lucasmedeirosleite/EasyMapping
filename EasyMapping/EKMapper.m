@@ -56,7 +56,7 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj];
-        id parsedObjects = [EKMapper convertPropertyArray:parsedArray forObject:object withPropertyName:key];
+        id parsedObjects = [EKMapper convertPropertyArray:parsedArray forObject:object withPropertyName:[obj field]];
         EKObjectMapping * mapping = obj;
         [object setValue:parsedObjects forKeyPath:mapping.field];
     }];

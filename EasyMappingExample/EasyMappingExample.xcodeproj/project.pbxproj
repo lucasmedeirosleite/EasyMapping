@@ -54,6 +54,7 @@
 		C6D3778C16DBF0DB00836F52 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */; };
 		E6D8062C171818C40035BB7C /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */; };
 		F87FFB7518228BA600F0B424 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = F889A7B117FDA88500DFC8D4 /* Plane.m */; };
+		F87FFB7B1822EC8500F0B424 /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = F87FFB7A1822EC8500F0B424 /* Seaplane.m */; };
 		F889A7AF17FDA78600DFC8D4 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = F889A7AE17FDA78600DFC8D4 /* Plane.json */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,8 @@
 		C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializerSpec.m; sourceTree = "<group>"; };
 		D2407EFB9A0D46D595C5CDFA /* Pods-EasyMappingExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExampleTests.xcconfig"; path = "Pods/Pods-EasyMappingExampleTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithDifferentNaming.json; sourceTree = "<group>"; };
+		F87FFB791822EC8500F0B424 /* Seaplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seaplane.h; sourceTree = "<group>"; };
+		F87FFB7A1822EC8500F0B424 /* Seaplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seaplane.m; sourceTree = "<group>"; };
 		F889A7AE17FDA78600DFC8D4 /* Plane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Plane.json; sourceTree = "<group>"; };
 		F889A7B017FDA88500DFC8D4 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		F889A7B117FDA88500DFC8D4 /* Plane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				66C458DD17944983005AF11E /* Native.m */,
 				F889A7B017FDA88500DFC8D4 /* Plane.h */,
 				F889A7B117FDA88500DFC8D4 /* Plane.m */,
+				F87FFB791822EC8500F0B424 /* Seaplane.h */,
+				F87FFB7A1822EC8500F0B424 /* Seaplane.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				C6557E6C16D68D55005D2D3E /* Phone.m in Sources */,
 				C6500E3F16D98780009FCC67 /* MappingProvider.m in Sources */,
 				C6BD162016DD872400CCB4F6 /* Address.m in Sources */,
+				F87FFB7B1822EC8500F0B424 /* Seaplane.m in Sources */,
 				A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */,
 				A9D16D0516F2B2770003759B /* EKMapper.m in Sources */,
 				A9D16D0616F2B2770003759B /* EKObjectMapping.m in Sources */,
