@@ -12,6 +12,7 @@
 #import "Person.h"
 #import "Address.h"
 #import "Native.h"
+#import "Plane.h"
 
 @implementation MappingProvider
 
@@ -124,6 +125,14 @@
          @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
          @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty"
         ]];
+    }];
+}
+
++ (EKObjectMapping *)planeMapping
+{
+    return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapKey:@"flight_number" toField:@"flightNumber"];
+        [mapping hasManyMapping:[self personMapping] forKey:@"persons"];
     }];
 }
 

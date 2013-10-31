@@ -16,6 +16,7 @@
 #import "Phone.h"
 #import "Address.h"
 #import "Native.h"
+#import "Plane.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -410,6 +411,42 @@ describe(@"EKMapper", ^{
             [[carsArray should] haveCountOf:[externalRepresentation count]];
         });
         
+    });
+    
+    context(@"with hasMany mapping with set", ^{
+        
+        __block Plane * plane;
+        
+        beforeEach(^{
+            NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Plane"];
+            EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Plane class]];
+            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"persons" forField:@"persons"];
+            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"pilots" forField:@"pilots"];
+            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"stewardess" forField:@"stewardess"];
+            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"stars" forField:@"stars"];
+            plane = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+        });
+        
+        specify(^{
+            [plane.persons shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[plane.persons should] beKindOfClass:[NSSet class]];
+        });
+        
+        specify(^{
+            [[plane.pilots should] beKindOfClass:[NSMutableSet class]];
+        });
+
+        specify(^{
+            [[plane.stewardess should] beKindOfClass:[NSOrderedSet class]];
+        });
+
+        specify(^{
+            [[plane.stars should] beKindOfClass:[NSMutableOrderedSet class]];
+        });
+
     });
     
 });
