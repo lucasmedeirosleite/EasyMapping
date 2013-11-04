@@ -9,6 +9,7 @@
 #import "EKMapper.h"
 #import "EKFieldMapping.h"
 #import "EKTransformer.h"
+#import "objc/runtime.h"
 
 @implementation EKMapper
 
@@ -55,10 +56,34 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj];
+        id parsedObjects = [EKMapper convertPropertyArray:parsedArray forObject:object withPropertyName:[obj field]];
         EKObjectMapping * mapping = obj;
-        [object setValue:parsedArray forKeyPath:mapping.field];
+        [object setValue:parsedObjects forKeyPath:mapping.field];
     }];
     return object;
+}
+
++ (id)convertPropertyArray:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName {
+    id convertedObject = array;
+    objc_property_t property = class_getProperty([object class], [propertyName UTF8String]);
+    if (property) {
+        NSString *propertyAttributes = [NSString stringWithUTF8String:property_getAttributes(property)];
+        if ([propertyAttributes length] > 0) {
+            if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSSet"], NSMakeRange(NSNotFound, 0))) {
+                convertedObject = [NSSet setWithArray:array];
+            }
+            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSMutableSet"], NSMakeRange(NSNotFound, 0))) {
+                convertedObject = [[NSSet setWithArray:array] mutableCopy];
+            }
+            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSOrderedSet"], NSMakeRange(NSNotFound, 0))) {
+                convertedObject = [NSOrderedSet orderedSetWithArray:array];
+            }
+            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSMutableOrderedSet"], NSMakeRange(NSNotFound, 0))) {
+                convertedObject = [[NSOrderedSet orderedSetWithArray:array] mutableCopy];
+            }
+        }
+    }
+    return convertedObject;
 }
 
 + (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation

@@ -53,6 +53,9 @@
 		C6D3778516DBDF2400836F52 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D3778416DBDF2400836F52 /* Cars.json */; };
 		C6D3778C16DBF0DB00836F52 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */; };
 		E6D8062C171818C40035BB7C /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */; };
+		F87FFB7518228BA600F0B424 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = F889A7B117FDA88500DFC8D4 /* Plane.m */; };
+		F87FFB7B1822EC8500F0B424 /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = F87FFB7A1822EC8500F0B424 /* Seaplane.m */; };
+		F889A7AF17FDA78600DFC8D4 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = F889A7AE17FDA78600DFC8D4 /* Plane.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +134,11 @@
 		C6D3778B16DBF0DB00836F52 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializerSpec.m; sourceTree = "<group>"; };
 		D2407EFB9A0D46D595C5CDFA /* Pods-EasyMappingExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExampleTests.xcconfig"; path = "Pods/Pods-EasyMappingExampleTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithDifferentNaming.json; sourceTree = "<group>"; };
+		F87FFB791822EC8500F0B424 /* Seaplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seaplane.h; sourceTree = "<group>"; };
+		F87FFB7A1822EC8500F0B424 /* Seaplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seaplane.m; sourceTree = "<group>"; };
+		F889A7AE17FDA78600DFC8D4 /* Plane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Plane.json; sourceTree = "<group>"; };
+		F889A7B017FDA88500DFC8D4 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
+		F889A7B117FDA88500DFC8D4 /* Plane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +182,10 @@
 				C6557E6B16D68D55005D2D3E /* Phone.m */,
 				66C458DC17944983005AF11E /* Native.h */,
 				66C458DD17944983005AF11E /* Native.m */,
+				F889A7B017FDA88500DFC8D4 /* Plane.h */,
+				F889A7B117FDA88500DFC8D4 /* Plane.m */,
+				F87FFB791822EC8500F0B424 /* Seaplane.h */,
+				F87FFB7A1822EC8500F0B424 /* Seaplane.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -323,6 +335,7 @@
 				C6D3777E16DBCD5300836F52 /* Female.json */,
 				C6D3778216DBCDA100836F52 /* Male.json */,
 				C6557E6E16D68F27005D2D3E /* Person.json */,
+				F889A7AE17FDA78600DFC8D4 /* Plane.json */,
 				E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */,
 				66C458E017944A8D005AF11E /* Native.json */,
 			);
@@ -426,6 +439,7 @@
 				C6D3778516DBDF2400836F52 /* Cars.json in Resources */,
 				C6BD162416DD892D00CCB4F6 /* Address.json in Resources */,
 				E6D8062C171818C40035BB7C /* PersonWithDifferentNaming.json in Resources */,
+				F889A7AF17FDA78600DFC8D4 /* Plane.json in Resources */,
 				66C458E217944A8D005AF11E /* Native.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87FFB7518228BA600F0B424 /* Plane.m in Sources */,
 				C6557E2216D6621E005D2D3E /* main.m in Sources */,
 				C6557E5516D665A7005D2D3E /* EKAppDelegate.m in Sources */,
 				C6557E5816D665C8005D2D3E /* EKViewController.m in Sources */,
@@ -489,6 +504,7 @@
 				C6557E6C16D68D55005D2D3E /* Phone.m in Sources */,
 				C6500E3F16D98780009FCC67 /* MappingProvider.m in Sources */,
 				C6BD162016DD872400CCB4F6 /* Address.m in Sources */,
+				F87FFB7B1822EC8500F0B424 /* Seaplane.m in Sources */,
 				A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */,
 				A9D16D0516F2B2770003759B /* EKMapper.m in Sources */,
 				A9D16D0616F2B2770003759B /* EKObjectMapping.m in Sources */,
