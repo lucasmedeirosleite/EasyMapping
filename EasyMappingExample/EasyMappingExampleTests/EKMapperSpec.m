@@ -18,6 +18,8 @@
 #import "Native.h"
 #import "Plane.h"
 #import "Seaplane.h"
+#import "Response.h"
+#import "Playlist.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -388,6 +390,86 @@ describe(@"EKMapper", ^{
             
             specify(^{
                 [[@(native.boolProperty) should] beYes];
+            });
+            
+        });
+        
+        context(@"with hasOne mapping Response", ^{
+            
+            __block Response *response;
+            
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Response"];
+                response = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider responseMapping]];
+            });
+            
+            specify(^{
+                [response.kind shouldNotBeNil];
+            });
+            
+            specify(^{
+                [response.etag shouldNotBeNil];
+            });
+            
+            specify(^{
+                [[theValue(response.totalResults) should] equal:theValue(5)];
+            });
+            
+            specify(^{
+                [[theValue(response.resultsPerPage) should] equal:theValue(5)];
+            });
+            
+            specify(^{
+                [[response.items should] haveCountOf:5];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject kind] should] equal:@"youtube#playlist"];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject etag] should] equal:@"\"WD4VMEpMvsFyTbuuNulahhED0yg/aMI_U3Fiq4aJd2AYxBc2-nz1DlA\""];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject itemId] should] equal:@"PLDk96cUWP2om0Jv3sNV94lm1WpgZx3YJ_"];
+            });
+            
+            specify(^{
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+                dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+                NSDate *date = [dateFormatter dateFromString:@"2013-11-01T06:11:32.000Z"];
+
+                [[[response.items.firstObject publishedAt] should] equal:date];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject channelId] should] equal:@"UCt4SEE7uPZE8S9gtDwUUbUA"];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject title] should] equal:@"The Best"];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject itemDescription] should] equal:@"The best songs of the World!"];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject defaultUrl] should] equal:@"https://i.ytimg.com/vi/MRPWr86uYqU/default.jpg"];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject mediumUrl] should] equal:@"https://i.ytimg.com/vi/MRPWr86uYqU/mqdefault.jpg"];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject highUrl] should] equal:@"https://i.ytimg.com/vi/MRPWr86uYqU/hqdefault.jpg"];
+            });
+            
+            specify(^{
+                [[[response.items.firstObject channelTitle] should] equal:@"Anton Pomozov"];
             });
             
         });

@@ -23,5 +23,7 @@
 + (EKObjectMapping *)addressMapping;
 + (EKObjectMapping *)nativeMapping;
 + (EKObjectMapping *)planeMapping;
++ (EKObjectMapping *)playlistMapping;
++ (EKObjectMapping *)responseMapping;
 
 @end

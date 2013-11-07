@@ -13,6 +13,8 @@
 #import "Address.h"
 #import "Native.h"
 #import "Plane.h"
+#import "Response.h"
+#import "Playlist.h"
 
 @implementation MappingProvider
 
@@ -133,6 +135,52 @@
     return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapKey:@"flight_number" toField:@"flightNumber"];
         [mapping hasManyMapping:[self personMapping] forKey:@"persons"];
+    }];
+}
+
++ (EKObjectMapping *)playlistMapping
+{
+    return [EKObjectMapping mappingForClass:[Playlist class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"kind", @"etag"]];
+        [mapping mapFieldsFromDictionary:@{
+            @"id" : @"itemId"
+        }];
+        
+        [mapping mapSubKey:@"publishedAt" ofKey:@"snippet" toField:@"publishedAt" withDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+        [mapping mapSubValuesOfKey:@"snippet" toFieldsFromArray:@[@"channelId", @"title", @"channelTitle"]];
+        [mapping mapSubValuesOfKey:@"snippet" toFieldsFromDictionary:@{
+            @"description" : @"itemDescription"
+         }];
+        
+        [mapping mapKey:@"snippet" toField:@"defaultUrl" withValueBlock:^id(NSString *key, id value) {
+            NSDictionary *dictionary = (NSDictionary *)value;
+            NSDictionary *thumbnails = dictionary[@"thumbnails"];
+            NSDictionary *defaultThumbnail = thumbnails[@"default"];
+            return defaultThumbnail[@"url"];
+        }];
+        
+        [mapping mapKey:@"snippet" toField:@"mediumUrl" withValueBlock:^id(NSString *key, id value) {
+            NSDictionary *dictionary = (NSDictionary *)value;
+            NSDictionary *thumbnails = dictionary[@"thumbnails"];
+            NSDictionary *defaultThumbnail = thumbnails[@"medium"];
+            return defaultThumbnail[@"url"];
+        }];
+        
+        [mapping mapKey:@"snippet" toField:@"highUrl" withValueBlock:^id(NSString *key, id value) {
+            NSDictionary *dictionary = (NSDictionary *)value;
+            NSDictionary *thumbnails = dictionary[@"thumbnails"];
+            NSDictionary *defaultThumbnail = thumbnails[@"high"];
+            return defaultThumbnail[@"url"];
+        }];
+    }];
+}
+
++ (EKObjectMapping *)responseMapping
+{
+    return [EKObjectMapping mappingForClass:[Response class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"kind", @"etag"]];
+        [mapping hasManyMapping:[self playlistMapping] forKey:@"items"];
+        [mapping mapSubValuesOfKey:@"pageInfo" toFieldsFromArray:@[@"totalResults", @"resultsPerPage"]];
     }];
 }
 

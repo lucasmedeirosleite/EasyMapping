@@ -38,6 +38,10 @@ withValueBlock:(EKMappingValueBlock)valueBlock;
 - (void)mapKey:(NSString *)key toField:(NSString *)field
 withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingReverseBlock)reverseBlock;
 
+- (void)mapSubValuesOfKey:(NSString *)key toFieldsFromArray:(NSArray *)fieldsArray;
+- (void)mapSubValuesOfKey:(NSString *)key toFieldsFromDictionary:(NSDictionary *)fieldsDictionary;
+- (void)mapSubKey:(NSString *)subKey ofKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat;
+
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
 
