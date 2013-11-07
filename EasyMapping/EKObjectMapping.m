@@ -98,6 +98,51 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
     [self addFieldMappingToDictionary:mapping];
 }
 
+- (void)mapSubValuesOfKey:(NSString *)key toFieldsFromArray:(NSArray *)fieldsArray
+{
+    [fieldsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *field = obj;
+        EKFieldMapping *mapping = [[EKFieldMapping alloc] init];
+        mapping.field = field;
+        mapping.keyPath = key;
+        mapping.valueBlock = ^id(NSString *sameKey, id value) {
+            return value[field];
+        };
+        [self addFieldMappingToDictionary:mapping];
+    }];
+}
+
+- (void)mapSubValuesOfKey:(NSString *)key toFieldsFromDictionary:(NSDictionary *)fieldsDictionary
+{
+    [fieldsDictionary enumerateKeysAndObjectsUsingBlock:^(id subKey, id field, BOOL *stop) {
+        EKFieldMapping *mapping = [[EKFieldMapping alloc] init];
+        mapping.field = field;
+        mapping.keyPath = key;
+        mapping.valueBlock = ^id(NSString *sameKey, id value) {
+            return value[subKey];
+        };
+        [self addFieldMappingToDictionary:mapping];
+    }];
+}
+
+- (void)mapSubKey:(NSString *)subKey ofKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat
+{
+    EKFieldMapping *mapping = [[EKFieldMapping alloc] init];
+    mapping.field = field;
+    mapping.keyPath = key;
+    mapping.dateFormat = dateFormat;
+    mapping.valueBlock = ^id(NSString *sameKey, id value) {
+        NSString *stringDate = value[subKey];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        dateFormatter.dateFormat = dateFormat;
+        NSDate *date = [dateFormatter dateFromString:stringDate];
+
+        return date;
+    };
+    [self addFieldMappingToDictionary:mapping];
+}
+
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
 {
     mapping.field = key;

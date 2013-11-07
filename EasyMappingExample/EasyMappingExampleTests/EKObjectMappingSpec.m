@@ -79,6 +79,18 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
+            [[mapping should] respondToSelector:@selector(mapSubValuesOfKey:toFieldsFromArray:)];
+        });
+        
+        specify(^{
+            [[mapping should] respondToSelector:@selector(mapSubValuesOfKey:toFieldsFromDictionary:)];
+        });
+        
+        specify(^{
+            [[mapping should] respondToSelector:@selector(mapSubKey:ofKey:toField:withDateFormat:)];
+        });
+        
+        specify(^{
             [[mapping should] respondToSelector:@selector(hasOneMapping:forKey:)];
         });
         
@@ -432,6 +444,52 @@ describe(@"EKObjectMapping", ^{
         
     });
     
+    describe(@"#mapSubValuesOfKey:toFieldsFromArray:", ^{
+        
+        __block EKObjectMapping *mapping;
+        
+        beforeEach(^{
+            mapping = [MappingProvider responseMapping];
+        });
+        
+        specify(^{
+            [[mapping.fieldMappings objectForKey:@"resultsPerPage"] shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[mapping.fieldMappings objectForKey:@"totalResults"] shouldNotBeNil];
+        });
+        
+    });
+    
+    describe(@"#mapSubValuesOfKey:toFieldsFromDictionary:", ^{
+        
+        __block EKObjectMapping *mapping;
+        
+        beforeEach(^{
+            mapping = [MappingProvider playlistMapping];
+        });
+        
+        specify(^{
+            [[mapping.fieldMappings objectForKey:@"itemDescription"] shouldNotBeNil];
+        });
+        
+    });
+    
+    describe(@"#mapSubKey:ofKey:toField:withDateFormat:", ^{
+        
+        __block EKObjectMapping *mapping;
+        
+        beforeEach(^{
+            mapping = [MappingProvider playlistMapping];
+        });
+        
+        specify(^{
+            [[mapping.fieldMappings objectForKey:@"publishedAt"] shouldNotBeNil];
+        });
+        
+    });
+
     describe(@"#hasOneMapping:forKey:", ^{
         
         __block EKObjectMapping *mapping;
