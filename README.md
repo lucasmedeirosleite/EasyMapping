@@ -31,7 +31,7 @@ platform :ios
 
 ...
 
-pod 'EasyMapping', '0.4.6'
+pod 'EasyMapping', '~>0.4.9'
 
 ```
 Run `pod install` to install the dependencies.
