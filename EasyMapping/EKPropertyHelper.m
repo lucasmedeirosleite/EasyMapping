@@ -67,25 +67,27 @@ static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation);
 {
     unsigned int outCount;
     objc_property_t *properties = class_copyPropertyList([object class], &outCount);
-    for(unsigned int i = 0; i < outCount; i++) {
-    	
+    NSString *propertyType = nil;
+    
+    for (unsigned int i = 0; i < outCount; i++) {
         objc_property_t property = properties[i];
-    	
         const char *propName = property_getName(property);
     	
-        if(propName) {
+        if (propName) {
     		NSString *propertyName = [[NSString alloc] initWithCString:propName encoding:NSUTF8StringEncoding];
             if ([propertyName isEqualToString:propertyString]) {
-                return [[NSString alloc] initWithCString:getPropertyType(property) encoding:NSUTF8StringEncoding];
+                propertyType = [[NSString alloc] initWithCString:getPropertyType(property) encoding:NSUTF8StringEncoding];
+                break;
             }
     	}
     }
-    return nil;
+
+    free(properties);
+    return propertyType;
 }
 
 static const char * getPropertyType(objc_property_t property) {
     const char *attributes = property_getAttributes(property);
-//    printf("attributes=%s\n", attributes);
     char buffer[1 + strlen(attributes)];
     strcpy(buffer, attributes);
     char *state = buffer, *attribute;
