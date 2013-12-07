@@ -21,7 +21,9 @@
 + (EKObjectMapping *)personWithPhonesMapping;
 + (EKObjectMapping *)personWithOnlyValueBlockMapping;
 + (EKObjectMapping *)addressMapping;
++ (EKObjectMapping *)fingerMapping;
 + (EKObjectMapping *)nativeMapping;
 + (EKObjectMapping *)planeMapping;
++ (EKObjectMapping *)alienMapping;
 
 @end

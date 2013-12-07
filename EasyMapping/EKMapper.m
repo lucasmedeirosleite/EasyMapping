@@ -81,6 +81,9 @@
             else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSMutableOrderedSet"], NSMakeRange(NSNotFound, 0))) {
                 convertedObject = [[NSOrderedSet orderedSetWithArray:array] mutableCopy];
             }
+            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSMutableArray"], NSMakeRange(NSNotFound, 0))) {
+                convertedObject = [NSMutableArray arrayWithArray:array];
+            }
         }
     }
     return convertedObject;
