@@ -18,6 +18,8 @@
 #import "Native.h"
 #import "Plane.h"
 #import "Seaplane.h"
+#import "Alien.h"
+#import "Finger.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -469,6 +471,25 @@ describe(@"EKMapper", ^{
             [[seaplane.passengers should] beKindOfClass:[NSSet class]];
         });
         
+    });
+    
+    context(@"with hasMany mapping with NSMutableArray", ^{
+        
+        __block Alien *alien;
+        
+        beforeEach(^{
+            NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Alien"];
+            alien = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider alienMapping]];
+        });
+        
+        specify(^{
+            [alien.fingers shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[alien.fingers should] beKindOfClass:[NSMutableArray class]];
+        });
+    
     });
     
 });

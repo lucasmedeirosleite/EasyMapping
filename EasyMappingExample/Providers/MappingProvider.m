@@ -13,6 +13,8 @@
 #import "Address.h"
 #import "Native.h"
 #import "Plane.h"
+#import "Alien.h"
+#import "Finger.h"
 
 @implementation MappingProvider
 
@@ -133,6 +135,21 @@
     return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapKey:@"flight_number" toField:@"flightNumber"];
         [mapping hasManyMapping:[self personMapping] forKey:@"persons"];
+    }];
+}
+
++ (EKObjectMapping *)alienMapping
+{
+    return [EKObjectMapping mappingForClass:[Alien class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"name"]];
+        [mapping hasManyMapping:[self fingerMapping] forKey:@"fingers"];
+    }];
+}
+
++ (EKObjectMapping *)fingerMapping
+{
+    return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"name"]];
     }];
 }
 

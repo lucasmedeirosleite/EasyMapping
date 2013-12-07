@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02E17D881853E26800DF27BE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D871853E26800DF27BE /* Alien.m */; };
+		02E17D891853E26800DF27BE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D871853E26800DF27BE /* Alien.m */; };
+		02E17D8C1853E27400DF27BE /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D8B1853E27400DF27BE /* Finger.m */; };
+		02E17D8D1853E27400DF27BE /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D8B1853E27400DF27BE /* Finger.m */; };
+		02E17D8F1853E37900DF27BE /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E17D8E1853E37900DF27BE /* Alien.json */; };
+		02E17D901853E37900DF27BE /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E17D8E1853E37900DF27BE /* Alien.json */; };
 		116D80270DF540439FEF3CD4 /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3A3364B05A4216A376C757 /* libPods-EasyMappingExampleTests.a */; };
 		66C458DE17944983005AF11E /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
 		66C458E217944A8D005AF11E /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 66C458E017944A8D005AF11E /* Native.json */; };
@@ -69,6 +75,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02E17D861853E26800DF27BE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alien.h; sourceTree = "<group>"; };
+		02E17D871853E26800DF27BE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alien.m; sourceTree = "<group>"; };
+		02E17D8A1853E27400DF27BE /* Finger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finger.h; sourceTree = "<group>"; };
+		02E17D8B1853E27400DF27BE /* Finger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Finger.m; sourceTree = "<group>"; };
+		02E17D8E1853E37900DF27BE /* Alien.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Alien.json; sourceTree = "<group>"; };
 		66C458DC17944983005AF11E /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
 		66C458DD17944983005AF11E /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
 		66C458E017944A8D005AF11E /* Native.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Native.json; sourceTree = "<group>"; };
@@ -186,6 +197,10 @@
 				F889A7B117FDA88500DFC8D4 /* Plane.m */,
 				F87FFB791822EC8500F0B424 /* Seaplane.h */,
 				F87FFB7A1822EC8500F0B424 /* Seaplane.m */,
+				02E17D861853E26800DF27BE /* Alien.h */,
+				02E17D871853E26800DF27BE /* Alien.m */,
+				02E17D8A1853E27400DF27BE /* Finger.h */,
+				02E17D8B1853E27400DF27BE /* Finger.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -338,6 +353,7 @@
 				F889A7AE17FDA78600DFC8D4 /* Plane.json */,
 				E6D8062B171818C40035BB7C /* PersonWithDifferentNaming.json */,
 				66C458E017944A8D005AF11E /* Native.json */,
+				02E17D8E1853E37900DF27BE /* Alien.json */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -421,6 +437,7 @@
 				C6557E2A16D6621E005D2D3E /* Default@2x.png in Resources */,
 				C6557E2C16D6621E005D2D3E /* Default-568h@2x.png in Resources */,
 				C6557E2F16D6621E005D2D3E /* MainStoryboard.storyboard in Resources */,
+				02E17D8F1853E37900DF27BE /* Alien.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +450,7 @@
 				C68B2B0D16DAFCE1007E7B0C /* Car.json in Resources */,
 				C64A696F16DB9F33009CB6D7 /* CarWithRoot.json in Resources */,
 				C64A697116DBA7D7009CB6D7 /* CarWithNestedAttributes.json in Resources */,
+				02E17D901853E37900DF27BE /* Alien.json in Resources */,
 				C64A697316DBAA4F009CB6D7 /* CarWithDate.json in Resources */,
 				C6D3777F16DBCD5300836F52 /* Female.json in Resources */,
 				C6D3778316DBCDA100836F52 /* Male.json in Resources */,
@@ -504,12 +522,14 @@
 				C6557E6C16D68D55005D2D3E /* Phone.m in Sources */,
 				C6500E3F16D98780009FCC67 /* MappingProvider.m in Sources */,
 				C6BD162016DD872400CCB4F6 /* Address.m in Sources */,
+				02E17D8C1853E27400DF27BE /* Finger.m in Sources */,
 				F87FFB7B1822EC8500F0B424 /* Seaplane.m in Sources */,
 				A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */,
 				A9D16D0516F2B2770003759B /* EKMapper.m in Sources */,
 				A9D16D0616F2B2770003759B /* EKObjectMapping.m in Sources */,
 				A9D16D0716F2B2770003759B /* EKPropertyHelper.m in Sources */,
 				A9D16D0816F2B2770003759B /* EKSerializer.m in Sources */,
+				02E17D881853E26800DF27BE /* Alien.m in Sources */,
 				A9D16D0916F2B2770003759B /* EKTransformer.m in Sources */,
 				66C458DE17944983005AF11E /* Native.m in Sources */,
 			);
@@ -519,9 +539,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E17D891853E26800DF27BE /* Alien.m in Sources */,
 				C6C0AB3016D807EB009E3751 /* EKObjectMappingSpec.m in Sources */,
 				C68351D216D8669B00FA720D /* EKFieldMappingSpec.m in Sources */,
 				C6500E4116D9B07C009FCC67 /* EKMapperSpec.m in Sources */,
+				02E17D8D1853E27400DF27BE /* Finger.m in Sources */,
 				C6D3778C16DBF0DB00836F52 /* EKSerializerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
