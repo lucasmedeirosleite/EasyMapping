@@ -16,6 +16,7 @@
 #import "Phone.h"
 #import "Address.h"
 #import "Native.h"
+#import "NativeChild.h"
 #import <CoreLocation/CoreLocation.h>
 
 SPEC_BEGIN(EKSerializerSpec)
@@ -477,6 +478,31 @@ describe(@"EKSerializer", ^{
             
             specify(^{
                 [[[representation objectForKey:@"boolProperty"] should] equal:@(YES)];
+            });
+            
+        });
+        
+        context(@"with native properties in superclass", ^{
+            
+            __block NativeChild *nativeChild;
+            __block NSDictionary *representation;
+            
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"NativeChild"];
+                nativeChild = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider nativeChildMapping]];
+                representation = [EKSerializer serializeObject:nativeChild withMapping:[MappingProvider nativeChildMapping]];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"intProperty"] should] equal:@(777)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"boolProperty"] should] equal:@(YES)];
+            });
+            
+            specify(^{
+                [[[representation objectForKey:@"childProperty"] should] equal:@"Hello"];
             });
             
         });
