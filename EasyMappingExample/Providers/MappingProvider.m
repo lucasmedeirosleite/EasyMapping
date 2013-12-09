@@ -15,6 +15,7 @@
 #import "Plane.h"
 #import "Alien.h"
 #import "Finger.h"
+#import "NativeChild.h"
 
 @implementation MappingProvider
 
@@ -150,6 +151,13 @@
 {
     return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapFieldsFromArray:@[@"name"]];
+    }];
+}
+
++ (EKObjectMapping *)nativeChildMapping
+{
+    return [EKObjectMapping mappingForClass:[NativeChild class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
     }];
 }
 

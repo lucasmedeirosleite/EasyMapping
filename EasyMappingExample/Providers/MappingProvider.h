@@ -25,5 +25,6 @@
 + (EKObjectMapping *)nativeMapping;
 + (EKObjectMapping *)planeMapping;
 + (EKObjectMapping *)alienMapping;
++ (EKObjectMapping *)nativeChildMapping;
 
 @end
