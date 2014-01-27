@@ -108,8 +108,9 @@
         NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         if (arrayToBeParsed) {
             NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj inManagedObjectContext:moc];
+            id parsedObjects = [EKMapper convertPropertyArray:parsedArray forObject:object withPropertyName:[obj field]];
             EKObjectMapping * mapping = obj;
-            [object setValue:[NSSet setWithArray:parsedArray] forKeyPath:mapping.field];
+            [object setValue:parsedObjects forKeyPath:mapping.field];
         }
     }];
     return object;
