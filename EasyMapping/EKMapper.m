@@ -186,11 +186,9 @@
 {
     id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
     if (value == (id)[NSNull null]) {
-        
         if (![EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:object]) {
             [object setValue:nil forKeyPath:fieldMapping.field];
         }
-
     } else if (value) {
         [object setValue:value forKeyPath:fieldMapping.field];
     }
