@@ -3,12 +3,12 @@ PODS:
     - Mantle (= 0.2.3)
     - SBJson (= 3.2)
   - Kiwi (2.0.5)
-  - libextobjc/EXTKeyPathCoding (0.2.5):
+  - libextobjc/EXTKeyPathCoding (0.3):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.2.5):
+  - libextobjc/EXTScope (0.3):
     - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.2.5)
-  - MagicalRecord (2.1)
+  - libextobjc/RuntimeExtensions (0.3)
+  - MagicalRecord (2.2)
   - Mantle (0.2.3):
     - libextobjc/EXTKeyPathCoding
     - libextobjc/EXTScope
@@ -22,9 +22,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CMFactory: 62231d22193d320249ffc93ba9afd938195ffd6c
   Kiwi: 89ade77eb49c889178cb2779e02514a7b9b9449e
-  libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
-  MagicalRecord: 64e7184c240087a45e9588a722eaf05b0ad837f7
+  libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
+  MagicalRecord: b1fc46c99a9749fe7fe7e6f43a89b62ef5201933
   Mantle: 4a20405b7aba3452007294badee2b3cb137825c3
-  SBJson: e60b4dc22448c2ae1e754b523a4ab53408e85c8d
+  SBJson: abc2bf2baef456d5dae213f9826fe2b6fdf19861
 
-COCOAPODS: 0.20.2
+COCOAPODS: 0.29.0

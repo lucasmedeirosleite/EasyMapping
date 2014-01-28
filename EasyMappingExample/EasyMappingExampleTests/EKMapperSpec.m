@@ -20,6 +20,7 @@
 #import "Seaplane.h"
 #import "Alien.h"
 #import "Finger.h"
+#import "Cat.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -390,6 +391,26 @@ describe(@"EKMapper", ^{
             
             specify(^{
                 [[@(native.boolProperty) should] beYes];
+            });
+            
+            context(@"with a native propertie that is null", ^{
+                
+                __block Cat *cat;
+                
+                beforeEach(^{
+                    EKObjectMapping *catMapping = [MappingProvider nativeMappingWithNullPropertie];
+                    NSDictionary *values = @{ @"age": [NSNull null] };
+                    cat = [EKMapper objectFromExternalRepresentation:values withMapping:catMapping];
+                });
+                
+                specify(^{
+                    [[cat shouldNot] beNil];
+                });
+                
+                specify(^{
+                    [[theValue(cat.age) should] equal:theValue(0)];
+                });
+                
             });
             
         });

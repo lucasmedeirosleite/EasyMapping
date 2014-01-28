@@ -23,6 +23,7 @@
 + (EKObjectMapping *)addressMapping;
 + (EKObjectMapping *)fingerMapping;
 + (EKObjectMapping *)nativeMapping;
++ (EKObjectMapping *)nativeMappingWithNullPropertie;
 + (EKObjectMapping *)planeMapping;
 + (EKObjectMapping *)alienMapping;
 + (EKObjectMapping *)nativeChildMapping;

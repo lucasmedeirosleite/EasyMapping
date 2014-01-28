@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02AFC1991897FC830032F838 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFC1981897FC830032F838 /* Cat.m */; };
 		02E17D881853E26800DF27BE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D871853E26800DF27BE /* Alien.m */; };
 		02E17D891853E26800DF27BE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D871853E26800DF27BE /* Alien.m */; };
 		02E17D8C1853E27400DF27BE /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D8B1853E27400DF27BE /* Finger.m */; };
@@ -77,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02AFC1971897FC830032F838 /* Cat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat.h; sourceTree = "<group>"; };
+		02AFC1981897FC830032F838 /* Cat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
 		02E17D861853E26800DF27BE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alien.h; sourceTree = "<group>"; };
 		02E17D871853E26800DF27BE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alien.m; sourceTree = "<group>"; };
 		02E17D8A1853E27400DF27BE /* Finger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finger.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				02E17D8B1853E27400DF27BE /* Finger.m */,
 				669426121855F6470064782C /* NativeChild.h */,
 				669426131855F6470064782C /* NativeChild.m */,
+				02AFC1971897FC830032F838 /* Cat.h */,
+				02AFC1981897FC830032F838 /* Cat.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				C6557E6C16D68D55005D2D3E /* Phone.m in Sources */,
 				C6500E3F16D98780009FCC67 /* MappingProvider.m in Sources */,
 				C6BD162016DD872400CCB4F6 /* Address.m in Sources */,
+				02AFC1991897FC830032F838 /* Cat.m in Sources */,
 				02E17D8C1853E27400DF27BE /* Finger.m in Sources */,
 				F87FFB7B1822EC8500F0B424 /* Seaplane.m in Sources */,
 				669426141855F6470064782C /* NativeChild.m in Sources */,

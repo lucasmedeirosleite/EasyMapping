@@ -16,6 +16,7 @@
 #import "Alien.h"
 #import "Finger.h"
 #import "NativeChild.h"
+#import "Cat.h"
 
 @implementation MappingProvider
 
@@ -128,6 +129,13 @@
          @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
          @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty"
         ]];
+    }];
+}
+
++ (EKObjectMapping *)nativeMappingWithNullPropertie
+{
+    return [EKObjectMapping mappingForClass:[Cat class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[ @"age" ]];
     }];
 }
 

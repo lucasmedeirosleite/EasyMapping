@@ -7,6 +7,7 @@
 //
 
 #import "EKMapper.h"
+#import "EKPropertyHelper.h"
 #import "EKFieldMapping.h"
 #import "EKTransformer.h"
 #import "objc/runtime.h"
@@ -184,10 +185,15 @@
 + (void)setField:(EKFieldMapping *)fieldMapping onObject:(id)object fromRepresentation:(NSDictionary *)representation
 {
     id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
-    if (value == (id)[NSNull null])
-        [object setValue:nil forKeyPath:fieldMapping.field];
-    else if (value)
+    if (value == (id)[NSNull null]) {
+        
+        if (![EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:object]) {
+            [object setValue:nil forKeyPath:fieldMapping.field];
+        }
+
+    } else if (value) {
         [object setValue:value forKeyPath:fieldMapping.field];
+    }
 }
 
 + (id)getValueOfField:(EKFieldMapping *)fieldMapping fromRepresentation:(NSDictionary *)representation
