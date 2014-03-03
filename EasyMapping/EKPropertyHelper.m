@@ -10,7 +10,8 @@
 #import <objc/runtime.h>
 
 static const unichar nativeTypes[] = {
-    _C_CHR, _C_UCHR,           // BOOL, char, unsigned char
+    _C_BOOL, _C_BFLD,          // BOOL
+    _C_CHR, _C_UCHR,           // char, unsigned char
     _C_SHT, _C_USHT,           // short, unsigned short
     _C_INT, _C_UINT,           // int, unsigned int, NSInteger, NSUInteger
     _C_LNG, _C_ULNG,           // long, unsigned long
