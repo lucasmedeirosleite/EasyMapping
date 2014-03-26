@@ -14,6 +14,8 @@
 #import "Person.h"
 #import "Car.h"
 #import "Phone.h"
+#import <CoreData/CoreData.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 SPEC_BEGIN(EKManagedObjectMapperSpec)
 
@@ -76,13 +78,13 @@ describe(@"EKManagedObjectMapper", ^{
             __block NSDictionary *externalRepresentation;
             
             beforeEach(^{
-                moc = [NSManagedObjectContext MR_defaultContext];
+                moc = [NSManagedObjectContext MR_context];
                 
                 oldCar = [NSEntityDescription insertNewObjectForEntityForName:@"Car" inManagedObjectContext:moc];
                 oldCar.carID = @(1);
                 oldCar.year = @"1980";
                 oldCar.model = @"";
-                [moc MR_saveToPersistentStoreAndWait];
+                [moc MR_saveOnlySelfAndWait];
                 
                 externalRepresentation = @{
                     @"id": @(1),

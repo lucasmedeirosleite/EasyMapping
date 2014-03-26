@@ -1,9 +1,9 @@
 platform :ios, :deployment_target => "5.0"
 
-pod 'MagicalRecord'
+pod 'MagicalRecord', '2.2'
 
 target :EasyMappingCoreDataExampleTests, :exclusive => true do
-  pod 'Kiwi', '2.0.5'
-  pod 'CMFactory', '1.2.0'
-  pod 'MagicalRecord'
+  pod 'Kiwi/XCTest', '2.2.4'
+  pod 'CMFactory', '1.3.1'
+  pod 'MagicalRecord', '2.2'
 end

@@ -10,7 +10,6 @@
 #import "Car.h"
 #import "MappingProvider.h"
 
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

@@ -11,6 +11,8 @@
 #import "Person.h"
 #import "Car.h"
 #import "MappingProvider.h"
+#import <CoreData/CoreData.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 SPEC_BEGIN(EKManagedObjectMappingSpec)
 
