@@ -404,6 +404,46 @@ describe(@"EKSerializer", ^{
             });
                         
         });
+		 
+		 context(@"with hasOneRelation NULL", ^{
+			 __block Person * person;
+			 __block NSDictionary * representation;
+			 
+			 beforeEach(^{
+				 NSDictionary* externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullCar"];
+				 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+				 representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+			 });
+			 
+			 specify(^{
+				 [[[representation objectForKey:@"phones"] shouldNot] beNil];
+			 });
+			 
+			 specify(^{
+				 [[[representation objectForKey:@"car"] should] beNil];
+			 });
+		 });
+		 
+		 
+		 context(@"with hasManyRelation NULL", ^{
+			 __block Person * person;
+			 __block NSDictionary * representation;
+			 
+			 beforeEach(^{
+				 NSDictionary* externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullPhones"];
+				 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+				 representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+			 });
+			 
+			 specify(^{
+				 [[[representation objectForKey:@"phones"] should] beNil];
+			 });
+			 
+			 specify(^{
+				 [[[representation objectForKey:@"car"] shouldNot] beNil];
+			 });
+		 });
+		 
         
         context(@"with native properties", ^{
             

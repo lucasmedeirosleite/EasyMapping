@@ -1,0 +1,10 @@
+{
+    "name": "Lucas",
+    "email": "lucastoc@gmail.com",
+    "gender" : "male",
+    "car": {
+        "model": "i30",
+        "year": "2013"
+    },
+    "phones": null
+}
