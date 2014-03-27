@@ -318,6 +318,48 @@ describe(@"EKMapper", ^{
                 [[lastPhone.number should] equal:@"2222-222"];
             });
         });
+		 
+		 context(@"with hasMany mapping NULL in representation", ^{
+			 __block Person* person;
+			 
+			 beforeEach(^{
+				 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullPhones"];
+				 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+			 });
+			 
+			 specify(^{
+				 [[person.phones should] beNil];
+			 });
+			 
+			 specify(^{
+				 [[person shouldNot] beNil];
+			 });
+			 
+			 specify(^{
+				 [[person.car shouldNot] beNil];
+			 });
+		 });
+		 
+		 context(@"with hasOne mapping NULL in representation", ^{
+			 __block Person* person;
+			 
+			 beforeEach(^{
+				 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullCar"];
+				 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+			 });
+			 
+			 specify(^{
+				 [[person.phones shouldNot] beNil];
+			 });
+			 
+			 specify(^{
+				 [[person shouldNot] beNil];
+			 });
+			 
+			 specify(^{
+				 [[person.car should] beNil];
+			 });
+		 });
         
         context(@"with native properties", ^{
             

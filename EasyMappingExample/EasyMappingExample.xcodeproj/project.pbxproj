@@ -34,6 +34,8 @@
 		02FF775B18E322B2002282D3 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FF775718E322B2002282D3 /* EKObjectMappingSpec.m */; };
 		02FF775C18E322B2002282D3 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FF775818E322B2002282D3 /* EKSerializerSpec.m */; };
 		1355852318E3EE80009B5CA8 /* EKPropertyHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1355852218E3EE80009B5CA8 /* EKPropertyHelperSpec.m */; };
+		1355852518E3FEBC009B5CA8 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 1355852418E3FEBC009B5CA8 /* PersonWithNullPhones.json */; };
+		1355852718E3FF40009B5CA8 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 1355852618E3FF40009B5CA8 /* PersonWithNullCar.json */; };
 		26D15003944A49828FC15198 /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2153A07DAA43D7A6B12319 /* libPods-EasyMappingExampleTests.a */; };
 		669426141855F6470064782C /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 669426131855F6470064782C /* NativeChild.m */; };
 		66C458DE17944983005AF11E /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
@@ -106,6 +108,8 @@
 		02FF775718E322B2002282D3 /* EKObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectMappingSpec.m; sourceTree = "<group>"; };
 		02FF775818E322B2002282D3 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializerSpec.m; sourceTree = "<group>"; };
 		1355852218E3EE80009B5CA8 /* EKPropertyHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyHelperSpec.m; sourceTree = "<group>"; };
+		1355852418E3FEBC009B5CA8 /* PersonWithNullPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithNullPhones.json; sourceTree = "<group>"; };
+		1355852618E3FF40009B5CA8 /* PersonWithNullCar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithNullCar.json; sourceTree = "<group>"; };
 		669426121855F6470064782C /* NativeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeChild.h; sourceTree = "<group>"; };
 		669426131855F6470064782C /* NativeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeChild.m; sourceTree = "<group>"; };
 		66C458DC17944983005AF11E /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				02FF774318E32294002282D3 /* NativeChild.json */,
 				02FF774418E32294002282D3 /* Person.json */,
 				02FF774518E32294002282D3 /* PersonWithDifferentNaming.json */,
+				1355852418E3FEBC009B5CA8 /* PersonWithNullPhones.json */,
+				1355852618E3FF40009B5CA8 /* PersonWithNullCar.json */,
 				02FF774618E32294002282D3 /* Plane.json */,
 			);
 			name = Fixtures;
@@ -458,10 +464,12 @@
 				02FF772F18E32249002282D3 /* InfoPlist.strings in Resources */,
 				02FF774B18E32294002282D3 /* CarWithDate.json in Resources */,
 				02FF774918E32294002282D3 /* Car.json in Resources */,
+				1355852718E3FF40009B5CA8 /* PersonWithNullCar.json in Resources */,
 				02FF775018E32294002282D3 /* Native.json in Resources */,
 				02FF774818E32294002282D3 /* Alien.json in Resources */,
 				02FF774A18E32294002282D3 /* Cars.json in Resources */,
 				02FF774D18E32294002282D3 /* CarWithRoot.json in Resources */,
+				1355852518E3FEBC009B5CA8 /* PersonWithNullPhones.json in Resources */,
 				02FF774C18E32294002282D3 /* CarWithNestedAttributes.json in Resources */,
 				02FF775318E32294002282D3 /* PersonWithDifferentNaming.json in Resources */,
 				02FF775118E32294002282D3 /* NativeChild.json in Resources */,
