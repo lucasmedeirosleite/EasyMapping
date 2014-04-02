@@ -40,8 +40,6 @@ withValueBlock:(EKMappingValueBlock)valueBlock;
 - (void)mapKey:(NSString *)key toField:(NSString *)field
 withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingReverseBlock)reverseBlock;
 
-
-
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
 

@@ -14,6 +14,8 @@
 #import "Native.h"
 #import "Plane.h"
 #import "Alien.h"
+#import "UFO.h"
+#import "ColoredUFO.h"
 #import "Finger.h"
 #import "NativeChild.h"
 #import "Cat.h"
@@ -159,6 +161,23 @@
 {
     return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapFieldsFromArray:@[@"name"]];
+    }];
+}
+
++ (EKObjectMapping *)ufoMapping {
+    return [EKObjectMapping mappingForClass:[UFO class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"shape"]];
+        [mapping hasOneMapping:[self alienMapping] forKey:@"captain"];
+        [mapping hasManyMapping:[self alienMapping] forKey:@"crew"];
+        
+    }];
+}
+
++ (EKObjectMapping *)coloredUfoMapping {
+    return [EKObjectMapping mappingForClass:[ColoredUFO class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"color"]];
+        [mapping mapFieldsFromMappingObject:[self ufoMapping]];
+        
     }];
 }
 

@@ -93,16 +93,15 @@
         [self addFieldMappingToDictionary:mappingObj.fieldMappings[key]];
     }
     
-    for (NSString *key in self.hasOneMappings) {
-        EKObjectMapping *mapping = self.hasOneMappings[key];
+    for (NSString *key in mappingObj.hasOneMappings) {
+        EKObjectMapping *mapping = mappingObj.hasOneMappings[key];
         [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
     }
     
-    for (NSString *key in self.hasManyMappings) {
-         EKObjectMapping *mapping = self.hasManyMappings[key];
+    for (NSString *key in mappingObj.hasManyMappings) {
+         EKObjectMapping *mapping = mappingObj.hasManyMappings[key];
         [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
     }
-    
 }
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field

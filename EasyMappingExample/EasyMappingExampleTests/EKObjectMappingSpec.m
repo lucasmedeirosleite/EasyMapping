@@ -10,6 +10,7 @@
 #import "EasyMapping.h"
 #import "Person.h"
 #import "Car.h"
+#import "ColoredUFO.h"
 #import "MappingProvider.h"
 
 SPEC_BEGIN(EKObjectMappingSpec)
@@ -67,6 +68,10 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
+            [[mapping should] respondToSelector:@selector(mapFieldsFromArrayToPascalCase:)];
+        });
+        
+        specify(^{
             [[mapping should] respondToSelector:@selector(mapFieldsFromDictionary:)];
         });
         
@@ -92,6 +97,10 @@ describe(@"EKObjectMapping", ^{
         
         specify(^{
             [[mapping should] respondToSelector:@selector(hasManyMapping:forKey:forField:)];
+        });
+        
+        specify(^{
+            [[mapping should] respondToSelector:@selector(mapFieldsFromMappingObject:)];
         });
         
     });
@@ -261,7 +270,66 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
+                [[fieldMapping shouldNot] beNil];
+            });
+            
+            specify(^{
                 [[fieldMapping.keyPath should] equal:@"name"];
+            });
+            
+            specify(^{
+                [[fieldMapping.field should] equal:@"name"];
+            });
+            
+        });
+        
+        describe(@"email field", ^{
+            
+            __block EKFieldMapping *fieldMapping;
+            
+            beforeEach(^{
+                fieldMapping = [mapping.fieldMappings objectForKey:@"email"];
+            });
+            
+            specify(^{
+                [[fieldMapping shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[fieldMapping.keyPath should] equal:@"email"];
+            });
+            
+            specify(^{
+                [[fieldMapping.field should] equal:@"email"];
+            });
+            
+        });
+        
+    });
+    
+    describe(@"#mapKeyFieldsFromArrayToPascalCase", ^{
+        
+        __block EKObjectMapping *mapping;
+        
+        beforeEach(^{
+            mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
+            [mapping mapFieldsFromArrayToPascalCase:@[@"name", @"email"]];
+        });
+        
+        describe(@"name field", ^{
+            
+            __block EKFieldMapping *fieldMapping;
+            
+            beforeEach(^{
+                fieldMapping = [mapping.fieldMappings objectForKey:@"name"];
+            });
+            
+            specify(^{
+                [[fieldMapping shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[fieldMapping.keyPath should] equal:@"Name"];
             });
             
             specify(^{
@@ -278,7 +346,11 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"email"];
+                [[fieldMapping shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[fieldMapping.keyPath should] equal:@"Email"];
             });
             
             specify(^{
@@ -288,6 +360,7 @@ describe(@"EKObjectMapping", ^{
         });
         
     });
+    
     
     describe(@"#mapKeyFieldsFromDictionary", ^{
         
@@ -334,6 +407,55 @@ describe(@"EKObjectMapping", ^{
                 [[fieldMapping.field should] equal:@"email"];
             });
             
+        });
+        
+    });
+
+    describe(@"#mapFieldsFromMappingObject", ^{
+        
+        __block EKObjectMapping *mapping;
+        
+        beforeEach(^{
+            mapping = [[EKObjectMapping alloc] initWithObjectClass:[ColoredUFO class]];
+            [mapping mapFieldsFromMappingObject:[MappingProvider ufoMapping]];
+        });
+        
+        
+        specify(^{
+            [mapping.fieldMappings shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[mapping.fieldMappings objectForKey:@"shape"] shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[[[mapping.fieldMappings objectForKey:@"shape"] field] should] equal:@"shape"];
+        });
+        
+        
+        specify(^{
+            [[mapping hasOneMappings] shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[mapping.hasOneMappings objectForKey:@"captain"] shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[[[mapping.hasOneMappings objectForKey:@"captain"] field] should] equal:@"captain"];
+        });
+        
+        specify(^{
+            [mapping.hasManyMappings shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[mapping.hasManyMappings objectForKey:@"crew"] shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[[[mapping.hasManyMappings objectForKey:@"crew"] field] should] equal:@"crew"];
         });
         
     });

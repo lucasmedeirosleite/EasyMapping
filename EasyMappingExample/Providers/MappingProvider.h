@@ -26,6 +26,8 @@
 + (EKObjectMapping *)nativeMappingWithNullPropertie;
 + (EKObjectMapping *)planeMapping;
 + (EKObjectMapping *)alienMapping;
++ (EKObjectMapping *)ufoMapping;
++ (EKObjectMapping *)coloredUfoMapping;
 + (EKObjectMapping *)nativeChildMapping;
 
 @end

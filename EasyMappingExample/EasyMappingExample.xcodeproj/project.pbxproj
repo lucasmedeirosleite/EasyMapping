@@ -15,6 +15,9 @@
 		02E17D8F1853E37900DF27BE /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E17D8E1853E37900DF27BE /* Alien.json */; };
 		02E17D901853E37900DF27BE /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E17D8E1853E37900DF27BE /* Alien.json */; };
 		116D80270DF540439FEF3CD4 /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3A3364B05A4216A376C757 /* libPods-EasyMappingExampleTests.a */; };
+		295924E318EB64FF00C67C68 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 295924E218EB64FF00C67C68 /* UFO.m */; };
+		295924E618EB688A00C67C68 /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 295924E518EB688A00C67C68 /* ColoredUFO.m */; };
+		29FAB54618E5BB77002E6FD9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 29FAB54518E5BB77002E6FD9 /* Podfile */; };
 		669426141855F6470064782C /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 669426131855F6470064782C /* NativeChild.m */; };
 		669426161855FC9A0064782C /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 669426151855FC9A0064782C /* NativeChild.json */; };
 		66C458DE17944983005AF11E /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
@@ -85,6 +88,11 @@
 		02E17D8A1853E27400DF27BE /* Finger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finger.h; sourceTree = "<group>"; };
 		02E17D8B1853E27400DF27BE /* Finger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Finger.m; sourceTree = "<group>"; };
 		02E17D8E1853E37900DF27BE /* Alien.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Alien.json; sourceTree = "<group>"; };
+		295924E118EB64FF00C67C68 /* UFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UFO.h; sourceTree = "<group>"; };
+		295924E218EB64FF00C67C68 /* UFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UFO.m; sourceTree = "<group>"; };
+		295924E418EB688A00C67C68 /* ColoredUFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredUFO.h; sourceTree = "<group>"; };
+		295924E518EB688A00C67C68 /* ColoredUFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredUFO.m; sourceTree = "<group>"; };
+		29FAB54518E5BB77002E6FD9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		669426121855F6470064782C /* NativeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeChild.h; sourceTree = "<group>"; };
 		669426131855F6470064782C /* NativeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeChild.m; sourceTree = "<group>"; };
 		669426151855FC9A0064782C /* NativeChild.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NativeChild.json; sourceTree = "<group>"; };
@@ -213,6 +221,10 @@
 				669426131855F6470064782C /* NativeChild.m */,
 				02AFC1971897FC830032F838 /* Cat.h */,
 				02AFC1981897FC830032F838 /* Cat.m */,
+				295924E118EB64FF00C67C68 /* UFO.h */,
+				295924E218EB64FF00C67C68 /* UFO.m */,
+				295924E418EB688A00C67C68 /* ColoredUFO.h */,
+				295924E518EB688A00C67C68 /* ColoredUFO.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +241,7 @@
 		C6557E0916D6621E005D2D3E = {
 			isa = PBXGroup;
 			children = (
+				29FAB54518E5BB77002E6FD9 /* Podfile */,
 				C6557E1B16D6621E005D2D3E /* EasyMappingExample */,
 				C6557E3F16D6621E005D2D3E /* EasyMappingExampleTests */,
 				C6557E1416D6621E005D2D3E /* Frameworks */,
@@ -450,6 +463,7 @@
 				C6557E2A16D6621E005D2D3E /* Default@2x.png in Resources */,
 				C6557E2C16D6621E005D2D3E /* Default-568h@2x.png in Resources */,
 				C6557E2F16D6621E005D2D3E /* MainStoryboard.storyboard in Resources */,
+				29FAB54618E5BB77002E6FD9 /* Podfile in Resources */,
 				02E17D8F1853E37900DF27BE /* Alien.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295924E318EB64FF00C67C68 /* UFO.m in Sources */,
 				F87FFB7518228BA600F0B424 /* Plane.m in Sources */,
 				C6557E2216D6621E005D2D3E /* main.m in Sources */,
 				C6557E5516D665A7005D2D3E /* EKAppDelegate.m in Sources */,
@@ -543,6 +558,7 @@
 				A9D16D0416F2B2770003759B /* EKFieldMapping.m in Sources */,
 				A9D16D0516F2B2770003759B /* EKMapper.m in Sources */,
 				A9D16D0616F2B2770003759B /* EKObjectMapping.m in Sources */,
+				295924E618EB688A00C67C68 /* ColoredUFO.m in Sources */,
 				A9D16D0716F2B2770003759B /* EKPropertyHelper.m in Sources */,
 				A9D16D0816F2B2770003759B /* EKSerializer.m in Sources */,
 				02E17D881853E26800DF27BE /* Alien.m in Sources */,
