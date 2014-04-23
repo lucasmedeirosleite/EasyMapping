@@ -31,7 +31,9 @@
 - (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat;
 
 - (void)mapFieldsFromArray:(NSArray *)fieldsArray;
+- (void)mapFieldsFromArrayToPascalCase:(NSArray *)fieldsArray;
 - (void)mapFieldsFromDictionary:(NSDictionary *)fieldsDictionary;
+- (void)mapFieldsFromMappingObject:(EKObjectMapping *)mappingObj;
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field
 withValueBlock:(EKMappingValueBlock)valueBlock;

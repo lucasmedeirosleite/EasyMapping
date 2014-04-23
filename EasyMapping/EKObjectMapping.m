@@ -70,11 +70,38 @@
     }
 }
 
+-(void)mapFieldsFromArrayToPascalCase:(NSArray *)fieldsArray {
+    
+    for (NSString *key in fieldsArray) {
+        NSString *pascalKey = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] uppercaseString]];
+        
+        [self mapKey:pascalKey toField:key];
+    }
+}
+
 - (void)mapFieldsFromDictionary:(NSDictionary *)fieldsDictionary
 {
     [fieldsDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [self mapKey:key toField:obj];
     }];
+}
+
+
+-(void)mapFieldsFromMappingObject:(EKObjectMapping *)mappingObj {
+    
+    for (NSString *key in mappingObj.fieldMappings) {
+        [self addFieldMappingToDictionary:mappingObj.fieldMappings[key]];
+    }
+    
+    for (NSString *key in mappingObj.hasOneMappings) {
+        EKObjectMapping *mapping = mappingObj.hasOneMappings[key];
+        [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+    }
+    
+    for (NSString *key in mappingObj.hasManyMappings) {
+         EKObjectMapping *mapping = mappingObj.hasManyMappings[key];
+        [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+    }
 }
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field
