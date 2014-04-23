@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022E432D19083CCF00B7A6BB /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432A19083CCF00B7A6BB /* ColoredUFO.m */; };
+		022E432E19083CCF00B7A6BB /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432A19083CCF00B7A6BB /* ColoredUFO.m */; };
+		022E432F19083CCF00B7A6BB /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432C19083CCF00B7A6BB /* UFO.m */; };
+		022E433019083CCF00B7A6BB /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432C19083CCF00B7A6BB /* UFO.m */; };
 		02AFC1991897FC830032F838 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFC1981897FC830032F838 /* Cat.m */; };
 		02E17D881853E26800DF27BE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D871853E26800DF27BE /* Alien.m */; };
 		02E17D8C1853E27400DF27BE /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D8B1853E27400DF27BE /* Finger.m */; };
@@ -77,6 +81,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022E432919083CCF00B7A6BB /* ColoredUFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredUFO.h; sourceTree = "<group>"; };
+		022E432A19083CCF00B7A6BB /* ColoredUFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredUFO.m; sourceTree = "<group>"; };
+		022E432B19083CCF00B7A6BB /* UFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UFO.h; sourceTree = "<group>"; };
+		022E432C19083CCF00B7A6BB /* UFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UFO.m; sourceTree = "<group>"; };
 		02AFC1971897FC830032F838 /* Cat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat.h; sourceTree = "<group>"; };
 		02AFC1981897FC830032F838 /* Cat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
 		02E17D861853E26800DF27BE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alien.h; sourceTree = "<group>"; };
@@ -242,26 +250,30 @@
 			children = (
 				C6BD161E16DD872400CCB4F6 /* Address.h */,
 				C6BD161F16DD872400CCB4F6 /* Address.m */,
-				C6557E6416D68D08005D2D3E /* Person.h */,
-				C6557E6516D68D08005D2D3E /* Person.m */,
+				02E17D861853E26800DF27BE /* Alien.h */,
+				02E17D871853E26800DF27BE /* Alien.m */,
 				C6557E6716D68D2E005D2D3E /* Car.h */,
 				C6557E6816D68D2E005D2D3E /* Car.m */,
-				C6557E6A16D68D55005D2D3E /* Phone.h */,
-				C6557E6B16D68D55005D2D3E /* Phone.m */,
+				02AFC1971897FC830032F838 /* Cat.h */,
+				02AFC1981897FC830032F838 /* Cat.m */,
+				022E432919083CCF00B7A6BB /* ColoredUFO.h */,
+				022E432A19083CCF00B7A6BB /* ColoredUFO.m */,
+				02E17D8A1853E27400DF27BE /* Finger.h */,
+				02E17D8B1853E27400DF27BE /* Finger.m */,
 				66C458DC17944983005AF11E /* Native.h */,
 				66C458DD17944983005AF11E /* Native.m */,
+				669426121855F6470064782C /* NativeChild.h */,
+				669426131855F6470064782C /* NativeChild.m */,
+				C6557E6416D68D08005D2D3E /* Person.h */,
+				C6557E6516D68D08005D2D3E /* Person.m */,
+				C6557E6A16D68D55005D2D3E /* Phone.h */,
+				C6557E6B16D68D55005D2D3E /* Phone.m */,
 				F889A7B017FDA88500DFC8D4 /* Plane.h */,
 				F889A7B117FDA88500DFC8D4 /* Plane.m */,
 				F87FFB791822EC8500F0B424 /* Seaplane.h */,
 				F87FFB7A1822EC8500F0B424 /* Seaplane.m */,
-				02E17D861853E26800DF27BE /* Alien.h */,
-				02E17D871853E26800DF27BE /* Alien.m */,
-				02E17D8A1853E27400DF27BE /* Finger.h */,
-				02E17D8B1853E27400DF27BE /* Finger.m */,
-				669426121855F6470064782C /* NativeChild.h */,
-				669426131855F6470064782C /* NativeChild.m */,
-				02AFC1971897FC830032F838 /* Cat.h */,
-				02AFC1981897FC830032F838 /* Cat.m */,
+				022E432B19083CCF00B7A6BB /* UFO.h */,
+				022E432C19083CCF00B7A6BB /* UFO.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -529,8 +541,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				02FF775918E322B2002282D3 /* EKFieldMappingSpec.m in Sources */,
+				022E432E19083CCF00B7A6BB /* ColoredUFO.m in Sources */,
 				02FF775A18E322B2002282D3 /* EKMapperSpec.m in Sources */,
 				1355852318E3EE80009B5CA8 /* EKPropertyHelperSpec.m in Sources */,
+				022E433019083CCF00B7A6BB /* UFO.m in Sources */,
 				02FF775C18E322B2002282D3 /* EKSerializerSpec.m in Sources */,
 				02FF775B18E322B2002282D3 /* EKObjectMappingSpec.m in Sources */,
 			);
@@ -549,6 +563,8 @@
 				C6557E6C16D68D55005D2D3E /* Phone.m in Sources */,
 				C6500E3F16D98780009FCC67 /* MappingProvider.m in Sources */,
 				C6BD162016DD872400CCB4F6 /* Address.m in Sources */,
+				022E432F19083CCF00B7A6BB /* UFO.m in Sources */,
+				022E432D19083CCF00B7A6BB /* ColoredUFO.m in Sources */,
 				02AFC1991897FC830032F838 /* Cat.m in Sources */,
 				02E17D8C1853E27400DF27BE /* Finger.m in Sources */,
 				F87FFB7B1822EC8500F0B424 /* Seaplane.m in Sources */,
