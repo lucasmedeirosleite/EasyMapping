@@ -14,5 +14,6 @@
     "floatProperty" : 11.1,
     "cgFloatProperty" : 12.2,
     "doubleProperty" : 13.3,
-    "boolProperty" : true
+    "boolProperty" : true,
+    "smallBoolProperty" : true
 }

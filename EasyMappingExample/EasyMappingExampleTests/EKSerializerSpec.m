@@ -520,6 +520,10 @@ describe(@"EKSerializer", ^{
                 [[[representation objectForKey:@"boolProperty"] should] equal:@(YES)];
             });
             
+            specify(^{
+                [[[representation objectForKey:@"smallBoolProperty"] should] equal:@(YES)];
+            });
+            
         });
         
         context(@"with native properties in superclass", ^{

@@ -26,5 +26,6 @@
 @property (nonatomic, readwrite) CGFloat cgFloatProperty;
 @property (nonatomic, readwrite) double doubleProperty;
 @property (nonatomic, readwrite) BOOL boolProperty;
+@property (nonatomic, readwrite) bool smallBoolProperty;
 
 @end

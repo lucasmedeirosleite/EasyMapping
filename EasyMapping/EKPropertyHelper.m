@@ -173,11 +173,15 @@ static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation) {
         double result;
         [invocation getReturnValue:&result];
         resultValue = [NSNumber numberWithDouble:result];
-    }else if (!strcmp(returnType, @encode(BOOL))){
-		 BOOL result;
-		 [invocation getReturnValue:&result];
-		 resultValue = @(result);
-	 }
+    } else if (!strcmp(returnType, @encode(BOOL))){
+        BOOL result;
+        [invocation getReturnValue:&result];
+        resultValue = @(result);
+    } else if (!strcmp(returnType, @encode(bool))){
+        bool result;
+        [invocation getReturnValue:&result];
+        resultValue = [NSNumber numberWithBool:result];
+    }
 
     return resultValue;
 }
