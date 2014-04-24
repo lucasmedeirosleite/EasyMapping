@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.author       = { "Lucas Medeiros" => "lucastoc@gmail.com" }
 
-  s.source       = { :git => "https://github.com/EasyMapping/EasyMapping", :tag => "0.5.6" }
+  s.source       = { :git => "https://github.com/EasyMapping/EasyMapping.git", :tag => "0.5.6" }
 
   s.requires_arc = true
 
