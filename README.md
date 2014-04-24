@@ -198,6 +198,7 @@ Thanks to:
 * [DenHeadless](https://github.com/DenHeadless) who added the ability to use different naming in hasOne and hasMany mappings!
 * [ArtFeel](https://github.com/ArtFeel) who added the ability to serialization/deserialization of primitive types!
 * [Dany L'Hébreux](https://github.com/danylhebreux) who added the NSSet support!
+* [Jack](https://github.com/Jack-s) who added mapFieldsFromMappingObject and mapFieldsFromArrayToPascalCase functionality
 
 ## Requirements
 
