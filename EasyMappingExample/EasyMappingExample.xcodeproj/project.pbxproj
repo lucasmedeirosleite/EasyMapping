@@ -36,10 +36,9 @@
 		1355852318E3EE80009B5CA8 /* EKPropertyHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1355852218E3EE80009B5CA8 /* EKPropertyHelperSpec.m */; };
 		1355852518E3FEBC009B5CA8 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 1355852418E3FEBC009B5CA8 /* PersonWithNullPhones.json */; };
 		1355852718E3FF40009B5CA8 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 1355852618E3FF40009B5CA8 /* PersonWithNullCar.json */; };
-		26D15003944A49828FC15198 /* libPods-EasyMappingExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2153A07DAA43D7A6B12319 /* libPods-EasyMappingExampleTests.a */; };
+		4526F58348974508ACDAF175 /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D140F1D8CFB24488BCBF2F99 /* libPods-Example.a */; };
 		669426141855F6470064782C /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 669426131855F6470064782C /* NativeChild.m */; };
 		66C458DE17944983005AF11E /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
-		92AA71B30AC744E9AB683092 /* libPods-EasyMappingExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D1AD2DF1174A15B006C3DF /* libPods-EasyMappingExample.a */; };
 		9AE54FD6190BD7D5003A3B56 /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD1190BD7D5003A3B56 /* ManagedCar.m */; };
 		9AE54FD7190BD7D5003A3B56 /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD3190BD7D5003A3B56 /* ManagedPerson.m */; };
 		9AE54FD8190BD7D5003A3B56 /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD5190BD7D5003A3B56 /* ManagedPhone.m */; };
@@ -55,6 +54,7 @@
 		A9D16D0716F2B2770003759B /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		A9D16D0816F2B2770003759B /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		A9D16D0916F2B2770003759B /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
+		B98C2690D3124D6193AF37CE /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5B7A828DE84ADFB447D724 /* libPods-Tests.a */; };
 		C6500E3F16D98780009FCC67 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C6500E3E16D98780009FCC67 /* MappingProvider.m */; };
 		C6557E2216D6621E005D2D3E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E2116D6621E005D2D3E /* main.m */; };
 		C6557E2816D6621E005D2D3E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C6557E2716D6621E005D2D3E /* Default.png */; };
@@ -118,11 +118,13 @@
 		1355852218E3EE80009B5CA8 /* EKPropertyHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyHelperSpec.m; sourceTree = "<group>"; };
 		1355852418E3FEBC009B5CA8 /* PersonWithNullPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithNullPhones.json; sourceTree = "<group>"; };
 		1355852618E3FF40009B5CA8 /* PersonWithNullCar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonWithNullCar.json; sourceTree = "<group>"; };
+		3AD300E68FDB4CCABF42F89B /* Pods-Example.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.xcconfig"; path = "Pods/Pods-Example.xcconfig"; sourceTree = "<group>"; };
 		669426121855F6470064782C /* NativeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeChild.h; sourceTree = "<group>"; };
 		669426131855F6470064782C /* NativeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeChild.m; sourceTree = "<group>"; };
 		66C458DC17944983005AF11E /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
 		66C458DD17944983005AF11E /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
 		70D1AD2DF1174A15B006C3DF /* libPods-EasyMappingExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMappingExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		929B1B043C884B6FA2C1CC96 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = "<group>"; };
 		9AE54FD0190BD7D5003A3B56 /* ManagedCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedCar.h; sourceTree = "<group>"; };
 		9AE54FD1190BD7D5003A3B56 /* ManagedCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedCar.m; sourceTree = "<group>"; };
 		9AE54FD2190BD7D5003A3B56 /* ManagedPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedPerson.h; sourceTree = "<group>"; };
@@ -136,7 +138,6 @@
 		9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
 		9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
 		9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMappingExample.xcdatamodel; sourceTree = "<group>"; };
-		A6E6257F188B4B86A6EC59A9 /* Pods-EasyMappingExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExampleTests.xcconfig"; path = "Pods/Pods-EasyMappingExampleTests.xcconfig"; sourceTree = "<group>"; };
 		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
 		A9D16CF716F2B2770003759B /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFieldMapping.h; sourceTree = "<group>"; };
 		A9D16CF816F2B2770003759B /* EKFieldMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFieldMapping.m; sourceTree = "<group>"; };
@@ -154,7 +155,7 @@
 		BC2153A07DAA43D7A6B12319 /* libPods-EasyMappingExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMappingExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6500E3D16D98780009FCC67 /* MappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappingProvider.h; sourceTree = "<group>"; };
 		C6500E3E16D98780009FCC67 /* MappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappingProvider.m; sourceTree = "<group>"; };
-		C6557E1216D6621E005D2D3E /* EasyMappingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyMappingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6557E1216D6621E005D2D3E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6557E1D16D6621E005D2D3E /* EasyMappingExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EasyMappingExample-Info.plist"; sourceTree = "<group>"; };
 		C6557E2116D6621E005D2D3E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C6557E2316D6621E005D2D3E /* EasyMappingExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMappingExample-Prefix.pch"; sourceTree = "<group>"; };
@@ -174,7 +175,8 @@
 		C6557E6B16D68D55005D2D3E /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
 		C6BD161E16DD872400CCB4F6 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		C6BD161F16DD872400CCB4F6 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
-		F1A045956CEB4B908E78D448 /* Pods-EasyMappingExample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMappingExample.xcconfig"; path = "Pods/Pods-EasyMappingExample.xcconfig"; sourceTree = "<group>"; };
+		D140F1D8CFB24488BCBF2F99 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB5B7A828DE84ADFB447D724 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87FFB791822EC8500F0B424 /* Seaplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seaplane.h; sourceTree = "<group>"; };
 		F87FFB7A1822EC8500F0B424 /* Seaplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seaplane.m; sourceTree = "<group>"; };
 		F889A7B017FDA88500DFC8D4 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
@@ -186,7 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26D15003944A49828FC15198 /* libPods-EasyMappingExampleTests.a in Frameworks */,
+				B98C2690D3124D6193AF37CE /* libPods-Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92AA71B30AC744E9AB683092 /* libPods-EasyMappingExample.a in Frameworks */,
+				4526F58348974508ACDAF175 /* libPods-Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,15 +325,15 @@
 				02FF772A18E32249002282D3 /* EasyMappingExampleTests */,
 				C6557E1416D6621E005D2D3E /* Frameworks */,
 				C6557E1316D6621E005D2D3E /* Products */,
-				A6E6257F188B4B86A6EC59A9 /* Pods-EasyMappingExampleTests.xcconfig */,
-				F1A045956CEB4B908E78D448 /* Pods-EasyMappingExample.xcconfig */,
+				3AD300E68FDB4CCABF42F89B /* Pods-Example.xcconfig */,
+				929B1B043C884B6FA2C1CC96 /* Pods-Tests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
 		C6557E1316D6621E005D2D3E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C6557E1216D6621E005D2D3E /* EasyMappingExample.app */,
+				C6557E1216D6621E005D2D3E /* Example.app */,
 				02FF772618E32249002282D3 /* Tests.octest */,
 			);
 			name = Products;
@@ -342,6 +344,8 @@
 			children = (
 				BC2153A07DAA43D7A6B12319 /* libPods-EasyMappingExampleTests.a */,
 				70D1AD2DF1174A15B006C3DF /* libPods-EasyMappingExample.a */,
+				D140F1D8CFB24488BCBF2F99 /* libPods-Example.a */,
+				DB5B7A828DE84ADFB447D724 /* libPods-Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -456,7 +460,7 @@
 			);
 			name = Example;
 			productName = EasyMappingExample;
-			productReference = C6557E1216D6621E005D2D3E /* EasyMappingExample.app */;
+			productReference = C6557E1216D6621E005D2D3E /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -545,7 +549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-EasyMappingExample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		36A778D5906448E9A08A204F /* Copy Pods Resources */ = {
@@ -560,7 +564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-EasyMappingExampleTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9E00CE7DC4D1402AB9E15182 /* Check Pods Manifest.lock */ = {
@@ -680,7 +684,7 @@
 /* Begin XCBuildConfiguration section */
 		02FF773618E32249002282D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6E6257F188B4B86A6EC59A9 /* Pods-EasyMappingExampleTests.xcconfig */;
+			baseConfigurationReference = 929B1B043C884B6FA2C1CC96 /* Pods-Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				CLANG_ENABLE_MODULES = YES;
@@ -715,7 +719,7 @@
 		};
 		02FF773718E32249002282D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6E6257F188B4B86A6EC59A9 /* Pods-EasyMappingExampleTests.xcconfig */;
+			baseConfigurationReference = 929B1B043C884B6FA2C1CC96 /* Pods-Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				CLANG_ENABLE_MODULES = YES;
@@ -803,7 +807,7 @@
 		};
 		C6557E4B16D6621E005D2D3E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1A045956CEB4B908E78D448 /* Pods-EasyMappingExample.xcconfig */;
+			baseConfigurationReference = 3AD300E68FDB4CCABF42F89B /* Pods-Example.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -819,7 +823,7 @@
 		};
 		C6557E4C16D6621E005D2D3E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1A045956CEB4B908E78D448 /* Pods-EasyMappingExample.xcconfig */;
+			baseConfigurationReference = 3AD300E68FDB4CCABF42F89B /* Pods-Example.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
