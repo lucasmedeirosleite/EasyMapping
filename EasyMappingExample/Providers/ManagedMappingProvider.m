@@ -6,16 +6,17 @@
 //  Copyright (c) 2013 EasyKit. All rights reserved.
 //
 
-#import "MappingProvider.h"
-#import "Car.h"
-#import "Phone.h"
-#import "Person.h"
+#import "ManagedMappingProvider.h"
+#import "ManagedCar.h"
+#import "ManagedPhone.h"
+#import "ManagedPerson.h"
 
-@implementation MappingProvider
+@implementation ManagedMappingProvider
 
 + (EKManagedObjectMapping *)carMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Car" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"carID" }];
         [mapping mapFieldsFromArray:@[@"model", @"year"]];
         mapping.primaryKey = @"carID";
@@ -24,7 +25,9 @@
 
 + (EKManagedObjectMapping *)carWithRootKeyMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Car" withRootPath:@"car" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
+                                           withRootPath:@"car"
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"carID" }];
         [mapping mapFieldsFromArray:@[@"model", @"year"]];
         mapping.primaryKey = @"carID";
@@ -33,7 +36,8 @@
 
 + (EKManagedObjectMapping *)carNestedAttributesMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Car" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"carID" }];
         [mapping mapFieldsFromArray:@[@"model"]];
         [mapping mapFieldsFromDictionary:@{
@@ -45,7 +49,8 @@
 
 + (EKManagedObjectMapping *)carWithDateMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Car" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"carID" }];
         [mapping mapFieldsFromArray:@[@"model", @"year"]];
         [mapping mapKey:@"created_at" toField:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
@@ -55,7 +60,8 @@
 
 + (EKManagedObjectMapping *)phoneMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Phone" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPhone class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"phoneID" }];
         [mapping mapFieldsFromArray:@[@"number"]];
         [mapping mapFieldsFromDictionary:@{
@@ -68,7 +74,8 @@
 
 + (EKManagedObjectMapping *)personMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Person" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"personID" }];
         [mapping mapFieldsFromArray:@[@"name", @"email", @"gender"]];
         [mapping hasOneMapping:[self carMapping] forKey:@"car"];
@@ -79,7 +86,8 @@
 
 + (EKManagedObjectMapping *)personWithCarMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Person" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"personID" }];
         [mapping mapFieldsFromArray:@[@"name", @"email"]];
         [mapping hasOneMapping:[self carMapping] forKey:@"car"];
@@ -89,7 +97,8 @@
 
 + (EKManagedObjectMapping *)personWithPhonesMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Person" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"personID" }];
         [mapping mapFieldsFromArray:@[@"name", @"email"]];
         [mapping hasManyMapping:[self phoneMapping] forKey:@"phones"];
@@ -99,7 +108,8 @@
 
 + (EKManagedObjectMapping *)personWithOnlyValueBlockMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:@"Person" withBlock:^(EKManagedObjectMapping *mapping) {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
+                                              withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"personID" }];
         [mapping mapFieldsFromArray:@[@"name", @"email", @"gender"]];
         mapping.primaryKey = @"personID";

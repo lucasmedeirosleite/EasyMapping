@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Person;
+@class ManagedPerson;
 
-@interface Phone : NSManagedObject
+@interface ManagedPhone : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * phoneID;
 @property (nonatomic, retain) NSString * ddi;
 @property (nonatomic, retain) NSString * ddd;
 @property (nonatomic, retain) NSString * number;
-@property (nonatomic, retain) Person *person;
+@property (nonatomic, retain) ManagedPerson *person;
 
 @end

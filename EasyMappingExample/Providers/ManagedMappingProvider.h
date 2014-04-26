@@ -10,7 +10,7 @@
 #import "EasyMapping.h"
 #import "EKManagedObjectMapping.h"
 
-@interface MappingProvider : NSObject
+@interface ManagedMappingProvider : NSObject
 
 + (EKManagedObjectMapping *)carMapping;
 + (EKManagedObjectMapping *)carWithRootKeyMapping;

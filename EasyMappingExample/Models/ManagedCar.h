@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Car : NSManagedObject
+@interface ManagedCar : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * carID;
 @property (nonatomic, retain) NSString * model;

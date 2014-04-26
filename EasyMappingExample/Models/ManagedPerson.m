@@ -6,11 +6,11 @@
 //
 //
 
-#import "Person.h"
+#import "ManagedPerson.h"
 #import "Car.h"
 
 
-@implementation Person
+@implementation ManagedPerson
 
 @dynamic personID;
 @dynamic name;
