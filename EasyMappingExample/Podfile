@@ -1,4 +1,5 @@
 platform :ios, :deployment_target => "5.0"
+inhibit_all_warnings!
 
 target :EasyMappingExampleTests, :exclusive => true do
   pod 'Kiwi/XCTest', '2.2.4'
