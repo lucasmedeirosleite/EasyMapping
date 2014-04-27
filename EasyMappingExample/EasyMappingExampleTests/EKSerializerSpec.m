@@ -144,10 +144,11 @@ describe(@"EKSerializer", ^{
 
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd"];
+            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+            formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
             __block NSString *dateString = [formatter stringFromDate:date];
 
             beforeEach(^{
-
                 CMFactory *factory = [CMFactory forClass:[Car class]];
                 [factory addToField:@"model" value:^{
                     return @"i30";
