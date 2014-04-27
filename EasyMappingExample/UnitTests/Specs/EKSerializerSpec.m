@@ -509,7 +509,8 @@ describe(@"EKSerializer", ^{
             });
             
             specify(^{
-                [[[representation objectForKey:@"cgFloatProperty"] should] equal:@(12.2f)];
+                CGFloat expected = 12.2f;
+                [[[representation objectForKey:@"cgFloatProperty"] should] equal:expected withDelta:0.001];
             });
             
             specify(^{

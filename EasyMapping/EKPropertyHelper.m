@@ -9,7 +9,7 @@
 #import "EKPropertyHelper.h"
 #import <objc/runtime.h>
 
-static const unichar nativeTypes[] = {
+static const char scalarTypes[] = {
     _C_BOOL, _C_BFLD,          // BOOL
     _C_CHR, _C_UCHR,           // char, unsigned char
     _C_SHT, _C_USHT,           // short, unsigned short
@@ -31,7 +31,7 @@ static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation);
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     NSString *propertyName = NSStringFromSelector(selector);
-    if ([self propertyNameIsNative:propertyName fromObject:object]) {
+    if ([self propertyNameIsScalar:propertyName fromObject:object]) {
         return [self performNativeSelector:selector onObject:object];
     } else {
         return [object performSelector:selector];
@@ -48,20 +48,27 @@ static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation);
     return getPrimitiveReturnValueFromInvocation(invocation);
 }
 
-+ (BOOL)propertyNameIsNative:(NSString *)propertyName fromObject:(id)object
++ (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object
 {
-    NSString *typeDescription = [self getPropertyTypeFromObject:object withPropertyName:propertyName];
+    objc_property_t property = class_getProperty(object_getClass(object), [propertyName UTF8String]);
+	NSString *type = property ? [self propertyTypeStringRepresentationFromProperty:property] : nil;
     
-    if (typeDescription.length == 1) {
-        unichar propertyType = [typeDescription characterAtIndex:0];
-        for (int i = 0; i < sizeof(nativeTypes); i++) {
-            if (nativeTypes[i] == propertyType) {
-                return YES;
-            }
-        }
-    }
-    
-    return NO;
+	return (type.length == 1) && (NSNotFound != [@(scalarTypes) rangeOfString:type].location);
+}
+
++ (NSString *) propertyTypeStringRepresentationFromProperty:(objc_property_t)property
+{
+    const char *TypeAttribute = "T";
+	char *type = property_copyAttributeValue(property, TypeAttribute);
+	NSString *propertyType = (type[0] != _C_ID) ? @(type) : ({
+		(type[1] == 0) ? @"id" : ({
+			// Modern format of a type attribute (e.g. @"NSSet")
+			type[strlen(type) - 1] = 0;
+			@(type + 2);
+		});
+	});
+	free(type);
+	return propertyType;
 }
 
 + (NSString *)getPropertyTypeFromObject:(id)object withPropertyName:(NSString *)propertyString

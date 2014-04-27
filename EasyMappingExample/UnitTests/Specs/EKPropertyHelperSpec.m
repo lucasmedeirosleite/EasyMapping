@@ -14,6 +14,10 @@
 #import "CMFixture.h"
 #import "MappingProvider.h"
 
+@interface EKPropertyHelper()
++ (id)performNativeSelector:(SEL)selector onObject:(id)object;
+@end
+
 
 SPEC_BEGIN(EKPropertyHelperSpec)
 
@@ -30,11 +34,11 @@ describe(@"EKPropertyHelper", ^{
 				EKObjectMapping* mapping = [MappingProvider nativeMapping];
 				[mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 					EKFieldMapping* fieldMapping = obj;
-					[[@([EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:native]) should] equal:@(YES)];
+					[[@([EKPropertyHelper propertyNameIsScalar:fieldMapping.field fromObject:native]) should] equal:@(YES)];
 				}];
 			});
 			specify(^{
-				[[@([EKPropertyHelper propertyNameIsNative:@"boolProperty" fromObject:native]) should] equal:@(YES)];
+				[[@([EKPropertyHelper propertyNameIsScalar:@"boolProperty" fromObject:native]) should] equal:@(YES)];
 			});
 		});
 		
