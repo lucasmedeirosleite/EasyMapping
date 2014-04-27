@@ -12,4 +12,6 @@
 
 + (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object;
 
++ (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
+
 @end

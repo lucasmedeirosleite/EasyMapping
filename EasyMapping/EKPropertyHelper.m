@@ -44,4 +44,29 @@ static const char scalarTypes[] = {
 	return propertyType;
 }
 
++ (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName
+{
+    objc_property_t property = class_getProperty([object class], [propertyName UTF8String]);
+	if (property)
+    {
+		NSString *type = [self propertyTypeStringRepresentationFromProperty:property];
+		if ([type isEqualToString:@"NSSet"]) {
+			return [NSSet setWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSMutableSet"]) {
+            return [NSMutableSet setWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSOrderedSet"]) {
+            return [NSOrderedSet orderedSetWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSMutableOrderedSet"]) {
+            return [NSMutableOrderedSet orderedSetWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSMutableArray"]) {
+            return [NSMutableArray arrayWithArray:array];
+		}
+	}
+    return array;
+}
+
 @end
