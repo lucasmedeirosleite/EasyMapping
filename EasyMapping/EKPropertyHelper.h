@@ -10,7 +10,6 @@
 
 @interface EKPropertyHelper : NSObject
 
-+ (id)performSelector:(SEL)selector onObject:(id)object;
 + (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object;
 
 @end
