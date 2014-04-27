@@ -1,3 +1,8 @@
+![Build Status](https://travis-ci.org/EasyMapping/EasyMapping.png?branch=master) &nbsp;
+![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/EasyMapping/badge.png) &nbsp; 
+![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/EasyMapping/badge.png) &nbsp; 
+![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
+
 # EasyMapping
 
 An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML or just a NSDictionary) into a Class and vice versa.

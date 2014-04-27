@@ -47,8 +47,7 @@
 
 + (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withFieldMapping:(EKFieldMapping *)fieldMapping
 {
-    SEL selector = NSSelectorFromString(fieldMapping.field);
-    id returnedValue = [EKPropertyHelper performSelector:selector onObject:object];
+    id returnedValue = [object valueForKey:fieldMapping.field];
     
     if (returnedValue) {
         
@@ -88,7 +87,7 @@
                withObjectMapping:(EKObjectMapping *)mapping
                       fromObject:(id)object
 {
-    id hasOneObject = [EKPropertyHelper performSelector:NSSelectorFromString(mapping.field) onObject:object];
+    id hasOneObject = [object valueForKey:mapping.field];
     if (hasOneObject) {
         NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject withMapping:mapping];
         [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
@@ -99,7 +98,7 @@
                 withObjectMapping:(EKObjectMapping *)mapping
                        fromObject:(id)object
 {
-    id hasManyObject = [EKPropertyHelper performSelector:NSSelectorFromString(mapping.field) onObject:object];
+    id hasManyObject = [object valueForKey:mapping.field];
     if (hasManyObject) {
         NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject withMapping:mapping];
         [representation setObject:hasManyRepresentation forKey:mapping.keyPath];

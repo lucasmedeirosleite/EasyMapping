@@ -10,7 +10,6 @@
 #import "EKPropertyHelper.h"
 #import "EKFieldMapping.h"
 #import "EKTransformer.h"
-#import "objc/runtime.h"
 
 @implementation EKMapper
 
@@ -66,40 +65,15 @@
 		 NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
 		 if (arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj];
-			 id parsedObjects = [EKMapper convertPropertyArray:parsedArray forObject:object withPropertyName:[obj field]];
-			 
+             id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
+                                                               forObject:object
+                                                        withPropertyName:[obj field]];
 			 [object setValue:parsedObjects forKeyPath:valueMapping.field];
 		 } else {
 			 [object setValue:nil forKey:valueMapping.field];
 		 }
     }];
     return object;
-}
-
-+ (id)convertPropertyArray:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName {
-    id convertedObject = array;
-    objc_property_t property = class_getProperty([object class], [propertyName UTF8String]);
-    if (property) {
-        NSString *propertyAttributes = [NSString stringWithUTF8String:property_getAttributes(property)];
-        if ([propertyAttributes length] > 0) {
-            if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSSet"], NSMakeRange(NSNotFound, 0))) {
-                convertedObject = [NSSet setWithArray:array];
-            }
-            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSMutableSet"], NSMakeRange(NSNotFound, 0))) {
-                convertedObject = [[NSSet setWithArray:array] mutableCopy];
-            }
-            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSOrderedSet"], NSMakeRange(NSNotFound, 0))) {
-                convertedObject = [NSOrderedSet orderedSetWithArray:array];
-            }
-            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSMutableOrderedSet"], NSMakeRange(NSNotFound, 0))) {
-                convertedObject = [[NSOrderedSet orderedSetWithArray:array] mutableCopy];
-            }
-            else if (!NSEqualRanges([propertyAttributes rangeOfString:@"NSMutableArray"], NSMakeRange(NSNotFound, 0))) {
-                convertedObject = [NSMutableArray arrayWithArray:array];
-            }
-        }
-    }
-    return convertedObject;
 }
 
 + (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
@@ -121,7 +95,9 @@
         NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         if (arrayToBeParsed != (id)[NSNull null]) {
             NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj inManagedObjectContext:moc];
-            id parsedObjects = [EKMapper convertPropertyArray:parsedArray forObject:object withPropertyName:[obj field]];
+            id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
+                                                              forObject:object
+                                                       withPropertyName:[obj field]];
             EKObjectMapping * valueMapping = obj;
             [object setValue:parsedObjects forKeyPath:valueMapping.field];
         }
@@ -198,7 +174,7 @@
 {
     id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
     if (value == (id)[NSNull null]) {
-        if (![EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:object]) {
+        if (![EKPropertyHelper propertyNameIsScalar:fieldMapping.field fromObject:object]) {
             [object setValue:nil forKeyPath:fieldMapping.field];
         }
     } else if (value) {

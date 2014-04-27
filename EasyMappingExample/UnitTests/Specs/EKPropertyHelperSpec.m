@@ -30,27 +30,11 @@ describe(@"EKPropertyHelper", ^{
 				EKObjectMapping* mapping = [MappingProvider nativeMapping];
 				[mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 					EKFieldMapping* fieldMapping = obj;
-					[[@([EKPropertyHelper propertyNameIsNative:fieldMapping.field fromObject:native]) should] equal:@(YES)];
+					[[@([EKPropertyHelper propertyNameIsScalar:fieldMapping.field fromObject:native]) should] equal:@(YES)];
 				}];
 			});
 			specify(^{
-				[[@([EKPropertyHelper propertyNameIsNative:@"boolProperty" fromObject:native]) should] equal:@(YES)];
-			});
-		});
-		
-		context(@"get all native properties", ^{
-			specify(^{
-				EKObjectMapping* mapping = [MappingProvider nativeMapping];
-				[mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-					EKFieldMapping* fieldMapping = obj;
-					[[EKPropertyHelper performNativeSelector:NSSelectorFromString(fieldMapping.field) onObject:native] shouldNotBeNil];
-				}];
-			});
-		});
-		
-		context(@"get single fields", ^{
-			specify(^{
-				[[EKPropertyHelper performNativeSelector:@selector(boolProperty) onObject:native] shouldNotBeNil];
+				[[@([EKPropertyHelper propertyNameIsScalar:@"boolProperty" fromObject:native]) should] equal:@(YES)];
 			});
 		});
 	});

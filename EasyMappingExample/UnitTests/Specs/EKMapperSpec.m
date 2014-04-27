@@ -424,7 +424,7 @@ describe(@"EKMapper", ^{
             });
             
             specify(^{
-                [[@(native.cgFloatProperty) should] equal:@(12.2f)];
+                [[@(native.cgFloatProperty) should] equal:12.2f withDelta:0.001];
             });
             
             specify(^{

@@ -10,8 +10,8 @@
 
 @interface EKPropertyHelper : NSObject
 
-+ (id)performSelector:(SEL)selector onObject:(id)object;
-+ (id)performNativeSelector:(SEL)selector onObject:(id)object;
-+ (BOOL)propertyNameIsNative:(NSString *)propertyName fromObject:(id)object;
++ (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object;
+
++ (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
 @end

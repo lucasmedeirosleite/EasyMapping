@@ -9,7 +9,7 @@
 #import "EKPropertyHelper.h"
 #import <objc/runtime.h>
 
-static const unichar nativeTypes[] = {
+static const char scalarTypes[] = {
     _C_BOOL, _C_BFLD,          // BOOL
     _C_CHR, _C_UCHR,           // char, unsigned char
     _C_SHT, _C_USHT,           // short, unsigned short
@@ -19,175 +19,54 @@ static const unichar nativeTypes[] = {
     _C_FLT, _C_DBL             // float, CGFloat, double
 };
 
-static const char * getPropertyType(objc_property_t property);
-static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation);
-
-
 @implementation EKPropertyHelper
 
-
-+ (id)performSelector:(SEL)selector onObject:(id)object
++ (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object
 {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    NSString *propertyName = NSStringFromSelector(selector);
-    if ([self propertyNameIsNative:propertyName fromObject:object]) {
-        return [self performNativeSelector:selector onObject:object];
-    } else {
-        return [object performSelector:selector];
-    }
-#pragma clang diagnostic pop
+    objc_property_t property = class_getProperty(object_getClass(object), [propertyName UTF8String]);
+	NSString *type = property ? [self propertyTypeStringRepresentationFromProperty:property] : nil;
+    
+	return (type.length == 1) && (NSNotFound != [@(scalarTypes) rangeOfString:type].location);
 }
 
-+ (id)performNativeSelector:(SEL)selector onObject:(id)object
++ (NSString *) propertyTypeStringRepresentationFromProperty:(objc_property_t)property
 {
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:selector]];
-    [invocation setSelector:selector];
-    [invocation setTarget:object];
-    [invocation invoke];
-    return getPrimitiveReturnValueFromInvocation(invocation);
+    const char *TypeAttribute = "T";
+	char *type = property_copyAttributeValue(property, TypeAttribute);
+	NSString *propertyType = (type[0] != _C_ID) ? @(type) : ({
+		(type[1] == 0) ? @"id" : ({
+			// Modern format of a type attribute (e.g. @"NSSet")
+			type[strlen(type) - 1] = 0;
+			@(type + 2);
+		});
+	});
+	free(type);
+	return propertyType;
 }
 
-+ (BOOL)propertyNameIsNative:(NSString *)propertyName fromObject:(id)object
++ (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName
 {
-    NSString *typeDescription = [self getPropertyTypeFromObject:object withPropertyName:propertyName];
-    
-    if (typeDescription.length == 1) {
-        unichar propertyType = [typeDescription characterAtIndex:0];
-        for (int i = 0; i < sizeof(nativeTypes); i++) {
-            if (nativeTypes[i] == propertyType) {
-                return YES;
-            }
-        }
-    }
-    
-    return NO;
-}
-
-+ (NSString *)getPropertyTypeFromObject:(id)object withPropertyName:(NSString *)propertyString
-{
-    NSString *propertyType = nil;
-    Class baseClass = [NSObject class];
-    Class currentClass = [object class];
-    
-    while (currentClass && currentClass != baseClass && !propertyType) {
-        unsigned int outCount;
-        objc_property_t *properties = class_copyPropertyList(currentClass, &outCount);
-        
-        for (unsigned int i = 0; i < outCount; i++) {
-            objc_property_t property = properties[i];
-            const char *propName = property_getName(property);
-            
-            if (propName) {
-                NSString *propertyName = [[NSString alloc] initWithCString:propName encoding:NSUTF8StringEncoding];
-                if ([propertyName isEqualToString:propertyString]) {
-                    propertyType = [[NSString alloc] initWithCString:getPropertyType(property) encoding:NSUTF8StringEncoding];
-                    break;
-                }
-            }
-        }
-        
-        free(properties);
-        currentClass = class_getSuperclass(currentClass);
-    }
-    
-    return propertyType;
-}
-
-static const char * getPropertyType(objc_property_t property) {
-    const char *attributes = property_getAttributes(property);
-    char buffer[1 + strlen(attributes)];
-    strcpy(buffer, attributes);
-    char *state = buffer, *attribute;
-    while ((attribute = strsep(&state, ",")) != NULL) {
-        if (attribute[0] == 'T' && attribute[1] != '@') {
-            return (const char *)[[NSData dataWithBytes:(attribute + 1) length:strlen(attribute) - 1] bytes];
-        }
-        else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2) {
-            return "id";
-        }
-        else if (attribute[0] == 'T' && attribute[1] == '@') {
-            return (const char *)[[NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4] bytes];
-        }
-    }
-    return "";
-}
-
-static id getPrimitiveReturnValueFromInvocation(NSInvocation * invocation) {
-    const char *returnType = [[invocation methodSignature] methodReturnType];
-    id resultValue = nil;
-
-    if ( !strcmp(returnType, @encode(char)) ) { // And this is a BOOL also
-        char result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithChar:result];
-    } else if (!strcmp(returnType, @encode(bool))){
-        bool result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithBool:result];
-    } else if ( !strcmp(returnType, @encode(unsigned char)) ) {
-        unsigned char result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithUnsignedChar:result];
-    } else if ( !strcmp(returnType, @encode(short)) ) {
-        short result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithShort:result];
-    } else if ( !strcmp(returnType, @encode(unsigned short)) ) {
-        unsigned short result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithUnsignedShort:result];
-    } else if ( !strcmp(returnType, @encode(int)) ) {
-        int result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithInt:result];
-    } else if ( !strcmp(returnType, @encode(unsigned int)) ) {
-        unsigned int result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithUnsignedInt:result];
-    } else if ( !strcmp(returnType, @encode(NSInteger)) ) {
-        NSInteger result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithInteger:result];
-    } else if ( !strcmp(returnType, @encode(NSUInteger)) ) {
-        NSUInteger result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithUnsignedInteger:result];
-    } else if ( !strcmp(returnType, @encode(long)) ) {
-        long result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithLong:result];
-    } else if ( !strcmp(returnType, @encode(unsigned long)) ) {
-        unsigned long result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithUnsignedLong:result];
-    } else if ( !strcmp(returnType, @encode(long long)) ) {
-        long long result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithLongLong:result];
-    } else if ( !strcmp(returnType, @encode(unsigned long long)) ) {
-        unsigned long long result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithUnsignedLongLong:result];
-    } else if ( !strcmp(returnType, @encode(float)) ) {
-        float result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithFloat:result];
-    } else if ( !strcmp(returnType, @encode(double)) ) {
-        double result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithDouble:result];
-    } else if (!strcmp(returnType, @encode(BOOL))){
-        BOOL result;
-        [invocation getReturnValue:&result];
-        resultValue = @(result);
-    } else if (!strcmp(returnType, @encode(bool))){
-        bool result;
-        [invocation getReturnValue:&result];
-        resultValue = [NSNumber numberWithBool:result];
-    }
-
-    return resultValue;
+    objc_property_t property = class_getProperty([object class], [propertyName UTF8String]);
+	if (property)
+    {
+		NSString *type = [self propertyTypeStringRepresentationFromProperty:property];
+		if ([type isEqualToString:@"NSSet"]) {
+			return [NSSet setWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSMutableSet"]) {
+            return [NSMutableSet setWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSOrderedSet"]) {
+            return [NSOrderedSet orderedSetWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSMutableOrderedSet"]) {
+            return [NSMutableOrderedSet orderedSetWithArray:array];
+		}
+		else if ([type isEqualToString:@"NSMutableArray"]) {
+            return [NSMutableArray arrayWithArray:array];
+		}
+	}
+    return array;
 }
 
 @end
