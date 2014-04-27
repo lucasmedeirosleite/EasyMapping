@@ -28,6 +28,7 @@ task :test => ['dependencies','test:ios', 'test:osx'] do
   puts "\033[0;31m! OS X unit tests failed" unless $osx_success
   if $ios_success == 0 && $osx_success == 0
     puts "\033[0;32m** All tests executed successfully"
+    exit(0)
   else
     exit(-1)
   end
