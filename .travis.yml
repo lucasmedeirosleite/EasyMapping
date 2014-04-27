@@ -1,0 +1,8 @@
+language: objective-c
+
+before_install:
+  - sudo gem install xcpretty --no-document --quiet
+  - cd EasyMappingExample
+  - export LANG=en_US.UTF-8
+    
+script: rake
