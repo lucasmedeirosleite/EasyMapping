@@ -36,7 +36,7 @@ platform :ios
 
 ...
 
-pod 'EasyMapping', '~>0.4.9'
+pod 'EasyMapping', '~>0.5.6'
 
 ```
 Run `pod install` to install the dependencies.
@@ -201,15 +201,16 @@ Thanks to:
 * [basitali](https://github.com/basitali) who added the fillObject functionality on EKMapper!
 * [Alejandro](https://github.com/aleph7) who added CoreData support!
 * [DenHeadless](https://github.com/DenHeadless) who added the ability to use different naming in hasOne and hasMany mappings!
-* [ArtFeel](https://github.com/ArtFeel) who added the ability to serialization/deserialization of primitive types!
+* [Philip Vasilchenko](https://github.com/ArtFeel) who added the ability to serialization/deserialization of scalar types!
 * [Dany L'Hébreux](https://github.com/danylhebreux) who added the NSSet support!
 * [Jack](https://github.com/Jack-s) who added mapFieldsFromMappingObject and mapFieldsFromArrayToPascalCase functionality
+* [Yuri Kotov](https://github.com/advantis) and [Dmitriy](https://github.com/poteryaysya) which added a lot of performance improvements (see [FastEasyMapping](https://github.com/Yalantis/FastEasyMapping) fork)
 
 ## Requirements
 
 `EasyMapping` requires iOS 5.x or greater.
 
-Usage is provided under the [MIT License](http://http://opensource.org/licenses/mit-license.php).  See LICENSE for the full details.
+Usage is provided under the [MIT License](http://http://opensource.org/licenses/mit-license.php). See LICENSE for the full details.
 
 ## The idea
 
