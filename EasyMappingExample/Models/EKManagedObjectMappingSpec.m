@@ -8,9 +8,9 @@
 
 #import "Kiwi.h"
 #import "EasyMapping.h"
-#import "Person.h"
-#import "Car.h"
-#import "MappingProvider.h"
+#import "ManagedPerson.h"
+#import "ManagedCar.h"
+#import "ManagedMappingProvider.h"
 #import <CoreData/CoreData.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 
@@ -111,11 +111,11 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondsToSelector:@selector(hasOneMappings)];
+            [[mapping should] respondToSelector:@selector(hasOneMappings)];
         });
         
         specify(^{
-            [[mapping should] respondsToSelector:@selector(hasManyMappings)];
+            [[mapping should] respondToSelector:@selector(hasManyMappings)];
         });
         
     });
@@ -350,7 +350,7 @@ describe(@"EKManagedObjectMapping", ^{
         __block EKManagedObjectMapping *mapping;
         
         beforeEach(^{
-            mapping = [MappingProvider personMapping];
+            mapping = [ManagedMappingProvider personMapping];
         });
         
         specify(^{
@@ -376,7 +376,7 @@ describe(@"EKManagedObjectMapping", ^{
         __block EKManagedObjectMapping *mapping;
         
         beforeEach(^{
-            mapping = [MappingProvider personMapping];
+            mapping = [ManagedMappingProvider personMapping];
         });
         
         specify(^{

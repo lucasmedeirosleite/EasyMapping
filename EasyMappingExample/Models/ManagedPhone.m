@@ -6,11 +6,11 @@
 //
 //
 
-#import "Phone.h"
+#import "ManagedPhone.h"
 #import "Person.h"
 
 
-@implementation Phone
+@implementation ManagedPhone
 
 @dynamic phoneID;
 @dynamic ddi;

@@ -6,10 +6,10 @@
 //
 //
 
-#import "Car.h"
+#import "ManagedCar.h"
 
 
-@implementation Car
+@implementation ManagedCar
 
 @dynamic carID;
 @dynamic model;
