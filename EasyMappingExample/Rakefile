@@ -26,7 +26,7 @@ desc "Run the EasyMapping Tests for iOS & Mac OS X"
 task :test => ['dependencies','test:ios', 'test:osx'] do
   puts "\033[0;31m! iOS unit tests failed" unless $ios_success
   puts "\033[0;31m! OS X unit tests failed" unless $osx_success
-  if $ios_success == 0 && $osx_success == 0
+  if $ios_success && $osx_success
     puts "\033[0;32m** All tests executed successfully"
     exit(0)
   else
