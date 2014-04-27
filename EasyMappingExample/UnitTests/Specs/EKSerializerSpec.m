@@ -365,7 +365,6 @@ describe(@"EKSerializer", ^{
                 });
                 
                 specify(^{
-                    NSLog(@"Person representation: %@", representation);
                     [[[representation objectForKey:@"phones"] should] beKindOfClass:[NSArray class]];
                 });
                 
