@@ -6,7 +6,6 @@
 //  Copyright 2013 EasyKit. All rights reserved.
 //
 
-#import "Kiwi.h"
 #import "EKFieldMapping.h"
 
 SPEC_BEGIN(EKFieldMappingSpec)
