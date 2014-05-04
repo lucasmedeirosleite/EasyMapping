@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		550CE75226AD40059EA2F789 /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */; };
-		9A130232190BF9380060A25C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A130230190BF9380060A25C /* InfoPlist.strings */; };
 		9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
 		9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
 		9A130246190BFEF30060A25C /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
@@ -24,150 +23,239 @@
 		9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		9A130251190BFEF30060A25C /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A130252190BFEF30060A25C /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
-		9A4DD1A1190CF88300A134C0 /* EKFieldMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19A190CF88300A134C0 /* EKFieldMappingSpec.m */; };
-		9A4DD1A2190CF88300A134C0 /* EKFieldMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19A190CF88300A134C0 /* EKFieldMappingSpec.m */; };
-		9A4DD1A3190CF88300A134C0 /* EKManagedObjectMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19B190CF88300A134C0 /* EKManagedObjectMapperSpec.m */; };
-		9A4DD1A4190CF88300A134C0 /* EKManagedObjectMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19B190CF88300A134C0 /* EKManagedObjectMapperSpec.m */; };
-		9A4DD1A5190CF88300A134C0 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19C190CF88300A134C0 /* EKManagedObjectMappingSpec.m */; };
-		9A4DD1A6190CF88300A134C0 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19C190CF88300A134C0 /* EKManagedObjectMappingSpec.m */; };
-		9A4DD1A7190CF88300A134C0 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19D190CF88300A134C0 /* EKMapperSpec.m */; };
-		9A4DD1A8190CF88300A134C0 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19D190CF88300A134C0 /* EKMapperSpec.m */; };
-		9A4DD1A9190CF88300A134C0 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19E190CF88300A134C0 /* EKObjectMappingSpec.m */; };
-		9A4DD1AA190CF88300A134C0 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19E190CF88300A134C0 /* EKObjectMappingSpec.m */; };
-		9A4DD1AB190CF88300A134C0 /* EKPropertyHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19F190CF88300A134C0 /* EKPropertyHelperSpec.m */; };
-		9A4DD1AC190CF88300A134C0 /* EKPropertyHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD19F190CF88300A134C0 /* EKPropertyHelperSpec.m */; };
-		9A4DD1AD190CF88300A134C0 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD1A0190CF88300A134C0 /* EKSerializerSpec.m */; };
-		9A4DD1AE190CF88300A134C0 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD1A0190CF88300A134C0 /* EKSerializerSpec.m */; };
-		9A4DD1C0190CF8A900A134C0 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B0190CF8A900A134C0 /* Address.json */; };
-		9A4DD1C1190CF8A900A134C0 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B0190CF8A900A134C0 /* Address.json */; };
-		9A4DD1C2190CF8A900A134C0 /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B1190CF8A900A134C0 /* Alien.json */; };
-		9A4DD1C3190CF8A900A134C0 /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B1190CF8A900A134C0 /* Alien.json */; };
-		9A4DD1C4190CF8A900A134C0 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B2190CF8A900A134C0 /* Car.json */; };
-		9A4DD1C5190CF8A900A134C0 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B2190CF8A900A134C0 /* Car.json */; };
-		9A4DD1C6190CF8A900A134C0 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B3190CF8A900A134C0 /* Cars.json */; };
-		9A4DD1C7190CF8A900A134C0 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B3190CF8A900A134C0 /* Cars.json */; };
-		9A4DD1C8190CF8A900A134C0 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B4190CF8A900A134C0 /* CarWithDate.json */; };
-		9A4DD1C9190CF8A900A134C0 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B4190CF8A900A134C0 /* CarWithDate.json */; };
-		9A4DD1CA190CF8A900A134C0 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B5190CF8A900A134C0 /* CarWithNestedAttributes.json */; };
-		9A4DD1CB190CF8A900A134C0 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B5190CF8A900A134C0 /* CarWithNestedAttributes.json */; };
-		9A4DD1CC190CF8A900A134C0 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B6190CF8A900A134C0 /* CarWithRoot.json */; };
-		9A4DD1CD190CF8A900A134C0 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B6190CF8A900A134C0 /* CarWithRoot.json */; };
-		9A4DD1CE190CF8A900A134C0 /* Female.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B7190CF8A900A134C0 /* Female.json */; };
-		9A4DD1CF190CF8A900A134C0 /* Female.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B7190CF8A900A134C0 /* Female.json */; };
-		9A4DD1D0190CF8A900A134C0 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B8190CF8A900A134C0 /* Male.json */; };
-		9A4DD1D1190CF8A900A134C0 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B8190CF8A900A134C0 /* Male.json */; };
-		9A4DD1D2190CF8A900A134C0 /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B9190CF8A900A134C0 /* Native.json */; };
-		9A4DD1D3190CF8A900A134C0 /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1B9190CF8A900A134C0 /* Native.json */; };
-		9A4DD1D4190CF8A900A134C0 /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BA190CF8A900A134C0 /* NativeChild.json */; };
-		9A4DD1D5190CF8A900A134C0 /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BA190CF8A900A134C0 /* NativeChild.json */; };
-		9A4DD1D6190CF8A900A134C0 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BB190CF8A900A134C0 /* Person.json */; };
-		9A4DD1D7190CF8A900A134C0 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BB190CF8A900A134C0 /* Person.json */; };
-		9A4DD1D8190CF8A900A134C0 /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BC190CF8A900A134C0 /* PersonWithDifferentNaming.json */; };
-		9A4DD1D9190CF8A900A134C0 /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BC190CF8A900A134C0 /* PersonWithDifferentNaming.json */; };
-		9A4DD1DA190CF8A900A134C0 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BD190CF8A900A134C0 /* PersonWithNullCar.json */; };
-		9A4DD1DB190CF8A900A134C0 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BD190CF8A900A134C0 /* PersonWithNullCar.json */; };
-		9A4DD1DC190CF8A900A134C0 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BE190CF8A900A134C0 /* PersonWithNullPhones.json */; };
-		9A4DD1DD190CF8A900A134C0 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BE190CF8A900A134C0 /* PersonWithNullPhones.json */; };
-		9A4DD1DE190CF8A900A134C0 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BF190CF8A900A134C0 /* Plane.json */; };
-		9A4DD1DF190CF8A900A134C0 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1BF190CF8A900A134C0 /* Plane.json */; };
-		9A4DD1E5190CF8CC00A134C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A4DD1E2190CF8CC00A134C0 /* InfoPlist.strings */; };
+		9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
+		9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
+		9A45117819164696006E6022 /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
+		9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
+		9A45117A19164696006E6022 /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
+		9A45117B19164696006E6022 /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
+		9A45117C19164696006E6022 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117719164696006E6022 /* MappingProvider.m */; };
+		9A45117D19164696006E6022 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117719164696006E6022 /* MappingProvider.m */; };
+		9A45117E19164696006E6022 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117719164696006E6022 /* MappingProvider.m */; };
+		9A45117F19164696006E6022 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117719164696006E6022 /* MappingProvider.m */; };
+		9A451186191646B2006E6022 /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451181191646B2006E6022 /* ManagedCar.m */; };
+		9A451187191646B2006E6022 /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451181191646B2006E6022 /* ManagedCar.m */; };
+		9A451188191646B2006E6022 /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451181191646B2006E6022 /* ManagedCar.m */; };
+		9A451189191646B2006E6022 /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451181191646B2006E6022 /* ManagedCar.m */; };
+		9A45118A191646B2006E6022 /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451183191646B2006E6022 /* ManagedPerson.m */; };
+		9A45118B191646B2006E6022 /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451183191646B2006E6022 /* ManagedPerson.m */; };
+		9A45118C191646B2006E6022 /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451183191646B2006E6022 /* ManagedPerson.m */; };
+		9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451183191646B2006E6022 /* ManagedPerson.m */; };
+		9A45118E191646B2006E6022 /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451185191646B2006E6022 /* ManagedPhone.m */; };
+		9A45118F191646B2006E6022 /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451185191646B2006E6022 /* ManagedPhone.m */; };
+		9A451190191646B2006E6022 /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451185191646B2006E6022 /* ManagedPhone.m */; };
+		9A451191191646B2006E6022 /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451185191646B2006E6022 /* ManagedPhone.m */; };
+		9A4511AC191646C9006E6022 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451193191646C9006E6022 /* Address.m */; };
+		9A4511AD191646C9006E6022 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451193191646C9006E6022 /* Address.m */; };
+		9A4511AE191646C9006E6022 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451193191646C9006E6022 /* Address.m */; };
+		9A4511AF191646C9006E6022 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451193191646C9006E6022 /* Address.m */; };
+		9A4511B0191646C9006E6022 /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451195191646C9006E6022 /* Alien.m */; };
+		9A4511B1191646C9006E6022 /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451195191646C9006E6022 /* Alien.m */; };
+		9A4511B2191646C9006E6022 /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451195191646C9006E6022 /* Alien.m */; };
+		9A4511B3191646C9006E6022 /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451195191646C9006E6022 /* Alien.m */; };
+		9A4511B4191646C9006E6022 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451197191646C9006E6022 /* Car.m */; };
+		9A4511B5191646C9006E6022 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451197191646C9006E6022 /* Car.m */; };
+		9A4511B6191646C9006E6022 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451197191646C9006E6022 /* Car.m */; };
+		9A4511B7191646C9006E6022 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451197191646C9006E6022 /* Car.m */; };
+		9A4511B8191646C9006E6022 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451199191646C9006E6022 /* Cat.m */; };
+		9A4511B9191646C9006E6022 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451199191646C9006E6022 /* Cat.m */; };
+		9A4511BA191646C9006E6022 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451199191646C9006E6022 /* Cat.m */; };
+		9A4511BB191646C9006E6022 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451199191646C9006E6022 /* Cat.m */; };
+		9A4511BC191646C9006E6022 /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119B191646C9006E6022 /* ColoredUFO.m */; };
+		9A4511BD191646C9006E6022 /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119B191646C9006E6022 /* ColoredUFO.m */; };
+		9A4511BE191646C9006E6022 /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119B191646C9006E6022 /* ColoredUFO.m */; };
+		9A4511BF191646C9006E6022 /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119B191646C9006E6022 /* ColoredUFO.m */; };
+		9A4511C0191646C9006E6022 /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119D191646C9006E6022 /* Finger.m */; };
+		9A4511C1191646C9006E6022 /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119D191646C9006E6022 /* Finger.m */; };
+		9A4511C2191646C9006E6022 /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119D191646C9006E6022 /* Finger.m */; };
+		9A4511C3191646C9006E6022 /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119D191646C9006E6022 /* Finger.m */; };
+		9A4511C4191646C9006E6022 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
+		9A4511C5191646C9006E6022 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
+		9A4511C6191646C9006E6022 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
+		9A4511C7191646C9006E6022 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
+		9A4511C8191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
+		9A4511C9191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
+		9A4511CA191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
+		9A4511CB191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
+		9A4511CC191646C9006E6022 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
+		9A4511CD191646C9006E6022 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
+		9A4511CE191646C9006E6022 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
+		9A4511CF191646C9006E6022 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
+		9A4511D0191646C9006E6022 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A5191646C9006E6022 /* Phone.m */; };
+		9A4511D1191646C9006E6022 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A5191646C9006E6022 /* Phone.m */; };
+		9A4511D2191646C9006E6022 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A5191646C9006E6022 /* Phone.m */; };
+		9A4511D3191646C9006E6022 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A5191646C9006E6022 /* Phone.m */; };
+		9A4511D4191646C9006E6022 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A7191646C9006E6022 /* Plane.m */; };
+		9A4511D5191646C9006E6022 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A7191646C9006E6022 /* Plane.m */; };
+		9A4511D6191646C9006E6022 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A7191646C9006E6022 /* Plane.m */; };
+		9A4511D7191646C9006E6022 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A7191646C9006E6022 /* Plane.m */; };
+		9A4511D8191646C9006E6022 /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A9191646C9006E6022 /* Seaplane.m */; };
+		9A4511D9191646C9006E6022 /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A9191646C9006E6022 /* Seaplane.m */; };
+		9A4511DA191646C9006E6022 /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A9191646C9006E6022 /* Seaplane.m */; };
+		9A4511DB191646C9006E6022 /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A9191646C9006E6022 /* Seaplane.m */; };
+		9A4511DC191646C9006E6022 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
+		9A4511DD191646C9006E6022 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
+		9A4511DE191646C9006E6022 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
+		9A4511DF191646C9006E6022 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
+		9A4511E7191646F6006E6022 /* EKFieldMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E0191646F6006E6022 /* EKFieldMappingSpec.m */; };
+		9A4511E8191646F7006E6022 /* EKFieldMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E0191646F6006E6022 /* EKFieldMappingSpec.m */; };
+		9A4511EB191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */; };
+		9A4511EC191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */; };
+		9A4511EF191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */; };
+		9A4511F0191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */; };
+		9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E3191646F6006E6022 /* EKMapperSpec.m */; };
+		9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E3191646F6006E6022 /* EKMapperSpec.m */; };
+		9A4511F7191646F7006E6022 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */; };
+		9A4511F8191646F7006E6022 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */; };
+		9A4511FB191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E5191646F6006E6022 /* EKPropertyHelperSpec.m */; };
+		9A4511FC191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E5191646F6006E6022 /* EKPropertyHelperSpec.m */; };
+		9A4511FF191646F7006E6022 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E6191646F6006E6022 /* EKSerializerSpec.m */; };
+		9A451200191646F7006E6022 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E6191646F6006E6022 /* EKSerializerSpec.m */; };
+		9A45121319164705006E6022 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120319164704006E6022 /* Address.json */; };
+		9A45121419164705006E6022 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120319164704006E6022 /* Address.json */; };
+		9A45121719164705006E6022 /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120419164704006E6022 /* Alien.json */; };
+		9A45121819164705006E6022 /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120419164704006E6022 /* Alien.json */; };
+		9A45121B19164705006E6022 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120519164704006E6022 /* Car.json */; };
+		9A45121C19164705006E6022 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120519164704006E6022 /* Car.json */; };
+		9A45121F19164705006E6022 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120619164705006E6022 /* Cars.json */; };
+		9A45122019164705006E6022 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120619164705006E6022 /* Cars.json */; };
+		9A45122319164705006E6022 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120719164705006E6022 /* CarWithDate.json */; };
+		9A45122419164705006E6022 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120719164705006E6022 /* CarWithDate.json */; };
+		9A45122719164705006E6022 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120819164705006E6022 /* CarWithNestedAttributes.json */; };
+		9A45122819164705006E6022 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120819164705006E6022 /* CarWithNestedAttributes.json */; };
+		9A45122B19164705006E6022 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120919164705006E6022 /* CarWithRoot.json */; };
+		9A45122C19164705006E6022 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120919164705006E6022 /* CarWithRoot.json */; };
+		9A45122F19164705006E6022 /* Female.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120A19164705006E6022 /* Female.json */; };
+		9A45123019164705006E6022 /* Female.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120A19164705006E6022 /* Female.json */; };
+		9A45123319164705006E6022 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120B19164705006E6022 /* Male.json */; };
+		9A45123419164705006E6022 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120B19164705006E6022 /* Male.json */; };
+		9A45123719164705006E6022 /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120C19164705006E6022 /* Native.json */; };
+		9A45123819164705006E6022 /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120C19164705006E6022 /* Native.json */; };
+		9A45123B19164705006E6022 /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120D19164705006E6022 /* NativeChild.json */; };
+		9A45123C19164705006E6022 /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120D19164705006E6022 /* NativeChild.json */; };
+		9A45123F19164705006E6022 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120E19164705006E6022 /* Person.json */; };
+		9A45124019164705006E6022 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120E19164705006E6022 /* Person.json */; };
+		9A45124319164705006E6022 /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */; };
+		9A45124419164705006E6022 /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */; };
+		9A45124719164705006E6022 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121019164705006E6022 /* PersonWithNullCar.json */; };
+		9A45124819164705006E6022 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121019164705006E6022 /* PersonWithNullCar.json */; };
+		9A45124B19164705006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
+		9A45124C19164705006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
+		9A45124F19164705006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
+		9A45125019164705006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
+		9A45125919164773006E6022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A45125719164773006E6022 /* InfoPlist.strings */; };
+		9A45125F191647A1006E6022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A45125D191647A1006E6022 /* InfoPlist.strings */; };
+		9A451263191647BA006E6022 /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451261191647BA006E6022 /* EKAppDelegate.m */; };
+		9A451264191647BA006E6022 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A451262191647BA006E6022 /* Images.xcassets */; };
+		9A451269191647C6006E6022 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451267191647C6006E6022 /* main.m */; };
+		9A45126C191647D0006E6022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A45126A191647D0006E6022 /* InfoPlist.strings */; };
+		9A451270191647ED006E6022 /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45126E191647ED006E6022 /* EKAppDelegate.m */; };
+		9A451271191647ED006E6022 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A45126F191647ED006E6022 /* Images.xcassets */; };
+		9A45127719164805006E6022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A45127419164805006E6022 /* InfoPlist.strings */; };
+		9A45127A19164911006E6022 /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A45127B19164911006E6022 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
+		9A45127C19164911006E6022 /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
+		9A45127D19164911006E6022 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
+		9A45127E19164911006E6022 /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
+		9A45127F19164911006E6022 /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
+		9A45128019164911006E6022 /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
+		9A45128119164912006E6022 /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A45128219164912006E6022 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
+		9A45128319164912006E6022 /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
+		9A45128419164912006E6022 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
+		9A45128519164912006E6022 /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
+		9A45128619164912006E6022 /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
+		9A45128719164912006E6022 /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
+		9A451289191649DC006E6022 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451288191649DC006E6022 /* main.m */; };
 		9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
-		9AF425C3190CF049003FD1BD /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FDA190BD7F9003A3B56 /* ManagedMappingProvider.m */; };
-		9AF425C4190CF049003FD1BD /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C6500E3E16D98780009FCC67 /* MappingProvider.m */; };
-		9AF425C5190CF04A003FD1BD /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FDA190BD7F9003A3B56 /* ManagedMappingProvider.m */; };
-		9AF425C6190CF04A003FD1BD /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C6500E3E16D98780009FCC67 /* MappingProvider.m */; };
-		9AF425C7190CF04F003FD1BD /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD1190BD7D5003A3B56 /* ManagedCar.m */; };
-		9AF425C8190CF04F003FD1BD /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD3190BD7D5003A3B56 /* ManagedPerson.m */; };
-		9AF425C9190CF04F003FD1BD /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD5190BD7D5003A3B56 /* ManagedPhone.m */; };
-		9AF425CA190CF050003FD1BD /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD1190BD7D5003A3B56 /* ManagedCar.m */; };
-		9AF425CB190CF050003FD1BD /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD3190BD7D5003A3B56 /* ManagedPerson.m */; };
-		9AF425CC190CF050003FD1BD /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FD5190BD7D5003A3B56 /* ManagedPhone.m */; };
-		9AF425D8190CF057003FD1BD /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BD161F16DD872400CCB4F6 /* Address.m */; };
-		9AF425D9190CF057003FD1BD /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D871853E26800DF27BE /* Alien.m */; };
-		9AF425DA190CF057003FD1BD /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6816D68D2E005D2D3E /* Car.m */; };
-		9AF425DB190CF057003FD1BD /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFC1981897FC830032F838 /* Cat.m */; };
-		9AF425DC190CF057003FD1BD /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432A19083CCF00B7A6BB /* ColoredUFO.m */; };
-		9AF425DD190CF057003FD1BD /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D8B1853E27400DF27BE /* Finger.m */; };
-		9AF425DE190CF057003FD1BD /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
-		9AF425DF190CF057003FD1BD /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 669426131855F6470064782C /* NativeChild.m */; };
-		9AF425E0190CF057003FD1BD /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6516D68D08005D2D3E /* Person.m */; };
-		9AF425E1190CF057003FD1BD /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6B16D68D55005D2D3E /* Phone.m */; };
-		9AF425E2190CF057003FD1BD /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = F889A7B117FDA88500DFC8D4 /* Plane.m */; };
-		9AF425E3190CF057003FD1BD /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = F87FFB7A1822EC8500F0B424 /* Seaplane.m */; };
-		9AF425E4190CF057003FD1BD /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432C19083CCF00B7A6BB /* UFO.m */; };
-		9AF425E5190CF057003FD1BD /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BD161F16DD872400CCB4F6 /* Address.m */; };
-		9AF425E6190CF057003FD1BD /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D871853E26800DF27BE /* Alien.m */; };
-		9AF425E7190CF057003FD1BD /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6816D68D2E005D2D3E /* Car.m */; };
-		9AF425E8190CF057003FD1BD /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFC1981897FC830032F838 /* Cat.m */; };
-		9AF425E9190CF057003FD1BD /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432A19083CCF00B7A6BB /* ColoredUFO.m */; };
-		9AF425EA190CF057003FD1BD /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17D8B1853E27400DF27BE /* Finger.m */; };
-		9AF425EB190CF057003FD1BD /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C458DD17944983005AF11E /* Native.m */; };
-		9AF425EC190CF057003FD1BD /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 669426131855F6470064782C /* NativeChild.m */; };
-		9AF425ED190CF057003FD1BD /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6516D68D08005D2D3E /* Person.m */; };
-		9AF425EE190CF057003FD1BD /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = C6557E6B16D68D55005D2D3E /* Phone.m */; };
-		9AF425EF190CF057003FD1BD /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = F889A7B117FDA88500DFC8D4 /* Plane.m */; };
-		9AF425F0190CF057003FD1BD /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = F87FFB7A1822EC8500F0B424 /* Seaplane.m */; };
-		9AF425F1190CF057003FD1BD /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 022E432C19083CCF00B7A6BB /* UFO.m */; };
 		9F05E19A84E8447EA462A2FD /* libPods-OS X Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		022E432919083CCF00B7A6BB /* ColoredUFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredUFO.h; sourceTree = "<group>"; };
-		022E432A19083CCF00B7A6BB /* ColoredUFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredUFO.m; sourceTree = "<group>"; };
-		022E432B19083CCF00B7A6BB /* UFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UFO.h; sourceTree = "<group>"; };
-		022E432C19083CCF00B7A6BB /* UFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UFO.m; sourceTree = "<group>"; };
-		02AFC1971897FC830032F838 /* Cat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat.h; sourceTree = "<group>"; };
-		02AFC1981897FC830032F838 /* Cat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
-		02E17D861853E26800DF27BE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alien.h; sourceTree = "<group>"; };
-		02E17D871853E26800DF27BE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alien.m; sourceTree = "<group>"; };
-		02E17D8A1853E27400DF27BE /* Finger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finger.h; sourceTree = "<group>"; };
-		02E17D8B1853E27400DF27BE /* Finger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Finger.m; sourceTree = "<group>"; };
 		02FF772618E32249002282D3 /* iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		669426121855F6470064782C /* NativeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeChild.h; sourceTree = "<group>"; };
-		669426131855F6470064782C /* NativeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeChild.m; sourceTree = "<group>"; };
-		66C458DC17944983005AF11E /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
-		66C458DD17944983005AF11E /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
 		8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.xcconfig"; path = "Pods/Pods-iOS Tests.xcconfig"; sourceTree = "<group>"; };
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A130227190BF9380060A25C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9A13022F190BF9380060A25C /* OS X Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OS X Tests-Info.plist"; sourceTree = "<group>"; };
-		9A130231190BF9380060A25C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A130235190BF9380060A25C /* OS X Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OS X Tests-Prefix.pch"; sourceTree = "<group>"; };
-		9A4DD19A190CF88300A134C0 /* EKFieldMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKFieldMappingSpec.m; path = UnitTests/Specs/EKFieldMappingSpec.m; sourceTree = "<group>"; };
-		9A4DD19B190CF88300A134C0 /* EKManagedObjectMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapperSpec.m; path = UnitTests/Specs/EKManagedObjectMapperSpec.m; sourceTree = "<group>"; };
-		9A4DD19C190CF88300A134C0 /* EKManagedObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMappingSpec.m; path = UnitTests/Specs/EKManagedObjectMappingSpec.m; sourceTree = "<group>"; };
-		9A4DD19D190CF88300A134C0 /* EKMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMapperSpec.m; path = UnitTests/Specs/EKMapperSpec.m; sourceTree = "<group>"; };
-		9A4DD19E190CF88300A134C0 /* EKObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKObjectMappingSpec.m; path = UnitTests/Specs/EKObjectMappingSpec.m; sourceTree = "<group>"; };
-		9A4DD19F190CF88300A134C0 /* EKPropertyHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKPropertyHelperSpec.m; path = UnitTests/Specs/EKPropertyHelperSpec.m; sourceTree = "<group>"; };
-		9A4DD1A0190CF88300A134C0 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKSerializerSpec.m; path = UnitTests/Specs/EKSerializerSpec.m; sourceTree = "<group>"; };
-		9A4DD1B0190CF8A900A134C0 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Address.json; path = UnitTests/Fixtures/Address.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B1190CF8A900A134C0 /* Alien.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Alien.json; path = UnitTests/Fixtures/Alien.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B2190CF8A900A134C0 /* Car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Car.json; path = UnitTests/Fixtures/Car.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B3190CF8A900A134C0 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Cars.json; path = UnitTests/Fixtures/Cars.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B4190CF8A900A134C0 /* CarWithDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithDate.json; path = UnitTests/Fixtures/CarWithDate.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B5190CF8A900A134C0 /* CarWithNestedAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithNestedAttributes.json; path = UnitTests/Fixtures/CarWithNestedAttributes.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B6190CF8A900A134C0 /* CarWithRoot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithRoot.json; path = UnitTests/Fixtures/CarWithRoot.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B7190CF8A900A134C0 /* Female.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Female.json; path = UnitTests/Fixtures/Female.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B8190CF8A900A134C0 /* Male.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Male.json; path = UnitTests/Fixtures/Male.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1B9190CF8A900A134C0 /* Native.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Native.json; path = UnitTests/Fixtures/Native.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1BA190CF8A900A134C0 /* NativeChild.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = NativeChild.json; path = UnitTests/Fixtures/NativeChild.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1BB190CF8A900A134C0 /* Person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Person.json; path = UnitTests/Fixtures/Person.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1BC190CF8A900A134C0 /* PersonWithDifferentNaming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithDifferentNaming.json; path = UnitTests/Fixtures/PersonWithDifferentNaming.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1BD190CF8A900A134C0 /* PersonWithNullCar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithNullCar.json; path = UnitTests/Fixtures/PersonWithNullCar.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1BE190CF8A900A134C0 /* PersonWithNullPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithNullPhones.json; path = UnitTests/Fixtures/PersonWithNullPhones.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1BF190CF8A900A134C0 /* Plane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Plane.json; path = UnitTests/Fixtures/Plane.json; sourceTree = SOURCE_ROOT; };
-		9A4DD1E0190CF8CC00A134C0 /* EasyMappingExampleTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "EasyMappingExampleTests-Info.plist"; path = "iOS Tests/EasyMappingExampleTests-Info.plist"; sourceTree = SOURCE_ROOT; };
-		9A4DD1E1190CF8CC00A134C0 /* EasyMappingExampleTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EasyMappingExampleTests-Prefix.pch"; path = "iOS Tests/EasyMappingExampleTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		9A4DD1E3190CF8CC00A134C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "iOS Tests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
-		9AE54FD0190BD7D5003A3B56 /* ManagedCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedCar.h; sourceTree = "<group>"; };
-		9AE54FD1190BD7D5003A3B56 /* ManagedCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedCar.m; sourceTree = "<group>"; };
-		9AE54FD2190BD7D5003A3B56 /* ManagedPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedPerson.h; sourceTree = "<group>"; };
-		9AE54FD3190BD7D5003A3B56 /* ManagedPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedPerson.m; sourceTree = "<group>"; };
-		9AE54FD4190BD7D5003A3B56 /* ManagedPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedPhone.h; sourceTree = "<group>"; };
-		9AE54FD5190BD7D5003A3B56 /* ManagedPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedPhone.m; sourceTree = "<group>"; };
-		9AE54FD9190BD7F9003A3B56 /* ManagedMappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedMappingProvider.h; sourceTree = "<group>"; };
-		9AE54FDA190BD7F9003A3B56 /* ManagedMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedMappingProvider.m; sourceTree = "<group>"; };
+		9A4510F1191643FD006E6022 /* iOS Benchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Benchmark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A45113D1916444C006E6022 /* MacOS Benchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacOS Benchmark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A45117419164696006E6022 /* ManagedMappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedMappingProvider.h; path = Classes/Providers/ManagedMappingProvider.h; sourceTree = SOURCE_ROOT; };
+		9A45117519164696006E6022 /* ManagedMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedMappingProvider.m; path = Classes/Providers/ManagedMappingProvider.m; sourceTree = SOURCE_ROOT; };
+		9A45117619164696006E6022 /* MappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MappingProvider.h; path = Classes/Providers/MappingProvider.h; sourceTree = SOURCE_ROOT; };
+		9A45117719164696006E6022 /* MappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MappingProvider.m; path = Classes/Providers/MappingProvider.m; sourceTree = SOURCE_ROOT; };
+		9A451180191646B2006E6022 /* ManagedCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedCar.h; path = Classes/Models/ManagedCar.h; sourceTree = SOURCE_ROOT; };
+		9A451181191646B2006E6022 /* ManagedCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedCar.m; path = Classes/Models/ManagedCar.m; sourceTree = SOURCE_ROOT; };
+		9A451182191646B2006E6022 /* ManagedPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedPerson.h; path = Classes/Models/ManagedPerson.h; sourceTree = SOURCE_ROOT; };
+		9A451183191646B2006E6022 /* ManagedPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedPerson.m; path = Classes/Models/ManagedPerson.m; sourceTree = SOURCE_ROOT; };
+		9A451184191646B2006E6022 /* ManagedPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedPhone.h; path = Classes/Models/ManagedPhone.h; sourceTree = SOURCE_ROOT; };
+		9A451185191646B2006E6022 /* ManagedPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedPhone.m; path = Classes/Models/ManagedPhone.m; sourceTree = SOURCE_ROOT; };
+		9A451192191646C9006E6022 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = Classes/Models/Address.h; sourceTree = SOURCE_ROOT; };
+		9A451193191646C9006E6022 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Address.m; path = Classes/Models/Address.m; sourceTree = SOURCE_ROOT; };
+		9A451194191646C9006E6022 /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = Classes/Models/Alien.h; sourceTree = SOURCE_ROOT; };
+		9A451195191646C9006E6022 /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alien.m; path = Classes/Models/Alien.m; sourceTree = SOURCE_ROOT; };
+		9A451196191646C9006E6022 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Car.h; path = Classes/Models/Car.h; sourceTree = SOURCE_ROOT; };
+		9A451197191646C9006E6022 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Car.m; path = Classes/Models/Car.m; sourceTree = SOURCE_ROOT; };
+		9A451198191646C9006E6022 /* Cat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cat.h; path = Classes/Models/Cat.h; sourceTree = SOURCE_ROOT; };
+		9A451199191646C9006E6022 /* Cat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cat.m; path = Classes/Models/Cat.m; sourceTree = SOURCE_ROOT; };
+		9A45119A191646C9006E6022 /* ColoredUFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredUFO.h; path = Classes/Models/ColoredUFO.h; sourceTree = SOURCE_ROOT; };
+		9A45119B191646C9006E6022 /* ColoredUFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColoredUFO.m; path = Classes/Models/ColoredUFO.m; sourceTree = SOURCE_ROOT; };
+		9A45119C191646C9006E6022 /* Finger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Finger.h; path = Classes/Models/Finger.h; sourceTree = SOURCE_ROOT; };
+		9A45119D191646C9006E6022 /* Finger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Finger.m; path = Classes/Models/Finger.m; sourceTree = SOURCE_ROOT; };
+		9A45119E191646C9006E6022 /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Native.h; path = Classes/Models/Native.h; sourceTree = SOURCE_ROOT; };
+		9A45119F191646C9006E6022 /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Native.m; path = Classes/Models/Native.m; sourceTree = SOURCE_ROOT; };
+		9A4511A0191646C9006E6022 /* NativeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeChild.h; path = Classes/Models/NativeChild.h; sourceTree = SOURCE_ROOT; };
+		9A4511A1191646C9006E6022 /* NativeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeChild.m; path = Classes/Models/NativeChild.m; sourceTree = SOURCE_ROOT; };
+		9A4511A2191646C9006E6022 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Classes/Models/Person.h; sourceTree = SOURCE_ROOT; };
+		9A4511A3191646C9006E6022 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Classes/Models/Person.m; sourceTree = SOURCE_ROOT; };
+		9A4511A4191646C9006E6022 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Phone.h; path = Classes/Models/Phone.h; sourceTree = SOURCE_ROOT; };
+		9A4511A5191646C9006E6022 /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Phone.m; path = Classes/Models/Phone.m; sourceTree = SOURCE_ROOT; };
+		9A4511A6191646C9006E6022 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plane.h; path = Classes/Models/Plane.h; sourceTree = SOURCE_ROOT; };
+		9A4511A7191646C9006E6022 /* Plane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Plane.m; path = Classes/Models/Plane.m; sourceTree = SOURCE_ROOT; };
+		9A4511A8191646C9006E6022 /* Seaplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Seaplane.h; path = Classes/Models/Seaplane.h; sourceTree = SOURCE_ROOT; };
+		9A4511A9191646C9006E6022 /* Seaplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Seaplane.m; path = Classes/Models/Seaplane.m; sourceTree = SOURCE_ROOT; };
+		9A4511AA191646C9006E6022 /* UFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UFO.h; path = Classes/Models/UFO.h; sourceTree = SOURCE_ROOT; };
+		9A4511AB191646C9006E6022 /* UFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UFO.m; path = Classes/Models/UFO.m; sourceTree = SOURCE_ROOT; };
+		9A4511E0191646F6006E6022 /* EKFieldMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKFieldMappingSpec.m; path = Tests/Specs/EKFieldMappingSpec.m; sourceTree = "<group>"; };
+		9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapperSpec.m; path = Tests/Specs/EKManagedObjectMapperSpec.m; sourceTree = "<group>"; };
+		9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMappingSpec.m; path = Tests/Specs/EKManagedObjectMappingSpec.m; sourceTree = "<group>"; };
+		9A4511E3191646F6006E6022 /* EKMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMapperSpec.m; path = Tests/Specs/EKMapperSpec.m; sourceTree = "<group>"; };
+		9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKObjectMappingSpec.m; path = Tests/Specs/EKObjectMappingSpec.m; sourceTree = "<group>"; };
+		9A4511E5191646F6006E6022 /* EKPropertyHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKPropertyHelperSpec.m; path = Tests/Specs/EKPropertyHelperSpec.m; sourceTree = "<group>"; };
+		9A4511E6191646F6006E6022 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKSerializerSpec.m; path = Tests/Specs/EKSerializerSpec.m; sourceTree = "<group>"; };
+		9A45120319164704006E6022 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Address.json; path = Tests/Fixtures/Address.json; sourceTree = SOURCE_ROOT; };
+		9A45120419164704006E6022 /* Alien.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Alien.json; path = Tests/Fixtures/Alien.json; sourceTree = SOURCE_ROOT; };
+		9A45120519164704006E6022 /* Car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Car.json; path = Tests/Fixtures/Car.json; sourceTree = SOURCE_ROOT; };
+		9A45120619164705006E6022 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Cars.json; path = Tests/Fixtures/Cars.json; sourceTree = SOURCE_ROOT; };
+		9A45120719164705006E6022 /* CarWithDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithDate.json; path = Tests/Fixtures/CarWithDate.json; sourceTree = SOURCE_ROOT; };
+		9A45120819164705006E6022 /* CarWithNestedAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithNestedAttributes.json; path = Tests/Fixtures/CarWithNestedAttributes.json; sourceTree = SOURCE_ROOT; };
+		9A45120919164705006E6022 /* CarWithRoot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithRoot.json; path = Tests/Fixtures/CarWithRoot.json; sourceTree = SOURCE_ROOT; };
+		9A45120A19164705006E6022 /* Female.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Female.json; path = Tests/Fixtures/Female.json; sourceTree = SOURCE_ROOT; };
+		9A45120B19164705006E6022 /* Male.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Male.json; path = Tests/Fixtures/Male.json; sourceTree = SOURCE_ROOT; };
+		9A45120C19164705006E6022 /* Native.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Native.json; path = Tests/Fixtures/Native.json; sourceTree = SOURCE_ROOT; };
+		9A45120D19164705006E6022 /* NativeChild.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = NativeChild.json; path = Tests/Fixtures/NativeChild.json; sourceTree = SOURCE_ROOT; };
+		9A45120E19164705006E6022 /* Person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Person.json; path = Tests/Fixtures/Person.json; sourceTree = SOURCE_ROOT; };
+		9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithDifferentNaming.json; path = Tests/Fixtures/PersonWithDifferentNaming.json; sourceTree = SOURCE_ROOT; };
+		9A45121019164705006E6022 /* PersonWithNullCar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithNullCar.json; path = Tests/Fixtures/PersonWithNullCar.json; sourceTree = SOURCE_ROOT; };
+		9A45121119164705006E6022 /* PersonWithNullPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithNullPhones.json; path = Tests/Fixtures/PersonWithNullPhones.json; sourceTree = SOURCE_ROOT; };
+		9A45121219164705006E6022 /* Plane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Plane.json; path = Tests/Fixtures/Plane.json; sourceTree = SOURCE_ROOT; };
+		9A4512531916475F006E6022 /* EasyMappingExampleTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "EasyMappingExampleTests-Info.plist"; path = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9A4512541916475F006E6022 /* EasyMappingExampleTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EasyMappingExampleTests-Prefix.pch"; path = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		9A45125819164773006E6022 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Tests/Targets/iOS Tests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
+		9A45125A19164793006E6022 /* OS X Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "OS X Tests-Info.plist"; path = "Tests/Targets/OS X Tests/OS X Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9A45125B19164793006E6022 /* OS X Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OS X Tests-Prefix.pch"; path = "Tests/Targets/OS X Tests/OS X Tests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		9A45125E191647A1006E6022 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Tests/Targets/OS X Tests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
+		9A451260191647BA006E6022 /* EKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKAppDelegate.h; path = "Benchmarks/Targets/iOS Benchmark/EKAppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		9A451261191647BA006E6022 /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKAppDelegate.m; path = "Benchmarks/Targets/iOS Benchmark/EKAppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		9A451262191647BA006E6022 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Benchmarks/Targets/iOS Benchmark/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		9A451265191647C6006E6022 /* iOS Benchmark-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iOS Benchmark-Info.plist"; path = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9A451266191647C6006E6022 /* iOS Benchmark-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "iOS Benchmark-Prefix.pch"; path = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		9A451267191647C6006E6022 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Benchmarks/Targets/iOS Benchmark/main.m"; sourceTree = SOURCE_ROOT; };
+		9A45126B191647D0006E6022 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Benchmarks/Targets/iOS Benchmark/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
+		9A45126D191647ED006E6022 /* EKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKAppDelegate.h; path = "Benchmarks/Targets/MacOS Benchmark/EKAppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		9A45126E191647ED006E6022 /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKAppDelegate.m; path = "Benchmarks/Targets/MacOS Benchmark/EKAppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		9A45126F191647ED006E6022 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Benchmarks/Targets/MacOS Benchmark/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		9A45127519164805006E6022 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Benchmarks/Targets/MacOS Benchmark/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
+		9A4512781916480D006E6022 /* MacOS Benchmark-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MacOS Benchmark-Info.plist"; path = "Benchmarks/Targets/MacOS Benchmark/MacOS Benchmark-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9A451288191649DC006E6022 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Benchmarks/Targets/MacOS Benchmark/main.m"; sourceTree = SOURCE_ROOT; };
 		9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
 		9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
 		9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMappingExample.xcdatamodel; sourceTree = "<group>"; };
@@ -185,22 +273,8 @@
 		A9D16D0116F2B2770003759B /* EKSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializer.m; sourceTree = "<group>"; };
 		A9D16D0216F2B2770003759B /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTransformer.h; sourceTree = "<group>"; };
 		A9D16D0316F2B2770003759B /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTransformer.m; sourceTree = "<group>"; };
-		C6500E3D16D98780009FCC67 /* MappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappingProvider.h; sourceTree = "<group>"; };
-		C6500E3E16D98780009FCC67 /* MappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappingProvider.m; sourceTree = "<group>"; };
-		C6557E6416D68D08005D2D3E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		C6557E6516D68D08005D2D3E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
-		C6557E6716D68D2E005D2D3E /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
-		C6557E6816D68D2E005D2D3E /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
-		C6557E6A16D68D55005D2D3E /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
-		C6557E6B16D68D55005D2D3E /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
-		C6BD161E16DD872400CCB4F6 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		C6BD161F16DD872400CCB4F6 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.xcconfig"; path = "Pods/Pods-OS X Tests.xcconfig"; sourceTree = "<group>"; };
 		DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OS X Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F87FFB791822EC8500F0B424 /* Seaplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seaplane.h; sourceTree = "<group>"; };
-		F87FFB7A1822EC8500F0B424 /* Seaplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seaplane.m; sourceTree = "<group>"; };
-		F889A7B017FDA88500DFC8D4 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
-		F889A7B117FDA88500DFC8D4 /* Plane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +294,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9A4510EE191643FD006E6022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A45113A1916444C006E6022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -235,9 +323,9 @@
 		02FF772B18E32249002282D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9A4DD1E0190CF8CC00A134C0 /* EasyMappingExampleTests-Info.plist */,
-				9A4DD1E1190CF8CC00A134C0 /* EasyMappingExampleTests-Prefix.pch */,
-				9A4DD1E2190CF8CC00A134C0 /* InfoPlist.strings */,
+				9A45125719164773006E6022 /* InfoPlist.strings */,
+				9A4512531916475F006E6022 /* EasyMappingExampleTests-Info.plist */,
+				9A4512541916475F006E6022 /* EasyMappingExampleTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -245,22 +333,22 @@
 		02FF773818E32257002282D3 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				9A4DD1B0190CF8A900A134C0 /* Address.json */,
-				9A4DD1B1190CF8A900A134C0 /* Alien.json */,
-				9A4DD1B2190CF8A900A134C0 /* Car.json */,
-				9A4DD1B3190CF8A900A134C0 /* Cars.json */,
-				9A4DD1B4190CF8A900A134C0 /* CarWithDate.json */,
-				9A4DD1B5190CF8A900A134C0 /* CarWithNestedAttributes.json */,
-				9A4DD1B6190CF8A900A134C0 /* CarWithRoot.json */,
-				9A4DD1B7190CF8A900A134C0 /* Female.json */,
-				9A4DD1B8190CF8A900A134C0 /* Male.json */,
-				9A4DD1B9190CF8A900A134C0 /* Native.json */,
-				9A4DD1BA190CF8A900A134C0 /* NativeChild.json */,
-				9A4DD1BB190CF8A900A134C0 /* Person.json */,
-				9A4DD1BC190CF8A900A134C0 /* PersonWithDifferentNaming.json */,
-				9A4DD1BD190CF8A900A134C0 /* PersonWithNullCar.json */,
-				9A4DD1BE190CF8A900A134C0 /* PersonWithNullPhones.json */,
-				9A4DD1BF190CF8A900A134C0 /* Plane.json */,
+				9A45120319164704006E6022 /* Address.json */,
+				9A45120419164704006E6022 /* Alien.json */,
+				9A45120519164704006E6022 /* Car.json */,
+				9A45120619164705006E6022 /* Cars.json */,
+				9A45120719164705006E6022 /* CarWithDate.json */,
+				9A45120819164705006E6022 /* CarWithNestedAttributes.json */,
+				9A45120919164705006E6022 /* CarWithRoot.json */,
+				9A45120A19164705006E6022 /* Female.json */,
+				9A45120B19164705006E6022 /* Male.json */,
+				9A45120C19164705006E6022 /* Native.json */,
+				9A45120D19164705006E6022 /* NativeChild.json */,
+				9A45120E19164705006E6022 /* Person.json */,
+				9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */,
+				9A45121019164705006E6022 /* PersonWithNullCar.json */,
+				9A45121119164705006E6022 /* PersonWithNullPhones.json */,
+				9A45121219164705006E6022 /* Plane.json */,
 			);
 			name = Fixtures;
 			path = EasyMappingExampleTests;
@@ -278,10 +366,10 @@
 		66C458DB17943909005AF11E /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				9AE54FD9190BD7F9003A3B56 /* ManagedMappingProvider.h */,
-				9AE54FDA190BD7F9003A3B56 /* ManagedMappingProvider.m */,
-				C6500E3D16D98780009FCC67 /* MappingProvider.h */,
-				C6500E3E16D98780009FCC67 /* MappingProvider.m */,
+				9A45117419164696006E6022 /* ManagedMappingProvider.h */,
+				9A45117519164696006E6022 /* ManagedMappingProvider.m */,
+				9A45117619164696006E6022 /* MappingProvider.h */,
+				9A45117719164696006E6022 /* MappingProvider.m */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -297,9 +385,52 @@
 		9A13022E190BF9380060A25C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9A13022F190BF9380060A25C /* OS X Tests-Info.plist */,
-				9A130230190BF9380060A25C /* InfoPlist.strings */,
-				9A130235190BF9380060A25C /* OS X Tests-Prefix.pch */,
+				9A45125D191647A1006E6022 /* InfoPlist.strings */,
+				9A45125A19164793006E6022 /* OS X Tests-Info.plist */,
+				9A45125B19164793006E6022 /* OS X Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A4510FA191643FD006E6022 /* iOS Benchmark */ = {
+			isa = PBXGroup;
+			children = (
+				9A451260191647BA006E6022 /* EKAppDelegate.h */,
+				9A451261191647BA006E6022 /* EKAppDelegate.m */,
+				9A451262191647BA006E6022 /* Images.xcassets */,
+				9A4510FB191643FD006E6022 /* Supporting Files */,
+			);
+			path = "iOS Benchmark";
+			sourceTree = "<group>";
+		};
+		9A4510FB191643FD006E6022 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A45126A191647D0006E6022 /* InfoPlist.strings */,
+				9A451265191647C6006E6022 /* iOS Benchmark-Info.plist */,
+				9A451266191647C6006E6022 /* iOS Benchmark-Prefix.pch */,
+				9A451267191647C6006E6022 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A4511441916444C006E6022 /* MacOS Benchmark */ = {
+			isa = PBXGroup;
+			children = (
+				9A45126D191647ED006E6022 /* EKAppDelegate.h */,
+				9A45126E191647ED006E6022 /* EKAppDelegate.m */,
+				9A45126F191647ED006E6022 /* Images.xcassets */,
+				9A4511451916444C006E6022 /* Supporting Files */,
+			);
+			path = "MacOS Benchmark";
+			sourceTree = "<group>";
+		};
+		9A4511451916444C006E6022 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A45127419164805006E6022 /* InfoPlist.strings */,
+				9A4512781916480D006E6022 /* MacOS Benchmark-Info.plist */,
+				9A451288191649DC006E6022 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -307,13 +438,13 @@
 		9A4DD1AF190CF88C00A134C0 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
-				9A4DD19A190CF88300A134C0 /* EKFieldMappingSpec.m */,
-				9A4DD19B190CF88300A134C0 /* EKManagedObjectMapperSpec.m */,
-				9A4DD19C190CF88300A134C0 /* EKManagedObjectMappingSpec.m */,
-				9A4DD19D190CF88300A134C0 /* EKMapperSpec.m */,
-				9A4DD19E190CF88300A134C0 /* EKObjectMappingSpec.m */,
-				9A4DD19F190CF88300A134C0 /* EKPropertyHelperSpec.m */,
-				9A4DD1A0190CF88300A134C0 /* EKSerializerSpec.m */,
+				9A4511E0191646F6006E6022 /* EKFieldMappingSpec.m */,
+				9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */,
+				9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */,
+				9A4511E3191646F6006E6022 /* EKMapperSpec.m */,
+				9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */,
+				9A4511E5191646F6006E6022 /* EKPropertyHelperSpec.m */,
+				9A4511E6191646F6006E6022 /* EKSerializerSpec.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -321,32 +452,32 @@
 		9AE54FCE190BD7B5003A3B56 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
-				C6BD161E16DD872400CCB4F6 /* Address.h */,
-				C6BD161F16DD872400CCB4F6 /* Address.m */,
-				02E17D861853E26800DF27BE /* Alien.h */,
-				02E17D871853E26800DF27BE /* Alien.m */,
-				C6557E6716D68D2E005D2D3E /* Car.h */,
-				C6557E6816D68D2E005D2D3E /* Car.m */,
-				02AFC1971897FC830032F838 /* Cat.h */,
-				02AFC1981897FC830032F838 /* Cat.m */,
-				022E432919083CCF00B7A6BB /* ColoredUFO.h */,
-				022E432A19083CCF00B7A6BB /* ColoredUFO.m */,
-				02E17D8A1853E27400DF27BE /* Finger.h */,
-				02E17D8B1853E27400DF27BE /* Finger.m */,
-				66C458DC17944983005AF11E /* Native.h */,
-				66C458DD17944983005AF11E /* Native.m */,
-				669426121855F6470064782C /* NativeChild.h */,
-				669426131855F6470064782C /* NativeChild.m */,
-				C6557E6416D68D08005D2D3E /* Person.h */,
-				C6557E6516D68D08005D2D3E /* Person.m */,
-				C6557E6A16D68D55005D2D3E /* Phone.h */,
-				C6557E6B16D68D55005D2D3E /* Phone.m */,
-				F889A7B017FDA88500DFC8D4 /* Plane.h */,
-				F889A7B117FDA88500DFC8D4 /* Plane.m */,
-				F87FFB791822EC8500F0B424 /* Seaplane.h */,
-				F87FFB7A1822EC8500F0B424 /* Seaplane.m */,
-				022E432B19083CCF00B7A6BB /* UFO.h */,
-				022E432C19083CCF00B7A6BB /* UFO.m */,
+				9A451192191646C9006E6022 /* Address.h */,
+				9A451193191646C9006E6022 /* Address.m */,
+				9A451194191646C9006E6022 /* Alien.h */,
+				9A451195191646C9006E6022 /* Alien.m */,
+				9A451196191646C9006E6022 /* Car.h */,
+				9A451197191646C9006E6022 /* Car.m */,
+				9A451198191646C9006E6022 /* Cat.h */,
+				9A451199191646C9006E6022 /* Cat.m */,
+				9A45119A191646C9006E6022 /* ColoredUFO.h */,
+				9A45119B191646C9006E6022 /* ColoredUFO.m */,
+				9A45119C191646C9006E6022 /* Finger.h */,
+				9A45119D191646C9006E6022 /* Finger.m */,
+				9A45119E191646C9006E6022 /* Native.h */,
+				9A45119F191646C9006E6022 /* Native.m */,
+				9A4511A0191646C9006E6022 /* NativeChild.h */,
+				9A4511A1191646C9006E6022 /* NativeChild.m */,
+				9A4511A2191646C9006E6022 /* Person.h */,
+				9A4511A3191646C9006E6022 /* Person.m */,
+				9A4511A4191646C9006E6022 /* Phone.h */,
+				9A4511A5191646C9006E6022 /* Phone.m */,
+				9A4511A6191646C9006E6022 /* Plane.h */,
+				9A4511A7191646C9006E6022 /* Plane.m */,
+				9A4511A8191646C9006E6022 /* Seaplane.h */,
+				9A4511A9191646C9006E6022 /* Seaplane.m */,
+				9A4511AA191646C9006E6022 /* UFO.h */,
+				9A4511AB191646C9006E6022 /* UFO.m */,
 			);
 			name = NSObject;
 			sourceTree = "<group>";
@@ -354,12 +485,12 @@
 		9AE54FCF190BD7C1003A3B56 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9AE54FD0190BD7D5003A3B56 /* ManagedCar.h */,
-				9AE54FD1190BD7D5003A3B56 /* ManagedCar.m */,
-				9AE54FD2190BD7D5003A3B56 /* ManagedPerson.h */,
-				9AE54FD3190BD7D5003A3B56 /* ManagedPerson.m */,
-				9AE54FD4190BD7D5003A3B56 /* ManagedPhone.h */,
-				9AE54FD5190BD7D5003A3B56 /* ManagedPhone.m */,
+				9A451180191646B2006E6022 /* ManagedCar.h */,
+				9A451181191646B2006E6022 /* ManagedCar.m */,
+				9A451182191646B2006E6022 /* ManagedPerson.h */,
+				9A451183191646B2006E6022 /* ManagedPerson.m */,
+				9A451184191646B2006E6022 /* ManagedPhone.h */,
+				9A451185191646B2006E6022 /* ManagedPhone.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -391,6 +522,8 @@
 				9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */,
 				9AF425C1190CEF42003FD1BD /* Unit Tests */,
 				9AF425C2190CEF64003FD1BD /* Supporting files */,
+				9A4510FA191643FD006E6022 /* iOS Benchmark */,
+				9A4511441916444C006E6022 /* MacOS Benchmark */,
 				C6557E1416D6621E005D2D3E /* Frameworks */,
 				C6557E1316D6621E005D2D3E /* Products */,
 				CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */,
@@ -403,6 +536,8 @@
 			children = (
 				02FF772618E32249002282D3 /* iOS Tests.xctest */,
 				9A130226190BF9380060A25C /* OS X Tests.xctest */,
+				9A4510F1191643FD006E6022 /* iOS Benchmark.app */,
+				9A45113D1916444C006E6022 /* MacOS Benchmark.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -410,7 +545,6 @@
 		C6557E1416D6621E005D2D3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A130227190BF9380060A25C /* SenTestingKit.framework */,
 				DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */,
 				0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */,
 			);
@@ -482,6 +616,40 @@
 			productReference = 9A130226190BF9380060A25C /* OS X Tests.xctest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		9A4510F0191643FD006E6022 /* iOS Benchmark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A451123191643FD006E6022 /* Build configuration list for PBXNativeTarget "iOS Benchmark" */;
+			buildPhases = (
+				9A4510ED191643FD006E6022 /* Sources */,
+				9A4510EE191643FD006E6022 /* Frameworks */,
+				9A4510EF191643FD006E6022 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Benchmark";
+			productName = "iOS Benchmark";
+			productReference = 9A4510F1191643FD006E6022 /* iOS Benchmark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A45113C1916444C006E6022 /* MacOS Benchmark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A45116C1916444C006E6022 /* Build configuration list for PBXNativeTarget "MacOS Benchmark" */;
+			buildPhases = (
+				9A4511391916444C006E6022 /* Sources */,
+				9A45113A1916444C006E6022 /* Frameworks */,
+				9A45113B1916444C006E6022 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MacOS Benchmark";
+			productName = "MacOS Benchmark";
+			productReference = 9A45113D1916444C006E6022 /* MacOS Benchmark.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -492,6 +660,11 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = EasyKit;
+				TargetAttributes = {
+					02FF772518E32249002282D3 = {
+						TestTargetID = 9A4510F0191643FD006E6022;
+					};
+				};
 			};
 			buildConfigurationList = C6557E0D16D6621E005D2D3E /* Build configuration list for PBXProject "EasyMappingExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -499,6 +672,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C6557E0916D6621E005D2D3E;
 			productRefGroup = C6557E1316D6621E005D2D3E /* Products */;
@@ -507,6 +681,8 @@
 			targets = (
 				02FF772518E32249002282D3 /* iOS Tests */,
 				9A130225190BF9380060A25C /* OS X Tests */,
+				9A4510F0191643FD006E6022 /* iOS Benchmark */,
+				9A45113C1916444C006E6022 /* MacOS Benchmark */,
 			);
 		};
 /* End PBXProject section */
@@ -516,23 +692,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A4DD1C0190CF8A900A134C0 /* Address.json in Resources */,
-				9A4DD1CE190CF8A900A134C0 /* Female.json in Resources */,
-				9A4DD1D0190CF8A900A134C0 /* Male.json in Resources */,
-				9A4DD1D6190CF8A900A134C0 /* Person.json in Resources */,
-				9A4DD1C8190CF8A900A134C0 /* CarWithDate.json in Resources */,
-				9A4DD1C4190CF8A900A134C0 /* Car.json in Resources */,
-				9A4DD1D2190CF8A900A134C0 /* Native.json in Resources */,
-				9A4DD1E5190CF8CC00A134C0 /* InfoPlist.strings in Resources */,
-				9A4DD1C2190CF8A900A134C0 /* Alien.json in Resources */,
-				9A4DD1C6190CF8A900A134C0 /* Cars.json in Resources */,
-				9A4DD1DA190CF8A900A134C0 /* PersonWithNullCar.json in Resources */,
-				9A4DD1CC190CF8A900A134C0 /* CarWithRoot.json in Resources */,
-				9A4DD1DC190CF8A900A134C0 /* PersonWithNullPhones.json in Resources */,
-				9A4DD1CA190CF8A900A134C0 /* CarWithNestedAttributes.json in Resources */,
-				9A4DD1D8190CF8A900A134C0 /* PersonWithDifferentNaming.json in Resources */,
-				9A4DD1DE190CF8A900A134C0 /* Plane.json in Resources */,
-				9A4DD1D4190CF8A900A134C0 /* NativeChild.json in Resources */,
+				9A45121319164705006E6022 /* Address.json in Resources */,
+				9A45122F19164705006E6022 /* Female.json in Resources */,
+				9A45123319164705006E6022 /* Male.json in Resources */,
+				9A45123F19164705006E6022 /* Person.json in Resources */,
+				9A45122319164705006E6022 /* CarWithDate.json in Resources */,
+				9A45121B19164705006E6022 /* Car.json in Resources */,
+				9A45123719164705006E6022 /* Native.json in Resources */,
+				9A45125919164773006E6022 /* InfoPlist.strings in Resources */,
+				9A45121719164705006E6022 /* Alien.json in Resources */,
+				9A45121F19164705006E6022 /* Cars.json in Resources */,
+				9A45124719164705006E6022 /* PersonWithNullCar.json in Resources */,
+				9A45122B19164705006E6022 /* CarWithRoot.json in Resources */,
+				9A45124B19164705006E6022 /* PersonWithNullPhones.json in Resources */,
+				9A45122719164705006E6022 /* CarWithNestedAttributes.json in Resources */,
+				9A45124319164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9A45124F19164705006E6022 /* Plane.json in Resources */,
+				9A45123B19164705006E6022 /* NativeChild.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,23 +716,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A4DD1C1190CF8A900A134C0 /* Address.json in Resources */,
-				9A4DD1CF190CF8A900A134C0 /* Female.json in Resources */,
-				9A4DD1D1190CF8A900A134C0 /* Male.json in Resources */,
-				9A4DD1D7190CF8A900A134C0 /* Person.json in Resources */,
-				9A130232190BF9380060A25C /* InfoPlist.strings in Resources */,
-				9A4DD1C9190CF8A900A134C0 /* CarWithDate.json in Resources */,
-				9A4DD1C5190CF8A900A134C0 /* Car.json in Resources */,
-				9A4DD1D3190CF8A900A134C0 /* Native.json in Resources */,
-				9A4DD1C3190CF8A900A134C0 /* Alien.json in Resources */,
-				9A4DD1C7190CF8A900A134C0 /* Cars.json in Resources */,
-				9A4DD1DB190CF8A900A134C0 /* PersonWithNullCar.json in Resources */,
-				9A4DD1CD190CF8A900A134C0 /* CarWithRoot.json in Resources */,
-				9A4DD1DD190CF8A900A134C0 /* PersonWithNullPhones.json in Resources */,
-				9A4DD1CB190CF8A900A134C0 /* CarWithNestedAttributes.json in Resources */,
-				9A4DD1D9190CF8A900A134C0 /* PersonWithDifferentNaming.json in Resources */,
-				9A4DD1DF190CF8A900A134C0 /* Plane.json in Resources */,
-				9A4DD1D5190CF8A900A134C0 /* NativeChild.json in Resources */,
+				9A45121419164705006E6022 /* Address.json in Resources */,
+				9A45123019164705006E6022 /* Female.json in Resources */,
+				9A45123419164705006E6022 /* Male.json in Resources */,
+				9A45124019164705006E6022 /* Person.json in Resources */,
+				9A45122419164705006E6022 /* CarWithDate.json in Resources */,
+				9A45121C19164705006E6022 /* Car.json in Resources */,
+				9A45125F191647A1006E6022 /* InfoPlist.strings in Resources */,
+				9A45123819164705006E6022 /* Native.json in Resources */,
+				9A45121819164705006E6022 /* Alien.json in Resources */,
+				9A45122019164705006E6022 /* Cars.json in Resources */,
+				9A45124819164705006E6022 /* PersonWithNullCar.json in Resources */,
+				9A45122C19164705006E6022 /* CarWithRoot.json in Resources */,
+				9A45124C19164705006E6022 /* PersonWithNullPhones.json in Resources */,
+				9A45122819164705006E6022 /* CarWithNestedAttributes.json in Resources */,
+				9A45124419164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9A45125019164705006E6022 /* Plane.json in Resources */,
+				9A45123C19164705006E6022 /* NativeChild.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A4510EF191643FD006E6022 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A451264191647BA006E6022 /* Images.xcassets in Resources */,
+				9A45126C191647D0006E6022 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A45113B1916444C006E6022 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A451271191647ED006E6022 /* Images.xcassets in Resources */,
+				9A45127719164805006E6022 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,38 +824,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AF425E4190CF057003FD1BD /* UFO.m in Sources */,
-				9AF425DB190CF057003FD1BD /* Cat.m in Sources */,
-				9A4DD1A5190CF88300A134C0 /* EKManagedObjectMappingSpec.m in Sources */,
-				9A4DD1A1190CF88300A134C0 /* EKFieldMappingSpec.m in Sources */,
-				9AF425D9190CF057003FD1BD /* Alien.m in Sources */,
+				9A4511DC191646C9006E6022 /* UFO.m in Sources */,
+				9A4511B8191646C9006E6022 /* Cat.m in Sources */,
+				9A4511EF191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */,
+				9A4511E7191646F6006E6022 /* EKFieldMappingSpec.m in Sources */,
+				9A4511B0191646C9006E6022 /* Alien.m in Sources */,
+				9A45118E191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A45117819164696006E6022 /* ManagedMappingProvider.m in Sources */,
+				9A4511D0191646C9006E6022 /* Phone.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
+				9A4511C8191646C9006E6022 /* NativeChild.m in Sources */,
+				9A4511C4191646C9006E6022 /* Native.m in Sources */,
 				9A13024B190BFEF30060A25C /* EKTransformer.m in Sources */,
-				9AF425E1190CF057003FD1BD /* Phone.m in Sources */,
-				9AF425C4190CF049003FD1BD /* MappingProvider.m in Sources */,
-				9AF425DF190CF057003FD1BD /* NativeChild.m in Sources */,
-				9AF425DE190CF057003FD1BD /* Native.m in Sources */,
-				9AF425C7190CF04F003FD1BD /* ManagedCar.m in Sources */,
-				9AF425E2190CF057003FD1BD /* Plane.m in Sources */,
 				9A130249190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
-				9AF425E3190CF057003FD1BD /* Seaplane.m in Sources */,
-				9AF425DD190CF057003FD1BD /* Finger.m in Sources */,
-				9A4DD1AD190CF88300A134C0 /* EKSerializerSpec.m in Sources */,
-				9AF425C3190CF049003FD1BD /* ManagedMappingProvider.m in Sources */,
-				9A4DD1AB190CF88300A134C0 /* EKPropertyHelperSpec.m in Sources */,
-				9A4DD1A7190CF88300A134C0 /* EKMapperSpec.m in Sources */,
+				9A4511D4191646C9006E6022 /* Plane.m in Sources */,
+				9A45118A191646B2006E6022 /* ManagedPerson.m in Sources */,
+				9A4511D8191646C9006E6022 /* Seaplane.m in Sources */,
+				9A4511FF191646F7006E6022 /* EKSerializerSpec.m in Sources */,
+				9A4511C0191646C9006E6022 /* Finger.m in Sources */,
+				9A4511FB191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
+				9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */,
-				9AF425C9190CF04F003FD1BD /* ManagedPhone.m in Sources */,
 				9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */,
-				9AF425DC190CF057003FD1BD /* ColoredUFO.m in Sources */,
-				9AF425DA190CF057003FD1BD /* Car.m in Sources */,
-				9AF425E0190CF057003FD1BD /* Person.m in Sources */,
+				9A451186191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A4511BC191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130246190BFEF30060A25C /* EKMapper.m in Sources */,
-				9AF425C8190CF04F003FD1BD /* ManagedPerson.m in Sources */,
+				9A4511B4191646C9006E6022 /* Car.m in Sources */,
+				9A4511CC191646C9006E6022 /* Person.m in Sources */,
 				9A130248190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */,
-				9AF425D8190CF057003FD1BD /* Address.m in Sources */,
-				9A4DD1A9190CF88300A134C0 /* EKObjectMappingSpec.m in Sources */,
-				9A4DD1A3190CF88300A134C0 /* EKManagedObjectMapperSpec.m in Sources */,
+				9A45117C19164696006E6022 /* MappingProvider.m in Sources */,
+				9A4511AC191646C9006E6022 /* Address.m in Sources */,
+				9A4511F7191646F7006E6022 /* EKObjectMappingSpec.m in Sources */,
+				9A4511EB191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A130247190BFEF30060A25C /* EKObjectMapping.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,57 +864,143 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AF425F1190CF057003FD1BD /* UFO.m in Sources */,
-				9AF425E8190CF057003FD1BD /* Cat.m in Sources */,
-				9A4DD1A6190CF88300A134C0 /* EKManagedObjectMappingSpec.m in Sources */,
-				9A4DD1A2190CF88300A134C0 /* EKFieldMappingSpec.m in Sources */,
-				9AF425E6190CF057003FD1BD /* Alien.m in Sources */,
+				9A4511DD191646C9006E6022 /* UFO.m in Sources */,
+				9A4511B9191646C9006E6022 /* Cat.m in Sources */,
+				9A4511F0191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */,
+				9A4511E8191646F7006E6022 /* EKFieldMappingSpec.m in Sources */,
+				9A4511B1191646C9006E6022 /* Alien.m in Sources */,
+				9A45118F191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */,
+				9A4511D1191646C9006E6022 /* Phone.m in Sources */,
 				9A130251190BFEF30060A25C /* EKSerializer.m in Sources */,
-				9AF425EE190CF057003FD1BD /* Phone.m in Sources */,
-				9AF425CC190CF050003FD1BD /* ManagedPhone.m in Sources */,
-				9AF425EC190CF057003FD1BD /* NativeChild.m in Sources */,
-				9AF425EB190CF057003FD1BD /* Native.m in Sources */,
-				9AF425C6190CF04A003FD1BD /* MappingProvider.m in Sources */,
-				9AF425CB190CF050003FD1BD /* ManagedPerson.m in Sources */,
-				9AF425EF190CF057003FD1BD /* Plane.m in Sources */,
+				9A4511C9191646C9006E6022 /* NativeChild.m in Sources */,
+				9A4511C5191646C9006E6022 /* Native.m in Sources */,
 				9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */,
-				9AF425F0190CF057003FD1BD /* Seaplane.m in Sources */,
-				9AF425EA190CF057003FD1BD /* Finger.m in Sources */,
-				9A4DD1AE190CF88300A134C0 /* EKSerializerSpec.m in Sources */,
-				9AF425CA190CF050003FD1BD /* ManagedCar.m in Sources */,
-				9A4DD1AC190CF88300A134C0 /* EKPropertyHelperSpec.m in Sources */,
-				9A4DD1A8190CF88300A134C0 /* EKMapperSpec.m in Sources */,
+				9A45118B191646B2006E6022 /* ManagedPerson.m in Sources */,
+				9A4511D5191646C9006E6022 /* Plane.m in Sources */,
+				9A4511D9191646C9006E6022 /* Seaplane.m in Sources */,
+				9A4511C1191646C9006E6022 /* Finger.m in Sources */,
+				9A451200191646F7006E6022 /* EKSerializerSpec.m in Sources */,
 				9A13024D190BFEF30060A25C /* EKMapper.m in Sources */,
-				9AF425C5190CF04A003FD1BD /* ManagedMappingProvider.m in Sources */,
+				9A4511FC191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
+				9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */,
-				9AF425E9190CF057003FD1BD /* ColoredUFO.m in Sources */,
 				9A13024C190BFEF30060A25C /* EKFieldMapping.m in Sources */,
-				9AF425E7190CF057003FD1BD /* Car.m in Sources */,
-				9AF425ED190CF057003FD1BD /* Person.m in Sources */,
+				9A451187191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A4511BD191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
-				9AF425E5190CF057003FD1BD /* Address.m in Sources */,
+				9A4511B5191646C9006E6022 /* Car.m in Sources */,
+				9A4511CD191646C9006E6022 /* Person.m in Sources */,
 				9A130252190BFEF30060A25C /* EKTransformer.m in Sources */,
-				9A4DD1AA190CF88300A134C0 /* EKObjectMappingSpec.m in Sources */,
-				9A4DD1A4190CF88300A134C0 /* EKManagedObjectMapperSpec.m in Sources */,
+				9A45117D19164696006E6022 /* MappingProvider.m in Sources */,
+				9A4511AD191646C9006E6022 /* Address.m in Sources */,
+				9A4511F8191646F7006E6022 /* EKObjectMappingSpec.m in Sources */,
+				9A4511EC191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A13024F190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A4510ED191643FD006E6022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4511D6191646C9006E6022 /* Plane.m in Sources */,
+				9A4511D2191646C9006E6022 /* Phone.m in Sources */,
+				9A4511BA191646C9006E6022 /* Cat.m in Sources */,
+				9A4511B6191646C9006E6022 /* Car.m in Sources */,
+				9A4511AE191646C9006E6022 /* Address.m in Sources */,
+				9A45127A19164911006E6022 /* EKFieldMapping.m in Sources */,
+				9A4511CA191646C9006E6022 /* NativeChild.m in Sources */,
+				9A45127B19164911006E6022 /* EKMapper.m in Sources */,
+				9A4511CE191646C9006E6022 /* Person.m in Sources */,
+				9A451190191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A451188191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A4511BE191646C9006E6022 /* ColoredUFO.m in Sources */,
+				9A45127F19164911006E6022 /* EKSerializer.m in Sources */,
+				9A4511C6191646C9006E6022 /* Native.m in Sources */,
+				9A45117E19164696006E6022 /* MappingProvider.m in Sources */,
+				9A4511B2191646C9006E6022 /* Alien.m in Sources */,
+				9A45118C191646B2006E6022 /* ManagedPerson.m in Sources */,
+				9A45128019164911006E6022 /* EKTransformer.m in Sources */,
+				9A4511C2191646C9006E6022 /* Finger.m in Sources */,
+				9A451263191647BA006E6022 /* EKAppDelegate.m in Sources */,
+				9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A4511DE191646C9006E6022 /* UFO.m in Sources */,
+				9A4511DA191646C9006E6022 /* Seaplane.m in Sources */,
+				9A451269191647C6006E6022 /* main.m in Sources */,
+				9A45117A19164696006E6022 /* ManagedMappingProvider.m in Sources */,
+				9A45127C19164911006E6022 /* EKObjectMapping.m in Sources */,
+				9A45127E19164911006E6022 /* EKPropertyHelper.m in Sources */,
+				9A45127D19164911006E6022 /* EKManagedObjectMapping.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A4511391916444C006E6022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4511DF191646C9006E6022 /* UFO.m in Sources */,
+				9A4511BB191646C9006E6022 /* Cat.m in Sources */,
+				9A4511CB191646C9006E6022 /* NativeChild.m in Sources */,
+				9A4511D7191646C9006E6022 /* Plane.m in Sources */,
+				9A4511B3191646C9006E6022 /* Alien.m in Sources */,
+				9A451270191647ED006E6022 /* EKAppDelegate.m in Sources */,
+				9A451189191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A4511C3191646C9006E6022 /* Finger.m in Sources */,
+				9A45128219164912006E6022 /* EKMapper.m in Sources */,
+				9A45128619164912006E6022 /* EKSerializer.m in Sources */,
+				9A45128519164912006E6022 /* EKPropertyHelper.m in Sources */,
+				9A45128319164912006E6022 /* EKObjectMapping.m in Sources */,
+				9A4511CF191646C9006E6022 /* Person.m in Sources */,
+				9A45128419164912006E6022 /* EKManagedObjectMapping.m in Sources */,
+				9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A45117F19164696006E6022 /* MappingProvider.m in Sources */,
+				9A4511B7191646C9006E6022 /* Car.m in Sources */,
+				9A4511C7191646C9006E6022 /* Native.m in Sources */,
+				9A451191191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A45128719164912006E6022 /* EKTransformer.m in Sources */,
+				9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */,
+				9A45128119164912006E6022 /* EKFieldMapping.m in Sources */,
+				9A4511DB191646C9006E6022 /* Seaplane.m in Sources */,
+				9A4511BF191646C9006E6022 /* ColoredUFO.m in Sources */,
+				9A4511D3191646C9006E6022 /* Phone.m in Sources */,
+				9A4511AF191646C9006E6022 /* Address.m in Sources */,
+				9A451289191649DC006E6022 /* main.m in Sources */,
+				9A45117B19164696006E6022 /* ManagedMappingProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9A130230190BF9380060A25C /* InfoPlist.strings */ = {
+		9A45125719164773006E6022 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9A130231190BF9380060A25C /* en */,
+				9A45125819164773006E6022 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9A4DD1E2190CF8CC00A134C0 /* InfoPlist.strings */ = {
+		9A45125D191647A1006E6022 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9A4DD1E3190CF8CC00A134C0 /* en */,
+				9A45125E191647A1006E6022 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9A45126A191647D0006E6022 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A45126B191647D0006E6022 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9A45127419164805006E6022 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A45127519164805006E6022 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -732,12 +1012,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOS Benchmark.app/iOS Benchmark";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iOS Tests/EasyMappingExampleTests-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -747,9 +1028,10 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "iOS Tests/EasyMappingExampleTests-Info.plist";
+				INFOPLIST_FILE = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -758,21 +1040,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOS Benchmark.app/iOS Benchmark";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iOS Tests/EasyMappingExampleTests-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "iOS Tests/EasyMappingExampleTests-Info.plist";
+				INFOPLIST_FILE = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -786,7 +1070,7 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OS X Tests/OS X Tests-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tests/Targets/OS X Tests/OS X Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -796,7 +1080,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "OS X Tests/OS X Tests-Info.plist";
+				INFOPLIST_FILE = "Tests/Targets/OS X Tests/OS X Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
@@ -813,16 +1097,127 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OS X Tests/OS X Tests-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tests/Targets/OS X Tests/OS X Tests-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "OS X Tests/OS X Tests-Info.plist";
+				INFOPLIST_FILE = "Tests/Targets/OS X Tests/OS X Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		9A45111F191643FD006E6022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9A451120191643FD006E6022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9A45116D1916444C006E6022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Benchmarks/Targets/MacOS Benchmark/MacOS Benchmark-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9A45116E1916444C006E6022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Benchmarks/Targets/MacOS Benchmark/MacOS Benchmark-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -904,6 +1299,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9A451123191643FD006E6022 /* Build configuration list for PBXNativeTarget "iOS Benchmark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A45111F191643FD006E6022 /* Debug */,
+				9A451120191643FD006E6022 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A45116C1916444C006E6022 /* Build configuration list for PBXNativeTarget "MacOS Benchmark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A45116D1916444C006E6022 /* Debug */,
+				9A45116E1916444C006E6022 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		C6557E0D16D6621E005D2D3E /* Build configuration list for PBXProject "EasyMappingExample" */ = {
 			isa = XCConfigurationList;

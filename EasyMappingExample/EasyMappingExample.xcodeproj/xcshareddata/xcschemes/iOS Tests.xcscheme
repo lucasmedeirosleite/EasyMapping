@@ -7,8 +7,11 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
+            buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForTesting = "YES">
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "02FF772518E32249002282D3"
@@ -32,6 +35,36 @@
                BlueprintIdentifier = "02FF772518E32249002282D3"
                BuildableName = "iOS Tests.xctest"
                BlueprintName = "iOS Tests"
+               ReferencedContainer = "container:EasyMappingExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9A45110E191643FD006E6022"
+               BuildableName = "iOS BenchmarkTests.xctest"
+               BlueprintName = "iOS BenchmarkTests"
+               ReferencedContainer = "container:EasyMappingExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9A45115E1916444C006E6022"
+               BuildableName = "MacOS BenchmarkTests.xctest"
+               BlueprintName = "MacOS BenchmarkTests"
+               ReferencedContainer = "container:EasyMappingExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9A4512AC191649F7006E6022"
+               BuildableName = "FOOOOOOOOTests.xctest"
+               BlueprintName = "FOOOOOOOOTests"
                ReferencedContainer = "container:EasyMappingExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
