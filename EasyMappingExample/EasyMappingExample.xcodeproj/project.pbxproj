@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18BD8D6281D14C038CC3F308 /* libPods-MacOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */; };
 		550CE75226AD40059EA2F789 /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */; };
+		82DA805DFB1B4D3494041157 /* libPods-iOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */; };
 		9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
 		9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
 		9A130246190BFEF30060A25C /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
@@ -167,13 +169,57 @@
 		9A45128619164912006E6022 /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A45128719164912006E6022 /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
 		9A451289191649DC006E6022 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451288191649DC006E6022 /* main.m */; };
+		9A4512C819164C67006E6022 /* EKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512C719164C67006E6022 /* EKCoreDataManager.m */; };
+		9A4512C919164C67006E6022 /* EKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512C719164C67006E6022 /* EKCoreDataManager.m */; };
+		9A4512CC1916565C006E6022 /* EKBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512CB1916565C006E6022 /* EKBenchmark.m */; };
+		9A4512CD1916565C006E6022 /* EKBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512CB1916565C006E6022 /* EKBenchmark.m */; };
+		9A4512D019165B2D006E6022 /* EKBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512CF19165B2D006E6022 /* EKBenchmarkSuite.m */; };
+		9A4512D119165B2D006E6022 /* EKBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512CF19165B2D006E6022 /* EKBenchmarkSuite.m */; };
+		9A4512D419165B46006E6022 /* EKCoreDataBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512D319165B46006E6022 /* EKCoreDataBenchmarkSuite.m */; };
+		9A4512D519165B46006E6022 /* EKCoreDataBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4512D319165B46006E6022 /* EKCoreDataBenchmarkSuite.m */; };
+		9A4512D719166366006E6022 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120319164704006E6022 /* Address.json */; };
+		9A4512D819166366006E6022 /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120419164704006E6022 /* Alien.json */; };
+		9A4512D919166366006E6022 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120519164704006E6022 /* Car.json */; };
+		9A4512DA19166366006E6022 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120619164705006E6022 /* Cars.json */; };
+		9A4512DB19166366006E6022 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120719164705006E6022 /* CarWithDate.json */; };
+		9A4512DC19166366006E6022 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120819164705006E6022 /* CarWithNestedAttributes.json */; };
+		9A4512DD19166366006E6022 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120919164705006E6022 /* CarWithRoot.json */; };
+		9A4512DE19166366006E6022 /* Female.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120A19164705006E6022 /* Female.json */; };
+		9A4512DF19166366006E6022 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120B19164705006E6022 /* Male.json */; };
+		9A4512E019166366006E6022 /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120C19164705006E6022 /* Native.json */; };
+		9A4512E119166366006E6022 /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120D19164705006E6022 /* NativeChild.json */; };
+		9A4512E219166366006E6022 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120E19164705006E6022 /* Person.json */; };
+		9A4512E319166366006E6022 /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */; };
+		9A4512E419166366006E6022 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121019164705006E6022 /* PersonWithNullCar.json */; };
+		9A4512E519166366006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
+		9A4512E619166366006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
+		9A4512E719166366006E6022 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120319164704006E6022 /* Address.json */; };
+		9A4512E819166366006E6022 /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120419164704006E6022 /* Alien.json */; };
+		9A4512E919166366006E6022 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120519164704006E6022 /* Car.json */; };
+		9A4512EA19166366006E6022 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120619164705006E6022 /* Cars.json */; };
+		9A4512EB19166366006E6022 /* CarWithDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120719164705006E6022 /* CarWithDate.json */; };
+		9A4512EC19166366006E6022 /* CarWithNestedAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120819164705006E6022 /* CarWithNestedAttributes.json */; };
+		9A4512ED19166366006E6022 /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120919164705006E6022 /* CarWithRoot.json */; };
+		9A4512EE19166366006E6022 /* Female.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120A19164705006E6022 /* Female.json */; };
+		9A4512EF19166366006E6022 /* Male.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120B19164705006E6022 /* Male.json */; };
+		9A4512F019166366006E6022 /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120C19164705006E6022 /* Native.json */; };
+		9A4512F119166366006E6022 /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120D19164705006E6022 /* NativeChild.json */; };
+		9A4512F219166366006E6022 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120E19164705006E6022 /* Person.json */; };
+		9A4512F319166366006E6022 /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */; };
+		9A4512F419166366006E6022 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121019164705006E6022 /* PersonWithNullCar.json */; };
+		9A4512F519166366006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
+		9A4512F619166366006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
+		9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4512F719166B8E006E6022 /* MainMenu.xib */; };
 		9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
 		9F05E19A84E8447EA462A2FD /* libPods-OS X Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02FF772618E32249002282D3 /* iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.xcconfig"; path = "Pods/Pods-MacOS Benchmark.xcconfig"; sourceTree = "<group>"; };
 		8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.xcconfig"; path = "Pods/Pods-iOS Tests.xcconfig"; sourceTree = "<group>"; };
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A4510F1191643FD006E6022 /* iOS Benchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Benchmark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +302,15 @@
 		9A45127519164805006E6022 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Benchmarks/Targets/MacOS Benchmark/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
 		9A4512781916480D006E6022 /* MacOS Benchmark-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MacOS Benchmark-Info.plist"; path = "Benchmarks/Targets/MacOS Benchmark/MacOS Benchmark-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9A451288191649DC006E6022 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Benchmarks/Targets/MacOS Benchmark/main.m"; sourceTree = SOURCE_ROOT; };
+		9A4512C619164C67006E6022 /* EKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataManager.h; path = Benchmarks/Classes/CoreData/EKCoreDataManager.h; sourceTree = "<group>"; };
+		9A4512C719164C67006E6022 /* EKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataManager.m; path = Benchmarks/Classes/CoreData/EKCoreDataManager.m; sourceTree = "<group>"; };
+		9A4512CA1916565C006E6022 /* EKBenchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKBenchmark.h; path = Benchmarks/Classes/Becnhmark/EKBenchmark.h; sourceTree = "<group>"; };
+		9A4512CB1916565C006E6022 /* EKBenchmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKBenchmark.m; path = Benchmarks/Classes/Becnhmark/EKBenchmark.m; sourceTree = "<group>"; };
+		9A4512CE19165B2D006E6022 /* EKBenchmarkSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKBenchmarkSuite.h; path = Benchmarks/Classes/Becnhmark/EKBenchmarkSuite.h; sourceTree = "<group>"; };
+		9A4512CF19165B2D006E6022 /* EKBenchmarkSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKBenchmarkSuite.m; path = Benchmarks/Classes/Becnhmark/EKBenchmarkSuite.m; sourceTree = "<group>"; };
+		9A4512D219165B46006E6022 /* EKCoreDataBenchmarkSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataBenchmarkSuite.h; path = Benchmarks/Classes/Becnhmark/EKCoreDataBenchmarkSuite.h; sourceTree = "<group>"; };
+		9A4512D319165B46006E6022 /* EKCoreDataBenchmarkSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataBenchmarkSuite.m; path = Benchmarks/Classes/Becnhmark/EKCoreDataBenchmarkSuite.m; sourceTree = "<group>"; };
+		9A4512F719166B8E006E6022 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "Benchmarks/Targets/MacOS Benchmark/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 		9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
 		9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
 		9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMappingExample.xcdatamodel; sourceTree = "<group>"; };
@@ -274,6 +329,7 @@
 		A9D16D0216F2B2770003759B /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTransformer.h; sourceTree = "<group>"; };
 		A9D16D0316F2B2770003759B /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTransformer.m; sourceTree = "<group>"; };
 		CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.xcconfig"; path = "Pods/Pods-OS X Tests.xcconfig"; sourceTree = "<group>"; };
+		D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.xcconfig"; path = "Pods/Pods-iOS Benchmark.xcconfig"; sourceTree = "<group>"; };
 		DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OS X Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -298,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DA805DFB1B4D3494041157 /* libPods-iOS Benchmark.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BD8D6281D14C038CC3F308 /* libPods-MacOS Benchmark.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,8 +489,59 @@
 				9A45127419164805006E6022 /* InfoPlist.strings */,
 				9A4512781916480D006E6022 /* MacOS Benchmark-Info.plist */,
 				9A451288191649DC006E6022 /* main.m */,
+				9A4512F719166B8E006E6022 /* MainMenu.xib */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A4512C119164C0D006E6022 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				66C458DB17943909005AF11E /* Providers */,
+				66C458DA179438FE005AF11E /* Models */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		9A4512C219164C20006E6022 /* Benchmarks */ = {
+			isa = PBXGroup;
+			children = (
+				9A4512C319164C39006E6022 /* Classes */,
+				9A4510FA191643FD006E6022 /* iOS Benchmark */,
+				9A4511441916444C006E6022 /* MacOS Benchmark */,
+			);
+			name = Benchmarks;
+			sourceTree = "<group>";
+		};
+		9A4512C319164C39006E6022 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9A4512C519164C47006E6022 /* Becnhmark */,
+				9A4512C419164C3F006E6022 /* CoreData */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		9A4512C419164C3F006E6022 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9A4512C619164C67006E6022 /* EKCoreDataManager.h */,
+				9A4512C719164C67006E6022 /* EKCoreDataManager.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		9A4512C519164C47006E6022 /* Becnhmark */ = {
+			isa = PBXGroup;
+			children = (
+				9A4512CA1916565C006E6022 /* EKBenchmark.h */,
+				9A4512CB1916565C006E6022 /* EKBenchmark.m */,
+				9A4512CE19165B2D006E6022 /* EKBenchmarkSuite.h */,
+				9A4512CF19165B2D006E6022 /* EKBenchmarkSuite.m */,
+				9A4512D219165B46006E6022 /* EKCoreDataBenchmarkSuite.h */,
+				9A4512D319165B46006E6022 /* EKCoreDataBenchmarkSuite.m */,
+			);
+			name = Becnhmark;
 			sourceTree = "<group>";
 		};
 		9A4DD1AF190CF88C00A134C0 /* Specs */ = {
@@ -495,13 +604,13 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		9AF425C1190CEF42003FD1BD /* Unit Tests */ = {
+		9AF425C1190CEF42003FD1BD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				9A4DD1AF190CF88C00A134C0 /* Specs */,
 				02FF773818E32257002282D3 /* Fixtures */,
 			);
-			name = "Unit Tests";
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		9AF425C2190CEF64003FD1BD /* Supporting files */ = {
@@ -517,17 +626,17 @@
 			isa = PBXGroup;
 			children = (
 				C6557E5016D6652A005D2D3E /* EasyMapping */,
-				66C458DB17943909005AF11E /* Providers */,
-				66C458DA179438FE005AF11E /* Models */,
+				9A4512C119164C0D006E6022 /* Classes */,
 				9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */,
-				9AF425C1190CEF42003FD1BD /* Unit Tests */,
+				9AF425C1190CEF42003FD1BD /* Tests */,
 				9AF425C2190CEF64003FD1BD /* Supporting files */,
-				9A4510FA191643FD006E6022 /* iOS Benchmark */,
-				9A4511441916444C006E6022 /* MacOS Benchmark */,
+				9A4512C219164C20006E6022 /* Benchmarks */,
 				C6557E1416D6621E005D2D3E /* Frameworks */,
 				C6557E1316D6621E005D2D3E /* Products */,
 				CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */,
 				8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */,
+				D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */,
+				4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -547,6 +656,8 @@
 			children = (
 				DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */,
 				0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */,
+				094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */,
+				4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -620,9 +731,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A451123191643FD006E6022 /* Build configuration list for PBXNativeTarget "iOS Benchmark" */;
 			buildPhases = (
+				C8E81978B7B84DA083C46ECE /* Check Pods Manifest.lock */,
 				9A4510ED191643FD006E6022 /* Sources */,
 				9A4510EE191643FD006E6022 /* Frameworks */,
 				9A4510EF191643FD006E6022 /* Resources */,
+				55C7ED844C6D48618437BF7B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -637,9 +750,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A45116C1916444C006E6022 /* Build configuration list for PBXNativeTarget "MacOS Benchmark" */;
 			buildPhases = (
+				D939FCA27CED4CA3AC7A6CE5 /* Check Pods Manifest.lock */,
 				9A4511391916444C006E6022 /* Sources */,
 				9A45113A1916444C006E6022 /* Frameworks */,
 				9A45113B1916444C006E6022 /* Resources */,
+				03A08CFEF0BB4BA2B8E67089 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -663,6 +778,9 @@
 				TargetAttributes = {
 					02FF772518E32249002282D3 = {
 						TestTargetID = 9A4510F0191643FD006E6022;
+					};
+					9A4510F0191643FD006E6022 = {
+						DevelopmentTeam = L94VC9ZZXC;
 					};
 				};
 			};
@@ -740,8 +858,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4512DC19166366006E6022 /* CarWithNestedAttributes.json in Resources */,
+				9A4512DF19166366006E6022 /* Male.json in Resources */,
+				9A4512E419166366006E6022 /* PersonWithNullCar.json in Resources */,
+				9A4512E019166366006E6022 /* Native.json in Resources */,
+				9A4512E619166366006E6022 /* Plane.json in Resources */,
 				9A451264191647BA006E6022 /* Images.xcassets in Resources */,
+				9A4512E219166366006E6022 /* Person.json in Resources */,
+				9A4512D719166366006E6022 /* Address.json in Resources */,
+				9A4512DA19166366006E6022 /* Cars.json in Resources */,
 				9A45126C191647D0006E6022 /* InfoPlist.strings in Resources */,
+				9A4512E119166366006E6022 /* NativeChild.json in Resources */,
+				9A4512D819166366006E6022 /* Alien.json in Resources */,
+				9A4512D919166366006E6022 /* Car.json in Resources */,
+				9A4512DD19166366006E6022 /* CarWithRoot.json in Resources */,
+				9A4512DB19166366006E6022 /* CarWithDate.json in Resources */,
+				9A4512E519166366006E6022 /* PersonWithNullPhones.json in Resources */,
+				9A4512E319166366006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9A4512DE19166366006E6022 /* Female.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,14 +883,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4512EC19166366006E6022 /* CarWithNestedAttributes.json in Resources */,
+				9A4512EF19166366006E6022 /* Male.json in Resources */,
+				9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */,
+				9A4512F419166366006E6022 /* PersonWithNullCar.json in Resources */,
+				9A4512F019166366006E6022 /* Native.json in Resources */,
+				9A4512F619166366006E6022 /* Plane.json in Resources */,
 				9A451271191647ED006E6022 /* Images.xcassets in Resources */,
+				9A4512F219166366006E6022 /* Person.json in Resources */,
+				9A4512E719166366006E6022 /* Address.json in Resources */,
+				9A4512EA19166366006E6022 /* Cars.json in Resources */,
 				9A45127719164805006E6022 /* InfoPlist.strings in Resources */,
+				9A4512F119166366006E6022 /* NativeChild.json in Resources */,
+				9A4512E819166366006E6022 /* Alien.json in Resources */,
+				9A4512E919166366006E6022 /* Car.json in Resources */,
+				9A4512ED19166366006E6022 /* CarWithRoot.json in Resources */,
+				9A4512EB19166366006E6022 /* CarWithDate.json in Resources */,
+				9A4512F519166366006E6022 /* PersonWithNullPhones.json in Resources */,
+				9A4512F319166366006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9A4512EE19166366006E6022 /* Female.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03A08CFEF0BB4BA2B8E67089 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MacOS Benchmark-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		14211B86D9E84DD28291A654 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -787,6 +953,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-OS X Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		55C7ED844C6D48618437BF7B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-iOS Benchmark-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		62D8F131D6D34B3FB40F5DAE /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -800,6 +981,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-iOS Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8E81978B7B84DA083C46ECE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D939FCA27CED4CA3AC7A6CE5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E9EAE9376DC34DAAA39E1383 /* Check Pods Manifest.lock */ = {
@@ -915,9 +1126,12 @@
 				9A4511CE191646C9006E6022 /* Person.m in Sources */,
 				9A451190191646B2006E6022 /* ManagedPhone.m in Sources */,
 				9A451188191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A4512CC1916565C006E6022 /* EKBenchmark.m in Sources */,
+				9A4512C819164C67006E6022 /* EKCoreDataManager.m in Sources */,
 				9A4511BE191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A45127F19164911006E6022 /* EKSerializer.m in Sources */,
 				9A4511C6191646C9006E6022 /* Native.m in Sources */,
+				9A4512D019165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A45117E19164696006E6022 /* MappingProvider.m in Sources */,
 				9A4511B2191646C9006E6022 /* Alien.m in Sources */,
 				9A45118C191646B2006E6022 /* ManagedPerson.m in Sources */,
@@ -930,6 +1144,7 @@
 				9A451269191647C6006E6022 /* main.m in Sources */,
 				9A45117A19164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A45127C19164911006E6022 /* EKObjectMapping.m in Sources */,
+				9A4512D419165B46006E6022 /* EKCoreDataBenchmarkSuite.m in Sources */,
 				9A45127E19164911006E6022 /* EKPropertyHelper.m in Sources */,
 				9A45127D19164911006E6022 /* EKManagedObjectMapping.m in Sources */,
 			);
@@ -950,9 +1165,12 @@
 				9A45128219164912006E6022 /* EKMapper.m in Sources */,
 				9A45128619164912006E6022 /* EKSerializer.m in Sources */,
 				9A45128519164912006E6022 /* EKPropertyHelper.m in Sources */,
+				9A4512CD1916565C006E6022 /* EKBenchmark.m in Sources */,
+				9A4512C919164C67006E6022 /* EKCoreDataManager.m in Sources */,
 				9A45128319164912006E6022 /* EKObjectMapping.m in Sources */,
 				9A4511CF191646C9006E6022 /* Person.m in Sources */,
 				9A45128419164912006E6022 /* EKManagedObjectMapping.m in Sources */,
+				9A4512D119165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9A45117F19164696006E6022 /* MappingProvider.m in Sources */,
 				9A4511B7191646C9006E6022 /* Car.m in Sources */,
@@ -965,6 +1183,7 @@
 				9A4511BF191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A4511D3191646C9006E6022 /* Phone.m in Sources */,
 				9A4511AF191646C9006E6022 /* Address.m in Sources */,
+				9A4512D519165B46006E6022 /* EKCoreDataBenchmarkSuite.m in Sources */,
 				9A451289191649DC006E6022 /* main.m in Sources */,
 				9A45117B19164696006E6022 /* ManagedMappingProvider.m in Sources */,
 			);
@@ -1112,6 +1331,7 @@
 		};
 		9A45111F191643FD006E6022 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1119,6 +1339,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1139,6 +1360,7 @@
 		};
 		9A451120191643FD006E6022 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1146,6 +1368,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Benchmarks/Targets/iOS Benchmark/iOS Benchmark-Prefix.pch";
@@ -1163,6 +1386,7 @@
 		};
 		9A45116D1916444C006E6022 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1194,6 +1418,7 @@
 		};
 		9A45116E1916444C006E6022 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1307,6 +1532,7 @@
 				9A451120191643FD006E6022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A45116C1916444C006E6022 /* Build configuration list for PBXNativeTarget "MacOS Benchmark" */ = {
 			isa = XCConfigurationList;
@@ -1315,6 +1541,7 @@
 				9A45116E1916444C006E6022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C6557E0D16D6621E005D2D3E /* Build configuration list for PBXProject "EasyMappingExample" */ = {
 			isa = XCConfigurationList;
