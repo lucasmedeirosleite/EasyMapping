@@ -20,6 +20,18 @@
     [self benchmarkCoreData];
 }
 
++(void)benchmarkSuits:(NSArray *)suits runTimes:(NSInteger)runTimes
+{
+    NSTimeInterval benchTime = 0;
+    for (EKBenchmarkSuite * suite in suits)
+    {
+        NSTimeInterval runTime = [suite runTimes:runTimes];
+        NSLog(@"%@ : %f",suite.fixtureName,runTime);
+        benchTime += runTime;
+    }
+    NSLog(@"\n\nTotal time: %f\n\n",benchTime);
+}
+
 + (void)benchmarkCoreData
 {
     NSArray * suitNames = @[
@@ -40,15 +52,9 @@
         [suits addObject:[EKCoreDataBenchmarkSuite suiteWithMapping:nameInfo[key]
                                                 fixtureName:key]];
     }
+    
     NSLog(@"\n\nStarting CoreData benchmarking\n\n");
-    NSTimeInterval benchTime = 0;
-    for (EKBenchmarkSuite * suite in suits)
-    {
-        NSTimeInterval runTime = [suite runTimes:3000];
-        NSLog(@"%@ : %f",suite.fixtureName,runTime);
-        benchTime += runTime;
-    }
-    NSLog(@"\n\nTotal time: %f\n\n",benchTime);
+    [self benchmarkSuits:suits runTimes:3000];
 }
 
 + (void)benchmarkNSObjects
@@ -76,15 +82,9 @@
         [suits addObject:[EKBenchmarkSuite suiteWithMapping:nameInfo[key]
                                                  fixtureName:key]];
     }
+    
     NSLog(@"\n\nStarting NSObject benchmarking\n\n");
-    NSTimeInterval benchTime = 0;
-    for (EKBenchmarkSuite * suite in suits)
-    {
-        NSTimeInterval runTime = [suite runTimes:20000];
-        NSLog(@"%@ : %f",suite.fixtureName,runTime);
-        benchTime += runTime;
-    }
-    NSLog(@"\n\nTotal time: %f\n\n",benchTime);
+    [self benchmarkSuits:suits runTimes:20000];
 }
 
 @end
