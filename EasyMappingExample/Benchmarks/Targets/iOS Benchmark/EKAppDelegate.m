@@ -16,7 +16,6 @@
 {
     [EKCoreDataManager cleanupDatabase];
     [EKBenchmark startBenchmarking];
-    exit(0);
     return YES;
 }
 

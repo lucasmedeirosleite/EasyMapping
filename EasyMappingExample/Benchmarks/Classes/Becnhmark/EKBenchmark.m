@@ -54,7 +54,12 @@
     }
     
     NSLog(@"\n\nStarting CoreData benchmarking\n\n");
+    
+#if TARGET_OS_IPHONE
+    [self benchmarkSuits:suits runTimes:1000];
+#elif TARGET_OS_MAC
     [self benchmarkSuits:suits runTimes:3000];
+#endif
 }
 
 + (void)benchmarkNSObjects
@@ -84,7 +89,12 @@
     }
     
     NSLog(@"\n\nStarting NSObject benchmarking\n\n");
+    
+    #if TARGET_OS_IPHONE
+    [self benchmarkSuits:suits runTimes:5000];
+    #elif TARGET_OS_MAC
     [self benchmarkSuits:suits runTimes:20000];
+    #endif
 }
 
 @end
