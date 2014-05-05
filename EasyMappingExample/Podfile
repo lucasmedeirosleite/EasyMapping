@@ -3,16 +3,28 @@ inhibit_all_warnings!
 target "iOS Tests" do
 platform :ios, '5.0' 
   pod 'Kiwi/XCTest', '2.2.4'
-  pod 'CMFactory', '1.4.1'
+  pod 'CMFactory', '~> 1.4'
   pod 'MagicalRecord'
 end
 
 target "OS X Tests" do
-platform :osx, '10.8'
+platform :osx, '10.7'
 
   pod 'Kiwi/XCTest', '2.2.4'
-  pod 'CMFactory', '1.4.1'
+  pod 'CMFactory', '~> 1.4'
   pod 'MagicalRecord'
+end
+
+target "iOS Benchmark" do
+platform :ios, '5.0'
+
+  pod 'CMFactory', '~> 1.4'
+end
+
+target "MacOS Benchmark" do
+platform :osx, '10.7'
+
+  pod 'CMFactory', '~> 1.4'
 end
 
 

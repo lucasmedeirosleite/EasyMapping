@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "02FF772518E32249002282D3"
-               BuildableName = "iOS Tests.xctest"
-               BlueprintName = "iOS Tests"
+               BlueprintIdentifier = "9A4510F0191643FD006E6022"
+               BuildableName = "iOS Benchmark.app"
+               BlueprintName = "iOS Benchmark"
                ReferencedContainer = "container:EasyMappingExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,36 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "02FF772518E32249002282D3"
-               BuildableName = "iOS Tests.xctest"
-               BlueprintName = "iOS Tests"
-               ReferencedContainer = "container:EasyMappingExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A45110E191643FD006E6022"
-               BuildableName = "iOS BenchmarkTests.xctest"
-               BlueprintName = "iOS BenchmarkTests"
-               ReferencedContainer = "container:EasyMappingExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A45115E1916444C006E6022"
-               BuildableName = "MacOS BenchmarkTests.xctest"
-               BlueprintName = "MacOS BenchmarkTests"
-               ReferencedContainer = "container:EasyMappingExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "9A4512AC191649F7006E6022"
                BuildableName = "FOOOOOOOOTests.xctest"
                BlueprintName = "FOOOOOOOOTests"
@@ -69,6 +39,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9A4510F0191643FD006E6022"
+            BuildableName = "iOS Benchmark.app"
+            BlueprintName = "iOS Benchmark"
+            ReferencedContainer = "container:EasyMappingExample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -79,6 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9A4510F0191643FD006E6022"
+            BuildableName = "iOS Benchmark.app"
+            BlueprintName = "iOS Benchmark"
+            ReferencedContainer = "container:EasyMappingExample.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -88,6 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9A4510F0191643FD006E6022"
+            BuildableName = "iOS Benchmark.app"
+            BlueprintName = "iOS Benchmark"
+            ReferencedContainer = "container:EasyMappingExample.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
