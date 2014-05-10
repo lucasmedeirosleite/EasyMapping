@@ -9,6 +9,12 @@
 #import "EKManagedObjectMapper.h"
 #import "EKFieldMapping.h"
 #import "EKPropertyHelper.h"
+#import "EKCoreDataImporter.h"
+
+@interface EKManagedObjectMapper()
+@property (nonatomic, strong) EKCoreDataImporter * importer;
+
+@end
 
 @implementation EKManagedObjectMapper
 

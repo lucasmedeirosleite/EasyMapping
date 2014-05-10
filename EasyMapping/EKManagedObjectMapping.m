@@ -19,14 +19,20 @@
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock
 {
     EKManagedObjectMapping *mapping = [[EKManagedObjectMapping alloc] initWithEntityName:entityName];
-    mappingBlock(mapping);
+    if (mappingBlock)
+    {
+       mappingBlock(mapping);
+    }
     return mapping;
 }
 
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock
 {
     EKManagedObjectMapping *mapping = [[EKManagedObjectMapping alloc] initWithEntityName:entityName withRootPath:rootPath];
-    mappingBlock(mapping);
+    if (mappingBlock)
+    {
+        mappingBlock(mapping);
+    }
     return mapping;
 }
 
