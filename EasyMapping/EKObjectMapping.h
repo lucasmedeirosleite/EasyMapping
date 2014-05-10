@@ -24,8 +24,8 @@
 + (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
                            withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
 
-- (id)initWithObjectClass:(Class)objectClass;
-- (id)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath;
+- (instancetype)initWithObjectClass:(Class)objectClass;
+- (instancetype)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath;
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field;
 - (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat;

@@ -8,6 +8,7 @@
 
 #import "EKPropertyHelper.h"
 #import <objc/runtime.h>
+#import "EKTransformer.h"
 
 static const char scalarTypes[] = {
     _C_BOOL, _C_BFLD,          // BOOL
@@ -20,6 +21,8 @@ static const char scalarTypes[] = {
 };
 
 @implementation EKPropertyHelper
+
+#pragma mark - Property introspection
 
 + (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object
 {
@@ -67,6 +70,47 @@ static const char scalarTypes[] = {
 		}
 	}
     return array;
+}
+
+#pragma mark Property accessor methods 
+
++ (void)setField:(EKFieldMapping *)fieldMapping onObject:(id)object fromRepresentation:(NSDictionary *)representation
+{
+    id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
+    if (value == (id)[NSNull null]) {
+        if (![self propertyNameIsScalar:fieldMapping.field fromObject:object]) {
+            [object setValue:nil forKeyPath:fieldMapping.field];
+        }
+    } else if (value) {
+        [object setValue:value forKeyPath:fieldMapping.field];
+    }
+}
+
++ (id)getValueOfField:(EKFieldMapping *)fieldMapping fromRepresentation:(NSDictionary *)representation
+{
+    id value;
+    if (fieldMapping.valueBlock) {
+        value = fieldMapping.valueBlock(fieldMapping.keyPath, [representation valueForKeyPath:fieldMapping.keyPath]);
+    } else if (fieldMapping.dateFormat) {
+        id tempValue = [representation valueForKeyPath:fieldMapping.keyPath];
+        if ([tempValue isKindOfClass:[NSString class]]) {
+            value = [EKTransformer transformString:tempValue withDateFormat:fieldMapping.dateFormat];
+        } else {
+            value = nil;
+        }
+    } else {
+        value = [representation valueForKeyPath:fieldMapping.keyPath];
+    }
+    return value;
+}
+
++ (NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                                                withMapping:(EKObjectMapping *)mapping
+{
+    if (mapping.rootPath) {
+        return [externalRepresentation objectForKey:mapping.rootPath];
+    }
+    return externalRepresentation;
 }
 
 @end
