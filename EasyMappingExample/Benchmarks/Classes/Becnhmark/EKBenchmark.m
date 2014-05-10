@@ -11,6 +11,7 @@
 #import "MappingProvider.h"
 #import "ManagedMappingProvider.h"
 #import "EKCoreDataBenchmarkSuite.h"
+#import "EKCoreDataImportBenchmarkSuite.h"
 
 @implementation EKBenchmark
 
@@ -53,12 +54,14 @@
                                                 fixtureName:key]];
     }
     
+    [suits addObject:[EKCoreDataImportBenchmarkSuite suite]];
+    
     NSLog(@"\n\nStarting CoreData benchmarking\n\n");
     
 #if TARGET_OS_IPHONE
-    [self benchmarkSuits:suits runTimes:1000];
+    [self benchmarkSuits:suits runTimes:500];
 #elif TARGET_OS_MAC
-    [self benchmarkSuits:suits runTimes:3000];
+    [self benchmarkSuits:suits runTimes:2000];
 #endif
 }
 
