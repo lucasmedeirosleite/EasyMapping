@@ -782,9 +782,6 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = EasyKit;
 				TargetAttributes = {
-					02FF772518E32249002282D3 = {
-						TestTargetID = 9A4510F0191643FD006E6022;
-					};
 					9A4510F0191643FD006E6022 = {
 						DevelopmentTeam = L94VC9ZZXC;
 					};
@@ -1239,7 +1236,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOS Benchmark.app/iOS Benchmark";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -1258,7 +1254,6 @@
 				INFOPLIST_FILE = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1267,7 +1262,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOS Benchmark.app/iOS Benchmark";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -1283,7 +1277,6 @@
 				INFOPLIST_FILE = "Tests/Targets/iOS Tests/EasyMappingExampleTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
