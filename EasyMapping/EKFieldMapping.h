@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 EasyKit. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "EKMappingBlocks.h"
 
 @interface EKFieldMapping : NSObject

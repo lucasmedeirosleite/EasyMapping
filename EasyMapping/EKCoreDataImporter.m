@@ -9,7 +9,6 @@
 #import "EKCoreDataImporter.h"
 #import "EKPropertyHelper.h"
 #import "NSArray+FlattenArray.h"
-#import <CoreData/CoreData.h>
 
 @interface EKCoreDataImporter()
 @property (nonatomic, strong) NSSet * entityNames;

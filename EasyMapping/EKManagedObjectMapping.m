@@ -7,7 +7,6 @@
 //
 
 #import "EKManagedObjectMapping.h"
-#import "EKFieldMapping.h"
 
 @implementation EKManagedObjectMapping
 

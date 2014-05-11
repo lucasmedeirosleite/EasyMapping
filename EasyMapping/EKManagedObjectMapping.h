@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Alejandro Isaza. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "EKMappingBlocks.h"
 #import "EKObjectMapping.h"
 #import "EKFieldMapping.h"

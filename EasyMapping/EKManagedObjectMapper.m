@@ -7,7 +7,6 @@
 //
 
 #import "EKManagedObjectMapper.h"
-#import "EKFieldMapping.h"
 #import "EKPropertyHelper.h"
 #import "EKCoreDataImporter.h"
 
