@@ -57,4 +57,18 @@
     return self;
 }
 
+-(EKFieldMapping *)primaryKeyFieldMapping
+{
+    __block EKFieldMapping * primaryKeyMapping = nil;
+    [self.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        EKFieldMapping * fieldMapping = obj;
+        if ([fieldMapping.field isEqualToString:self.primaryKey])
+        {
+            primaryKeyMapping = fieldMapping;
+            *stop = YES;
+        }
+    }];
+    return primaryKeyMapping;
+}
+
 @end

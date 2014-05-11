@@ -116,4 +116,12 @@
     }];
 }
 
++(EKManagedObjectMapping *)complexPlaneMapping
+{
+    EKManagedObjectMapping * mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Plane"];
+    [mapping hasOneMapping:[self personMapping] forKey:@"captain"];
+    [mapping hasManyMapping:[self personMapping] forKey:@"persons"];
+    return mapping;
+}
+
 @end

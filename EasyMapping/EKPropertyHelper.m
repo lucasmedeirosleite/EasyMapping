@@ -112,5 +112,4 @@ static const char scalarTypes[] = {
     }
     return externalRepresentation;
 }
-
 @end

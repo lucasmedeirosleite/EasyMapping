@@ -27,7 +27,7 @@
 }
 
 + (id)getExistingObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc {
-    EKFieldMapping *primaryKeyFieldMapping = [mapping.fieldMappings objectForKey:mapping.primaryKey];
+    EKFieldMapping * primaryKeyFieldMapping = [mapping primaryKeyFieldMapping];
     id primaryKeyValue = [EKPropertyHelper getValueOfField:primaryKeyFieldMapping fromRepresentation:externalRepresentation];
     if (!primaryKeyValue || primaryKeyValue == (id)[NSNull null])
         return nil;
@@ -89,7 +89,7 @@
                                    inManagedObjectContext:(NSManagedObjectContext *)moc
 {
     NSAssert(mapping.primaryKey, @"A mapping with a primary key is required");
-    EKFieldMapping* primaryKeyFieldMapping = [mapping.fieldMappings objectForKey:mapping.primaryKey];
+    EKFieldMapping * primaryKeyFieldMapping = [mapping primaryKeyFieldMapping];
     
     // Create a dictionary that maps primary keys to existing objects
     NSArray* existing = [moc executeFetchRequest:fetchRequest error:NULL];

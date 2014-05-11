@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EKMappingBlocks.h"
 #import "EKObjectMapping.h"
+#import "EKFieldMapping.h"
 
 #define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
 
@@ -25,6 +26,8 @@
 
 - (instancetype)initWithEntityName:(NSString *)entityName;
 - (instancetype)initWithEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath;
+
+- (EKFieldMapping *)primaryKeyFieldMapping;
 
 #pragma mark - unavalable methods
 

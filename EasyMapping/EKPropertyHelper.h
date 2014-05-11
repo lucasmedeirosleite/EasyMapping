@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EKFieldMapping.h"
 #import "EKObjectMapping.h"
+#import "EKManagedObjectMapping.h"
 
 @interface EKPropertyHelper : NSObject
 

@@ -13,12 +13,12 @@
 
 @interface EKCoreDataImporter()
 @property (nonatomic, strong) NSSet * entityNames;
-@property (nonatomic, strong) NSMutableDictionary * existingEntities;
+@property (nonatomic, strong) NSMutableDictionary * existingEntitiesPrimaryKeys;
 @end
 
 SPEC_BEGIN(EKCoreDataImporterSpec)
 
-describe(@"EKCoreDataImporter", ^{
+describe(@"Entity names collector", ^{
     
     it(@"should collect entities from nested mapping", ^{
         EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider personMapping]
@@ -57,6 +57,66 @@ describe(@"EKCoreDataImporter", ^{
         
         [[importer.entityNames should] equal:[NSSet setWithArray:@[@"ManagedPerson",@"ManagedCar",@"ManagedPhone", @"Address", @"Alien",@"Ufo",@"Finger"]]];
     });
+});
+
+describe(@"Entities introspection", ^{
+   
+    __block NSDictionary *externalRepresentation = nil;
+    __block EKCoreDataImporter * importer = nil;
+    
+    beforeEach(^{
+        externalRepresentation = nil;
+        importer = nil;
+    });
+    
+    it(@"should collect entities with root keyPath", ^{
+        externalRepresentation = [CMFixture buildUsingFixture:@"CarWithRoot"];
+       
+        importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider carWithRootKeyMapping] externalRepresentation:externalRepresentation context:nil];
+        
+        NSSet * values = [NSSet setWithObject:@1];
+        
+        [[importer.existingEntitiesPrimaryKeys should] equal:@{@"ManagedCar":values}];
+    });
+    
+    it(@"should collect entities from array of objects", ^{
+        externalRepresentation = [CMFixture buildUsingFixture:@"Cars"];
+        
+        importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider carMapping] externalRepresentation:externalRepresentation context:nil];
+        
+        NSSet * values = [NSSet setWithObjects:@1,@2, nil];
+        
+        [[importer.existingEntitiesPrimaryKeys should] equal:@{@"ManagedCar":values}];
+    });
+    
+    it(@"should collect entities from hasOne and hasMany relationships", ^{
+        externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+        
+        importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider personMapping] externalRepresentation:externalRepresentation context:nil];
+        
+        NSSet * cars = [NSSet setWithObject:@3];
+        NSSet * people = [NSSet setWithObject:@23];
+        NSSet * phones = [NSSet setWithObjects:@1,@2, nil];
+        
+        [[importer.existingEntitiesPrimaryKeys should] equal:@{@"ManagedCar":cars,
+                                                               @"ManagedPerson":people,
+                                                               @"ManagedPhone":phones}];
+    });
+    
+    it(@"should collect entities recursively", ^{
+        externalRepresentation = [CMFixture buildUsingFixture:@"ComplexRepresentation"];
+        importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider complexPlaneMapping] externalRepresentation:externalRepresentation context:nil];
+        
+        NSSet * cars = [NSSet setWithObjects:@3,@8, nil];
+        NSSet * people = [NSSet setWithObjects:@3,@17,@89, nil];
+        NSSet * phones = [NSSet setWithObjects:@1,@2,@4,@5, nil];
+        
+        [[importer.existingEntitiesPrimaryKeys should] equal:@{@"ManagedCar":cars,
+                                                               @"ManagedPerson":people,
+                                                               @"ManagedPhone":phones,
+                                                               @"Plane":[NSSet set]}];
+    });
+    
 });
 
 SPEC_END

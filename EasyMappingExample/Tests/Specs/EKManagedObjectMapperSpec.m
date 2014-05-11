@@ -137,6 +137,8 @@ describe(@"EKManagedObjectMapper", ^{
                 oldCar.year = @"1980";
                 oldCar.model = @"";
                 
+                [moc save:nil];
+                
                 externalRepresentation = @{ @"id": @(1), @"model": @"i30", };
                 car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
             });

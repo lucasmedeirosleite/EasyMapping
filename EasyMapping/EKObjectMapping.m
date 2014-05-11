@@ -169,7 +169,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping
 {
-    [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.field];
+    [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
 }
 
 @end
