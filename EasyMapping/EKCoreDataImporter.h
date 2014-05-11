@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "EKManagedObjectMapping.h"
+#import <CoreData/CoreData.h>
 
 @interface EKCoreDataImporter : NSObject
 
@@ -15,17 +16,10 @@
 @property (nonatomic, strong) EKManagedObjectMapping * mapping;
 @property (nonatomic, strong) id externalRepresentation;
 
-+(instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
++ (instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
             externalRepresentation:(id)externalRepresentation
                            context:(NSManagedObjectContext *)context;
 
--(id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
-                          withMapping:(EKManagedObjectMapping *)mapping;
+- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping;
 
--(id)           fillObject:(id)object
-fromExternalRepresentation:(NSDictionary *)externalRepresentation
-               withMapping:(EKManagedObjectMapping *)mapping;
-
--(NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                         withMapping:(EKManagedObjectMapping *)mapping;
 @end

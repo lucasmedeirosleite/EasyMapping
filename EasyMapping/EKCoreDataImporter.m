@@ -9,6 +9,7 @@
 #import "EKCoreDataImporter.h"
 #import "EKPropertyHelper.h"
 #import "NSArray+FlattenArray.h"
+#import <CoreData/CoreData.h>
 
 @interface EKCoreDataImporter()
 @property (nonatomic, strong) NSSet * entityNames;
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) NSDictionary * existingEntitiesPrimaryKeys;
 
 // Keys are entity names, values - NSDictionary, where keys = primary keys, values = fetched objects
-@property (nonatomic, strong) NSDictionary * fetchedExistingEntities;
+@property (nonatomic, strong) NSMutableDictionary * fetchedExistingEntities;
 
 @end
 
@@ -33,7 +34,7 @@
     importer.externalRepresentation = externalRepresentation;
     importer.context = context;
     
-    importer.existingEntitiesPrimaryKeys = [NSMutableDictionary dictionary];
+    importer.fetchedExistingEntities = [NSMutableDictionary dictionary];
     [importer collectEntityNames];
     [importer inspectRepresentation];
     
@@ -88,25 +89,21 @@
                                                                             withMapping:mapping];
     if ([rootRepresentation isKindOfClass:[NSArray class]])
     {
-        NSMutableSet * primaryValues = [NSMutableSet set];
         for (NSDictionary * objectInfo in rootRepresentation)
         {
             id value = [self primaryKeyValueFromRepresentation:objectInfo usingMapping:mapping];
             if (value && value != (id)[NSNull null])
             {
-                [primaryValues addObject:value];
+                dictionary[mapping.entityName] = [dictionary[mapping.entityName] setByAddingObject:value];
             }
         }
-        NSSet * knownValues = dictionary[mapping.entityName];
-        dictionary[mapping.entityName] = [knownValues setByAddingObjectsFromSet:primaryValues];
     }
     else if ([rootRepresentation isKindOfClass:[NSDictionary class]])
     {
         id value = [self primaryKeyValueFromRepresentation:rootRepresentation usingMapping:mapping];
         if (value && value != (id)[NSNull null])
         {
-            NSSet * knownValues = dictionary[mapping.entityName];
-            dictionary[mapping.entityName] = [knownValues setByAddingObject:value];
+            dictionary[mapping.entityName] = [dictionary[mapping.entityName] setByAddingObject:value];
         }
     }
     
@@ -119,6 +116,7 @@
                        accumulateInside:dictionary];
         }
     }];
+    
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray * manyMappingRepresentation = [rootRepresentation valueForKeyPath:key];
         
@@ -128,7 +126,7 @@
             //
             // @[<null>,@[value2,value3]]
             //
-            // And we are interested in flat structure.
+            // And we are interested in flat structure like this: @[value2,value3]
             manyMappingRepresentation = [manyMappingRepresentation ek_flattenedArray];
             
             [self inspectRepresentation:manyMappingRepresentation
@@ -144,6 +142,46 @@
     id primaryValue = [EKPropertyHelper getValueOfField:primaryKeyMapping
                                      fromRepresentation:representation];
     return primaryValue;
+}
+
+#pragma mark - Fetching existing objects
+
+- (NSMutableDictionary *)fetchExistingObjectsForMapping:(EKManagedObjectMapping *)mapping {
+	NSSet *lookupValues = self.existingEntitiesPrimaryKeys[mapping.entityName];
+	if (lookupValues.count == 0) return [NSMutableDictionary dictionary];
+    
+	NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:mapping.entityName];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K IN %@", mapping.primaryKey, lookupValues];
+	[fetchRequest setPredicate:predicate];
+	[fetchRequest setFetchLimit:lookupValues.count];
+    
+	NSMutableDictionary *output = [NSMutableDictionary new];
+	NSArray *existingObjects = [self.context executeFetchRequest:fetchRequest error:NULL];
+	for (NSManagedObject *object in existingObjects) {
+		output[[object valueForKey:mapping.primaryKey]] = object;
+	}
+    
+	return output;
+}
+
+- (NSMutableDictionary *)cachedObjectsForMapping:(EKManagedObjectMapping *)mapping {
+	NSMutableDictionary *entityObjectsMap = self.fetchedExistingEntities[mapping.entityName];
+	if (!entityObjectsMap) {
+		entityObjectsMap = [self fetchExistingObjectsForMapping:mapping];
+		self.fetchedExistingEntities[mapping.entityName] = entityObjectsMap;
+	}
+    
+	return entityObjectsMap;
+}
+
+- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping {
+	NSDictionary *entityObjectsMap = [self cachedObjectsForMapping:mapping];
+    
+	id primaryKeyValue = [EKPropertyHelper getValueOfField:[mapping primaryKeyFieldMapping]
+                                        fromRepresentation:representation];
+	if (primaryKeyValue == nil || primaryKeyValue == NSNull.null) return nil;
+    
+	return entityObjectsMap[primaryKeyValue];
 }
 
 @end

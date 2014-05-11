@@ -14,36 +14,34 @@
 @interface EKManagedObjectMapper()
 @property (nonatomic, strong) EKCoreDataImporter * importer;
 
++(instancetype)mapperWithImporter:(EKCoreDataImporter *)importer;
+
 @end
 
 @implementation EKManagedObjectMapper
 
-+ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc
++(instancetype)mapperWithImporter:(EKCoreDataImporter *)importer
 {
-    NSManagedObject* object = [self getExistingObjectFromExternalRepresentation:externalRepresentation withMapping:mapping inManagedObjectContext:moc];
-    if (!object)
-        object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName inManagedObjectContext:moc];
-    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping inManagedObjectContext:moc];
+    EKManagedObjectMapper * mapper = [self new];
+    mapper.importer = importer;
+    return mapper;
 }
 
-+ (id)getExistingObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc {
-    EKFieldMapping * primaryKeyFieldMapping = [mapping primaryKeyFieldMapping];
-    id primaryKeyValue = [EKPropertyHelper getValueOfField:primaryKeyFieldMapping fromRepresentation:externalRepresentation];
-    if (!primaryKeyValue || primaryKeyValue == (id)[NSNull null])
-        return nil;
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:mapping.entityName];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", mapping.primaryKey, primaryKeyValue]];
-    
-    NSArray *array = [moc executeFetchRequest:request error:NULL];
-    if (array.count == 0)
-        return nil;
-    
-    return [array lastObject];
+- (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                             withMapping:(EKManagedObjectMapping *)mapping
+{
+    NSManagedObject* object = [self.importer existingObjectForRepresentation:externalRepresentation
+                                                                     mapping:mapping];
+    if (!object) {
+        object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName inManagedObjectContext:self.importer.context];
+    }
+    return [self fillObject:object
+ fromExternalRepresentation:externalRepresentation
+                withMapping:mapping];
 }
 
-+ (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
-     withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc
+-(id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
+      withMapping:(EKManagedObjectMapping *)mapping
 {
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -52,7 +50,7 @@
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSDictionary* value = [representation valueForKeyPath:key];
         if (value != (id)[NSNull null]) {
-            id result = [self objectFromExternalRepresentation:value withMapping:obj inManagedObjectContext:moc];
+            id result = [self objectFromExternalRepresentation:value withMapping:obj];
             EKObjectMapping * valueMapping = obj;
             [object setValue:result forKeyPath:valueMapping.field];
         }
@@ -60,7 +58,8 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         if (arrayToBeParsed != (id)[NSNull null]) {
-            NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj inManagedObjectContext:moc];
+            NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
+                                                                      withMapping:obj];
             id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                               forObject:object
                                                        withPropertyName:[obj field]];
@@ -71,28 +70,27 @@
     return object;
 }
 
-+ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                          withMapping:(EKManagedObjectMapping *)mapping
-                               inManagedObjectContext:(NSManagedObjectContext *)moc
+-(NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                         withMapping:(EKManagedObjectMapping *)mapping
 {
+    
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *representation in externalRepresentation) {
-        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping inManagedObjectContext:moc];
+        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];
         [array addObject:parsedObject];
     }
     return [NSArray arrayWithArray:array];
 }
 
-+ (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                              withMapping:(EKManagedObjectMapping *)mapping
-                                             fetchRequest:(NSFetchRequest*)fetchRequest
-                                   inManagedObjectContext:(NSManagedObjectContext *)moc
+-(NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                             withMapping:(EKManagedObjectMapping *)mapping
+                                            fetchRequest:(NSFetchRequest*)fetchRequest
 {
     NSAssert(mapping.primaryKey, @"A mapping with a primary key is required");
     EKFieldMapping * primaryKeyFieldMapping = [mapping primaryKeyFieldMapping];
     
     // Create a dictionary that maps primary keys to existing objects
-    NSArray* existing = [moc executeFetchRequest:fetchRequest error:NULL];
+    NSArray* existing = [self.importer.context executeFetchRequest:fetchRequest error:NULL];
     NSDictionary* existingByPK = [NSDictionary dictionaryWithObjects:existing forKeys:[existing valueForKey:primaryKeyFieldMapping.field]];
     
     NSMutableArray *array = [NSMutableArray array];
@@ -103,9 +101,9 @@
         
         // Create a new object if necessary
         if (!object)
-            object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName inManagedObjectContext:moc];
+            object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName inManagedObjectContext:self.importer.context];
         
-        [self fillObject:object fromExternalRepresentation:representation withMapping:mapping inManagedObjectContext:moc];
+        [self fillObject:object fromExternalRepresentation:representation withMapping:mapping];
         [array addObject:object];
     }
     
@@ -113,9 +111,59 @@
     NSMutableSet* toDelete = [NSMutableSet setWithArray:existing];
     [toDelete minusSet:[NSSet setWithArray:array]];
     for (NSManagedObject* o in toDelete)
-        [moc deleteObject:o];
+        [self.importer.context deleteObject:o];
     
     return [NSArray arrayWithArray:array];
+}
+
+
+#pragma mark - CoreData Importer
+/*
+ All methods below perform a redirection to instance methods, that use CoreData importer class
+ */
+
++ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
+                                                     externalRepresentation:externalRepresentation
+                                                                    context:moc];
+    return [[self mapperWithImporter:importer] objectFromExternalRepresentation:externalRepresentation
+                                                                    withMapping:mapping];
+}
+
++ (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
+     withMapping:(EKManagedObjectMapping *)mapping inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
+                                                     externalRepresentation:externalRepresentation
+                                                                    context:moc];
+    return [[self mapperWithImporter:importer] fillObject:object
+                               fromExternalRepresentation:externalRepresentation
+                                              withMapping:mapping];
+}
+
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                          withMapping:(EKManagedObjectMapping *)mapping
+                               inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
+                                                     externalRepresentation:externalRepresentation
+                                                                    context:moc];
+    return [[self mapperWithImporter:importer] arrayOfObjectsFromExternalRepresentation:externalRepresentation
+                                                withMapping:mapping];
+}
+
++ (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                              withMapping:(EKManagedObjectMapping *)mapping
+                                             fetchRequest:(NSFetchRequest*)fetchRequest
+                                   inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
+                                                     externalRepresentation:externalRepresentation
+                                                                    context:moc];
+    return [[self mapperWithImporter:importer] syncArrayOfObjectsFromExternalRepresentation:externalRepresentation
+                                                                                withMapping:mapping
+                                                                               fetchRequest:fetchRequest];    
 }
 
 @end
