@@ -119,16 +119,19 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray * manyMappingRepresentation = [rootRepresentation valueForKeyPath:key];
         
-        // This is needed, because if one of the objects in array does not contain object for key, returned structure would be something like this:
-        //
-        // @[<null>,@[value2,value3]]
-        //
-        // And we are interested in flat structure.
-        manyMappingRepresentation = [manyMappingRepresentation ek_flattenedArray];
-        
-        [self inspectRepresentation:manyMappingRepresentation
-                       usingMapping:obj
-                   accumulateInside:dictionary];
+        if (![manyMappingRepresentation isEqual:[NSNull null]])
+        {
+            // This is needed, because if one of the objects in array does not contain object for key, returned structure would be something like this:
+            //
+            // @[<null>,@[value2,value3]]
+            //
+            // And we are interested in flat structure.
+            manyMappingRepresentation = [manyMappingRepresentation ek_flattenedArray];
+            
+            [self inspectRepresentation:manyMappingRepresentation
+                           usingMapping:obj
+                       accumulateInside:dictionary];
+        }
     }];
 }
 

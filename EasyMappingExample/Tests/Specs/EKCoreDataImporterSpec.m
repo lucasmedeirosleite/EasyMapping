@@ -117,6 +117,33 @@ describe(@"Entities introspection", ^{
                                                                @"Plane":[NSSet set]}];
     });
     
+    it(@"should collect entities when hasOneMapping has null", ^{
+       
+        externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullCar"];
+        importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider personMapping] externalRepresentation:externalRepresentation context:nil];
+        
+        NSSet * cars = [NSSet set];
+        NSSet * people = [NSSet setWithObject:@5];
+        NSSet * phones = [NSSet setWithObjects:@6,@7,nil];
+        
+        [[importer.existingEntitiesPrimaryKeys should] equal:@{@"ManagedCar":cars,
+                                                               @"ManagedPerson":people,
+                                                               @"ManagedPhone":phones}];
+    });
+    
+    it(@"should collect entities when hasManyMapping has null", ^{
+        externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullPhones"];
+        importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider personMapping] externalRepresentation:externalRepresentation context:nil];
+        
+        NSSet * cars = [NSSet setWithObject:@56];
+        NSSet * people = [NSSet set];
+        NSSet * phones = [NSSet set];
+        
+        [[importer.existingEntitiesPrimaryKeys should] equal:@{@"ManagedCar":cars,
+                                                               @"ManagedPerson":people,
+                                                               @"ManagedPhone":phones}];
+    });
+    
 });
 
 SPEC_END
