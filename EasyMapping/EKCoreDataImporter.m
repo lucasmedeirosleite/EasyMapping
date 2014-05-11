@@ -112,9 +112,12 @@
     
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSDictionary * oneMappingRepresentation = [rootRepresentation valueForKeyPath:key];
-        [self inspectRepresentation:oneMappingRepresentation
-                       usingMapping:obj
-                   accumulateInside:dictionary];
+        if (![oneMappingRepresentation isEqual:[NSNull null]])
+        {
+            [self inspectRepresentation:oneMappingRepresentation
+                           usingMapping:obj
+                       accumulateInside:dictionary];
+        }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSArray * manyMappingRepresentation = [rootRepresentation valueForKeyPath:key];
