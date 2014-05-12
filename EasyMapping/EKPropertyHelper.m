@@ -9,6 +9,7 @@
 #import "EKPropertyHelper.h"
 #import <objc/runtime.h>
 #import "EKTransformer.h"
+#import <CoreData/CoreData.h>
 
 static const char scalarTypes[] = {
     _C_BOOL, _C_BFLD,          // BOOL
@@ -79,10 +80,26 @@ static const char scalarTypes[] = {
     id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
     if (value == (id)[NSNull null]) {
         if (![self propertyNameIsScalar:fieldMapping.field fromObject:object]) {
-            [object setValue:nil forKeyPath:fieldMapping.field];
+            [self setValue:nil onObject:object forKeyPath:fieldMapping.field];
         }
     } else if (value) {
-        [object setValue:value forKeyPath:fieldMapping.field];
+        [self setValue:value onObject:object forKeyPath:fieldMapping.field];
+    }
+}
+
++(void)setValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath
+{
+    if ([(id <NSObject>)object isKindOfClass:[NSManagedObject class]])
+    {
+        // Reducing update times in CoreData
+        id _value = [object valueForKeyPath:keyPath];
+        
+        if (_value != value && ![_value isEqual:value]) {
+            [object setValue:value forKeyPath:keyPath];
+        }
+    }
+    else {
+        [object setValue:value forKeyPath:keyPath];
     }
 }
 

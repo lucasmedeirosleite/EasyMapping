@@ -57,7 +57,7 @@
         {
             id result = [self objectFromExternalRepresentation:value withMapping:obj];
             EKObjectMapping * valueMapping = obj;
-            [object setValue:result forKeyPath:valueMapping.field];
+            [EKPropertyHelper setValue:result onObject:object forKeyPath:valueMapping.field];
         }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
@@ -71,7 +71,7 @@
                                                               forObject:object
                                                        withPropertyName:[obj field]];
             EKObjectMapping * valueMapping = obj;
-            [object setValue:parsedObjects forKeyPath:valueMapping.field];
+            [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:valueMapping.field];
         }
     }];
     return object;
