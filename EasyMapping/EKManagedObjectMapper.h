@@ -21,10 +21,7 @@
 
 
 /** Get an array of managed objects from an external representation. If the mapping has
- a primary key existing objects will be updated. This method is slow and it doesn't
- delete obsolete objects, use
- syncArrayOfObjectsFromExternalRepresentation:withMapping:fetchRequest:inManagedObjectContext:
- instead.
+ a primary key existing objects will be updated.
  */
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
@@ -34,7 +31,6 @@
  representation. Any new objects will be created, any existing objects will be updated
  and any object not present in the external representation will be deleted from the
  managed object context. The fetch request is used to pre-fetch all existing objects.
- This speeds up managed object lookup by a very significant amount.
  */
 + (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                               withMapping:(EKManagedObjectMapping *)mapping
