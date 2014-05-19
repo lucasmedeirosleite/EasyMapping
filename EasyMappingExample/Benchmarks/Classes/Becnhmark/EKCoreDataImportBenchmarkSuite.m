@@ -10,6 +10,7 @@
 #import "EKMapper.h"
 #import "ManagedMappingProvider.h"
 #import "EKCoreDataManager.h"
+#import "EKManagedObjectMapper.h"
 
 @implementation EKCoreDataImportBenchmarkSuite
 
@@ -73,7 +74,7 @@
     NSArray * objects = [self generateImportData:howManyTimes];
     
     NSDate * start = [NSDate date];
-    [EKMapper arrayOfObjectsFromExternalRepresentation:objects
+    [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:objects
                                            withMapping:[ManagedMappingProvider personWithPhonesMapping]
                                 inManagedObjectContext:[[EKCoreDataManager sharedInstance] managedObjectContext]];
     

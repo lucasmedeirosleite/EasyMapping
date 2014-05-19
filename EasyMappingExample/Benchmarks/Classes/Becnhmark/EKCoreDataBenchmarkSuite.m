@@ -9,12 +9,13 @@
 #import "EKCoreDataBenchmarkSuite.h"
 #import "EKMapper.h"
 #import "EKCoreDataManager.h"
+#import "EKManagedObjectMapper.h"
 
 @implementation EKCoreDataBenchmarkSuite
 
 -(void)runSingleSuite
 {
-    [EKMapper objectFromExternalRepresentation:[self externalRepresentation]
+    [EKManagedObjectMapper objectFromExternalRepresentation:[self externalRepresentation]
                                    withMapping:self.mapping
                         inManagedObjectContext:[[EKCoreDataManager sharedInstance] managedObjectContext]];
     [[[EKCoreDataManager sharedInstance]managedObjectContext] save:nil];

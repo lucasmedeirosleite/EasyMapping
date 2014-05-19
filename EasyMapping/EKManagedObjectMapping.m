@@ -7,7 +7,6 @@
 //
 
 #import "EKManagedObjectMapping.h"
-#import "EKFieldMapping.h"
 
 @implementation EKManagedObjectMapping
 
@@ -16,24 +15,31 @@
 @synthesize hasOneMappings = _hasOneMappings;
 @synthesize rootPath = _rootPath;
 
-+ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock
++ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName withBlock:(void (^)(EKManagedObjectMapping * mapping))mappingBlock
 {
-    EKManagedObjectMapping *mapping = [[EKManagedObjectMapping alloc] initWithEntityName:entityName];
-    mappingBlock(mapping);
+    EKManagedObjectMapping * mapping = [[EKManagedObjectMapping alloc] initWithEntityName:entityName];
+    if (mappingBlock)
+    {
+        mappingBlock(mapping);
+    }
     return mapping;
 }
 
-+ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock
++ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath withBlock:(void (^)(EKManagedObjectMapping * mapping))mappingBlock
 {
-    EKManagedObjectMapping *mapping = [[EKManagedObjectMapping alloc] initWithEntityName:entityName withRootPath:rootPath];
-    mappingBlock(mapping);
+    EKManagedObjectMapping * mapping = [[EKManagedObjectMapping alloc] initWithEntityName:entityName withRootPath:rootPath];
+    if (mappingBlock)
+    {
+        mappingBlock(mapping);
+    }
     return mapping;
 }
 
 - (id)initWithEntityName:(NSString *)entityName
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _entityName = entityName;
         _fieldMappings = [NSMutableDictionary dictionary];
         _hasOneMappings = [NSMutableDictionary dictionary];
@@ -45,10 +51,26 @@
 - (id)initWithEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath
 {
     self = [self initWithEntityName:entityName];
-    if (self) {
+    if (self)
+    {
         _rootPath = rootPath;
     }
     return self;
+}
+
+- (EKFieldMapping *)primaryKeyFieldMapping
+{
+    __block EKFieldMapping * primaryKeyMapping = nil;
+    [self.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
+    {
+        EKFieldMapping * fieldMapping = obj;
+        if ([fieldMapping.field isEqualToString:self.primaryKey])
+        {
+            primaryKeyMapping = fieldMapping;
+            *stop = YES;
+        }
+    }];
+    return primaryKeyMapping;
 }
 
 @end

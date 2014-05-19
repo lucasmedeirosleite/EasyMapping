@@ -212,7 +212,7 @@ describe(@"EKManagedObjectMapping", ^{
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
             [mapping mapKey:@"created_at" toField:@"createdAt"];
-            fieldMapping = [mapping.fieldMappings objectForKey:@"createdAt"];
+            fieldMapping = [mapping.fieldMappings objectForKey:@"created_at"];
         });
         
         specify(^{
@@ -288,7 +288,7 @@ describe(@"EKManagedObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"identifier"];
+                fieldMapping = [mapping.fieldMappings objectForKey:@"id"];
             });
             
             specify(^{
@@ -305,7 +305,7 @@ describe(@"EKManagedObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"email"];
+                fieldMapping = [mapping.fieldMappings objectForKey:@"contact.email"];
             });
             
             specify(^{

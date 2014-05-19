@@ -7,11 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EKFieldMapping.h"
+#import "EKObjectMapping.h"
+#import "EKManagedObjectMapping.h"
 
 @interface EKPropertyHelper : NSObject
 
 + (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object;
 
 + (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
+
++ (void)  setField:(EKFieldMapping *)fieldMapping
+          onObject:(id)object
+fromRepresentation:(NSDictionary *)representation;
+
++ (id)getValueOfField:(EKFieldMapping *)fieldMapping
+   fromRepresentation:(NSDictionary *)representation;
+
++ (void)setValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
+
++ (NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                                                withMapping:(EKObjectMapping *)mapping;
 
 @end

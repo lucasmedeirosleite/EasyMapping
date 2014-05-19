@@ -16,6 +16,7 @@
 #import "ManagedPhone.h"
 #import <CoreData/CoreData.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "EKManagedObjectMapper.h"
 
 SPEC_BEGIN(EKManagedObjectMapperSpec)
 
@@ -33,11 +34,11 @@ describe(@"EKManagedObjectMapper", ^{
     describe(@"class methods", ^{
         
         specify(^{
-            [[EKMapper should] respondToSelector:@selector(objectFromExternalRepresentation:withMapping:inManagedObjectContext:)];
+            [[EKManagedObjectMapper should] respondToSelector:@selector(objectFromExternalRepresentation:withMapping:inManagedObjectContext:)];
         });
         
         specify(^{
-            [[EKMapper should] respondToSelector:@selector(arrayOfObjectsFromExternalRepresentation:withMapping:inManagedObjectContext:)];
+            [[EKManagedObjectMapper should] respondToSelector:@selector(arrayOfObjectsFromExternalRepresentation:withMapping:inManagedObjectContext:)];
         });
         
     });
@@ -53,7 +54,7 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 externalRepresentation = [CMFixture buildUsingFixture:@"Car"];
-                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
             });
             
             specify(^{
@@ -93,7 +94,7 @@ describe(@"EKManagedObjectMapper", ^{
                     @"year": @"2013"
                 };
                 
-                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
             });
             
             specify(^{
@@ -136,8 +137,10 @@ describe(@"EKManagedObjectMapper", ^{
                 oldCar.year = @"1980";
                 oldCar.model = @"";
                 
+                [moc save:nil];
+                
                 externalRepresentation = @{ @"id": @(1), @"model": @"i30", };
-                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
             });
             
             specify(^{
@@ -167,7 +170,7 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 externalRepresentation = [CMFixture buildUsingFixture:@"CarWithRoot"];
-                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carWithRootKeyMapping] inManagedObjectContext:moc];
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carWithRootKeyMapping] inManagedObjectContext:moc];
                 externalRepresentation = [externalRepresentation objectForKey:@"car"];
             });
             
@@ -194,7 +197,7 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 externalRepresentation = [CMFixture buildUsingFixture:@"CarWithNestedAttributes"];
-                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carNestedAttributesMapping] inManagedObjectContext:moc];
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carNestedAttributesMapping] inManagedObjectContext:moc];
             });
             
             specify(^{
@@ -220,7 +223,7 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 externalRepresentation = [CMFixture buildUsingFixture:@"CarWithDate"];
-                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carWithDateMapping] inManagedObjectContext:moc];
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carWithDateMapping] inManagedObjectContext:moc];
             });
             
             specify(^{
@@ -262,7 +265,7 @@ describe(@"EKManagedObjectMapper", ^{
                 expectedCar.year = @"2013";
                 
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
-                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
                 
             });
             
@@ -288,7 +291,7 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
-                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
             });
             
             specify(^{
@@ -312,7 +315,7 @@ describe(@"EKManagedObjectMapper", ^{
         beforeEach(^{
             moc = [NSManagedObjectContext MR_defaultContext];
             externalRepresentation = [CMFixture buildUsingFixture:@"Cars"];
-            carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
+            carsArray = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carMapping] inManagedObjectContext:moc];
         });
         
         specify(^{

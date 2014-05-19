@@ -14,14 +14,20 @@
 + (EKObjectMapping *)mappingForClass:(Class)objectClass withBlock:(void (^)(EKObjectMapping *))mappingBlock
 {
     EKObjectMapping *mapping = [[EKObjectMapping alloc] initWithObjectClass:objectClass];
-    mappingBlock(mapping);
+    if (mappingBlock)
+    {
+        mappingBlock(mapping);
+    }
     return mapping;
 }
 
 + (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath withBlock:(void (^)(EKObjectMapping *))mappingBlock
 {
     EKObjectMapping *mapping = [[EKObjectMapping alloc] initWithObjectClass:objectClass withRootPath:rootPath];
-    mappingBlock(mapping);
+    if (mappingBlock)
+    {
+       mappingBlock(mapping);
+    }
     return mapping;
 }
 
@@ -107,6 +113,7 @@
 - (void)mapKey:(NSString *)key toField:(NSString *)field
 withValueBlock:(id (^)(NSString *, id))valueBlock
 {
+    NSParameterAssert(valueBlock);
     EKFieldMapping *mapping = [[EKFieldMapping alloc] init];
     mapping.field = field;
     mapping.keyPath = key;
@@ -117,6 +124,9 @@ withValueBlock:(id (^)(NSString *, id))valueBlock
 - (void)mapKey:(NSString *)key toField:(NSString *)field
 withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))reverseBlock
 {
+    NSParameterAssert(valueBlock);
+    NSParameterAssert(reverseBlock);
+    
     EKFieldMapping *mapping = [[EKFieldMapping alloc] init];
     mapping.field = field;
     mapping.keyPath = key;
@@ -159,7 +169,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping
 {
-    [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.field];
+    [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
 }
 
 @end
