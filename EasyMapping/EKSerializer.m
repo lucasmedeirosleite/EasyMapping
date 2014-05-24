@@ -53,10 +53,7 @@
         
         if (fieldMapping.reverseBlock) {
             returnedValue = fieldMapping.reverseBlock(returnedValue);
-        } else if (fieldMapping.dateFormat && [returnedValue isKindOfClass:[NSDate class]]) {
-            returnedValue = [EKTransformer transformDate:returnedValue withDateFormat:fieldMapping.dateFormat];
         }
-        
         [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
     }
 }

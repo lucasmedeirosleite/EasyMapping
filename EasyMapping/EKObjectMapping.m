@@ -8,6 +8,7 @@
 
 #import "EKObjectMapping.h"
 #import "EKFieldMapping.h"
+#import "EKTransformer.h"
 
 @implementation EKObjectMapping
 
@@ -62,11 +63,13 @@
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat
 {
-    EKFieldMapping *fieldMapping = [[EKFieldMapping alloc] init];
-    fieldMapping.field = field;
-    fieldMapping.keyPath = key;
-    fieldMapping.dateFormat = dateFormat;
-    [self addFieldMappingToDictionary:fieldMapping];
+    [self mapKey:key
+         toField:field
+  withValueBlock:^id(NSString * key, id value) {
+        return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;;
+    } withReverseBlock:^id(id value) {
+        return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
+    }];
 }
 
 - (void)mapFieldsFromArray:(NSArray *)fieldsArray

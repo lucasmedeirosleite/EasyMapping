@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) NSString *keyPath;
 @property (nonatomic, strong) NSString *field;
-@property (nonatomic, strong) NSString *dateFormat;
 @property (nonatomic, strong) EKMappingValueBlock valueBlock;
 @property (nonatomic, strong) EKMappingReverseBlock reverseBlock;
 

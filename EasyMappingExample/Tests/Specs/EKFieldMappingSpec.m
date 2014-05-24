@@ -27,10 +27,6 @@ describe(@"EKFieldMapping", ^{
     });
     
     specify(^{
-        [[fieldMapping should] respondToSelector:@selector(dateFormat)];
-    });
-    
-    specify(^{
         [[fieldMapping should] respondToSelector:@selector(valueBlock)];
     });
     
