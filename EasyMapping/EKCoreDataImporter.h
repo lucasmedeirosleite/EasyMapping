@@ -21,20 +21,56 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
 #import "EKManagedObjectMapping.h"
 #import <CoreData/CoreData.h>
 
+/**
+ `EKCoreDataImporter` is used by `EKManagedObjectMapper` to manage CoreData imports and make them fast and efficient. It basically does 3 things:
+ 
+ - Collect all entity names from mapping
+ - Introspect passed JSON to collect all primary keys for collected entities
+ - Prefetch all existing entities instead of fetching them one by one.
+ 
+ The more high level JSON is passed to `EKCoreDataImporer`, the bigger perfomance win will be. If you can use methods like arrayOfObjectsFromExternalRepresentation: instead of objectFromExternalRepresentation, use them.
+ */
+
 @interface EKCoreDataImporter : NSObject
 
+/**
+ Context, on which import will be happening.
+ */
 @property (nonatomic, strong) NSManagedObjectContext * context;
+
+/**
+ Mapping for the JSON, that was passed to importer.
+ */
 @property (nonatomic, strong) EKManagedObjectMapping * mapping;
+
+/**
+ JSON representation of data to import.
+ */
 @property (nonatomic, strong) id externalRepresentation;
 
+/**
+ Create instance of `EKCoreDataImporter` and start collecting data from JSON and mapping. This is designated initializer.
+ 
+ @param mapping object mapping
+ 
+ @param externalRepresentation JSON, that will be mapped to objects
+ 
+ @param context Context, on which all changes will happen
+ */
 + (instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
             externalRepresentation:(id)externalRepresentation
                            context:(NSManagedObjectContext *)context;
 
+/**
+ Get's existing object by it's primary key value. Returns nil, if object does not exist in CoreData database.
+ 
+ @param representation JSON representation of object
+ 
+ @param mapping object mapping
+ */
 - (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping;
 
 @end

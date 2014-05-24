@@ -151,11 +151,11 @@
 
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                            withMapping:(EKManagedObjectMapping *)mapping
-                inManagedObjectContext:(NSManagedObjectContext *)moc
+                inManagedObjectContext:(NSManagedObjectContext *)context
 {
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
-                                                                    context:moc];
+                                                                    context:context];
     return [[self mapperWithImporter:importer] objectFromExternalRepresentation:externalRepresentation
                                                                     withMapping:mapping];
 }
@@ -163,11 +163,11 @@
 + (id)          fillObject:(id)object
 fromExternalRepresentation:(NSDictionary *)externalRepresentation
                withMapping:(EKManagedObjectMapping *)mapping
-    inManagedObjectContext:(NSManagedObjectContext *)moc
+    inManagedObjectContext:(NSManagedObjectContext *)context
 {
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
-                                                                    context:moc];
+                                                                    context:context];
     return [[self mapperWithImporter:importer] fillObject:object
                                fromExternalRepresentation:externalRepresentation
                                               withMapping:mapping];
@@ -175,11 +175,11 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
 
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
-                               inManagedObjectContext:(NSManagedObjectContext *)moc
+                               inManagedObjectContext:(NSManagedObjectContext *)context
 {
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
-                                                                    context:moc];
+                                                                    context:context];
     return [[self mapperWithImporter:importer] arrayOfObjectsFromExternalRepresentation:externalRepresentation
                                                                             withMapping:mapping];
 }
@@ -187,11 +187,11 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
 + (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                               withMapping:(EKManagedObjectMapping *)mapping
                                              fetchRequest:(NSFetchRequest *)fetchRequest
-                                   inManagedObjectContext:(NSManagedObjectContext *)moc
+                                   inManagedObjectContext:(NSManagedObjectContext *)context
 {
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
-                                                                    context:moc];
+                                                                    context:context];
     return [[self mapperWithImporter:importer] syncArrayOfObjectsFromExternalRepresentation:externalRepresentation
                                                                                 withMapping:mapping
                                                                                fetchRequest:fetchRequest];

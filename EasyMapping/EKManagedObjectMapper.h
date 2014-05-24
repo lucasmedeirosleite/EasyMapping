@@ -23,33 +23,70 @@
 
 #import "EKMapper.h"
 
+/**
+ `EKManagedObjectMapper` is used to create and fill CoreData objects. Internally, it uses `EKCoreDataImporter` class to speed up data imports. You can find more info on this in project's readme.
+ */
 @interface EKManagedObjectMapper : NSObject
 
+/**
+ Creates object from JSON representation, using `mapping` in `context`.
+ 
+ @param externalRepresentation JSON representation of object data
+ 
+ @param mapping object mapping
+ 
+ @param context managed object context to perform object creation
+ */
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                            withMapping:(EKManagedObjectMapping *)mapping
-                inManagedObjectContext:(NSManagedObjectContext*)moc;
+                inManagedObjectContext:(NSManagedObjectContext*)context;
 
+/**
+ Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten.
+ 
+ @param object Object to fill
+ 
+ @param externalRepresentation JSON representation of object data
+ 
+ @param mapping object mapping
+ 
+ @param context managed object context to perform object creation
+ */
 + (id)            fillObject:(id)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
                  withMapping:(EKManagedObjectMapping *)mapping
-      inManagedObjectContext:(NSManagedObjectContext*)moc;
+      inManagedObjectContext:(NSManagedObjectContext*)context;
 
-
-/** Get an array of managed objects from an external representation. If the mapping has
- a primary key existing objects will be updated.
+/**
+ Create array of CoreData objects. If passed JSON contains primary keys, previously existing object with these keys will be updated. Simply put, this method uses Find-Or-Create pattern.
+ 
+ @param externalRepresentation JSON array with objects
+ 
+ @param mapping object mapping
+ 
+ @param context managed object context to perform objects creation
  */
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
-                               inManagedObjectContext:(NSManagedObjectContext*)moc;
+                               inManagedObjectContext:(NSManagedObjectContext*)context;
 
-/** Synchronize the objects in the managed object context with the objects from an external
+/** 
+ Synchronize the objects in the managed object context with the objects from an external
  representation. Any new objects will be created, any existing objects will be updated
  and any object not present in the external representation will be deleted from the
  managed object context. The fetch request is used to pre-fetch all existing objects.
+ 
+ @param externalRepresentation JSON array with objects
+ 
+ @param mapping object mapping
+ 
+ @param fetchRequest Fetch request to get existing objects
+ 
+ @param context managed object context to perform objects creation
  */
 + (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                               withMapping:(EKManagedObjectMapping *)mapping
                                              fetchRequest:(NSFetchRequest*)fetchRequest
-                                   inManagedObjectContext:(NSManagedObjectContext *)moc;
+                                   inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
