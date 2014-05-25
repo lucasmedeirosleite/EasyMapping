@@ -1,13 +1,29 @@
 //
-//  EKObjectMapping.m
-//  EasyMappingExample
+//  EasyMapping
 //
-//  Created by Lucas Medeiros on 21/02/13.
-//  Copyright (c) 2013 EasyKit. All rights reserved.
+//  Copyright (c) 2012-2014 Lucas Medeiros.
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #import "EKObjectMapping.h"
 #import "EKFieldMapping.h"
+#import "EKTransformer.h"
 
 @implementation EKObjectMapping
 
@@ -62,11 +78,13 @@
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat
 {
-    EKFieldMapping *fieldMapping = [[EKFieldMapping alloc] init];
-    fieldMapping.field = field;
-    fieldMapping.keyPath = key;
-    fieldMapping.dateFormat = dateFormat;
-    [self addFieldMappingToDictionary:fieldMapping];
+    [self mapKey:key
+         toField:field
+  withValueBlock:^id(NSString * key, id value) {
+        return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;;
+    } withReverseBlock:^id(id value) {
+        return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
+    }];
 }
 
 - (void)mapFieldsFromArray:(NSArray *)fieldsArray

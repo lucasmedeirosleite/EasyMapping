@@ -477,12 +477,6 @@ describe(@"EKObjectMapping", ^{
         specify(^{
             [[[mapping.fieldMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
         });
-        
-        specify(^{
-            EKFieldMapping *fieldMapping = [mapping.fieldMappings objectForKey:@"birthdate"];
-            [[fieldMapping.dateFormat should] equal:@"yyyy-MM-dd"];
-        });
-        
     });
     
     describe(@"#mapKey:toField:withValueBlock:", ^{
