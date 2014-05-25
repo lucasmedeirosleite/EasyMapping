@@ -25,7 +25,7 @@
 #import <CoreData/CoreData.h>
 
 /**
- `EKCoreDataImporter` is used by `EKManagedObjectMapper` to manage CoreData imports and make them fast and efficient. It basically does 3 things:
+ `EKCoreDataImporter` is internal EasyMapping class and is used by `EKManagedObjectMapper` to manage CoreData imports and make them fast and efficient. It basically does 3 things:
  
  - Collect all entity names from mapping
  - Introspect passed JSON to collect all primary keys for collected entities
@@ -59,6 +59,8 @@
  @param externalRepresentation JSON, that will be mapped to objects
  
  @param context Context, on which all changes will happen
+ 
+ @result CoreData importer
  */
 + (instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
             externalRepresentation:(id)externalRepresentation
@@ -70,6 +72,8 @@
  @param representation JSON representation of object
  
  @param mapping object mapping
+ 
+ @result managed object
  */
 - (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping;
 

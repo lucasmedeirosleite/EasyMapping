@@ -70,6 +70,8 @@
  @param objectClass Class of object, that will consume results of mapping
  
  @param mappingBlock Block, that contains created EKObjectMapping to be filled with mappings.
+ 
+ @result object mapping
  */
 + (EKObjectMapping *)mappingForClass:(Class)objectClass
                            withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock;
@@ -82,6 +84,8 @@
  @param rootPath rootPath for mapping
  
  @param mappingBlock Block, that contains created EKObjectMapping to be filled with mappings.
+ 
+ @result object mapping
  */
 + (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
                            withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
@@ -90,6 +94,8 @@
  Designated initializer
  
  @param objectClass Class of object, that will consume results of mapping
+ 
+ @result object mapping
  */
 - (instancetype)initWithObjectClass:(Class)objectClass;
 
@@ -99,6 +105,8 @@
  @param objectClass Class of object, that will consume results of mapping
  
  @param rootPath rootPath for mapping
+ 
+ @result object mapping
  */
 - (instancetype)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath;
 

@@ -26,9 +26,32 @@
 extern NSString * const EKRailsDefaultDatetimeFormat;
 extern NSString * const EKBrazilianDefaultDateFormat;
 
+/**
+ `EKTransformer` is used to efficiently convert `NSString` to `NSDate` and reverse. By default, it uses GMT+0 timezone.
+ */
+
 @interface EKTransformer : NSObject
 
+/**
+ Transform string into date.
+ 
+ @param stringToBeTransformed String, containing valid date.
+ 
+ @param dateFormat Date format to be read from the string.
+ 
+ @result NSDate object.
+ */
 + (NSDate *)transformString:(NSString *)stringToBeTransformed withDateFormat:(NSString *)dateFormat;
+
+/**
+ Transform date into string.
+ 
+ @param dateToBeTransformed Date to transform.
+ 
+ @param dateFormat Date format to be written to string.
+ 
+ @result NSString object.
+ */
 + (NSString *)transformDate:(NSDate *)dateToBeTransformed withDateFormat:(NSString *)dateFormat;
 
 @end

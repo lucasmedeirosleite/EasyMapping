@@ -21,13 +21,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
 #import "EKObjectMapping.h"
 #import "EKSerializer.h"
 
+/**
+ `EKSerializer` is a class, that allows converting objects to their JSON representation, using `EKObjectMapping`. CoreData objects are supported too.
+ */
 @interface EKSerializer : NSObject
 
+/**
+ Convert object to JSON representation.
+ 
+ @param object object to convert.
+ 
+ @param mapping object mapping.
+ 
+ @result parsed JSON in a form of NSDictionary.
+ */
 + (NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping;
+
+/**
+ Convert objects to JSON representation.
+ 
+ @param collection objects to convert.
+ 
+ @param mapping object mapping.
+ 
+ @result parsed JSON in a form of NSArray.
+ */
 + (NSArray *)serializeCollection:(NSArray *)collection withMapping:(EKObjectMapping *)mapping;
 
 @end

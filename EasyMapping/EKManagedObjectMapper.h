@@ -36,6 +36,8 @@
  @param mapping object mapping
  
  @param context managed object context to perform object creation
+ 
+ @result mapped managed object
  */
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                            withMapping:(EKManagedObjectMapping *)mapping
@@ -51,6 +53,8 @@
  @param mapping object mapping
  
  @param context managed object context to perform object creation
+ 
+ @result filled managed object
  */
 + (id)            fillObject:(id)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
@@ -65,6 +69,8 @@
  @param mapping object mapping
  
  @param context managed object context to perform objects creation
+ 
+ @result array of managed objects
  */
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
@@ -83,6 +89,8 @@
  @param fetchRequest Fetch request to get existing objects
  
  @param context managed object context to perform objects creation
+ 
+ @result array of managed objects
  */
 + (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                               withMapping:(EKManagedObjectMapping *)mapping

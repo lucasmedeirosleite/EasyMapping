@@ -37,6 +37,8 @@
  @param externalRepresentation JSON representation of object data
  
  @param mapping object mapping
+ 
+ @result mapped object
  */
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                            withMapping:(EKObjectMapping *)mapping;
@@ -49,6 +51,8 @@
  @param externalRepresentation JSON representation of object data
  
  @param mapping object mapping
+ 
+ @result filled object
  */
 + (id)            fillObject:(id)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
@@ -60,6 +64,8 @@
  @param externalRepresentation JSON array with objects
  
  @param mapping object mapping
+ 
+ @result array of mapped objects
  */
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKObjectMapping *)mapping;
