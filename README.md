@@ -12,38 +12,9 @@ An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML 
 Developed by [Lucas Medeiros](https://www.twitter.com/aspmedeiros)
 E-mail: lucastoc@gmail.com
 
-## Development requirements
-
-* Cocoapods - https://github.com/CocoaPods/CocoaPods
-
-## Install cocoapods
-
-To install cocoapods you will need ruby.
-
-	gem install cocoapods
-	
-More information about cocoapods:
-
-* https://github.com/CocoaPods/CocoaPods
-* http://nsscreencast.com/episodes/5-cocoapods
-
-## Cocoapods
-
-Add the dependency to your `Podfile`:
-
-```ruby
-platform :ios
-
-...
-
-pod 'EasyMapping', '~>0.5.6'
-
-```
-Run `pod install` to install the dependencies.
-
 ## Usage
 
-* Supose you have these classes:
+* Suppose you have these classes:
 
 ```objective-c
 
@@ -87,13 +58,11 @@ typedef enum {
 @property (nonatomic, readwrite) BOOL boolProperty;
 
 @end
-
 ```
 
 * Map your classes in any place you want. An example:
 
 ```objective-c
-
 #import "MappingProvider.h"
 #import "Car.h"
 #import "Phone.h"
@@ -146,28 +115,23 @@ typedef enum {
         ]];
     }];
 }
-
 ```
 
 * Converting a NSDictionary or NSArray to a object class or collection now becomes easy:
 
 ```objective-c
-
 Person *person = [EKMapper objectFromExternalRepresentation:personRepresentation 
                                                 withMapping:[MappingProvider personMapping]];
 
 NSArray *carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:carsRepresentation 
                                                             withMapping:[MappingProvider carMapping]];
-
 ```
 
 * Converting an object/collection to NSDictionary/NSArray:
 
 ```objective-c
-
 NSDictionary *representation = [EKSerializer serializeObject:car withMapping:[MappingProvider carMapping]];
 NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withMapping:[MappingProvider carMapping]];
-
 ```
 
 * Filling an existent object:
@@ -175,17 +139,13 @@ NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withM
 Supose you have something like this:
 
 ```objective-c
-	
 Person *person = [Person alloc] init]	
-	
 ```
 
 To fill an already instantiated object you can do this:
 
 ```objective-c
-
 [EKMapper fillObject:person fromExternalRepresentation:personRepresentation withMapping:[Mappings personMapping]];
-
 ```
 
 * See the specs code
@@ -208,9 +168,15 @@ Thanks to:
 
 ## Requirements
 
-`EasyMapping` requires iOS 5.x or greater.
+* iOS 5 and higher
+* Mac OS X 10.7 and higher
+* ARC
 
-Usage is provided under the [MIT License](http://http://opensource.org/licenses/mit-license.php). See LICENSE for the full details.
+## Installation
+
+Using CocoaPods:
+
+	pod 'EasyMapping', '~>0.6.0'
 
 ## The idea
 
@@ -218,4 +184,3 @@ The idea came from:
 * [RestiKit's](https://github.com/RestKit/Restkit) mapping, its problem is that it doesn't transform
 custom values (such as a string value to an enum)
 * [Mantle's](https://github.com/github/Mantle) mapping, but you don't need to inherit from any class
-
