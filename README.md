@@ -1,3 +1,6 @@
+![Build Status](https://travis-ci.org/EasyMapping/EasyMapping.png?branch=master) &nbsp;
+![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/EasyMapping/badge.png) &nbsp; ![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/EasyMapping/badge.png) &nbsp; ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
+
 # EasyMapping
 
 An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML or just a NSDictionary) into a Class and vice versa.
@@ -7,38 +10,9 @@ An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML 
 Developed by [Lucas Medeiros](https://www.twitter.com/aspmedeiros)
 E-mail: lucastoc@gmail.com
 
-## Development requirements
-
-* Cocoapods - https://github.com/CocoaPods/CocoaPods
-
-## Install cocoapods
-
-To install cocoapods you will need ruby.
-
-	gem install cocoapods
-	
-More information about cocoapods:
-
-* https://github.com/CocoaPods/CocoaPods
-* http://nsscreencast.com/episodes/5-cocoapods
-
-## Cocoapods
-
-Add the dependency to your `Podfile`:
-
-```ruby
-platform :ios
-
-...
-
-pod 'EasyMapping', '~>0.4.9'
-
-```
-Run `pod install` to install the dependencies.
-
 ## Usage
 
-* Supose you have these classes:
+* Suppose you have these classes:
 
 ```objective-c
 
@@ -159,20 +133,16 @@ NSArray *carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:carsRepr
 * Converting an object/collection to NSDictionary/NSArray:
 
 ```objective-c
-
 NSDictionary *representation = [EKSerializer serializeObject:car withMapping:[MappingProvider carMapping]];
 NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withMapping:[MappingProvider carMapping]];
-
 ```
 
 * Filling an existent object:
 
-Supose you have something like this:
+Suppose you have something like this:
 
 ```objective-c
-	
-Person *person = [Person alloc] init]	
-	
+Person *person = [Person alloc] init];	
 ```
 
 To fill an already instantiated object you can do this:
@@ -202,14 +172,20 @@ Thanks to:
 
 ## Requirements
 
-`EasyMapping` requires iOS 5.x or greater.
+* iOS 5 and higher
+* Mac OS X 10.7 and higher
+* ARC
 
-Usage is provided under the [MIT License](http://http://opensource.org/licenses/mit-license.php).  See LICENSE for the full details.
+## Installation
 
+Using CocoaPods:
+
+	pod 'EasyMapping','~>0.6.0'
+	
 ## The idea
 
 The idea came from:
-* [RestiKit's](https://github.com/RestKit/Restkit) mapping, its problem is that it doesn't transform
+* [RestKit's](https://github.com/RestKit/Restkit) mapping, its problem is that it doesn't transform
 custom values (such as a string value to an enum)
 * [Mantle's](https://github.com/github/Mantle) mapping, but you don't need to inherit from any class
 
