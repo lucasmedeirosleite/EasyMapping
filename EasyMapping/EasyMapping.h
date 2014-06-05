@@ -24,6 +24,7 @@
 #import "EKMapper.h"
 #import "EKSerializer.h"
 #import "EKObjectMapping.h"
+#import "EKManagedObjectMapper.h"
 #import "EKManagedObjectMapping.h"
 #import "EKFieldMapping.h"
 #import "EKMappingBlocks.h"
