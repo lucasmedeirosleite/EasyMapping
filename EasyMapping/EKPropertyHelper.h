@@ -24,7 +24,6 @@
 #import <Foundation/Foundation.h>
 #import "EKFieldMapping.h"
 #import "EKObjectMapping.h"
-#import "EKManagedObjectMapping.h"
 
 /**
  `EKPropertyHelper` is internal EasyMapping class, that works with objective-c runtime to get and set values of properties.
