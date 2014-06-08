@@ -19,6 +19,7 @@
 #import "Finger.h"
 #import "NativeChild.h"
 #import "Cat.h"
+#import "CommentObject.h"
 
 @implementation MappingProvider
 
@@ -109,6 +110,20 @@
     }];
 }
 
++ (EKObjectMapping *)personWithRelativeMapping
+{
+    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
+        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+        [mapping mapFieldsFromArray:@[@"name", @"email"]];
+        [mapping mapKey:@"gender" toField:@"gender" withValueBlock:^(NSString *key, id value) {
+            return genders[value];
+        } withReverseBlock:^id(id value) {
+            return [[genders allKeysForObject:value] lastObject];
+        }];
+        [mapping hasOneMapping:mapping forKey:@"relative"];
+    }];
+}
+
 + (EKObjectMapping *)addressMapping
 {
     return [EKObjectMapping mappingForClass:[Address class] withBlock:^(EKObjectMapping *mapping) {
@@ -186,6 +201,17 @@
     return [EKObjectMapping mappingForClass:[NativeChild class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapFieldsFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
     }];
+}
+
++ (EKObjectMapping *)commentObjectMapping {
+    return [EKObjectMapping mappingForClass:[CommentObject class]
+                                  withBlock:^(EKObjectMapping *mapping) {
+                                      [mapping mapKey:@"name" toField:@"name"];
+                                      [mapping mapKey:@"message" toField:@"message"];
+                                      [mapping hasManyMapping:mapping
+                                                       forKey:@"sub_comments"
+                                                     forField:@"subComments"];
+                                  }];
 }
 
 @end

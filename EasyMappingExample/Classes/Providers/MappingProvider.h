@@ -20,6 +20,7 @@
 + (EKObjectMapping *)personWithCarMapping;
 + (EKObjectMapping *)personWithPhonesMapping;
 + (EKObjectMapping *)personWithOnlyValueBlockMapping;
++ (EKObjectMapping *)personWithRelativeMapping;
 + (EKObjectMapping *)addressMapping;
 + (EKObjectMapping *)fingerMapping;
 + (EKObjectMapping *)nativeMapping;
@@ -29,5 +30,6 @@
 + (EKObjectMapping *)ufoMapping;
 + (EKObjectMapping *)coloredUfoMapping;
 + (EKObjectMapping *)nativeChildMapping;
++ (EKObjectMapping *)commentObjectMapping;
 
 @end

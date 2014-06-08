@@ -1,0 +1,12 @@
+{
+    "id":23,
+    "name": "Lucas",
+    "email": "lucastoc@gmail.com",
+    "gender" : "male",
+    "relative":{
+        "id":3,
+        "name":"Loreen",
+        "email":"loreen@gmail.com",
+        "gender":"female"
+    }
+}

@@ -25,6 +25,14 @@
 		9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		9A130251190BFEF30060A25C /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A130252190BFEF30060A25C /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
+		9A210F321944B0E800871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
+		9A210F331944B0E900871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
+		9A210F341944B10A00871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
+		9A210F351944B10B00871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
+		9A210F371944B13A00871071 /* CommentsRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F361944B13A00871071 /* CommentsRecursive.json */; };
+		9A210F381944B13A00871071 /* CommentsRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F361944B13A00871071 /* CommentsRecursive.json */; };
+		9A210F3A1944B81500871071 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
+		9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
 		9A3178C1191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */; };
 		9A3178C2191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */; };
 		9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
@@ -240,6 +248,10 @@
 		4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.xcconfig"; path = "Pods/Pods-MacOS Benchmark.xcconfig"; sourceTree = "<group>"; };
 		8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.xcconfig"; path = "Pods/Pods-iOS Tests.xcconfig"; sourceTree = "<group>"; };
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A210F2E1944B0C100871071 /* CommentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentObject.h; path = Classes/Models/CommentObject.h; sourceTree = SOURCE_ROOT; };
+		9A210F2F1944B0C100871071 /* CommentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentObject.m; path = Classes/Models/CommentObject.m; sourceTree = SOURCE_ROOT; };
+		9A210F361944B13A00871071 /* CommentsRecursive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CommentsRecursive.json; path = Tests/Fixtures/CommentsRecursive.json; sourceTree = SOURCE_ROOT; };
+		9A210F391944B81500871071 /* PersonRecursive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonRecursive.json; path = Tests/Fixtures/PersonRecursive.json; sourceTree = SOURCE_ROOT; };
 		9A3178BF191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataImportBenchmarkSuite.h; path = Benchmarks/Classes/Becnhmark/EKCoreDataImportBenchmarkSuite.h; sourceTree = "<group>"; };
 		9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataImportBenchmarkSuite.m; path = Benchmarks/Classes/Becnhmark/EKCoreDataImportBenchmarkSuite.m; sourceTree = "<group>"; };
 		9A4510F1191643FD006E6022 /* iOS Benchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Benchmark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -431,11 +443,13 @@
 				9A45120C19164705006E6022 /* Native.json */,
 				9A45120D19164705006E6022 /* NativeChild.json */,
 				9A45120E19164705006E6022 /* Person.json */,
+				9A210F391944B81500871071 /* PersonRecursive.json */,
 				9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */,
 				9A45121019164705006E6022 /* PersonWithNullCar.json */,
 				9A45121119164705006E6022 /* PersonWithNullPhones.json */,
 				9A45121219164705006E6022 /* Plane.json */,
 				9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */,
+				9A210F361944B13A00871071 /* CommentsRecursive.json */,
 			);
 			name = Fixtures;
 			path = EasyMappingExampleTests;
@@ -619,6 +633,8 @@
 				9A4511A9191646C9006E6022 /* Seaplane.m */,
 				9A4511AA191646C9006E6022 /* UFO.h */,
 				9A4511AB191646C9006E6022 /* UFO.m */,
+				9A210F2E1944B0C100871071 /* CommentObject.h */,
+				9A210F2F1944B0C100871071 /* CommentObject.m */,
 			);
 			name = NSObject;
 			sourceTree = "<group>";
@@ -811,7 +827,7 @@
 			attributes = {
 				CLASSPREFIX = EK;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = EasyKit;
 				TargetAttributes = {
 					9A4510F0191643FD006E6022 = {
@@ -849,6 +865,7 @@
 				9A45122F19164705006E6022 /* Female.json in Resources */,
 				9A45123319164705006E6022 /* Male.json in Resources */,
 				9AA7CED3191FA7C400608262 /* ComplexRepresentation.json in Resources */,
+				9A210F371944B13A00871071 /* CommentsRecursive.json in Resources */,
 				9A45123F19164705006E6022 /* Person.json in Resources */,
 				9A45122319164705006E6022 /* CarWithDate.json in Resources */,
 				9A45121B19164705006E6022 /* Car.json in Resources */,
@@ -859,6 +876,7 @@
 				9A45124719164705006E6022 /* PersonWithNullCar.json in Resources */,
 				9A45122B19164705006E6022 /* CarWithRoot.json in Resources */,
 				9A45124B19164705006E6022 /* PersonWithNullPhones.json in Resources */,
+				9A210F3A1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122719164705006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9A45124319164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
 				9A45124F19164705006E6022 /* Plane.json in Resources */,
@@ -874,6 +892,7 @@
 				9A45123019164705006E6022 /* Female.json in Resources */,
 				9A45123419164705006E6022 /* Male.json in Resources */,
 				9AA7CED4191FA7C400608262 /* ComplexRepresentation.json in Resources */,
+				9A210F381944B13A00871071 /* CommentsRecursive.json in Resources */,
 				9A45124019164705006E6022 /* Person.json in Resources */,
 				9A45122419164705006E6022 /* CarWithDate.json in Resources */,
 				9A45121C19164705006E6022 /* Car.json in Resources */,
@@ -884,6 +903,7 @@
 				9A45124819164705006E6022 /* PersonWithNullCar.json in Resources */,
 				9A45122C19164705006E6022 /* CarWithRoot.json in Resources */,
 				9A45124C19164705006E6022 /* PersonWithNullPhones.json in Resources */,
+				9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122819164705006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9A45124419164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
 				9A45125019164705006E6022 /* Plane.json in Resources */,
@@ -1092,6 +1112,7 @@
 				9A4511C0191646C9006E6022 /* Finger.m in Sources */,
 				9A4511FB191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
 				9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */,
+				9A210F341944B10A00871071 /* CommentObject.m in Sources */,
 				9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */,
 				9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */,
@@ -1136,6 +1157,7 @@
 				9A13024D190BFEF30060A25C /* EKMapper.m in Sources */,
 				9A4511FC191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
 				9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */,
+				9A210F351944B10B00871071 /* CommentObject.m in Sources */,
 				9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */,
 				9A13024C190BFEF30060A25C /* EKFieldMapping.m in Sources */,
@@ -1189,6 +1211,7 @@
 				9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9A4511DE191646C9006E6022 /* UFO.m in Sources */,
 				9A4511DA191646C9006E6022 /* Seaplane.m in Sources */,
+				9A210F321944B0E800871071 /* CommentObject.m in Sources */,
 				9A451269191647C6006E6022 /* main.m in Sources */,
 				9A45117A19164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A45127C19164911006E6022 /* EKObjectMapping.m in Sources */,
@@ -1232,6 +1255,7 @@
 				9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */,
 				9A45128119164912006E6022 /* EKFieldMapping.m in Sources */,
 				9A4511DB191646C9006E6022 /* Seaplane.m in Sources */,
+				9A210F331944B0E900871071 /* CommentObject.m in Sources */,
 				9A4511BF191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A4511D3191646C9006E6022 /* Phone.m in Sources */,
 				9A4511AF191646C9006E6022 /* Address.m in Sources */,
@@ -1337,6 +1361,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Targets/OS X Tests/OS X Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1363,6 +1388,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Targets/OS X Tests/OS X Tests-Prefix.pch";

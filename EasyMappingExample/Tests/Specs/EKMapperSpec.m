@@ -21,6 +21,7 @@
 #import "Alien.h"
 #import "Finger.h"
 #import "Cat.h"
+#import "CommentObject.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -553,6 +554,69 @@ describe(@"EKMapper", ^{
             [[alien.fingers should] beKindOfClass:[NSMutableArray class]];
         });
     
+    });
+    
+    context(@"with recursive hasMany mapping", ^{
+        
+        __block NSArray * comments = nil;
+        
+        beforeEach(^{
+            NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"CommentsRecursive"];
+            comments = [EKMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation[@"comments"]
+                                                             withMapping:[MappingProvider commentObjectMapping]];
+        });
+        
+        it(@"should contain comments", ^{
+            [[@(comments.count) should] equal:@2];
+        });
+        
+        it(@"should contain subcomments", ^{
+            NSArray * subcomments = [(CommentObject *)[comments firstObject] subComments];
+            
+            [[@([subcomments count]) should] equal:@1];
+            [[subcomments.firstObject should] beKindOfClass:[CommentObject class]];
+        });
+        
+        it(@"should contain sub sub comments", ^{
+            NSArray * subcomments = [(CommentObject *)[comments firstObject] subComments];
+            
+            NSArray * subsubComments = [(CommentObject *)subcomments.firstObject subComments];
+            
+            [[@([subsubComments count]) should] equal:@1];
+            [[subsubComments.firstObject should] beKindOfClass:[CommentObject class]];
+            
+            CommentObject * comment = subsubComments.firstObject;
+            
+            [[comment.name should] equal:@"Bob"];
+            [[comment.message should] equal:@"It's a TRAP!"];
+            [[comment.subComments should] beNil];
+        });
+        
+    });
+    
+    context(@"with recursive hasOne mapping", ^{
+        __block Person * person = nil;
+        
+        beforeEach(^{
+            NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonRecursive"];
+            person = [EKMapper objectFromExternalRepresentation:externalRepresentation
+                                                      withMapping:[MappingProvider personWithRelativeMapping]];
+        });
+        
+        it(@"should be a person", ^{
+            [[person should] beKindOfClass:[Person class]];
+        });
+        
+        it(@"should contain relative", ^{
+            [[person.relative should] beKindOfClass:[Person class]];
+        });
+        
+        it(@"should have correct values", ^{
+            [[person.relative.name should] equal:@"Loreen"];
+            [[person.relative.email should] equal:@"loreen@gmail.com"];
+            [[@(person.relative.gender) should] equal:@(GenderFemale)];
+        });
+        
     });
     
 });
