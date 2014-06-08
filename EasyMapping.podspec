@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "EasyMapping"
-  s.version      = "0.5.7"
+  s.version      = "0.6.1"
   s.summary      = "The easiest way to map data from your webservice."
   s.homepage     = "https://github.com/lucasmedeirosleite/EasyMapping"
 
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.author       = { "Lucas Medeiros" => "lucastoc@gmail.com" }
 
-  s.source       = { :git => "https://github.com/EasyMapping/EasyMapping.git", :tag => "0.5.7" }
+  s.source       = { :git => "https://github.com/EasyMapping/EasyMapping.git", :tag => s.version.to_s }
 
   s.requires_arc = true
 
