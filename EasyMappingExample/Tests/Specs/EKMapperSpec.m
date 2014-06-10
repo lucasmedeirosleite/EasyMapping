@@ -622,7 +622,7 @@ describe(@"EKMapper", ^{
 		 });
 		 
 		 it(@"should have 2 children", ^{
-			 [[theValue(person.children.count) should] beIdenticalTo:theValue(2)];
+			 [[theValue(person.children.count) should] equal:theValue(2)];
 		 });
 		 
 		 it(@"should contain child", ^{

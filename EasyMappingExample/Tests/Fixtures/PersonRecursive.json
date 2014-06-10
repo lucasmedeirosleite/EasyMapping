@@ -1,25 +1,25 @@
 {
-    "id":23,
-    "name": "Lucas",
-    "email": "lucastoc@gmail.com",
-    "gender" : "male",
-    "relative":{
-        "id":3,
-        "name":"Loreen",
-        "email":"loreen@gmail.com",
-        "gender":"female"
-    }
+	"id":23,
+	"name": "Lucas",
+	"email": "lucastoc@gmail.com",
+	"gender" : "male",
+	"relative":{
+		"id":3,
+		"name":"Loreen",
+		"email":"loreen@gmail.com",
+		"gender":"female"
+	},
 	"children" : [{
 					  "id":24,
 					  "name": "Masha",
 					  "email": "lucastoc@gmail.com",
-					  "gender" : "female",
-		},
+					  "gender" : "female"
+					  },
 					  {
 					  "id":25,
 					  "name": "Elena",
 					  "email": "lucastoc@gmail.com",
-					  "gender" : "female",
+					  "gender" : "female"
 					  }
-	]
+					  ]
 }
