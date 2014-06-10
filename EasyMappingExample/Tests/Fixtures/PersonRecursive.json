@@ -9,4 +9,17 @@
         "email":"loreen@gmail.com",
         "gender":"female"
     }
+	"children" : [{
+					  "id":24,
+					  "name": "Masha",
+					  "email": "lucastoc@gmail.com",
+					  "gender" : "female",
+		},
+					  {
+					  "id":25,
+					  "name": "Elena",
+					  "email": "lucastoc@gmail.com",
+					  "gender" : "female",
+					  }
+	]
 }
