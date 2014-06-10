@@ -55,6 +55,8 @@
         _fieldMappings = [NSMutableDictionary dictionary];
         _hasOneMappings = [NSMutableDictionary dictionary];
         _hasManyMappings = [NSMutableDictionary dictionary];
+		 _recursiveOneMapping = [NSMutableDictionary dictionary];
+		 _recursiveManyMapping = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -188,6 +190,18 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping
 {
     [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
+}
+
+
+- (void)hasRecursiveOneMappingForKey:(NSString*)key forField:(NSString *)field
+{
+	[self.recursiveOneMapping setValue:field forKeyPath:key];
+}
+
+
+- (void)hasRecursiveManyMappingForKey:(NSString*)key forField:(NSString*)field
+{
+	[self.recursiveManyMapping setValue:field forKey:key];
 }
 
 @end

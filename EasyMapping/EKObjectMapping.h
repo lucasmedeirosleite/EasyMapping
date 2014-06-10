@@ -65,6 +65,16 @@
 @property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
 
 /**
+ Dictionary, containing to-one recursive relationships of current object.
+ */
+@property (nonatomic, strong, readonly) NSMutableDictionary *recursiveOneMapping;
+
+/**
+ Dictionary, containing to-mamny recursive relationships of current object.
+ */
+@property (nonatomic, strong, readonly) NSMutableDictionary* recursiveManyMapping;
+
+/**
  Convenience initializer.
  
  @param objectClass Class of object, that will consume results of mapping
@@ -221,5 +231,23 @@ withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingRevers
  @param field Name of the property, that will receive mapped objects.
  */
 - (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
+
+/**
+ Map to-one recursive relationship for keyPath.
+ 
+ @param key keyPath to child object representation in JSON
+ 
+ @param field Name of the property, that will receive mapped object.
+ */
+- (void)hasRecursiveOneMappingForKey:(NSString*)key forField:(NSString *)field;
+
+/**
+ Map to-many recursive relationship for keyPath.
+ 
+ @param key keyPath to child object representation in JSON
+ 
+ @param field Name of the property, that will receive mapped object.
+ */
+- (void)hasRecursiveManyMappingForKey:(NSString*)key forField:(NSString*)field;
 
 @end
