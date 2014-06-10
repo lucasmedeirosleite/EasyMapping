@@ -192,16 +192,24 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
     [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
 }
 
-
-- (void)hasRecursiveOneMappingForKey:(NSString*)key forField:(NSString *)field
+- (void)hasOneRecursiveMappingForKey:(NSString*)key forField:(NSString *)field
 {
 	[self.recursiveOneMapping setValue:field forKeyPath:key];
 }
 
+- (void)hasOneRecursiveMappingForKey:(NSString*)key
+{
+	[self hasOneRecursiveMappingForKey:key forField:key];
+}
 
-- (void)hasRecursiveManyMappingForKey:(NSString*)key forField:(NSString*)field
+- (void)hasManyRecursiveMappingForKey:(NSString*)key forField:(NSString*)field
 {
 	[self.recursiveManyMapping setValue:field forKey:key];
+}
+
+- (void)hasManyRecursiveMappingForKey:(NSString*)key
+{
+	[self hasManyRecursiveMappingForKey:key forField:key];
 }
 
 @end

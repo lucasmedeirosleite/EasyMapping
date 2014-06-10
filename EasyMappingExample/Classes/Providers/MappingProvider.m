@@ -120,8 +120,8 @@
         } withReverseBlock:^id(id value) {
             return [[genders allKeysForObject:value] lastObject];
         }];
-		 [mapping hasRecursiveOneMappingForKey:@"relative" forField:@"relative"];
-		 [mapping hasRecursiveManyMappingForKey:@"children" forField:@"children"];
+		 [mapping hasOneRecursiveMappingForKey:@"relative" forField:@"relative"];
+		 [mapping hasManyRecursiveMappingForKey:@"children" forField:@"children"];
     }];
 }
 
