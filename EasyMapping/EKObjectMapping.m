@@ -114,20 +114,23 @@
 
 
 -(void)mapFieldsFromMappingObject:(EKObjectMapping *)mappingObj {
-    
-    for (NSString *key in mappingObj.fieldMappings) {
-        [self addFieldMappingToDictionary:mappingObj.fieldMappings[key]];
-    }
-    
-    for (NSString *key in mappingObj.hasOneMappings) {
-        EKObjectMapping *mapping = mappingObj.hasOneMappings[key];
-        [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
-    }
-    
-    for (NSString *key in mappingObj.hasManyMappings) {
-         EKObjectMapping *mapping = mappingObj.hasManyMappings[key];
-        [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
-    }
+   
+	[mappingObj.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		[self addFieldMappingToDictionary:obj];
+	}];
+	
+	[mappingObj.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		EKObjectMapping *mapping = obj;
+		[self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+	}];
+   
+	[mappingObj.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		EKObjectMapping *mapping = obj;
+		[self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+	}];
+
+	[self.recursiveOneMapping addEntriesFromDictionary:mappingObj.recursiveOneMapping];
+	[self.recursiveManyMapping addEntriesFromDictionary:mappingObj.recursiveManyMapping];
 }
 
 - (void)mapKey:(NSString *)key toField:(NSString *)field
