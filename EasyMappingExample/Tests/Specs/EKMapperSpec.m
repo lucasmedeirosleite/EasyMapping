@@ -621,6 +621,24 @@ describe(@"EKMapper", ^{
             [[@(person.relative.gender) should] equal:@(GenderFemale)];
         });
         
+        it(@"should contain list of children", ^{
+            [[person.children should] beKindOfClass:[NSArray class]];
+        });
+        
+        it(@"should have 2 children", ^{
+            [[theValue(person.children.count) should] equal:theValue(2)];
+        });
+        
+        it(@"should contain child", ^{
+            [[[person.children objectAtIndex:0] should] beKindOfClass:[Person class]];
+        });
+        
+        it(@"should have a brother", ^{
+            Person * brother = [person.children.firstObject relative];
+            
+            [[brother.name should] equal:@"Alexey"];
+        });
+        
     });
     
 });

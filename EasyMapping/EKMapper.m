@@ -25,6 +25,7 @@
 #import "EKPropertyHelper.h"
 #import "EKFieldMapping.h"
 #import "EKTransformer.h"
+#import "EKRelationshipMapping.h"
 
 @implementation EKMapper
 
@@ -43,27 +44,27 @@
                           onObject:object
                 fromRepresentation:representation];
     }];
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-		 EKObjectMapping * valueMapping = obj;
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
+        
 		 NSDictionary* value = [representation valueForKeyPath:key];
 		 if (value && value != (id)[NSNull null]) {
-			 id result = [self objectFromExternalRepresentation:value withMapping:valueMapping];
-			 [object setValue:result forKeyPath:valueMapping.field];
+			 id result = [self objectFromExternalRepresentation:value withMapping:valueMapping.objectMapping];
+			 [object setValue:result forKeyPath:valueMapping.destinationProperty];
 		 } else {
-			 [object setValue:nil forKey:valueMapping.field];
+			 [object setValue:nil forKey:valueMapping.destinationProperty];
 		 }
     }];
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        EKObjectMapping * valueMapping = obj;
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
 		 NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
-			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj];
+			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
+                                                                       withMapping:valueMapping.objectMapping];
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
-                                                        withPropertyName:[obj field]];
-			 [object setValue:parsedObjects forKeyPath:valueMapping.field];
+                                                        withPropertyName:[valueMapping destinationProperty]];
+			 [object setValue:parsedObjects forKeyPath:valueMapping.destinationProperty];
 		 } else {
-			 [object setValue:nil forKey:valueMapping.field];
+			 [object setValue:nil forKey:valueMapping.destinationProperty];
 		 }
     }];
     return object;

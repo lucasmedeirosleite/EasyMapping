@@ -25,6 +25,7 @@
 #import "EKFieldMapping.h"
 #import "EKPropertyHelper.h"
 #import "EKTransformer.h"
+#import "EKRelationshipMapping.h"
 
 @implementation EKSerializer
 
@@ -35,11 +36,23 @@
     [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKFieldMapping *fieldMapping, BOOL *stop) {
         [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
     }];
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
-        [self setHasOneMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
+        id hasOneObject = [object valueForKey:mapping.destinationProperty];
+        
+        if (hasOneObject) {
+            NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
+                                                           withMapping:mapping.objectMapping];
+            [representation setObject:hasOneRepresentation forKey:mapping.sourceKeyPath];
+        }
     }];
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKObjectMapping *objectMapping, BOOL *stop) {
-        [self setHasManyMappingObjectOn:representation withObjectMapping:objectMapping fromObject:object];
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
+        
+        id hasManyObject = [object valueForKey:mapping.destinationProperty];
+        if (hasManyObject) {
+            NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
+                                                           withMapping:mapping.objectMapping];
+            [representation setObject:hasManyRepresentation forKey:mapping.sourceKeyPath];
+        }
     }];
     
     if (mapping.rootPath.length > 0) {
@@ -92,28 +105,6 @@
             currentPath = subPath;
         }
         [currentPath setValue:value forKey:attributeKey];
-    }
-}
-
-+ (void)setHasOneMappingObjectOn:(NSMutableDictionary *)representation
-               withObjectMapping:(EKObjectMapping *)mapping
-                      fromObject:(id)object
-{
-    id hasOneObject = [object valueForKey:mapping.field];
-    if (hasOneObject) {
-        NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject withMapping:mapping];
-        [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
-    }
-}
-
-+ (void)setHasManyMappingObjectOn:(NSMutableDictionary *)representation
-                withObjectMapping:(EKObjectMapping *)mapping
-                       fromObject:(id)object
-{
-    id hasManyObject = [object valueForKey:mapping.field];
-    if (hasManyObject) {
-        NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject withMapping:mapping];
-        [representation setObject:hasManyRepresentation forKey:mapping.keyPath];
     }
 }
 

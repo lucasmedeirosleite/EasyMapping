@@ -12,6 +12,7 @@
 #import "Car.h"
 #import "ColoredUFO.h"
 #import "MappingProvider.h"
+#import "EKRelationshipMapping.h"
 
 SPEC_BEGIN(EKObjectMappingSpec)
 
@@ -135,14 +136,6 @@ describe(@"EKObjectMapping", ^{
         
         specify(^{
             [[mapping should] respondToSelector:@selector(hasManyMappings)];
-        });
-        
-        specify(^{
-            [[mapping should] respondToSelector:@selector(field)];
-        });
-        
-        specify(^{
-            [[mapping should] respondToSelector:@selector(setField:)];
         });
         
     });
@@ -443,10 +436,6 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[[[mapping.hasOneMappings objectForKey:@"captain"] field] should] equal:@"captain"];
-        });
-        
-        specify(^{
             [mapping.hasManyMappings shouldNotBeNil];
         });
         
@@ -454,12 +443,9 @@ describe(@"EKObjectMapping", ^{
             [[mapping.hasManyMappings objectForKey:@"crew"] shouldNotBeNil];
         });
         
-        specify(^{
-            [[[[mapping.hasManyMappings objectForKey:@"crew"] field] should] equal:@"crew"];
-        });
-        
     });
     
+ 
     describe(@"#mapKey:toField:withDateFormat", ^{
         
         __block EKObjectMapping *mapping;
@@ -565,19 +551,11 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[[[mapping.hasOneMappings objectForKey:@"car"] field] should] equal:@"car"];
-        });
-        
-        specify(^{
             [mapping.hasManyMappings shouldNotBeNil];
         });
         
         specify(^{
             [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
-        });
-        
-        specify(^{
-            [[[[mapping.hasManyMappings objectForKey:@"phones"] field] should] equal:@"phones"];
         });
         
     });
@@ -590,22 +568,6 @@ describe(@"EKObjectMapping", ^{
             [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"car" forField:@"personCar"];
         
             [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"phones" forField:@"personPhones"];
-        });
-        
-        specify(^{
-            [[[[mapping.hasOneMappings objectForKey:@"car"] field] should] equal:@"personCar"];
-        });
-        
-        specify(^{
-            [[[[mapping.hasOneMappings objectForKey:@"car"] keyPath] should] equal:@"car"];
-        });
-        
-        specify(^{
-            [[[[mapping.hasManyMappings objectForKey:@"phones"] field] should] equal:@"personPhones"];
-        });
-        
-        specify(^{
-            [[[[mapping.hasManyMappings objectForKey:@"phones"] keyPath] should] equal:@"phones"];
         });
     });
     

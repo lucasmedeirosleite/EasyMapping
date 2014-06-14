@@ -23,5 +23,6 @@ typedef enum {
 @property (nonatomic, strong) Car *car;
 @property (nonatomic, strong) NSArray *phones;
 @property (nonatomic, strong) Person * relative;
+@property (nonatomic, strong) NSArray* children;
 
 @end

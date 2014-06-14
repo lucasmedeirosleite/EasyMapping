@@ -24,6 +24,7 @@
 #import "EKManagedObjectMapper.h"
 #import "EKPropertyHelper.h"
 #import "EKCoreDataImporter.h"
+#import "EKRelationshipMapping.h"
 
 @interface EKManagedObjectMapper ()
 @property (nonatomic, strong) EKCoreDataImporter * importer;
@@ -65,28 +66,26 @@
     {
         [EKPropertyHelper setField:obj onObject:object fromRepresentation:representation];
     }];
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
         NSDictionary * value = [representation valueForKeyPath:key];
         if (value && value != (id)[NSNull null])
         {
-            id result = [self objectFromExternalRepresentation:value withMapping:obj];
-            EKObjectMapping * valueMapping = obj;
-            [EKPropertyHelper setValue:result onObject:object forKeyPath:valueMapping.field];
+            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)mapping.objectMapping];
+            [EKPropertyHelper setValue:result onObject:object forKeyPath:mapping.destinationProperty];
         }
     }];
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
         NSArray * arrayToBeParsed = [representation valueForKeyPath:key];
         if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null])
         {
             NSArray * parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withMapping:obj];
+                                                                       withMapping:(EKManagedObjectMapping *)mapping.objectMapping];
             id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                               forObject:object
-                                                       withPropertyName:[obj field]];
-            EKObjectMapping * valueMapping = obj;
-            [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:valueMapping.field];
+                                                       withPropertyName:[mapping destinationProperty]];
+            [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:mapping.destinationProperty];
         }
     }];
     return object;

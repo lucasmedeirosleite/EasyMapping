@@ -40,16 +40,6 @@
 @property (nonatomic, strong, readonly) NSString *rootPath;
 
 /**
- Name of the property, that will receive value.
- */
-@property (nonatomic, strong, readwrite) NSString * field;
-
-/**
- Path to the value in JSON. Will be used by valueForKeyPath: method.
- */
-@property (nonatomic, strong, readwrite) NSString * keyPath;
-
-/**
  Dictionary, containing field mappings for current object.
  */
 @property (nonatomic, strong, readonly) NSMutableDictionary *fieldMappings;

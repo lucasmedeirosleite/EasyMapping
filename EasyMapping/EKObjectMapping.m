@@ -24,6 +24,7 @@
 #import "EKObjectMapping.h"
 #import "EKFieldMapping.h"
 #import "EKTransformer.h"
+#import "EKRelationshipMapping.h"
 
 @implementation EKObjectMapping
 
@@ -118,13 +119,13 @@
     }
     
     for (NSString *key in mappingObj.hasOneMappings) {
-        EKObjectMapping *mapping = mappingObj.hasOneMappings[key];
-        [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+        EKRelationshipMapping *mapping = mappingObj.hasOneMappings[key];
+        [self.hasOneMappings setObject:mapping forKey:mapping.sourceKeyPath];
     }
     
     for (NSString *key in mappingObj.hasManyMappings) {
-         EKObjectMapping *mapping = mappingObj.hasManyMappings[key];
-        [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+         EKRelationshipMapping *mapping = mappingObj.hasManyMappings[key];
+        [self.hasManyMappings setObject:mapping forKey:mapping.sourceKeyPath];
     }
 }
 
@@ -155,34 +156,33 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 
 - (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
 {
-    mapping.field = key;
-    mapping.keyPath = key;
-    
-    [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+    [self hasOneMapping:mapping forKey:key forField:key];
 }
 
--(void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field
+-(void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
+            forField:(NSString *)field
 {
-    mapping.field = field;
-    mapping.keyPath = key;
+    EKRelationshipMapping * relationship = [EKRelationshipMapping new];
+    relationship.sourceKeyPath = key;
+    relationship.destinationProperty = field;
+    relationship.objectMapping = mapping;
     
-    [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+    [self.hasOneMappings setObject:relationship forKey:key];
 }
 
 - (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
 {
-    mapping.field = key;
-    mapping.keyPath = key;
-    
-    [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+    [self hasManyMapping:mapping forKey:key forField:key];
 }
 
 -(void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field
 {
-    mapping.field = field;
-    mapping.keyPath = key;
-    
-    [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+    EKRelationshipMapping * relationship = [EKRelationshipMapping new];
+    relationship.sourceKeyPath = key;
+    relationship.destinationProperty = field;
+    relationship.objectMapping = mapping;
+
+    [self.hasManyMappings setObject:relationship forKey:key];
 }
 
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping

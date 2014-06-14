@@ -24,6 +24,7 @@
 #import "EKCoreDataImporter.h"
 #import "EKPropertyHelper.h"
 #import "NSArray+FlattenArray.h"
+#import "EKRelationshipMapping.h"
 
 @interface EKCoreDataImporter ()
 @property (nonatomic, strong) NSSet * entityNames;
@@ -70,14 +71,14 @@
 {
     [entityNames addObject:mapping.entityName];
 
-    for (EKManagedObjectMapping * oneMapping in [mapping.hasOneMappings allValues])
+    for (EKRelationshipMapping * oneMapping in [mapping.hasOneMappings allValues])
     {
-        [self collectEntityNamesRecursively:entityNames mapping:oneMapping];
+        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)oneMapping.objectMapping];
     }
 
-    for (EKManagedObjectMapping * manyMapping in [mapping.hasManyMappings allValues])
+    for (EKRelationshipMapping * manyMapping in [mapping.hasManyMappings allValues])
     {
-        [self collectEntityNamesRecursively:entityNames mapping:manyMapping];
+        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)manyMapping.objectMapping];
     }
 }
 
@@ -123,18 +124,18 @@
         }
     }
 
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
         NSDictionary * oneMappingRepresentation = [rootRepresentation valueForKeyPath:key];
         if (![oneMappingRepresentation isEqual:[NSNull null]])
         {
             [self inspectRepresentation:oneMappingRepresentation
-                           usingMapping:obj
+                           usingMapping:(EKManagedObjectMapping *)mapping.objectMapping
                        accumulateInside:dictionary];
         }
     }];
 
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
         NSArray * manyMappingRepresentation = [rootRepresentation valueForKeyPath:key];
 
@@ -148,7 +149,7 @@
             manyMappingRepresentation = [manyMappingRepresentation ek_flattenedArray];
 
             [self inspectRepresentation:manyMappingRepresentation
-                           usingMapping:obj
+                           usingMapping:(EKManagedObjectMapping *)mapping.objectMapping
                        accumulateInside:dictionary];
         }
     }];
