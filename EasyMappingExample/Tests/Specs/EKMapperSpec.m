@@ -628,6 +628,13 @@ describe(@"EKMapper", ^{
 		 it(@"should contain child", ^{
 			 [[[person.children objectAtIndex:0] should] beKindOfClass:[Person class]];
 		 });
+		 it(@"shoult contain grandchild with childs", ^{
+			 Person* child = [person.children objectAtIndex:0];
+			 Person* grandchild = [child.children objectAtIndex:0];
+			 
+			 [[grandchild should] beKindOfClass:[Person class]];
+			 [[theValue(grandchild.children.count) should] equal:theValue(2)];
+		 });
     });
     
 });
