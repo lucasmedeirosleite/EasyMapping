@@ -209,9 +209,7 @@
                                   withBlock:^(EKObjectMapping *mapping) {
                                       [mapping mapKey:@"name" toField:@"name"];
                                       [mapping mapKey:@"message" toField:@"message"];
-                                      [mapping hasManyMapping:mapping
-                                                       forKey:@"sub_comments"
-                                                     forField:@"subComments"];
+												 [mapping hasManyRecursiveMappingForKey:@"sub_comments" forField:@"subComments"];
                                   }];
 }
 
