@@ -13,6 +13,8 @@
 
 @implementation EKCoreDataModel
 
+#pragma mark - constructors
+
 +(instancetype)objectWithProperties:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context
 {
     return [EKManagedObjectMapper objectFromExternalRepresentation:properties
@@ -20,11 +22,15 @@
                                             inManagedObjectContext:context];
 }
 
+#pragma mark - serialization
+
 - (NSDictionary *)serializedObject
 {
     return [EKSerializer serializeObject:self
                              withMapping:[self.class objectMapping]];
 }
+
+#pragma mark - EKManagedMappingProtocol
 
 +(EKManagedObjectMapping *)objectMapping
 {
