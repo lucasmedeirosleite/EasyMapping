@@ -73,6 +73,9 @@
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKObjectMapping *)mapping
 {
+    NSParameterAssert([externalRepresentation isKindOfClass:[NSArray class]]);
+    NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
+    
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *representation in externalRepresentation) {
         id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];

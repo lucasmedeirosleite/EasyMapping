@@ -152,6 +152,9 @@
                            withMapping:(EKManagedObjectMapping *)mapping
                 inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
+    NSParameterAssert(context);
+    
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
                                                                     context:context];
@@ -164,6 +167,9 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
                withMapping:(EKManagedObjectMapping *)mapping
     inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
+    NSParameterAssert(context);
+    
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
                                                                     context:context];
@@ -176,6 +182,9 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
                                inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
+    NSParameterAssert(context);
+    
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
                                                                     context:context];
@@ -188,6 +197,9 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
                                              fetchRequest:(NSFetchRequest *)fetchRequest
                                    inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
+    NSParameterAssert(context);
+    
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
                                                                     context:context];
