@@ -240,6 +240,12 @@
 		9A8420E9195718A2006DDDE3 /* EKCoreDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKCoreDataModel.m */; };
 		9A8420EA195718A2006DDDE3 /* EKCoreDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKCoreDataModel.m */; };
 		9A8420EB195718A2006DDDE3 /* EKCoreDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKCoreDataModel.m */; };
+		9A8420F5195723A6006DDDE3 /* One.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* One.m */; };
+		9A8420F6195723A6006DDDE3 /* One.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* One.m */; };
+		9A8420F9195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
+		9A8420FA195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
+		9A8420FD195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
+		9A8420FE195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
 		9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC1191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
@@ -374,6 +380,12 @@
 		9A8420E11957164E006DDDE3 /* EKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKModel.m; sourceTree = "<group>"; };
 		9A8420E6195718A2006DDDE3 /* EKCoreDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataModel.h; sourceTree = "<group>"; };
 		9A8420E7195718A2006DDDE3 /* EKCoreDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataModel.m; sourceTree = "<group>"; };
+		9A8420F3195723A6006DDDE3 /* One.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = One.h; path = Tests/Fixtures/FixtureClasses/One.h; sourceTree = "<group>"; };
+		9A8420F4195723A6006DDDE3 /* One.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = One.m; path = Tests/Fixtures/FixtureClasses/One.m; sourceTree = "<group>"; };
+		9A8420F7195723BE006DDDE3 /* Two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Two.h; path = Tests/Fixtures/FixtureClasses/Two.h; sourceTree = "<group>"; };
+		9A8420F8195723BE006DDDE3 /* Two.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Two.m; path = Tests/Fixtures/FixtureClasses/Two.m; sourceTree = "<group>"; };
+		9A8420FB195723D0006DDDE3 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Three.h; path = Tests/Fixtures/FixtureClasses/Three.h; sourceTree = "<group>"; };
+		9A8420FC195723D0006DDDE3 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Three.m; path = Tests/Fixtures/FixtureClasses/Three.m; sourceTree = "<group>"; };
 		9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapper.h; sourceTree = "<group>"; };
 		9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapper.m; sourceTree = "<group>"; };
 		9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataImporter.h; sourceTree = "<group>"; };
@@ -703,6 +715,19 @@
 			name = Serialization;
 			sourceTree = "<group>";
 		};
+		9A8420F219572382006DDDE3 /* FixtureClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9A8420F3195723A6006DDDE3 /* One.h */,
+				9A8420F4195723A6006DDDE3 /* One.m */,
+				9A8420F7195723BE006DDDE3 /* Two.h */,
+				9A8420F8195723BE006DDDE3 /* Two.m */,
+				9A8420FB195723D0006DDDE3 /* Three.h */,
+				9A8420FC195723D0006DDDE3 /* Three.m */,
+			);
+			name = FixtureClasses;
+			sourceTree = "<group>";
+		};
 		9AE54FCE190BD7B5003A3B56 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +783,7 @@
 		9AF425C1190CEF42003FD1BD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9A8420F219572382006DDDE3 /* FixtureClasses */,
 				9A4DD1AF190CF88C00A134C0 /* Specs */,
 				02FF773818E32257002282D3 /* Fixtures */,
 			);
@@ -1192,6 +1218,7 @@
 				9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117819164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D0191646C9006E6022 /* Phone.m in Sources */,
+				9A8420FD195723D0006DDDE3 /* Three.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A4511C8191646C9006E6022 /* NativeChild.m in Sources */,
 				9A4511C4191646C9006E6022 /* Native.m in Sources */,
@@ -1204,6 +1231,7 @@
 				9A4511C0191646C9006E6022 /* Finger.m in Sources */,
 				9A4511FB191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
 				9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */,
+				9A8420F5195723A6006DDDE3 /* One.m in Sources */,
 				9A8420E8195718A2006DDDE3 /* EKCoreDataModel.m in Sources */,
 				9A210F341944B10A00871071 /* CommentObject.m in Sources */,
 				9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */,
@@ -1214,6 +1242,7 @@
 				9AA7CED7191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451186191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A8420F9195723BE006DDDE3 /* Two.m in Sources */,
 				9A4511BC191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130246190BFEF30060A25C /* EKMapper.m in Sources */,
 				9A4511B4191646C9006E6022 /* Car.m in Sources */,
@@ -1242,6 +1271,7 @@
 				9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D1191646C9006E6022 /* Phone.m in Sources */,
+				9A8420FE195723D0006DDDE3 /* Three.m in Sources */,
 				9A130251190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A4511C9191646C9006E6022 /* NativeChild.m in Sources */,
 				9A4511C5191646C9006E6022 /* Native.m in Sources */,
@@ -1254,6 +1284,7 @@
 				9A13024D190BFEF30060A25C /* EKMapper.m in Sources */,
 				9A4511FC191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
 				9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */,
+				9A8420F6195723A6006DDDE3 /* One.m in Sources */,
 				9A8420E9195718A2006DDDE3 /* EKCoreDataModel.m in Sources */,
 				9A210F351944B10B00871071 /* CommentObject.m in Sources */,
 				9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */,
@@ -1264,6 +1295,7 @@
 				9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A2056A61956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451187191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A8420FA195723BE006DDDE3 /* Two.m in Sources */,
 				9A4511BD191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
 				9A4511B5191646C9006E6022 /* Car.m in Sources */,

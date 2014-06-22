@@ -1,5 +1,5 @@
 //
-//  EKCoreDataModel.h
+//  Two.h
 //  EasyMappingExample
 //
 //  Created by Denys Telezhkin on 22.06.14.
@@ -7,8 +7,11 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "EKMappingProtocol.h"
+#import "Three.h"
+#import "EKCoreDataModel.h"
 
-@interface EKCoreDataModel : NSManagedObject <EKManagedMappingProtocol>
+@interface Two : EKCoreDataModel
+
+@property (nonatomic, strong) Three * three;
 
 @end

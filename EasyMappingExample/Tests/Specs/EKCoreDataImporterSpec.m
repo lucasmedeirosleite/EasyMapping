@@ -20,6 +20,9 @@
 #import "MappingProvider.h"
 #import "Address.h"
 #import "Plane.h"
+#import "One.h"
+#import "Two.h"
+#import "Three.h"
 
 @interface EKCoreDataImporter()
 @property (nonatomic, strong) NSSet * entityNames;
@@ -70,6 +73,14 @@ describe(@"Entity names collector", ^{
                                                                         context:nil];
         
         [[importer.entityNames should] equal:[NSSet setWithArray:@[@"ManagedPerson",@"ManagedCar",@"ManagedPhone", @"Address"]]];
+    });
+    
+    it(@"should collect entities from recursive mapping", ^{
+        EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:[One objectMapping]
+                                                         externalRepresentation:nil
+                                                                        context:nil];
+        
+        [[importer.entityNames should] equal:[NSSet setWithArray:@[@"One",@"Two",@"Three"]]];
     });
 });
 

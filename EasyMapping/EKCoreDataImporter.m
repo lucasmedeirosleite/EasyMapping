@@ -27,6 +27,9 @@
 #import "EKRelationshipMapping.h"
 
 @interface EKCoreDataImporter ()
+
+@property (nonatomic, strong) NSMutableSet * collectedEntityNames;
+
 @property (nonatomic, strong) NSSet * entityNames;
 
 // Keys are entity names, values - NSSet with primary keys
@@ -61,7 +64,8 @@
 - (void)collectEntityNames
 {
     NSMutableSet * entityNames = [NSMutableSet set];
-
+    self.collectedEntityNames = [NSMutableSet set];
+    
     [self collectEntityNamesRecursively:entityNames mapping:self.mapping];
 
     self.entityNames = [entityNames copy];
@@ -73,12 +77,28 @@
 
     for (EKRelationshipMapping * oneMapping in [mapping.hasOneMappings allValues])
     {
-        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)[oneMapping.objectClass objectMapping]];
+        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[oneMapping.objectClass objectMapping];
+        if ([self.collectedEntityNames containsObject:mapping.entityName])
+        {
+            continue;
+        }
+        else {
+            [self.collectedEntityNames addObject:mapping.entityName];
+            [self collectEntityNamesRecursively:entityNames mapping:mapping];
+        }
     }
 
     for (EKRelationshipMapping * manyMapping in [mapping.hasManyMappings allValues])
     {
-        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)[manyMapping.objectClass objectMapping]];
+        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[manyMapping.objectClass objectMapping];
+        if ([self.collectedEntityNames containsObject:mapping.entityName])
+        {
+            continue;
+        }
+        else {
+            [self.collectedEntityNames addObject:mapping.entityName];
+            [self collectEntityNamesRecursively:entityNames mapping:mapping];
+        }
     }
 }
 
@@ -127,7 +147,7 @@
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
         NSDictionary * oneMappingRepresentation = [rootRepresentation valueForKeyPath:key];
-        if (![oneMappingRepresentation isEqual:[NSNull null]])
+        if (oneMappingRepresentation && ![oneMappingRepresentation isEqual:[NSNull null]])
         {
             [self inspectRepresentation:oneMappingRepresentation
                            usingMapping:(EKManagedObjectMapping *)[mapping.objectClass objectMapping]
@@ -139,7 +159,7 @@
     {
         NSArray * manyMappingRepresentation = [rootRepresentation valueForKeyPath:key];
 
-        if (![manyMappingRepresentation isEqual:[NSNull null]])
+        if (manyMappingRepresentation && ![manyMappingRepresentation isEqual:[NSNull null]])
         {
             // This is needed, because if one of the objects in array does not contain object for key, returned structure would be something like this:
             //
