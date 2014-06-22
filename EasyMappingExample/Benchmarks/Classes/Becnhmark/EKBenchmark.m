@@ -20,6 +20,10 @@
 #import "ManagedPhone.h"
 #import "ManagedPerson.h"
 #import "ManagedMappingProvider.h"
+#import "Native.h"
+#import "Plane.h"
+#import "Alien.h"
+#import "NativeChild.h"
 
 @implementation EKBenchmark
 
@@ -86,10 +90,10 @@
                             @{ @"PersonWithNullCar" : [MappingProvider personWithPhonesMapping]},
                             @{ @"Male" : [MappingProvider personWithOnlyValueBlockMapping]},
                             @{ @"Address" : [MappingProvider addressMapping]},
-                            @{ @"Native" : [MappingProvider nativeMapping]},
-                            @{ @"Plane" : [MappingProvider planeMapping]},
-                            @{ @"Alien" : [MappingProvider alienMapping]},
-                            @{ @"NativeChild" : [MappingProvider nativeChildMapping]}
+                            @{ @"Native" : [Native objectMapping]},
+                            @{ @"Plane" : [Plane objectMapping]},
+                            @{ @"Alien" : [Alien objectMapping]},
+                            @{ @"NativeChild" : [NativeChild objectMapping]}
                             ];
     NSMutableArray * suits = [NSMutableArray array];
     
@@ -116,7 +120,6 @@
 {
     [Car registerMapping:[MappingProvider carMapping]];
     [Phone registerMapping:[MappingProvider phoneMapping]];
-    [Finger registerMapping:[MappingProvider fingerMapping]];
     [Person registerMapping:[MappingProvider personMapping]];
     
     [ManagedCar registerMapping:[ManagedMappingProvider carMapping]];
