@@ -107,7 +107,7 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(fieldMappings)];
+            [[mapping should] respondToSelector:@selector(propertyMappings)];
         });
         
         specify(^{
@@ -212,7 +212,7 @@ describe(@"EKManagedObjectMapping", ^{
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
             [mapping mapKey:@"created_at" toField:@"createdAt"];
-            fieldMapping = [mapping.fieldMappings objectForKey:@"created_at"];
+            fieldMapping = [mapping.propertyMappings objectForKey:@"created_at"];
         });
         
         specify(^{
@@ -239,7 +239,7 @@ describe(@"EKManagedObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"name"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"name"];
             });
             
             specify(^{
@@ -256,7 +256,7 @@ describe(@"EKManagedObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"email"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"email"];
             });
             
             specify(^{
@@ -288,7 +288,7 @@ describe(@"EKManagedObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"id"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"id"];
             });
             
             specify(^{
@@ -305,7 +305,7 @@ describe(@"EKManagedObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"contact.email"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
             });
             
             specify(^{
@@ -331,11 +331,11 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.fieldMappings objectForKey:@"birthdate"] shouldNotBeNil];
+            [[mapping.propertyMappings objectForKey:@"birthdate"] shouldNotBeNil];
         });
         
         specify(^{
-            [[[mapping.fieldMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
+            [[[mapping.propertyMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
         });
         
     });

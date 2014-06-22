@@ -10,16 +10,11 @@
 
 @implementation NativeChild
 
-static EKObjectMapping * mapping = nil;
-
-+(void)registerMapping:(EKObjectMapping *)objectMapping
-{
-    mapping = objectMapping;
-}
-
 +(EKObjectMapping *)objectMapping
 {
-    return mapping;
+    return [EKObjectMapping mappingForClass:[NativeChild class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
+    }];
 }
 
 @end

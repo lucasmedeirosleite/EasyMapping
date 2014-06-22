@@ -22,14 +22,6 @@
 + (EKObjectMapping *)personWithOnlyValueBlockMapping;
 + (EKObjectMapping *)personWithRelativeMapping;
 + (EKObjectMapping *)addressMapping;
-+ (EKObjectMapping *)fingerMapping;
-+ (EKObjectMapping *)nativeMapping;
 + (EKObjectMapping *)nativeMappingWithNullPropertie;
-+ (EKObjectMapping *)planeMapping;
-+ (EKObjectMapping *)alienMapping;
-+ (EKObjectMapping *)ufoMapping;
-+ (EKObjectMapping *)coloredUfoMapping;
-+ (EKObjectMapping *)nativeChildMapping;
-+ (EKObjectMapping *)commentObjectMapping;
 
 @end

@@ -22,13 +22,13 @@ describe(@"EKPropertyHelper", ^{
 		__block Native *native;
 		beforeEach(^{
 			NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Native"];
-			native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider nativeMapping]];
+			native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[Native objectMapping]];
 		});
 		
 		context(@"detect native properties", ^{
 			specify(^{
-				EKObjectMapping* mapping = [MappingProvider nativeMapping];
-				[mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+				EKObjectMapping* mapping = [Native objectMapping];
+				[mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 					EKFieldMapping* fieldMapping = obj;
 					[[@([EKPropertyHelper propertyNameIsScalar:fieldMapping.field fromObject:native]) should] equal:@(YES)];
 				}];

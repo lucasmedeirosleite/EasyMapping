@@ -10,16 +10,16 @@
 
 @implementation CommentObject
 
-static EKObjectMapping * mapping = nil;
-
-+(void)registerMapping:(EKObjectMapping *)objectMapping
-{
-    mapping = objectMapping;
-}
-
 +(EKObjectMapping *)objectMapping
 {
-    return mapping;
+    return [EKObjectMapping mappingForClass:[CommentObject class]
+                                  withBlock:^(EKObjectMapping *mapping) {
+                                      [mapping mapKey:@"name" toField:@"name"];
+                                      [mapping mapKey:@"message" toField:@"message"];
+                                      [mapping hasMany:self
+                                            forKeyPath:@"sub_comments"
+                                           forProperty:@"subComments"];
+                                  }];
 }
 
 @end

@@ -44,7 +44,7 @@
 /**
  Dictionary, containing field mappings for current object.
  */
-@property (nonatomic, strong, readonly) NSMutableDictionary *fieldMappings;
+@property (nonatomic, strong, readonly) NSMutableDictionary *propertyMappings;
 
 /**
  Dictionary, containing to-one relationships of current object.

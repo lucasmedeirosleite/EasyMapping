@@ -7,19 +7,16 @@
 //
 
 #import "Plane.h"
+#import "Person.h"
 
 @implementation Plane
 
-static EKObjectMapping * mapping = nil;
-
-+(void)registerMapping:(EKObjectMapping *)objectMapping
-{
-    mapping = objectMapping;
-}
-
 +(EKObjectMapping *)objectMapping
 {
-    return mapping;
+    return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapKey:@"flight_number" toField:@"flightNumber"];
+        [mapping hasMany:[Person class] forKeyPath:@"persons"];
+    }];
 }
 
 @end

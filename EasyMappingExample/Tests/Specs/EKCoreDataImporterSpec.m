@@ -57,7 +57,6 @@ describe(@"Entity names collector", ^{
         EKManagedObjectMapping * mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"ManagedPerson"];
         [ManagedCar registerMapping:[ManagedMappingProvider carWithRootKeyMapping]];
         [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
-        [Finger registerMapping:[MappingProvider fingerMapping]];
         [mapping hasOne:[ManagedCar class] forKeyPath:@"car"];
         [mapping hasOne:[ManagedPhone class] forKeyPath:@"phone"];
         EKManagedObjectMapping * addressMapping = [EKManagedObjectMapping mappingForEntityName:@"Address" withBlock:^(EKManagedObjectMapping *addressMapping) {

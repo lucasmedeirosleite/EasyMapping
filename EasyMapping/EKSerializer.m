@@ -33,7 +33,7 @@
 {
     NSMutableDictionary *representation = [NSMutableDictionary dictionary];
 
-    [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKFieldMapping *fieldMapping, BOOL *stop) {
+    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKFieldMapping *fieldMapping, BOOL *stop) {
         [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {

@@ -140,80 +140,11 @@
     }];
 }
 
-+ (EKObjectMapping *)nativeMapping
-{
-    return [EKObjectMapping mappingForClass:[Native class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[
-         @"charProperty", @"unsignedCharProperty", @"shortProperty", @"unsignedShortProperty", @"intProperty", @"unsignedIntProperty",
-         @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
-         @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty", @"smallBoolProperty"
-        ]];
-    }];
-}
-
 + (EKObjectMapping *)nativeMappingWithNullPropertie
 {
     return [EKObjectMapping mappingForClass:[Cat class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapFieldsFromArray:@[ @"age" ]];
     }];
-}
-
-+ (EKObjectMapping *)planeMapping
-{
-    return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapKey:@"flight_number" toField:@"flightNumber"];
-        [mapping hasMany:[Person class] forKeyPath:@"persons"];
-    }];
-}
-
-+ (EKObjectMapping *)alienMapping
-{
-    return [EKObjectMapping mappingForClass:[Alien class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name"]];
-        [mapping hasMany:[Finger class] forKeyPath:@"fingers"];
-    }];
-}
-
-+ (EKObjectMapping *)fingerMapping
-{
-    return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name"]];
-    }];
-}
-
-+ (EKObjectMapping *)ufoMapping {
-    return [EKObjectMapping mappingForClass:[UFO class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"shape"]];
-        [mapping hasOne:[Alien class] forKeyPath:@"captain"];
-        [mapping hasMany:[Alien class] forKeyPath:@"crew"];
-        
-    }];
-}
-
-+ (EKObjectMapping *)coloredUfoMapping {
-    return [EKObjectMapping mappingForClass:[ColoredUFO class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"color"]];
-        [mapping mapFieldsFromMappingObject:[self ufoMapping]];
-        
-    }];
-}
-
-+ (EKObjectMapping *)nativeChildMapping
-{
-    return [EKObjectMapping mappingForClass:[NativeChild class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
-    }];
-}
-
-+ (EKObjectMapping *)commentObjectMapping {
-    return [EKObjectMapping mappingForClass:[CommentObject class]
-                                  withBlock:^(EKObjectMapping *mapping) {
-                                      [mapping mapKey:@"name" toField:@"name"];
-                                      [mapping mapKey:@"message" toField:@"message"];
-                                      [mapping hasMany:[CommentObject class]
-                                            forKeyPath:@"sub_comments"
-                                           forProperty:@"subComments"];
-                                  }];
 }
 
 @end

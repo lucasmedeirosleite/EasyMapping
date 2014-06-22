@@ -25,7 +25,7 @@
 
 @implementation EKManagedObjectMapping
 
-@synthesize fieldMappings = _fieldMappings;
+@synthesize propertyMappings = _propertyMappings;
 @synthesize hasManyMappings = _hasManyMappings;
 @synthesize hasOneMappings = _hasOneMappings;
 @synthesize rootPath = _rootPath;
@@ -56,7 +56,7 @@
     if (self)
     {
         _entityName = entityName;
-        _fieldMappings = [NSMutableDictionary dictionary];
+        _propertyMappings = [NSMutableDictionary dictionary];
         _hasOneMappings = [NSMutableDictionary dictionary];
         _hasManyMappings = [NSMutableDictionary dictionary];
     }
@@ -76,7 +76,7 @@
 - (EKFieldMapping *)primaryKeyFieldMapping
 {
     __block EKFieldMapping * primaryKeyMapping = nil;
-    [self.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
+    [self.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
     {
         EKFieldMapping * fieldMapping = obj;
         if ([fieldMapping.field isEqualToString:self.primaryKey])

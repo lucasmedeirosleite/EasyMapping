@@ -10,16 +10,14 @@
 
 @implementation UFO
 
-static EKObjectMapping * mapping = nil;
-
-+(void)registerMapping:(EKObjectMapping *)objectMapping
-{
-    mapping = objectMapping;
-}
-
 +(EKObjectMapping *)objectMapping
 {
-    return mapping;
+    return [EKObjectMapping mappingForClass:[UFO class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapFieldsFromArray:@[@"shape"]];
+        [mapping hasOne:[Alien class] forKeyPath:@"captain"];
+        [mapping hasMany:[Alien class] forKeyPath:@"crew"];
+        
+    }];
 }
 
 @end

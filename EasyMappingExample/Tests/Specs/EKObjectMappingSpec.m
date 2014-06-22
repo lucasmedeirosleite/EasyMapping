@@ -128,7 +128,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(fieldMappings)];
+            [[mapping should] respondToSelector:@selector(propertyMappings)];
         });
         
         specify(^{
@@ -233,7 +233,7 @@ describe(@"EKObjectMapping", ^{
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
             [mapping mapKey:@"created_at" toField:@"createdAt"];
-            fieldMapping = [mapping.fieldMappings objectForKey:@"created_at"];
+            fieldMapping = [mapping.propertyMappings objectForKey:@"created_at"];
         });
         
         specify(^{
@@ -260,7 +260,7 @@ describe(@"EKObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"name"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"name"];
             });
             
             specify(^{
@@ -282,7 +282,7 @@ describe(@"EKObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"email"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"email"];
             });
             
             specify(^{
@@ -315,7 +315,7 @@ describe(@"EKObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"Name"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"Name"];
             });
             
             specify(^{
@@ -336,7 +336,7 @@ describe(@"EKObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"Email"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"Email"];
             });
             
             specify(^{
@@ -373,7 +373,7 @@ describe(@"EKObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"id"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"id"];
             });
             
             specify(^{
@@ -390,7 +390,7 @@ describe(@"EKObjectMapping", ^{
             __block EKFieldMapping *fieldMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"contact.email"];
+                fieldMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
             });
             
             specify(^{
@@ -411,20 +411,20 @@ describe(@"EKObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[ColoredUFO class]];
-            [mapping mapFieldsFromMappingObject:[MappingProvider ufoMapping]];
+            [mapping mapFieldsFromMappingObject:[UFO objectMapping]];
         });
         
         
         specify(^{
-            [mapping.fieldMappings shouldNotBeNil];
+            [mapping.propertyMappings shouldNotBeNil];
         });
         
         specify(^{
-            [[mapping.fieldMappings objectForKey:@"shape"] shouldNotBeNil];
+            [[mapping.propertyMappings objectForKey:@"shape"] shouldNotBeNil];
         });
         
         specify(^{
-            [[[[mapping.fieldMappings objectForKey:@"shape"] field] should] equal:@"shape"];
+            [[[[mapping.propertyMappings objectForKey:@"shape"] field] should] equal:@"shape"];
         });
         
         
@@ -458,11 +458,11 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.fieldMappings objectForKey:@"birthdate"] shouldNotBeNil];
+            [[mapping.propertyMappings objectForKey:@"birthdate"] shouldNotBeNil];
         });
         
         specify(^{
-            [[[mapping.fieldMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
+            [[[mapping.propertyMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
         });
     });
     
@@ -483,7 +483,7 @@ describe(@"EKObjectMapping", ^{
                 return genders[key];
             }];
             
-            fieldMapping = [mapping.fieldMappings objectForKey:@"gender"];
+            fieldMapping = [mapping.propertyMappings objectForKey:@"gender"];
             
         });
         
@@ -517,7 +517,7 @@ describe(@"EKObjectMapping", ^{
                 return [genders allKeysForObject:value].lastObject;
             }];
             
-            fieldMapping = [mapping.fieldMappings objectForKey:@"gender"];
+            fieldMapping = [mapping.propertyMappings objectForKey:@"gender"];
             
         });
         

@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseTestModel.h"
+#import "Alien.h"
 
 @interface UFO : BaseTestModel
 
 @property (nonatomic, strong) NSString *shape;
-@property (nonatomic, strong) NSMutableArray *captain;
+@property (nonatomic, strong) Alien *captain;
 @property (nonatomic, strong) NSMutableArray *crew;
 
 

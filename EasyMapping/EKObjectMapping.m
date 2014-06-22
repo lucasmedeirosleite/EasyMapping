@@ -54,7 +54,7 @@
     self = [super init];
     if (self) {
         _objectClass = objectClass;
-        _fieldMappings = [NSMutableDictionary dictionary];
+        _propertyMappings = [NSMutableDictionary dictionary];
         _hasOneMappings = [NSMutableDictionary dictionary];
         _hasManyMappings = [NSMutableDictionary dictionary];
     }
@@ -115,8 +115,8 @@
 
 -(void)mapFieldsFromMappingObject:(EKObjectMapping *)mappingObj {
     
-    for (NSString *key in mappingObj.fieldMappings) {
-        [self addFieldMappingToDictionary:mappingObj.fieldMappings[key]];
+    for (NSString *key in mappingObj.propertyMappings) {
+        [self addFieldMappingToDictionary:mappingObj.propertyMappings[key]];
     }
     
     for (NSString *key in mappingObj.hasOneMappings) {
@@ -187,7 +187,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping
 {
-    [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
+    [self.propertyMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
 }
 
 @end
