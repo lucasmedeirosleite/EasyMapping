@@ -11,4 +11,9 @@
 
 @interface EKCoreDataModel : NSManagedObject <EKManagedMappingProtocol>
 
++(instancetype)objectWithProperties:(NSDictionary *)properties
+                          inContext:(NSManagedObjectContext *)context;
+
+- (NSDictionary *)serializedObject;
+
 @end

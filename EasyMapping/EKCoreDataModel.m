@@ -9,6 +9,7 @@
 #import "EKCoreDataModel.h"
 #import "EKManagedObjectMapper.h"
 #import "EKManagedObjectMapping.h"
+#import "EKSerializer.h"
 
 @implementation EKCoreDataModel
 
@@ -17,6 +18,12 @@
     return [EKManagedObjectMapper objectFromExternalRepresentation:properties
                                                        withMapping:[self objectMapping]
                                             inManagedObjectContext:context];
+}
+
+- (NSDictionary *)serializedObject
+{
+    return [EKSerializer serializeObject:self
+                             withMapping:[self.class objectMapping]];
 }
 
 +(EKManagedObjectMapping *)objectMapping
