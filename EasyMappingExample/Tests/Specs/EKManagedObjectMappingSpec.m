@@ -81,11 +81,11 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasOneMapping:forKey:)];
+            [[mapping should] respondToSelector:@selector(hasOne:forKeyPath:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasManyMapping:forKey:)];
+            [[mapping should] respondToSelector:@selector(hasMany:forKeyPath:)];
         });
         
     });

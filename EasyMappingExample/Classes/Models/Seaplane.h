@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface Seaplane : NSObject
+@interface Seaplane : BaseTestModel
 
 @property (nonatomic, strong) NSNumber *flightNumber;
 @property (nonatomic, strong) NSSet *passengers;

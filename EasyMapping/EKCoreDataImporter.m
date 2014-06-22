@@ -73,12 +73,12 @@
 
     for (EKRelationshipMapping * oneMapping in [mapping.hasOneMappings allValues])
     {
-        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)oneMapping.objectMapping];
+        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)[oneMapping.objectClass objectMapping]];
     }
 
     for (EKRelationshipMapping * manyMapping in [mapping.hasManyMappings allValues])
     {
-        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)manyMapping.objectMapping];
+        [self collectEntityNamesRecursively:entityNames mapping:(EKManagedObjectMapping *)[manyMapping.objectClass objectMapping]];
     }
 }
 
@@ -130,7 +130,7 @@
         if (![oneMappingRepresentation isEqual:[NSNull null]])
         {
             [self inspectRepresentation:oneMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)mapping.objectMapping
+                           usingMapping:(EKManagedObjectMapping *)[mapping.objectClass objectMapping]
                        accumulateInside:dictionary];
         }
     }];
@@ -149,7 +149,7 @@
             manyMappingRepresentation = [manyMappingRepresentation ek_flattenedArray];
 
             [self inspectRepresentation:manyMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)mapping.objectMapping
+                           usingMapping:(EKManagedObjectMapping *)[mapping.objectClass objectMapping]
                        accumulateInside:dictionary];
         }
     }];

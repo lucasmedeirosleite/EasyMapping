@@ -226,6 +226,8 @@ describe(@"EKMapper", ^{
                 expectedCar = [carFactory build];
                 
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                [Car registerMapping:[MappingProvider carMapping]];
+                [Phone registerMapping:[MappingProvider phoneMapping]];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
                 
             });
@@ -252,7 +254,8 @@ describe(@"EKMapper", ^{
                 expectedCar.model = @"i30";
                 expectedCar.year = @"2013";
                 EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-                [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"vehicle" forField:@"car"];
+                [Car registerMapping:[MappingProvider carMapping]];
+                [mapping hasOne:Car.class forKeyPath:@"vehicle" forProperty:@"car"];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
             });
@@ -300,7 +303,8 @@ describe(@"EKMapper", ^{
             
             beforeEach(^{
                 EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-                [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"cellphones" forField:@"phones"];
+                [Phone registerMapping:[MappingProvider phoneMapping]];
+                [mapping hasMany:Phone.class forKeyPath:@"cellphones" forProperty:@"phones"];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
             });
@@ -491,10 +495,11 @@ describe(@"EKMapper", ^{
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Plane"];
             EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Plane class]];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"persons" forField:@"persons"];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"pilots" forField:@"pilots"];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"stewardess" forField:@"stewardess"];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"stars" forField:@"stars"];
+            [Person registerMapping:[MappingProvider personMapping]];
+            [mapping hasMany:Person.class forKeyPath:@"persons"];
+            [mapping hasMany:Person.class forKeyPath:@"pilots"];
+            [mapping hasMany:Person.class forKeyPath:@"stewardess"];
+            [mapping hasMany:Person.class forKeyPath:@"stars"];
             plane = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
         });
         
@@ -527,7 +532,8 @@ describe(@"EKMapper", ^{
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Plane"];
             EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Seaplane class]];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"persons" forField:@"passengers"];
+            [Person registerMapping:[MappingProvider personMapping]];
+            [mapping hasMany:[Person class] forKeyPath:@"persons" forProperty:@"passengers"];
             seaplane = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
         });
         
@@ -547,6 +553,8 @@ describe(@"EKMapper", ^{
         
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Alien"];
+            [Alien registerMapping:[MappingProvider alienMapping]];
+            [Finger registerMapping:[MappingProvider fingerMapping]];
             alien = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider alienMapping]];
         });
         
@@ -566,6 +574,7 @@ describe(@"EKMapper", ^{
         
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"CommentsRecursive"];
+            [CommentObject registerMapping:[MappingProvider commentObjectMapping]];
             comments = [EKMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation[@"comments"]
                                                              withMapping:[MappingProvider commentObjectMapping]];
         });
@@ -603,6 +612,7 @@ describe(@"EKMapper", ^{
         
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonRecursive"];
+            [Person registerMapping:[MappingProvider personWithRelativeMapping]];
             person = [EKMapper objectFromExternalRepresentation:externalRepresentation
                                                       withMapping:[MappingProvider personWithRelativeMapping]];
         });

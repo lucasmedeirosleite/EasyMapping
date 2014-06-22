@@ -7,13 +7,14 @@
 //
 
 #import "EKObjectMapping.h"
+#import "EKMappingProtocol.h"
 
 @interface EKRelationshipMapping : NSObject
 
-@property (nonatomic, strong) EKObjectMapping * objectMapping;
+@property (nonatomic, strong) Class <EKMappingProtocol> objectClass;
 
-@property (nonatomic, strong) NSString * sourceKeyPath;
+@property (nonatomic, strong) NSString * keyPath;
 
-@property (nonatomic, strong) NSString * destinationProperty;
+@property (nonatomic, strong) NSString * property;
 
 @end

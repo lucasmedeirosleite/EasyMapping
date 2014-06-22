@@ -78,8 +78,8 @@
                                               withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"personID" }];
         [mapping mapFieldsFromArray:@[@"name", @"email", @"gender"]];
-        [mapping hasOneMapping:[self carMapping] forKey:@"car"];
-        [mapping hasManyMapping:[self phoneMapping] forKey:@"phones"];
+        [mapping hasOne:ManagedCar.class forKeyPath:@"car"];
+        [mapping hasMany:ManagedPhone.class forKeyPath:@"phones"];
         mapping.primaryKey = @"personID";
     }];
 }
@@ -90,7 +90,7 @@
                                               withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"personID" }];
         [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping hasOneMapping:[self carMapping] forKey:@"car"];
+        [mapping hasOne:[ManagedCar class] forKeyPath:@"car"];
         mapping.primaryKey = @"personID";
     }];
 }
@@ -101,7 +101,7 @@
                                               withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapFieldsFromDictionary:@{ @"id": @"personID" }];
         [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping hasManyMapping:[self phoneMapping] forKey:@"phones"];
+        [mapping hasMany:[ManagedPhone class] forKeyPath:@"phones"];
         mapping.primaryKey = @"personID";
     }];
 }
@@ -119,8 +119,8 @@
 +(EKManagedObjectMapping *)complexPlaneMapping
 {
     EKManagedObjectMapping * mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Plane"];
-    [mapping hasOneMapping:[self personMapping] forKey:@"captain"];
-    [mapping hasManyMapping:[self personMapping] forKey:@"persons"];
+    [mapping hasOne:[ManagedPerson class] forKeyPath:@"captain"];
+    [mapping hasMany:[ManagedPerson class] forKeyPath:@"persons"];
     return mapping;
 }
 

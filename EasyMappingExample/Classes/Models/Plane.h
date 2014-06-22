@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 EasyKit. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface Plane : NSObject
+@interface Plane : BaseTestModel
 
 @property (nonatomic, strong) NSNumber *flightNumber;
 @property (nonatomic, strong) NSSet *persons;

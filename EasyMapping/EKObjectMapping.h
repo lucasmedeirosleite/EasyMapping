@@ -23,6 +23,8 @@
 
 #import "EKMappingBlocks.h"
 
+@protocol EKMappingProtocol;
+
 /**
  `EKObjectMapping` class is used to define mappings between JSON representation and objective-c object.
  */
@@ -179,7 +181,8 @@ withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingRevers
  
  @param key keyPath to child object representation in JSON
  */
-- (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+
+- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath;
 
 /**
  Map to-one relationship for keyPath.
@@ -190,7 +193,8 @@ withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingRevers
  
  @param field Name of the property, that will receive mapped object.
  */
-- (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
+
+- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
  Map to-many relationship for keyPath. Assuming keyPath and property name are equal.
@@ -199,7 +203,8 @@ withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingRevers
  
  @param key keyPath to child object representations in JSON
  */
-- (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+
+- (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath;
 
 /**
  Map to-many relationship for keyPath.
@@ -210,6 +215,7 @@ withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingRevers
  
  @param field Name of the property, that will receive mapped objects.
  */
-- (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
+
+- (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 @end

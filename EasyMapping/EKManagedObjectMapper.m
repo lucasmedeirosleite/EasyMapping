@@ -71,8 +71,8 @@
         NSDictionary * value = [representation valueForKeyPath:key];
         if (value && value != (id)[NSNull null])
         {
-            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)mapping.objectMapping];
-            [EKPropertyHelper setValue:result onObject:object forKeyPath:mapping.destinationProperty];
+            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[mapping.objectClass objectMapping]];
+            [EKPropertyHelper setValue:result onObject:object forKeyPath:mapping.property];
         }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
@@ -81,11 +81,11 @@
         if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null])
         {
             NSArray * parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withMapping:(EKManagedObjectMapping *)mapping.objectMapping];
+                                                                       withMapping:(EKManagedObjectMapping *)[mapping.objectClass objectMapping]];
             id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                               forObject:object
-                                                       withPropertyName:[mapping destinationProperty]];
-            [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:mapping.destinationProperty];
+                                                       withPropertyName:[mapping property]];
+            [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:mapping.property];
         }
     }];
     return object;

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface Finger : NSObject
+@interface Finger : BaseTestModel
 
 @property (nonatomic, copy) NSString *name;
 

@@ -18,4 +18,16 @@
 @dynamic car;
 @dynamic phones;
 
+static EKManagedObjectMapping * mapping = nil;
+
++(void)registerMapping:(EKManagedObjectMapping *)objectMapping
+{
+    mapping = objectMapping;
+}
+
++(EKManagedObjectMapping *)objectMapping
+{
+    return mapping;
+}
+
 @end

@@ -10,6 +10,16 @@
 #import "EKCoreDataImporter.h"
 #import "ManagedMappingProvider.h"
 #import "CMFixture.h"
+#import "ManagedCar.h"
+#import "ManagedPhone.h"
+#import "ManagedPerson.h"
+#import "Alien.h"
+#import "UFO.h"
+#import "ColoredUFO.h"
+#import "Finger.h"
+#import "MappingProvider.h"
+#import "Address.h"
+#import "Plane.h"
 
 @interface EKCoreDataImporter()
 @property (nonatomic, strong) NSSet * entityNames;
@@ -20,7 +30,14 @@ SPEC_BEGIN(EKCoreDataImporterSpec)
 
 describe(@"Entity names collector", ^{
     
+    afterAll(^{
+        [ManagedPerson registerMapping:[ManagedMappingProvider personMapping]];
+    });
+    
     it(@"should collect entities from nested mapping", ^{
+        [ManagedPerson registerMapping:[ManagedMappingProvider personMapping]];
+        [ManagedCar registerMapping:[ManagedMappingProvider carMapping]];
+        [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
         EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider personMapping]
                                                          externalRepresentation:nil
                                                                         context:nil];
@@ -38,24 +55,22 @@ describe(@"Entity names collector", ^{
     
     it(@"should collect entities with complex structure", ^{
         EKManagedObjectMapping * mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"ManagedPerson"];
-        [mapping hasOneMapping:[ManagedMappingProvider carWithRootKeyMapping]
-                        forKey:@"car"];
-        [mapping hasOneMapping:[ManagedMappingProvider phoneMapping]
-                        forKey:@"phone"];
-        EKManagedObjectMapping * fingerMapping = [EKManagedObjectMapping mappingForEntityName:@"Finger" withBlock:nil];
-        [mapping hasManyMapping:fingerMapping forKey:@"fingers"];
+        [ManagedCar registerMapping:[ManagedMappingProvider carWithRootKeyMapping]];
+        [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
+        [Finger registerMapping:[MappingProvider fingerMapping]];
+        [mapping hasOne:[ManagedCar class] forKeyPath:@"car"];
+        [mapping hasOne:[ManagedPhone class] forKeyPath:@"phone"];
         EKManagedObjectMapping * addressMapping = [EKManagedObjectMapping mappingForEntityName:@"Address" withBlock:^(EKManagedObjectMapping *addressMapping) {
-            [addressMapping hasOneMapping:[EKManagedObjectMapping mappingForEntityName:@"Alien" withBlock:nil] forKey:@"alien"];
-            [addressMapping hasManyMapping:[EKManagedObjectMapping mappingForEntityName:@"Ufo" withBlock:nil] forKey:@"ufos"];
-            [addressMapping hasOneMapping:[ManagedMappingProvider personMapping] forKey:@"postman"];
+            [addressMapping hasOne:[ManagedPerson class] forKeyPath:@"postman"];
         }];
-        [mapping hasManyMapping:addressMapping forKey:@"addressBook"];
+        [Address registerMapping:addressMapping];
+        [mapping hasOne:[Address class] forKeyPath:@"addressBook"];
         
         EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                          externalRepresentation:nil
                                                                         context:nil];
         
-        [[importer.entityNames should] equal:[NSSet setWithArray:@[@"ManagedPerson",@"ManagedCar",@"ManagedPhone", @"Address", @"Alien",@"Ufo",@"Finger"]]];
+        [[importer.entityNames should] equal:[NSSet setWithArray:@[@"ManagedPerson",@"ManagedCar",@"ManagedPhone", @"Address"]]];
     });
 });
 
@@ -92,6 +107,7 @@ describe(@"Entities introspection", ^{
     it(@"should collect entities from hasOne and hasMany relationships", ^{
         externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
         
+        [ManagedCar registerMapping:[ManagedMappingProvider carMapping]];
         importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider personMapping] externalRepresentation:externalRepresentation context:nil];
         
         NSSet * cars = [NSSet setWithObject:@3];
@@ -105,6 +121,7 @@ describe(@"Entities introspection", ^{
     
     it(@"should collect entities recursively", ^{
         externalRepresentation = [CMFixture buildUsingFixture:@"ComplexRepresentation"];
+        [Plane registerMapping:[ManagedMappingProvider complexPlaneMapping]];
         importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider complexPlaneMapping] externalRepresentation:externalRepresentation context:nil];
         
         NSSet * cars = [NSSet setWithObjects:@3,@8, nil];

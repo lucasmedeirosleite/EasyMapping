@@ -25,6 +25,7 @@
 #import "EKFieldMapping.h"
 #import "EKTransformer.h"
 #import "EKRelationshipMapping.h"
+#import "EKMappingProtocol.h"
 
 @implementation EKObjectMapping
 
@@ -120,12 +121,12 @@
     
     for (NSString *key in mappingObj.hasOneMappings) {
         EKRelationshipMapping *mapping = mappingObj.hasOneMappings[key];
-        [self.hasOneMappings setObject:mapping forKey:mapping.sourceKeyPath];
+        [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
     }
     
     for (NSString *key in mappingObj.hasManyMappings) {
          EKRelationshipMapping *mapping = mappingObj.hasManyMappings[key];
-        [self.hasManyMappings setObject:mapping forKey:mapping.sourceKeyPath];
+        [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
     }
 }
 
@@ -154,35 +155,34 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
     [self addFieldMappingToDictionary:mapping];
 }
 
-- (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
+-(void)hasOne:(Class<EKMappingProtocol>)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasOneMapping:mapping forKey:key forField:key];
+    [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath];
 }
 
--(void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
-            forField:(NSString *)field
+-(void)hasOne:(Class<EKMappingProtocol>)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
 {
     EKRelationshipMapping * relationship = [EKRelationshipMapping new];
-    relationship.sourceKeyPath = key;
-    relationship.destinationProperty = field;
-    relationship.objectMapping = mapping;
+    relationship.objectClass = objectClass;
+    relationship.keyPath = keyPath;
+    relationship.property = property;
     
-    [self.hasOneMappings setObject:relationship forKey:key];
+    [self.hasOneMappings setObject:relationship forKey:keyPath];
 }
 
-- (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
+-(void)hasMany:(Class<EKMappingProtocol>)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasManyMapping:mapping forKey:key forField:key];
+    [self hasMany:objectClass forKeyPath:keyPath forProperty:keyPath];
 }
 
--(void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field
+-(void)hasMany:(Class<EKMappingProtocol>)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
 {
     EKRelationshipMapping * relationship = [EKRelationshipMapping new];
-    relationship.sourceKeyPath = key;
-    relationship.destinationProperty = field;
-    relationship.objectMapping = mapping;
-
-    [self.hasManyMappings setObject:relationship forKey:key];
+    relationship.keyPath = keyPath;
+    relationship.property = property;
+    relationship.objectClass = objectClass;
+    
+    [self.hasManyMappings setObject:relationship forKey:keyPath];
 }
 
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping

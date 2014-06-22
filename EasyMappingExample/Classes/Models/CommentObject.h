@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface CommentObject : NSObject
+@interface CommentObject : BaseTestModel
 
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * message;

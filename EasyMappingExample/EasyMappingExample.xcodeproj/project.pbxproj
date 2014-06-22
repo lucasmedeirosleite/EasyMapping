@@ -29,6 +29,10 @@
 		9A170333194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
 		9A170334194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
 		9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
+		9A2056A61956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A210F321944B0E800871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
 		9A210F331944B0E900871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
 		9A210F341944B10A00871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
@@ -224,6 +228,10 @@
 		9A4512F519166366006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
 		9A4512F619166366006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
 		9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4512F719166B8E006E6022 /* MainMenu.xib */; };
+		9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
+		9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
+		9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A8420DF1957068E006DDDE3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
 		9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC1191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
@@ -254,6 +262,11 @@
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A170330194C820200682F00 /* EKRelationshipMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRelationshipMapping.h; sourceTree = "<group>"; };
 		9A170331194C820200682F00 /* EKRelationshipMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRelationshipMapping.m; sourceTree = "<group>"; };
+		9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKMappingProtocol.h; sourceTree = "<group>"; };
+		9A20569F1956DF7900499FC3 /* BaseTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTestModel.h; path = Classes/Models/BaseTestModel.h; sourceTree = SOURCE_ROOT; };
+		9A2056A01956DF7900499FC3 /* BaseTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseTestModel.m; path = Classes/Models/BaseTestModel.m; sourceTree = SOURCE_ROOT; };
+		9A2056A31956E0EE00499FC3 /* BaseManagedTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseManagedTestModel.h; path = Classes/Models/CoreData/BaseManagedTestModel.h; sourceTree = SOURCE_ROOT; };
+		9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseManagedTestModel.m; path = Classes/Models/CoreData/BaseManagedTestModel.m; sourceTree = SOURCE_ROOT; };
 		9A210F2E1944B0C100871071 /* CommentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentObject.h; path = Classes/Models/CommentObject.h; sourceTree = SOURCE_ROOT; };
 		9A210F2F1944B0C100871071 /* CommentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentObject.m; path = Classes/Models/CommentObject.m; sourceTree = SOURCE_ROOT; };
 		9A210F361944B13A00871071 /* CommentsRecursive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CommentsRecursive.json; path = Tests/Fixtures/CommentsRecursive.json; sourceTree = SOURCE_ROOT; };
@@ -613,6 +626,8 @@
 		9AE54FCE190BD7B5003A3B56 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				9A20569F1956DF7900499FC3 /* BaseTestModel.h */,
+				9A2056A01956DF7900499FC3 /* BaseTestModel.m */,
 				9A451192191646C9006E6022 /* Address.h */,
 				9A451193191646C9006E6022 /* Address.m */,
 				9A451194191646C9006E6022 /* Alien.h */,
@@ -648,6 +663,8 @@
 		9AE54FCF190BD7C1003A3B56 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				9A2056A31956E0EE00499FC3 /* BaseManagedTestModel.h */,
+				9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */,
 				9A451180191646B2006E6022 /* ManagedCar.h */,
 				9A451181191646B2006E6022 /* ManagedCar.m */,
 				9A451182191646B2006E6022 /* ManagedPerson.h */,
@@ -729,6 +746,7 @@
 				9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */,
 				9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */,
 				A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */,
+				9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */,
 				A9D16CFC16F2B2770003759B /* EKObjectMapping.h */,
 				A9D16CFD16F2B2770003759B /* EKObjectMapping.m */,
 				9A170330194C820200682F00 /* EKRelationshipMapping.h */,
@@ -1106,6 +1124,7 @@
 				9A4511E7191646F6006E6022 /* EKFieldMappingSpec.m in Sources */,
 				9A4511B0191646C9006E6022 /* Alien.m in Sources */,
 				9A45118E191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117819164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D0191646C9006E6022 /* Phone.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
@@ -1127,6 +1146,7 @@
 				9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9AA7CECB191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9AA7CED7191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
+				9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451186191646B2006E6022 /* ManagedCar.m in Sources */,
 				9A4511BC191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130246190BFEF30060A25C /* EKMapper.m in Sources */,
@@ -1152,6 +1172,7 @@
 				9A4511E8191646F7006E6022 /* EKFieldMappingSpec.m in Sources */,
 				9A4511B1191646C9006E6022 /* Alien.m in Sources */,
 				9A45118F191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D1191646C9006E6022 /* Phone.m in Sources */,
 				9A130251190BFEF30060A25C /* EKSerializer.m in Sources */,
@@ -1173,6 +1194,7 @@
 				9A13024C190BFEF30060A25C /* EKFieldMapping.m in Sources */,
 				9AA7CECC191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
+				9A2056A61956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451187191646B2006E6022 /* ManagedCar.m in Sources */,
 				9A4511BD191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
@@ -1198,6 +1220,7 @@
 				9A4511B6191646C9006E6022 /* Car.m in Sources */,
 				9A4511AE191646C9006E6022 /* Address.m in Sources */,
 				9A45127A19164911006E6022 /* EKFieldMapping.m in Sources */,
+				9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */,
 				9A4511CA191646C9006E6022 /* NativeChild.m in Sources */,
 				9A45127B19164911006E6022 /* EKMapper.m in Sources */,
 				9A4511CE191646C9006E6022 /* Person.m in Sources */,
@@ -1222,6 +1245,7 @@
 				9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9A4511DE191646C9006E6022 /* UFO.m in Sources */,
 				9A4511DA191646C9006E6022 /* Seaplane.m in Sources */,
+				9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */,
 				9A210F321944B0E800871071 /* CommentObject.m in Sources */,
 				9A451269191647C6006E6022 /* main.m in Sources */,
 				9A45117A19164696006E6022 /* ManagedMappingProvider.m in Sources */,
@@ -1243,6 +1267,7 @@
 				9A4511D7191646C9006E6022 /* Plane.m in Sources */,
 				9A4511B3191646C9006E6022 /* Alien.m in Sources */,
 				9A451270191647ED006E6022 /* EKAppDelegate.m in Sources */,
+				9A8420DF1957068E006DDDE3 /* BaseTestModel.m in Sources */,
 				9A451189191646B2006E6022 /* ManagedCar.m in Sources */,
 				9A4511C3191646C9006E6022 /* Finger.m in Sources */,
 				9A45128219164912006E6022 /* EKMapper.m in Sources */,
@@ -1267,6 +1292,7 @@
 				9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */,
 				9A45128119164912006E6022 /* EKFieldMapping.m in Sources */,
 				9A4511DB191646C9006E6022 /* Seaplane.m in Sources */,
+				9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */,
 				9A210F331944B0E900871071 /* CommentObject.m in Sources */,
 				9A4511BF191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A4511D3191646C9006E6022 /* Phone.m in Sources */,

@@ -37,21 +37,21 @@
         [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
-        id hasOneObject = [object valueForKey:mapping.destinationProperty];
+        id hasOneObject = [object valueForKey:mapping.property];
         
         if (hasOneObject) {
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
-                                                           withMapping:mapping.objectMapping];
-            [representation setObject:hasOneRepresentation forKey:mapping.sourceKeyPath];
+                                                           withMapping:[mapping.objectClass objectMapping]];
+            [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
         }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
         
-        id hasManyObject = [object valueForKey:mapping.destinationProperty];
+        id hasManyObject = [object valueForKey:mapping.property];
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
-                                                           withMapping:mapping.objectMapping];
-            [representation setObject:hasManyRepresentation forKey:mapping.sourceKeyPath];
+                                                           withMapping:[mapping.objectClass objectMapping]];
+            [representation setObject:hasManyRepresentation forKey:mapping.keyPath];
         }
     }];
     

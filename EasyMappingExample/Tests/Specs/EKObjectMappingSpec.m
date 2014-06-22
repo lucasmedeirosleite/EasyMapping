@@ -13,6 +13,7 @@
 #import "ColoredUFO.h"
 #import "MappingProvider.h"
 #import "EKRelationshipMapping.h"
+#import "Phone.h"
 
 SPEC_BEGIN(EKObjectMappingSpec)
 
@@ -85,19 +86,19 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasOneMapping:forKey:)];
+            [[mapping should] respondToSelector:@selector(hasOne:forKeyPath:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasOneMapping:forKey:forField:)];
+            [[mapping should] respondToSelector:@selector(hasOne:forKeyPath:forProperty:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasManyMapping:forKey:)];
+            [[mapping should] respondToSelector:@selector(hasMany:forKeyPath:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasManyMapping:forKey:forField:)];
+            [[mapping should] respondToSelector:@selector(hasMany:forKeyPath:forProperty:)];
         });
         
         specify(^{
@@ -565,9 +566,10 @@ describe(@"EKObjectMapping", ^{
        
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-            [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"car" forField:@"personCar"];
-        
-            [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"phones" forField:@"personPhones"];
+            [Car registerMapping:[MappingProvider carMapping]];
+            [Phone registerMapping:[MappingProvider phoneMapping]];
+            [mapping hasOne:[Car class] forKeyPath:@"car" forProperty:@"personCar"];
+            [mapping hasMany:[Phone class] forKeyPath:@"phones" forProperty:@"personPhones"];
         });
     });
     

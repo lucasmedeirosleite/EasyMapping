@@ -12,11 +12,20 @@
 #import "ManagedMappingProvider.h"
 #import "EKCoreDataBenchmarkSuite.h"
 #import "EKCoreDataImportBenchmarkSuite.h"
+#import "Car.h"
+#import "Phone.h"
+#import "Finger.h"
+#import "Person.h"
+#import "ManagedCar.h"
+#import "ManagedPhone.h"
+#import "ManagedPerson.h"
+#import "ManagedMappingProvider.h"
 
 @implementation EKBenchmark
 
 +(void)startBenchmarking
 {
+    [self registerMappings];
     [self benchmarkNSObjects];
     [self benchmarkCoreData];
 }
@@ -98,6 +107,21 @@
     #elif TARGET_OS_MAC
     [self benchmarkSuits:suits runTimes:20000];
     #endif
+}
+
+/**
+ This is only needed because we swap in and out different mappings for test models
+ */
++(void)registerMappings
+{
+    [Car registerMapping:[MappingProvider carMapping]];
+    [Phone registerMapping:[MappingProvider phoneMapping]];
+    [Finger registerMapping:[MappingProvider fingerMapping]];
+    [Person registerMapping:[MappingProvider personMapping]];
+    
+    [ManagedCar registerMapping:[ManagedMappingProvider carMapping]];
+    [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
+    [ManagedPerson registerMapping:[ManagedMappingProvider personMapping]];
 }
 
 @end

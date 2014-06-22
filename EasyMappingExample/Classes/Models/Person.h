@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
 @class Car;
 
@@ -15,7 +16,7 @@ typedef enum {
     GenderFemale
 } Gender;
 
-@interface Person : NSObject
+@interface Person : BaseTestModel
 
 @property (nonatomic, copy)   NSString *name;
 @property (nonatomic, copy)   NSString *email;

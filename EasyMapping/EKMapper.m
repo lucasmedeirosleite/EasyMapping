@@ -48,23 +48,23 @@
         
 		 NSDictionary* value = [representation valueForKeyPath:key];
 		 if (value && value != (id)[NSNull null]) {
-			 id result = [self objectFromExternalRepresentation:value withMapping:valueMapping.objectMapping];
-			 [object setValue:result forKeyPath:valueMapping.destinationProperty];
+			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping.objectClass objectMapping]];
+			 [object setValue:result forKeyPath:valueMapping.property];
 		 } else {
-			 [object setValue:nil forKey:valueMapping.destinationProperty];
+			 [object setValue:nil forKey:valueMapping.property];
 		 }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
 		 NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withMapping:valueMapping.objectMapping];
+                                                                       withMapping:[valueMapping.objectClass objectMapping]];
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
-                                                        withPropertyName:[valueMapping destinationProperty]];
-			 [object setValue:parsedObjects forKeyPath:valueMapping.destinationProperty];
+                                                        withPropertyName:[valueMapping property]];
+			 [object setValue:parsedObjects forKeyPath:valueMapping.property];
 		 } else {
-			 [object setValue:nil forKey:valueMapping.destinationProperty];
+			 [object setValue:nil forKey:valueMapping.property];
 		 }
     }];
     return object;

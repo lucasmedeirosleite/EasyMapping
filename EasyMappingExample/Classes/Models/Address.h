@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "BaseTestModel.h"
 
-@interface Address : NSObject
+@interface Address : BaseTestModel
 
 @property (nonatomic, copy) NSString *street;
 @property (nonatomic, copy) CLLocation *location;
