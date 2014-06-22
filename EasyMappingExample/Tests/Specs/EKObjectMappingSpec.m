@@ -58,31 +58,31 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withDateFormat:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withDateFormat:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromArray:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromArray:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromArrayToPascalCase:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromArrayToPascalCase:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromDictionary:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromDictionary:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withValueBlock:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withValueBlock:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withValueBlock:withReverseBlock:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withValueBlock:reverseBlock:)];
         });
         
         specify(^{
@@ -102,7 +102,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromMappingObject:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromMappingObject:)];
         });
         
     });
@@ -228,11 +228,11 @@ describe(@"EKObjectMapping", ^{
     describe(@"#mapKey:toField:", ^{
        
         __block EKObjectMapping *mapping;
-        __block EKFieldMapping *fieldMapping;
+        __block EKPropertyMapping *fieldMapping;
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
-            [mapping mapKey:@"created_at" toField:@"createdAt"];
+            [mapping mapKeyPath:@"created_at" toProperty:@"createdAt"];
             fieldMapping = [mapping.propertyMappings objectForKey:@"created_at"];
         });
         
@@ -241,7 +241,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[fieldMapping.field should] equal:@"createdAt"];
+            [[fieldMapping.property should] equal:@"createdAt"];
         });
         
     });
@@ -252,12 +252,12 @@ describe(@"EKObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
-            [mapping mapFieldsFromArray:@[@"name", @"email"]];
+            [mapping mapPropertiesFromArray:@[@"name", @"email"]];
         });
         
         describe(@"name field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"name"];
@@ -272,14 +272,14 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"name"];
+                [[fieldMapping.property should] equal:@"name"];
             });
             
         });
         
         describe(@"email field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"email"];
@@ -294,7 +294,7 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"email"];
+                [[fieldMapping.property should] equal:@"email"];
             });
             
         });
@@ -307,12 +307,12 @@ describe(@"EKObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
-            [mapping mapFieldsFromArrayToPascalCase:@[@"name", @"email"]];
+            [mapping mapPropertiesFromArrayToPascalCase:@[@"name", @"email"]];
         });
         
         describe(@"name field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"Name"];
@@ -327,13 +327,13 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"name"];
+                [[fieldMapping.property should] equal:@"name"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"Email"];
@@ -348,7 +348,7 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"email"];
+                [[fieldMapping.property should] equal:@"email"];
             });
             
         });
@@ -362,7 +362,7 @@ describe(@"EKObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
-            [mapping mapFieldsFromDictionary:@{
+            [mapping mapPropertiesFromDictionary:@{
                 @"id" : @"identifier",
                 @"contact.email" : @"email"
             }];
@@ -370,7 +370,7 @@ describe(@"EKObjectMapping", ^{
         
         describe(@"identifier field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"id"];
@@ -381,13 +381,13 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"identifier"];
+                [[fieldMapping.property should] equal:@"identifier"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
@@ -398,7 +398,7 @@ describe(@"EKObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"email"];
+                [[fieldMapping.property should] equal:@"email"];
             });
             
         });
@@ -411,7 +411,7 @@ describe(@"EKObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[ColoredUFO class]];
-            [mapping mapFieldsFromMappingObject:[UFO objectMapping]];
+            [mapping mapPropertiesFromMappingObject:[UFO objectMapping]];
         });
         
         
@@ -424,7 +424,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[[[mapping.propertyMappings objectForKey:@"shape"] field] should] equal:@"shape"];
+            [[[[mapping.propertyMappings objectForKey:@"shape"] property] should] equal:@"shape"];
         });
         
         
@@ -453,7 +453,7 @@ describe(@"EKObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
-            [mapping mapKey:@"birthdate" toField:@"birthdate" withDateFormat:@"yyyy-MM-dd"];
+            [mapping mapKeyPath:@"birthdate" toProperty:@"birthdate" withDateFormat:@"yyyy-MM-dd"];
             
         });
         
@@ -462,14 +462,14 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[[mapping.propertyMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
+            [[[mapping.propertyMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKPropertyMapping class]];
         });
     });
     
     describe(@"#mapKey:toField:withValueBlock:", ^{
         
         __block EKObjectMapping *mapping;
-        __block EKFieldMapping *fieldMapping;
+        __block EKPropertyMapping *fieldMapping;
         
         beforeEach(^{
             
@@ -479,7 +479,7 @@ describe(@"EKObjectMapping", ^{
                                      };
             
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-            [mapping mapKey:@"gender" toField:@"gender" withValueBlock:^id(NSString *key, id value) {
+            [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^id(NSString *key, id value) {
                 return genders[key];
             }];
             
@@ -501,7 +501,7 @@ describe(@"EKObjectMapping", ^{
     describe(@"#mapKey:toField:withValueBlock:withReverseBlock:", ^{
        
         __block EKObjectMapping *mapping;
-        __block EKFieldMapping *fieldMapping;
+        __block EKPropertyMapping *fieldMapping;
         
         beforeEach(^{
             
@@ -511,9 +511,9 @@ describe(@"EKObjectMapping", ^{
                                       };
             
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-            [mapping mapKey:@"gender" toField:@"gender" withValueBlock:^id(NSString *key, id value) {
+            [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^id(NSString *key, id value) {
                 return genders[key];
-            } withReverseBlock:^id(id value) {
+            } reverseBlock:^id(id value) {
                 return [genders allKeysForObject:value].lastObject;
             }];
             

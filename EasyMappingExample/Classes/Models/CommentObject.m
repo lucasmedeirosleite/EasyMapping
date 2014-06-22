@@ -14,8 +14,8 @@
 {
     return [EKObjectMapping mappingForClass:[CommentObject class]
                                   withBlock:^(EKObjectMapping *mapping) {
-                                      [mapping mapKey:@"name" toField:@"name"];
-                                      [mapping mapKey:@"message" toField:@"message"];
+                                      [mapping mapKeyPath:@"name" toProperty:@"name"];
+                                      [mapping mapKeyPath:@"message" toProperty:@"message"];
                                       [mapping hasMany:self
                                             forKeyPath:@"sub_comments"
                                            forProperty:@"subComments"];

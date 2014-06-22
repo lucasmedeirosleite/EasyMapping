@@ -90,15 +90,15 @@ static const char scalarTypes[] = {
 
 #pragma mark Property accessor methods 
 
-+ (void)setField:(EKFieldMapping *)fieldMapping onObject:(id)object fromRepresentation:(NSDictionary *)representation
++ (void)setField:(EKPropertyMapping *)fieldMapping onObject:(id)object fromRepresentation:(NSDictionary *)representation
 {
     id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
     if (value == (id)[NSNull null]) {
-        if (![self propertyNameIsScalar:fieldMapping.field fromObject:object]) {
-            [self setValue:nil onObject:object forKeyPath:fieldMapping.field];
+        if (![self propertyNameIsScalar:fieldMapping.property fromObject:object]) {
+            [self setValue:nil onObject:object forKeyPath:fieldMapping.property];
         }
     } else if (value) {
-        [self setValue:value onObject:object forKeyPath:fieldMapping.field];
+        [self setValue:value onObject:object forKeyPath:fieldMapping.property];
     }
 }
 
@@ -118,7 +118,7 @@ static const char scalarTypes[] = {
     }
 }
 
-+ (id)getValueOfField:(EKFieldMapping *)fieldMapping fromRepresentation:(NSDictionary *)representation
++ (id)getValueOfField:(EKPropertyMapping *)fieldMapping fromRepresentation:(NSDictionary *)representation
 {
     id value;
     if (fieldMapping.valueBlock) {

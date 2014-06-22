@@ -11,14 +11,14 @@
 		550CE75226AD40059EA2F789 /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */; };
 		82DA805DFB1B4D3494041157 /* libPods-iOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */; };
 		9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
-		9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A130245190BFEF30060A25C /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A130246190BFEF30060A25C /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A130247190BFEF30060A25C /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A130248190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
 		9A130249190BFEF30060A25C /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A13024B190BFEF30060A25C /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
-		9A13024C190BFEF30060A25C /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A13024C190BFEF30060A25C /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A13024D190BFEF30060A25C /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A13024F190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
@@ -172,14 +172,14 @@
 		9A451270191647ED006E6022 /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45126E191647ED006E6022 /* EKAppDelegate.m */; };
 		9A451271191647ED006E6022 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A45126F191647ED006E6022 /* Images.xcassets */; };
 		9A45127719164805006E6022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A45127419164805006E6022 /* InfoPlist.strings */; };
-		9A45127A19164911006E6022 /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A45127A19164911006E6022 /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A45127B19164911006E6022 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A45127C19164911006E6022 /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A45127D19164911006E6022 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
 		9A45127E19164911006E6022 /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		9A45127F19164911006E6022 /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A45128019164911006E6022 /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
-		9A45128119164912006E6022 /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A45128119164912006E6022 /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A45128219164912006E6022 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A45128319164912006E6022 /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A45128419164912006E6022 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
@@ -374,8 +374,8 @@
 		9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
 		9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMappingExample.xcdatamodel; sourceTree = "<group>"; };
 		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
-		A9D16CF716F2B2770003759B /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFieldMapping.h; sourceTree = "<group>"; };
-		A9D16CF816F2B2770003759B /* EKFieldMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFieldMapping.m; sourceTree = "<group>"; };
+		A9D16CF716F2B2770003759B /* EKPropertyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPropertyMapping.h; sourceTree = "<group>"; };
+		A9D16CF816F2B2770003759B /* EKPropertyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyMapping.m; sourceTree = "<group>"; };
 		A9D16CF916F2B2770003759B /* EKMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapper.h; sourceTree = "<group>"; };
 		A9D16CFA16F2B2770003759B /* EKMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMapper.m; sourceTree = "<group>"; };
 		A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMappingBlocks.h; sourceTree = "<group>"; };
@@ -737,8 +737,10 @@
 			isa = PBXGroup;
 			children = (
 				A9D16CF616F2B2770003759B /* EasyMapping.h */,
-				A9D16CF716F2B2770003759B /* EKFieldMapping.h */,
-				A9D16CF816F2B2770003759B /* EKFieldMapping.m */,
+				A9D16CF716F2B2770003759B /* EKPropertyMapping.h */,
+				A9D16CF816F2B2770003759B /* EKPropertyMapping.m */,
+				9A170330194C820200682F00 /* EKRelationshipMapping.h */,
+				9A170331194C820200682F00 /* EKRelationshipMapping.m */,
 				A9D16CF916F2B2770003759B /* EKMapper.h */,
 				A9D16CFA16F2B2770003759B /* EKMapper.m */,
 				9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */,
@@ -749,8 +751,6 @@
 				9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */,
 				A9D16CFC16F2B2770003759B /* EKObjectMapping.h */,
 				A9D16CFD16F2B2770003759B /* EKObjectMapping.m */,
-				9A170330194C820200682F00 /* EKRelationshipMapping.h */,
-				9A170331194C820200682F00 /* EKRelationshipMapping.m */,
 				9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */,
 				9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */,
 				A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */,
@@ -1141,7 +1141,7 @@
 				9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */,
 				9A210F341944B10A00871071 /* CommentObject.m in Sources */,
 				9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */,
-				9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */,
+				9A130245190BFEF30060A25C /* EKPropertyMapping.m in Sources */,
 				9A170332194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9AA7CECB191E62A100608262 /* EKCoreDataImporter.m in Sources */,
@@ -1191,7 +1191,7 @@
 				9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */,
 				9A170333194C820200682F00 /* EKRelationshipMapping.m in Sources */,
-				9A13024C190BFEF30060A25C /* EKFieldMapping.m in Sources */,
+				9A13024C190BFEF30060A25C /* EKPropertyMapping.m in Sources */,
 				9AA7CECC191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A2056A61956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
@@ -1219,7 +1219,7 @@
 				9A4511BA191646C9006E6022 /* Cat.m in Sources */,
 				9A4511B6191646C9006E6022 /* Car.m in Sources */,
 				9A4511AE191646C9006E6022 /* Address.m in Sources */,
-				9A45127A19164911006E6022 /* EKFieldMapping.m in Sources */,
+				9A45127A19164911006E6022 /* EKPropertyMapping.m in Sources */,
 				9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */,
 				9A4511CA191646C9006E6022 /* NativeChild.m in Sources */,
 				9A45127B19164911006E6022 /* EKMapper.m in Sources */,
@@ -1290,7 +1290,7 @@
 				9AA7CECE191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9A45128719164912006E6022 /* EKTransformer.m in Sources */,
 				9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */,
-				9A45128119164912006E6022 /* EKFieldMapping.m in Sources */,
+				9A45128119164912006E6022 /* EKPropertyMapping.m in Sources */,
 				9A4511DB191646C9006E6022 /* Seaplane.m in Sources */,
 				9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */,
 				9A210F331944B0E900871071 /* CommentObject.m in Sources */,

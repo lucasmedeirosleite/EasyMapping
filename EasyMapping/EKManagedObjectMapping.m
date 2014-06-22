@@ -73,13 +73,13 @@
     return self;
 }
 
-- (EKFieldMapping *)primaryKeyFieldMapping
+- (EKPropertyMapping *)primaryKeyFieldMapping
 {
-    __block EKFieldMapping * primaryKeyMapping = nil;
+    __block EKPropertyMapping * primaryKeyMapping = nil;
     [self.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
     {
-        EKFieldMapping * fieldMapping = obj;
-        if ([fieldMapping.field isEqualToString:self.primaryKey])
+        EKPropertyMapping * fieldMapping = obj;
+        if ([fieldMapping.property isEqualToString:self.primaryKey])
         {
             primaryKeyMapping = fieldMapping;
             *stop = YES;

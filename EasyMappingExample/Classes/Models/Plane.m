@@ -14,7 +14,7 @@
 +(EKObjectMapping *)objectMapping
 {
     return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapKey:@"flight_number" toField:@"flightNumber"];
+        [mapping mapKeyPath:@"flight_number" toProperty:@"flightNumber"];
         [mapping hasMany:[Person class] forKeyPath:@"persons"];
     }];
 }

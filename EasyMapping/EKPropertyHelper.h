@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 #import "EKObjectMapping.h"
 
 /**
@@ -34,11 +34,11 @@
 
 + (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
-+ (void)  setField:(EKFieldMapping *)fieldMapping
++ (void)  setField:(EKPropertyMapping *)fieldMapping
           onObject:(id)object
 fromRepresentation:(NSDictionary *)representation;
 
-+ (id)getValueOfField:(EKFieldMapping *)fieldMapping
++ (id)getValueOfField:(EKPropertyMapping *)fieldMapping
    fromRepresentation:(NSDictionary *)representation;
 
 + (void)setValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;

@@ -21,8 +21,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "EKFieldMapping.h"
+#import "EKMappingBlocks.h"
 
-@implementation EKFieldMapping
+/**
+ `EKFieldMapping` is a class, that represents relation between representation of a single field in JSON and objective-c model property.
+ */
+
+@interface EKPropertyMapping : NSObject
+
+/**
+ Path to field in JSON, that will be later used with `valueForKeyPath:` method.
+ */
+@property (nonatomic, strong) NSString *keyPath;
+
+/**
+ Name of the property, which will be receiving value.
+ */
+@property (nonatomic, strong) NSString *property;
+
+/**
+ Optional block to transform JSON value into objective-C object.
+ */
+@property (nonatomic, strong) EKMappingValueBlock valueBlock;
+
+/**
+ Optional block to serialize objective-c object into JSON representation.
+ */
+@property (nonatomic, strong) EKMappingReverseBlock reverseBlock;
 
 @end

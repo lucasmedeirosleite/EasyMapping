@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKObjectMapping.h"
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 #import "EKTransformer.h"
 #import "EKRelationshipMapping.h"
 #import "EKMappingProtocol.h"
@@ -70,50 +70,50 @@
     return self;
 }
 
-- (void)mapKey:(NSString *)key toField:(NSString *)field
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
 {
-    EKFieldMapping *fieldMapping = [[EKFieldMapping alloc] init];
-    fieldMapping.field = field;
-    fieldMapping.keyPath = key;
+    EKPropertyMapping *fieldMapping = [[EKPropertyMapping alloc] init];
+    fieldMapping.property = property;
+    fieldMapping.keyPath = keyPath;
     [self addFieldMappingToDictionary:fieldMapping];
 }
 
-- (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
 {
-    [self mapKey:key
-         toField:field
+    [self mapKeyPath:keyPath
+         toProperty:property
   withValueBlock:^id(NSString * key, id value) {
-        return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;;
-    } withReverseBlock:^id(id value) {
+        return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;
+    } reverseBlock:^id(id value) {
         return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
     }];
 }
 
-- (void)mapFieldsFromArray:(NSArray *)fieldsArray
+- (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray
 {
-    for (NSString *key in fieldsArray) {
-        [self mapKey:key toField:key];
+    for (NSString *key in propertyNamesArray) {
+        [self mapKeyPath:key toProperty:key];
     }
 }
 
--(void)mapFieldsFromArrayToPascalCase:(NSArray *)fieldsArray {
+-(void)mapPropertiesFromArrayToPascalCase:(NSArray *)propertyNamesArray {
     
-    for (NSString *key in fieldsArray) {
+    for (NSString *key in propertyNamesArray) {
         NSString *pascalKey = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] uppercaseString]];
         
-        [self mapKey:pascalKey toField:key];
+        [self mapKeyPath:pascalKey toProperty:key];
     }
 }
 
-- (void)mapFieldsFromDictionary:(NSDictionary *)fieldsDictionary
+- (void)mapPropertiesFromDictionary:(NSDictionary *)propertyDictionary
 {
-    [fieldsDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [self mapKey:key toField:obj];
+    [propertyDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [self mapKeyPath:key toProperty:obj];
     }];
 }
 
 
--(void)mapFieldsFromMappingObject:(EKObjectMapping *)mappingObj {
+-(void)mapPropertiesFromMappingObject:(EKObjectMapping *)mappingObj {
     
     for (NSString *key in mappingObj.propertyMappings) {
         [self addFieldMappingToDictionary:mappingObj.propertyMappings[key]];
@@ -130,26 +130,26 @@
     }
 }
 
-- (void)mapKey:(NSString *)key toField:(NSString *)field
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
 withValueBlock:(id (^)(NSString *, id))valueBlock
 {
     NSParameterAssert(valueBlock);
-    EKFieldMapping *mapping = [[EKFieldMapping alloc] init];
-    mapping.field = field;
-    mapping.keyPath = key;
+    EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
+    mapping.property = property;
+    mapping.keyPath = keyPath;
     mapping.valueBlock = valueBlock;
     [self addFieldMappingToDictionary:mapping];
 }
 
-- (void)mapKey:(NSString *)key toField:(NSString *)field
-withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))reverseBlock
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
+withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))reverseBlock
 {
     NSParameterAssert(valueBlock);
     NSParameterAssert(reverseBlock);
     
-    EKFieldMapping *mapping = [[EKFieldMapping alloc] init];
-    mapping.field = field;
-    mapping.keyPath = key;
+    EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
+    mapping.property = property;
+    mapping.keyPath = keyPath;
     mapping.valueBlock = valueBlock;
     mapping.reverseBlock = reverseBlock;
     [self addFieldMappingToDictionary:mapping];
@@ -185,7 +185,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
     [self.hasManyMappings setObject:relationship forKey:keyPath];
 }
 
-- (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping
+- (void)addFieldMappingToDictionary:(EKPropertyMapping *)fieldMapping
 {
     [self.propertyMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
 }

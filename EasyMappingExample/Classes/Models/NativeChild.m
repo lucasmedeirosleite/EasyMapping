@@ -13,7 +13,7 @@
 +(EKObjectMapping *)objectMapping
 {
     return [EKObjectMapping mappingForClass:[NativeChild class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
+        [mapping mapPropertiesFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
     }];
 }
 

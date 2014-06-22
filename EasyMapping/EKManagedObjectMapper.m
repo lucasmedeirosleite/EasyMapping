@@ -109,12 +109,12 @@
                                              fetchRequest:(NSFetchRequest *)fetchRequest
 {
     NSAssert(mapping.primaryKey, @"A mapping with a primary key is required");
-    EKFieldMapping * primaryKeyFieldMapping = [mapping primaryKeyFieldMapping];
+    EKPropertyMapping * primaryKeyFieldMapping = [mapping primaryKeyFieldMapping];
 
     // Create a dictionary that maps primary keys to existing objects
     NSArray * existing = [self.importer.context executeFetchRequest:fetchRequest error:NULL];
     NSDictionary * existingByPK = [NSDictionary dictionaryWithObjects:existing
-                                                              forKeys:[existing valueForKey:primaryKeyFieldMapping.field]];
+                                                              forKeys:[existing valueForKey:primaryKeyFieldMapping.property]];
 
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)

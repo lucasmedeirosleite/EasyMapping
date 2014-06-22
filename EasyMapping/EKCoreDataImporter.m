@@ -157,7 +157,7 @@
 
 - (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKManagedObjectMapping *)mapping
 {
-    EKFieldMapping * primaryKeyMapping = [mapping primaryKeyFieldMapping];
+    EKPropertyMapping * primaryKeyMapping = [mapping primaryKeyFieldMapping];
     id primaryValue = [EKPropertyHelper getValueOfField:primaryKeyMapping
                                      fromRepresentation:representation];
     return primaryValue;

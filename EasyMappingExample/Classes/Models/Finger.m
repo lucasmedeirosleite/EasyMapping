@@ -13,7 +13,7 @@
 +(EKObjectMapping *)objectMapping
 {
     return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name"]];
+        [mapping mapPropertiesFromArray:@[@"name"]];
     }];
 }
 

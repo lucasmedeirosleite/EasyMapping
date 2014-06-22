@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKSerializer.h"
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 #import "EKPropertyHelper.h"
 #import "EKTransformer.h"
 #import "EKRelationshipMapping.h"
@@ -33,7 +33,7 @@
 {
     NSMutableDictionary *representation = [NSMutableDictionary dictionary];
 
-    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKFieldMapping *fieldMapping, BOOL *stop) {
+    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKPropertyMapping *fieldMapping, BOOL *stop) {
         [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
@@ -73,9 +73,9 @@
     return [NSArray arrayWithArray:array];
 }
 
-+ (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withFieldMapping:(EKFieldMapping *)fieldMapping
++ (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withFieldMapping:(EKPropertyMapping *)fieldMapping
 {
-    id returnedValue = [object valueForKey:fieldMapping.field];
+    id returnedValue = [object valueForKey:fieldMapping.property];
     
     if (returnedValue) {
         

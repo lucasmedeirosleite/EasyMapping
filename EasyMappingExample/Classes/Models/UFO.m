@@ -13,7 +13,7 @@
 +(EKObjectMapping *)objectMapping
 {
     return [EKObjectMapping mappingForClass:[UFO class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"shape"]];
+        [mapping mapPropertiesFromArray:@[@"shape"]];
         [mapping hasOne:[Alien class] forKeyPath:@"captain"];
         [mapping hasMany:[Alien class] forKeyPath:@"crew"];
         

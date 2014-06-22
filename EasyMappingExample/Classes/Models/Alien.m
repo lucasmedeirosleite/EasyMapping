@@ -14,7 +14,7 @@
 +(EKObjectMapping *)objectMapping
 {
     return [EKObjectMapping mappingForClass:[Alien class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name"]];
+        [mapping mapPropertiesFromArray:@[@"name"]];
         [mapping hasMany:[Finger class] forKeyPath:@"fingers"];
     }];
 }

@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKObjectMapping.h"
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 
 #define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
 
@@ -94,7 +94,7 @@
  
  @result field mapping
  */
-- (EKFieldMapping *)primaryKeyFieldMapping;
+- (EKPropertyMapping *)primaryKeyFieldMapping;
 
 #pragma mark - unavalable methods
 

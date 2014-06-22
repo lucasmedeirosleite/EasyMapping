@@ -23,7 +23,7 @@
 
 #import "EKMapper.h"
 #import "EKPropertyHelper.h"
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 #import "EKTransformer.h"
 #import "EKRelationshipMapping.h"
 

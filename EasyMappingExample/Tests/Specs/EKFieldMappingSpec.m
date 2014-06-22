@@ -6,16 +6,16 @@
 //  Copyright 2013 EasyKit. All rights reserved.
 //
 
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 
 SPEC_BEGIN(EKFieldMappingSpec)
 
 describe(@"EKFieldMapping", ^{
    
-    __block EKFieldMapping *fieldMapping;
+    __block EKPropertyMapping *fieldMapping;
     
     beforeEach(^{
-        fieldMapping = [[EKFieldMapping alloc] init];
+        fieldMapping = [[EKPropertyMapping alloc] init];
     });
     
     specify(^{
@@ -23,7 +23,7 @@ describe(@"EKFieldMapping", ^{
     });
     
     specify(^{
-        [[fieldMapping should] respondToSelector:@selector(field)];
+        [[fieldMapping should] respondToSelector:@selector(property)];
     });
     
     specify(^{

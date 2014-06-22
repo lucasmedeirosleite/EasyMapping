@@ -57,27 +57,27 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withDateFormat:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withDateFormat:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromArray:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromArray:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromDictionary:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromDictionary:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withValueBlock:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withValueBlock:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withValueBlock:withReverseBlock:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withValueBlock:reverseBlock:)];
         });
         
         specify(^{
@@ -207,11 +207,11 @@ describe(@"EKManagedObjectMapping", ^{
     describe(@"#mapKey:toField:", ^{
         
         __block EKManagedObjectMapping *mapping;
-        __block EKFieldMapping *fieldMapping;
+        __block EKPropertyMapping *fieldMapping;
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapKey:@"created_at" toField:@"createdAt"];
+            [mapping mapKeyPath:@"created_at" toProperty:@"createdAt"];
             fieldMapping = [mapping.propertyMappings objectForKey:@"created_at"];
         });
         
@@ -220,7 +220,7 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[fieldMapping.field should] equal:@"createdAt"];
+            [[fieldMapping.property should] equal:@"createdAt"];
         });
         
     });
@@ -231,12 +231,12 @@ describe(@"EKManagedObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapFieldsFromArray:@[@"name", @"email"]];
+            [mapping mapPropertiesFromArray:@[@"name", @"email"]];
         });
         
         describe(@"name field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"name"];
@@ -247,13 +247,13 @@ describe(@"EKManagedObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"name"];
+                [[fieldMapping.property should] equal:@"name"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"email"];
@@ -264,7 +264,7 @@ describe(@"EKManagedObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"email"];
+                [[fieldMapping.property should] equal:@"email"];
             });
             
         });
@@ -277,7 +277,7 @@ describe(@"EKManagedObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapFieldsFromDictionary:@{
+            [mapping mapPropertiesFromDictionary:@{
              @"id" : @"identifier",
              @"contact.email" : @"email"
              }];
@@ -285,7 +285,7 @@ describe(@"EKManagedObjectMapping", ^{
         
         describe(@"identifier field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"id"];
@@ -296,13 +296,13 @@ describe(@"EKManagedObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"identifier"];
+                [[fieldMapping.property should] equal:@"identifier"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *fieldMapping;
             
             beforeEach(^{
                 fieldMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
@@ -313,7 +313,7 @@ describe(@"EKManagedObjectMapping", ^{
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"email"];
+                [[fieldMapping.property should] equal:@"email"];
             });
             
         });
@@ -326,7 +326,7 @@ describe(@"EKManagedObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapKey:@"birthdate" toField:@"birthdate" withDateFormat:@"yyyy-MM-dd"];
+            [mapping mapKeyPath:@"birthdate" toProperty:@"birthdate" withDateFormat:@"yyyy-MM-dd"];
             
         });
         
@@ -335,7 +335,7 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[[mapping.propertyMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
+            [[[mapping.propertyMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKPropertyMapping class]];
         });
         
     });
