@@ -635,6 +635,74 @@
 			name = Specs;
 			sourceTree = "<group>";
 		};
+		9A8420EC19571AC6006DDDE3 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				9A8420E01957164E006DDDE3 /* EKModel.h */,
+				9A8420E11957164E006DDDE3 /* EKModel.m */,
+				9A8420E6195718A2006DDDE3 /* EKCoreDataModel.h */,
+				9A8420E7195718A2006DDDE3 /* EKCoreDataModel.m */,
+			);
+			name = Convenience;
+			sourceTree = "<group>";
+		};
+		9A8420ED19571AD4006DDDE3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */,
+				A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */,
+				A9D16D0216F2B2770003759B /* EKTransformer.h */,
+				A9D16D0316F2B2770003759B /* EKTransformer.m */,
+				9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */,
+				9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		9A8420EE19571B08006DDDE3 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16CF716F2B2770003759B /* EKPropertyMapping.h */,
+				A9D16CF816F2B2770003759B /* EKPropertyMapping.m */,
+				9A170330194C820200682F00 /* EKRelationshipMapping.h */,
+				9A170331194C820200682F00 /* EKRelationshipMapping.m */,
+			);
+			name = Wrappers;
+			sourceTree = "<group>";
+		};
+		9A8420EF19571B10006DDDE3 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16CF916F2B2770003759B /* EKMapper.h */,
+				A9D16CFA16F2B2770003759B /* EKMapper.m */,
+				A9D16CFC16F2B2770003759B /* EKObjectMapping.h */,
+				A9D16CFD16F2B2770003759B /* EKObjectMapping.m */,
+			);
+			name = NSObject;
+			sourceTree = "<group>";
+		};
+		9A8420F019571B17006DDDE3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */,
+				9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */,
+				9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */,
+				9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */,
+				9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */,
+				9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		9A8420F119571B58006DDDE3 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16D0016F2B2770003759B /* EKSerializer.h */,
+				A9D16D0116F2B2770003759B /* EKSerializer.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
 		9AE54FCE190BD7B5003A3B56 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,35 +816,15 @@
 		C6557E5016D6652A005D2D3E /* EasyMapping */ = {
 			isa = PBXGroup;
 			children = (
+				9A8420F119571B58006DDDE3 /* Serialization */,
+				9A8420F019571B17006DDDE3 /* CoreData */,
+				9A8420EF19571B10006DDDE3 /* NSObject */,
+				9A8420EE19571B08006DDDE3 /* Wrappers */,
+				9A8420ED19571AD4006DDDE3 /* Helpers */,
+				9A8420EC19571AC6006DDDE3 /* Convenience */,
 				A9D16CF616F2B2770003759B /* EasyMapping.h */,
-				A9D16CF716F2B2770003759B /* EKPropertyMapping.h */,
-				A9D16CF816F2B2770003759B /* EKPropertyMapping.m */,
-				9A170330194C820200682F00 /* EKRelationshipMapping.h */,
-				9A170331194C820200682F00 /* EKRelationshipMapping.m */,
-				9A8420E01957164E006DDDE3 /* EKModel.h */,
-				9A8420E11957164E006DDDE3 /* EKModel.m */,
-				9A8420E6195718A2006DDDE3 /* EKCoreDataModel.h */,
-				9A8420E7195718A2006DDDE3 /* EKCoreDataModel.m */,
-				A9D16CF916F2B2770003759B /* EKMapper.h */,
-				A9D16CFA16F2B2770003759B /* EKMapper.m */,
-				9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */,
-				9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */,
-				9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */,
-				9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */,
 				A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */,
 				9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */,
-				A9D16CFC16F2B2770003759B /* EKObjectMapping.h */,
-				A9D16CFD16F2B2770003759B /* EKObjectMapping.m */,
-				9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */,
-				9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */,
-				A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */,
-				A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */,
-				A9D16D0016F2B2770003759B /* EKSerializer.h */,
-				A9D16D0116F2B2770003759B /* EKSerializer.m */,
-				A9D16D0216F2B2770003759B /* EKTransformer.h */,
-				A9D16D0316F2B2770003759B /* EKTransformer.m */,
-				9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */,
-				9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */,
 			);
 			name = EasyMapping;
 			path = ../EasyMapping;
