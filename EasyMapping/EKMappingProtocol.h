@@ -15,7 +15,7 @@
  
  EasyMapping provides convenience EKObjectModel class, that already implements this protocol.
  */
-@protocol EKMappingProtocol <NSObject>
+@protocol EKMappingProtocol
 
 /**
  EKObjectMapping instance, that will be used in mapping process.
@@ -31,7 +31,7 @@
  
  EasyMapping provides convenience EKManagedObjectModel class, that already implements this protocol.
  */
-@protocol EKManagedMappingProtocol <NSObject>
+@protocol EKManagedMappingProtocol
 
 /**
  EKManagedObjectMapping instance, that will be used in mapping process.
