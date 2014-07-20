@@ -1,17 +1,17 @@
 //
-//  EKCoreDataModel.m
+//  EKManagedObjectModel.m
 //  EasyMappingExample
 //
 //  Created by Denys Telezhkin on 22.06.14.
 //  Copyright (c) 2014 EasyKit. All rights reserved.
 //
 
-#import "EKCoreDataModel.h"
+#import "EKManagedObjectModel.h"
 #import "EKManagedObjectMapper.h"
 #import "EKManagedObjectMapping.h"
 #import "EKSerializer.h"
 
-@implementation EKCoreDataModel
+@implementation EKManagedObjectModel
 
 #pragma mark - constructors
 

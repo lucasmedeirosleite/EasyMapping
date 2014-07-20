@@ -7,11 +7,11 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "EKCoreDataModel.h"
+#import "EKManagedObjectModel.h"
 
 @class One;
 
-@interface Three : EKCoreDataModel
+@interface Three : EKManagedObjectModel
 
 @property (nonatomic, strong) One * one;
 @property (nonatomic, strong) NSArray * twos;

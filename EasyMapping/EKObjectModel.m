@@ -1,16 +1,16 @@
 //
-//  EKModel.m
+//  EKObjectModel.m
 //  EasyMappingExample
 //
 //  Created by Denys Telezhkin on 22.06.14.
 //  Copyright (c) 2014 EasyKit. All rights reserved.
 //
 
-#import "EKModel.h"
+#import "EKObjectModel.h"
 #import "EKMapper.h"
 #import "EKSerializer.h"
 
-@implementation EKModel
+@implementation EKObjectModel
 
 #pragma mark - constructors
 

@@ -8,9 +8,9 @@
 
 #import <CoreData/CoreData.h>
 #import "Two.h"
-#import "EKCoreDataModel.h"
+#import "EKManagedObjectModel.h"
 
-@interface One : EKCoreDataModel
+@interface One : EKManagedObjectModel
 
 @property (nonatomic, strong) Two * two;
 
