@@ -40,7 +40,7 @@
 {
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [EKPropertyHelper setField:obj
+        [EKPropertyHelper setProperty:obj
                           onObject:object
                 fromRepresentation:representation];
     }];

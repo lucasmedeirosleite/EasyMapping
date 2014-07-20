@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKManagedObjectMapping.h"
+#import "EKTransformer.h"
 
 @implementation EKManagedObjectMapping
 
@@ -73,19 +74,67 @@
     return self;
 }
 
-- (EKPropertyMapping *)primaryKeyFieldMapping
+- (EKPropertyMapping *)primaryKeyPropertyMapping
 {
     __block EKPropertyMapping * primaryKeyMapping = nil;
     [self.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
     {
-        EKPropertyMapping * fieldMapping = obj;
-        if ([fieldMapping.property isEqualToString:self.primaryKey])
+        EKPropertyMapping * mapping = obj;
+        if ([mapping.property isEqualToString:self.primaryKey])
         {
-            primaryKeyMapping = fieldMapping;
+            primaryKeyMapping = mapping;
             *stop = YES;
         }
     }];
     return primaryKeyMapping;
+}
+
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
+{
+    NSParameterAssert(keyPath);
+    NSParameterAssert(property);
+    NSParameterAssert(dateFormat);
+    
+    [self mapKeyPath:keyPath
+          toProperty:property
+      withValueBlock:^id(NSString * key, id value, NSManagedObjectContext * context) {
+          return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;
+      } reverseBlock:^id(id value, NSManagedObjectContext * context) {
+          return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
+      }];
+}
+
+-(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueBlock:(EKManagedMappingValueBlock)valueBlock
+{
+    NSParameterAssert(keyPath);
+    NSParameterAssert(property);
+    NSParameterAssert(valueBlock);
+    
+    EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
+    mapping.property = property;
+    mapping.keyPath = keyPath;
+    mapping.managedValueBlock = valueBlock;
+    [self addPropertyMappingToDictionary:mapping];
+}
+
+-(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueBlock:(EKManagedMappingValueBlock)valueBlock reverseBlock:(EKManagedMappingReverseValueBlock)reverseBlock
+{
+    NSParameterAssert(keyPath);
+    NSParameterAssert(property);
+    NSParameterAssert(valueBlock);
+    NSParameterAssert(reverseBlock);
+    
+    EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
+    mapping.property = property;
+    mapping.keyPath = keyPath;
+    mapping.managedValueBlock = valueBlock;
+    mapping.managedReverseBlock = reverseBlock;
+    [self addPropertyMappingToDictionary:mapping];
+}
+
+- (void)addPropertyMappingToDictionary:(EKPropertyMapping *)mapping
+{
+    [self.propertyMappings setObject:mapping forKey:mapping.keyPath];
 }
 
 @end

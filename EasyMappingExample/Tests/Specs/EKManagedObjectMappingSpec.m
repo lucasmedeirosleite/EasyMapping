@@ -204,28 +204,28 @@ describe(@"EKManagedObjectMapping", ^{
         
     });
     
-    describe(@"#mapKey:toField:", ^{
+    describe(@"#mapKey:toProperty:", ^{
         
         __block EKManagedObjectMapping *mapping;
-        __block EKPropertyMapping *fieldMapping;
+        __block EKPropertyMapping *propertyMapping;
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
             [mapping mapKeyPath:@"created_at" toProperty:@"createdAt"];
-            fieldMapping = [mapping.propertyMappings objectForKey:@"created_at"];
+            propertyMapping = [mapping.propertyMappings objectForKey:@"created_at"];
         });
         
         specify(^{
-            [[fieldMapping.keyPath should] equal:@"created_at"];
+            [[propertyMapping.keyPath should] equal:@"created_at"];
         });
         
         specify(^{
-            [[fieldMapping.property should] equal:@"createdAt"];
+            [[propertyMapping.property should] equal:@"createdAt"];
         });
         
     });
     
-    describe(@"#mapKeyFieldsFromArray", ^{
+    describe(@"#mapPropertiesFromArray", ^{
         
         __block EKManagedObjectMapping *mapping;
         
@@ -234,44 +234,44 @@ describe(@"EKManagedObjectMapping", ^{
             [mapping mapPropertiesFromArray:@[@"name", @"email"]];
         });
         
-        describe(@"name field", ^{
+        describe(@"name property", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"name"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"name"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"name"];
+                [[propertyMapping.keyPath should] equal:@"name"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"name"];
+                [[propertyMapping.property should] equal:@"name"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"email"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"email"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"email"];
+                [[propertyMapping.keyPath should] equal:@"email"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"email"];
+                [[propertyMapping.property should] equal:@"email"];
             });
             
         });
         
     });
     
-    describe(@"#mapKeyFieldsFromDictionary", ^{
+    describe(@"#mapPropertiesFromDictionary", ^{
         
         __block EKManagedObjectMapping *mapping;
         
@@ -285,42 +285,42 @@ describe(@"EKManagedObjectMapping", ^{
         
         describe(@"identifier field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"id"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"id"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"id"];
+                [[propertyMapping.keyPath should] equal:@"id"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"identifier"];
+                [[propertyMapping.property should] equal:@"identifier"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"contact.email"];
+                [[propertyMapping.keyPath should] equal:@"contact.email"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"email"];
+                [[propertyMapping.property should] equal:@"email"];
             });
             
         });
         
     });
     
-    describe(@"#mapKey:toField:withDateFormat", ^{
+    describe(@"#mapKeyPath:toProperty:withDateFormat", ^{
         
         __block EKManagedObjectMapping *mapping;
         

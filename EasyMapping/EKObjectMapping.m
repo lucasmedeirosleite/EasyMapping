@@ -75,10 +75,10 @@
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
     
-    EKPropertyMapping *fieldMapping = [[EKPropertyMapping alloc] init];
-    fieldMapping.property = property;
-    fieldMapping.keyPath = keyPath;
-    [self addFieldMappingToDictionary:fieldMapping];
+    EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
+    mapping.property = property;
+    mapping.keyPath = keyPath;
+    [self addPropertyMappingToDictionary:mapping];
 }
 
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
@@ -129,7 +129,7 @@
     NSParameterAssert([mappingObj isKindOfClass:EKObjectMapping.class]);
     
     for (NSString *key in mappingObj.propertyMappings) {
-        [self addFieldMappingToDictionary:mappingObj.propertyMappings[key]];
+        [self addPropertyMappingToDictionary:mappingObj.propertyMappings[key]];
     }
     
     for (NSString *key in mappingObj.hasOneMappings) {
@@ -154,7 +154,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock
     mapping.property = property;
     mapping.keyPath = keyPath;
     mapping.valueBlock = valueBlock;
-    [self addFieldMappingToDictionary:mapping];
+    [self addPropertyMappingToDictionary:mapping];
 }
 
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
@@ -170,7 +170,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     mapping.keyPath = keyPath;
     mapping.valueBlock = valueBlock;
     mapping.reverseBlock = reverseBlock;
-    [self addFieldMappingToDictionary:mapping];
+    [self addPropertyMappingToDictionary:mapping];
 }
 
 -(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath
@@ -213,9 +213,9 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     [self.hasManyMappings setObject:relationship forKey:keyPath];
 }
 
-- (void)addFieldMappingToDictionary:(EKPropertyMapping *)fieldMapping
+- (void)addPropertyMappingToDictionary:(EKPropertyMapping *)propertyMapping
 {
-    [self.propertyMappings setObject:fieldMapping forKey:fieldMapping.keyPath];
+    [self.propertyMappings setObject:propertyMapping forKey:propertyMapping.keyPath];
 }
 
 @end

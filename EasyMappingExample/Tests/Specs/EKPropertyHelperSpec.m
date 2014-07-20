@@ -29,8 +29,8 @@ describe(@"EKPropertyHelper", ^{
 			specify(^{
 				EKObjectMapping* mapping = [Native objectMapping];
 				[mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-					EKPropertyMapping* fieldMapping = obj;
-					[[@([EKPropertyHelper propertyNameIsScalar:fieldMapping.property fromObject:native]) should] equal:@(YES)];
+					EKPropertyMapping* propertyMapping = obj;
+					[[@([EKPropertyHelper propertyNameIsScalar:propertyMapping.property fromObject:native]) should] equal:@(YES)];
 				}];
 			});
 			specify(^{

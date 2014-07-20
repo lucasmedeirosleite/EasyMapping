@@ -64,7 +64,10 @@
                                                                                     withMapping:mapping];
     [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
     {
-        [EKPropertyHelper setField:obj onObject:object fromRepresentation:representation];
+        [EKPropertyHelper setProperty:obj
+                             onObject:object
+                   fromRepresentation:representation
+                            inContext:self.importer.context];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
@@ -109,19 +112,20 @@
                                              fetchRequest:(NSFetchRequest *)fetchRequest
 {
     NSAssert(mapping.primaryKey, @"A mapping with a primary key is required");
-    EKPropertyMapping * primaryKeyFieldMapping = [mapping primaryKeyFieldMapping];
+    EKPropertyMapping * primaryKeyPropertyMapping = [mapping primaryKeyPropertyMapping];
 
     // Create a dictionary that maps primary keys to existing objects
     NSArray * existing = [self.importer.context executeFetchRequest:fetchRequest error:NULL];
     NSDictionary * existingByPK = [NSDictionary dictionaryWithObjects:existing
-                                                              forKeys:[existing valueForKey:primaryKeyFieldMapping.property]];
+                                                              forKeys:[existing valueForKey:primaryKeyPropertyMapping.property]];
 
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)
     {
         // Look up the object by its primary key
-        id primaryKeyValue = [EKPropertyHelper getValueOfField:primaryKeyFieldMapping
-                                            fromRepresentation:representation];
+        id primaryKeyValue = [EKPropertyHelper getValueOfManagedProperty:primaryKeyPropertyMapping
+                                                      fromRepresentation:representation
+                                                               inContext:self.importer.context];
         id object = [existingByPK objectForKey:primaryKeyValue];
 
         // Create a new object if necessary

@@ -177,8 +177,8 @@
 
 - (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKManagedObjectMapping *)mapping
 {
-    EKPropertyMapping * primaryKeyMapping = [mapping primaryKeyFieldMapping];
-    id primaryValue = [EKPropertyHelper getValueOfField:primaryKeyMapping
+    EKPropertyMapping * primaryKeyMapping = [mapping primaryKeyPropertyMapping];
+    id primaryValue = [EKPropertyHelper getValueOfProperty:primaryKeyMapping
                                      fromRepresentation:representation];
     return primaryValue;
 }
@@ -221,7 +221,7 @@
 {
     NSDictionary * entityObjectsMap = [self cachedObjectsForMapping:mapping];
 
-    id primaryKeyValue = [EKPropertyHelper getValueOfField:[mapping primaryKeyFieldMapping]
+    id primaryKeyValue = [EKPropertyHelper getValueOfProperty:[mapping primaryKeyPropertyMapping]
                                         fromRepresentation:representation];
     if (primaryKeyValue == nil || primaryKeyValue == NSNull.null) return nil;
 

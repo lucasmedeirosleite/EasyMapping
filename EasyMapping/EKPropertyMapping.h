@@ -24,7 +24,7 @@
 #import "EKMappingBlocks.h"
 
 /**
- `EKFieldMapping` is a class, that represents relation between representation of a single field in JSON and objective-c model property.
+ `EKPropertyMapping` is a class, that represents relation between representation of a single field in JSON and objective-c model property.
  */
 
 @interface EKPropertyMapping : NSObject
@@ -48,5 +48,15 @@
  Optional block to serialize objective-c object into JSON representation.
  */
 @property (nonatomic, strong) EKMappingReverseBlock reverseBlock;
+
+/**
+ Optional block to transform JSON value into CoreData object.
+ */
+@property (nonatomic, strong) EKManagedMappingValueBlock managedValueBlock;
+
+/**
+ Optional block to serialize CoreData object into JSON representation.
+ */
+@property (nonatomic, strong) EKManagedMappingReverseValueBlock managedReverseBlock;
 
 @end

@@ -33,8 +33,8 @@
 {
     NSMutableDictionary *representation = [NSMutableDictionary dictionary];
 
-    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKPropertyMapping *fieldMapping, BOOL *stop) {
-        [self setValueOnRepresentation:representation fromObject:object withFieldMapping:fieldMapping];
+    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKPropertyMapping *propertyMapping, BOOL *stop) {
+        [self setValueOnRepresentation:representation fromObject:object withPropertyMapping:propertyMapping];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
         id hasOneObject = [object valueForKey:mapping.property];
@@ -73,16 +73,16 @@
     return [NSArray arrayWithArray:array];
 }
 
-+ (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withFieldMapping:(EKPropertyMapping *)fieldMapping
++ (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping
 {
-    id returnedValue = [object valueForKey:fieldMapping.property];
+    id returnedValue = [object valueForKey:propertyMapping.property];
     
     if (returnedValue) {
         
-        if (fieldMapping.reverseBlock) {
-            returnedValue = fieldMapping.reverseBlock(returnedValue);
+        if (propertyMapping.reverseBlock) {
+            returnedValue = propertyMapping.reverseBlock(returnedValue);
         }
-        [self setValue:returnedValue forKeyPath:fieldMapping.keyPath inRepresentation:representation];
+        [self setValue:returnedValue forKeyPath:propertyMapping.keyPath inRepresentation:representation];
     }
 }
 

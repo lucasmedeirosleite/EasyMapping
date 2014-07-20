@@ -24,7 +24,6 @@
 #import "EKPropertyHelper.h"
 #import <objc/runtime.h>
 #import "EKTransformer.h"
-#import <CoreData/CoreData.h>
 
 static const char scalarTypes[] = {
     _C_BOOL, _C_BFLD,          // BOOL
@@ -90,15 +89,33 @@ static const char scalarTypes[] = {
 
 #pragma mark Property accessor methods 
 
-+ (void)setField:(EKPropertyMapping *)fieldMapping onObject:(id)object fromRepresentation:(NSDictionary *)representation
++ (void)setProperty:(EKPropertyMapping *)propertyMapping onObject:(id)object
+ fromRepresentation:(NSDictionary *)representation
 {
-    id value = [self getValueOfField:fieldMapping fromRepresentation:representation];
+    id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation];
     if (value == (id)[NSNull null]) {
-        if (![self propertyNameIsScalar:fieldMapping.property fromObject:object]) {
-            [self setValue:nil onObject:object forKeyPath:fieldMapping.property];
+        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
+            [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
         }
     } else if (value) {
-        [self setValue:value onObject:object forKeyPath:fieldMapping.property];
+        [self setValue:value onObject:object forKeyPath:propertyMapping.property];
+    }
+}
+
++ (void) setProperty:(EKPropertyMapping *)propertyMapping
+            onObject:(id)object
+  fromRepresentation:(NSDictionary *)representation
+           inContext:(NSManagedObjectContext *)context
+{
+    id value = [self getValueOfManagedProperty:propertyMapping
+                            fromRepresentation:representation
+                                     inContext:context];
+    if (value == (id)[NSNull null]) {
+        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
+            [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
+        }
+    } else if (value) {
+        [self setValue:value onObject:object forKeyPath:propertyMapping.property];
     }
 }
 
@@ -118,16 +135,34 @@ static const char scalarTypes[] = {
     }
 }
 
-+ (id)getValueOfField:(EKPropertyMapping *)fieldMapping fromRepresentation:(NSDictionary *)representation
++ (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping fromRepresentation:(NSDictionary *)representation
 {
-    id value;
-    if (fieldMapping.valueBlock) {
-        id representationValue = [representation valueForKeyPath:fieldMapping.keyPath];
-        value = fieldMapping.valueBlock(fieldMapping.keyPath, representationValue == [NSNull null] ? nil : representationValue);
+    id value = nil;
+    
+    if (propertyMapping.valueBlock) {
+        value = propertyMapping.valueBlock(propertyMapping.keyPath, [representation valueForKeyPath:propertyMapping.keyPath]);
     }
     else {
-        value = [representation valueForKeyPath:fieldMapping.keyPath];
+        value = [representation valueForKeyPath:propertyMapping.keyPath];
     }
+    
+    return value;
+}
+
++(id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
+            fromRepresentation:(NSDictionary *)representation
+                     inContext:(NSManagedObjectContext *)context
+{
+    id value = nil;
+    
+    if (mapping.managedValueBlock) {
+        id representationValue = [representation valueForKeyPath:mapping.keyPath];
+        value = mapping.managedValueBlock(mapping.keyPath, representationValue == [NSNull null] ? nil : representationValue,context);
+    }
+    else {
+        value = [representation valueForKeyPath:mapping.keyPath];
+    }
+    
     return value;
 }
 

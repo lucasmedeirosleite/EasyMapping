@@ -225,28 +225,28 @@ describe(@"EKObjectMapping", ^{
         
     });
     
-    describe(@"#mapKey:toField:", ^{
+    describe(@"#mapKeyPath:toProperty:", ^{
        
         __block EKObjectMapping *mapping;
-        __block EKPropertyMapping *fieldMapping;
+        __block EKPropertyMapping *propertyMapping;
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
             [mapping mapKeyPath:@"created_at" toProperty:@"createdAt"];
-            fieldMapping = [mapping.propertyMappings objectForKey:@"created_at"];
+            propertyMapping = [mapping.propertyMappings objectForKey:@"created_at"];
         });
         
         specify(^{
-            [[fieldMapping.keyPath should] equal:@"created_at"];
+            [[propertyMapping.keyPath should] equal:@"created_at"];
         });
         
         specify(^{
-            [[fieldMapping.property should] equal:@"createdAt"];
+            [[propertyMapping.property should] equal:@"createdAt"];
         });
         
     });
     
-    describe(@"#mapKeyFieldsFromArray", ^{
+    describe(@"#mapPropertiesFromArray", ^{
         
         __block EKObjectMapping *mapping;
         
@@ -257,44 +257,44 @@ describe(@"EKObjectMapping", ^{
         
         describe(@"name field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"name"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"name"];
             });
             
             specify(^{
-                [[fieldMapping shouldNot] beNil];
+                [[propertyMapping shouldNot] beNil];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"name"];
+                [[propertyMapping.keyPath should] equal:@"name"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"name"];
+                [[propertyMapping.property should] equal:@"name"];
             });
             
         });
         
         describe(@"email field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"email"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"email"];
             });
             
             specify(^{
-                [[fieldMapping shouldNot] beNil];
+                [[propertyMapping shouldNot] beNil];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"email"];
+                [[propertyMapping.keyPath should] equal:@"email"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"email"];
+                [[propertyMapping.property should] equal:@"email"];
             });
             
         });
@@ -312,43 +312,43 @@ describe(@"EKObjectMapping", ^{
         
         describe(@"name field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"Name"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"Name"];
             });
             
             specify(^{
-                [[fieldMapping shouldNot] beNil];
+                [[propertyMapping shouldNot] beNil];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"Name"];
+                [[propertyMapping.keyPath should] equal:@"Name"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"name"];
+                [[propertyMapping.property should] equal:@"name"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"Email"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"Email"];
             });
             
             specify(^{
-                [[fieldMapping shouldNot] beNil];
+                [[propertyMapping shouldNot] beNil];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"Email"];
+                [[propertyMapping.keyPath should] equal:@"Email"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"email"];
+                [[propertyMapping.property should] equal:@"email"];
             });
             
         });
@@ -356,7 +356,7 @@ describe(@"EKObjectMapping", ^{
     });
     
     
-    describe(@"#mapKeyFieldsFromDictionary", ^{
+    describe(@"#mapPropertiesFromDictionary", ^{
         
         __block EKObjectMapping *mapping;
         
@@ -370,42 +370,42 @@ describe(@"EKObjectMapping", ^{
         
         describe(@"identifier field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"id"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"id"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"id"];
+                [[propertyMapping.keyPath should] equal:@"id"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"identifier"];
+                [[propertyMapping.property should] equal:@"identifier"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKPropertyMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"contact.email"];
+                [[propertyMapping.keyPath should] equal:@"contact.email"];
             });
             
             specify(^{
-                [[fieldMapping.property should] equal:@"email"];
+                [[propertyMapping.property should] equal:@"email"];
             });
             
         });
         
     });
 
-    describe(@"#mapFieldsFromMappingObject", ^{
+    describe(@"#mapPropertiesFromMappingObject", ^{
         
         __block EKObjectMapping *mapping;
         
@@ -469,7 +469,7 @@ describe(@"EKObjectMapping", ^{
     describe(@"#mapKey:toField:withValueBlock:", ^{
         
         __block EKObjectMapping *mapping;
-        __block EKPropertyMapping *fieldMapping;
+        __block EKPropertyMapping *propertyMapping;
         
         beforeEach(^{
             
@@ -483,16 +483,16 @@ describe(@"EKObjectMapping", ^{
                 return genders[key];
             }];
             
-            fieldMapping = [mapping.propertyMappings objectForKey:@"gender"];
+            propertyMapping = [mapping.propertyMappings objectForKey:@"gender"];
             
         });
         
         specify(^{
-            [fieldMapping shouldNotBeNil];
+            [propertyMapping shouldNotBeNil];
         });
         
         specify(^{
-            [fieldMapping.valueBlock shouldNotBeNil];
+            [propertyMapping.valueBlock shouldNotBeNil];
         });
         
     });
@@ -501,7 +501,7 @@ describe(@"EKObjectMapping", ^{
     describe(@"#mapKey:toField:withValueBlock:withReverseBlock:", ^{
        
         __block EKObjectMapping *mapping;
-        __block EKPropertyMapping *fieldMapping;
+        __block EKPropertyMapping *propertyMapping;
         
         beforeEach(^{
             
@@ -517,20 +517,20 @@ describe(@"EKObjectMapping", ^{
                 return [genders allKeysForObject:value].lastObject;
             }];
             
-            fieldMapping = [mapping.propertyMappings objectForKey:@"gender"];
+            propertyMapping = [mapping.propertyMappings objectForKey:@"gender"];
             
         });
         
         specify(^{
-            [fieldMapping shouldNotBeNil];
+            [propertyMapping shouldNotBeNil];
         });
         
         specify(^{
-            [fieldMapping.valueBlock shouldNotBeNil];
+            [propertyMapping.valueBlock shouldNotBeNil];
         });
         
         specify(^{
-            [fieldMapping.valueBlock shouldNotBeNil];
+            [propertyMapping.valueBlock shouldNotBeNil];
         });
         
     });

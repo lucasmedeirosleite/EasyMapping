@@ -42,6 +42,12 @@
  */
 @property (nonatomic, strong) NSString *primaryKey;
 
+-(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueBlock:(EKManagedMappingValueBlock)valueBlock;
+
+-(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
+   withValueBlock:(EKManagedMappingValueBlock)valueBlock
+     reverseBlock:(EKManagedMappingReverseValueBlock)reverseBlock;
+
 /**
  Convenience constructor for `EKManagedObjectMapping`.
  
@@ -90,11 +96,11 @@
 - (instancetype)initWithEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath;
 
 /**
- Field mapping for primary key of managed object.
+ Property mapping for primary key of managed object.
  
- @result field mapping
+ @result property mapping
  */
-- (EKPropertyMapping *)primaryKeyFieldMapping;
+- (EKPropertyMapping *)primaryKeyPropertyMapping;
 
 #pragma mark - unavalable methods
 
