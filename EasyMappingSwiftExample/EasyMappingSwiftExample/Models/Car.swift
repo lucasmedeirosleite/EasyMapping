@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-
 @objc class Car: EKObjectModel {
     var model : String!
     var year : String!

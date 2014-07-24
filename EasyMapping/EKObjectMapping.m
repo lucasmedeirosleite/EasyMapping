@@ -206,9 +206,9 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     NSParameterAssert(property);
     
     EKRelationshipMapping * relationship = [EKRelationshipMapping new];
+    relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
-    relationship.objectClass = objectClass;
     
     [self.hasManyMappings setObject:relationship forKey:keyPath];
 }

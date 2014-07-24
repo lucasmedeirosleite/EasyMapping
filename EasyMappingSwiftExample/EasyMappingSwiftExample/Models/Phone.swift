@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-import UIKit
-
 @objc class Phone: EKMappingProtocol {
     var DDI: String?
     var DDD: String?
