@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-@objc class Phone: EKMappingProtocol {
+class Phone: EKObjectModel {
     var DDI: String?
     var DDD: String?
     var number: String?
 }
 
 extension Phone {
-    class func objectMapping() -> EKObjectMapping!
+    override class func objectMapping() -> EKObjectMapping!
     {
         var mapping = EKObjectMapping(objectClass: self)
         

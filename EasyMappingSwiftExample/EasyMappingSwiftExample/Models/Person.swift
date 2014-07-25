@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-@objc class Person: EKObjectModel {
+class Person: EKObjectModel {
     var name : String!
     var email: String!
     var car : Car?
-    var phones: [Person]!
+    var phones: [Phone]!
 }
 
 extension Person {
