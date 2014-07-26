@@ -157,6 +157,10 @@ To fill an already instantiated object you can do this:
 [EKMapper fillObject:person fromExternalRepresentation:personRepresentation withMapping:[Person objectMapping]];
 ```
 
+### Swift
+
+EasyMapping is partially compatible with Swift. [Here's detailed look](https://github.com/EasyMapping/EasyMapping/wiki/Swift-and-EasyMapping) at EasyMapping usage in Swift and current limitations.
+
 ### Convenience classes
 
 Starting with 1.0.0, EasyMapping provides two convenience base classes: EKObjectModel and EKManagedObjectModel, that implement EKMappingProtocol by default. If, for example, class Person would inherit from EKObjectModel, and implemented objectMapping method, all it would take to create Person instance from JSON representation would be:
