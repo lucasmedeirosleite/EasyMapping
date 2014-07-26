@@ -68,7 +68,7 @@ typedef enum {
 
 +(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
         [mapping mapPropertiesFromArray:@[@"name", @"email"]];
         [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
@@ -87,7 +87,7 @@ typedef enum {
 
 +(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
         [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
     }];
@@ -99,7 +99,7 @@ typedef enum {
 
 +(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Phone class] withBlock:^(EKObjectMapping *mapping) {
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[@"number"]];
         [mapping mapPropertiesFromDictionary:@{
             @"ddi" : @"DDI",
@@ -114,7 +114,7 @@ typedef enum {
 
 +(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Native class] withBlock:^(EKObjectMapping *mapping) {
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[
          @"integerProperty", @"unsignedIntegerProperty", 
          @"cgFloatProperty", @"doubleProperty", 
