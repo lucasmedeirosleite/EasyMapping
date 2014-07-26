@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 class CarTestCase: XCTestCase {
@@ -22,8 +21,6 @@ class CarTestCase: XCTestCase {
     }
 
     func testModel() {
-        // This is an example of a functional test case.
-        
         XCTAssert(car.model?=="i30")
     }
     

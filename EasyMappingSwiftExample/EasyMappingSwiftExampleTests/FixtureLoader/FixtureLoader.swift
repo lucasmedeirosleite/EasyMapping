@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-import UIKit
-
 class FixtureLoader: NSObject {
     
     class func jsonObjectFromFileNamed(#name : String) -> AnyObject? {

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 class PhoneTestCase: XCTestCase {
@@ -17,7 +16,7 @@ class PhoneTestCase: XCTestCase {
         super.setUp()
         
         let personInfo = FixtureLoader.jsonObjectFromFileNamed(name: "Person") as NSDictionary
-        var person = EKMapper.objectFromExternalRepresentation(personInfo, withMapping: Person.objectMapping()) as Person
+        let person = EKMapper.objectFromExternalRepresentation(personInfo, withMapping: Person.objectMapping()) as Person
         phone = person.phones[0]
     }
     
