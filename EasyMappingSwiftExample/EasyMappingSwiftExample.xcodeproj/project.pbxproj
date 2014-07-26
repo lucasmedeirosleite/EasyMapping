@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		9A1CB3B3197BFEA200D8B648 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A1CB3AF197BFEA200D8B648 /* Cars.json */; };
 		9A1CB3B4197BFEA200D8B648 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A1CB3B0197BFEA200D8B648 /* Person.json */; };
-		9A1CB3B5197BFEA200D8B648 /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A1CB3B1197BFEA200D8B648 /* PersonWithNullCar.json */; };
-		9A1CB3B6197BFEA200D8B648 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A1CB3B2197BFEA200D8B648 /* PersonWithNullPhones.json */; };
 		9A478F3D197C2CA10009EE77 /* PersonTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A478F3C197C2CA10009EE77 /* PersonTestCase.swift */; };
 		9A5DE30D198221D500D8CEAA /* PhoneTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DE30C198221D500D8CEAA /* PhoneTestCase.swift */; };
 		9A8AC845197C1AC20045AF4F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8AC842197C1AC20045AF4F /* Car.swift */; };
@@ -67,8 +65,6 @@
 		9A0E52FC197BF37900954F41 /* NSArray+FlattenArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FlattenArray.m"; sourceTree = "<group>"; };
 		9A1CB3AF197BFEA200D8B648 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Cars.json; path = ../../EasyMappingExample/Tests/Fixtures/Cars.json; sourceTree = "<group>"; };
 		9A1CB3B0197BFEA200D8B648 /* Person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Person.json; path = ../../EasyMappingExample/Tests/Fixtures/Person.json; sourceTree = "<group>"; };
-		9A1CB3B1197BFEA200D8B648 /* PersonWithNullCar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithNullCar.json; path = ../../EasyMappingExample/Tests/Fixtures/PersonWithNullCar.json; sourceTree = "<group>"; };
-		9A1CB3B2197BFEA200D8B648 /* PersonWithNullPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithNullPhones.json; path = ../../EasyMappingExample/Tests/Fixtures/PersonWithNullPhones.json; sourceTree = "<group>"; };
 		9A478F3C197C2CA10009EE77 /* PersonTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonTestCase.swift; path = Specs/PersonTestCase.swift; sourceTree = "<group>"; };
 		9A5DE30C198221D500D8CEAA /* PhoneTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneTestCase.swift; path = Specs/PhoneTestCase.swift; sourceTree = "<group>"; };
 		9A8AC841197C1AC20045AF4F /* EasyMappingSwiftExampleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMappingSwiftExampleTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -169,8 +165,6 @@
 			children = (
 				9A1CB3AF197BFEA200D8B648 /* Cars.json */,
 				9A1CB3B0197BFEA200D8B648 /* Person.json */,
-				9A1CB3B1197BFEA200D8B648 /* PersonWithNullCar.json */,
-				9A1CB3B2197BFEA200D8B648 /* PersonWithNullPhones.json */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -261,9 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A1CB3B6197BFEA200D8B648 /* PersonWithNullPhones.json in Resources */,
 				9A1CB3B4197BFEA200D8B648 /* Person.json in Resources */,
-				9A1CB3B5197BFEA200D8B648 /* PersonWithNullCar.json in Resources */,
 				9A1CB3B3197BFEA200D8B648 /* Cars.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
