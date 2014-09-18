@@ -122,7 +122,8 @@ static const char scalarTypes[] = {
 {
     id value;
     if (fieldMapping.valueBlock) {
-        value = fieldMapping.valueBlock(fieldMapping.keyPath, [representation valueForKeyPath:fieldMapping.keyPath]);
+        id representationValue = [representation valueForKeyPath:fieldMapping.keyPath];
+        value = fieldMapping.valueBlock(fieldMapping.keyPath, representationValue == [NSNull null] ? nil : representationValue);
     }
     else {
         value = [representation valueForKeyPath:fieldMapping.keyPath];
