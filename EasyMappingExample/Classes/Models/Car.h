@@ -13,5 +13,5 @@
 @property (nonatomic, copy)   NSString *model;
 @property (nonatomic, copy)   NSString *year;
 @property (nonatomic, strong) NSDate *createdAt;
-
+@property (nonatomic, assign) NSInteger carId;
 @end

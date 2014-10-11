@@ -88,6 +88,10 @@ describe(@"EKMapper", ^{
                 [[car.year should] equal:[externalRepresentation objectForKey:@"year"]];
             });
             
+            specify(^{
+                [[theValue(car.carId) should] equal:theValue(1)];
+            });
+            
         });
         
         context(@"with nested information", ^{
