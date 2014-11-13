@@ -68,7 +68,7 @@
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
     {
         NSDictionary * value = [representation valueForKeyPath:key];
-        if (value != (id)[NSNull null])
+        if (value && value != (id)[NSNull null])
         {
             id result = [self objectFromExternalRepresentation:value withMapping:obj];
             EKObjectMapping * valueMapping = obj;
@@ -78,7 +78,7 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop)
     {
         NSArray * arrayToBeParsed = [representation valueForKeyPath:key];
-        if (arrayToBeParsed != (id)[NSNull null])
+        if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null])
         {
             NSArray * parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
                                                                        withMapping:obj];

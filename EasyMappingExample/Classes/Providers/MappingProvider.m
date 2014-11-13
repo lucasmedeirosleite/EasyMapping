@@ -34,6 +34,7 @@
 {
     return [EKObjectMapping mappingForClass:[Car class] withRootPath:@"car" withBlock:^(EKObjectMapping *mapping) {
         [mapping mapFieldsFromArray:@[@"model", @"year"]];
+        [mapping mapFieldsFromDictionary:@{@"id":@"carId"}];
     }];
 }
 
