@@ -66,7 +66,33 @@
 			 [object setValue:nil forKey:valueMapping.field];
 		 }
     }];
-    return object;
+	[mapping.recursiveOneMapping enumerateKeysAndObjectsUsingBlock:^(id key, id fieldName, BOOL *stop) {
+		NSDictionary* representationForParsing = [representation valueForKeyPath:key];
+		if (representationForParsing && representationForParsing != (id)[NSNull null])
+		{
+			id result = [self objectFromExternalRepresentation:representationForParsing withMapping:mapping];
+			[object setValue:result forKeyPath:fieldName];
+		}
+		else
+		{
+			[object setValue:nil forKeyPath:fieldName];
+		}
+	}];
+	[mapping.recursiveManyMapping enumerateKeysAndObjectsUsingBlock:^(id key, id fieldName, BOOL *stop) {
+		NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
+		if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null])
+		{
+			NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:mapping];
+			id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray forObject:object withPropertyName:fieldName];
+			[object setValue:parsedObjects forKeyPath:fieldName];
+		}
+		else
+		{
+			[object setValue:nil forKey:fieldName];
+		}
+	}];
+	
+   return object;
 }
 
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation

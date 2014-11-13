@@ -620,7 +620,25 @@ describe(@"EKMapper", ^{
             [[person.relative.email should] equal:@"loreen@gmail.com"];
             [[@(person.relative.gender) should] equal:@(GenderFemale)];
         });
-        
+		 
+		 it(@"should contain list of children", ^{
+			 [[person.children should] beKindOfClass:[NSArray class]];
+		 });
+		 
+		 it(@"should have 2 children", ^{
+			 [[theValue(person.children.count) should] equal:theValue(2)];
+		 });
+		 
+		 it(@"should contain child", ^{
+			 [[[person.children objectAtIndex:0] should] beKindOfClass:[Person class]];
+		 });
+		 it(@"shoult contain grandchild with childs", ^{
+			 Person* child = [person.children objectAtIndex:0];
+			 Person* grandchild = [child.children objectAtIndex:0];
+			 
+			 [[grandchild should] beKindOfClass:[Person class]];
+			 [[theValue(grandchild.children.count) should] equal:theValue(2)];
+		 });
     });
     
 });
