@@ -110,7 +110,7 @@
 
 #elif TARGET_OS_MAC
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 +(void)cleanupDatabase
 {

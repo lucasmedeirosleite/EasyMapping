@@ -10,11 +10,14 @@ class FixtureLoader: NSObject {
     
     class func jsonObjectFromFileNamed(#name : String) -> AnyObject? {
         let bundle = NSBundle(forClass: self)
-        let path = bundle.pathForResource(name, ofType: "json")
-        let data = NSData(contentsOfFile: path)
         
-        let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
-
-        return parsedObject
+        if let path = bundle.pathForResource(name, ofType: "json") {
+            if let data = NSData(contentsOfFile: path) {
+                let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
+                
+                return parsedObject
+            }
+        }
+        return nil
     }
 }

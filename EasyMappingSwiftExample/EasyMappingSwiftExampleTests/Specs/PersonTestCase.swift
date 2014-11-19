@@ -20,11 +20,8 @@ class PersonTestCase: XCTestCase {
     }
 
     func testPersonValues() {
-        XCTAssert(person.name?=="Lucas")
-        XCTAssert(person.email? == "lucastoc@gmail.com")
-        XCTAssert(person.car? is Car)
-        if person.phones {
-            XCTAssert(person.phones.count == 2)
-        }
+        XCTAssert(person.name=="Lucas")
+        XCTAssert(person.email == "lucastoc@gmail.com")
+        XCTAssert(person.phones.count == 2)
     }
 }
