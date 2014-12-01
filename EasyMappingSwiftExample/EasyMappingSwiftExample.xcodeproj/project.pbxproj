@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A1CB3B3197BFEA200D8B648 /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A1CB3AF197BFEA200D8B648 /* Cars.json */; };
+		9A1CB3B4197BFEA200D8B648 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A1CB3B0197BFEA200D8B648 /* Person.json */; };
+		9A478F3D197C2CA10009EE77 /* PersonTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A478F3C197C2CA10009EE77 /* PersonTestCase.swift */; };
+		9A5DE30D198221D500D8CEAA /* PhoneTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DE30C198221D500D8CEAA /* PhoneTestCase.swift */; };
+		9A8AC845197C1AC20045AF4F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8AC842197C1AC20045AF4F /* Car.swift */; };
+		9A8AC846197C1AC20045AF4F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8AC843197C1AC20045AF4F /* Person.swift */; };
+		9A8AC847197C1AC20045AF4F /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8AC844197C1AC20045AF4F /* Phone.swift */; };
+		9A8AC84A197C1AEF0045AF4F /* FixtureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8AC849197C1AEF0045AF4F /* FixtureLoader.swift */; };
+		9A8AC84D197C1AFE0045AF4F /* CarTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8AC84C197C1AFE0045AF4F /* CarTestCase.swift */; };
+		9A8AC84E197C1B5D0045AF4F /* EKCoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52E2197BF37900954F41 /* EKCoreDataImporter.m */; };
+		9A8AC84F197C1B5D0045AF4F /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52E4197BF37900954F41 /* EKManagedObjectMapper.m */; };
+		9A8AC850197C1B5D0045AF4F /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52E6197BF37900954F41 /* EKManagedObjectMapping.m */; };
+		9A8AC851197C1B5D0045AF4F /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52E8197BF37900954F41 /* EKManagedObjectModel.m */; };
+		9A8AC852197C1B5D0045AF4F /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52EA197BF37900954F41 /* EKMapper.m */; };
+		9A8AC853197C1B5D0045AF4F /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52EE197BF37900954F41 /* EKObjectMapping.m */; };
+		9A8AC854197C1B5D0045AF4F /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F0197BF37900954F41 /* EKObjectModel.m */; };
+		9A8AC855197C1B5D0045AF4F /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F2197BF37900954F41 /* EKPropertyHelper.m */; };
+		9A8AC856197C1B5D0045AF4F /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F4197BF37900954F41 /* EKPropertyMapping.m */; };
+		9A8AC857197C1B5D0045AF4F /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F6197BF37900954F41 /* EKRelationshipMapping.m */; };
+		9A8AC858197C1B5D0045AF4F /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F8197BF37900954F41 /* EKSerializer.m */; };
+		9A8AC859197C1B5D0045AF4F /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52FA197BF37900954F41 /* EKTransformer.m */; };
+		9A8AC85A197C1B5D0045AF4F /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52FC197BF37900954F41 /* NSArray+FlattenArray.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9A0E52CF197BF37100954F41 /* EasyMappingSwiftExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyMappingSwiftExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0E52D4197BF37100954F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A0E52E0197BF37900954F41 /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
+		9A0E52E1197BF37900954F41 /* EKCoreDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataImporter.h; sourceTree = "<group>"; };
+		9A0E52E2197BF37900954F41 /* EKCoreDataImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataImporter.m; sourceTree = "<group>"; };
+		9A0E52E3197BF37900954F41 /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapper.h; sourceTree = "<group>"; };
+		9A0E52E4197BF37900954F41 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapper.m; sourceTree = "<group>"; };
+		9A0E52E5197BF37900954F41 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
+		9A0E52E6197BF37900954F41 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
+		9A0E52E7197BF37900954F41 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectModel.h; sourceTree = "<group>"; };
+		9A0E52E8197BF37900954F41 /* EKManagedObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectModel.m; sourceTree = "<group>"; };
+		9A0E52E9197BF37900954F41 /* EKMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapper.h; sourceTree = "<group>"; };
+		9A0E52EA197BF37900954F41 /* EKMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMapper.m; sourceTree = "<group>"; };
+		9A0E52EB197BF37900954F41 /* EKMappingBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMappingBlocks.h; sourceTree = "<group>"; };
+		9A0E52EC197BF37900954F41 /* EKMappingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMappingProtocol.h; sourceTree = "<group>"; };
+		9A0E52ED197BF37900954F41 /* EKObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectMapping.h; sourceTree = "<group>"; };
+		9A0E52EE197BF37900954F41 /* EKObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectMapping.m; sourceTree = "<group>"; };
+		9A0E52EF197BF37900954F41 /* EKObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectModel.h; sourceTree = "<group>"; };
+		9A0E52F0197BF37900954F41 /* EKObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectModel.m; sourceTree = "<group>"; };
+		9A0E52F1197BF37900954F41 /* EKPropertyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPropertyHelper.h; sourceTree = "<group>"; };
+		9A0E52F2197BF37900954F41 /* EKPropertyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyHelper.m; sourceTree = "<group>"; };
+		9A0E52F3197BF37900954F41 /* EKPropertyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPropertyMapping.h; sourceTree = "<group>"; };
+		9A0E52F4197BF37900954F41 /* EKPropertyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyMapping.m; sourceTree = "<group>"; };
+		9A0E52F5197BF37900954F41 /* EKRelationshipMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRelationshipMapping.h; sourceTree = "<group>"; };
+		9A0E52F6197BF37900954F41 /* EKRelationshipMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRelationshipMapping.m; sourceTree = "<group>"; };
+		9A0E52F7197BF37900954F41 /* EKSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSerializer.h; sourceTree = "<group>"; };
+		9A0E52F8197BF37900954F41 /* EKSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializer.m; sourceTree = "<group>"; };
+		9A0E52F9197BF37900954F41 /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTransformer.h; sourceTree = "<group>"; };
+		9A0E52FA197BF37900954F41 /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTransformer.m; sourceTree = "<group>"; };
+		9A0E52FB197BF37900954F41 /* NSArray+FlattenArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FlattenArray.h"; sourceTree = "<group>"; };
+		9A0E52FC197BF37900954F41 /* NSArray+FlattenArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FlattenArray.m"; sourceTree = "<group>"; };
+		9A1CB3AF197BFEA200D8B648 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Cars.json; path = ../../EasyMappingExample/Tests/Fixtures/Cars.json; sourceTree = "<group>"; };
+		9A1CB3B0197BFEA200D8B648 /* Person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Person.json; path = ../../EasyMappingExample/Tests/Fixtures/Person.json; sourceTree = "<group>"; };
+		9A478F3C197C2CA10009EE77 /* PersonTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonTestCase.swift; path = Specs/PersonTestCase.swift; sourceTree = "<group>"; };
+		9A5DE30C198221D500D8CEAA /* PhoneTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneTestCase.swift; path = Specs/PhoneTestCase.swift; sourceTree = "<group>"; };
+		9A8AC841197C1AC20045AF4F /* EasyMappingSwiftExampleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMappingSwiftExampleTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		9A8AC842197C1AC20045AF4F /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Car.swift; path = EasyMappingSwiftExample/Models/Car.swift; sourceTree = SOURCE_ROOT; };
+		9A8AC843197C1AC20045AF4F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = EasyMappingSwiftExample/Models/Person.swift; sourceTree = SOURCE_ROOT; };
+		9A8AC844197C1AC20045AF4F /* Phone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Phone.swift; path = EasyMappingSwiftExample/Models/Phone.swift; sourceTree = SOURCE_ROOT; };
+		9A8AC849197C1AEF0045AF4F /* FixtureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixtureLoader.swift; path = FixtureLoader/FixtureLoader.swift; sourceTree = "<group>"; };
+		9A8AC84C197C1AFE0045AF4F /* CarTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarTestCase.swift; path = Specs/CarTestCase.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A0E52CC197BF37100954F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A0E52B4197BF37100954F41 = {
+			isa = PBXGroup;
+			children = (
+				9A0E52DF197BF37900954F41 /* EasyMapping */,
+				9A0E52D2197BF37100954F41 /* EasyMappingSwiftExampleTests */,
+				9A0E52BE197BF37100954F41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A0E52BE197BF37100954F41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A0E52CF197BF37100954F41 /* EasyMappingSwiftExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A0E52D2197BF37100954F41 /* EasyMappingSwiftExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A8AC84B197C1AF80045AF4F /* Specs */,
+				9A8AC848197C1AE90045AF4F /* Helpers */,
+				9A8AC840197C1AA60045AF4F /* Models */,
+				9A1CB3AE197BFE8100D8B648 /* Fixtures */,
+				9A0E52D3197BF37100954F41 /* Supporting Files */,
+			);
+			path = EasyMappingSwiftExampleTests;
+			sourceTree = "<group>";
+		};
+		9A0E52D3197BF37100954F41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A0E52D4197BF37100954F41 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A0E52DF197BF37900954F41 /* EasyMapping */ = {
+			isa = PBXGroup;
+			children = (
+				9A0E52E0197BF37900954F41 /* EasyMapping.h */,
+				9A0E52E1197BF37900954F41 /* EKCoreDataImporter.h */,
+				9A0E52E2197BF37900954F41 /* EKCoreDataImporter.m */,
+				9A0E52E3197BF37900954F41 /* EKManagedObjectMapper.h */,
+				9A0E52E4197BF37900954F41 /* EKManagedObjectMapper.m */,
+				9A0E52E5197BF37900954F41 /* EKManagedObjectMapping.h */,
+				9A0E52E6197BF37900954F41 /* EKManagedObjectMapping.m */,
+				9A0E52E7197BF37900954F41 /* EKManagedObjectModel.h */,
+				9A0E52E8197BF37900954F41 /* EKManagedObjectModel.m */,
+				9A0E52E9197BF37900954F41 /* EKMapper.h */,
+				9A0E52EA197BF37900954F41 /* EKMapper.m */,
+				9A0E52EB197BF37900954F41 /* EKMappingBlocks.h */,
+				9A0E52EC197BF37900954F41 /* EKMappingProtocol.h */,
+				9A0E52ED197BF37900954F41 /* EKObjectMapping.h */,
+				9A0E52EE197BF37900954F41 /* EKObjectMapping.m */,
+				9A0E52EF197BF37900954F41 /* EKObjectModel.h */,
+				9A0E52F0197BF37900954F41 /* EKObjectModel.m */,
+				9A0E52F1197BF37900954F41 /* EKPropertyHelper.h */,
+				9A0E52F2197BF37900954F41 /* EKPropertyHelper.m */,
+				9A0E52F3197BF37900954F41 /* EKPropertyMapping.h */,
+				9A0E52F4197BF37900954F41 /* EKPropertyMapping.m */,
+				9A0E52F5197BF37900954F41 /* EKRelationshipMapping.h */,
+				9A0E52F6197BF37900954F41 /* EKRelationshipMapping.m */,
+				9A0E52F7197BF37900954F41 /* EKSerializer.h */,
+				9A0E52F8197BF37900954F41 /* EKSerializer.m */,
+				9A0E52F9197BF37900954F41 /* EKTransformer.h */,
+				9A0E52FA197BF37900954F41 /* EKTransformer.m */,
+				9A0E52FB197BF37900954F41 /* NSArray+FlattenArray.h */,
+				9A0E52FC197BF37900954F41 /* NSArray+FlattenArray.m */,
+			);
+			name = EasyMapping;
+			path = ../EasyMapping;
+			sourceTree = "<group>";
+		};
+		9A1CB3AE197BFE8100D8B648 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				9A1CB3AF197BFEA200D8B648 /* Cars.json */,
+				9A1CB3B0197BFEA200D8B648 /* Person.json */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		9A8AC840197C1AA60045AF4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A8AC842197C1AC20045AF4F /* Car.swift */,
+				9A8AC843197C1AC20045AF4F /* Person.swift */,
+				9A8AC844197C1AC20045AF4F /* Phone.swift */,
+				9A8AC841197C1AC20045AF4F /* EasyMappingSwiftExampleTests-Bridging-Header.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9A8AC848197C1AE90045AF4F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9A8AC849197C1AEF0045AF4F /* FixtureLoader.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		9A8AC84B197C1AF80045AF4F /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				9A8AC84C197C1AFE0045AF4F /* CarTestCase.swift */,
+				9A478F3C197C2CA10009EE77 /* PersonTestCase.swift */,
+				9A5DE30C198221D500D8CEAA /* PhoneTestCase.swift */,
+			);
+			name = Specs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A0E52CE197BF37100954F41 /* EasyMappingSwiftExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A0E52DC197BF37100954F41 /* Build configuration list for PBXNativeTarget "EasyMappingSwiftExampleTests" */;
+			buildPhases = (
+				9A0E52CB197BF37100954F41 /* Sources */,
+				9A0E52CC197BF37100954F41 /* Frameworks */,
+				9A0E52CD197BF37100954F41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyMappingSwiftExampleTests;
+			productName = EasyMappingSwiftExampleTests;
+			productReference = 9A0E52CF197BF37100954F41 /* EasyMappingSwiftExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A0E52B5197BF37100954F41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Denys Telezhkin";
+				TargetAttributes = {
+					9A0E52CE197BF37100954F41 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 9A0E52B8197BF37100954F41 /* Build configuration list for PBXProject "EasyMappingSwiftExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A0E52B4197BF37100954F41;
+			productRefGroup = 9A0E52BE197BF37100954F41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A0E52CE197BF37100954F41 /* EasyMappingSwiftExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A0E52CD197BF37100954F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A1CB3B4197BFEA200D8B648 /* Person.json in Resources */,
+				9A1CB3B3197BFEA200D8B648 /* Cars.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A0E52CB197BF37100954F41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A8AC84E197C1B5D0045AF4F /* EKCoreDataImporter.m in Sources */,
+				9A478F3D197C2CA10009EE77 /* PersonTestCase.swift in Sources */,
+				9A8AC84A197C1AEF0045AF4F /* FixtureLoader.swift in Sources */,
+				9A8AC846197C1AC20045AF4F /* Person.swift in Sources */,
+				9A8AC85A197C1B5D0045AF4F /* NSArray+FlattenArray.m in Sources */,
+				9A8AC858197C1B5D0045AF4F /* EKSerializer.m in Sources */,
+				9A8AC859197C1B5D0045AF4F /* EKTransformer.m in Sources */,
+				9A8AC851197C1B5D0045AF4F /* EKManagedObjectModel.m in Sources */,
+				9A8AC852197C1B5D0045AF4F /* EKMapper.m in Sources */,
+				9A8AC850197C1B5D0045AF4F /* EKManagedObjectMapping.m in Sources */,
+				9A8AC854197C1B5D0045AF4F /* EKObjectModel.m in Sources */,
+				9A8AC853197C1B5D0045AF4F /* EKObjectMapping.m in Sources */,
+				9A8AC847197C1AC20045AF4F /* Phone.swift in Sources */,
+				9A8AC856197C1B5D0045AF4F /* EKPropertyMapping.m in Sources */,
+				9A8AC84D197C1AFE0045AF4F /* CarTestCase.swift in Sources */,
+				9A8AC84F197C1B5D0045AF4F /* EKManagedObjectMapper.m in Sources */,
+				9A5DE30D198221D500D8CEAA /* PhoneTestCase.swift in Sources */,
+				9A8AC855197C1B5D0045AF4F /* EKPropertyHelper.m in Sources */,
+				9A8AC845197C1AC20045AF4F /* Car.swift in Sources */,
+				9A8AC857197C1B5D0045AF4F /* EKRelationshipMapping.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9A0E52D7197BF37100954F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A0E52D8197BF37100954F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A0E52DD197BF37100954F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EasyMappingSwiftExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyMappingSwiftExampleTests/EasyMappingSwiftExampleTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9A0E52DE197BF37100954F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EasyMappingSwiftExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyMappingSwiftExampleTests/EasyMappingSwiftExampleTests-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A0E52B8197BF37100954F41 /* Build configuration list for PBXProject "EasyMappingSwiftExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0E52D7197BF37100954F41 /* Debug */,
+				9A0E52D8197BF37100954F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A0E52DC197BF37100954F41 /* Build configuration list for PBXNativeTarget "EasyMappingSwiftExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0E52DD197BF37100954F41 /* Debug */,
+				9A0E52DE197BF37100954F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A0E52B5197BF37100954F41 /* Project object */;
+}

@@ -10,4 +10,11 @@
 
 @implementation Finger
 
++(EKObjectMapping *)objectMapping
+{
+    return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"name"]];
+    }];
+}
+
 @end

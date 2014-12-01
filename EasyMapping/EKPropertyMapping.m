@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 
-@implementation EKFieldMapping
+@implementation EKPropertyMapping
 
 @end

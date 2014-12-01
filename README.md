@@ -23,7 +23,7 @@ typedef enum {
     GenderFemale
 } Gender;
 
-@interface Person : NSObject
+@interface Person : NSObject <EKMappingProtocol>
 
 @property (nonatomic, copy)   NSString *name;
 @property (nonatomic, copy)   NSString *email;
@@ -33,7 +33,7 @@ typedef enum {
 
 @end
 
-@interface Car : NSObject
+@interface Car : NSObject <EKMappingProtocol>
 
 @property (nonatomic, copy)   NSString *model;
 @property (nonatomic, copy)   NSString *year;
@@ -41,7 +41,7 @@ typedef enum {
 
 @end
 
-@interface Phone : NSObject
+@interface Phone : NSObject <EKMappingProtocol>
 
 @property (nonatomic, copy) NSString *DDI;
 @property (nonatomic, copy) NSString *DDD;
@@ -49,7 +49,7 @@ typedef enum {
 
 @end
 
-@interface Native : NSObject
+@interface Native : NSObject <EKMappingProtocol>
 
 @property (nonatomic, readwrite) NSInteger integerProperty;
 @property (nonatomic, readwrite) NSUInteger unsignedIntegerProperty;
@@ -60,83 +60,92 @@ typedef enum {
 @end
 ```
 
-* Map your classes in any place you want. An example:
+* Mapping becomes as simple as implementing single method
 
 ```objective-c
-#import "MappingProvider.h"
-#import "Car.h"
-#import "Phone.h"
-#import "Person.h"
-#import "Address.h"
 
-@implementation MappingProvider
+@implementation Person
 
-+ (EKObjectMapping *)carMapping
++(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"model", @"year"]];
-        [mapping mapKey:@"created_at" toField:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
+        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
+            return genders[value];
+        } reverseBlock:^id(id value) {
+           return [genders allKeysForObject:value].lastObject;
+        }];
+        [mapping hasOne:[Car class] forKey:@"car"];
+        [mapping hasMany:[Phone class] forKey:@"phones"];
     }];
 }
 
-+ (EKObjectMapping *)phoneMapping
+@end
+
+@implementation Car
+
++(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Phone class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"number"]];
-        [mapping mapFieldsFromDictionary:@{
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
+    }];
+}
+
+@end
+
+@implementation Phone
+
++(EKObjectMapping *)objectMapping
+{
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"number"]];
+        [mapping mapPropertiesFromDictionary:@{
             @"ddi" : @"DDI",
             @"ddd" : @"DDD"
          }];
     }];
 }
 
-+ (EKObjectMapping *)personMapping
-{
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping mapKey:@"gender" toField:@"gender" withValueBlock:^(NSString *key, id value) {
-            return genders[value];
-        } withReverseBlock:^id(id value) {
-           return [genders allKeysForObject:value].lastObject;
-        }];
-        [mapping hasOneMapping:[self carMapping] forKey:@"car"];
-        [mapping hasManyMapping:[self phoneMapping] forKey:@"phones"];
-    }];
-}
+@end
 
-+ (EKObjectMapping *)nativeMapping
+@implementation Native
+
++(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Native class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[
+    return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[
          @"integerProperty", @"unsignedIntegerProperty", 
          @"cgFloatProperty", @"doubleProperty", 
          @"boolProperty"
         ]];
     }];
 }
+
+@end
 ```
 
 * Converting a NSDictionary or NSArray to a object class or collection now becomes easy:
 
 ```objective-c
 Person *person = [EKMapper objectFromExternalRepresentation:personRepresentation 
-                                                withMapping:[MappingProvider personMapping]];
+                                                withMapping:[Person objectMapping]];
 
 NSArray *carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:carsRepresentation 
-                                                            withMapping:[MappingProvider carMapping]];
+                                                            withMapping:[Car objectMapping]];
 ```
 
 * Converting an object/collection to NSDictionary/NSArray:
 
 ```objective-c
-NSDictionary *representation = [EKSerializer serializeObject:car withMapping:[MappingProvider carMapping]];
-NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withMapping:[MappingProvider carMapping]];
+NSDictionary *representation = [EKSerializer serializeObject:car withMapping:[Car objectMapping]];
+NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withMapping:[Car objectMapping]];
 ```
 
 * Filling an existent object:
 
-Supose you have something like this:
+Suppose you have something like this:
 
 ```objective-c
 Person *person = [Person alloc] init]	
@@ -145,14 +154,41 @@ Person *person = [Person alloc] init]
 To fill an already instantiated object you can do this:
 
 ```objective-c
-[EKMapper fillObject:person fromExternalRepresentation:personRepresentation withMapping:[Mappings personMapping]];
+[EKMapper fillObject:person fromExternalRepresentation:personRepresentation withMapping:[Person objectMapping]];
 ```
 
-* See the specs code
+### Swift
+
+EasyMapping is partially compatible with Swift. [Here's detailed look](https://github.com/EasyMapping/EasyMapping/wiki/Swift-and-EasyMapping) at EasyMapping usage in Swift and current limitations.
+
+### Convenience classes
+
+Starting with 1.0.0, EasyMapping provides two convenience base classes: EKObjectModel and EKManagedObjectModel, that implement EKMappingProtocol by default. If, for example, class Person would inherit from EKObjectModel, and implemented objectMapping method, all it would take to create Person instance from JSON representation would be:
+
+```objective-c
+NSDictionary * parsedPersonInfo = ...;
+Person * person = [Person objectWithProperties:parsedPersonInfo];
+```
+
+And CoreData variant in case Person is EKManagedObjectModel subclass:
+
+```objective-c
+NSDictionary * parsedPersonInfo = ...;
+Person * person = [Person objectWithProperties:parsedPersonInfo inContext:context];
+```
+
+Serializing to NSDictionary is even easier:
+```objective-c
+NSDictionary * info = [person serializedObject];
+```
 
 ### CoreData
 
-If you are using CoreData objects use `EKManagedObjectMapping` instead of `EKObjectMapping`.
+If you are using CoreData objects use `EKManagedObjectMapping` instead of `EKObjectMapping`. EasyMapping tries to speed up importing to database by scanning provided JSON and fetching all existing objects in batch. The more high level JSON will be provided, the more speed boost can be achieved.
+
+### Recursive mappings
+
+Sometimes you can encounter situation, where your JSON will contain objects with links to objects of the same type. Good example would be comments, and replies to comments, that have tree-like structure. Starting with 1.0.0 recursive mappings are fully supported by EasyMapping.
 
 ## Thanks
 
@@ -164,7 +200,7 @@ Thanks to:
 * [Philip Vasilchenko](https://github.com/ArtFeel) who added the ability to serialization/deserialization of scalar types!
 * [Dany L'Hébreux](https://github.com/danylhebreux) who added the NSSet support!
 * [Jack](https://github.com/Jack-s) who added mapFieldsFromMappingObject and mapFieldsFromArrayToPascalCase functionality
-* [Yuri Kotov](https://github.com/advantis) and [Dmitriy](https://github.com/poteryaysya) which added a lot of performance improvements (see [FastEasyMapping](https://github.com/Yalantis/FastEasyMapping) fork)
+* [Yuri Kotov](https://github.com/advantis) and [Dmitriy](https://github.com/poteryaysya) which added a lot of performance improvements
 
 ## Requirements
 
@@ -176,11 +212,11 @@ Thanks to:
 
 Using CocoaPods:
 
-	pod 'EasyMapping', '~>0.6.0'
+	pod 'EasyMapping', '~>1.0.0'
 
 ## The idea
 
 The idea came from:
-* [RestiKit's](https://github.com/RestKit/Restkit) mapping, its problem is that it doesn't transform
+* [RestKit's](https://github.com/RestKit/Restkit) mapping, its problem is that it doesn't transform
 custom values (such as a string value to an enum)
 * [Mantle's](https://github.com/github/Mantle) mapping, but you don't need to inherit from any class

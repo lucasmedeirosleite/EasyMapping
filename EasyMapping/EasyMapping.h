@@ -26,6 +26,7 @@
 #import "EKObjectMapping.h"
 #import "EKManagedObjectMapper.h"
 #import "EKManagedObjectMapping.h"
-#import "EKFieldMapping.h"
 #import "EKMappingBlocks.h"
 #import "EKTransformer.h"
+#import "EKObjectModel.h"
+#import "EKManagedObjectModel.h"

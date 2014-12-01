@@ -310,7 +310,9 @@ describe(@"EKSerializer", ^{
                 beforeEach(^{
                     
                     EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-                    [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"vehicle" forField:@"car"];
+                    [Car registerMapping:[MappingProvider carMapping]];
+
+                    [mapping hasOne:[Car class] forKeyPath:@"vehicle" forProperty:@"car"];
                     NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
                     person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
                     
@@ -376,7 +378,8 @@ describe(@"EKSerializer", ^{
                 
                 beforeEach(^{
                     EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-                    [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"cellphones" forField:@"phones"];
+                    [Phone registerMapping:[MappingProvider phoneMapping]];
+                    [mapping hasMany:[Phone class] forKeyPath:@"cellphones" forProperty:@"phones"];
                     NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
                     person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
                     
@@ -452,8 +455,8 @@ describe(@"EKSerializer", ^{
             
             beforeEach(^{
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Native"];
-                native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider nativeMapping]];
-                representation = [EKSerializer serializeObject:native withMapping:[MappingProvider nativeMapping]];
+                native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[Native objectMapping]];
+                representation = [EKSerializer serializeObject:native withMapping:[Native objectMapping]];
             });
             
             specify(^{
@@ -534,8 +537,8 @@ describe(@"EKSerializer", ^{
             
             beforeEach(^{
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"NativeChild"];
-                nativeChild = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider nativeChildMapping]];
-                representation = [EKSerializer serializeObject:nativeChild withMapping:[MappingProvider nativeChildMapping]];
+                nativeChild = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[NativeChild objectMapping]];
+                representation = [EKSerializer serializeObject:nativeChild withMapping:[NativeChild objectMapping]];
             });
             
             specify(^{

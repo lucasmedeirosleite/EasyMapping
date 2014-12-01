@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface Car : NSObject
+@interface Car : BaseTestModel
 
 @property (nonatomic, copy)   NSString *model;
 @property (nonatomic, copy)   NSString *year;

@@ -23,8 +23,9 @@
 
 #import "EKMapper.h"
 #import "EKPropertyHelper.h"
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 #import "EKTransformer.h"
+#import "EKRelationshipMapping.h"
 
 @implementation EKMapper
 
@@ -38,32 +39,32 @@
      withMapping:(EKObjectMapping *)mapping
 {
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
-    [mapping.fieldMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [EKPropertyHelper setField:obj
+    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [EKPropertyHelper setProperty:obj
                           onObject:object
                 fromRepresentation:representation];
     }];
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-		 EKObjectMapping * valueMapping = obj;
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
+        
 		 NSDictionary* value = [representation valueForKeyPath:key];
 		 if (value && value != (id)[NSNull null]) {
-			 id result = [self objectFromExternalRepresentation:value withMapping:valueMapping];
-			 [object setValue:result forKeyPath:valueMapping.field];
+			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping.objectClass objectMapping]];
+			 [object setValue:result forKeyPath:valueMapping.property];
 		 } else {
-			 [object setValue:nil forKey:valueMapping.field];
+			 [object setValue:nil forKey:valueMapping.property];
 		 }
     }];
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        EKObjectMapping * valueMapping = obj;
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
 		 NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
-			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed withMapping:obj];
+			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
+                                                                       withMapping:[valueMapping.objectClass objectMapping]];
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
-                                                        withPropertyName:[obj field]];
-			 [object setValue:parsedObjects forKeyPath:valueMapping.field];
+                                                        withPropertyName:[valueMapping property]];
+			 [object setValue:parsedObjects forKeyPath:valueMapping.property];
 		 } else {
-			 [object setValue:nil forKey:valueMapping.field];
+			 [object setValue:nil forKey:valueMapping.property];
 		 }
     }];
     return object;
@@ -72,6 +73,9 @@
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKObjectMapping *)mapping
 {
+    NSParameterAssert([externalRepresentation isKindOfClass:[NSArray class]]);
+    NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
+    
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *representation in externalRepresentation) {
         id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];

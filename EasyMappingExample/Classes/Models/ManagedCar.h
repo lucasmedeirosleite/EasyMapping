@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "BaseManagedTestModel.h"
 
-
-@interface ManagedCar : NSManagedObject
+@interface ManagedCar : BaseManagedTestModel
 
 @property (nonatomic, retain) NSNumber * carID;
 @property (nonatomic, retain) NSString * model;

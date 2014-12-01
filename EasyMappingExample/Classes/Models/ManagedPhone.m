@@ -16,6 +16,17 @@
 @dynamic ddi;
 @dynamic ddd;
 @dynamic number;
-@dynamic person;
+
+static EKManagedObjectMapping * mapping = nil;
+
++(void)registerMapping:(EKManagedObjectMapping *)objectMapping
+{
+    mapping = objectMapping;
+}
+
++(EKManagedObjectMapping *)objectMapping
+{
+    return mapping;
+}
 
 @end

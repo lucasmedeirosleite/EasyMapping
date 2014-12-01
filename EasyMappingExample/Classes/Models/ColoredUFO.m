@@ -10,6 +10,12 @@
 
 @implementation ColoredUFO
 
-
++(EKObjectMapping *)objectMapping
+{
+    return [EKObjectMapping mappingForClass:[ColoredUFO class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"color"]];
+        [mapping mapPropertiesFromMappingObject:[super objectMapping]];
+    }];
+}
 
 @end

@@ -21,8 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 #import "EKObjectMapping.h"
 
 /**
@@ -34,12 +35,21 @@
 
 + (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
-+ (void)  setField:(EKFieldMapping *)fieldMapping
++ (void)  setProperty:(EKPropertyMapping *)propertyMapping
           onObject:(id)object
 fromRepresentation:(NSDictionary *)representation;
 
-+ (id)getValueOfField:(EKFieldMapping *)fieldMapping
++ (void) setProperty:(EKPropertyMapping *)propertyMapping
+            onObject:(id)object
+  fromRepresentation:(NSDictionary *)representation
+           inContext:(NSManagedObjectContext *)context;
+
++ (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
    fromRepresentation:(NSDictionary *)representation;
+
++ (id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
+             fromRepresentation:(NSDictionary *)representation
+                      inContext:(NSManagedObjectContext *)context;
 
 + (void)setValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
 

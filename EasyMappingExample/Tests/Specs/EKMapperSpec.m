@@ -226,6 +226,8 @@ describe(@"EKMapper", ^{
                 expectedCar = [carFactory build];
                 
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                [Car registerMapping:[MappingProvider carMapping]];
+                [Phone registerMapping:[MappingProvider phoneMapping]];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
                 
             });
@@ -252,7 +254,8 @@ describe(@"EKMapper", ^{
                 expectedCar.model = @"i30";
                 expectedCar.year = @"2013";
                 EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-                [mapping hasOneMapping:[MappingProvider carMapping] forKey:@"vehicle" forField:@"car"];
+                [Car registerMapping:[MappingProvider carMapping]];
+                [mapping hasOne:Car.class forKeyPath:@"vehicle" forProperty:@"car"];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
             });
@@ -300,7 +303,8 @@ describe(@"EKMapper", ^{
             
             beforeEach(^{
                 EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
-                [mapping hasManyMapping:[MappingProvider phoneMapping] forKey:@"cellphones" forField:@"phones"];
+                [Phone registerMapping:[MappingProvider phoneMapping]];
+                [mapping hasMany:Phone.class forKeyPath:@"cellphones" forProperty:@"phones"];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithDifferentNaming"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
             });
@@ -371,7 +375,7 @@ describe(@"EKMapper", ^{
             __block Native *native;
             
             beforeEach(^{
-                EKObjectMapping * mapping = [MappingProvider nativeMapping];
+                EKObjectMapping * mapping = [Native objectMapping];
                 NSDictionary * externalRepresentation = [CMFixture buildUsingFixture:@"Native"];
                 native = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
             });
@@ -491,10 +495,11 @@ describe(@"EKMapper", ^{
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Plane"];
             EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Plane class]];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"persons" forField:@"persons"];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"pilots" forField:@"pilots"];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"stewardess" forField:@"stewardess"];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"stars" forField:@"stars"];
+            [Person registerMapping:[MappingProvider personMapping]];
+            [mapping hasMany:Person.class forKeyPath:@"persons"];
+            [mapping hasMany:Person.class forKeyPath:@"pilots"];
+            [mapping hasMany:Person.class forKeyPath:@"stewardess"];
+            [mapping hasMany:Person.class forKeyPath:@"stars"];
             plane = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
         });
         
@@ -527,7 +532,8 @@ describe(@"EKMapper", ^{
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Plane"];
             EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:[Seaplane class]];
-            [mapping hasManyMapping:[MappingProvider personMapping] forKey:@"persons" forField:@"passengers"];
+            [Person registerMapping:[MappingProvider personMapping]];
+            [mapping hasMany:[Person class] forKeyPath:@"persons" forProperty:@"passengers"];
             seaplane = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
         });
         
@@ -547,7 +553,7 @@ describe(@"EKMapper", ^{
         
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Alien"];
-            alien = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider alienMapping]];
+            alien = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[Alien objectMapping]];
         });
         
         specify(^{
@@ -566,8 +572,9 @@ describe(@"EKMapper", ^{
         
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"CommentsRecursive"];
+            [CommentObject registerMapping:[CommentObject objectMapping]];
             comments = [EKMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation[@"comments"]
-                                                             withMapping:[MappingProvider commentObjectMapping]];
+                                                             withMapping:[CommentObject objectMapping]];
         });
         
         it(@"should contain comments", ^{
@@ -603,6 +610,7 @@ describe(@"EKMapper", ^{
         
         beforeEach(^{
             NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonRecursive"];
+            [Person registerMapping:[MappingProvider personWithRelativeMapping]];
             person = [EKMapper objectFromExternalRepresentation:externalRepresentation
                                                       withMapping:[MappingProvider personWithRelativeMapping]];
         });
@@ -619,6 +627,24 @@ describe(@"EKMapper", ^{
             [[person.relative.name should] equal:@"Loreen"];
             [[person.relative.email should] equal:@"loreen@gmail.com"];
             [[@(person.relative.gender) should] equal:@(GenderFemale)];
+        });
+        
+        it(@"should contain list of children", ^{
+            [[person.children should] beKindOfClass:[NSArray class]];
+        });
+        
+        it(@"should have 2 children", ^{
+            [[theValue(person.children.count) should] equal:theValue(2)];
+        });
+        
+        it(@"should contain child", ^{
+            [[[person.children objectAtIndex:0] should] beKindOfClass:[Person class]];
+        });
+        
+        it(@"should have a brother", ^{
+            Person * brother = [person.children.firstObject relative];
+            
+            [[brother.name should] equal:@"Alexey"];
         });
         
     });

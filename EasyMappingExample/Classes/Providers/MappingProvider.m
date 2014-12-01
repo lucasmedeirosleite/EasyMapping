@@ -26,23 +26,23 @@
 + (EKObjectMapping *)carMapping
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"model", @"year"]];
+        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
     }];
 }
 
 + (EKObjectMapping *)carWithRootKeyMapping
 {
     return [EKObjectMapping mappingForClass:[Car class] withRootPath:@"car" withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"model", @"year"]];
-        [mapping mapFieldsFromDictionary:@{@"id":@"carId"}];
+        [mapping mapPropertiesFromDictionary:@{@"id":@"carId"}];
+        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
     }];
 }
 
 + (EKObjectMapping *)carNestedAttributesMapping
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"model"]];
-        [mapping mapFieldsFromDictionary:@{
+        [mapping mapPropertiesFromArray:@[@"model"]];
+        [mapping mapPropertiesFromDictionary:@{
             @"information.year" : @"year"
         }];
     }];
@@ -51,16 +51,16 @@
 + (EKObjectMapping *)carWithDateMapping
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"model", @"year"]];
-        [mapping mapKey:@"created_at" toField:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
+        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
     }];
 }
 
 + (EKObjectMapping *)phoneMapping
 {
     return [EKObjectMapping mappingForClass:[Phone class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"number"]];
-        [mapping mapFieldsFromDictionary:@{
+        [mapping mapPropertiesFromArray:@[@"number"]];
+        [mapping mapPropertiesFromDictionary:@{
             @"ddi" : @"DDI",
             @"ddd" : @"DDD"
          }];
@@ -71,30 +71,30 @@
 {
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping mapKey:@"gender" toField:@"gender" withValueBlock:^(NSString *key, id value) {
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
             return genders[value];
-        } withReverseBlock:^id(id value) {
+        } reverseBlock:^id(id value) {
            return [genders allKeysForObject:value].lastObject;
         }];
-        [mapping hasOneMapping:[self carMapping] forKey:@"car"];
-        [mapping hasManyMapping:[self phoneMapping] forKey:@"phones"];
+        [mapping hasOne:[Car class] forKeyPath:@"car"];
+        [mapping hasMany:[Phone class] forKeyPath:@"phones"];
     }];
 }
 
 + (EKObjectMapping *)personWithCarMapping
 {
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping hasOneMapping:[self carMapping] forKey:@"car"];
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping hasOne:[Car class] forKeyPath:@"car"];
     }];
 }
 
 + (EKObjectMapping *)personWithPhonesMapping
 {
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping hasManyMapping:[self phoneMapping] forKey:@"phones"];
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping hasMany:[Phone class] forKeyPath:@"phones"];
     }];
 }
 
@@ -102,10 +102,10 @@
 {
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping mapKey:@"gender" toField:@"gender" withValueBlock:^(NSString *key, id value) {
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
             return genders[value];
-        } withReverseBlock:^id(id value) {
+        } reverseBlock:^id(id value) {
             return [[genders allKeysForObject:value] lastObject];
         }];
     }];
@@ -115,104 +115,36 @@
 {
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapFieldsFromArray:@[@"name", @"email"]];
-        [mapping mapKey:@"gender" toField:@"gender" withValueBlock:^(NSString *key, id value) {
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
             return genders[value];
-        } withReverseBlock:^id(id value) {
+        } reverseBlock:^id(id value) {
             return [[genders allKeysForObject:value] lastObject];
         }];
-        [mapping hasOneMapping:mapping forKey:@"relative"];
+        [mapping hasOne:[Person class] forKeyPath:@"relative"];
+        [mapping hasMany:[Person class] forKeyPath:@"children"];
     }];
 }
 
 + (EKObjectMapping *)addressMapping
 {
     return [EKObjectMapping mappingForClass:[Address class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"street"]];
-        [mapping mapKey:@"location" toField:@"location" withValueBlock:^(NSString *key, NSArray *locationArray) {
+        [mapping mapPropertiesFromArray:@[@"street"]];
+        [mapping mapKeyPath:@"location" toProperty:@"location" withValueBlock:^(NSString *key, NSArray *locationArray) {
             CLLocationDegrees latitudeValue = [[locationArray objectAtIndex:0] doubleValue];
             CLLocationDegrees longitudeValue = [[locationArray objectAtIndex:1] doubleValue];
             return [[CLLocation alloc] initWithLatitude:latitudeValue longitude:longitudeValue];
-        } withReverseBlock:^(CLLocation *location) {
+        } reverseBlock:^(CLLocation *location) {
             return @[ @(location.coordinate.latitude), @(location.coordinate.longitude) ];
         }];
-    }];
-}
-
-+ (EKObjectMapping *)nativeMapping
-{
-    return [EKObjectMapping mappingForClass:[Native class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[
-         @"charProperty", @"unsignedCharProperty", @"shortProperty", @"unsignedShortProperty", @"intProperty", @"unsignedIntProperty",
-         @"integerProperty", @"unsignedIntegerProperty", @"longProperty", @"unsignedLongProperty", @"longLongProperty",
-         @"unsignedLongLongProperty", @"floatProperty", @"cgFloatProperty", @"doubleProperty", @"boolProperty", @"smallBoolProperty"
-        ]];
     }];
 }
 
 + (EKObjectMapping *)nativeMappingWithNullPropertie
 {
     return [EKObjectMapping mappingForClass:[Cat class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[ @"age" ]];
+        [mapping mapPropertiesFromArray:@[ @"age" ]];
     }];
-}
-
-+ (EKObjectMapping *)planeMapping
-{
-    return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapKey:@"flight_number" toField:@"flightNumber"];
-        [mapping hasManyMapping:[self personMapping] forKey:@"persons"];
-    }];
-}
-
-+ (EKObjectMapping *)alienMapping
-{
-    return [EKObjectMapping mappingForClass:[Alien class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name"]];
-        [mapping hasManyMapping:[self fingerMapping] forKey:@"fingers"];
-    }];
-}
-
-+ (EKObjectMapping *)fingerMapping
-{
-    return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"name"]];
-    }];
-}
-
-+ (EKObjectMapping *)ufoMapping {
-    return [EKObjectMapping mappingForClass:[UFO class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"shape"]];
-        [mapping hasOneMapping:[self alienMapping] forKey:@"captain"];
-        [mapping hasManyMapping:[self alienMapping] forKey:@"crew"];
-        
-    }];
-}
-
-+ (EKObjectMapping *)coloredUfoMapping {
-    return [EKObjectMapping mappingForClass:[ColoredUFO class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"color"]];
-        [mapping mapFieldsFromMappingObject:[self ufoMapping]];
-        
-    }];
-}
-
-+ (EKObjectMapping *)nativeChildMapping
-{
-    return [EKObjectMapping mappingForClass:[NativeChild class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapFieldsFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
-    }];
-}
-
-+ (EKObjectMapping *)commentObjectMapping {
-    return [EKObjectMapping mappingForClass:[CommentObject class]
-                                  withBlock:^(EKObjectMapping *mapping) {
-                                      [mapping mapKey:@"name" toField:@"name"];
-                                      [mapping mapKey:@"message" toField:@"message"];
-                                      [mapping hasManyMapping:mapping
-                                                       forKey:@"sub_comments"
-                                                     forField:@"subComments"];
-                                  }];
 }
 
 @end

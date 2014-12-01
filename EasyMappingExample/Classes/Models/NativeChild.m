@@ -10,4 +10,11 @@
 
 @implementation NativeChild
 
++(EKObjectMapping *)objectMapping
+{
+    return [EKObjectMapping mappingForClass:[NativeChild class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"intProperty", @"boolProperty", @"childProperty"]];
+    }];
+}
+
 @end

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface Cat : NSObject
+@interface Cat : BaseTestModel
 
 @property (nonatomic, assign) NSInteger age;
 

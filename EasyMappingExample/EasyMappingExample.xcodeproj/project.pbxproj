@@ -11,20 +11,28 @@
 		550CE75226AD40059EA2F789 /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */; };
 		82DA805DFB1B4D3494041157 /* libPods-iOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */; };
 		9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
-		9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A130245190BFEF30060A25C /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A130246190BFEF30060A25C /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A130247190BFEF30060A25C /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A130248190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
 		9A130249190BFEF30060A25C /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A13024B190BFEF30060A25C /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
-		9A13024C190BFEF30060A25C /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A13024C190BFEF30060A25C /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A13024D190BFEF30060A25C /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A13024F190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
 		9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		9A130251190BFEF30060A25C /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A130252190BFEF30060A25C /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
+		9A170332194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A170333194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A170334194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
+		9A2056A61956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A210F321944B0E800871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
 		9A210F331944B0E900871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
 		9A210F341944B10A00871071 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
@@ -164,14 +172,14 @@
 		9A451270191647ED006E6022 /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45126E191647ED006E6022 /* EKAppDelegate.m */; };
 		9A451271191647ED006E6022 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A45126F191647ED006E6022 /* Images.xcassets */; };
 		9A45127719164805006E6022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A45127419164805006E6022 /* InfoPlist.strings */; };
-		9A45127A19164911006E6022 /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A45127A19164911006E6022 /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A45127B19164911006E6022 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A45127C19164911006E6022 /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A45127D19164911006E6022 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
 		9A45127E19164911006E6022 /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
 		9A45127F19164911006E6022 /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A45128019164911006E6022 /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0316F2B2770003759B /* EKTransformer.m */; };
-		9A45128119164912006E6022 /* EKFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKFieldMapping.m */; };
+		9A45128119164912006E6022 /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A45128219164912006E6022 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A45128319164912006E6022 /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
 		9A45128419164912006E6022 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
@@ -220,6 +228,24 @@
 		9A4512F519166366006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
 		9A4512F619166366006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
 		9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4512F719166B8E006E6022 /* MainMenu.xib */; };
+		9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
+		9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
+		9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A8420DF1957068E006DDDE3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A8420E21957164E006DDDE3 /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
+		9A8420E31957164E006DDDE3 /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
+		9A8420E41957164E006DDDE3 /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
+		9A8420E51957164E006DDDE3 /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
+		9A8420E8195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
+		9A8420E9195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
+		9A8420EA195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
+		9A8420EB195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
+		9A8420F5195723A6006DDDE3 /* One.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* One.m */; };
+		9A8420F6195723A6006DDDE3 /* One.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* One.m */; };
+		9A8420F9195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
+		9A8420FA195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
+		9A8420FD195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
+		9A8420FE195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
 		9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC1191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
@@ -236,18 +262,29 @@
 		9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9AA7CED9191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9AA7CEDA191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
+		9AC1321D1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
+		9AC1321E1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
 		9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
 		9F05E19A84E8447EA462A2FD /* libPods-OS X Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02FF772618E32249002282D3 /* iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07797FA26639AF90E877FABF /* Pods-MacOS Benchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacOS Benchmark/Pods-MacOS Benchmark.release.xcconfig"; sourceTree = "<group>"; };
 		094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CAE9849457872E6F5681E97 /* Pods-OS X Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OS X Tests/Pods-OS X Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.xcconfig"; path = "Pods/Pods-MacOS Benchmark.xcconfig"; sourceTree = "<group>"; };
-		8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.xcconfig"; path = "Pods/Pods-iOS Tests.xcconfig"; sourceTree = "<group>"; };
+		5D5068BD028D7ECDE8912D21 /* Pods-iOS Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8D816FFC6DC094C7A9297EA6 /* Pods-iOS Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A170330194C820200682F00 /* EKRelationshipMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRelationshipMapping.h; sourceTree = "<group>"; };
+		9A170331194C820200682F00 /* EKRelationshipMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRelationshipMapping.m; sourceTree = "<group>"; };
+		9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKMappingProtocol.h; sourceTree = "<group>"; };
+		9A20569F1956DF7900499FC3 /* BaseTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTestModel.h; path = Classes/Models/BaseTestModel.h; sourceTree = SOURCE_ROOT; };
+		9A2056A01956DF7900499FC3 /* BaseTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseTestModel.m; path = Classes/Models/BaseTestModel.m; sourceTree = SOURCE_ROOT; };
+		9A2056A31956E0EE00499FC3 /* BaseManagedTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseManagedTestModel.h; path = Classes/Models/CoreData/BaseManagedTestModel.h; sourceTree = SOURCE_ROOT; };
+		9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseManagedTestModel.m; path = Classes/Models/CoreData/BaseManagedTestModel.m; sourceTree = SOURCE_ROOT; };
 		9A210F2E1944B0C100871071 /* CommentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentObject.h; path = Classes/Models/CommentObject.h; sourceTree = SOURCE_ROOT; };
 		9A210F2F1944B0C100871071 /* CommentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentObject.m; path = Classes/Models/CommentObject.m; sourceTree = SOURCE_ROOT; };
 		9A210F361944B13A00871071 /* CommentsRecursive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CommentsRecursive.json; path = Tests/Fixtures/CommentsRecursive.json; sourceTree = SOURCE_ROOT; };
@@ -343,6 +380,16 @@
 		9A4512D219165B46006E6022 /* EKCoreDataBenchmarkSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataBenchmarkSuite.h; path = Benchmarks/Classes/Becnhmark/EKCoreDataBenchmarkSuite.h; sourceTree = "<group>"; };
 		9A4512D319165B46006E6022 /* EKCoreDataBenchmarkSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataBenchmarkSuite.m; path = Benchmarks/Classes/Becnhmark/EKCoreDataBenchmarkSuite.m; sourceTree = "<group>"; };
 		9A4512F719166B8E006E6022 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "Benchmarks/Targets/MacOS Benchmark/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		9A8420E01957164E006DDDE3 /* EKObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectModel.h; sourceTree = "<group>"; };
+		9A8420E11957164E006DDDE3 /* EKObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectModel.m; sourceTree = "<group>"; };
+		9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectModel.h; sourceTree = "<group>"; };
+		9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectModel.m; sourceTree = "<group>"; };
+		9A8420F3195723A6006DDDE3 /* One.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = One.h; path = Tests/Fixtures/FixtureClasses/One.h; sourceTree = "<group>"; };
+		9A8420F4195723A6006DDDE3 /* One.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = One.m; path = Tests/Fixtures/FixtureClasses/One.m; sourceTree = "<group>"; };
+		9A8420F7195723BE006DDDE3 /* Two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Two.h; path = Tests/Fixtures/FixtureClasses/Two.h; sourceTree = "<group>"; };
+		9A8420F8195723BE006DDDE3 /* Two.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Two.m; path = Tests/Fixtures/FixtureClasses/Two.m; sourceTree = "<group>"; };
+		9A8420FB195723D0006DDDE3 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Three.h; path = Tests/Fixtures/FixtureClasses/Three.h; sourceTree = "<group>"; };
+		9A8420FC195723D0006DDDE3 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Three.m; path = Tests/Fixtures/FixtureClasses/Three.m; sourceTree = "<group>"; };
 		9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapper.h; sourceTree = "<group>"; };
 		9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapper.m; sourceTree = "<group>"; };
 		9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataImporter.h; sourceTree = "<group>"; };
@@ -351,12 +398,15 @@
 		9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ComplexRepresentation.json; path = Tests/Fixtures/ComplexRepresentation.json; sourceTree = SOURCE_ROOT; };
 		9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FlattenArray.h"; sourceTree = "<group>"; };
 		9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FlattenArray.m"; sourceTree = "<group>"; };
+		9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonsWithSamePhones.json; path = Tests/Fixtures/PersonsWithSamePhones.json; sourceTree = SOURCE_ROOT; };
 		9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
 		9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
 		9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMappingExample.xcdatamodel; sourceTree = "<group>"; };
+		9E9BD3814FE20F5C7E01D5C1 /* Pods-MacOS Benchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacOS Benchmark/Pods-MacOS Benchmark.debug.xcconfig"; sourceTree = "<group>"; };
+		A7E98E6E1DB90FE1A193665A /* Pods-iOS Benchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark.release.xcconfig"; sourceTree = "<group>"; };
 		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
-		A9D16CF716F2B2770003759B /* EKFieldMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFieldMapping.h; sourceTree = "<group>"; };
-		A9D16CF816F2B2770003759B /* EKFieldMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFieldMapping.m; sourceTree = "<group>"; };
+		A9D16CF716F2B2770003759B /* EKPropertyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPropertyMapping.h; sourceTree = "<group>"; };
+		A9D16CF816F2B2770003759B /* EKPropertyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyMapping.m; sourceTree = "<group>"; };
 		A9D16CF916F2B2770003759B /* EKMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapper.h; sourceTree = "<group>"; };
 		A9D16CFA16F2B2770003759B /* EKMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMapper.m; sourceTree = "<group>"; };
 		A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMappingBlocks.h; sourceTree = "<group>"; };
@@ -368,9 +418,9 @@
 		A9D16D0116F2B2770003759B /* EKSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializer.m; sourceTree = "<group>"; };
 		A9D16D0216F2B2770003759B /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTransformer.h; sourceTree = "<group>"; };
 		A9D16D0316F2B2770003759B /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTransformer.m; sourceTree = "<group>"; };
-		CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.xcconfig"; path = "Pods/Pods-OS X Tests.xcconfig"; sourceTree = "<group>"; };
-		D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.xcconfig"; path = "Pods/Pods-iOS Benchmark.xcconfig"; sourceTree = "<group>"; };
+		AD25BDD69560597087CEFFD7 /* Pods-iOS Benchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark.debug.xcconfig"; sourceTree = "<group>"; };
 		DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OS X Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF2EF3D3D15CF6415E3A65E3 /* Pods-OS X Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OS X Tests/Pods-OS X Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +500,7 @@
 				9A45121219164705006E6022 /* Plane.json */,
 				9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */,
 				9A210F361944B13A00871071 /* CommentsRecursive.json */,
+				9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */,
 			);
 			name = Fixtures;
 			path = EasyMappingExampleTests;
@@ -473,6 +524,21 @@
 				9A45117719164696006E6022 /* MappingProvider.m */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		7A6C6A06C619DDAF2A9DD3F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E9BD3814FE20F5C7E01D5C1 /* Pods-MacOS Benchmark.debug.xcconfig */,
+				07797FA26639AF90E877FABF /* Pods-MacOS Benchmark.release.xcconfig */,
+				1CAE9849457872E6F5681E97 /* Pods-OS X Tests.debug.xcconfig */,
+				EF2EF3D3D15CF6415E3A65E3 /* Pods-OS X Tests.release.xcconfig */,
+				AD25BDD69560597087CEFFD7 /* Pods-iOS Benchmark.debug.xcconfig */,
+				A7E98E6E1DB90FE1A193665A /* Pods-iOS Benchmark.release.xcconfig */,
+				8D816FFC6DC094C7A9297EA6 /* Pods-iOS Tests.debug.xcconfig */,
+				5D5068BD028D7ECDE8912D21 /* Pods-iOS Tests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		9A13022D190BF9380060A25C /* OS X Tests */ = {
@@ -604,9 +670,92 @@
 			name = Specs;
 			sourceTree = "<group>";
 		};
+		9A8420EC19571AC6006DDDE3 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				9A8420E01957164E006DDDE3 /* EKObjectModel.h */,
+				9A8420E11957164E006DDDE3 /* EKObjectModel.m */,
+				9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */,
+				9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */,
+			);
+			name = Convenience;
+			sourceTree = "<group>";
+		};
+		9A8420ED19571AD4006DDDE3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */,
+				A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */,
+				A9D16D0216F2B2770003759B /* EKTransformer.h */,
+				A9D16D0316F2B2770003759B /* EKTransformer.m */,
+				9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */,
+				9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		9A8420EE19571B08006DDDE3 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16CF716F2B2770003759B /* EKPropertyMapping.h */,
+				A9D16CF816F2B2770003759B /* EKPropertyMapping.m */,
+				9A170330194C820200682F00 /* EKRelationshipMapping.h */,
+				9A170331194C820200682F00 /* EKRelationshipMapping.m */,
+			);
+			name = Wrappers;
+			sourceTree = "<group>";
+		};
+		9A8420EF19571B10006DDDE3 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16CF916F2B2770003759B /* EKMapper.h */,
+				A9D16CFA16F2B2770003759B /* EKMapper.m */,
+				A9D16CFC16F2B2770003759B /* EKObjectMapping.h */,
+				A9D16CFD16F2B2770003759B /* EKObjectMapping.m */,
+			);
+			name = NSObject;
+			sourceTree = "<group>";
+		};
+		9A8420F019571B17006DDDE3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */,
+				9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */,
+				9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */,
+				9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */,
+				9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */,
+				9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		9A8420F119571B58006DDDE3 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				A9D16D0016F2B2770003759B /* EKSerializer.h */,
+				A9D16D0116F2B2770003759B /* EKSerializer.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		9A8420F219572382006DDDE3 /* FixtureClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9A8420F3195723A6006DDDE3 /* One.h */,
+				9A8420F4195723A6006DDDE3 /* One.m */,
+				9A8420F7195723BE006DDDE3 /* Two.h */,
+				9A8420F8195723BE006DDDE3 /* Two.m */,
+				9A8420FB195723D0006DDDE3 /* Three.h */,
+				9A8420FC195723D0006DDDE3 /* Three.m */,
+			);
+			name = FixtureClasses;
+			sourceTree = "<group>";
+		};
 		9AE54FCE190BD7B5003A3B56 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				9A20569F1956DF7900499FC3 /* BaseTestModel.h */,
+				9A2056A01956DF7900499FC3 /* BaseTestModel.m */,
 				9A451192191646C9006E6022 /* Address.h */,
 				9A451193191646C9006E6022 /* Address.m */,
 				9A451194191646C9006E6022 /* Alien.h */,
@@ -642,6 +791,8 @@
 		9AE54FCF190BD7C1003A3B56 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				9A2056A31956E0EE00499FC3 /* BaseManagedTestModel.h */,
+				9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */,
 				9A451180191646B2006E6022 /* ManagedCar.h */,
 				9A451181191646B2006E6022 /* ManagedCar.m */,
 				9A451182191646B2006E6022 /* ManagedPerson.h */,
@@ -655,6 +806,7 @@
 		9AF425C1190CEF42003FD1BD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9A8420F219572382006DDDE3 /* FixtureClasses */,
 				9A4DD1AF190CF88C00A134C0 /* Specs */,
 				02FF773818E32257002282D3 /* Fixtures */,
 			);
@@ -681,10 +833,7 @@
 				9A4512C219164C20006E6022 /* Benchmarks */,
 				C6557E1416D6621E005D2D3E /* Frameworks */,
 				C6557E1316D6621E005D2D3E /* Products */,
-				CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */,
-				8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */,
-				D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */,
-				4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */,
+				7A6C6A06C619DDAF2A9DD3F1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -713,28 +862,15 @@
 		C6557E5016D6652A005D2D3E /* EasyMapping */ = {
 			isa = PBXGroup;
 			children = (
+				9A8420F119571B58006DDDE3 /* Serialization */,
+				9A8420F019571B17006DDDE3 /* CoreData */,
+				9A8420EF19571B10006DDDE3 /* NSObject */,
+				9A8420EE19571B08006DDDE3 /* Wrappers */,
+				9A8420ED19571AD4006DDDE3 /* Helpers */,
+				9A8420EC19571AC6006DDDE3 /* Convenience */,
 				A9D16CF616F2B2770003759B /* EasyMapping.h */,
-				A9D16CF716F2B2770003759B /* EKFieldMapping.h */,
-				A9D16CF816F2B2770003759B /* EKFieldMapping.m */,
-				A9D16CF916F2B2770003759B /* EKMapper.h */,
-				A9D16CFA16F2B2770003759B /* EKMapper.m */,
-				9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */,
-				9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */,
-				9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */,
-				9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */,
 				A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */,
-				A9D16CFC16F2B2770003759B /* EKObjectMapping.h */,
-				A9D16CFD16F2B2770003759B /* EKObjectMapping.m */,
-				9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */,
-				9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */,
-				A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */,
-				A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */,
-				A9D16D0016F2B2770003759B /* EKSerializer.h */,
-				A9D16D0116F2B2770003759B /* EKSerializer.m */,
-				A9D16D0216F2B2770003759B /* EKTransformer.h */,
-				A9D16D0316F2B2770003759B /* EKTransformer.m */,
-				9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */,
-				9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */,
+				9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */,
 			);
 			name = EasyMapping;
 			path = ../EasyMapping;
@@ -779,7 +915,7 @@
 			name = "OS X Tests";
 			productName = "OS X Tests";
 			productReference = 9A130226190BF9380060A25C /* OS X Tests.xctest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		9A4510F0191643FD006E6022 /* iOS Benchmark */ = {
 			isa = PBXNativeTarget;
@@ -865,6 +1001,7 @@
 				9A45122F19164705006E6022 /* Female.json in Resources */,
 				9A45123319164705006E6022 /* Male.json in Resources */,
 				9AA7CED3191FA7C400608262 /* ComplexRepresentation.json in Resources */,
+				9AC1321D1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */,
 				9A210F371944B13A00871071 /* CommentsRecursive.json in Resources */,
 				9A45123F19164705006E6022 /* Person.json in Resources */,
 				9A45122319164705006E6022 /* CarWithDate.json in Resources */,
@@ -892,6 +1029,7 @@
 				9A45123019164705006E6022 /* Female.json in Resources */,
 				9A45123419164705006E6022 /* Male.json in Resources */,
 				9AA7CED4191FA7C400608262 /* ComplexRepresentation.json in Resources */,
+				9AC1321E1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */,
 				9A210F381944B13A00871071 /* CommentsRecursive.json in Resources */,
 				9A45124019164705006E6022 /* Person.json in Resources */,
 				9A45122419164705006E6022 /* CarWithDate.json in Resources */,
@@ -977,7 +1115,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-MacOS Benchmark-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacOS Benchmark/Pods-MacOS Benchmark-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		14211B86D9E84DD28291A654 /* Check Pods Manifest.lock */ = {
@@ -1007,7 +1145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-OS X Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OS X Tests/Pods-OS X Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		55C7ED844C6D48618437BF7B /* Copy Pods Resources */ = {
@@ -1022,7 +1160,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-iOS Benchmark-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		62D8F131D6D34B3FB40F5DAE /* Copy Pods Resources */ = {
@@ -1037,7 +1175,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-iOS Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C8E81978B7B84DA083C46ECE /* Check Pods Manifest.lock */ = {
@@ -1093,13 +1231,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4511DC191646C9006E6022 /* UFO.m in Sources */,
+				9A8420E21957164E006DDDE3 /* EKObjectModel.m in Sources */,
 				9A4511B8191646C9006E6022 /* Cat.m in Sources */,
 				9A4511EF191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */,
 				9A4511E7191646F6006E6022 /* EKFieldMappingSpec.m in Sources */,
 				9A4511B0191646C9006E6022 /* Alien.m in Sources */,
 				9A45118E191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117819164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D0191646C9006E6022 /* Phone.m in Sources */,
+				9A8420FD195723D0006DDDE3 /* Three.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A4511C8191646C9006E6022 /* NativeChild.m in Sources */,
 				9A4511C4191646C9006E6022 /* Native.m in Sources */,
@@ -1112,13 +1253,18 @@
 				9A4511C0191646C9006E6022 /* Finger.m in Sources */,
 				9A4511FB191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
 				9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */,
+				9A8420F5195723A6006DDDE3 /* One.m in Sources */,
+				9A8420E8195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A210F341944B10A00871071 /* CommentObject.m in Sources */,
 				9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */,
-				9A130245190BFEF30060A25C /* EKFieldMapping.m in Sources */,
+				9A130245190BFEF30060A25C /* EKPropertyMapping.m in Sources */,
+				9A170332194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9AA7CECB191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9AA7CED7191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
+				9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451186191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A8420F9195723BE006DDDE3 /* Two.m in Sources */,
 				9A4511BC191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130246190BFEF30060A25C /* EKMapper.m in Sources */,
 				9A4511B4191646C9006E6022 /* Car.m in Sources */,
@@ -1138,13 +1284,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4511DD191646C9006E6022 /* UFO.m in Sources */,
+				9A8420E31957164E006DDDE3 /* EKObjectModel.m in Sources */,
 				9A4511B9191646C9006E6022 /* Cat.m in Sources */,
 				9A4511F0191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */,
 				9A4511E8191646F7006E6022 /* EKFieldMappingSpec.m in Sources */,
 				9A4511B1191646C9006E6022 /* Alien.m in Sources */,
 				9A45118F191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D1191646C9006E6022 /* Phone.m in Sources */,
+				9A8420FE195723D0006DDDE3 /* Three.m in Sources */,
 				9A130251190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A4511C9191646C9006E6022 /* NativeChild.m in Sources */,
 				9A4511C5191646C9006E6022 /* Native.m in Sources */,
@@ -1157,13 +1306,18 @@
 				9A13024D190BFEF30060A25C /* EKMapper.m in Sources */,
 				9A4511FC191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
 				9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */,
+				9A8420F6195723A6006DDDE3 /* One.m in Sources */,
+				9A8420E9195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A210F351944B10B00871071 /* CommentObject.m in Sources */,
 				9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */,
-				9A13024C190BFEF30060A25C /* EKFieldMapping.m in Sources */,
+				9A170333194C820200682F00 /* EKRelationshipMapping.m in Sources */,
+				9A13024C190BFEF30060A25C /* EKPropertyMapping.m in Sources */,
 				9AA7CECC191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
+				9A2056A61956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451187191646B2006E6022 /* ManagedCar.m in Sources */,
+				9A8420FA195723BE006DDDE3 /* Two.m in Sources */,
 				9A4511BD191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
 				9A4511B5191646C9006E6022 /* Car.m in Sources */,
@@ -1187,7 +1341,8 @@
 				9A4511BA191646C9006E6022 /* Cat.m in Sources */,
 				9A4511B6191646C9006E6022 /* Car.m in Sources */,
 				9A4511AE191646C9006E6022 /* Address.m in Sources */,
-				9A45127A19164911006E6022 /* EKFieldMapping.m in Sources */,
+				9A45127A19164911006E6022 /* EKPropertyMapping.m in Sources */,
+				9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */,
 				9A4511CA191646C9006E6022 /* NativeChild.m in Sources */,
 				9A45127B19164911006E6022 /* EKMapper.m in Sources */,
 				9A4511CE191646C9006E6022 /* Person.m in Sources */,
@@ -1199,7 +1354,9 @@
 				9A45127F19164911006E6022 /* EKSerializer.m in Sources */,
 				9A4511C6191646C9006E6022 /* Native.m in Sources */,
 				9A4512D019165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
+				9A8420EA195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A45117E19164696006E6022 /* MappingProvider.m in Sources */,
+				9A170334194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A4511B2191646C9006E6022 /* Alien.m in Sources */,
 				9AA7CEC1191E555300608262 /* EKManagedObjectMapper.m in Sources */,
 				9A45118C191646B2006E6022 /* ManagedPerson.m in Sources */,
@@ -1211,9 +1368,11 @@
 				9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9A4511DE191646C9006E6022 /* UFO.m in Sources */,
 				9A4511DA191646C9006E6022 /* Seaplane.m in Sources */,
+				9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */,
 				9A210F321944B0E800871071 /* CommentObject.m in Sources */,
 				9A451269191647C6006E6022 /* main.m in Sources */,
 				9A45117A19164696006E6022 /* ManagedMappingProvider.m in Sources */,
+				9A8420E41957164E006DDDE3 /* EKObjectModel.m in Sources */,
 				9A45127C19164911006E6022 /* EKObjectMapping.m in Sources */,
 				9A3178C1191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */,
 				9A4512D419165B46006E6022 /* EKCoreDataBenchmarkSuite.m in Sources */,
@@ -1232,6 +1391,7 @@
 				9A4511D7191646C9006E6022 /* Plane.m in Sources */,
 				9A4511B3191646C9006E6022 /* Alien.m in Sources */,
 				9A451270191647ED006E6022 /* EKAppDelegate.m in Sources */,
+				9A8420DF1957068E006DDDE3 /* BaseTestModel.m in Sources */,
 				9A451189191646B2006E6022 /* ManagedCar.m in Sources */,
 				9A4511C3191646C9006E6022 /* Finger.m in Sources */,
 				9A45128219164912006E6022 /* EKMapper.m in Sources */,
@@ -1243,7 +1403,9 @@
 				9A4511CF191646C9006E6022 /* Person.m in Sources */,
 				9A45128419164912006E6022 /* EKManagedObjectMapping.m in Sources */,
 				9A4512D119165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
+				9A8420EB195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A45117F19164696006E6022 /* MappingProvider.m in Sources */,
 				9AA7CEC2191E555300608262 /* EKManagedObjectMapper.m in Sources */,
 				9A4511B7191646C9006E6022 /* Car.m in Sources */,
@@ -1253,11 +1415,13 @@
 				9AA7CECE191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9A45128719164912006E6022 /* EKTransformer.m in Sources */,
 				9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */,
-				9A45128119164912006E6022 /* EKFieldMapping.m in Sources */,
+				9A45128119164912006E6022 /* EKPropertyMapping.m in Sources */,
 				9A4511DB191646C9006E6022 /* Seaplane.m in Sources */,
+				9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */,
 				9A210F331944B0E900871071 /* CommentObject.m in Sources */,
 				9A4511BF191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A4511D3191646C9006E6022 /* Phone.m in Sources */,
+				9A8420E51957164E006DDDE3 /* EKObjectModel.m in Sources */,
 				9A4511AF191646C9006E6022 /* Address.m in Sources */,
 				9A3178C2191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */,
 				9A4512D519165B46006E6022 /* EKCoreDataBenchmarkSuite.m in Sources */,
@@ -1306,7 +1470,7 @@
 /* Begin XCBuildConfiguration section */
 		02FF773618E32249002282D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */;
+			baseConfigurationReference = 8D816FFC6DC094C7A9297EA6 /* Pods-iOS Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1332,7 +1496,7 @@
 		};
 		02FF773718E32249002282D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CC8FA1371EA412687E81B13 /* Pods-iOS Tests.xcconfig */;
+			baseConfigurationReference = 5D5068BD028D7ECDE8912D21 /* Pods-iOS Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1355,7 +1519,7 @@
 		};
 		9A130239190BF9380060A25C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */;
+			baseConfigurationReference = 1CAE9849457872E6F5681E97 /* Pods-OS X Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1382,7 +1546,7 @@
 		};
 		9A13023A190BF9380060A25C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFB5658E45B248E2ABEF46F6 /* Pods-OS X Tests.xcconfig */;
+			baseConfigurationReference = EF2EF3D3D15CF6415E3A65E3 /* Pods-OS X Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1406,7 +1570,7 @@
 		};
 		9A45111F191643FD006E6022 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */;
+			baseConfigurationReference = AD25BDD69560597087CEFFD7 /* Pods-iOS Benchmark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1437,7 +1601,7 @@
 		};
 		9A451120191643FD006E6022 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4E1884616744F5EBB2C31D5 /* Pods-iOS Benchmark.xcconfig */;
+			baseConfigurationReference = A7E98E6E1DB90FE1A193665A /* Pods-iOS Benchmark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1465,7 +1629,7 @@
 		};
 		9A45116D1916444C006E6022 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */;
+			baseConfigurationReference = 9E9BD3814FE20F5C7E01D5C1 /* Pods-MacOS Benchmark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1498,7 +1662,7 @@
 		};
 		9A45116E1916444C006E6022 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E5BAB2539364C5FAB7805D6 /* Pods-MacOS Benchmark.xcconfig */;
+			baseConfigurationReference = 07797FA26639AF90E877FABF /* Pods-MacOS Benchmark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

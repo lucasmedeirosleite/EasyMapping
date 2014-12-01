@@ -1,37 +1,45 @@
 //
-//  EKFieldMappingSpec.m
+//  EKPropertyMappingSpec.m
 //  EasyMappingExample
 //
 //  Created by Lucas Medeiros on 22/02/13.
 //  Copyright 2013 EasyKit. All rights reserved.
 //
 
-#import "EKFieldMapping.h"
+#import "EKPropertyMapping.h"
 
-SPEC_BEGIN(EKFieldMappingSpec)
+SPEC_BEGIN(EKPropertyMappingSpec)
 
-describe(@"EKFieldMapping", ^{
+describe(@"EKPropertyMapping", ^{
    
-    __block EKFieldMapping *fieldMapping;
+    __block EKPropertyMapping *mapping;
     
     beforeEach(^{
-        fieldMapping = [[EKFieldMapping alloc] init];
+        mapping = [[EKPropertyMapping alloc] init];
     });
     
     specify(^{
-        [[fieldMapping should] respondToSelector:@selector(keyPath)];
+        [[mapping should] respondToSelector:@selector(keyPath)];
     });
     
     specify(^{
-        [[fieldMapping should] respondToSelector:@selector(field)];
+        [[mapping should] respondToSelector:@selector(property)];
     });
     
     specify(^{
-        [[fieldMapping should] respondToSelector:@selector(valueBlock)];
+        [[mapping should] respondToSelector:@selector(valueBlock)];
     });
     
     specify(^{
-        [[fieldMapping should] respondToSelector:@selector(reverseBlock)];
+        [[mapping should] respondToSelector:@selector(reverseBlock)];
+    });
+    
+    specify(^{
+        [[mapping should] respondToSelector:@selector(managedValueBlock)];
+    });
+    
+    specify(^{
+        [[mapping should] respondToSelector:@selector(managedReverseBlock)];
     });
     
 });

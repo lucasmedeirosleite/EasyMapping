@@ -57,35 +57,35 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withDateFormat:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withDateFormat:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromArray:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromArray:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapFieldsFromDictionary:)];
+            [[mapping should] respondToSelector:@selector(mapPropertiesFromDictionary:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withValueBlock:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withValueBlock:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKey:toField:withValueBlock:withReverseBlock:)];
+            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withValueBlock:reverseBlock:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasOneMapping:forKey:)];
+            [[mapping should] respondToSelector:@selector(hasOne:forKeyPath:)];
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(hasManyMapping:forKey:)];
+            [[mapping should] respondToSelector:@selector(hasMany:forKeyPath:)];
         });
         
     });
@@ -107,7 +107,7 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(fieldMappings)];
+            [[mapping should] respondToSelector:@selector(propertyMappings)];
         });
         
         specify(^{
@@ -204,80 +204,80 @@ describe(@"EKManagedObjectMapping", ^{
         
     });
     
-    describe(@"#mapKey:toField:", ^{
+    describe(@"#mapKey:toProperty:", ^{
         
         __block EKManagedObjectMapping *mapping;
-        __block EKFieldMapping *fieldMapping;
+        __block EKPropertyMapping *propertyMapping;
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapKey:@"created_at" toField:@"createdAt"];
-            fieldMapping = [mapping.fieldMappings objectForKey:@"created_at"];
+            [mapping mapKeyPath:@"created_at" toProperty:@"createdAt"];
+            propertyMapping = [mapping.propertyMappings objectForKey:@"created_at"];
         });
         
         specify(^{
-            [[fieldMapping.keyPath should] equal:@"created_at"];
+            [[propertyMapping.keyPath should] equal:@"created_at"];
         });
         
         specify(^{
-            [[fieldMapping.field should] equal:@"createdAt"];
+            [[propertyMapping.property should] equal:@"createdAt"];
         });
         
     });
     
-    describe(@"#mapKeyFieldsFromArray", ^{
+    describe(@"#mapPropertiesFromArray", ^{
         
         __block EKManagedObjectMapping *mapping;
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapFieldsFromArray:@[@"name", @"email"]];
+            [mapping mapPropertiesFromArray:@[@"name", @"email"]];
         });
         
-        describe(@"name field", ^{
+        describe(@"name property", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"name"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"name"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"name"];
+                [[propertyMapping.keyPath should] equal:@"name"];
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"name"];
+                [[propertyMapping.property should] equal:@"name"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"email"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"email"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"email"];
+                [[propertyMapping.keyPath should] equal:@"email"];
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"email"];
+                [[propertyMapping.property should] equal:@"email"];
             });
             
         });
         
     });
     
-    describe(@"#mapKeyFieldsFromDictionary", ^{
+    describe(@"#mapPropertiesFromDictionary", ^{
         
         __block EKManagedObjectMapping *mapping;
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapFieldsFromDictionary:@{
+            [mapping mapPropertiesFromDictionary:@{
              @"id" : @"identifier",
              @"contact.email" : @"email"
              }];
@@ -285,57 +285,57 @@ describe(@"EKManagedObjectMapping", ^{
         
         describe(@"identifier field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"id"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"id"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"id"];
+                [[propertyMapping.keyPath should] equal:@"id"];
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"identifier"];
+                [[propertyMapping.property should] equal:@"identifier"];
             });
         });
         
         describe(@"email field", ^{
             
-            __block EKFieldMapping *fieldMapping;
+            __block EKPropertyMapping *propertyMapping;
             
             beforeEach(^{
-                fieldMapping = [mapping.fieldMappings objectForKey:@"contact.email"];
+                propertyMapping = [mapping.propertyMappings objectForKey:@"contact.email"];
             });
             
             specify(^{
-                [[fieldMapping.keyPath should] equal:@"contact.email"];
+                [[propertyMapping.keyPath should] equal:@"contact.email"];
             });
             
             specify(^{
-                [[fieldMapping.field should] equal:@"email"];
+                [[propertyMapping.property should] equal:@"email"];
             });
             
         });
         
     });
     
-    describe(@"#mapKey:toField:withDateFormat", ^{
+    describe(@"#mapKeyPath:toProperty:withDateFormat", ^{
         
         __block EKManagedObjectMapping *mapping;
         
         beforeEach(^{
             mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Car"];
-            [mapping mapKey:@"birthdate" toField:@"birthdate" withDateFormat:@"yyyy-MM-dd"];
+            [mapping mapKeyPath:@"birthdate" toProperty:@"birthdate" withDateFormat:@"yyyy-MM-dd"];
             
         });
         
         specify(^{
-            [[mapping.fieldMappings objectForKey:@"birthdate"] shouldNotBeNil];
+            [[mapping.propertyMappings objectForKey:@"birthdate"] shouldNotBeNil];
         });
         
         specify(^{
-            [[[mapping.fieldMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKFieldMapping class]];
+            [[[mapping.propertyMappings objectForKey:@"birthdate"] should] beKindOfClass:[EKPropertyMapping class]];
         });
         
     });

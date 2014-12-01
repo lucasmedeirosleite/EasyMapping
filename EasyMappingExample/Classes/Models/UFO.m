@@ -10,4 +10,14 @@
 
 @implementation UFO
 
++(EKObjectMapping *)objectMapping
+{
+    return [EKObjectMapping mappingForClass:[UFO class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"shape"]];
+        [mapping hasOne:[Alien class] forKeyPath:@"captain"];
+        [mapping hasMany:[Alien class] forKeyPath:@"crew"];
+        
+    }];
+}
+
 @end

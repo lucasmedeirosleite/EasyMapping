@@ -7,7 +7,16 @@
 //
 
 #import "Alien.h"
+#import "Finger.h"
 
 @implementation Alien
+
++(EKObjectMapping *)objectMapping
+{
+    return [EKObjectMapping mappingForClass:[Alien class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"name"]];
+        [mapping hasMany:[Finger class] forKeyPath:@"fingers"];
+    }];
+}
 
 @end

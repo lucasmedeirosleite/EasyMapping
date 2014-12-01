@@ -23,6 +23,8 @@
 
 #import "EKMappingBlocks.h"
 
+@protocol EKMappingProtocol;
+
 /**
  `EKObjectMapping` class is used to define mappings between JSON representation and objective-c object.
  */
@@ -40,19 +42,9 @@
 @property (nonatomic, strong, readonly) NSString *rootPath;
 
 /**
- Name of the property, that will receive value.
+ Dictionary, containing property mappings for current object.
  */
-@property (nonatomic, strong, readwrite) NSString * field;
-
-/**
- Path to the value in JSON. Will be used by valueForKeyPath: method.
- */
-@property (nonatomic, strong, readwrite) NSString * keyPath;
-
-/**
- Dictionary, containing field mappings for current object.
- */
-@property (nonatomic, strong, readonly) NSMutableDictionary *fieldMappings;
+@property (nonatomic, strong, readonly) NSMutableDictionary *propertyMappings;
 
 /**
  Dictionary, containing to-one relationships of current object.
@@ -113,113 +105,115 @@
 /**
  Map JSON keyPath to object property.
  
- @param key JSON keypath, that will be used by valueForKeyPath: method
+ @param keyPath JSON keypath, that will be used by valueForKeyPath: method
  
- @param field Property name.
+ @param property Property name.
  */
-- (void)mapKey:(NSString *)key toField:(NSString *)field;
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property;
 
 /**
  Map JSON keyPath to object property. This method assumes, that value contains NSString, that can be transformed into NSDate by NSDateFormatter. Default timezone is GMT. Transformation is done by `EKTransformer` class.
  
- @param key JSON keypath, that will be used by valueForKeyPath: method
+ @param keyPath JSON keypath, that will be used by valueForKeyPath: method
  
- @param field Property name.
+ @param property Property name.
  
  @param dateFormat Date format
  */
-- (void)mapKey:(NSString *)key toField:(NSString *)field withDateFormat:(NSString *)dateFormat;
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat;
 
 /**
- Maps fields from array. We assume, that names of keypaths and properties are the same.
+ Maps properties from array. We assume, that names of keypaths and properties are the same.
  
- @param fieldsArray Array of property names
+ @param propertyNamesArray Array of property names
  */
-- (void)mapFieldsFromArray:(NSArray *)fieldsArray;
+- (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray;
 
 /**
- Maps fields from array. We assume, that names of keypaths and properties are the same, except for the first letter, that is uppercased. For example, property @"name" will be filled, using "Name" value of JSON.
+ Maps properties from array. We assume, that names of keypaths and properties are the same, except for the first letter, that is uppercased. For example, property @"name" will be filled, using "Name" value of JSON.
  
- @param fieldsArray Array of property names
+ @param propertyNamesArray Array of property names
  */
-- (void)mapFieldsFromArrayToPascalCase:(NSArray *)fieldsArray;
+- (void)mapPropertiesFromArrayToPascalCase:(NSArray *)propertyNamesArray;
 
 /**
- Maps fields from dictionary. Keys are keypaths in JSON, values are names of properties.
+ Maps properties from dictionary. Keys are keypaths in JSON, values are names of properties.
  
- @param fieldsDictionary Dictionary with keypaths and property names
+ @param propertyDictionary Dictionary with keypaths and property names
  */
-- (void)mapFieldsFromDictionary:(NSDictionary *)fieldsDictionary;
+- (void)mapPropertiesFromDictionary:(NSDictionary *)propertyDictionary;
 
 /**
  Map mappings from another `EKObjectMapping` object. This can be useful with inheritance.
  */
-- (void)mapFieldsFromMappingObject:(EKObjectMapping *)mappingObj;
+- (void)mapPropertiesFromMappingObject:(EKObjectMapping *)mappingObj;
 
 /**
  Map JSON keyPath to object property, using valueBlock.
  
- @param key JSON keypath, that will be used by valueForKeyPath: method
+ @param keyPath JSON keypath, that will be used by valueForKeyPath: method
  
- @param field Property name.
+ @param property Property name.
  
  @param valueBlock block to transform JSON value into property value.
  */
-- (void)mapKey:(NSString *)key toField:(NSString *)field
-withValueBlock:(EKMappingValueBlock)valueBlock;
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
+    withValueBlock:(EKMappingValueBlock)valueBlock;
 
 /**
  Map JSON keyPath to object property, using valueBlock. Include serialization block, that does reverse this operation.
  
- @param key JSON keypath, that will be used by valueForKeyPath: method
+ @param keyPath JSON keypath, that will be used by valueForKeyPath: method
  
- @param field Property name.
+ @param property Property name.
  
  @param valueBlock block to transform JSON value into property value.
  
  @param reverseBlock block to transform property value into JSON value
  */
-- (void)mapKey:(NSString *)key toField:(NSString *)field
-withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingReverseBlock)reverseBlock;
+- (void)mapKeyPath:(NSString *)keyPath
+        toProperty:(NSString *)property
+    withValueBlock:(EKMappingValueBlock)valueBlock
+      reverseBlock:(EKMappingReverseBlock)reverseBlock;
 
 /**
- Map to-one relationship for keyPath. Assuming keyPath and property name are equal.
+ Map to-one relationship for keyPath. Assuming keyPath and property name are equal. ObjectClass should conform to `EKMappingProtocol`.
  
  @param mapping mapping for child object
  
- @param key keyPath to child object representation in JSON
+ @param keyPath keyPath to child object representation in JSON
  */
-- (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath;
 
 /**
- Map to-one relationship for keyPath.
+ Map to-one relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
  
  @param mapping mapping for child object
  
- @param key keyPath to child object representation in JSON
+ @param keyPath keyPath to child object representation in JSON
  
- @param field Name of the property, that will receive mapped object.
+ @param property Name of the property, that will receive mapped object.
  */
-- (void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
+- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
- Map to-many relationship for keyPath. Assuming keyPath and property name are equal.
+ Map to-many relationship for keyPath. Assuming keyPath and property name are equal. ObjectClass should conform to `EKMappingProtocol`.
  
  @param mapping mapping for child objects
  
- @param key keyPath to child object representations in JSON
+ @param keyPath keyPath to child object representations in JSON
  */
-- (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key;
+- (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath;
 
 /**
- Map to-many relationship for keyPath.
+ Map to-many relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
  
  @param mapping mapping for child objects
  
- @param key keyPath to child objects representation in JSON
+ @param keyPath keyPath to child objects representation in JSON
  
- @param field Name of the property, that will receive mapped objects.
+ @param property Name of the property, that will receive mapped objects.
  */
-- (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
+- (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 @end

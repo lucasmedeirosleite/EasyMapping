@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface Phone : NSObject
+@interface Phone : BaseTestModel
 
 @property (nonatomic, copy) NSString *DDI;
 @property (nonatomic, copy) NSString *DDD;

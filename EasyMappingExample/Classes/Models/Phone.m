@@ -10,4 +10,16 @@
 
 @implementation Phone
 
+static EKObjectMapping * mapping = nil;
+
++(void)registerMapping:(EKObjectMapping *)objectMapping
+{
+    mapping = objectMapping;
+}
+
++(EKObjectMapping *)objectMapping
+{
+    return mapping;
+}
+
 @end

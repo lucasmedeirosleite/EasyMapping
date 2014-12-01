@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseTestModel.h"
 
-@interface Native : NSObject
+@interface Native : BaseTestModel
 
 @property (nonatomic, readwrite) char charProperty;
 @property (nonatomic, readwrite) unsigned char unsignedCharProperty;
