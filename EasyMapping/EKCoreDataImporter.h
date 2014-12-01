@@ -77,4 +77,6 @@
  */
 - (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping;
 
+- (void)cacheObject:(NSManagedObject *)object withMapping:(EKManagedObjectMapping *)mapping;
+
 @end

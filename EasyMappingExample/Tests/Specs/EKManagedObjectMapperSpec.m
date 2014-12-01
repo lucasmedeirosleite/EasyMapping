@@ -327,7 +327,34 @@ describe(@"EKManagedObjectMapper", ^{
         });
         
     });
+  
+    describe(@".arrayOfObjectsFromExternalRepresentation:withMapping: inserted objects", ^{
+
+    __block NSManagedObjectContext* moc;
+    __block NSArray *externalRepresentation;
+    __block NSArray *people = nil;
+
+    beforeEach(^{
+        moc = [NSManagedObjectContext MR_defaultContext];
+        externalRepresentation = [CMFixture buildUsingFixture:@"PersonsWithSamePhones"];
+        [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
+    });
+
+    specify(^{
+      people = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personWithPhonesMapping] inManagedObjectContext:moc];
+      
+      ManagedPhone * phone = [[people.firstObject phones] anyObject];
+      ManagedPhone * phone2 = [[people.lastObject phones] anyObject];
+      
+      [[phone should] equal:phone2];
+    });
+
+    });
     
+    describe(@".syncArrayOfObjectsFromExternalRepresentation:withMapping:fetchRequest:", ^{
+        
+    });
+  
 });
 
 SPEC_END

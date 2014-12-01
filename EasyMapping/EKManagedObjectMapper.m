@@ -52,9 +52,12 @@
         object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName
                                                inManagedObjectContext:self.importer.context];
     }
-    return [self fillObject:object
- fromExternalRepresentation:externalRepresentation
-                withMapping:mapping];
+    NSManagedObject * filledObject = [self fillObject:object
+                           fromExternalRepresentation:externalRepresentation
+                                          withMapping:mapping];
+    [self.importer cacheObject:filledObject withMapping:mapping];
+    
+    return filledObject;
 }
 
 - (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation

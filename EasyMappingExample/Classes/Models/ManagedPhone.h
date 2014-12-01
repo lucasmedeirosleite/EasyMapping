@@ -18,6 +18,5 @@
 @property (nonatomic, retain) NSString * ddi;
 @property (nonatomic, retain) NSString * ddd;
 @property (nonatomic, retain) NSString * number;
-@property (nonatomic, retain) ManagedPerson *person;
 
 @end

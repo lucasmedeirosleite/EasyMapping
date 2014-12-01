@@ -16,7 +16,6 @@
 @dynamic ddi;
 @dynamic ddd;
 @dynamic number;
-@dynamic person;
 
 static EKManagedObjectMapping * mapping = nil;
 
