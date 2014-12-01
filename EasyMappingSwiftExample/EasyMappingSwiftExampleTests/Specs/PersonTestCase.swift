@@ -16,7 +16,7 @@ class PersonTestCase: XCTestCase {
         super.setUp()
         
         let personInfo = FixtureLoader.jsonObjectFromFileNamed(name: "Person") as NSDictionary
-        person = EKMapper.objectFromExternalRepresentation(personInfo, withMapping: Person.objectMapping()) as Person
+        person = Person(properties: personInfo)
     }
 
     func testPersonValues() {
