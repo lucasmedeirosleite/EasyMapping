@@ -163,7 +163,7 @@ EasyMapping is partially compatible with Swift. [Here's detailed look](https://g
 
 ### Convenience classes
 
-Starting with 1.0.0, EasyMapping provides two convenience base classes: EKObjectModel and EKManagedObjectModel, that implement EKMappingProtocol by default. If, for example, class Person would inherit from EKObjectModel, and implemented objectMapping method, all it would take to create Person instance from JSON representation would be:
+Starting with 0.7.0, EasyMapping provides two convenience base classes: EKObjectModel and EKManagedObjectModel, that implement EKMappingProtocol by default. If, for example, class Person would inherit from EKObjectModel, and implemented objectMapping method, all it would take to create Person instance from JSON representation would be:
 
 ```objective-c
 NSDictionary * parsedPersonInfo = ...;
@@ -188,7 +188,7 @@ If you are using CoreData objects use `EKManagedObjectMapping` instead of `EKObj
 
 ### Recursive mappings
 
-Sometimes you can encounter situation, where your JSON will contain objects with links to objects of the same type. Good example would be comments, and replies to comments, that have tree-like structure. Starting with 1.0.0 recursive mappings are fully supported by EasyMapping.
+Sometimes you can encounter situation, where your JSON will contain objects with links to objects of the same type. Good example would be comments, and replies to comments, that have tree-like structure. Starting with 0.7.0 recursive mappings are fully supported by EasyMapping.
 
 ## Thanks
 
@@ -212,7 +212,7 @@ Thanks to:
 
 Using CocoaPods:
 
-	pod 'EasyMapping', '~>1.0.0'
+	pod 'EasyMapping', '~> 0.7.0'
 
 ## The idea
 
