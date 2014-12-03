@@ -175,10 +175,15 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
 
 -(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath];
+    [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
 }
 
 -(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
+{
+    [self hasOne:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
+}
+
+-(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
     NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
                       [objectClass conformsToProtocol:@protocol(EKManagedMappingProtocol)]);
@@ -189,16 +194,22 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
+    relationship.objectMapping = objectMapping;
     
     [self.hasOneMappings setObject:relationship forKey:keyPath];
 }
 
 -(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasMany:objectClass forKeyPath:keyPath forProperty:keyPath];
+    [self hasMany:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
 }
 
 -(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
+{
+    [self hasMany:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
+}
+
+-(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
     NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
                       [objectClass conformsToProtocol:@protocol(EKManagedMappingProtocol)]);
@@ -209,6 +220,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
+    relationship.objectMapping = objectMapping;
     
     [self.hasManyMappings setObject:relationship forKey:keyPath];
 }

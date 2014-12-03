@@ -10,4 +10,9 @@
 
 @implementation EKRelationshipMapping
 
+-(EKObjectMapping*)objectMapping
+{
+    return (_objectMapping == nil) ? [_objectClass objectMapping] : _objectMapping;
+}
+
 @end

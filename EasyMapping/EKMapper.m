@@ -48,7 +48,7 @@
         
 		 NSDictionary* value = [representation valueForKeyPath:key];
 		 if (value && value != (id)[NSNull null]) {
-			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping.objectClass objectMapping]];
+			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping objectMapping]];
 			 [object setValue:result forKeyPath:valueMapping.property];
 		 } else {
 			 [object setValue:nil forKey:valueMapping.property];
@@ -58,7 +58,7 @@
 		 NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withMapping:[valueMapping.objectClass objectMapping]];
+                                                                       withMapping:[valueMapping objectMapping]];
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
                                                         withPropertyName:[valueMapping property]];

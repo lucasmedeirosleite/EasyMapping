@@ -197,6 +197,18 @@
 - (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
+ Map to-one relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
+ 
+ @param keyPath keyPath to child object representation in JSON
+ 
+ @param property Name of the property, that will receive mapped object.
+
+ @param objectMapping optional mapping override for child object
+*/
+- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
+
+
+/**
  Map to-many relationship for keyPath. Assuming keyPath and property name are equal. ObjectClass should conform to `EKMappingProtocol`.
  
  @param mapping mapping for child objects
@@ -215,5 +227,17 @@
  @param property Name of the property, that will receive mapped objects.
  */
 - (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
+
+/**
+ Map to-many relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
+ 
+ @param keyPath keyPath to child objects representation in JSON
+ 
+ @param property Name of the property, that will receive mapped objects.
+ 
+ @param objectMapping optional mapping override for child objects
+ 
+ */
+-(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
 
 @end

@@ -17,4 +17,6 @@
 
 @property (nonatomic, strong) NSString * property;
 
+@property (nonatomic, strong) EKObjectMapping *objectMapping;
+
 @end
