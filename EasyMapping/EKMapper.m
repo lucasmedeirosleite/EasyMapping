@@ -31,6 +31,13 @@
 
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
+    NSParameterAssert([externalRepresentation isKindOfClass:[NSDictionary class]]);
+    NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
+    if (![externalRepresentation isKindOfClass:[NSDictionary class]] ||
+        ![mapping isKindOfClass:[EKObjectMapping class]]) {
+        return nil;
+    }
+
     id object = [[mapping.objectClass alloc] init];
     return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
 }
@@ -59,10 +66,15 @@
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
                                                                        withMapping:[valueMapping.objectClass objectMapping]];
-             id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
-                                                               forObject:object
-                                                        withPropertyName:[valueMapping property]];
-			 [object setValue:parsedObjects forKeyPath:valueMapping.property];
+             if (parsedArray) {
+                 id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
+                                                                   forObject:object
+                                                            withPropertyName:[valueMapping property]];
+                 [object setValue:parsedObjects forKeyPath:valueMapping.property];
+             }
+             else {
+                 [object setValue:nil forKey:valueMapping.property];
+             }
 		 } else {
 			 [object setValue:nil forKey:valueMapping.property];
 		 }
@@ -75,11 +87,15 @@
 {
     NSParameterAssert([externalRepresentation isKindOfClass:[NSArray class]]);
     NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
+    if (![externalRepresentation isKindOfClass[NSArray class]] ||
+        ![mapping isKindOfClass:[EKObjectMapping class]]) {
+        return nil;
+    }
     
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *representation in externalRepresentation) {
         id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];
-        [array addObject:parsedObject];
+        if (parsedObject) [array addObject:parsedObject];
     }
     return [NSArray arrayWithArray:array];
 }
