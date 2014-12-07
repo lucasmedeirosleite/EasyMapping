@@ -197,13 +197,15 @@
 - (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
- Map to-one relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
+ Map to-one relationship for keyPath.
  
  @param keyPath keyPath to child object representation in JSON
  
  @param property Name of the property, that will receive mapped object.
 
  @param objectMapping optional mapping override for child object
+ 
+ @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
 */
 - (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
 
@@ -229,7 +231,7 @@
 - (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
- Map to-many relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
+ Map to-many relationship for keyPath.
  
  @param keyPath keyPath to child objects representation in JSON
  
@@ -237,6 +239,7 @@
  
  @param objectMapping optional mapping override for child objects
  
+  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
 -(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
 

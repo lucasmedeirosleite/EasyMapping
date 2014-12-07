@@ -102,6 +102,14 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
+            [[mapping should] respondToSelector:@selector(hasOne:forKeyPath:forProperty:withObjectMapping:)];
+        });
+        
+        specify(^{
+            [[mapping should] respondToSelector:@selector(hasMany:forKeyPath:forProperty:withObjectMapping:)];
+        });
+        
+        specify(^{
             [[mapping should] respondToSelector:@selector(mapPropertiesFromMappingObject:)];
         });
         
@@ -589,6 +597,64 @@ describe(@"EKObjectMapping", ^{
             [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
         });
         
+    });
+    
+    describe(@"#hasOne:forKeyPath:forProperty:withObjectMapping:", ^{
+        __block EKObjectMapping * mapping;
+        __block EKObjectMapping * phoneMapping;
+        
+        beforeEach(^{
+            mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
+            phoneMapping = [Phone objectMapping];
+            // Use different class on purpose, checking object mapping of the relationship
+            [mapping hasOne:[Car class]
+                 forKeyPath:@"phone"
+                forProperty:@"phone"
+          withObjectMapping:phoneMapping];
+       });
+        
+        specify(^{
+            [mapping.hasOneMappings shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[mapping.hasOneMappings objectForKey:@"phone"] shouldNotBeNil];
+        });
+        
+        specify(^{
+            EKRelationshipMapping * relationship = [mapping.hasOneMappings objectForKey:@"phone"];
+            
+            [[[relationship objectMapping] should] equal:phoneMapping];
+        });
+    });
+    
+    describe(@"#hasMany:forKeyPath:forProperty:withObjectMapping:", ^{
+        __block EKObjectMapping * mapping;
+        __block EKObjectMapping * phoneMapping;
+        
+        beforeEach(^{
+            mapping = [[EKObjectMapping alloc] initWithObjectClass:[Person class]];
+            phoneMapping = [Phone objectMapping];
+            // Use different class on purpose, checking object mapping of the relationship
+            [mapping hasMany:[Car class]
+                  forKeyPath:@"phone"
+                 forProperty:@"phone"
+           withObjectMapping:phoneMapping];
+        });
+        
+        specify(^{
+            [mapping.hasManyMappings shouldNotBeNil];
+        });
+        
+        specify(^{
+            [[mapping.hasManyMappings objectForKey:@"phone"] shouldNotBeNil];
+        });
+        
+        specify(^{
+            EKRelationshipMapping * relationship = [mapping.hasManyMappings objectForKey:@"phone"];
+            
+            [[[relationship objectMapping] should] equal:phoneMapping];
+        });
     });
     
 });

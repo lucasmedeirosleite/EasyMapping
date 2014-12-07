@@ -185,8 +185,10 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
 
 -(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
-    NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
-                      [objectClass conformsToProtocol:@protocol(EKManagedMappingProtocol)]);
+    if (!objectMapping) {
+        NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
+                          [objectClass conformsToProtocol:@protocol(EKManagedMappingProtocol)]);
+    }
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
     
@@ -211,8 +213,10 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
 
 -(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
-    NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
-                      [objectClass conformsToProtocol:@protocol(EKManagedMappingProtocol)]);
+    if (!objectMapping) {
+        NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
+                          [objectClass conformsToProtocol:@protocol(EKManagedMappingProtocol)]);
+    }
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
     
