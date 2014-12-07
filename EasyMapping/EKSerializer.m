@@ -41,7 +41,7 @@
         
         if (hasOneObject) {
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
-                                                           withMapping:[mapping.objectClass objectMapping]];
+                                                           withMapping:[mapping objectMapping]];
             [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
         }
     }];
@@ -50,7 +50,7 @@
         id hasManyObject = [object valueForKey:mapping.property];
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
-                                                           withMapping:[mapping.objectClass objectMapping]];
+                                                           withMapping:[mapping objectMapping]];
             [representation setObject:hasManyRepresentation forKey:mapping.keyPath];
         }
     }];
