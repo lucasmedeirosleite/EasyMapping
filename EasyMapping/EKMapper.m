@@ -31,7 +31,6 @@
 
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
-    NSParameterAssert([externalRepresentation isKindOfClass:[NSDictionary class]]);
     NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
     
     if (![externalRepresentation isKindOfClass:[NSDictionary class]] ||
@@ -82,7 +81,6 @@
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKObjectMapping *)mapping
 {
-    NSParameterAssert([externalRepresentation isKindOfClass:[NSArray class]]);
     NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
     
     if (![externalRepresentation isKindOfClass:[NSArray class]] ||
