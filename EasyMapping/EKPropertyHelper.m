@@ -64,6 +64,11 @@ static const char scalarTypes[] = {
 
 + (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName
 {
+    if  (!array)
+    {
+        return nil;
+    }
+    
     objc_property_t property = class_getProperty([object class], [propertyName UTF8String]);
 	if (property)
     {

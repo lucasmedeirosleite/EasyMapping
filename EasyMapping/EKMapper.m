@@ -31,6 +31,15 @@
 
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
+    NSParameterAssert([externalRepresentation isKindOfClass:[NSDictionary class]]);
+    NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
+    
+    if (![externalRepresentation isKindOfClass:[NSDictionary class]] ||
+                ![mapping isKindOfClass:[EKObjectMapping class]])
+    {
+        return nil;
+    }
+    
     id object = [[mapping.objectClass alloc] init];
     return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
 }
@@ -75,6 +84,11 @@
 {
     NSParameterAssert([externalRepresentation isKindOfClass:[NSArray class]]);
     NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
+    
+    if (![externalRepresentation isKindOfClass:[NSArray class]] ||
+        ![mapping isKindOfClass:[EKObjectMapping class]]) {
+        return nil;
+    }
     
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *representation in externalRepresentation) {
