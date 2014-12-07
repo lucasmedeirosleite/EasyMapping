@@ -84,6 +84,35 @@
     }];
 }
 
++(EKManagedObjectMapping *)personWithReverseBlocksMapping
+{
+    EKManagedObjectMapping * personMapping = [self personWithCarMapping];
+    [personMapping mapKeyPath:@"gender" toProperty:@"gender"
+               withValueBlock:^id(NSString *key, id value, NSManagedObjectContext *context) {
+                   if ([value isEqualToString:@"male"])
+                   {
+                       return @"husband";
+                   }
+                   else if ([value isEqualToString:@"female"])
+                   {
+                       return @"wife";
+                   }
+                   return nil;
+               } reverseBlock:^id(id value, NSManagedObjectContext *context) {
+                   if ([value isEqualToString:@"husband"])
+                   {
+                       return @"male";
+                   }
+                   else if ([value isEqualToString:@"wife"])
+                   {
+                       return @"female";
+                   }
+                   return nil;
+               }];
+    
+    return personMapping;
+}
+
 + (EKManagedObjectMapping *)personWithCarMapping
 {
     return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])

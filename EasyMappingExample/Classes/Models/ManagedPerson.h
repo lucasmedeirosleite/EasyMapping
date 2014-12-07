@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) ManagedCar *car;
 @property (nonatomic, retain) NSSet *phones;
+@property (nonatomic, retain) NSString * gender;
 @end
 
 @interface ManagedPerson (CoreDataGeneratedAccessors)

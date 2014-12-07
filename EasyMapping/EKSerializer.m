@@ -73,6 +73,69 @@
     return [NSArray arrayWithArray:array];
 }
 
++(NSDictionary *)serializeObject:(id)object withMapping:(EKManagedObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
+{
+    NSMutableDictionary *representation = [NSMutableDictionary dictionary];
+    
+    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKPropertyMapping *propertyMapping, BOOL *stop) {
+        [self setValueOnRepresentation:representation
+                     fromManagedObject:object
+                   withPropertyMapping:propertyMapping
+                             inContext:context];
+    }];
+    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
+        id hasOneObject = [object valueForKey:mapping.property];
+        
+        if (hasOneObject) {
+            NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
+                                                           withMapping:(EKManagedObjectMapping *)[mapping objectMapping]
+                                                           fromContext:context];
+            [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
+        }
+    }];
+    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
+        
+        id hasManyObject = [object valueForKey:mapping.property];
+        if (hasManyObject) {
+            NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
+                                                           withMapping:(EKManagedObjectMapping *)[mapping objectMapping]
+                                                           fromContext:context];
+            [representation setObject:hasManyRepresentation forKey:mapping.keyPath];
+        }
+    }];
+    
+    if (mapping.rootPath.length > 0) {
+        representation = [@{mapping.rootPath : representation} mutableCopy];
+    }
+    return representation;
+}
+
++(NSArray *)serializeCollection:(NSArray *)collection withMapping:(EKManagedObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (id object in collection) {
+        NSDictionary *objectRepresentation = [self serializeObject:object withMapping:mapping fromContext:context];
+        [array addObject:objectRepresentation];
+    }
+    
+    return [NSArray arrayWithArray:array];
+}
+
++(void)setValueOnRepresentation:(NSMutableDictionary *)representation fromManagedObject:(id)object
+            withPropertyMapping:(EKPropertyMapping *)propertyMapping inContext:(NSManagedObjectContext *)context
+{
+    id returnedValue = [object valueForKey:propertyMapping.property];
+
+    if (returnedValue) {
+
+        if (propertyMapping.managedReverseBlock) {
+            returnedValue = propertyMapping.managedReverseBlock(returnedValue,context);
+        }
+        [self setValue:returnedValue forKeyPath:propertyMapping.keyPath inRepresentation:representation];
+    }
+}
+
 + (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping
 {
     id returnedValue = [object valueForKey:propertyMapping.property];

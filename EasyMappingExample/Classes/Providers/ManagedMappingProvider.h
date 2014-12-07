@@ -21,6 +21,7 @@
 + (EKManagedObjectMapping *)personWithCarMapping;
 + (EKManagedObjectMapping *)personWithPhonesMapping;
 + (EKManagedObjectMapping *)personWithOnlyValueBlockMapping;
++ (EKManagedObjectMapping *)personWithReverseBlocksMapping;
 
 // Fake mapping, is not backed up by CoreData model
 + (EKManagedObjectMapping *)complexPlaneMapping;

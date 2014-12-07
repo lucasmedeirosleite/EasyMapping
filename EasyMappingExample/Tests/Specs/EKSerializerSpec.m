@@ -18,6 +18,9 @@
 #import "Native.h"
 #import "NativeChild.h"
 #import <CoreLocation/CoreLocation.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "ManagedMappingProvider.h"
+#import "ManagedPerson.h"
 
 SPEC_BEGIN(EKSerializerSpec)
 
@@ -33,6 +36,13 @@ describe(@"EKSerializer", ^{
             [[EKSerializer should] respondToSelector:@selector(serializeCollection:withMapping:)];
         });
         
+        specify(^{
+            [[EKSerializer should] respondToSelector:@selector(serializeObject:withMapping:fromContext:)];
+        });
+        
+        specify(^{
+            [[EKSerializer should] respondToSelector:@selector(serializeCollection:withMapping:fromContext:)];
+        });
     });
    
     describe(@".serializeObject:withMapping:", ^{
@@ -555,6 +565,37 @@ describe(@"EKSerializer", ^{
             
         });
         
+    });
+    
+    describe(@"CoreData reverse mapping blocks", ^{
+        
+        beforeEach(^{
+            [MagicalRecord setDefaultModelFromClass:[self class]];
+            [MagicalRecord setupCoreDataStackWithInMemoryStore];
+        });
+        
+        context(@"object", ^{
+            
+            __block ManagedPerson * person = nil;
+            __block NSDictionary * representation = nil;
+            
+            beforeEach(^{
+                NSDictionary * info = [CMFixture buildUsingFixture:@"Person"];
+                NSManagedObjectContext * context = [NSManagedObjectContext MR_defaultContext];
+                
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:info
+                                                                     withMapping:[ManagedMappingProvider personWithReverseBlocksMapping]
+                                                          inManagedObjectContext:context];
+                representation = [EKSerializer serializeObject:person
+                                                   withMapping:[ManagedMappingProvider personWithReverseBlocksMapping]
+                                                   fromContext:context];
+            });
+            
+            specify(^{
+                [[person.gender should] equal:@"husband"];
+                [[[representation objectForKey:@"gender"] should] equal:@"male"];
+            });
+        });
     });
     
 });
