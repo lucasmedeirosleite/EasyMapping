@@ -75,7 +75,7 @@
  
  @result managed object
  */
-- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping;
+- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context;
 
 - (void)cacheObject:(NSManagedObject *)object withMapping:(EKManagedObjectMapping *)mapping;
 
