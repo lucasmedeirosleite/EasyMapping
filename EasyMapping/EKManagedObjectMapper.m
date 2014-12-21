@@ -46,7 +46,8 @@
                            withMapping:(EKManagedObjectMapping *)mapping
 {
     NSManagedObject * object = [self.importer existingObjectForRepresentation:externalRepresentation
-                                                                      mapping:mapping];
+                                                                      mapping:mapping
+                                                                      context:self.importer.context];
     if (!object)
     {
         object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName

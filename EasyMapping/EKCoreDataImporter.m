@@ -54,7 +54,7 @@
 
     importer.fetchedExistingEntities = [NSMutableDictionary dictionary];
     [importer collectEntityNames];
-    [importer inspectRepresentation];
+    [importer inspectRepresentationInContext:context];
 
     return importer;
 }
@@ -104,7 +104,7 @@
 
 #pragma mark - Inspecting representation
 
-- (void)inspectRepresentation
+- (void)inspectRepresentationInContext:(NSManagedObjectContext *)context
 {
     NSMutableDictionary * existingPrimaryKeys = [NSMutableDictionary dictionary];
     for (NSString * entityName in self.entityNames)
@@ -113,7 +113,8 @@
     }
     [self inspectRepresentation:self.externalRepresentation
                    usingMapping:self.mapping
-               accumulateInside:existingPrimaryKeys];
+               accumulateInside:existingPrimaryKeys
+                        context:context];
 
     self.existingEntitiesPrimaryKeys = [existingPrimaryKeys copy];
 }
@@ -121,6 +122,7 @@
 - (void)inspectRepresentation:(id)representation
                  usingMapping:(EKManagedObjectMapping *)mapping
              accumulateInside:(NSMutableDictionary *)dictionary
+                      context:(NSManagedObjectContext *)context
 {
     id rootRepresentation = [EKPropertyHelper extractRootPathFromExternalRepresentation:representation
                                                                             withMapping:mapping];
@@ -128,7 +130,7 @@
     {
         for (NSDictionary * objectInfo in rootRepresentation)
         {
-            id value = [self primaryKeyValueFromRepresentation:objectInfo usingMapping:mapping];
+            id value = [self primaryKeyValueFromRepresentation:objectInfo usingMapping:mapping context:context];
             if (value && value != (id)[NSNull null])
             {
                 dictionary[mapping.entityName] = [dictionary[mapping.entityName] setByAddingObject:value];
@@ -137,7 +139,7 @@
     }
     else if ([rootRepresentation isKindOfClass:[NSDictionary class]])
     {
-        id value = [self primaryKeyValueFromRepresentation:rootRepresentation usingMapping:mapping];
+        id value = [self primaryKeyValueFromRepresentation:rootRepresentation usingMapping:mapping context:context];
         if (value && value != (id)[NSNull null])
         {
             dictionary[mapping.entityName] = [dictionary[mapping.entityName] setByAddingObject:value];
@@ -151,7 +153,8 @@
         {
             [self inspectRepresentation:oneMappingRepresentation
                            usingMapping:(EKManagedObjectMapping *)[mapping objectMapping]
-                       accumulateInside:dictionary];
+                       accumulateInside:dictionary
+                                context:context];
         }
     }];
 
@@ -170,16 +173,18 @@
 
             [self inspectRepresentation:manyMappingRepresentation
                            usingMapping:(EKManagedObjectMapping *)[mapping objectMapping]
-                       accumulateInside:dictionary];
+                       accumulateInside:dictionary
+                                context:context];
         }
     }];
 }
 
-- (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKManagedObjectMapping *)mapping
+- (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context
 {
     EKPropertyMapping * primaryKeyMapping = [mapping primaryKeyPropertyMapping];
-    id primaryValue = [EKPropertyHelper getValueOfProperty:primaryKeyMapping
-                                     fromRepresentation:representation];
+    id primaryValue = [EKPropertyHelper getValueOfManagedProperty:primaryKeyMapping
+                                               fromRepresentation:representation
+                                                        inContext:context];
     return primaryValue;
 }
 
@@ -217,12 +222,13 @@
     return entityObjectsMap;
 }
 
-- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping
+- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context
 {
     NSDictionary * entityObjectsMap = [self cachedObjectsForMapping:mapping];
 
-    id primaryKeyValue = [EKPropertyHelper getValueOfProperty:[mapping primaryKeyPropertyMapping]
-                                        fromRepresentation:representation];
+    id primaryKeyValue = [EKPropertyHelper getValueOfManagedProperty:[mapping primaryKeyPropertyMapping]
+                                                  fromRepresentation:representation
+                                                           inContext:context];
     if (primaryKeyValue == nil || primaryKeyValue == NSNull.null) return nil;
 
     return entityObjectsMap[primaryKeyValue];
