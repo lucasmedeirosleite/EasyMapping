@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		097A5C5C1A67126900CB6CE3 /* EKMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */; };
 		18BD8D6281D14C038CC3F308 /* libPods-MacOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */; };
+		49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
+		49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
 		550CE75226AD40059EA2F789 /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */; };
 		82DA805DFB1B4D3494041157 /* libPods-iOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */; };
 		9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
@@ -265,6 +267,22 @@
 		9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9AA7CED9191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9AA7CEDA191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
+		9AC0F3111A7276BB004B2096 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4B86511A5D463500EE9135 /* PersonNonNested.json */; };
+		9AC0F3121A7276BC004B2096 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4B86511A5D463500EE9135 /* PersonNonNested.json */; };
+		9AC0F3131A7276BF004B2096 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
+		9AC0F3141A7276C0004B2096 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
+		9AC0F3151A7276C6004B2096 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
+		9AC0F3161A7276C6004B2096 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
+		9AC0F3171A7276C7004B2096 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
+		9AC0F3181A7276CB004B2096 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
+		9AC0F3191A7276CB004B2096 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
+		9AC0F31A1A7276CD004B2096 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
+		9AC0F31B1A7276D2004B2096 /* ComplexRepresentation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */; };
+		9AC0F31C1A7276D3004B2096 /* ComplexRepresentation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */; };
+		9AC0F31D1A7276D6004B2096 /* CommentsRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F361944B13A00871071 /* CommentsRecursive.json */; };
+		9AC0F31E1A7276D6004B2096 /* CommentsRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F361944B13A00871071 /* CommentsRecursive.json */; };
+		9AC0F31F1A7276DA004B2096 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
+		9AC0F3201A7276DB004B2096 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
 		9AC1321D1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
 		9AC1321E1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
 		9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
@@ -281,6 +299,8 @@
 		0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CAE9849457872E6F5681E97 /* Pods-OS X Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OS X Tests/Pods-OS X Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithOtherPhones.json; path = Tests/Fixtures/PersonWithOtherPhones.json; sourceTree = SOURCE_ROOT; };
+		49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithZeroPhones.json; path = Tests/Fixtures/PersonWithZeroPhones.json; sourceTree = SOURCE_ROOT; };
 		5D5068BD028D7ECDE8912D21 /* Pods-iOS Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8D816FFC6DC094C7A9297EA6 /* Pods-iOS Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,6 +527,8 @@
 				9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */,
 				9A45121019164705006E6022 /* PersonWithNullCar.json */,
 				9A45121119164705006E6022 /* PersonWithNullPhones.json */,
+				49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */,
+				49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */,
 				9A45121219164705006E6022 /* Plane.json */,
 				9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */,
 				9A210F361944B13A00871071 /* CommentsRecursive.json */,
@@ -1021,12 +1043,14 @@
 			files = (
 				9A45121319164705006E6022 /* Address.json in Resources */,
 				9A45122F19164705006E6022 /* Female.json in Resources */,
+				49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */,
 				9A45123319164705006E6022 /* Male.json in Resources */,
 				9AA7CED3191FA7C400608262 /* ComplexRepresentation.json in Resources */,
 				9AC1321D1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */,
 				9A210F371944B13A00871071 /* CommentsRecursive.json in Resources */,
 				9A45123F19164705006E6022 /* Person.json in Resources */,
 				9A45122319164705006E6022 /* CarWithDate.json in Resources */,
+				49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */,
 				9A45121B19164705006E6022 /* Car.json in Resources */,
 				9A45123719164705006E6022 /* Native.json in Resources */,
 				9A45125919164773006E6022 /* InfoPlist.strings in Resources */,
@@ -1060,8 +1084,10 @@
 				9A45125F191647A1006E6022 /* InfoPlist.strings in Resources */,
 				9A45123819164705006E6022 /* Native.json in Resources */,
 				9A45121819164705006E6022 /* Alien.json in Resources */,
+				9AC0F3181A7276CB004B2096 /* PersonWithOtherPhones.json in Resources */,
 				9A45122019164705006E6022 /* Cars.json in Resources */,
 				9A45124819164705006E6022 /* PersonWithNullCar.json in Resources */,
+				9AC0F3151A7276C6004B2096 /* PersonWithZeroPhones.json in Resources */,
 				9A45122C19164705006E6022 /* CarWithRoot.json in Resources */,
 				9A45124C19164705006E6022 /* PersonWithNullPhones.json in Resources */,
 				9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */,
@@ -1081,19 +1107,26 @@
 				9A4512DF19166366006E6022 /* Male.json in Resources */,
 				9A4512E419166366006E6022 /* PersonWithNullCar.json in Resources */,
 				9A4512E019166366006E6022 /* Native.json in Resources */,
+				9AC0F31B1A7276D2004B2096 /* ComplexRepresentation.json in Resources */,
 				9A4512E619166366006E6022 /* Plane.json in Resources */,
 				9A451264191647BA006E6022 /* Images.xcassets in Resources */,
+				9AC0F3111A7276BB004B2096 /* PersonNonNested.json in Resources */,
 				9A4512E219166366006E6022 /* Person.json in Resources */,
+				9AC0F3191A7276CB004B2096 /* PersonWithOtherPhones.json in Resources */,
 				9A4512D719166366006E6022 /* Address.json in Resources */,
 				9A4512DA19166366006E6022 /* Cars.json in Resources */,
+				9AC0F31D1A7276D6004B2096 /* CommentsRecursive.json in Resources */,
+				9AC0F3161A7276C6004B2096 /* PersonWithZeroPhones.json in Resources */,
 				9A45126C191647D0006E6022 /* InfoPlist.strings in Resources */,
 				9A4512E119166366006E6022 /* NativeChild.json in Resources */,
 				9A4512D819166366006E6022 /* Alien.json in Resources */,
 				9A4512D919166366006E6022 /* Car.json in Resources */,
 				9A4512DD19166366006E6022 /* CarWithRoot.json in Resources */,
+				9AC0F3131A7276BF004B2096 /* PersonRecursive.json in Resources */,
 				9A4512DB19166366006E6022 /* CarWithDate.json in Resources */,
 				9A4512E519166366006E6022 /* PersonWithNullPhones.json in Resources */,
 				9A4512E319166366006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9AC0F31F1A7276DA004B2096 /* PersonsWithSamePhones.json in Resources */,
 				9A4512DE19166366006E6022 /* Female.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1103,9 +1136,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4512EC19166366006E6022 /* CarWithNestedAttributes.json in Resources */,
+				9AC0F3171A7276C7004B2096 /* PersonWithZeroPhones.json in Resources */,
+				9AC0F3121A7276BC004B2096 /* PersonNonNested.json in Resources */,
 				9A4512EF19166366006E6022 /* Male.json in Resources */,
 				9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */,
 				9A4512F419166366006E6022 /* PersonWithNullCar.json in Resources */,
+				9AC0F31A1A7276CD004B2096 /* PersonWithOtherPhones.json in Resources */,
+				9AC0F3141A7276C0004B2096 /* PersonRecursive.json in Resources */,
 				9A4512F019166366006E6022 /* Native.json in Resources */,
 				9A4512F619166366006E6022 /* Plane.json in Resources */,
 				9A451271191647ED006E6022 /* Images.xcassets in Resources */,
@@ -1113,12 +1150,15 @@
 				9A4512E719166366006E6022 /* Address.json in Resources */,
 				9A4512EA19166366006E6022 /* Cars.json in Resources */,
 				9A45127719164805006E6022 /* InfoPlist.strings in Resources */,
+				9AC0F3201A7276DB004B2096 /* PersonsWithSamePhones.json in Resources */,
 				9A4512F119166366006E6022 /* NativeChild.json in Resources */,
 				9A4512E819166366006E6022 /* Alien.json in Resources */,
 				9A4512E919166366006E6022 /* Car.json in Resources */,
 				9A4512ED19166366006E6022 /* CarWithRoot.json in Resources */,
 				9A4512EB19166366006E6022 /* CarWithDate.json in Resources */,
 				9A4512F519166366006E6022 /* PersonWithNullPhones.json in Resources */,
+				9AC0F31C1A7276D3004B2096 /* ComplexRepresentation.json in Resources */,
+				9AC0F31E1A7276D6004B2096 /* CommentsRecursive.json in Resources */,
 				9A4512F319166366006E6022 /* PersonWithDifferentNaming.json in Resources */,
 				9A4512EE19166366006E6022 /* Female.json in Resources */,
 			);

@@ -140,6 +140,28 @@ static const char scalarTypes[] = {
     }
 }
 
++(void)addValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath
+{
+    id _value = [object valueForKeyPath:keyPath];
+    if(![_value isKindOfClass:[NSSet class]]) {
+        [self setValue:value onObject:object forKeyPath:keyPath];
+    }
+    else {
+        if ([(id <NSObject>)object isKindOfClass:[NSManagedObject class]])
+        {
+            // Reducing update times in CoreData
+            if(_value != value && ![value isSubsetOfSet:_value]) {
+                _value = [_value setByAddingObjectsFromSet:value];
+                [object setValue:_value forKey:keyPath];
+            }
+        }
+        else {
+            _value = [_value setByAddingObjectsFromSet:value];
+            [object setValue:_value forKey:keyPath];
+        }
+    }
+}
+
 + (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping fromRepresentation:(NSDictionary *)representation
 {
     id value = nil;

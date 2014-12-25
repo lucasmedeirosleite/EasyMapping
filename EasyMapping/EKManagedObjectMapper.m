@@ -44,6 +44,7 @@
 
 - (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                            withMapping:(EKManagedObjectMapping *)mapping
+                       incrementalData:(BOOL)incrementalData
 {
     NSManagedObject * object = [self.importer existingObjectForRepresentation:externalRepresentation
                                                                       mapping:mapping
@@ -55,7 +56,8 @@
     }
     NSManagedObject * filledObject = [self fillObject:object
                            fromExternalRepresentation:externalRepresentation
-                                          withMapping:mapping];
+                                          withMapping:mapping
+                                      incrementalData:incrementalData];
     [self.importer cacheObject:filledObject withMapping:mapping];
     
     return filledObject;
@@ -63,6 +65,7 @@
 
 - (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
      withMapping:(EKManagedObjectMapping *)mapping
+ incrementalData:(BOOL)incrementalData
 {
     NSDictionary * representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
                                                                                     withMapping:mapping];
@@ -78,7 +81,7 @@
         NSDictionary * value = [mapping extractObjectFromRepresentation:representation];
         if (value && value != (id)[NSNull null])
         {
-            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[mapping objectMapping]];
+            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[mapping objectMapping] incrementalData:incrementalData];
             [EKPropertyHelper setValue:result onObject:object forKeyPath:mapping.property];
         }
     }];
@@ -88,11 +91,17 @@
         if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null])
         {
             NSArray * parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withMapping:(EKManagedObjectMapping *)[mapping objectMapping]];
+                                                                       withMapping:(EKManagedObjectMapping *)[mapping objectMapping]
+                                                                   incrementalData:incrementalData];
             id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                               forObject:object
                                                        withPropertyName:[mapping property]];
-            [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:mapping.property];
+            if(incrementalData) {
+                [EKPropertyHelper addValue:parsedObjects onObject:object forKeyPath:mapping.property];
+            }
+            else {
+                [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:mapping.property];
+            }
         }
     }];
     return object;
@@ -100,12 +109,13 @@
 
 - (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
+                                      incrementalData:(BOOL)incrementalData
 {
 
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)
     {
-        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];
+        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping incrementalData:incrementalData];
         [array addObject:parsedObject];
     }
     return [NSArray arrayWithArray:array];
@@ -114,6 +124,7 @@
 - (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                               withMapping:(EKManagedObjectMapping *)mapping
                                              fetchRequest:(NSFetchRequest *)fetchRequest
+                                          incrementalData:(BOOL)incrementalData
 {
     NSAssert(mapping.primaryKey, @"A mapping with a primary key is required");
     EKPropertyMapping * primaryKeyPropertyMapping = [mapping primaryKeyPropertyMapping];
@@ -137,7 +148,7 @@
             object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName
                                                    inManagedObjectContext:self.importer.context];
 
-        [self fillObject:object fromExternalRepresentation:representation withMapping:mapping];
+        [self fillObject:object fromExternalRepresentation:representation withMapping:mapping incrementalData:incrementalData];
         [array addObject:object];
     }
 
@@ -160,6 +171,17 @@
                            withMapping:(EKManagedObjectMapping *)mapping
                 inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    return [self objectFromExternalRepresentation:externalRepresentation
+                                      withMapping:mapping
+                           inManagedObjectContext:context
+                                  incrementalData:NO];
+}
+
++ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                           withMapping:(EKManagedObjectMapping *)mapping
+                inManagedObjectContext:(NSManagedObjectContext *)context
+                       incrementalData:(BOOL)incrementalData
+{
     NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
     NSParameterAssert(context);
     
@@ -167,13 +189,27 @@
                                                      externalRepresentation:externalRepresentation
                                                                     context:context];
     return [[self mapperWithImporter:importer] objectFromExternalRepresentation:externalRepresentation
-                                                                    withMapping:mapping];
+                                                                    withMapping:mapping
+                                                                incrementalData:incrementalData];
 }
 
 + (id)          fillObject:(id)object
 fromExternalRepresentation:(NSDictionary *)externalRepresentation
                withMapping:(EKManagedObjectMapping *)mapping
     inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    return [self fillObject:object
+ fromExternalRepresentation:externalRepresentation
+                withMapping:mapping
+     inManagedObjectContext:context
+            incrementalData:NO];
+}
+
++ (id)            fillObject:(id)object
+  fromExternalRepresentation:(NSDictionary *)externalRepresentation
+                 withMapping:(EKManagedObjectMapping *)mapping
+      inManagedObjectContext:(NSManagedObjectContext*)context
+             incrementalData:(BOOL)incrementalData
 {
     NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
     NSParameterAssert(context);
@@ -183,12 +219,24 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
                                                                     context:context];
     return [[self mapperWithImporter:importer] fillObject:object
                                fromExternalRepresentation:externalRepresentation
-                                              withMapping:mapping];
+                                              withMapping:mapping
+                                          incrementalData:incrementalData];
 }
 
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
                                inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    return [self arrayOfObjectsFromExternalRepresentation:externalRepresentation
+                                              withMapping:mapping
+                                   inManagedObjectContext:context
+                                         incrementalData:NO];
+}
+
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                          withMapping:(EKManagedObjectMapping *)mapping
+                               inManagedObjectContext:(NSManagedObjectContext*)context
+                                     incrementalData:(BOOL)incrementalData
 {
     NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
     NSParameterAssert(context);
@@ -196,14 +244,29 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
                                                                     context:context];
+
     return [[self mapperWithImporter:importer] arrayOfObjectsFromExternalRepresentation:externalRepresentation
-                                                                            withMapping:mapping];
+                                                                            withMapping:mapping
+                                                                        incrementalData:incrementalData];
 }
 
 + (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                               withMapping:(EKManagedObjectMapping *)mapping
                                              fetchRequest:(NSFetchRequest *)fetchRequest
                                    inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    return [self syncArrayOfObjectsFromExternalRepresentation:externalRepresentation
+                                                  withMapping:mapping
+                                                 fetchRequest:fetchRequest
+                                       inManagedObjectContext:context
+                                              incrementalData:NO];
+}
+
++ (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                              withMapping:(EKManagedObjectMapping *)mapping
+                                             fetchRequest:(NSFetchRequest *)fetchRequest
+                                   inManagedObjectContext:(NSManagedObjectContext *)context
+                                          incrementalData:(BOOL)incrementalData
 {
     NSParameterAssert([mapping isKindOfClass:[EKManagedObjectMapping class]]);
     NSParameterAssert(context);
@@ -213,7 +276,8 @@ fromExternalRepresentation:(NSDictionary *)externalRepresentation
                                                                     context:context];
     return [[self mapperWithImporter:importer] syncArrayOfObjectsFromExternalRepresentation:externalRepresentation
                                                                                 withMapping:mapping
-                                                                               fetchRequest:fetchRequest];
+                                                                               fetchRequest:fetchRequest
+                                                                            incrementalData:incrementalData];
 }
 
 @end
