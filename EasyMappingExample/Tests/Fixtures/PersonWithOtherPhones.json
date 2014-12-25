@@ -1,0 +1,25 @@
+{
+    "id":23,
+    "name": "Lucas",
+    "email": "lucastoc@gmail.com",
+    "gender" : "male",
+    "car": {
+        "id":3,
+        "model": "i30",
+        "year": "2013"
+    },
+    "phones": [
+        {
+            "id":3,
+            "ddi": "55",
+            "ddd": "85",
+            "number": "3333-333"
+        },
+        {
+            "id":4,
+            "ddi": "55",
+            "ddd": "11",
+            "number": "4444-444"
+        }
+    ]
+}

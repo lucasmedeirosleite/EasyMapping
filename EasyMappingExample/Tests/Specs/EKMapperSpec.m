@@ -348,7 +348,99 @@ describe(@"EKMapper", ^{
 				 [[person.car shouldNot] beNil];
 			 });
 		 });
-		 
+
+        context(@"with hasMany mapping and not incrementalData", ^{
+            __block Person* person;
+            
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+                externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithOtherPhones"];
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:NO];
+            });
+            
+            specify(^{
+                [[person shouldNot] beNil];
+            });
+
+            specify(^{
+                [[person.phones shouldNot] beNil];
+            });
+
+            specify(^{
+                [[person.phones should] haveCountOf:2];
+            });
+        });
+
+        context(@"with hasMany mapping and incrementalData", ^{
+            __block Person* person;
+            
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+                externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithOtherPhones"];
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:YES];
+            });
+            
+            specify(^{
+                [[person shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[person.phones shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[person.phones should] haveCountOf:4];
+            });
+        });
+
+        context(@"with hasMany mapping empty and not incrementalData", ^{
+            __block Person* person;
+            
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+                externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithZeroPhones"];
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:NO];
+            });
+            
+            specify(^{
+                [[person shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[person.phones shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[person.phones should] haveCountOf:0];
+            });
+        });
+        
+        context(@"with hasMany mapping empty and incrementalData", ^{
+            __block Person* person;
+            
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+                externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithZeroPhones"];
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:YES];
+            });
+            
+            specify(^{
+                [[person shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[person.phones shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[person.phones should] haveCountOf:2];
+            });
+        });
+        
 		 context(@"with hasOne mapping NULL in representation", ^{
 			 __block Person* person;
 			 
