@@ -42,7 +42,7 @@
                            withMapping:(EKObjectMapping *)mapping;
 
 /**
- Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten. 
+ Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten.
  
  @param object Object to fill 
  
@@ -55,6 +55,24 @@
 + (id)            fillObject:(id)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
                  withMapping:(EKObjectMapping *)mapping;
+
+/**
+ Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten. If incrementalData is true, to-many relationship data is pushed to the existing data instead of replaced.
+ 
+ @param object Object to fill
+ 
+ @param externalRepresentation JSON representation of object data
+ 
+ @param mapping object mapping
+ 
+ @param incrementalData Defines if to-many relationship data is pushed or replaced
+ 
+ @result filled object
+ */
++ (id)            fillObject:(id)object
+  fromExternalRepresentation:(NSDictionary *)externalRepresentation
+                 withMapping:(EKObjectMapping *)mapping
+             incrementalData:(BOOL)incrementalData;
 
 /**
  Convenience method to create array of objects from JSON.

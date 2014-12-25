@@ -45,6 +45,24 @@
                 inManagedObjectContext:(NSManagedObjectContext*)context;
 
 /**
+ Creates object from JSON representation, using `mapping` in `context`.  If incrementalData is true, to-many relationship data is pushed to the existing data instead of replaced.
+ 
+ @param externalRepresentation JSON representation of object data
+ 
+ @param mapping object mapping
+ 
+ @param context managed object context to perform object creation
+ 
+ @param incrementalData Defines if to-many relationship data is pushed or replaced
+
+ @result mapped managed object
+ */
++ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                           withMapping:(EKManagedObjectMapping *)mapping
+                inManagedObjectContext:(NSManagedObjectContext*)context
+                       incrementalData:(BOOL)incrementalData;
+
+/**
  Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten.
  
  @param object Object to fill
@@ -63,6 +81,27 @@
       inManagedObjectContext:(NSManagedObjectContext*)context;
 
 /**
+ Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten. If incrementalData is true, to-many relationship data is pushed to the existing data instead of replaced.
+ 
+ @param object Object to fill
+ 
+ @param externalRepresentation JSON representation of object data
+ 
+ @param mapping object mapping
+ 
+ @param context managed object context to perform object creation
+
+ @param incrementalData Defines if to-many relationship data is pushed or replaced
+
+ @result filled managed object
+ */
++ (id)            fillObject:(id)object
+  fromExternalRepresentation:(NSDictionary *)externalRepresentation
+                 withMapping:(EKManagedObjectMapping *)mapping
+      inManagedObjectContext:(NSManagedObjectContext*)context
+             incrementalData:(BOOL)incrementalData;
+
+/**
  Create array of CoreData objects. If passed JSON contains primary keys, previously existing object with these keys will be updated. Simply put, this method uses Find-Or-Create pattern.
  
  @param externalRepresentation JSON array with objects
@@ -76,6 +115,24 @@
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
                                inManagedObjectContext:(NSManagedObjectContext*)context;
+
+/**
+ Create array of CoreData objects. If passed JSON contains primary keys, previously existing object with these keys will be updated. Simply put, this method uses Find-Or-Create pattern. If incrementalData is true, to-many relationship data is pushed to the existing data instead of replaced.
+ 
+ @param externalRepresentation JSON array with objects
+ 
+ @param mapping object mapping
+ 
+ @param context managed object context to perform objects creation
+ 
+ @param incrementalData Defines if to-many relationship data is pushed or replaced
+ 
+ @result array of managed objects
+ */
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                          withMapping:(EKManagedObjectMapping *)mapping
+                               inManagedObjectContext:(NSManagedObjectContext*)context
+                                     incrementalData:(BOOL)incrementalData;
 
 /** 
  Synchronize the objects in the managed object context with the objects from an external
@@ -97,5 +154,30 @@
                                               withMapping:(EKManagedObjectMapping *)mapping
                                              fetchRequest:(NSFetchRequest*)fetchRequest
                                    inManagedObjectContext:(NSManagedObjectContext *)context;
+
+/**
+ Synchronize the objects in the managed object context with the objects from an external
+ representation. Any new objects will be created, any existing objects will be updated
+ and any object not present in the external representation will be deleted from the
+ managed object context. The fetch request is used to pre-fetch all existing objects.
+ If incrementalData is true, to-many relationship data is pushed to the existing data instead of replaced.
+ 
+ @param externalRepresentation JSON array with objects
+ 
+ @param mapping object mapping
+ 
+ @param fetchRequest Fetch request to get existing objects
+ 
+ @param context managed object context to perform objects creation
+ 
+ @param incrementalData Defines if to-many relationship data is pushed or replaced
+ 
+ @result array of managed objects
+ */
++ (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                              withMapping:(EKManagedObjectMapping *)mapping
+                                             fetchRequest:(NSFetchRequest*)fetchRequest
+                                   inManagedObjectContext:(NSManagedObjectContext *)context
+                                          incrementalData:(BOOL)incrementalData;
 
 @end
