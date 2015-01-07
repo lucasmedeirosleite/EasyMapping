@@ -42,7 +42,17 @@
         if (hasOneObject) {
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
                                                            withMapping:[mapping objectMapping]];
-            [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
+            
+            if (mapping.nonNestedKeyPaths)
+            {
+                for (NSString * key in hasOneRepresentation.allKeys)
+                {
+                    representation[key]=hasOneRepresentation[key];
+                }
+            }
+            else {
+                [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
+            }
         }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {
@@ -90,7 +100,17 @@
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
                                                            withMapping:(EKManagedObjectMapping *)[mapping objectMapping]
                                                            fromContext:context];
-            [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
+            
+            if (mapping.nonNestedKeyPaths)
+            {
+                for (NSString * key in hasOneRepresentation.allKeys)
+                {
+                    representation[key]=hasOneRepresentation[key];
+                }
+            }
+            else {
+                [representation setObject:hasOneRepresentation forKey:mapping.keyPath];
+            }
         }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping *mapping, BOOL *stop) {

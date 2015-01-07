@@ -197,6 +197,24 @@
 - (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
+ Map to-one relationship, using keys that are on the same level as current object. They are collected into dictionary and passed along, as like they were in separate JSON dictionary.
+ 
+ @param objectClass class, instance of which will be created as a result of mapping
+ 
+ @param keyPaths Array of properties to collect from representation
+ 
+ @param property name of the property, that will receive mapped object
+ 
+ @param objectMapping optional mapping override for child object
+ 
+ @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
+ */
+- (void)           hasOne:(Class)objectClass
+forDictionaryFromKeyPaths:(NSArray *)keyPaths
+              forProperty:(NSString *)property
+        withObjectMapping:(EKObjectMapping *)objectMapping;
+
+/**
  Map to-one relationship for keyPath.
  
  @param keyPath keyPath to child object representation in JSON

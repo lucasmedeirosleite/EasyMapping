@@ -26,6 +26,7 @@
 + (EKObjectMapping *)carMapping
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapKeyPath:@"id" toProperty:@"carId"];
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
     }];
 }
@@ -48,6 +49,16 @@
     }];
 }
 
++(EKObjectMapping *)carNonNestedMapping {
+    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromDictionary:@{
+                                               @"carId": @"carId",
+                                               @"carModel":@"model",
+                                               @"carYear":@"year"
+                                               }];
+    }];
+}
+
 + (EKObjectMapping *)carWithDateMapping
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
@@ -65,6 +76,22 @@
             @"ddd" : @"DDD"
          }];
     }];
+}
+
++(EKObjectMapping *)personNonNestedMapping
+{
+    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
+        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
+            return genders[value];
+        } reverseBlock:^id(id value) {
+            return [genders allKeysForObject:value].lastObject;
+        }];
+        
+        [mapping hasOne:[Car class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
+            forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
+  }];
 }
 
 + (EKObjectMapping *)personMapping

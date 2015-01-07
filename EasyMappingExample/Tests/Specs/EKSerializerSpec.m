@@ -598,6 +598,33 @@ describe(@"EKSerializer", ^{
         });
     });
     
+    context(@"Serialize non nested objects",^{
+        
+        __block Person * person = nil;
+        __block NSDictionary * representation = nil;
+        
+        beforeEach(^{
+            NSDictionary * info = [CMFixture buildUsingFixture:@"Person"];
+            
+            person = [EKMapper objectFromExternalRepresentation:info
+                                                    withMapping:[MappingProvider personMapping]];
+            representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personNonNestedMapping]];
+        });
+        
+        specify( ^{
+            [[[representation objectForKey:@"carId"] should] equal:@3];
+            [[[representation objectForKey:@"carModel"] should] equal:@"i30"];
+            [[[representation objectForKey:@"carYear"] should] equal:@"2013"];
+        });
+        
+        specify( ^{
+            [[[representation objectForKey:@"name"] should] equal:@"Lucas"];
+            [[[representation objectForKey:@"email"] should] equal:@"lucastoc@gmail.com"];
+            [[[representation objectForKey:@"gender"] should] equal:@"male"];
+        });
+        
+    });
+    
 });
 
 SPEC_END

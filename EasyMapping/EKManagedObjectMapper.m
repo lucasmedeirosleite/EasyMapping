@@ -75,7 +75,7 @@
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
-        NSDictionary * value = [representation valueForKeyPath:key];
+        NSDictionary * value = [mapping extractObjectFromRepresentation:representation];
         if (value && value != (id)[NSNull null])
         {
             id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[mapping objectMapping]];
