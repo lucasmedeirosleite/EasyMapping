@@ -96,6 +96,20 @@
     }];
 }
 
+- (void)mapTimestampWithKeyPath:(NSString *)keyPath toDateProperty:(NSString *)property
+{
+    NSParameterAssert(keyPath);
+    NSParameterAssert(property);
+    
+    [self mapKeyPath:keyPath
+          toProperty:property
+      withValueBlock:^id(NSString * key, id value) {
+          return [value respondsToSelector:@selector(doubleValue)] ? [NSDate dateWithTimeIntervalSince1970:[value doubleValue]] : nil;
+      } reverseBlock:^id(id value) {
+          return [value isKindOfClass:[NSDate class]] ? @([value timeIntervalSince1970]) : nil;
+      }];
+}
+
 - (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray
 {
     NSParameterAssert([propertyNamesArray isKindOfClass:[NSArray class]]);

@@ -123,6 +123,15 @@
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat;
 
 /**
+ Map JSON keyPath that represents timestamp (seconds since 1970-01-01T00:00:01+00:00) to NSDate property. This method assumes value contains NSSNumber or NSString
+ 
+ @param keyPath JSON keypath, that will be used by valueForKeyPath: method
+ 
+ @param property Property name.
+ */
+- (void)mapTimestampWithKeyPath:(NSString *)keyPath toDateProperty:(NSString *)property;
+
+/**
  Maps properties from array. We assume, that names of keypaths and properties are the same.
  
  @param propertyNamesArray Array of property names
