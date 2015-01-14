@@ -17,22 +17,17 @@
 
 -(NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation
 {
-    if (self.nonNestedKeyPaths == nil)
-    {
+    if (self.keyPath) {
         return [representation valueForKeyPath:self.keyPath];
     }
     else {
-        NSMutableDictionary * values = [NSMutableDictionary dictionaryWithCapacity:self.nonNestedKeyPaths.count];
-        
-        for (NSString * keyPath in self.nonNestedKeyPaths)
-        {
-            id value = [representation valueForKeyPath:keyPath];
-            if (value && value!=(id)[NSNull null])
-            {
-                values[keyPath] = value;
-            }
-        }
-        return [values copy];
+        EKObjectMapping *mapping = [self objectMapping];
+        NSMutableSet *keys = [NSMutableSet new];
+        [keys addObjectsFromArray:mapping.propertyMappings.allKeys];
+        [keys addObjectsFromArray:mapping.hasOneMappings.allKeys];
+        [keys addObjectsFromArray:mapping.hasManyMappings.allKeys];
+        NSDictionary *value = [representation dictionaryWithValuesForKeys:keys.allObjects];
+        return value;
     }
 }
 

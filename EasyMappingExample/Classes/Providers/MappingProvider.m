@@ -89,8 +89,7 @@
             return [genders allKeysForObject:value].lastObject;
         }];
         
-        [mapping hasOne:[Car class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
-            forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
+        [mapping hasOne:[Car class] forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
   }];
 }
 
