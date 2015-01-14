@@ -89,8 +89,7 @@
             ^(EKManagedObjectMapping *mapping) {
       [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
       
-      [mapping hasOne:[ManagedCar class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
-          forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
+      [mapping hasOne:[ManagedCar class] forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
                 mapping.primaryKey = @"personID";
     }];
 }
