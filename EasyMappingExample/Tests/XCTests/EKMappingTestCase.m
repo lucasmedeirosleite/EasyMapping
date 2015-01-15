@@ -96,4 +96,24 @@
     [self testSerializationUsingMapping:[Person objectMapping] withObject:person expectedRepresentation:expectedExternalRepresentation];
 }
 
+- (void)testNestedSerialization
+{
+    NSDictionary *expectedExternalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+    
+    [Person registerMapping:[MappingProvider personMapping]];
+    [Car registerMapping:[MappingProvider carMapping]];
+    Person *person = [Person new];
+    Car *car = [Car new];
+    car.carId = [[expectedExternalRepresentation valueForKeyPath:@"car.id"] integerValue];
+    car.model = [expectedExternalRepresentation valueForKeyPath:@"car.model"];
+    car.year = [expectedExternalRepresentation valueForKeyPath:@"car.year"];
+    person.car = car;
+    person.name = [expectedExternalRepresentation valueForKey:@"name"];
+    person.email = [expectedExternalRepresentation valueForKey:@"email"];
+    NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+    person.gender = (Gender)[genders[[expectedExternalRepresentation valueForKey:@"gender"]] integerValue];
+    
+    [self testSerializationUsingMapping:[Person objectMapping] withObject:person expectedRepresentation:expectedExternalRepresentation skippingKeyPaths:@[@"phones"]];
+}
+
 @end
