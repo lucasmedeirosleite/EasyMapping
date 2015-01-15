@@ -23,6 +23,17 @@
 
 #import "EKMappingBlocks.h"
 
+typedef NS_ENUM(NSInteger, EKTimestampFormat){
+    /**
+     *  Represents "seconds" format. Like 1421333849 for 01/15/2015 16:57:29
+     */
+    EKTimestampFormatSeconds,
+    /**
+     *  Represents "milliseconds" format. Like 1421333849000 for 01/15/2015 16:57:29
+     */
+    EKTimestampFormatMilliseconds
+};
+
 @protocol EKMappingProtocol;
 
 /**
@@ -128,8 +139,10 @@
  @param keyPath JSON keypath, that will be used by valueForKeyPath: method
  
  @param property Property name.
+ 
+ @param timestamp format. (Accepts EKTimestampFormatSeconds or EKTimestampFormatMilliseconds)
  */
-- (void)mapTimestampWithKeyPath:(NSString *)keyPath toDateProperty:(NSString *)property;
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withTimestampFormat:(EKTimestampFormat)timestampFormat;
 
 /**
  Maps properties from array. We assume, that names of keypaths and properties are the same.

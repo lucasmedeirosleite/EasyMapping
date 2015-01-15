@@ -96,7 +96,7 @@
     }];
 }
 
-- (void)mapTimestampWithKeyPath:(NSString *)keyPath toDateProperty:(NSString *)property
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withTimestampFormat:(EKTimestampFormat)timestampFormat
 {
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
@@ -104,9 +104,27 @@
     [self mapKeyPath:keyPath
           toProperty:property
       withValueBlock:^id(NSString * key, id value) {
-          return [value respondsToSelector:@selector(doubleValue)] ? [NSDate dateWithTimeIntervalSince1970:[value doubleValue]] : nil;
+          
+          if ([value respondsToSelector:@selector(doubleValue)]) {
+              
+              NSTimeInterval doubleValue = [value doubleValue];
+              if (timestampFormat == EKTimestampFormatMilliseconds) {
+                  doubleValue /= 1000.0;
+              }
+          }
+          return nil;
+          
       } reverseBlock:^id(id value) {
-          return [value isKindOfClass:[NSDate class]] ? @([value timeIntervalSince1970]) : nil;
+          
+          if ([value isKindOfClass:[NSDate class]]) {
+              
+              NSTimeInterval timeInterval = [value timeIntervalSince1970];
+              if (timestampFormat == EKTimestampFormatMilliseconds) {
+                  timeInterval *= 1000.0;
+              }
+              return @(timeInterval);
+          }
+          return nil;
       }];
 }
 
