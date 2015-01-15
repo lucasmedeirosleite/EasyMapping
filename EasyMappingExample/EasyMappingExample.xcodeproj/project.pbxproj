@@ -407,6 +407,7 @@
 		9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMappingExample.xcdatamodel; sourceTree = "<group>"; };
 		9E9BD3814FE20F5C7E01D5C1 /* Pods-MacOS Benchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacOS Benchmark/Pods-MacOS Benchmark.debug.xcconfig"; sourceTree = "<group>"; };
 		A7E98E6E1DB90FE1A193665A /* Pods-iOS Benchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark.release.xcconfig"; sourceTree = "<group>"; };
+		A7F3CE741A6814FC004AECCE /* EKMappingTimestampFormats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKMappingTimestampFormats.h; sourceTree = "<group>"; };
 		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
 		A9D16CF716F2B2770003759B /* EKPropertyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPropertyMapping.h; sourceTree = "<group>"; };
 		A9D16CF816F2B2770003759B /* EKPropertyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPropertyMapping.m; sourceTree = "<group>"; };
@@ -873,6 +874,7 @@
 				9A8420ED19571AD4006DDDE3 /* Helpers */,
 				9A8420EC19571AC6006DDDE3 /* Convenience */,
 				A9D16CF616F2B2770003759B /* EasyMapping.h */,
+				A7F3CE741A6814FC004AECCE /* EKMappingTimestampFormats.h */,
 				A9D16CFB16F2B2770003759B /* EKMappingBlocks.h */,
 				9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */,
 			);

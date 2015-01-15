@@ -104,28 +104,10 @@
     [self mapKeyPath:keyPath
           toProperty:property
       withValueBlock:^id(NSString * key, id value) {
-          
-          if ([value respondsToSelector:@selector(doubleValue)]) {
-              
-              NSTimeInterval doubleValue = [value doubleValue];
-              if (timestampFormat == EKTimestampFormatMilliseconds) {
-                  doubleValue /= 1000.0;
-              }
-          }
-          return nil;
-          
+          return [value respondsToSelector:@selector(doubleValue)] ? [EKTransformer transformValue:value withTimestampFormat:timestampFormat] : nil;
       } reverseBlock:^id(id value) {
-          
-          if ([value isKindOfClass:[NSDate class]]) {
-              
-              NSTimeInterval timeInterval = [value timeIntervalSince1970];
-              if (timestampFormat == EKTimestampFormatMilliseconds) {
-                  timeInterval *= 1000.0;
-              }
-              return @(timeInterval);
-          }
-          return nil;
-      }];
+          return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withTimestampFormat:timestampFormat] : nil;
+    }];
 }
 
 - (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray
