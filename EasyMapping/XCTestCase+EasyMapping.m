@@ -36,8 +36,8 @@
         }
         id mappedValue = [mappedObject valueForKeyPath:keyPath];
         id expectedValue = [expectedObject valueForKeyPath:keyPath];
-        NSString *keyPathString = [self keyPathByAppedingKeyPath:keyPath
-                                                   toRootKeyPath:rootKeyPath];
+        NSString *keyPathString = [self keyPathByAppendingKeyPath:keyPath
+                                                    toRootKeyPath:rootKeyPath];
         XCTAssertEqualObjects(mappedValue, expectedValue, "Mapping failed on keypath %@. Expected value is - %@, value after mapping is - %@", keyPathString, expectedValue, mappedValue);
     }
     
@@ -49,8 +49,8 @@
         id relationshipObject = [mappedObject valueForKeyPath:keyPath];
         id expectedRelationshipObject = [expectedObject valueForKeyPath:keyPath];
         NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
-        NSString *relationshipRootKeyPath = [self keyPathByAppedingKeyPath:keyPath
-                                                             toRootKeyPath:rootKeyPath];
+        NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:keyPath
+                                                              toRootKeyPath:rootKeyPath];
         [self testMapping:hasOneMapping.objectMapping withMappedObject:relationshipObject expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
     }
     
@@ -65,19 +65,10 @@
         [relationshipObjects enumerateObjectsUsingBlock:^(id relationshipObject, NSUInteger idx, BOOL *stop) {
             id expectedRelationshipObject = expectedRelationshipObjects[idx];
             NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%lu]", keyPath, idx];
-            NSString *relationshipRootKeyPath = [self keyPathByAppedingKeyPath:indexKeyPath
-                                                                 toRootKeyPath:rootKeyPath];
+            NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:indexKeyPath
+                                                                  toRootKeyPath:rootKeyPath];
             [self testMapping:hasManyMapping.objectMapping withMappedObject:relationshipObject expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
         }];
-    }
-}
-
-- (void)testPropertiesWithMapping:(EKObjectMapping *)mapping withMappedObject:(id)mappedObject expectedObject:(id)expectedObject keypathsToCheck:(NSArray *)keyPathsToCheck
-{
-    for (NSString *keyPath in keyPathsToCheck) {
-        id mappedValue = [mappedObject valueForKeyPath:keyPath];
-        id expectedValue = [expectedObject valueForKeyPath:keyPath];
-        XCTAssertEqualObjects(mappedValue, expectedValue, "Mapping failed on keypath %@. Expected value is - %@, value after mapping is - %@", keyPath, expectedValue, mappedValue);
     }
 }
 
@@ -135,10 +126,13 @@
     return [mKeyPaths copy];
 }
 
-- (NSString *)keyPathByAppedingKeyPath:(NSString *)keyPath toRootKeyPath:(NSString *)rootKeyPath
+- (NSString *)keyPathByAppendingKeyPath:(NSString *)keyPath toRootKeyPath:(NSString *)rootKeyPath
 {
     if (!rootKeyPath) {
         return keyPath;
+    }
+    else if (!keyPath) {
+        return rootKeyPath;
     }
     else {
         return [NSString stringWithFormat:@"%@.%@", rootKeyPath, keyPath];
