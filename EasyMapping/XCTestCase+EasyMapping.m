@@ -23,19 +23,62 @@
 - (id)testMapping:(EKObjectMapping *)mapping withRepresentation:(NSDictionary *)representation expectedObject:(id)expectedObject skippingKeyPaths:(NSArray *)keyPathsToSkip
 {
     id mappedObject = [EKMapper objectFromExternalRepresentation:representation withMapping:mapping];
-    NSMutableArray *keyPathsToCheck = [NSMutableArray new];
-    NSString *propertyKey = NSStringFromSelector(@selector(property));
-    [keyPathsToCheck addObjectsFromArray:[mapping.propertyMappings.allValues valueForKey:propertyKey]];
-    [keyPathsToCheck addObjectsFromArray:[mapping.hasOneMappings.allValues valueForKey:propertyKey]];
-    [keyPathsToCheck addObjectsFromArray:[mapping.hasManyMappings.allValues valueForKey:propertyKey]];
-    [keyPathsToCheck removeObjectsInArray:keyPathsToSkip];
+    [self testMapping:mapping withMappedObject:mappedObject expectedObject:expectedObject skippingKeyPaths:keyPathsToSkip rootKeyPath:nil];
+    return mappedObject;
+}
+
+- (void)testMapping:(EKObjectMapping *)mapping withMappedObject:(id)mappedObject expectedObject:(id)expectedObject skippingKeyPaths:(NSArray *)keyPathsToSkip rootKeyPath:(NSString *)rootKeyPath
+{
+    for (EKPropertyMapping *propertyMapping in mapping.propertyMappings.allValues) {
+        NSString *keyPath = propertyMapping.property;
+        if ([keyPathsToSkip containsObject:keyPath]) {
+            continue;
+        }
+        id mappedValue = [mappedObject valueForKeyPath:keyPath];
+        id expectedValue = [expectedObject valueForKeyPath:keyPath];
+        NSString *keyPathString = [self keyPathByAppedingKeyPath:keyPath
+                                                   toRootKeyPath:rootKeyPath];
+        XCTAssertEqualObjects(mappedValue, expectedValue, "Mapping failed on keypath %@. Expected value is - %@, value after mapping is - %@", keyPathString, expectedValue, mappedValue);
+    }
     
+    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings.allValues) {
+        NSString *keyPath = hasOneMapping.property;
+        if ([keyPathsToSkip containsObject:keyPath]) {
+            continue;
+        }
+        id relationshipObject = [mappedObject valueForKeyPath:keyPath];
+        id expectedRelationshipObject = [expectedObject valueForKeyPath:keyPath];
+        NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
+        NSString *relationshipRootKeyPath = [self keyPathByAppedingKeyPath:keyPath
+                                                             toRootKeyPath:rootKeyPath];
+        [self testMapping:hasOneMapping.objectMapping withMappedObject:relationshipObject expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+    }
+    
+    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings.allValues) {
+        NSString *keyPath = hasManyMapping.property;
+        if ([keyPathsToSkip containsObject:keyPath]) {
+            continue;
+        }
+        NSArray *relationshipObjects = [mappedObject valueForKeyPath:keyPath];
+        NSArray *expectedRelationshipObjects = [expectedObject valueForKeyPath:keyPath];
+        NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
+        [relationshipObjects enumerateObjectsUsingBlock:^(id relationshipObject, NSUInteger idx, BOOL *stop) {
+            id expectedRelationshipObject = expectedRelationshipObjects[idx];
+            NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%lu]", keyPath, idx];
+            NSString *relationshipRootKeyPath = [self keyPathByAppedingKeyPath:indexKeyPath
+                                                                 toRootKeyPath:rootKeyPath];
+            [self testMapping:hasManyMapping.objectMapping withMappedObject:relationshipObject expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+        }];
+    }
+}
+
+- (void)testPropertiesWithMapping:(EKObjectMapping *)mapping withMappedObject:(id)mappedObject expectedObject:(id)expectedObject keypathsToCheck:(NSArray *)keyPathsToCheck
+{
     for (NSString *keyPath in keyPathsToCheck) {
         id mappedValue = [mappedObject valueForKeyPath:keyPath];
         id expectedValue = [expectedObject valueForKeyPath:keyPath];
         XCTAssertEqualObjects(mappedValue, expectedValue, "Mapping failed on keypath %@. Expected value is - %@, value after mapping is - %@", keyPath, expectedValue, mappedValue);
     }
-    return mappedObject;
 }
 
 - (NSDictionary *)testSerializationUsingMapping:(EKObjectMapping *)mapping withObject:(id)object expectedRepresentation:(NSDictionary *)expectedRepresentation
@@ -74,6 +117,32 @@
     }
   
     return serializedObject;
+}
+
+#pragma mark - Helpers
+
+- (NSArray *)extractRelationshipKeyPathsFromKeyPaths:(NSArray *)keyPaths forRelationship:(NSString *)property
+{
+    
+    NSMutableArray *mKeyPaths = [NSMutableArray new];
+    for (NSString *keyPath in keyPaths) {
+        NSString *pathPrefix = [NSString stringWithFormat:@"%@.", property];
+        if ([keyPath hasPrefix:pathPrefix]) {
+            NSString *_keyPath = [keyPath substringFromIndex:pathPrefix.length];
+            [mKeyPaths addObject:_keyPath];
+        }
+    }
+    return [mKeyPaths copy];
+}
+
+- (NSString *)keyPathByAppedingKeyPath:(NSString *)keyPath toRootKeyPath:(NSString *)rootKeyPath
+{
+    if (!rootKeyPath) {
+        return keyPath;
+    }
+    else {
+        return [NSString stringWithFormat:@"%@.%@", rootKeyPath, keyPath];
+    }
 }
 
 @end
