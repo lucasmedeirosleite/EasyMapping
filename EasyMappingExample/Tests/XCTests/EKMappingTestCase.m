@@ -41,7 +41,7 @@
     expectedCar.model = [externalRepresentation valueForKey:@"model"];
     expectedCar.year = [externalRepresentation valueForKey:@"year"];
 
-    [self testMapping:[Car objectMapping] withRepresentation:externalRepresentation expectedObject:expectedCar];
+    [self testObjectFromExternalRepresentation:externalRepresentation withMapping:[Car objectMapping] expectedObject:expectedCar];
 }
 
 - (void)testNonNestedMapping
@@ -60,7 +60,7 @@
     NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
     expectedPerson.gender = (Gender)[genders[[externalRepresentation valueForKey:@"gender"]] integerValue];
     
-    [self testMapping:[Person objectMapping] withRepresentation:externalRepresentation expectedObject:expectedPerson];
+    [self testObjectFromExternalRepresentation:externalRepresentation withMapping:[Person objectMapping] expectedObject:expectedPerson];
 }
 
 - (void)testSimpleSerialization
@@ -74,7 +74,7 @@
     car.model = [expectedExternalRepresentation valueForKey:@"model"];
     car.year = [expectedExternalRepresentation valueForKey:@"year"];
     
-    [self testSerializationUsingMapping:[Car objectMapping] withObject:car expectedRepresentation:expectedExternalRepresentation];
+    [self testSerializeObject:car withMapping:[Car objectMapping] expectedRepresentation:expectedExternalRepresentation];
 }
 
 - (void)testNonNestedSerialization
@@ -93,7 +93,7 @@
     NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
     person.gender = (Gender)[genders[[expectedExternalRepresentation valueForKey:@"gender"]] integerValue];
     
-    [self testSerializationUsingMapping:[Person objectMapping] withObject:person expectedRepresentation:expectedExternalRepresentation];
+    [self testSerializeObject:person withMapping:[Person objectMapping] expectedRepresentation:expectedExternalRepresentation];
 }
 
 - (void)testNestedSerialization
@@ -113,7 +113,7 @@
     NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
     person.gender = (Gender)[genders[[expectedExternalRepresentation valueForKey:@"gender"]] integerValue];
     
-    [self testSerializationUsingMapping:[Person objectMapping] withObject:person expectedRepresentation:expectedExternalRepresentation skippingKeyPaths:@[@"phones"]];
+    [self testSerializeObject:person withMapping:[Person objectMapping] expectedRepresentation:expectedExternalRepresentation skippingKeyPaths:@[@"phones"]];
 }
 
 @end

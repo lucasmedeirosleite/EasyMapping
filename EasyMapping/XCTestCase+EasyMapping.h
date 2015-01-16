@@ -12,22 +12,23 @@
 
 @interface XCTestCase (EasyMapping)
 
-- (id)    testMapping:(EKObjectMapping *)mapping
-   withRepresentation:(NSDictionary *)representation
-       expectedObject:(id)expectedObject;
+- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                               withMapping:(EKObjectMapping *)mapping
+                            expectedObject:(id)expectedObject;
 
-- (id)    testMapping:(EKObjectMapping *)mapping
-   withRepresentation:(NSDictionary *)representation
-       expectedObject:(id)expectedObject
-     skippingKeyPaths:(NSArray *)keyPathsToSkip;
+- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                               withMapping:(EKObjectMapping *)mapping
+                            expectedObject:(id)expectedObject
+                          skippingKeyPaths:(NSArray *)keyPathsToSkip;
 
-- (NSDictionary *)testSerializationUsingMapping:(EKObjectMapping *)mapping
-                                     withObject:(id)object
-                         expectedRepresentation:(NSDictionary *)expectedRepresentation;
+- (NSDictionary *)testSerializeObject:(id)object
+                          withMapping:(EKObjectMapping *)mapping
+               expectedRepresentation:(NSDictionary *)expectedRepresentation;
 
-- (NSDictionary *)testSerializationUsingMapping:(EKObjectMapping *)mapping
-                                     withObject:(id)object
-                         expectedRepresentation:(NSDictionary *)expectedRepresentation
-                               skippingKeyPaths:(NSArray *)keyPathsToSkip;
+- (NSDictionary *)testSerializeObject:(id)object
+                          withMapping:(EKObjectMapping *)mapping
+               expectedRepresentation:(NSDictionary *)expectedRepresentation
+                     skippingKeyPaths:(NSArray *)keyPathsToSkip;
+
 
 @end

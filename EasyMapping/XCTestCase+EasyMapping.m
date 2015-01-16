@@ -15,19 +15,19 @@
 
 @implementation XCTestCase (EasyMapping)
 
-- (id)testMapping:(EKObjectMapping *)mapping withRepresentation:(NSDictionary *)representation expectedObject:(id)expectedObject
+- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping expectedObject:(id)expectedObject
 {
-    return [self testMapping:mapping withRepresentation:representation expectedObject:expectedObject skippingKeyPaths:nil];
+    return [self testObjectFromExternalRepresentation:externalRepresentation withMapping:mapping expectedObject:expectedObject skippingKeyPaths:nil];
 }
 
-- (id)testMapping:(EKObjectMapping *)mapping withRepresentation:(NSDictionary *)representation expectedObject:(id)expectedObject skippingKeyPaths:(NSArray *)keyPathsToSkip
+- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping expectedObject:(id)expectedObject skippingKeyPaths:(NSArray *)keyPathsToSkip
 {
-    id mappedObject = [EKMapper objectFromExternalRepresentation:representation withMapping:mapping];
-    [self testMapping:mapping withMappedObject:mappedObject expectedObject:expectedObject skippingKeyPaths:keyPathsToSkip rootKeyPath:nil];
+    id mappedObject = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
+    [self testMappedObject:mappedObject withMapping:mapping expectedObject:expectedObject skippingKeyPaths:keyPathsToSkip rootKeyPath:nil];
     return mappedObject;
 }
 
-- (void)testMapping:(EKObjectMapping *)mapping withMappedObject:(id)mappedObject expectedObject:(id)expectedObject skippingKeyPaths:(NSArray *)keyPathsToSkip rootKeyPath:(NSString *)rootKeyPath
+- (void)testMappedObject:(id)mappedObject withMapping:(EKObjectMapping *)mapping expectedObject:(id)expectedObject skippingKeyPaths:(NSArray *)keyPathsToSkip rootKeyPath:(NSString *)rootKeyPath
 {
     for (EKPropertyMapping *propertyMapping in mapping.propertyMappings.allValues) {
         NSString *keyPath = propertyMapping.property;
@@ -51,7 +51,7 @@
         NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
         NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:keyPath
                                                               toRootKeyPath:rootKeyPath];
-        [self testMapping:hasOneMapping.objectMapping withMappedObject:relationshipObject expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+        [self testMappedObject:relationshipObject withMapping:hasOneMapping.objectMapping expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
     }
     
     for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings.allValues) {
@@ -67,24 +67,24 @@
             NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%lu]", keyPath, idx];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:indexKeyPath
                                                                   toRootKeyPath:rootKeyPath];
-            [self testMapping:hasManyMapping.objectMapping withMappedObject:relationshipObject expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+            [self testMappedObject:relationshipObject withMapping:hasManyMapping.objectMapping expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
         }];
     }
 }
 
-- (NSDictionary *)testSerializationUsingMapping:(EKObjectMapping *)mapping withObject:(id)object expectedRepresentation:(NSDictionary *)expectedRepresentation
+- (NSDictionary *)testSerializeObject:(id)object withMapping:(EKObjectMapping *)mapping expectedRepresentation:(NSDictionary *)expectedRepresentation
 {
-    return [self testSerializationUsingMapping:mapping withObject:object expectedRepresentation:expectedRepresentation skippingKeyPaths:nil];
+    return [self testSerializeObject:object withMapping:mapping expectedRepresentation:expectedRepresentation skippingKeyPaths:nil];
 }
 
-- (NSDictionary *)testSerializationUsingMapping:(EKObjectMapping *)mapping withObject:(id)object expectedRepresentation:(NSDictionary *)expectedRepresentation skippingKeyPaths:(NSArray *)keyPathsToSkip
+- (NSDictionary *)testSerializeObject:(id)object withMapping:(EKObjectMapping *)mapping expectedRepresentation:(NSDictionary *)expectedRepresentation skippingKeyPaths:(NSArray *)keyPathsToSkip
 {
     NSDictionary *serializedObject = [EKSerializer serializeObject:object withMapping:mapping];
-    [self testSerializationUsingMapping:mapping withSerializedObject:serializedObject expectedRepresentation:expectedRepresentation skippingKeyPaths:keyPathsToSkip rootKeyPath:nil];
+    [self testSerializedObject:serializedObject withMapping:mapping expectedRepresentation:expectedRepresentation skippingKeyPaths:keyPathsToSkip rootKeyPath:nil];
     return serializedObject;
 }
 
-- (void)testSerializationUsingMapping:(EKObjectMapping *)mapping withSerializedObject:(NSDictionary *)serializedObject expectedRepresentation:(NSDictionary *)expectedRepresentation skippingKeyPaths:(NSArray *)keyPathsToSkip rootKeyPath:(NSString *)rootKeyPath
+- (void)testSerializedObject:(NSDictionary *)serializedObject withMapping:(EKObjectMapping *)mapping expectedRepresentation:(NSDictionary *)expectedRepresentation skippingKeyPaths:(NSArray *)keyPathsToSkip rootKeyPath:(NSString *)rootKeyPath
 {
     for (EKPropertyMapping *propertyMapping in mapping.propertyMappings.allValues) {
         NSString *keyPath = propertyMapping.keyPath;
@@ -108,10 +108,10 @@
             NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:keyPath
                                                                   toRootKeyPath:rootKeyPath];
-            [self testSerializationUsingMapping:hasOneMapping.objectMapping withSerializedObject:relationshipRepresentation expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+            [self testSerializedObject:relationshipRepresentation withMapping:hasOneMapping.objectMapping expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
         }
         else {
-            [self testSerializationUsingMapping:hasOneMapping.objectMapping withSerializedObject:serializedObject expectedRepresentation:expectedRepresentation skippingKeyPaths:keyPathsToSkip rootKeyPath:rootKeyPath];
+            [self testSerializedObject:serializedObject withMapping:hasOneMapping.objectMapping expectedRepresentation:expectedRepresentation skippingKeyPaths:keyPathsToSkip rootKeyPath:rootKeyPath];
         }
     }
     
@@ -128,7 +128,7 @@
             NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%lu]", keyPath, idx];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:indexKeyPath
                                                                   toRootKeyPath:rootKeyPath];
-            [self testSerializationUsingMapping:hasManyMapping.objectMapping withSerializedObject:relationshipRepresentation expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+            [self testSerializedObject:relationshipRepresentation withMapping:hasManyMapping.objectMapping expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
         }];
     }
 }
