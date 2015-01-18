@@ -22,4 +22,17 @@ static EKObjectMapping * mapping = nil;
     return mapping;
 }
 
+- (BOOL)isEqual:(Car *)object
+{
+    if (object == self) {
+        return YES;
+    }
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return (object.carId == self.carId &&
+            ([object.model isEqual:self.model] || (object.model == nil && self.model == nil)) &&
+            ([object.year isEqual:self.year] || (object.year == nil && self.year == nil)));
+}
+
 @end
