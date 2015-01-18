@@ -64,7 +64,7 @@
         NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
         [relationshipObjects enumerateObjectsUsingBlock:^(id relationshipObject, NSUInteger idx, BOOL *stop) {
             id expectedRelationshipObject = expectedRelationshipObjects[idx];
-            NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%lu]", keyPath, idx];
+            NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%@]", keyPath, @(idx)];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:indexKeyPath
                                                                   toRootKeyPath:rootKeyPath];
             [self testMappedObject:relationshipObject withMapping:hasManyMapping.objectMapping expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
@@ -125,7 +125,7 @@
         NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
         [relationshipRepresentations enumerateObjectsUsingBlock:^(id relationshipRepresentation, NSUInteger idx, BOOL *stop) {
             id expectedRelationshipRepresentation = expectedRelationshipRepresentations[idx];
-            NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%lu]", keyPath, idx];
+            NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%@]", keyPath, @(idx)];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:indexKeyPath
                                                                   toRootKeyPath:rootKeyPath];
             [self testSerializedObject:relationshipRepresentation withMapping:hasManyMapping.objectMapping expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
