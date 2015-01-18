@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "EasyMapping"
-  s.version      = "0.9.0"
+  s.version      = "0.10.0"
   s.summary      = "The easiest way to map data from your webservice."
   s.homepage     = "https://github.com/lucasmedeirosleite/EasyMapping"
 
@@ -19,4 +19,8 @@ Pod::Spec.new do |s|
 
   s.source_files = 'EasyMapping/*.{h,m}'
 
+  s.subspec 'XCTest' do |xctest|
+    xctest.frameworks = 'XCTest'
+    xctest.source_files = 'XCTest+EasyMapping/*.{h,m}'
+  end
 end
