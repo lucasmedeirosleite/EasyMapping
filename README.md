@@ -212,7 +212,7 @@ Thanks to:
 
 Using CocoaPods:
 
-	pod 'EasyMapping', '~> 0.9.0'
+	pod 'EasyMapping', '~> 0.10.0'
 
 ## The idea
 
