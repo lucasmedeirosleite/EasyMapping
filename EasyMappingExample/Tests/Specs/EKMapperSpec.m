@@ -741,6 +741,30 @@ describe(@"EKMapper", ^{
         
     });
     
+    context(@"hasOneMapping with several non nested keys", ^{
+        __block Person * person = nil;
+        
+        beforeEach(^{
+            NSDictionary * externalRepresentation = [CMFixture buildUsingFixture:@"PersonNonNested"];
+            [Person registerMapping:[MappingProvider personNonNestedMapping]];
+            person = [EKMapper objectFromExternalRepresentation:externalRepresentation
+                                                    withMapping:[MappingProvider personNonNestedMapping]];
+        });
+        
+        it(@"should contain car", ^{
+            [[person.car should] beKindOfClass:[Car class]];
+        });
+        
+        it(@"should have correct name", ^{
+            [[person.name should] equal:@"Lucas"];
+        });
+        
+        it(@"should have correct car properties", ^{
+            [[@(person.car.carId) should] equal:@3];
+            [[person.car.model should] equal:@"i30"];
+            [[person.car.year should] equal:@"2013"];
+        });
+    });
 });
 
 SPEC_END

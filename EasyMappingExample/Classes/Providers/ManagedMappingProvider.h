@@ -17,10 +17,11 @@
 + (EKManagedObjectMapping *)carNestedAttributesMapping;
 + (EKManagedObjectMapping *)carWithDateMapping;
 + (EKManagedObjectMapping *)phoneMapping;
++ (EKManagedObjectMapping *)personNonNestedMapping;
 + (EKManagedObjectMapping *)personMapping;
 + (EKManagedObjectMapping *)personWithCarMapping;
-+ (EKManagedObjectMapping *)personWithPhonesMapping;
 + (EKManagedObjectMapping *)personWithOnlyValueBlockMapping;
++ (EKManagedObjectMapping *)personWithPhonesMapping;
 + (EKManagedObjectMapping *)personWithReverseBlocksMapping;
 
 // Fake mapping, is not backed up by CoreData model

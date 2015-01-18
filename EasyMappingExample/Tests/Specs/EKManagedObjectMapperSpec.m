@@ -473,7 +473,32 @@ describe(@"EKManagedObjectMapper", ^{
     describe(@".syncArrayOfObjectsFromExternalRepresentation:withMapping:fetchRequest:", ^{
         
     });
-  
+    
+    context(@"hasOneMapping with several non nested keys", ^{
+        __block ManagedPerson * person = nil;
+        
+        beforeEach(^{
+            NSDictionary * externalRepresentation = [CMFixture buildUsingFixture:@"PersonNonNested"];
+            [ManagedPerson registerMapping:[ManagedMappingProvider personNonNestedMapping]];
+            person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation
+                                                                 withMapping:[ManagedMappingProvider personNonNestedMapping]
+                                                      inManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
+        });
+        
+        it(@"should contain car", ^{
+            [[person.car should] beKindOfClass:[ManagedCar class]];
+        });
+        
+        it(@"should have correct name", ^{
+            [[person.name should] equal:@"Lucas"];
+        });
+        
+        it(@"should have correct car properties", ^{
+            [[person.car.carID should] equal:@3];
+            [[person.car.model should] equal:@"i30"];
+            [[person.car.year should] equal:@"2013"];
+        });
+    });
 });
 
 SPEC_END

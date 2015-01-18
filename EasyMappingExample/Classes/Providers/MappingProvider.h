@@ -16,10 +16,11 @@
 + (EKObjectMapping *)carNestedAttributesMapping;
 + (EKObjectMapping *)carWithDateMapping;
 + (EKObjectMapping *)phoneMapping;
++ (EKObjectMapping *)personNonNestedMapping;
 + (EKObjectMapping *)personMapping;
 + (EKObjectMapping *)personWithCarMapping;
-+ (EKObjectMapping *)personWithPhonesMapping;
 + (EKObjectMapping *)personWithOnlyValueBlockMapping;
++ (EKObjectMapping *)personWithPhonesMapping;
 + (EKObjectMapping *)personWithRelativeMapping;
 + (EKObjectMapping *)addressMapping;
 + (EKObjectMapping *)nativeMappingWithNullPropertie;

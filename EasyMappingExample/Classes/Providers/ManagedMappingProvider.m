@@ -34,6 +34,17 @@
     }];
 }
 
++ (EKManagedObjectMapping *)carNonNestedMapping {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class]) withBlock:^(EKManagedObjectMapping *mapping) {
+        [mapping mapPropertiesFromDictionary:@{
+                                               @"carId": @"carID",
+                                               @"carModel":@"model",
+                                               @"carYear":@"year"
+                                               }];
+        mapping.primaryKey = @"carID";
+    }];
+}
+
 + (EKManagedObjectMapping *)carNestedAttributesMapping
 {
     return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
@@ -69,6 +80,18 @@
             @"ddd" : @"ddd"
          }];
         mapping.primaryKey = @"phoneID";
+    }];
+}
+
++(EKManagedObjectMapping *)personNonNestedMapping
+{
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class]) withBlock:
+            ^(EKManagedObjectMapping *mapping) {
+      [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
+      
+      [mapping hasOne:[ManagedCar class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
+          forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
+                mapping.primaryKey = @"personID";
     }];
 }
 

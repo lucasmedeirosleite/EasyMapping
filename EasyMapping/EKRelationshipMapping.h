@@ -19,4 +19,8 @@
 
 @property (nonatomic, strong) EKObjectMapping *objectMapping;
 
+@property (nonatomic, strong) NSArray * nonNestedKeyPaths;
+
+- (NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
+
 @end
