@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "EKMappingTimestampFormats.h"
 
 extern NSString * const EKRailsDefaultDatetimeFormat;
 extern NSString * const EKBrazilianDefaultDateFormat;
@@ -53,5 +54,28 @@ extern NSString * const EKBrazilianDefaultDateFormat;
  @result NSString object.
  */
 + (NSString *)transformDate:(NSDate *)dateToBeTransformed withDateFormat:(NSString *)dateFormat;
+
+/**
+ Transform NSNumber/NSString into date.
+ 
+ @param value NSNumber or NSString
+ 
+ @param timestampFormat EKTimestampFormat. Accepts EKTimestampFormatSeconds or EKTimestampFormatMilliseconds
+ 
+ @result NSDate object.
+ */
++ (NSDate *)transformValue:(id)value withTimestampFormat:(EKTimestampFormat)timestampFormat;
+
+/**
+ Transform date into number.
+ 
+ @param dateToBeTransformed Date to transform.
+ 
+ @param timestampFormat EKTimestampFormat. Accepts EKTimestampFormatSeconds or EKTimestampFormatMilliseconds
+ 
+ @result NSNumber object.
+ */
++ (NSNumber *)transformDate:(NSDate *)dateToBeTransformted withTimestampFormat:(EKTimestampFormat)timestampFormat;
+
 
 @end

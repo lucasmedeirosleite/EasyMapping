@@ -30,6 +30,8 @@ NSString * const kDateFormatterKey = @"SCDateFormatter";
 
 @implementation EKTransformer
 
+#pragma mark - Date/String
+
 + (NSDate *)transformString:(NSString *)stringToBeTransformed withDateFormat:(NSString *)dateFormat
 {
     NSDateFormatter *format = [self dateFormatter];
@@ -55,6 +57,26 @@ NSString * const kDateFormatterKey = @"SCDateFormatter";
         [dictionary setObject:dateFormatter forKey:kDateFormatterKey];
     }
     return dateFormatter;
+}
+
+#pragma mark - Date/NSTimeInterval
+
++ (NSDate *)transformValue:(id)value withTimestampFormat:(EKTimestampFormat)timestampFormat
+{
+    NSTimeInterval doubleValue = [value doubleValue];
+    if (timestampFormat == EKTimestampFormatMilliseconds) {
+        doubleValue /= 1000.0;
+    }
+    return [NSDate dateWithTimeIntervalSince1970:doubleValue];
+}
+
++ (NSNumber *)transformDate:(NSDate *)dateToBeTransformted withTimestampFormat:(EKTimestampFormat)timestampFormat
+{
+    NSTimeInterval timeInterval = [dateToBeTransformted timeIntervalSince1970];
+    if (timestampFormat == EKTimestampFormatMilliseconds) {
+        timeInterval *= 1000.0;
+    }
+    return @(timeInterval);
 }
 
 @end

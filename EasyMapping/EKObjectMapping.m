@@ -96,6 +96,20 @@
     }];
 }
 
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withTimestampFormat:(EKTimestampFormat)timestampFormat
+{
+    NSParameterAssert(keyPath);
+    NSParameterAssert(property);
+    
+    [self mapKeyPath:keyPath
+          toProperty:property
+      withValueBlock:^id(NSString * key, id value) {
+          return [value respondsToSelector:@selector(doubleValue)] ? [EKTransformer transformValue:value withTimestampFormat:timestampFormat] : nil;
+      } reverseBlock:^id(id value) {
+          return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withTimestampFormat:timestampFormat] : nil;
+    }];
+}
+
 - (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray
 {
     NSParameterAssert([propertyNamesArray isKindOfClass:[NSArray class]]);
