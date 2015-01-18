@@ -163,7 +163,7 @@ describe(@"Entities introspection", ^{
         importer = [EKCoreDataImporter importerWithMapping:[ManagedMappingProvider personMapping] externalRepresentation:externalRepresentation context:nil];
         
         NSSet * cars = [NSSet setWithObject:@56];
-        NSSet * people = [NSSet set];
+        NSSet * people = [NSSet setWithObject:@23];
         NSSet * phones = [NSSet set];
         
         [[importer.existingEntitiesPrimaryKeys should] equal:@{@"ManagedCar":cars,

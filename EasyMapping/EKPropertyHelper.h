@@ -53,6 +53,8 @@ fromRepresentation:(NSDictionary *)representation;
 
 + (void)setValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
 
++ (void)addValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
+
 + (NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation
                                                 withMapping:(EKObjectMapping *)mapping;
 

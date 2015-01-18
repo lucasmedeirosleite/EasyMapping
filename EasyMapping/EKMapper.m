@@ -40,11 +40,18 @@
     }
     
     id object = [[mapping.objectClass alloc] init];
-    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
+    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping incrementalData:NO];
 }
 
 + (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
      withMapping:(EKObjectMapping *)mapping
+{
+    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping incrementalData:NO];
+}
+
++ (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
+     withMapping:(EKObjectMapping *)mapping
+ incrementalData:(BOOL)incrementalData
 {
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -69,8 +76,17 @@
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
                                                         withPropertyName:[valueMapping property]];
-			 [object setValue:parsedObjects forKeyPath:valueMapping.property];
-		 } else {
+
+             id _value = [object valueForKeyPath:valueMapping.property];
+             
+             if(incrementalData && _value!=nil) {
+                 _value = [_value arrayByAddingObjectsFromArray:parsedObjects];
+                 [object setValue:_value forKey:valueMapping.property];
+             }
+             else {
+                 [object setValue:parsedObjects forKeyPath:valueMapping.property];
+             }
+		 } else if(!incrementalData) {
 			 [object setValue:nil forKey:valueMapping.property];
 		 }
     }];
@@ -80,8 +96,6 @@
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKObjectMapping *)mapping
 {
-    NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
-    
     if (![externalRepresentation isKindOfClass:[NSArray class]] ||
         ![mapping isKindOfClass:[EKObjectMapping class]]) {
         return nil;

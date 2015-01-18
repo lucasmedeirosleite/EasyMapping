@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		097A5C5C1A67126900CB6CE3 /* EKMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */; };
 		18BD8D6281D14C038CC3F308 /* libPods-MacOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */; };
+		49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
+		49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
 		550CE75226AD40059EA2F789 /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */; };
 		82DA805DFB1B4D3494041157 /* libPods-iOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */; };
 		9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
@@ -281,6 +283,8 @@
 		0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CAE9849457872E6F5681E97 /* Pods-OS X Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OS X Tests/Pods-OS X Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithOtherPhones.json; path = Tests/Fixtures/PersonWithOtherPhones.json; sourceTree = SOURCE_ROOT; };
+		49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithZeroPhones.json; path = Tests/Fixtures/PersonWithZeroPhones.json; sourceTree = SOURCE_ROOT; };
 		5D5068BD028D7ECDE8912D21 /* Pods-iOS Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8D816FFC6DC094C7A9297EA6 /* Pods-iOS Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,6 +511,8 @@
 				9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */,
 				9A45121019164705006E6022 /* PersonWithNullCar.json */,
 				9A45121119164705006E6022 /* PersonWithNullPhones.json */,
+				49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */,
+				49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */,
 				9A45121219164705006E6022 /* Plane.json */,
 				9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */,
 				9A210F361944B13A00871071 /* CommentsRecursive.json */,
@@ -1021,12 +1027,14 @@
 			files = (
 				9A45121319164705006E6022 /* Address.json in Resources */,
 				9A45122F19164705006E6022 /* Female.json in Resources */,
+				49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */,
 				9A45123319164705006E6022 /* Male.json in Resources */,
 				9AA7CED3191FA7C400608262 /* ComplexRepresentation.json in Resources */,
 				9AC1321D1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */,
 				9A210F371944B13A00871071 /* CommentsRecursive.json in Resources */,
 				9A45123F19164705006E6022 /* Person.json in Resources */,
 				9A45122319164705006E6022 /* CarWithDate.json in Resources */,
+				49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */,
 				9A45121B19164705006E6022 /* Car.json in Resources */,
 				9A45123719164705006E6022 /* Native.json in Resources */,
 				9A45125919164773006E6022 /* InfoPlist.strings in Resources */,
