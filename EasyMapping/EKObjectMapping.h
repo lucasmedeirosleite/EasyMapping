@@ -32,6 +32,11 @@
 @interface EKObjectMapping : NSObject
 
 /**
+ Defines if to-many relationship data is pushed or replaced.
+ */
+@property (nonatomic, assign) BOOL incrementalData;
+
+/**
  Class, for which this mapping is meant to be used.
  */
 @property (nonatomic, assign, readwrite) Class objectClass;

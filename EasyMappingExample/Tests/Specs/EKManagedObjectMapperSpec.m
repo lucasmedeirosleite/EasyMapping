@@ -315,7 +315,35 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:YES];
+                EKManagedObjectMapping * personMapping = [ManagedMappingProvider personMapping];
+                personMapping.incrementalData = YES;
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation
+                                                                     withMapping:personMapping
+                                                          inManagedObjectContext:moc];
+            });
+            
+            specify(^{
+                [person.phones shouldNotBeNil];
+            });
+            
+            specify(^{
+                [[person.phones should] haveCountOf:2];
+            });
+            
+        });
+        context(@"with hasMany mapping and no incremental data", ^{
+            
+            __block NSManagedObjectContext* moc;
+            __block ManagedPerson *person;
+            
+            beforeEach(^{
+                moc = [NSManagedObjectContext MR_defaultContext];
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
+                
+                externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithOtherPhones"];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
+                
             });
             
             specify(^{
@@ -335,34 +363,12 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:NO];
+                EKManagedObjectMapping * personMapping = [ManagedMappingProvider personMapping];
+                personMapping.incrementalData = YES;
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:personMapping inManagedObjectContext:moc];
                 
                 externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithOtherPhones"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:NO];
-                
-            });
-            
-            specify(^{
-                [person.phones shouldNotBeNil];
-            });
-            
-            specify(^{
-                [[person.phones should] haveCountOf:2];
-            });
-            
-        });
-        context(@"with hasMany mapping and incremental data", ^{
-            
-            __block NSManagedObjectContext* moc;
-            __block ManagedPerson *person;
-            
-            beforeEach(^{
-                moc = [NSManagedObjectContext MR_defaultContext];
-                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:YES];
-                
-                externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithOtherPhones"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:YES];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:personMapping inManagedObjectContext:moc];
                 
             });
             
@@ -383,10 +389,10 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:NO];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
                 
                 externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithZeroPhones"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:NO];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc];
                 
             });
             
@@ -407,10 +413,12 @@ describe(@"EKManagedObjectMapper", ^{
             beforeEach(^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:NO];
+                EKManagedObjectMapping * personMapping = [ManagedMappingProvider personMapping];
+                personMapping.incrementalData = YES;
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:personMapping inManagedObjectContext:moc];
                 
                 externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithZeroPhones"];
-                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personMapping] inManagedObjectContext:moc incrementalData:YES];
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:personMapping inManagedObjectContext:moc];
                 
             });
             

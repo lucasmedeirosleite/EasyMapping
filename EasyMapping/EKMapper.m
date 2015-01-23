@@ -40,18 +40,11 @@
     }
     
     id object = [[mapping.objectClass alloc] init];
-    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping incrementalData:NO];
+    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
 }
 
 + (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
      withMapping:(EKObjectMapping *)mapping
-{
-    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping incrementalData:NO];
-}
-
-+ (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
-     withMapping:(EKObjectMapping *)mapping
- incrementalData:(BOOL)incrementalData
 {
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -79,14 +72,14 @@
 
              id _value = [object valueForKeyPath:valueMapping.property];
              
-             if(incrementalData && _value!=nil) {
+             if(mapping.incrementalData && _value!=nil) {
                  _value = [_value arrayByAddingObjectsFromArray:parsedObjects];
                  [object setValue:_value forKey:valueMapping.property];
              }
              else {
                  [object setValue:parsedObjects forKeyPath:valueMapping.property];
              }
-		 } else if(!incrementalData) {
+		 } else if(!mapping.incrementalData) {
 			 [object setValue:nil forKey:valueMapping.property];
 		 }
     }];

@@ -356,7 +356,7 @@ describe(@"EKMapper", ^{
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
                 externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithOtherPhones"];
-                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:NO];
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
             });
             
             specify(^{
@@ -379,7 +379,10 @@ describe(@"EKMapper", ^{
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
                 externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithOtherPhones"];
-                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:YES];
+                EKObjectMapping *mapping = [MappingProvider personMapping];
+                mapping.incrementalData = YES;
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation
+                                  withMapping:mapping];
             });
             
             specify(^{
@@ -402,7 +405,7 @@ describe(@"EKMapper", ^{
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
                 externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithZeroPhones"];
-                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:NO];
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
             });
             
             specify(^{
@@ -425,7 +428,9 @@ describe(@"EKMapper", ^{
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
                 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
                 externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithZeroPhones"];
-                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping] incrementalData:YES];
+                EKObjectMapping *personMapping = [MappingProvider personMapping];
+                personMapping.incrementalData = YES;
+                person = [EKMapper fillObject:person fromExternalRepresentation:externalRepresentation withMapping:personMapping];
             });
             
             specify(^{

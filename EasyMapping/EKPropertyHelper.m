@@ -147,7 +147,7 @@ static const char scalarTypes[] = {
         [self setValue:value onObject:object forKeyPath:keyPath];
     }
     else {
-        if ([(id <NSObject>)object isKindOfClass:[NSManagedObject class]])
+        if ([object isKindOfClass:[NSManagedObject class]])
         {
             // Reducing update times in CoreData
             if(_value != value && ![value isSubsetOfSet:_value]) {
