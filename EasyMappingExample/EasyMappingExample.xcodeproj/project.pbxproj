@@ -231,8 +231,6 @@
 		9A4512F519166366006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
 		9A4512F619166366006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
 		9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4512F719166B8E006E6022 /* MainMenu.xib */; };
-		9A4B86521A5D463500EE9135 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4B86511A5D463500EE9135 /* PersonNonNested.json */; };
-		9A4B86531A5D463500EE9135 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4B86511A5D463500EE9135 /* PersonNonNested.json */; };
 		9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
@@ -267,8 +265,10 @@
 		9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9AA7CED9191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9AA7CEDA191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
-		9AC0F3111A7276BB004B2096 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4B86511A5D463500EE9135 /* PersonNonNested.json */; };
-		9AC0F3121A7276BC004B2096 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4B86511A5D463500EE9135 /* PersonNonNested.json */; };
+		9AC0D8681A728D4C003926C1 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0D8671A728D4C003926C1 /* PersonNonNested.json */; };
+		9AC0D8691A728D4C003926C1 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0D8671A728D4C003926C1 /* PersonNonNested.json */; };
+		9AC0D86A1A728D4C003926C1 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0D8671A728D4C003926C1 /* PersonNonNested.json */; };
+		9AC0D86B1A728D4C003926C1 /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0D8671A728D4C003926C1 /* PersonNonNested.json */; };
 		9AC0F3131A7276BF004B2096 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
 		9AC0F3141A7276C0004B2096 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
 		9AC0F3151A7276C6004B2096 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
@@ -406,7 +406,6 @@
 		9A4512D219165B46006E6022 /* EKCoreDataBenchmarkSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataBenchmarkSuite.h; path = Benchmarks/Classes/Becnhmark/EKCoreDataBenchmarkSuite.h; sourceTree = "<group>"; };
 		9A4512D319165B46006E6022 /* EKCoreDataBenchmarkSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataBenchmarkSuite.m; path = Benchmarks/Classes/Becnhmark/EKCoreDataBenchmarkSuite.m; sourceTree = "<group>"; };
 		9A4512F719166B8E006E6022 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "Benchmarks/Targets/MacOS Benchmark/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
-		9A4B86511A5D463500EE9135 /* PersonNonNested.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PersonNonNested.json; sourceTree = SOURCE_ROOT; };
 		9A8420E01957164E006DDDE3 /* EKObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectModel.h; sourceTree = "<group>"; };
 		9A8420E11957164E006DDDE3 /* EKObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectModel.m; sourceTree = "<group>"; };
 		9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectModel.h; sourceTree = "<group>"; };
@@ -425,6 +424,7 @@
 		9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ComplexRepresentation.json; path = Tests/Fixtures/ComplexRepresentation.json; sourceTree = SOURCE_ROOT; };
 		9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FlattenArray.h"; sourceTree = "<group>"; };
 		9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FlattenArray.m"; sourceTree = "<group>"; };
+		9AC0D8671A728D4C003926C1 /* PersonNonNested.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonNonNested.json; path = Tests/Fixtures/PersonNonNested.json; sourceTree = SOURCE_ROOT; };
 		9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonsWithSamePhones.json; path = Tests/Fixtures/PersonsWithSamePhones.json; sourceTree = SOURCE_ROOT; };
 		9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
 		9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
@@ -522,7 +522,7 @@
 				9A45120C19164705006E6022 /* Native.json */,
 				9A45120D19164705006E6022 /* NativeChild.json */,
 				9A45120E19164705006E6022 /* Person.json */,
-				9A4B86511A5D463500EE9135 /* PersonNonNested.json */,
+				9AC0D8671A728D4C003926C1 /* PersonNonNested.json */,
 				9A210F391944B81500871071 /* PersonRecursive.json */,
 				9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */,
 				9A45121019164705006E6022 /* PersonWithNullCar.json */,
@@ -1062,9 +1062,9 @@
 				9A210F3A1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122719164705006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9A45124319164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9AC0D8681A728D4C003926C1 /* PersonNonNested.json in Resources */,
 				9A45124F19164705006E6022 /* Plane.json in Resources */,
 				9A45123B19164705006E6022 /* NativeChild.json in Resources */,
-				9A4B86521A5D463500EE9135 /* PersonNonNested.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1093,9 +1093,9 @@
 				9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122819164705006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9A45124419164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9AC0D8691A728D4C003926C1 /* PersonNonNested.json in Resources */,
 				9A45125019164705006E6022 /* Plane.json in Resources */,
 				9A45123C19164705006E6022 /* NativeChild.json in Resources */,
-				9A4B86531A5D463500EE9135 /* PersonNonNested.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1110,7 +1110,6 @@
 				9AC0F31B1A7276D2004B2096 /* ComplexRepresentation.json in Resources */,
 				9A4512E619166366006E6022 /* Plane.json in Resources */,
 				9A451264191647BA006E6022 /* Images.xcassets in Resources */,
-				9AC0F3111A7276BB004B2096 /* PersonNonNested.json in Resources */,
 				9A4512E219166366006E6022 /* Person.json in Resources */,
 				9AC0F3191A7276CB004B2096 /* PersonWithOtherPhones.json in Resources */,
 				9A4512D719166366006E6022 /* Address.json in Resources */,
@@ -1122,6 +1121,7 @@
 				9A4512D819166366006E6022 /* Alien.json in Resources */,
 				9A4512D919166366006E6022 /* Car.json in Resources */,
 				9A4512DD19166366006E6022 /* CarWithRoot.json in Resources */,
+				9AC0D86A1A728D4C003926C1 /* PersonNonNested.json in Resources */,
 				9AC0F3131A7276BF004B2096 /* PersonRecursive.json in Resources */,
 				9A4512DB19166366006E6022 /* CarWithDate.json in Resources */,
 				9A4512E519166366006E6022 /* PersonWithNullPhones.json in Resources */,
@@ -1137,10 +1137,10 @@
 			files = (
 				9A4512EC19166366006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9AC0F3171A7276C7004B2096 /* PersonWithZeroPhones.json in Resources */,
-				9AC0F3121A7276BC004B2096 /* PersonNonNested.json in Resources */,
 				9A4512EF19166366006E6022 /* Male.json in Resources */,
 				9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */,
 				9A4512F419166366006E6022 /* PersonWithNullCar.json in Resources */,
+				9AC0D86B1A728D4C003926C1 /* PersonNonNested.json in Resources */,
 				9AC0F31A1A7276CD004B2096 /* PersonWithOtherPhones.json in Resources */,
 				9AC0F3141A7276C0004B2096 /* PersonRecursive.json in Resources */,
 				9A4512F019166366006E6022 /* Native.json in Resources */,
