@@ -24,7 +24,6 @@
 #import "EKMapper.h"
 #import "EKPropertyHelper.h"
 #import "EKPropertyMapping.h"
-#import "EKTransformer.h"
 #import "EKRelationshipMapping.h"
 
 @implementation EKMapper

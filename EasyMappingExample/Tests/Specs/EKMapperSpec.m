@@ -153,6 +153,40 @@ describe(@"EKMapper", ^{
             
         });
         
+        context(@"with date format and custom format", ^{
+            
+            __block Car *car;
+            __block NSDictionary *externalRepresentation;
+            
+            beforeEach(^{
+                externalRepresentation = [CMFixture buildUsingFixture:@"CarWithDate"];
+                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carWithCustomFormatDateMapping]];
+            });
+            
+            specify(^{
+                [car shouldNotBeNil];
+            });
+            
+            specify(^{
+                [[car.model should] equal:[externalRepresentation objectForKey:@"model"]];
+            });
+            
+            specify(^{
+                [[car.year should] equal:[externalRepresentation objectForKey:@"year"]];
+            });
+            
+            it(@"should populate createdAt field with a NSDate", ^{
+                
+                NSDateFormatter *format = [[NSDateFormatter alloc] init];
+                format.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+                format.dateFormat = @"yyyy/MM/dd";
+                NSDate *expectedDate = [format dateFromString:[externalRepresentation objectForKey:@"created_at"]];
+                [[car.createdAt should] equal:expectedDate];
+                
+            });
+            
+        });
+        
         context(@"with valueBlock", ^{
             
             context(@"when male", ^{

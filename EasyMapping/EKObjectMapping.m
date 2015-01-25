@@ -23,7 +23,7 @@
 
 #import "EKObjectMapping.h"
 #import "EKPropertyMapping.h"
-#import "EKTransformer.h"
+#import "EKDateTransformer.h"
 #import "EKRelationshipMapping.h"
 #import "EKMappingProtocol.h"
 
@@ -83,17 +83,30 @@
 
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
 {
-    NSParameterAssert(keyPath);
-    NSParameterAssert(property);
     NSParameterAssert(dateFormat);
     
-    [self mapKeyPath:keyPath
-         toProperty:property
-  withValueBlock:^id(NSString * key, id value) {
-        return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;
-    } reverseBlock:^id(id value) {
-        return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
+    [self mapKeyPath:keyPath toProperty:property withDateTransform:^(EKDateTransformer *transformer) {
+        transformer.dateFormatter.dateFormat = dateFormat;
     }];
+}
+
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateTransform:(void (^)(EKDateTransformer *))dateTransformerSetupBlock
+{
+    NSParameterAssert(keyPath);
+    NSParameterAssert(property);
+    NSParameterAssert(dateTransformerSetupBlock);
+    
+    EKDateTransformer *transformer = [EKDateTransformer defaultDateTransformer];
+    
+    [self mapKeyPath:keyPath
+          toProperty:property
+      withValueBlock:^id(NSString * key, id value) {
+          [transformer setupWithBlock:dateTransformerSetupBlock];
+          return [value isKindOfClass:[NSString class]] ? [transformer transformedValue:value] : nil;
+      } reverseBlock:^id(id value) {
+          [transformer setupWithBlock:dateTransformerSetupBlock];
+          return [value isKindOfClass:[NSDate class]] ? [transformer reverseTransformedValue:value] : nil;
+      }];
 }
 
 - (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray

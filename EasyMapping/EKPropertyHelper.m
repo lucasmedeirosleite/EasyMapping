@@ -23,7 +23,6 @@
 
 #import "EKPropertyHelper.h"
 #import <objc/runtime.h>
-#import "EKTransformer.h"
 
 static const char scalarTypes[] = {
     _C_BOOL, _C_BFLD,          // BOOL

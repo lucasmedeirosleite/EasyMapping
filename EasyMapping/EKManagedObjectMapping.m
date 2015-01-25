@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKManagedObjectMapping.h"
-#import "EKTransformer.h"
+#import "EKDateTransformer.h"
 
 @implementation EKManagedObjectMapping
 
@@ -91,16 +91,29 @@
 
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
 {
-    NSParameterAssert(keyPath);
-    NSParameterAssert(property);
     NSParameterAssert(dateFormat);
     
+    [self mapKeyPath:keyPath toProperty:property withDateTransform:^(EKDateTransformer *transformer) {
+        transformer.dateFormatter.dateFormat = dateFormat;
+    }];
+}
+
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateTransform:(void(^)(EKDateTransformer *transformer))dateTransformerSetupBlock
+{
+    NSParameterAssert(keyPath);
+    NSParameterAssert(property);
+    NSParameterAssert(dateTransformerSetupBlock);
+
+    EKDateTransformer *transformer = [EKDateTransformer defaultDateTransformer];
+
     [self mapKeyPath:keyPath
           toProperty:property
       withValueBlock:^id(NSString * key, id value, NSManagedObjectContext * context) {
-          return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;
+          [transformer setupWithBlock:dateTransformerSetupBlock];
+          return [value isKindOfClass:[NSString class]] ? [transformer transformedValue:value] : nil;
       } reverseBlock:^id(id value, NSManagedObjectContext * context) {
-          return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
+          [transformer setupWithBlock:dateTransformerSetupBlock];
+          return [value isKindOfClass:[NSDate class]] ? [transformer reverseTransformedValue:value] : nil;
       }];
 }
 

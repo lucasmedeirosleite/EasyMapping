@@ -23,6 +23,8 @@
 
 #import "EKMappingBlocks.h"
 
+@class EKDateTransformer;
+
 @protocol EKMappingProtocol;
 
 /**
@@ -126,6 +128,8 @@
  @param dateFormat Date format
  */
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat;
+
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateTransform:(void(^)(EKDateTransformer *transformer))dateTransformerSetupBlock;
 
 /**
  Maps properties from array. We assume, that names of keypaths and properties are the same.
