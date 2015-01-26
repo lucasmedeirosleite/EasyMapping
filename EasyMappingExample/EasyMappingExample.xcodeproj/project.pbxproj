@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		097A5C5C1A67126900CB6CE3 /* EKMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */; };
+		09B104381A7582CB00557FF2 /* EKObjectMapping+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B104361A7582CB00557FF2 /* EKObjectMapping+Utils.m */; };
 		18BD8D6281D14C038CC3F308 /* libPods-MacOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */; };
 		49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
 		49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
@@ -296,6 +297,8 @@
 		07797FA26639AF90E877FABF /* Pods-MacOS Benchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacOS Benchmark/Pods-MacOS Benchmark.release.xcconfig"; sourceTree = "<group>"; };
 		094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMappingTestCase.m; sourceTree = "<group>"; };
+		09B104351A7582CB00557FF2 /* EKObjectMapping+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKObjectMapping+Utils.h"; sourceTree = "<group>"; };
+		09B104361A7582CB00557FF2 /* EKObjectMapping+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKObjectMapping+Utils.m"; sourceTree = "<group>"; };
 		0FEA1524818F4DC5B8950951 /* libPods-iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CAE9849457872E6F5681E97 /* Pods-OS X Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OS X Tests/Pods-OS X Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4375CE2EA4B0479395A606A4 /* libPods-MacOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -725,6 +728,8 @@
 		9A8420ED19571AD4006DDDE3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				09B104351A7582CB00557FF2 /* EKObjectMapping+Utils.h */,
+				09B104361A7582CB00557FF2 /* EKObjectMapping+Utils.m */,
 				A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */,
 				A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */,
 				A9D16D0216F2B2770003759B /* EKTransformer.h */,
@@ -1307,6 +1312,7 @@
 				9A4511D0191646C9006E6022 /* Phone.m in Sources */,
 				9A8420FD195723D0006DDDE3 /* Three.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
+				09B104381A7582CB00557FF2 /* EKObjectMapping+Utils.m in Sources */,
 				9A4511C8191646C9006E6022 /* NativeChild.m in Sources */,
 				9A4511C4191646C9006E6022 /* Native.m in Sources */,
 				9A13024B190BFEF30060A25C /* EKTransformer.m in Sources */,
