@@ -23,8 +23,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (FlattenArray)
+@interface NSArray (Flatten_Map)
 
--(NSArray*)ek_flattenedArray;
+- (NSArray*)ek_flattenedArray;
+- (NSArray *)ek_mappedArray:(id(^)(id))block;
 
 @end

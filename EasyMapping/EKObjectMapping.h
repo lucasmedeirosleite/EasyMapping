@@ -182,6 +182,15 @@
       reverseBlock:(EKMappingReverseBlock)reverseBlock;
 
 /**
+ *  Map JSON keyPath to object property, using transformer. Serialization is avalibable if transformer supports reverse transformation.
+ *
+ *  @param keyPath     JSON keypath, that will be used by valueForKeyPath: method
+ *  @param property    Property name.
+ *  @param transformer Transformer to be used to produce tranformed value.
+ */
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueTransformer:(NSValueTransformer *)transformer;
+
+/**
  Map to-one relationship for keyPath. Assuming keyPath and property name are equal. ObjectClass should conform to `EKMappingProtocol`.
  
  @param mapping mapping for child object
@@ -265,5 +274,33 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
   @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
 -(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
+
+/**
+ *  Map to-many relationship for keyPath. Mapping is performed by appying valueBlock to each item of array.
+ *
+ *  @param keyPath      keyPath to child objects representation in JSON
+ *  @param property     Name of the property, that will receive mapped objects.
+ *  @param valueBlock   block to transform JSON value into property value.
+ */
+- (void)hasManyForKeyPath:(NSString *)keyPath forProperty:(NSString *)property withValueBlock:(EKMappingValueBlock)valueBlock;
+
+/**
+ *  Map to-many relationship for keyPath. Mapping and serialization are performed by appying valueBlock or reverseBlock to each item of array.
+ *
+ *  @param keyPath      keyPath to child objects representation in JSON
+ *  @param property     Name of the property, that will receive mapped objects.
+ *  @param valueBlock   block to transform JSON value into property value.
+ *  @param reverseBlock block to transform property value into JSON value
+ */
+- (void)hasManyForKeyPath:(NSString *)keyPath forProperty:(NSString *)property withValueBlock:(EKMappingValueBlock)valueBlock reverseBlock:(EKMappingReverseBlock)reverseBlock;
+
+/**
+ *  Map to-many relationship for keyPath. Mapping is performed by appying transformer to each item of array. Serialization is avalibable if transformer supports reverse transformation.
+ *
+ *  @param keyPath      keyPath to child objects representation in JSON
+ *  @param property     Name of the property, that will receive mapped objects.
+ *  @param transformer  Transformer to be used to produce tranformed value.
+ */
+- (void)hasManyForKeyPath:(NSString *)keyPath forProperty:(NSString *)property withTransformer:(NSValueTransformer *)transformer;
 
 @end

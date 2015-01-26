@@ -21,9 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "NSArray+FlattenArray.h"
+#import "NSArray+Flatten_Map.h"
 
-@implementation NSArray (FlattenArray)
+@implementation NSArray (Flatten_Map)
 
 -(NSArray*)ek_flattenedArray {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
@@ -35,6 +35,15 @@
         }
     }
     return [NSArray arrayWithArray:result];
+}
+
+- (NSArray *)ek_mappedArray:(id (^)(id))block
+{
+    NSMutableArray *array = [NSMutableArray new];
+    for (id item in self) {
+        [array addObject:block(item)?:[NSNull null]];
+    }
+    return [array copy];
 }
 
 @end
