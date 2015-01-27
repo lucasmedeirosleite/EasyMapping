@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		090E64A81A7828400058233E /* EKDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 095ADE171A755FDF00A3FAD7 /* EKDateTransformer.m */; };
+		090E64AA1A7831C00058233E /* CarWithDateInOtherFormat.json in Resources */ = {isa = PBXBuildFile; fileRef = 090E64A91A7831C00058233E /* CarWithDateInOtherFormat.json */; };
+		090E64AB1A7831C00058233E /* CarWithDateInOtherFormat.json in Resources */ = {isa = PBXBuildFile; fileRef = 090E64A91A7831C00058233E /* CarWithDateInOtherFormat.json */; };
 		095ADE181A755FDF00A3FAD7 /* EKDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 095ADE171A755FDF00A3FAD7 /* EKDateTransformer.m */; };
 		097A5C5C1A67126900CB6CE3 /* EKMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */; };
 		09B1042C1A757CA000557FF2 /* CarWithNotRFCDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B1042B1A757CA000557FF2 /* CarWithNotRFCDate.json */; };
@@ -293,6 +295,7 @@
 /* Begin PBXFileReference section */
 		02FF772618E32249002282D3 /* iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07797FA26639AF90E877FABF /* Pods-MacOS Benchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacOS Benchmark/Pods-MacOS Benchmark.release.xcconfig"; sourceTree = "<group>"; };
+		090E64A91A7831C00058233E /* CarWithDateInOtherFormat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithDateInOtherFormat.json; path = Tests/Fixtures/CarWithDateInOtherFormat.json; sourceTree = SOURCE_ROOT; };
 		094E08F3DC3F4C88A8E2FBA5 /* libPods-iOS Benchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Benchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		095ADE161A755FDF00A3FAD7 /* EKDateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDateTransformer.h; sourceTree = "<group>"; };
 		095ADE171A755FDF00A3FAD7 /* EKDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDateTransformer.m; sourceTree = "<group>"; };
@@ -515,6 +518,7 @@
 				9A45120519164704006E6022 /* Car.json */,
 				9A45120619164705006E6022 /* Cars.json */,
 				9A45120719164705006E6022 /* CarWithDate.json */,
+				090E64A91A7831C00058233E /* CarWithDateInOtherFormat.json */,
 				09B1042B1A757CA000557FF2 /* CarWithNotRFCDate.json */,
 				9A45120819164705006E6022 /* CarWithNestedAttributes.json */,
 				9A45120919164705006E6022 /* CarWithRoot.json */,
@@ -1045,6 +1049,7 @@
 				9A45121319164705006E6022 /* Address.json in Resources */,
 				9A45122F19164705006E6022 /* Female.json in Resources */,
 				09B1042C1A757CA000557FF2 /* CarWithNotRFCDate.json in Resources */,
+				090E64AA1A7831C00058233E /* CarWithDateInOtherFormat.json in Resources */,
 				49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */,
 				9A45123319164705006E6022 /* Male.json in Resources */,
 				9AA7CED3191FA7C400608262 /* ComplexRepresentation.json in Resources */,
@@ -1086,6 +1091,7 @@
 				9A45125F191647A1006E6022 /* InfoPlist.strings in Resources */,
 				9A45123819164705006E6022 /* Native.json in Resources */,
 				9A45121819164705006E6022 /* Alien.json in Resources */,
+				090E64AB1A7831C00058233E /* CarWithDateInOtherFormat.json in Resources */,
 				9AC0F3181A7276CB004B2096 /* PersonWithOtherPhones.json in Resources */,
 				9A45122019164705006E6022 /* Cars.json in Resources */,
 				9A45124819164705006E6022 /* PersonWithNullCar.json in Resources */,

@@ -159,7 +159,7 @@ describe(@"EKMapper", ^{
             __block NSDictionary *externalRepresentation;
             
             beforeEach(^{
-                externalRepresentation = [CMFixture buildUsingFixture:@"CarWithDate"];
+                externalRepresentation = [CMFixture buildUsingFixture:@"CarWithDateInOtherFormat"];
                 car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carWithCustomFormatDateMapping]];
             });
             
@@ -179,7 +179,7 @@ describe(@"EKMapper", ^{
                 
                 NSDateFormatter *format = [[NSDateFormatter alloc] init];
                 format.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-                format.dateFormat = @"yyyy/MM/dd";
+                format.dateFormat = @"dd/MM/yyyy";
                 NSDate *expectedDate = [format dateFromString:[externalRepresentation objectForKey:@"created_at"]];
                 [[car.createdAt should] equal:expectedDate];
                 

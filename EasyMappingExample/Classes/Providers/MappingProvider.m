@@ -73,7 +73,7 @@
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
         
         [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateTransform:^(EKDateTransformer *transformer) {
-            transformer.dateFormatter.dateFormat = @"yyyy/MM/dd";
+            transformer.dateFormatter.dateFormat = @"dd/MM/yyyy";
         }];
     }];
 }
