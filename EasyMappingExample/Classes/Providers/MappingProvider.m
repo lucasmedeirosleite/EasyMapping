@@ -67,6 +67,17 @@
     }];
 }
 
++ (EKObjectMapping *)carWithCustomFormatDateMapping
+{
+    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
+        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+        
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateTransform:^(EKDateTransformer *transformer) {
+            transformer.dateFormatter.dateFormat = @"dd/MM/yyyy";
+        }];
+    }];
+}
+
 + (EKObjectMapping *)phoneMapping
 {
     return [EKObjectMapping mappingForClass:[Phone class] withBlock:^(EKObjectMapping *mapping) {

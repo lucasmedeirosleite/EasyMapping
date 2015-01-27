@@ -15,6 +15,7 @@
 + (EKObjectMapping *)carWithRootKeyMapping;
 + (EKObjectMapping *)carNestedAttributesMapping;
 + (EKObjectMapping *)carWithDateMapping;
++ (EKObjectMapping *)carWithCustomFormatDateMapping;
 + (EKObjectMapping *)phoneMapping;
 + (EKObjectMapping *)personNonNestedMapping;
 + (EKObjectMapping *)personMapping;
