@@ -23,7 +23,7 @@
 
 #import "EKCoreDataImporter.h"
 #import "EKPropertyHelper.h"
-#import "NSArray+FlattenArray.h"
+#import "NSArray+Flatten_Map.h"
 #import "EKRelationshipMapping.h"
 
 @interface EKCoreDataImporter ()

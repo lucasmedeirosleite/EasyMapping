@@ -39,8 +39,15 @@
         return nil;
     }
     
-    id object = [[mapping.objectClass alloc] init];
-    return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
+    id object;
+    if (mapping.objectClass != Nil) {
+        object = [[mapping.objectClass alloc] init];
+        return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
+    }
+    else {
+        object = [NSMutableDictionary new];
+        return [[self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping] copy];
+    }
 }
 
 + (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation

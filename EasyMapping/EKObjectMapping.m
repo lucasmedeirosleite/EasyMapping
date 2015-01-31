@@ -26,6 +26,7 @@
 #import "EKTransformer.h"
 #import "EKRelationshipMapping.h"
 #import "EKMappingProtocol.h"
+#import "NSArray+Flatten_Map.h"
 
 @implementation EKObjectMapping
 
@@ -173,6 +174,22 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     [self addPropertyMappingToDictionary:mapping];
 }
 
+- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueTransformer:(NSValueTransformer *)transformer
+{
+    if ([[transformer class] allowsReverseTransformation]) {
+        [self mapKeyPath:keyPath toProperty:property withValueBlock:^id(NSString *key, id value) {
+            return [transformer transformedValue:value];
+        } reverseBlock:^id(id value) {
+            return [transformer reverseTransformedValue:value];
+        }];
+    }
+    else {
+        [self mapKeyPath:keyPath toProperty:property withValueBlock:^id(NSString *key, id value) {
+            return [transformer transformedValue:value];
+        }];
+    }
+}
+
 -(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath
 {
     [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
@@ -245,6 +262,48 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectMapping = objectMapping;
     
     [self.hasManyMappings setObject:relationship forKey:keyPath];
+}
+
+- (void)hasManyForKeyPath:(NSString *)keyPath forProperty:(NSString *)property withValueBlock:(EKMappingValueBlock)valueBlock
+{
+    [self mapKeyPath:keyPath toProperty:property withValueBlock:^id(NSString *key, NSArray *value) {
+        return [value ek_mappedArray:^id(id item) {
+            return valueBlock(key, item);
+        }];
+    }];
+}
+
+- (void)hasManyForKeyPath:(NSString *)keyPath forProperty:(NSString *)property withValueBlock:(EKMappingValueBlock)valueBlock reverseBlock:(EKMappingReverseBlock)reverseBlock
+{
+    [self mapKeyPath:keyPath toProperty:property withValueBlock:^id(NSString *key, NSArray *value) {
+        return [value ek_mappedArray:^id(id item) {
+            return valueBlock(key, item);
+        }];
+    } reverseBlock:^id(NSArray *value) {
+        return [value ek_mappedArray:reverseBlock];
+    }];
+}
+
+- (void)hasManyForKeyPath:(NSString *)keyPath forProperty:(NSString *)property withTransformer:(NSValueTransformer *)transformer
+{
+    if ([[transformer class] allowsReverseTransformation]) {
+        [self mapKeyPath:keyPath toProperty:property withValueBlock:^id(NSString *key, NSArray *value) {
+            return [value ek_mappedArray:^id(id item) {
+                return [transformer transformedValue:item];
+            }];
+        } reverseBlock:^id(NSArray *value) {
+            return [value ek_mappedArray:^id(id item) {
+                return [transformer reverseTransformedValue:item];
+            }];
+        }];
+    }
+    else {
+        [self mapKeyPath:keyPath toProperty:property withValueBlock:^id(NSString *key, NSArray *value) {
+            return [value ek_mappedArray:^id(id item) {
+                return [transformer transformedValue:item];
+            }];
+        }];
+    }
 }
 
 - (void)addPropertyMappingToDictionary:(EKPropertyMapping *)propertyMapping
