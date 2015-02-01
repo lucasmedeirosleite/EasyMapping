@@ -1,7 +1,9 @@
 //
+//  NSDateFormatter+EasyMappingAdditions.h
 //  EasyMapping
 //
-//  Copyright (c) 2012-2014 Lucas Medeiros.
+//  Created by Denys Telezhkin on 01.02.15.
+//  Copyright (c) 2015 EasyKit. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,35 +25,21 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const EKRailsDefaultDatetimeFormat;
-extern NSString * const EKBrazilianDefaultDateFormat;
+static NSString * const EKRFC_3339DatetimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+static NSString * const EKRFC_822DatetimeFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
+static NSString * const EKISO_8601DateTimeFormat = @"yyyy-MM-dd";
 
 /**
- `EKTransformer` is used to efficiently convert `NSString` to `NSDate` and reverse. By default, it uses GMT+0 timezone.
+ Category on NSDateFormatter, that allows getting NSDateFormatter for current thread.
+ 
+ Note. On iOS 7 and higher and Mac OS X 10.7 and higher NSDateFormatter is thread-safe, so it's safe to use date formatter across multiple threads.
  */
 
-@interface EKTransformer : NSObject
-
-/**
- Transform string into date.
- 
- @param stringToBeTransformed String, containing valid date.
- 
- @param dateFormat Date format to be read from the string.
- 
- @result NSDate object.
- */
-+ (NSDate *)transformString:(NSString *)stringToBeTransformed withDateFormat:(NSString *)dateFormat;
+@interface NSDateFormatter (EasyMappingAdditions)
 
 /**
- Transform date into string.
- 
- @param dateToBeTransformed Date to transform.
- 
- @param dateFormat Date format to be written to string.
- 
- @result NSString object.
+ NSDateFormatter instance for current NSThread. It is lazily constructed, default date format - ISO 8601.
  */
-+ (NSString *)transformDate:(NSDate *)dateToBeTransformed withDateFormat:(NSString *)dateFormat;
++ (NSDateFormatter *)ek_formatterForCurrentThread;
 
 @end

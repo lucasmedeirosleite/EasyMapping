@@ -64,7 +64,7 @@
                                               withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[NSDateFormatter ek_formatterForCurrentThread]];
         mapping.primaryKey = @"carID";
     }];
 }

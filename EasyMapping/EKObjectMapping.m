@@ -23,9 +23,9 @@
 
 #import "EKObjectMapping.h"
 #import "EKPropertyMapping.h"
-#import "EKTransformer.h"
 #import "EKRelationshipMapping.h"
 #import "EKMappingProtocol.h"
+#import "NSDateFormatter+EasyMappingAdditions.h"
 
 @implementation EKObjectMapping
 
@@ -83,17 +83,22 @@
 
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
 {
+    [self mapKeyPath:keyPath toProperty:property withDateFormatter:[NSDateFormatter ek_formatterForCurrentThread]];
+}
+
+-(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormatter:(NSDateFormatter *)formatter
+{
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
-    NSParameterAssert(dateFormat);
+    NSParameterAssert(formatter);
     
     [self mapKeyPath:keyPath
-         toProperty:property
-  withValueBlock:^id(NSString * key, id value) {
-        return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;
-    } reverseBlock:^id(id value) {
-        return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
-    }];
+          toProperty:property
+      withValueBlock:^id(NSString * key, id value) {
+          return [value isKindOfClass:[NSString class]] ? [formatter dateFromString:value] : nil;
+      } reverseBlock:^id(id value) {
+          return [value isKindOfClass:[NSDate class]] ? [formatter stringFromDate:value] : nil;
+      }];
 }
 
 - (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray

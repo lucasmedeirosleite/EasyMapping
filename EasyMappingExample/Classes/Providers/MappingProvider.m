@@ -63,7 +63,7 @@
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[NSDateFormatter ek_formatterForCurrentThread]];
     }];
 }
 
