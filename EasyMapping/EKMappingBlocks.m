@@ -21,18 +21,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "EKMappingBlocks.h"
 
-typedef id(^EKMappingValueBlock)(NSString *key, id value);
-typedef id(^EKMappingReverseBlock)(id value);
+@implementation EKMappingBlocks
 
-typedef id(^EKManagedMappingValueBlock)(NSString * key, id value, NSManagedObjectContext * context);
-typedef id(^EKManagedMappingReverseValueBlock)(id value, NSManagedObjectContext * context);
++(EKMappingValueBlock)urlMappingBlock
+{
+    return ^id(NSString * key, id value) {
+        if ([value isKindOfClass:[NSString class]])
+        {
+            return [NSURL URLWithString:value];
+        }
+        return nil;
+    };
+}
 
-@interface EKMappingBlocks: NSObject
-
-+ (EKMappingValueBlock)urlMappingBlock;
-+ (EKMappingReverseBlock)urlReverseMappingBlock;
++(EKMappingReverseBlock)urlReverseMappingBlock
+{
+    return ^id(id value){
+        if ([value isKindOfClass:[NSURL class]])
+        {
+            return [value absoluteString];
+        }
+        return nil;
+    };
+}
 
 @end

@@ -106,6 +106,9 @@
         }];
         [mapping hasOne:[Car class] forKeyPath:@"car"];
         [mapping hasMany:[Phone class] forKeyPath:@"phones"];
+        [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
+             withValueBlock:[EKMappingBlocks urlMappingBlock]
+               reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
     }];
 }
 

@@ -102,7 +102,7 @@
     NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
     person.gender = (Gender)[genders[[expectedExternalRepresentation valueForKey:@"gender"]] integerValue];
     
-    [self testSerializeObject:person withMapping:[Person objectMapping] expectedRepresentation:expectedExternalRepresentation skippingKeyPaths:@[@"phones"]];
+    [self testSerializeObject:person withMapping:[Person objectMapping] expectedRepresentation:expectedExternalRepresentation skippingKeyPaths:@[@"phones",@"socialURL"]];
 }
 
 @end
