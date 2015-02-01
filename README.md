@@ -30,7 +30,7 @@ typedef enum {
 @property (nonatomic, assign) Gender gender;
 @property (nonatomic, strong) Car *car;
 @property (nonatomic, strong) NSArray *phones;
-
+@property (nonatomic, strong) NSURL * socialURL;
 @end
 
 @interface Car : NSObject <EKMappingProtocol>
@@ -76,8 +76,11 @@ typedef enum {
         } reverseBlock:^id(id value) {
            return [genders allKeysForObject:value].lastObject;
         }];
-        [mapping hasOne:[Car class] forKey:@"car"];
-        [mapping hasMany:[Phone class] forKey:@"phones"];
+        [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
+             withValueBlock:[EKMappingBlocks urlMappingBlock]
+               reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
+        [mapping hasOne:[Car class] forKeyPath:@"car"];
+        [mapping hasMany:[Phone class] forKeyPath:@"phones"];
     }];
 }
 
@@ -89,7 +92,7 @@ typedef enum {
 {
     return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormat:@"yyyy-MM-dd"];
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[NSDateFormatter formatterForCurrentThread]];
     }];
 }
 
