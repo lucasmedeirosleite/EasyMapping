@@ -1,7 +1,9 @@
 //
+//  NSDateFormatter+EasyMappingAdditions.h
 //  EasyMapping
 //
-//  Copyright (c) 2012-2015 Lucas Medeiros.
+//  Created by Denys Telezhkin on 01.02.15.
+//  Copyright (c) 2015 EasyKit. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,17 +24,22 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 
-typedef id(^EKMappingValueBlock)(NSString *key, id value);
-typedef id(^EKMappingReverseBlock)(id value);
+static NSString * const EKRFC_3339DatetimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+static NSString * const EKRFC_822DatetimeFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
+static NSString * const EKISO_8601DateTimeFormat = @"yyyy-MM-dd";
 
-typedef id(^EKManagedMappingValueBlock)(NSString * key, id value, NSManagedObjectContext * context);
-typedef id(^EKManagedMappingReverseValueBlock)(id value, NSManagedObjectContext * context);
+/**
+ Category on NSDateFormatter, that allows getting NSDateFormatter for current thread.
+ 
+ Note. On iOS 7 and higher and Mac OS X 10.7 and higher NSDateFormatter is thread-safe, so it's safe to use date formatter across multiple threads.
+ */
 
-@interface EKMappingBlocks: NSObject
+@interface NSDateFormatter (EasyMappingAdditions)
 
-+ (EKMappingValueBlock)urlMappingBlock;
-+ (EKMappingReverseBlock)urlReverseMappingBlock;
+/**
+ NSDateFormatter instance for current NSThread. It is lazily constructed, default date format - ISO 8601.
+ */
++ (NSDateFormatter *)ek_formatterForCurrentThread;
 
 @end

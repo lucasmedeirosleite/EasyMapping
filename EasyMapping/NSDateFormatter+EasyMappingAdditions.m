@@ -1,7 +1,9 @@
 //
+//  NSDateFormatter+EasyMappingAdditions.m
 //  EasyMapping
 //
-//  Copyright (c) 2012-2014 Lucas Medeiros.
+//  Created by Denys Telezhkin on 01.02.15.
+//  Copyright (c) 2015 EasyKit. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,38 +23,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "EKTransformer.h"
+#import "NSDateFormatter+EasyMappingAdditions.h"
 
-NSString * const EKRailsDefaultDatetimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
-NSString * const EKBrazilianDefaultDateFormat = @"dd/MM/yyyy";
+NSString * const EKThreadDateFormatterKey = @"EKThreadDateFormatter";
 
-NSString * const kDateFormatterKey = @"SCDateFormatter";
+@implementation NSDateFormatter (EasyMappingAdditions)
 
-@implementation EKTransformer
-
-+ (NSDate *)transformString:(NSString *)stringToBeTransformed withDateFormat:(NSString *)dateFormat
-{
-    NSDateFormatter *format = [self dateFormatter];
-    format.dateFormat = dateFormat;
-    return [format dateFromString:stringToBeTransformed];
-}
-
-+ (NSString *)transformDate:(NSDate *)dateToBeTransformed withDateFormat:(NSString *)dateFormat {
-    NSDateFormatter *format = [self dateFormatter];
-    format.dateFormat = dateFormat;
-    return [format stringFromDate:dateToBeTransformed];
-}
-
-+ (NSDateFormatter *)dateFormatter
++(NSDateFormatter *)ek_formatterForCurrentThread
 {
     NSMutableDictionary *dictionary = [[NSThread currentThread] threadDictionary];
-    NSDateFormatter *dateFormatter = [dictionary objectForKey:kDateFormatterKey];
+    NSDateFormatter *dateFormatter = [dictionary objectForKey:EKThreadDateFormatterKey];
     if (!dateFormatter)
     {
         dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        dateFormatter.dateFormat = EKISO_8601DateTimeFormat;
         dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-        [dictionary setObject:dateFormatter forKey:kDateFormatterKey];
+        [dictionary setObject:dateFormatter forKey:EKThreadDateFormatterKey];
     }
     return dateFormatter;
 }

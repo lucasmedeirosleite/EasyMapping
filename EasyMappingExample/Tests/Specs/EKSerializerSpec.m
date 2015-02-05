@@ -185,10 +185,28 @@ describe(@"EKSerializer", ^{
         
         context(@"with reverse block", ^{
            
-            context(@"when male", ^{
+            __block Person *person;
+            __block NSDictionary *representation;
+            
+            context(@"using EKMappingBlocks", ^{
+                person = [Person new];
+                person.socialURL = [NSURL URLWithString:@"https://www.twitter.com/EasyMapping"];
                 
-                __block Person *person;
-                __block NSDictionary *representation;
+                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+                
+                [[representation[@"socialURL"] should] equal:@"https://www.twitter.com/EasyMapping"];
+            });
+            
+            context(@"using mapping blocks with nil value", ^{
+                person = [Person new];
+                person.socialURL = nil;
+                
+                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+                
+                [[representation[@"socialURL"] should] equal:[NSNull null]];
+            });
+            
+            context(@"when male", ^{
                 
                 beforeEach(^{
                     

@@ -62,7 +62,6 @@ describe(@"EKMapper", ^{
             specify(^{
                 [[car.year should] equal:[externalRepresentation objectForKey:@"year"]];
             });
-            
         });
         
         context(@"with root key", ^{
@@ -207,6 +206,22 @@ describe(@"EKMapper", ^{
                 
             });
             
+        });
+        
+        context(@"Using mapping blocks", ^{
+           
+            __block Person *person;
+            
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+                [Car registerMapping:[MappingProvider carMapping]];
+                [Phone registerMapping:[MappingProvider phoneMapping]];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+            });
+            
+            specify(^{
+                [[person.socialURL should] equal:[NSURL URLWithString:@"https://www.twitter.com/EasyMapping"]];
+            });
         });
         
         context(@"with hasOne mapping", ^{

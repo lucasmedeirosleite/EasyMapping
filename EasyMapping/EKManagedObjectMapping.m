@@ -22,7 +22,6 @@
 // THE SOFTWARE.
 
 #import "EKManagedObjectMapping.h"
-#import "EKTransformer.h"
 
 @implementation EKManagedObjectMapping
 
@@ -87,21 +86,6 @@
         }
     }];
     return primaryKeyMapping;
-}
-
-- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
-{
-    NSParameterAssert(keyPath);
-    NSParameterAssert(property);
-    NSParameterAssert(dateFormat);
-    
-    [self mapKeyPath:keyPath
-          toProperty:property
-      withValueBlock:^id(NSString * key, id value, NSManagedObjectContext * context) {
-          return [value isKindOfClass:[NSString class]] ? [EKTransformer transformString:value withDateFormat:dateFormat] : nil;
-      } reverseBlock:^id(id value, NSManagedObjectContext * context) {
-          return [value isKindOfClass:[NSDate class]] ? [EKTransformer transformDate:value withDateFormat:dateFormat] : nil;
-      }];
 }
 
 -(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueBlock:(EKManagedMappingValueBlock)valueBlock

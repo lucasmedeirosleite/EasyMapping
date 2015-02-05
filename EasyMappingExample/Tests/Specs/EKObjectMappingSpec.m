@@ -461,7 +461,7 @@ describe(@"EKObjectMapping", ^{
         
         beforeEach(^{
             mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
-            [mapping mapKeyPath:@"birthdate" toProperty:@"birthdate" withDateFormat:@"yyyy-MM-dd"];
+            [mapping mapKeyPath:@"birthdate" toProperty:@"birthdate" withDateFormatter:[NSDateFormatter ek_formatterForCurrentThread]];
             
         });
         

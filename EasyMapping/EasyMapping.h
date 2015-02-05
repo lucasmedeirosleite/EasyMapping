@@ -27,6 +27,6 @@
 #import "EKManagedObjectMapper.h"
 #import "EKManagedObjectMapping.h"
 #import "EKMappingBlocks.h"
-#import "EKTransformer.h"
 #import "EKObjectModel.h"
 #import "EKManagedObjectModel.h"
+#import "NSDateFormatter+EasyMappingAdditions.h"

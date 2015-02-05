@@ -25,5 +25,6 @@ typedef enum {
 @property (nonatomic, strong) NSArray *phones;
 @property (nonatomic, strong) Person * relative;
 @property (nonatomic, strong) NSArray* children;
+@property (nonatomic, strong) NSURL * socialURL;
 
 @end

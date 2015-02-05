@@ -1,7 +1,7 @@
 //
 //  EasyMapping
 //
-//  Copyright (c) 2012-2014 Lucas Medeiros.
+//  Copyright (c) 2012-2015 Lucas Medeiros.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,37 +21,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "EKMappingBlocks.h"
 
-extern NSString * const EKRailsDefaultDatetimeFormat;
-extern NSString * const EKBrazilianDefaultDateFormat;
+@implementation EKMappingBlocks
 
-/**
- `EKTransformer` is used to efficiently convert `NSString` to `NSDate` and reverse. By default, it uses GMT+0 timezone.
- */
++(EKMappingValueBlock)urlMappingBlock
+{
+    return ^id(NSString * key, id value) {
+        if ([value isKindOfClass:[NSString class]])
+        {
+            return [NSURL URLWithString:value];
+        }
+        return nil;
+    };
+}
 
-@interface EKTransformer : NSObject
-
-/**
- Transform string into date.
- 
- @param stringToBeTransformed String, containing valid date.
- 
- @param dateFormat Date format to be read from the string.
- 
- @result NSDate object.
- */
-+ (NSDate *)transformString:(NSString *)stringToBeTransformed withDateFormat:(NSString *)dateFormat;
-
-/**
- Transform date into string.
- 
- @param dateToBeTransformed Date to transform.
- 
- @param dateFormat Date format to be written to string.
- 
- @result NSString object.
- */
-+ (NSString *)transformDate:(NSDate *)dateToBeTransformed withDateFormat:(NSString *)dateFormat;
++(EKMappingReverseBlock)urlReverseMappingBlock
+{
+    return ^id(id value){
+        if ([value isKindOfClass:[NSURL class]])
+        {
+            return [value absoluteString];
+        }
+        return nil;
+    };
+}
 
 @end
