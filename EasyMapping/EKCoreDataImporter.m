@@ -236,6 +236,8 @@
 
 -(void)cacheObject:(NSManagedObject *)object withMapping:(EKManagedObjectMapping *)mapping
 {
+    if(!mapping.primaryKey) return;
+
     NSMutableDictionary *entityObjectsMap = self.fetchedExistingEntities[mapping.entityName];
     entityObjectsMap[[object valueForKey:mapping.primaryKey]] = object;
     self.fetchedExistingEntities[mapping.entityName] = entityObjectsMap;
