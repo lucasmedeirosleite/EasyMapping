@@ -169,7 +169,12 @@
             // @[<null>,@[value2,value3]]
             //
             // And we are interested in flat structure like this: @[value2,value3]
-            manyMappingRepresentation = [manyMappingRepresentation ek_flattenedArray];
+            manyMappingRepresentation = [manyMappingRepresentation ek_flattenedCompactedArray];
+
+            // if after compact, the array is empty, we should skip this
+            if ([manyMappingRepresentation count] == 0) {
+                return;
+            }
 
             [self inspectRepresentation:manyMappingRepresentation
                            usingMapping:(EKManagedObjectMapping *)[mapping objectMapping]

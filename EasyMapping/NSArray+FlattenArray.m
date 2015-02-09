@@ -25,12 +25,12 @@
 
 @implementation NSArray (FlattenArray)
 
--(NSArray*)ek_flattenedArray {
+-(NSArray*)ek_flattenedCompactedArray {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
     for (id thing in self) {
         if ([thing isKindOfClass:[NSArray class]]) {
-            [result addObjectsFromArray:[(NSArray*)thing ek_flattenedArray]];
-        } else {
+            [result addObjectsFromArray:[(NSArray*)thing ek_flattenedCompactedArray]];
+        } else if (![thing isEqual:[NSNull null]]) {
             [result addObject:thing];
         }
     }

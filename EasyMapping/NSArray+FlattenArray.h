@@ -25,6 +25,6 @@
 
 @interface NSArray (FlattenArray)
 
--(NSArray*)ek_flattenedArray;
+-(NSArray*)ek_flattenedCompactedArray;
 
 @end
