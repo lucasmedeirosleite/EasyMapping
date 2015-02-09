@@ -102,6 +102,7 @@
         [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
         [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
         [mapping hasOne:ManagedCar.class forKeyPath:@"car"];
+        [mapping hasOne:ManagedPerson.class forKeyPath:@"spouse"];
         [mapping hasMany:ManagedPerson.class forKeyPath:@"relative"];
         [mapping hasMany:ManagedPhone.class forKeyPath:@"phones"];
         mapping.primaryKey = @"personID";
