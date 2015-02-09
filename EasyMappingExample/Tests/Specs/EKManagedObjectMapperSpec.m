@@ -331,6 +331,7 @@ describe(@"EKManagedObjectMapper", ^{
             });
             
         });
+
         context(@"with hasMany mapping and no incremental data", ^{
             
             __block NSManagedObjectContext* moc;
@@ -428,6 +429,58 @@ describe(@"EKManagedObjectMapper", ^{
             
             specify(^{
                 [[person.phones should] haveCountOf:2];
+            });
+            
+        });
+
+        context(@"with recursive mapping", ^{
+            
+            __block NSManagedObjectContext* moc;
+            __block ManagedPerson *person;
+            
+            beforeEach(^{
+                moc = [NSManagedObjectContext MR_defaultContext];
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"PersonRecursive"];
+                EKManagedObjectMapping * personMapping = [ManagedMappingProvider personMapping];
+                personMapping.incrementalData = YES;
+                person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation
+                                                                     withMapping:personMapping
+                                                          inManagedObjectContext:moc];
+            });
+
+            it(@"should be a person", ^{
+                [[person should] beKindOfClass:[ManagedPerson class]];
+            });
+            
+            it(@"should contain relative", ^{
+                [[person.relative should] beKindOfClass:[ManagedPerson class]];
+            });
+            
+            it(@"should have correct values", ^{
+                [[person.relative.name should] equal:@"Loreen"];
+                [[person.relative.email should] equal:@"loreen@gmail.com"];
+                [[person.relative.gender should] equal:@"female"];
+            });
+
+            it(@"should contain list of children", ^{
+                [[person.children should] beKindOfClass:[NSSet class]];
+            });
+            
+            it(@"should have 2 children", ^{
+                [[person.children should] haveCountOf:2];
+                [person.children enumerateObjectsUsingBlock:^(ManagedPerson* person, BOOL *stop) {
+                    if ([person.name isEqualToString:@"Masha"]) {
+                        [[person.relative.name should] equal:@"Alexey"];
+                        [[person.children should] haveCountOf:0];
+
+                    } else if ([person.name isEqualToString:@"Elena"]) {
+                        [person.relative shouldBeNil];
+                        [[person.children should] haveCountOf:0];
+
+                    } else {
+                        fail(@"unexpected person");
+                    }
+                }];
             });
             
         });

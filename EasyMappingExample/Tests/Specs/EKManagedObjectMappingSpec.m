@@ -354,16 +354,9 @@ describe(@"EKManagedObjectMapping", ^{
         
         specify(^{
             [[mapping.hasOneMappings objectForKey:@"car"] shouldNotBeNil];
+            [[mapping.hasOneMappings objectForKey:@"relative"] shouldNotBeNil];
         });
-        
-        specify(^{
-            [mapping.hasManyMappings shouldNotBeNil];
-        });
-        
-        specify(^{
-            [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
-        });
-        
+       
     });
     
     describe(@"#hasManyMapping:forKey:", ^{
@@ -380,6 +373,7 @@ describe(@"EKManagedObjectMapping", ^{
         
         specify(^{
             [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
+            [[mapping.hasManyMappings objectForKey:@"children"] shouldNotBeNil];
         });
         
     });

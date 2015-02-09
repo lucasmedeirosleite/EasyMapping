@@ -19,7 +19,7 @@
 @dynamic phones;
 @dynamic gender;
 @dynamic relative;
-@dynamic spouse;
+@dynamic children;
 
 static EKManagedObjectMapping * mapping = nil;
 

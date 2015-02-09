@@ -19,8 +19,8 @@
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) ManagedCar *car;
 
-@property (nonatomic, strong) ManagedPerson * spouse;
-@property (nonatomic, strong) NSSet *relative;
+@property (nonatomic, strong) NSSet * children;
+@property (nonatomic, strong) ManagedPerson *relative;
 
 @property (nonatomic, retain) NSSet *phones;
 @property (nonatomic, retain) NSString * gender;
