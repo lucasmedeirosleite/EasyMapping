@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14A343f" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ManagedCar" representedClassName="ManagedCar" syncable="YES">
         <attribute name="carID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -14,6 +14,7 @@
         <attribute name="personID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="car" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCar" inverseName="person" inverseEntity="ManagedCar" syncable="YES"/>
         <relationship name="phones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedPhone" inverseName="persons" inverseEntity="ManagedPhone" syncable="YES"/>
+        <relationship name="relative" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedPerson" inverseName="relative" inverseEntity="ManagedPerson" syncable="YES"/>
     </entity>
     <entity name="ManagedPhone" representedClassName="ManagedPhone" syncable="YES">
         <attribute name="ddd" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="ManagedCar" positionX="135" positionY="0" width="128" height="120"/>
-        <element name="ManagedPerson" positionX="-164" positionY="36" width="128" height="133"/>
+        <element name="ManagedPerson" positionX="-164" positionY="36" width="128" height="150"/>
         <element name="ManagedPhone" positionX="-362" positionY="-36" width="128" height="118"/>
     </elements>
 </model>

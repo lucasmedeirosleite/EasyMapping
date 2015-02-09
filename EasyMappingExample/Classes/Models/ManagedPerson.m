@@ -18,6 +18,7 @@
 @dynamic car;
 @dynamic phones;
 @dynamic gender;
+@dynamic relative;
 
 static EKManagedObjectMapping * mapping = nil;
 
