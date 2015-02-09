@@ -14,7 +14,7 @@
         <attribute name="personID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="car" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCar" inverseName="person" inverseEntity="ManagedCar" syncable="YES"/>
         <relationship name="phones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedPhone" inverseName="persons" inverseEntity="ManagedPhone" syncable="YES"/>
-        <relationship name="relative" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedPerson" inverseName="relative" inverseEntity="ManagedPerson" syncable="YES"/>
+        <relationship name="relative" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedPerson" inverseName="relative" inverseEntity="ManagedPerson" syncable="YES"/>
         <relationship name="spouse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedPerson" inverseName="spouse" inverseEntity="ManagedPerson" syncable="YES"/>
     </entity>
     <entity name="ManagedPhone" representedClassName="ManagedPhone" syncable="YES">
