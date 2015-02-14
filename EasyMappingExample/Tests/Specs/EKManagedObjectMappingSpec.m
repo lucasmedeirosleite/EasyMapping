@@ -356,6 +356,14 @@ describe(@"EKManagedObjectMapping", ^{
             [[mapping.hasOneMappings objectForKey:@"car"] shouldNotBeNil];
             [[mapping.hasOneMappings objectForKey:@"relative"] shouldNotBeNil];
         });
+        
+        specify(^{
+            [mapping.hasManyMappings shouldNotBeNil];
+         });
+
+        specify(^{
+            [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
+            });
        
     });
     
