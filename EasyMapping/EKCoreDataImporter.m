@@ -148,9 +148,23 @@
 
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
     {
-        NSDictionary * oneMappingRepresentation = [rootRepresentation valueForKeyPath:key];
+        id oneMappingRepresentation = [rootRepresentation valueForKeyPath:key];
         if (oneMappingRepresentation && ![oneMappingRepresentation isEqual:[NSNull null]])
         {
+            // This is needed, because if one of the objects in array does not contain object for key, returned structure would be something like this:
+            //
+            // @[<null>,@[value2,value3]]
+            //
+            // And we are interested in flat structure like this: @[value2,value3]
+            if ([oneMappingRepresentation isKindOfClass:[NSArray class]]) {
+                oneMappingRepresentation = [oneMappingRepresentation ek_flattenedCompactedArray];
+
+                // if after compact, the array is empty, we should skip this
+                if ([oneMappingRepresentation count] == 0) {
+                    return;
+                }
+            }
+
             [self inspectRepresentation:oneMappingRepresentation
                            usingMapping:(EKManagedObjectMapping *)[mapping objectMapping]
                        accumulateInside:dictionary
@@ -169,7 +183,12 @@
             // @[<null>,@[value2,value3]]
             //
             // And we are interested in flat structure like this: @[value2,value3]
-            manyMappingRepresentation = [manyMappingRepresentation ek_flattenedArray];
+            manyMappingRepresentation = [manyMappingRepresentation ek_flattenedCompactedArray];
+
+            // if after compact, the array is empty, we should skip this
+            if ([manyMappingRepresentation count] == 0) {
+                return;
+            }
 
             [self inspectRepresentation:manyMappingRepresentation
                            usingMapping:(EKManagedObjectMapping *)[mapping objectMapping]
