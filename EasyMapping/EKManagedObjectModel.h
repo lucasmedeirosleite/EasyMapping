@@ -31,8 +31,10 @@
 /**
  Serialize mapped object back to JSON representation.
  
+ @param context, from which object will be serialized
+ 
  @return NSDictionary representation of current object.
  */
-- (NSDictionary *)serializedObject;
+- (NSDictionary *)serializedObjectInContext:(NSManagedObjectContext *)context;
 
 @end

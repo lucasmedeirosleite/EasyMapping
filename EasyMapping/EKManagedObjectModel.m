@@ -24,10 +24,11 @@
 
 #pragma mark - serialization
 
-- (NSDictionary *)serializedObject
+- (NSDictionary *)serializedObjectInContext:(NSManagedObjectContext *)context
 {
     return [EKSerializer serializeObject:self
-                             withMapping:[self.class objectMapping]];
+                             withMapping:[self.class objectMapping]
+                             fromContext:context];
 }
 
 #pragma mark - EKManagedMappingProtocol
