@@ -30,6 +30,8 @@
 		9A170333194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
 		9A170334194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
 		9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A1B2D161A9F446F00E1FACD /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
+		9A1B2D171A9F446F00E1FACD /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
 		9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
 		9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
@@ -1433,6 +1435,7 @@
 				9A4511BE191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A45127F19164911006E6022 /* EKSerializer.m in Sources */,
 				9A4511C6191646C9006E6022 /* Native.m in Sources */,
+				9A1B2D161A9F446F00E1FACD /* EKMappingBlocks.m in Sources */,
 				9A4512D019165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A8420EA195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A45117E19164696006E6022 /* MappingProvider.m in Sources */,
@@ -1482,6 +1485,7 @@
 				9A45128319164912006E6022 /* EKObjectMapping.m in Sources */,
 				9A4511CF191646C9006E6022 /* Person.m in Sources */,
 				9A45128419164912006E6022 /* EKManagedObjectMapping.m in Sources */,
+				9A1B2D171A9F446F00E1FACD /* EKMappingBlocks.m in Sources */,
 				9A4512D119165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A8420EB195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,

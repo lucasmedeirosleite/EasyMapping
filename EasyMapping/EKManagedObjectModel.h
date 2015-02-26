@@ -38,3 +38,9 @@
 - (NSDictionary *)serializedObjectInContext:(NSManagedObjectContext *)context;
 
 @end
+
+@interface EKManagedObjectModel(Deprecated)
+
+- (NSDictionary *)serializedObject __deprecated_msg("Use serializedObjectInContext instead");
+
+@end
