@@ -183,7 +183,7 @@ static const char scalarTypes[] = {
     
     if (mapping.managedValueBlock) {
         id representationValue = [representation valueForKeyPath:mapping.keyPath];
-        value = mapping.managedValueBlock(mapping.keyPath, representationValue == [NSNull null] ? nil : representationValue,context);
+        value = mapping.managedValueBlock(mapping.keyPath,representationValue,context);
     }
     else {
         value = [representation valueForKeyPath:mapping.keyPath];

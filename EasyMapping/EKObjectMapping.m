@@ -95,9 +95,13 @@
     [self mapKeyPath:keyPath
           toProperty:property
       withValueBlock:^id(NSString * key, id value) {
-          return [value isKindOfClass:[NSString class]] ? [formatter dateFromString:value] : nil;
+          if (value == nil)
+              return nil;
+          return [value isKindOfClass:[NSString class]] ? [formatter dateFromString:value] : [NSNull null];
       } reverseBlock:^id(id value) {
-          return [value isKindOfClass:[NSDate class]] ? [formatter stringFromDate:value] : nil;
+          if (value == nil)
+              return nil;
+          return [value isKindOfClass:[NSDate class]] ? [formatter stringFromDate:value] : [NSNull null];
       }];
 }
 
