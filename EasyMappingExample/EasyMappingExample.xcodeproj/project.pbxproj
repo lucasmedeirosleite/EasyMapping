@@ -294,6 +294,7 @@
 		9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
 		9AFC96A61A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC96A51A6BF850008A295D /* XCTestCase+EasyMapping.m */; };
 		9AFC96A71A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC96A51A6BF850008A295D /* XCTestCase+EasyMapping.m */; };
+		9EC0BF2D1AB35A1D00F584DF /* CarWithAttributesRemoved.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */; };
 		9F05E19A84E8447EA462A2FD /* libPods-OS X Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA44053093DA41E7ADB1CBE2 /* libPods-OS X Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -442,6 +443,7 @@
 		9AFC96A41A6BF850008A295D /* XCTestCase+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XCTestCase+EasyMapping.h"; path = "../XCTest+EasyMapping/XCTestCase+EasyMapping.h"; sourceTree = "<group>"; };
 		9AFC96A51A6BF850008A295D /* XCTestCase+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase+EasyMapping.m"; path = "../XCTest+EasyMapping/XCTestCase+EasyMapping.m"; sourceTree = "<group>"; };
 		9E9BD3814FE20F5C7E01D5C1 /* Pods-MacOS Benchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOS Benchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacOS Benchmark/Pods-MacOS Benchmark.debug.xcconfig"; sourceTree = "<group>"; };
+		9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithAttributesRemoved.json; path = Tests/Fixtures/CarWithAttributesRemoved.json; sourceTree = SOURCE_ROOT; };
 		A7E98E6E1DB90FE1A193665A /* Pods-iOS Benchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark.release.xcconfig"; sourceTree = "<group>"; };
 		A9D16CF616F2B2770003759B /* EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyMapping.h; sourceTree = "<group>"; };
 		A9D16CF716F2B2770003759B /* EKPropertyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPropertyMapping.h; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				9A45120619164705006E6022 /* Cars.json */,
 				9A45120719164705006E6022 /* CarWithDate.json */,
 				9A45120819164705006E6022 /* CarWithNestedAttributes.json */,
+				9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */,
 				9A45120919164705006E6022 /* CarWithRoot.json */,
 				9A45120A19164705006E6022 /* Female.json */,
 				9A45120B19164705006E6022 /* Male.json */,
@@ -1075,6 +1078,7 @@
 				9AC0D8681A728D4C003926C1 /* PersonNonNested.json in Resources */,
 				9A45124F19164705006E6022 /* Plane.json in Resources */,
 				9A45123B19164705006E6022 /* NativeChild.json in Resources */,
+				9EC0BF2D1AB35A1D00F584DF /* CarWithAttributesRemoved.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
