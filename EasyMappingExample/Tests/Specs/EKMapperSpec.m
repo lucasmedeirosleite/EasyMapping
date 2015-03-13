@@ -151,7 +151,7 @@ describe(@"EKMapper", ^{
             });
             
         });
-        
+
         context(@"with valueBlock", ^{
             
             context(@"when male", ^{
@@ -481,6 +481,30 @@ describe(@"EKMapper", ^{
 				 [[person.car should] beNil];
 			 });
 		 });
+
+        context(@"with date mapping NULL in representation", ^{
+            __block Car* car;
+
+            beforeEach(^{
+                NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"CarWithDate"];
+                car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carWithDateMapping]];
+
+                NSDictionary *updatedRepresentation = [CMFixture buildUsingFixture:@"CarWithAttributesRemoved"];
+                car = [EKMapper fillObject:car fromExternalRepresentation:updatedRepresentation withMapping:[MappingProvider carWithDateMapping]];
+            });
+
+            specify(^{
+                [[car.year shouldNot] beNil];
+            });
+
+            specify(^{
+                [[car.model should] beNil];
+            });
+            
+            specify(^{
+                [[car.createdAt should] beNil];
+            });
+        });
         
         context(@"with native properties", ^{
             

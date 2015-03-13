@@ -166,7 +166,7 @@ describe(@"EKManagedObjectMapper", ^{
             
         });
 
-        context(@"replaces attributes", ^{
+        context(@"replaces explicitly nil attributes", ^{
 
             __block NSManagedObjectContext* moc;
             __block ManagedCar *oldCar;
@@ -193,7 +193,7 @@ describe(@"EKManagedObjectMapper", ^{
             });
 
             specify(^{
-                [car.model shouldBeNil];
+                [[car.model should] beNil];
             });
 
             specify(^{
@@ -201,7 +201,7 @@ describe(@"EKManagedObjectMapper", ^{
             });
 
             specify(^{
-                [car.createdAt shouldBeNil];
+                [[car.createdAt should] beNil];
             });
 
             specify(^{
