@@ -9,6 +9,13 @@
 #import "EKObjectMapping.h"
 #import "EKMappingProtocol.h"
 
+#if __has_feature(nullability) // Xcode 6.3+
+#pragma clang assume_nonnull begin
+#else
+#define nullable
+#define __nullable
+#endif
+
 @interface EKRelationshipMapping : NSObject
 
 @property (nonatomic, strong) Class <EKMappingProtocol> objectClass;
@@ -19,8 +26,13 @@
 
 @property (nonatomic, strong) EKObjectMapping *objectMapping;
 
-@property (nonatomic, strong) NSArray * nonNestedKeyPaths;
+@property (nonatomic, strong, nullable) NSArray * nonNestedKeyPaths;
 
 - (NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
 
 @end
+
+#if __has_feature(nullability)
+#pragma clang assume_nonnull end
+#endif
+

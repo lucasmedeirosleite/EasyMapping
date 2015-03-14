@@ -31,6 +31,10 @@
 
 SPEC_BEGIN(EKCoreDataImporterSpec)
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wnonnull"
+// Silencing null warnings for EKCoreDataImporter on purpose - these will be nil only in this test suite
+
 describe(@"Entity names collector", ^{
     
     afterAll(^{
@@ -172,5 +176,6 @@ describe(@"Entities introspection", ^{
     });
     
 });
+#pragma GCC diagnostic pop
 
 SPEC_END

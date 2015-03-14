@@ -26,6 +26,13 @@
 #import "EKPropertyMapping.h"
 #import "EKObjectMapping.h"
 
+#if __has_feature(nullability) // Xcode 6.3+
+#pragma clang assume_nonnull begin
+#else
+#define nullable
+#define __nullable
+#endif
+
 /**
  `EKPropertyHelper` is internal EasyMapping class, that works with objective-c runtime to get and set values of properties.
  */
@@ -33,25 +40,25 @@
 
 + (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object;
 
-+ (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
++ (nullable id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
 + (void)  setProperty:(EKPropertyMapping *)propertyMapping
-          onObject:(id)object
-fromRepresentation:(NSDictionary *)representation;
+             onObject:(id)object
+   fromRepresentation:(NSDictionary *)representation;
 
 + (void) setProperty:(EKPropertyMapping *)propertyMapping
             onObject:(id)object
   fromRepresentation:(NSDictionary *)representation
            inContext:(NSManagedObjectContext *)context;
 
-+ (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
-   fromRepresentation:(NSDictionary *)representation;
++ (nullable id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
+               fromRepresentation:(NSDictionary *)representation;
 
 + (id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
              fromRepresentation:(NSDictionary *)representation
                       inContext:(NSManagedObjectContext *)context;
 
-+ (void)setValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
++ (void)setValue:(nullable id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
 
 + (void)addValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
 
@@ -59,3 +66,7 @@ fromRepresentation:(NSDictionary *)representation;
                                                 withMapping:(EKObjectMapping *)mapping;
 
 @end
+
+#if __has_feature(nullability)
+#pragma clang assume_nonnull end
+#endif

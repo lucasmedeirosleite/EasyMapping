@@ -24,6 +24,13 @@
 #import "EKObjectMapping.h"
 #import "EKPropertyMapping.h"
 
+#if __has_feature(nullability) // Xcode 6.3+
+#pragma clang assume_nonnull begin
+#else
+#define nullable
+#define __nullable
+#endif
+
 #define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
 
 /**
@@ -125,3 +132,7 @@
 + (instancetype)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
                       withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withRootPath:withBlock);
 @end
+
+#if __has_feature(nullability)
+#pragma clang assume_nonnull end
+#endif

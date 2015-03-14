@@ -10,16 +10,23 @@
 
 @class EKObjectMapping;
 
+#if __has_feature(nullability) // Xcode 6.3+
+#pragma clang assume_nonnull begin
+#else
+#define nullable
+#define __nullable
+#endif
+
 @interface XCTestCase (EasyMapping)
 
-- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
-                               withMapping:(EKObjectMapping *)mapping
-                            expectedObject:(id)expectedObject;
+- (nullable id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                                        withMapping:(EKObjectMapping *)mapping
+                                     expectedObject:(id)expectedObject;
 
-- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
-                               withMapping:(EKObjectMapping *)mapping
-                            expectedObject:(id)expectedObject
-                          skippingKeyPaths:(NSArray *)keyPathsToSkip;
+- (nullable id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                                        withMapping:(EKObjectMapping *)mapping
+                                     expectedObject:(id)expectedObject
+                                   skippingKeyPaths:(nullable NSArray *)keyPathsToSkip;
 
 - (NSDictionary *)testSerializeObject:(id)object
                           withMapping:(EKObjectMapping *)mapping
@@ -28,7 +35,12 @@
 - (NSDictionary *)testSerializeObject:(id)object
                           withMapping:(EKObjectMapping *)mapping
                expectedRepresentation:(NSDictionary *)expectedRepresentation
-                     skippingKeyPaths:(NSArray *)keyPathsToSkip;
+                     skippingKeyPaths:(nullable NSArray *)keyPathsToSkip;
 
 
 @end
+
+#if __has_feature(nullability)
+#pragma clang assume_nonnull end
+#endif
+
