@@ -9,12 +9,7 @@
 #import <CoreData/CoreData.h>
 #import "EKMappingProtocol.h"
 
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 /**
  EKManagedObjectModel is a convenience base class for NSManagedObject subclasses. It allows creating CoreData objects from JSON representation and vice versa.
@@ -52,7 +47,4 @@
 
 @end
 
-
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif

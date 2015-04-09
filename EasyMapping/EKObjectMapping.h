@@ -25,13 +25,7 @@
 
 @protocol EKMappingProtocol;
 
-
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 /**
  `EKObjectMapping` class is used to define mappings between JSON representation and objective-c object.
@@ -52,7 +46,7 @@
 /**
  Root JSON path. This is helpful, when all object data is inside another JSON dictionary.
  */
-@property (nonatomic, strong, readonly) NSString *rootPath;
+@property (nullable, nonatomic, strong, readonly) NSString *rootPath;
 
 /**
  Dictionary, containing property mappings for current object.
@@ -79,7 +73,7 @@
  @result object mapping
  */
 + (EKObjectMapping *)mappingForClass:(Class)objectClass
-                           withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock;
+                           withBlock:(nullable void(^)(EKObjectMapping *mapping))mappingBlock;
 
 /**
  Convenience initializer.
@@ -93,7 +87,7 @@
  @result object mapping
  */
 + (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
-                           withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
+                           withBlock:(nullable void (^)(EKObjectMapping *mapping))mappingBlock;
 
 /**
  Designated initializer
@@ -293,7 +287,4 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
 
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif
-

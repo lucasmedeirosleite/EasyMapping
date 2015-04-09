@@ -23,13 +23,7 @@
 
 #import "EKObjectMapping.h"
 
-
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 /**
  `EKMapper` provides an interface to create objective-c object from JSON representation, using `EKObjectMapping` class. For creating CoreData objects, use `EKManagedObjectMapper` class.
@@ -78,6 +72,4 @@
 
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif

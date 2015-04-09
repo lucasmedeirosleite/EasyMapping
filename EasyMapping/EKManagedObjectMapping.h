@@ -24,12 +24,7 @@
 #import "EKObjectMapping.h"
 #import "EKPropertyMapping.h"
 
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 #define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
 
@@ -65,7 +60,7 @@
  @result managed object mapping.
  */
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
-                                       withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
+                                       withBlock:(nullable void(^)(EKManagedObjectMapping *mapping))mappingBlock;
 
 /**
  Convenience constructor for `EKManagedObjectMapping`.
@@ -80,7 +75,7 @@
  */
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
                                     withRootPath:(NSString *)rootPath
-                                       withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock;
+                                       withBlock:(nullable void (^)(EKManagedObjectMapping *mapping))mappingBlock;
 
 /**
  Designated initializer for `EKManagedObjectMapping`.
@@ -133,6 +128,4 @@
                       withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withRootPath:withBlock);
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif

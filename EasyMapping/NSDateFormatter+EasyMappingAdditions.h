@@ -25,12 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 static NSString * const EKRFC_3339DatetimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
 static NSString * const EKRFC_822DatetimeFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
@@ -51,7 +46,4 @@ static NSString * const EKISO_8601DateTimeFormat = @"yyyy-MM-dd";
 
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif
-

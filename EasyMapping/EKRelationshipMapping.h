@@ -9,12 +9,7 @@
 #import "EKObjectMapping.h"
 #import "EKMappingProtocol.h"
 
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 @interface EKRelationshipMapping : NSObject
 
@@ -32,7 +27,4 @@
 
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif
-

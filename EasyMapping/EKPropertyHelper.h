@@ -26,12 +26,7 @@
 #import "EKPropertyMapping.h"
 #import "EKObjectMapping.h"
 
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 /**
  `EKPropertyHelper` is internal EasyMapping class, that works with objective-c runtime to get and set values of properties.
@@ -67,6 +62,4 @@
 
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif

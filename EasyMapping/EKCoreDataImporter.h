@@ -24,12 +24,7 @@
 #import <CoreData/CoreData.h>
 #import "EKManagedObjectMapping.h"
 
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 /**
  `EKCoreDataImporter` is internal EasyMapping class and is used by `EKManagedObjectMapper` to manage CoreData imports and make them fast and efficient. It basically does 3 things:
@@ -88,7 +83,4 @@
 
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif
-

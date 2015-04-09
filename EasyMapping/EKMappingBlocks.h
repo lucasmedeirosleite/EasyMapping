@@ -24,12 +24,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-#if __has_feature(nullability) // Xcode 6.3+
 #pragma clang assume_nonnull begin
-#else
-#define nullable
-#define __nullable
-#endif
 
 typedef __nullable id(^EKMappingValueBlock)(NSString *key, __nullable id value);
 typedef __nullable id(^EKMappingReverseBlock)(__nullable id value);
@@ -44,7 +39,5 @@ typedef __nullable id(^EKManagedMappingReverseValueBlock)(__nullable id value, N
 
 @end
 
-#if __has_feature(nullability)
 #pragma clang assume_nonnull end
-#endif
 
