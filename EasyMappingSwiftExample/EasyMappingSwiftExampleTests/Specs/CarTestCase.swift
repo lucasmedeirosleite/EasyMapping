@@ -15,17 +15,17 @@ class CarTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let carInfo:[NSDictionary] = FixtureLoader.jsonObjectFromFileNamed(name: "Cars") as [NSDictionary]
-        let cars = EKMapper.arrayOfObjectsFromExternalRepresentation(carInfo, withMapping: Car.objectMapping())
-        car = cars[0] as Car
+        let carInfo:[NSDictionary] = FixtureLoader.jsonObjectFromFileNamed(name: "Cars") as! [NSDictionary]
+        let cars: [Car] = EKMapper.arrayOfObjectsFromExternalRepresentation(carInfo, withMapping: Car.objectMapping()) as! [Car]
+        car = cars[0]
     }
 
     func testModel() {
-        XCTAssert(car.model?=="i30")
+        XCTAssert(car.model=="i30")
     }
     
     func testYear() {
-        XCTAssert(car.year?=="2013")
+        XCTAssert(car.year=="2013")
     }
 
 }

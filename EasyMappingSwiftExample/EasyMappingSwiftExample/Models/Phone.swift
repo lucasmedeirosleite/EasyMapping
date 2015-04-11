@@ -13,7 +13,7 @@ class Phone: EKObjectModel {
 }
 
 extension Phone {
-    override class func objectMapping() -> EKObjectMapping!
+    override class func objectMapping() -> EKObjectMapping
     {
         var mapping = EKObjectMapping(objectClass: self)
         

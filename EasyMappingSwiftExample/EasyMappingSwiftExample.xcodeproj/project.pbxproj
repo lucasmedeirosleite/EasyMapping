@@ -27,7 +27,6 @@
 		9A8AC856197C1B5D0045AF4F /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F4197BF37900954F41 /* EKPropertyMapping.m */; };
 		9A8AC857197C1B5D0045AF4F /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F6197BF37900954F41 /* EKRelationshipMapping.m */; };
 		9A8AC858197C1B5D0045AF4F /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52F8197BF37900954F41 /* EKSerializer.m */; };
-		9A8AC859197C1B5D0045AF4F /* EKTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52FA197BF37900954F41 /* EKTransformer.m */; };
 		9A8AC85A197C1B5D0045AF4F /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E52FC197BF37900954F41 /* NSArray+FlattenArray.m */; };
 /* End PBXBuildFile section */
 
@@ -59,8 +58,6 @@
 		9A0E52F6197BF37900954F41 /* EKRelationshipMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRelationshipMapping.m; sourceTree = "<group>"; };
 		9A0E52F7197BF37900954F41 /* EKSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSerializer.h; sourceTree = "<group>"; };
 		9A0E52F8197BF37900954F41 /* EKSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSerializer.m; sourceTree = "<group>"; };
-		9A0E52F9197BF37900954F41 /* EKTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTransformer.h; sourceTree = "<group>"; };
-		9A0E52FA197BF37900954F41 /* EKTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTransformer.m; sourceTree = "<group>"; };
 		9A0E52FB197BF37900954F41 /* NSArray+FlattenArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FlattenArray.h"; sourceTree = "<group>"; };
 		9A0E52FC197BF37900954F41 /* NSArray+FlattenArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FlattenArray.m"; sourceTree = "<group>"; };
 		9A1CB3AF197BFEA200D8B648 /* Cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Cars.json; path = ../../EasyMappingExample/Tests/Fixtures/Cars.json; sourceTree = "<group>"; };
@@ -151,8 +148,6 @@
 				9A0E52F6197BF37900954F41 /* EKRelationshipMapping.m */,
 				9A0E52F7197BF37900954F41 /* EKSerializer.h */,
 				9A0E52F8197BF37900954F41 /* EKSerializer.m */,
-				9A0E52F9197BF37900954F41 /* EKTransformer.h */,
-				9A0E52FA197BF37900954F41 /* EKTransformer.m */,
 				9A0E52FB197BF37900954F41 /* NSArray+FlattenArray.h */,
 				9A0E52FC197BF37900954F41 /* NSArray+FlattenArray.m */,
 			);
@@ -273,7 +268,6 @@
 				9A8AC846197C1AC20045AF4F /* Person.swift in Sources */,
 				9A8AC85A197C1B5D0045AF4F /* NSArray+FlattenArray.m in Sources */,
 				9A8AC858197C1B5D0045AF4F /* EKSerializer.m in Sources */,
-				9A8AC859197C1B5D0045AF4F /* EKTransformer.m in Sources */,
 				9A8AC851197C1B5D0045AF4F /* EKManagedObjectModel.m in Sources */,
 				9A8AC852197C1B5D0045AF4F /* EKMapper.m in Sources */,
 				9A8AC850197C1B5D0045AF4F /* EKManagedObjectMapping.m in Sources */,

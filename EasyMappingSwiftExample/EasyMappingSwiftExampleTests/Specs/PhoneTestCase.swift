@@ -15,9 +15,9 @@ class PhoneTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let personInfo = FixtureLoader.jsonObjectFromFileNamed(name: "Person") as NSDictionary
+        let personInfo = FixtureLoader.jsonObjectFromFileNamed(name: "Person") as! NSDictionary
         
-        let person = Person(properties: personInfo)
+        let person = Person(properties: personInfo as [NSObject : AnyObject])
         phone = person.phones[0]
     }
     
