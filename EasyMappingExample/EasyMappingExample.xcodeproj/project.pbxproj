@@ -44,6 +44,36 @@
 		9A210F381944B13A00871071 /* CommentsRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F361944B13A00871071 /* CommentsRecursive.json */; };
 		9A210F3A1944B81500871071 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
 		9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
+		9A2A37F21AEA59B90021E97D /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
+		9A2A37F31AEA59B90021E97D /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
+		9A2A37F41AEA59B90021E97D /* EKCoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */; };
+		9A2A37F51AEA59B90021E97D /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
+		9A2A37F61AEA59B90021E97D /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
+		9A2A37F71AEA59B90021E97D /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
+		9A2A37F81AEA59B90021E97D /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
+		9A2A37F91AEA59B90021E97D /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A2A37FA1AEA59B90021E97D /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
+		9A2A37FB1AEA59B90021E97D /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
+		9A2A37FC1AEA59B90021E97D /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
+		9A2A37FD1AEA59B90021E97D /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
+		9A2A37FE1AEA59B90021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
+		9A2A37FF1AEA59B90021E97D /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
+		9A2A381E1AEA5A720021E97D /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
+		9A2A381F1AEA5A720021E97D /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
+		9A2A38201AEA5A720021E97D /* EKCoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */; };
+		9A2A38211AEA5A720021E97D /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */; };
+		9A2A38221AEA5A720021E97D /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
+		9A2A38231AEA5A720021E97D /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
+		9A2A38241AEA5A720021E97D /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
+		9A2A38251AEA5A720021E97D /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
+		9A2A38261AEA5A720021E97D /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFF16F2B2770003759B /* EKPropertyHelper.m */; };
+		9A2A38271AEA5A720021E97D /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
+		9A2A38281AEA5A720021E97D /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
+		9A2A38291AEA5A720021E97D /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
+		9A2A382A1AEA5A720021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
+		9A2A382B1AEA5A720021E97D /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
+		9A2A382C1AEA5AA10021E97D /* EasyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF616F2B2770003759B /* EasyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A2A382D1AEA5AB50021E97D /* EasyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF616F2B2770003759B /* EasyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A3178C1191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */; };
 		9A3178C2191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */; };
 		9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
@@ -323,6 +353,9 @@
 		9A210F2F1944B0C100871071 /* CommentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentObject.m; path = Classes/Models/CommentObject.m; sourceTree = SOURCE_ROOT; };
 		9A210F361944B13A00871071 /* CommentsRecursive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CommentsRecursive.json; path = Tests/Fixtures/CommentsRecursive.json; sourceTree = SOURCE_ROOT; };
 		9A210F391944B81500871071 /* PersonRecursive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonRecursive.json; path = Tests/Fixtures/PersonRecursive.json; sourceTree = SOURCE_ROOT; };
+		9A2A37D91AEA593F0021E97D /* EasyMapping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyMapping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2A38051AEA5A170021E97D /* EasyMapping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyMapping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2A38311AEA5D200021E97D /* EasyMapping-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "EasyMapping-Info.plist"; path = "Supporting files/EasyMapping-Info.plist"; sourceTree = "<group>"; };
 		9A3178BF191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataImportBenchmarkSuite.h; path = Benchmarks/Classes/Becnhmark/EKCoreDataImportBenchmarkSuite.h; sourceTree = "<group>"; };
 		9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataImportBenchmarkSuite.m; path = Benchmarks/Classes/Becnhmark/EKCoreDataImportBenchmarkSuite.m; sourceTree = "<group>"; };
 		9A4510F1191643FD006E6022 /* iOS Benchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Benchmark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -477,6 +510,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F05E19A84E8447EA462A2FD /* libPods-OS X Tests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2A37D51AEA593F0021E97D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2A38011AEA5A170021E97D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +920,7 @@
 		9AF425C2190CEF64003FD1BD /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				9A2A38311AEA5D200021E97D /* EasyMapping-Info.plist */,
 				02FF772A18E32249002282D3 /* iOS Tests */,
 				9A13022D190BF9380060A25C /* OS X Tests */,
 			);
@@ -901,6 +949,8 @@
 				9A130226190BF9380060A25C /* OS X Tests.xctest */,
 				9A4510F1191643FD006E6022 /* iOS Benchmark.app */,
 				9A45113D1916444C006E6022 /* MacOS Benchmark.app */,
+				9A2A37D91AEA593F0021E97D /* EasyMapping.framework */,
+				9A2A38051AEA5A170021E97D /* EasyMapping.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -935,6 +985,25 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9A2A37D61AEA593F0021E97D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2A382C1AEA5AA10021E97D /* EasyMapping.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2A38021AEA5A170021E97D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2A382D1AEA5AB50021E97D /* EasyMapping.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		02FF772518E32249002282D3 /* iOS Tests */ = {
@@ -974,6 +1043,42 @@
 			productName = "OS X Tests";
 			productReference = 9A130226190BF9380060A25C /* OS X Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9A2A37D81AEA593F0021E97D /* EasyMapping iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A2A37F01AEA59400021E97D /* Build configuration list for PBXNativeTarget "EasyMapping iOS" */;
+			buildPhases = (
+				9A2A37D41AEA593F0021E97D /* Sources */,
+				9A2A37D51AEA593F0021E97D /* Frameworks */,
+				9A2A37D61AEA593F0021E97D /* Headers */,
+				9A2A37D71AEA593F0021E97D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EasyMapping iOS";
+			productName = "EasyMapping iOS";
+			productReference = 9A2A37D91AEA593F0021E97D /* EasyMapping.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9A2A38041AEA5A170021E97D /* EasyMapping OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A2A38181AEA5A170021E97D /* Build configuration list for PBXNativeTarget "EasyMapping OSX" */;
+			buildPhases = (
+				9A2A38001AEA5A170021E97D /* Sources */,
+				9A2A38011AEA5A170021E97D /* Frameworks */,
+				9A2A38021AEA5A170021E97D /* Headers */,
+				9A2A38031AEA5A170021E97D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EasyMapping OSX";
+			productName = "EasyMapping OSX";
+			productReference = 9A2A38051AEA5A170021E97D /* EasyMapping.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		9A4510F0191643FD006E6022 /* iOS Benchmark */ = {
 			isa = PBXNativeTarget;
@@ -1024,6 +1129,12 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = EasyKit;
 				TargetAttributes = {
+					9A2A37D81AEA593F0021E97D = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					9A2A38041AEA5A170021E97D = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					9A4510F0191643FD006E6022 = {
 						DevelopmentTeam = L94VC9ZZXC;
 					};
@@ -1046,6 +1157,8 @@
 				9A130225190BF9380060A25C /* OS X Tests */,
 				9A4510F0191643FD006E6022 /* iOS Benchmark */,
 				9A45113C1916444C006E6022 /* MacOS Benchmark */,
+				9A2A37D81AEA593F0021E97D /* EasyMapping iOS */,
+				9A2A38041AEA5A170021E97D /* EasyMapping OSX */,
 			);
 		};
 /* End PBXProject section */
@@ -1112,6 +1225,20 @@
 				9A45125019164705006E6022 /* Plane.json in Resources */,
 				9A45123C19164705006E6022 /* NativeChild.json in Resources */,
 				9A7048131AB464A700EFD403 /* CarWithAttributesRemoved.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2A37D71AEA593F0021E97D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2A38031AEA5A170021E97D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1419,6 +1546,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9A2A37D41AEA593F0021E97D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2A37F21AEA59B90021E97D /* EKSerializer.m in Sources */,
+				9A2A37F31AEA59B90021E97D /* EKManagedObjectMapper.m in Sources */,
+				9A2A37F41AEA59B90021E97D /* EKCoreDataImporter.m in Sources */,
+				9A2A37F51AEA59B90021E97D /* EKManagedObjectMapping.m in Sources */,
+				9A2A37F61AEA59B90021E97D /* EKMapper.m in Sources */,
+				9A2A37F71AEA59B90021E97D /* EKObjectMapping.m in Sources */,
+				9A2A37F81AEA59B90021E97D /* EKPropertyMapping.m in Sources */,
+				9A2A37F91AEA59B90021E97D /* EKRelationshipMapping.m in Sources */,
+				9A2A37FA1AEA59B90021E97D /* EKPropertyHelper.m in Sources */,
+				9A2A37FB1AEA59B90021E97D /* NSArray+FlattenArray.m in Sources */,
+				9A2A37FC1AEA59B90021E97D /* EKObjectModel.m in Sources */,
+				9A2A37FD1AEA59B90021E97D /* EKManagedObjectModel.m in Sources */,
+				9A2A37FE1AEA59B90021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
+				9A2A37FF1AEA59B90021E97D /* EKMappingBlocks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2A38001AEA5A170021E97D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2A381E1AEA5A720021E97D /* EKSerializer.m in Sources */,
+				9A2A381F1AEA5A720021E97D /* EKManagedObjectMapper.m in Sources */,
+				9A2A38201AEA5A720021E97D /* EKCoreDataImporter.m in Sources */,
+				9A2A38211AEA5A720021E97D /* EKManagedObjectMapping.m in Sources */,
+				9A2A38221AEA5A720021E97D /* EKMapper.m in Sources */,
+				9A2A38231AEA5A720021E97D /* EKObjectMapping.m in Sources */,
+				9A2A38241AEA5A720021E97D /* EKPropertyMapping.m in Sources */,
+				9A2A38251AEA5A720021E97D /* EKRelationshipMapping.m in Sources */,
+				9A2A38261AEA5A720021E97D /* EKPropertyHelper.m in Sources */,
+				9A2A38271AEA5A720021E97D /* NSArray+FlattenArray.m in Sources */,
+				9A2A38281AEA5A720021E97D /* EKObjectModel.m in Sources */,
+				9A2A38291AEA5A720021E97D /* EKManagedObjectModel.m in Sources */,
+				9A2A382A1AEA5A720021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
+				9A2A382B1AEA5A720021E97D /* EKMappingBlocks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A4510ED191643FD006E6022 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1657,6 +1826,158 @@
 			};
 			name = Release;
 		};
+		9A2A37EC1AEA59400021E97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting files/EasyMapping-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = EasyMapping;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9A2A37ED1AEA59400021E97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting files/EasyMapping-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = EasyMapping;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9A2A38191AEA5A170021E97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting files/EasyMapping-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = EasyMapping;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9A2A381A1AEA5A170021E97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting files/EasyMapping-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = EasyMapping;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		9A45111F191643FD006E6022 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AD25BDD69560597087CEFFD7 /* Pods-iOS Benchmark.debug.xcconfig */;
@@ -1858,6 +2179,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9A2A37F01AEA59400021E97D /* Build configuration list for PBXNativeTarget "EasyMapping iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A2A37EC1AEA59400021E97D /* Debug */,
+				9A2A37ED1AEA59400021E97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A2A38181AEA5A170021E97D /* Build configuration list for PBXNativeTarget "EasyMapping OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A2A38191AEA5A170021E97D /* Debug */,
+				9A2A381A1AEA5A170021E97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		9A451123191643FD006E6022 /* Build configuration list for PBXNativeTarget "iOS Benchmark" */ = {
 			isa = XCConfigurationList;
