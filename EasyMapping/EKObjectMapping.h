@@ -73,7 +73,7 @@
  @result object mapping
  */
 + (EKObjectMapping *)mappingForClass:(Class)objectClass
-                           withBlock:(nullable void(^)(EKObjectMapping *mapping))mappingBlock;
+                           withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock;
 
 /**
  Convenience initializer.
@@ -87,7 +87,7 @@
  @result object mapping
  */
 + (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
-                           withBlock:(nullable void (^)(EKObjectMapping *mapping))mappingBlock;
+                           withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
 
 /**
  Designated initializer

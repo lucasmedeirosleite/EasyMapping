@@ -24,13 +24,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-#pragma clang assume_nonnull begin
+//#pragma clang assume_nonnull begin
 
-typedef __nullable id(^EKMappingValueBlock)(NSString *key, __nullable id value);
-typedef __nullable id(^EKMappingReverseBlock)(__nullable id value);
+typedef id(^EKMappingValueBlock)(NSString *key, id value);
+typedef id(^EKMappingReverseBlock)( id value);
 
-typedef __nullable id(^EKManagedMappingValueBlock)(NSString * key, __nullable id value, NSManagedObjectContext * context);
-typedef __nullable id(^EKManagedMappingReverseValueBlock)(__nullable id value, NSManagedObjectContext * context);
+typedef id(^EKManagedMappingValueBlock)(NSString * key, id value, NSManagedObjectContext * context);
+typedef id(^EKManagedMappingReverseValueBlock)(id value, NSManagedObjectContext * context);
 
 @interface EKMappingBlocks: NSObject
 
@@ -39,5 +39,5 @@ typedef __nullable id(^EKManagedMappingReverseValueBlock)(__nullable id value, N
 
 @end
 
-#pragma clang assume_nonnull end
+//#pragma clang assume_nonnull end
 
