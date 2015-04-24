@@ -1,6 +1,7 @@
 ![Build Status](https://travis-ci.org/EasyMapping/EasyMapping.png?branch=master) &nbsp;
 ![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/EasyMapping/badge.png) &nbsp; 
 ![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/EasyMapping/badge.png) &nbsp; 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 
 # EasyMapping
@@ -214,9 +215,15 @@ Thanks to:
 
 ## Installation
 
-Using CocoaPods:
+Using [CocoaPods](https://cocoapods.org):
 
 	pod 'EasyMapping', '~> 0.14.0'
+
+Using [Carthage](https://github.com/Carthage/Carthage):
+
+    github "EasyMapping/EasyMapping"
+
+Carthage uses dynamic frameworks, which require iOS 8.
 
 ## The idea
 
