@@ -1,0 +1,14 @@
+[
+  {
+    "optionId":1,
+    "title": "Bool option",
+    "type": "boolean"
+  },
+  {
+    "optionId":2,
+    "title": "Amount option",
+    "type": "amount",
+    "min": 5,
+    "max": 10
+  }
+]
