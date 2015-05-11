@@ -24,8 +24,10 @@
 #import "EKObjectMapping.h"
 #import "EKPropertyMapping.h"
 #import "EKRelationshipMapping.h"
+#import "XCTestCase+EasyMapping.h"
 #import "EKMappingProtocol.h"
 #import "NSDateFormatter+EasyMappingAdditions.h"
+#import "EKMapper.h"
 
 @implementation EKObjectMapping
 
@@ -74,7 +76,7 @@
 {
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
-    
+
     EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
     mapping.property = property;
     mapping.keyPath = keyPath;
@@ -91,7 +93,7 @@
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
     NSParameterAssert(formatter);
-    
+
     [self mapKeyPath:keyPath
           toProperty:property
       withValueBlock:^id(NSString * key, id value) {
@@ -108,7 +110,7 @@
 - (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray
 {
     NSParameterAssert([propertyNamesArray isKindOfClass:[NSArray class]]);
-    
+
     for (NSString *key in propertyNamesArray) {
         [self mapKeyPath:key toProperty:key];
     }
@@ -119,7 +121,7 @@
     NSParameterAssert([propertyNamesArray isKindOfClass:[NSArray class]]);
     for (NSString *key in propertyNamesArray) {
         NSString *pascalKey = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] uppercaseString]];
-        
+
         [self mapKeyPath:pascalKey toProperty:key];
     }
 }
@@ -127,7 +129,7 @@
 - (void)mapPropertiesFromDictionary:(NSDictionary *)propertyDictionary
 {
     NSParameterAssert([propertyDictionary isKindOfClass:[NSDictionary class]]);
-    
+
     [propertyDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [self mapKeyPath:key toProperty:obj];
     }];
@@ -136,16 +138,16 @@
 -(void)mapPropertiesFromMappingObject:(EKObjectMapping *)mappingObj
 {
     NSParameterAssert([mappingObj isKindOfClass:EKObjectMapping.class]);
-    
+
     for (NSString *key in mappingObj.propertyMappings) {
         [self addPropertyMappingToDictionary:mappingObj.propertyMappings[key]];
     }
-    
+
     for (NSString *key in mappingObj.hasOneMappings) {
         EKRelationshipMapping *mapping = mappingObj.hasOneMappings[key];
         [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
     }
-    
+
     for (NSString *key in mappingObj.hasManyMappings) {
          EKRelationshipMapping *mapping = mappingObj.hasManyMappings[key];
         [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
@@ -158,7 +160,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
     NSParameterAssert(valueBlock);
-    
+
     EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
     mapping.property = property;
     mapping.keyPath = keyPath;
@@ -173,7 +175,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     NSParameterAssert(property);
     NSParameterAssert(valueBlock);
     NSParameterAssert(reverseBlock);
-    
+
     EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
     mapping.property = property;
     mapping.keyPath = keyPath;
@@ -200,13 +202,13 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     }
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
-    
+
     EKRelationshipMapping * relationship = [EKRelationshipMapping new];
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
     relationship.objectMapping = objectMapping;
-    
+
     [self.hasOneMappings setObject:relationship forKey:keyPath];
 }
 
@@ -218,13 +220,13 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     }
     NSParameterAssert(keyPaths);
     NSParameterAssert(property);
-    
+
     EKRelationshipMapping * relationship = [EKRelationshipMapping new];
     relationship.objectClass = objectClass;
     relationship.nonNestedKeyPaths = keyPaths;
     relationship.property = property;
     relationship.objectMapping = mapping;
-    
+
     self.hasOneMappings[keyPaths.firstObject] = relationship;
 }
 
@@ -246,19 +248,39 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     }
     NSParameterAssert(keyPath);
     NSParameterAssert(property);
-    
+
     EKRelationshipMapping * relationship = [EKRelationshipMapping new];
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
     relationship.objectMapping = objectMapping;
-    
+
     [self.hasManyMappings setObject:relationship forKey:keyPath];
 }
+
+
+- (BOOL)canMutateClass {
+    return nil != self.classMutationBlock;
+}
+
+- (BOOL)mustMutateClassWithExternalRepresentation:(NSDictionary *)dict {
+    return ![self.objectClass isEqual:self.classMutationBlock(dict)];
+}
+
+- (EKObjectMapping *)newMappingForMutatedClassWithExternalRepresentation:(NSDictionary *)dict {
+    Class mutatedClass = self.classMutationBlock(dict);
+
+    EKObjectMapping *mapping = [mutatedClass objectMapping];
+    mapping.classMutationBlock = nil;
+    mapping.objectClass = mutatedClass;
+    return mapping;
+}
+
 
 - (void)addPropertyMappingToDictionary:(EKPropertyMapping *)propertyMapping
 {
     [self.propertyMappings setObject:propertyMapping forKey:propertyMapping.keyPath];
 }
+
 
 @end

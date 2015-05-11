@@ -37,6 +37,11 @@
     {
         return nil;
     }
+
+    if (mapping.canMutateClass && [mapping mustMutateClassWithExternalRepresentation:externalRepresentation]) {
+         return [self objectFromExternalRepresentation:externalRepresentation
+                                           withMapping:[mapping newMappingForMutatedClassWithExternalRepresentation:externalRepresentation]];
+    }
     
     id object = [[mapping.objectClass alloc] init];
     return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];

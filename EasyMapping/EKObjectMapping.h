@@ -24,6 +24,9 @@
 #import "EKMappingBlocks.h"
 
 @protocol EKMappingProtocol;
+@class EKObjectMapping;
+
+typedef Class (^EKObjectMappingMutationBlock)(NSDictionary *);
 
 #pragma clang assume_nonnull begin
 
@@ -62,6 +65,9 @@
  Dictionary, containing to-many relationships of current object.
  */
 @property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
+
+
+@property (nonatomic, copy) EKObjectMappingMutationBlock classMutationBlock;
 
 /**
  Convenience initializer.
@@ -267,6 +273,15 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
   @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
 -(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
+
+- (void)setClassMutationBlock:(EKObjectMappingMutationBlock)mutationBlock;
+
+- (BOOL)canMutateClass;
+
+
+- (BOOL)mustMutateClassWithExternalRepresentation:(NSDictionary *)dict;
+
+- (EKObjectMapping *)newMappingForMutatedClassWithExternalRepresentation:(NSDictionary *)dict;
 
 @end
 
