@@ -10,18 +10,16 @@
 
 @class EKObjectMapping;
 
-#pragma clang assume_nonnull begin
-
 @interface XCTestCase (EasyMapping)
 
-- (nullable id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                                         withMapping:(EKObjectMapping *)mapping
                                      expectedObject:(id)expectedObject;
 
-- (nullable id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+- (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                                         withMapping:(EKObjectMapping *)mapping
                                      expectedObject:(id)expectedObject
-                                   skippingKeyPaths:(nullable NSArray *)keyPathsToSkip;
+                                   skippingKeyPaths:(NSArray *)keyPathsToSkip;
 
 - (NSDictionary *)testSerializeObject:(id)object
                           withMapping:(EKObjectMapping *)mapping
@@ -30,9 +28,7 @@
 - (NSDictionary *)testSerializeObject:(id)object
                           withMapping:(EKObjectMapping *)mapping
                expectedRepresentation:(NSDictionary *)expectedRepresentation
-                     skippingKeyPaths:(nullable NSArray *)keyPathsToSkip;
+                     skippingKeyPaths:(NSArray *)keyPathsToSkip;
 
 
 @end
-
-#pragma clang assume_nonnull end

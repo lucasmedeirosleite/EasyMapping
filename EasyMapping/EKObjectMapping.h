@@ -25,8 +25,6 @@
 
 @protocol EKMappingProtocol;
 
-#pragma clang assume_nonnull begin
-
 /**
  `EKObjectMapping` class is used to define mappings between JSON representation and objective-c object.
  */
@@ -46,7 +44,7 @@
 /**
  Root JSON path. This is helpful, when all object data is inside another JSON dictionary.
  */
-@property (nullable, nonatomic, strong, readonly) NSString *rootPath;
+@property (nonatomic, strong, readonly) NSString *rootPath;
 
 /**
  Dictionary, containing property mappings for current object.
@@ -219,7 +217,7 @@
 - (void)           hasOne:(Class)objectClass
 forDictionaryFromKeyPaths:(NSArray *)keyPaths
               forProperty:(NSString *)property
-        withObjectMapping:(nullable EKObjectMapping *)objectMapping;
+        withObjectMapping:(EKObjectMapping *)objectMapping;
 
 /**
  Map to-one relationship for keyPath.
@@ -232,7 +230,7 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
 */
-- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
+- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
 
 
 /**
@@ -266,7 +264,7 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
   @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
+-(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
 
 @end
 
@@ -286,5 +284,3 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat __deprecated;
 
 @end
-
-#pragma clang assume_nonnull end

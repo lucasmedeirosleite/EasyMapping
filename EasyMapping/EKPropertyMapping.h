@@ -23,8 +23,6 @@
 
 #import "EKMappingBlocks.h"
 
-#pragma clang assume_nonnull begin
-
 /**
  `EKPropertyMapping` is a class, that represents relation between representation of a single field in JSON and objective-c model property.
  */
@@ -44,23 +42,21 @@
 /**
  Optional block to transform JSON value into objective-C object.
  */
-@property (nonatomic, strong, nullable) EKMappingValueBlock valueBlock;
+@property (nonatomic, strong) EKMappingValueBlock valueBlock;
 
 /**
  Optional block to serialize objective-c object into JSON representation.
  */
-@property (nonatomic, strong, nullable) EKMappingReverseBlock reverseBlock;
+@property (nonatomic, strong) EKMappingReverseBlock reverseBlock;
 
 /**
  Optional block to transform JSON value into CoreData object.
  */
-@property (nonatomic, strong, nullable) EKManagedMappingValueBlock managedValueBlock;
+@property (nonatomic, strong) EKManagedMappingValueBlock managedValueBlock;
 
 /**
  Optional block to serialize CoreData object into JSON representation.
  */
-@property (nonatomic, strong, nullable) EKManagedMappingReverseValueBlock managedReverseBlock;
+@property (nonatomic, strong) EKManagedMappingReverseValueBlock managedReverseBlock;
 
 @end
-
-#pragma clang assume_nonnull end

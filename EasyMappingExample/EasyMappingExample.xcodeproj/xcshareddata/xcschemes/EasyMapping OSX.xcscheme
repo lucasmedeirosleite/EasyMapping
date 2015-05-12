@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9A2A38041AEA5A170021E97D"
-               BuildableName = "EasyMapping OSX.framework"
+               BuildableName = "EasyMapping.framework"
                BlueprintName = "EasyMapping OSX"
                ReferencedContainer = "container:EasyMappingExample.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A2A38041AEA5A170021E97D"
-            BuildableName = "EasyMapping OSX.framework"
+            BuildableName = "EasyMapping.framework"
             BlueprintName = "EasyMapping OSX"
             ReferencedContainer = "container:EasyMappingExample.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A2A38041AEA5A170021E97D"
-            BuildableName = "EasyMapping OSX.framework"
+            BuildableName = "EasyMapping.framework"
             BlueprintName = "EasyMapping OSX"
             ReferencedContainer = "container:EasyMappingExample.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A2A38041AEA5A170021E97D"
-            BuildableName = "EasyMapping OSX.framework"
+            BuildableName = "EasyMapping.framework"
             BlueprintName = "EasyMapping OSX"
             ReferencedContainer = "container:EasyMappingExample.xcodeproj">
          </BuildableReference>

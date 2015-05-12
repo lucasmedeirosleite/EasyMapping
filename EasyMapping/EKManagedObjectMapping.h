@@ -24,8 +24,6 @@
 #import "EKObjectMapping.h"
 #import "EKPropertyMapping.h"
 
-#pragma clang assume_nonnull begin
-
 #define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
 
 /**
@@ -60,7 +58,7 @@
  @result managed object mapping.
  */
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
-                                       withBlock:(nullable void(^)(EKManagedObjectMapping *mapping))mappingBlock;
+                                       withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
 
 /**
  Convenience constructor for `EKManagedObjectMapping`.
@@ -75,7 +73,7 @@
  */
 + (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
                                     withRootPath:(NSString *)rootPath
-                                       withBlock:(nullable void (^)(EKManagedObjectMapping *mapping))mappingBlock;
+                                       withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock;
 
 /**
  Designated initializer for `EKManagedObjectMapping`.
@@ -127,5 +125,3 @@
 + (instancetype)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
                       withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withRootPath:withBlock);
 @end
-
-#pragma clang assume_nonnull end

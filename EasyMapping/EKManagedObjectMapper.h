@@ -24,8 +24,6 @@
 #import <CoreData/CoreData.h>
 #import "EKManagedObjectMapping.h"
 
-#pragma clang assume_nonnull begin
-
 /**
  `EKManagedObjectMapper` is used to create and fill CoreData objects. Internally, it uses `EKCoreDataImporter` class to speed up data imports. You can find more info on this in project's readme.
  */
@@ -101,5 +99,3 @@
                                    inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
-
-#pragma clang assume_nonnull end

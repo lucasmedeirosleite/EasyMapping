@@ -10,8 +10,6 @@
 #import "EKObjectMapping.h"
 #import "EKManagedObjectMapping.h"
 
-#pragma clang assume_nonnull begin
-
 /**
  EKMappingProtocol must be implemented by NSObject subclasses, that will be mapped from JSON representation.
  
@@ -43,5 +41,3 @@
 +(EKManagedObjectMapping *)objectMapping;
 
 @end
-
-#pragma clang assume_nonnull end

@@ -24,8 +24,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-//#pragma clang assume_nonnull begin
-
 typedef id(^EKMappingValueBlock)(NSString *key, id value);
 typedef id(^EKMappingReverseBlock)( id value);
 
@@ -38,6 +36,4 @@ typedef id(^EKManagedMappingReverseValueBlock)(id value, NSManagedObjectContext 
 + (EKMappingReverseBlock)urlReverseMappingBlock;
 
 @end
-
-//#pragma clang assume_nonnull end
 
