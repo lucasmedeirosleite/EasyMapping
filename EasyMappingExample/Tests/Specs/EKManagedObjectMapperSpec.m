@@ -15,7 +15,7 @@
 #import "ManagedCar.h"
 #import "ManagedPhone.h"
 #import <CoreData/CoreData.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import "EKManagedObjectMapper.h"
 
 SPEC_BEGIN(EKManagedObjectMapperSpec)

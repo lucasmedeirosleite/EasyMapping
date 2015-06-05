@@ -12,7 +12,6 @@
 #import "ManagedCar.h"
 #import "ManagedMappingProvider.h"
 #import <CoreData/CoreData.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 SPEC_BEGIN(EKManagedObjectMappingSpec)
 
