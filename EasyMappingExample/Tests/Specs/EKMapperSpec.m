@@ -605,21 +605,41 @@ describe(@"EKMapper", ^{
     });
     
     describe(@".arrayOfObjectsFromExternalRepresentation:withMapping:", ^{
-       
-        __block NSArray *carsArray;
-        __block NSArray *externalRepresentation;
-        
-        beforeEach(^{
-            externalRepresentation = [CMFixture buildUsingFixture:@"Cars"];
-            carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carMapping]];
+
+        context(@"a simple array", ^{
+            __block NSArray *carsArray;
+            __block NSArray *externalRepresentation;
+
+            beforeEach(^{
+                externalRepresentation = [CMFixture buildUsingFixture:@"Cars"];
+                carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carMapping]];
+            });
+
+            specify(^{
+                [carsArray shouldNotBeNil];
+            });
+
+            specify(^{
+                [[carsArray should] haveCountOf:[externalRepresentation count]];
+            });
         });
-        
-        specify(^{
-            [carsArray shouldNotBeNil];
-        });
-        
-        specify(^{
-            [[carsArray should] haveCountOf:[externalRepresentation count]];
+
+        context(@"with null items", ^{
+            __block NSArray *carsArray;
+            __block NSArray *externalRepresentation;
+
+            beforeEach(^{
+                externalRepresentation = [CMFixture buildUsingFixture:@"CarsWithNullItem"];
+                carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carMapping]];
+            });
+
+            specify(^{
+                [carsArray shouldNotBeNil];
+            });
+
+            specify(^{
+                [[carsArray should] haveCountOf:[externalRepresentation count] - 1];
+            });
         });
         
     });
