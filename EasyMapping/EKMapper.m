@@ -96,7 +96,9 @@
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *representation in externalRepresentation) {
         id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];
-        [array addObject:parsedObject];
+        if (parsedObject) {
+            [array addObject:parsedObject];
+        }
     }
     return [NSArray arrayWithArray:array];
 }
