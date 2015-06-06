@@ -8,6 +8,10 @@
 
 #import "EKCoreDataManager.h"
 
+#if TARGET_OS_IPHONE
+#elif TARGET_OS_MAC
+@import Cocoa;
+#endif
 @implementation EKCoreDataManager
 
 @synthesize managedObjectContext=_managedObjectContext;
@@ -109,8 +113,6 @@
 }
 
 #elif TARGET_OS_MAC
-
-@import Cocoa;
 
 +(void)cleanupDatabase
 {

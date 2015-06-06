@@ -17,6 +17,10 @@
 #import <CoreData/CoreData.h>
 #import <MagicalRecord/MagicalRecord.h>
 #import "EKManagedObjectMapper.h"
+#import "MagicalRecord+Setup.h"
+#import <MagicalRecord/NSManagedObjectContext+MagicalSaves.h>
+#import <MagicalRecord/NSManagedObject+MagicalFinders.h>
+#import <MagicalRecord/NSManagedObject+MagicalRecord.h>
 
 SPEC_BEGIN(EKManagedObjectMapperSpec)
 

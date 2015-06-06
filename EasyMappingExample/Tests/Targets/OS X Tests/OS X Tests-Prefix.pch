@@ -7,4 +7,7 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <Kiwi/Kiwi.h>
+#import <CoreData/CoreData.h>
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/NSManagedObjectContext+MagicalRecord.h>
 #endif

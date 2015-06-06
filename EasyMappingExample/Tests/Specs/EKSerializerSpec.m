@@ -21,6 +21,8 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "ManagedMappingProvider.h"
 #import "ManagedPerson.h"
+#import <MagicalRecord/MagicalRecord+Setup.h>
+#import <MagicalRecord/NSManagedObject+MagicalRecord.h>
 
 SPEC_BEGIN(EKSerializerSpec)
 
