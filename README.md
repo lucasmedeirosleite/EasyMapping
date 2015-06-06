@@ -217,7 +217,7 @@ Thanks to:
 
 Using [CocoaPods](https://cocoapods.org):
 
-	pod 'EasyMapping', '~> 0.14.0'
+	pod 'EasyMapping', '~> 0.15.0'
 
 Using [Carthage](https://github.com/Carthage/Carthage):
 
