@@ -1,0 +1,10 @@
+{
+    "array":[],
+    "dictionary": {
+        "foo":"bar"
+    },
+    "set":[1,2,3],
+    "mutable_set":["1"],
+    "ordered_set":["4","5"],
+    "mutable_ordered_set": []
+}

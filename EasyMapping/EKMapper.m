@@ -48,8 +48,9 @@
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation withMapping:mapping];
     [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [EKPropertyHelper setProperty:obj
-                          onObject:object
-                fromRepresentation:representation];
+                             onObject:object
+                   fromRepresentation:representation
+                  respectPropertyType:mapping.respectPropertyFoundationTypes];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
         NSDictionary * value = [valueMapping extractObjectFromRepresentation:representation];

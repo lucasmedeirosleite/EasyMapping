@@ -71,7 +71,8 @@
         [EKPropertyHelper setProperty:obj
                              onObject:object
                    fromRepresentation:representation
-                            inContext:self.importer.context];
+                            inContext:self.importer.context
+         respectPropertyType:mapping.respectPropertyFoundationTypes];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
     {

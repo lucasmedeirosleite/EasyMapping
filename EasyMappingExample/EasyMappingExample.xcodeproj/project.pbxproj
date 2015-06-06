@@ -36,6 +36,10 @@
 		9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A170331194C820200682F00 /* EKRelationshipMapping.m */; };
 		9A1B2D161A9F446F00E1FACD /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A1B2D171A9F446F00E1FACD /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
+		9A2044111B23810D00AB7363 /* MutableFoundationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2044101B23810D00AB7363 /* MutableFoundationClass.m */; };
+		9A2044121B23810D00AB7363 /* MutableFoundationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2044101B23810D00AB7363 /* MutableFoundationClass.m */; };
+		9A2044141B23819500AB7363 /* MutableFoundationClass.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A2044131B23819500AB7363 /* MutableFoundationClass.json */; };
+		9A2044151B23819500AB7363 /* MutableFoundationClass.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A2044131B23819500AB7363 /* MutableFoundationClass.json */; };
 		9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
 		9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
 		9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
@@ -379,6 +383,9 @@
 		9A130226190BF9380060A25C /* OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A170330194C820200682F00 /* EKRelationshipMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRelationshipMapping.h; sourceTree = "<group>"; };
 		9A170331194C820200682F00 /* EKRelationshipMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRelationshipMapping.m; sourceTree = "<group>"; };
+		9A20440F1B23810D00AB7363 /* MutableFoundationClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutableFoundationClass.h; path = Tests/Fixtures/FixtureClasses/MutableFoundationClass.h; sourceTree = "<group>"; };
+		9A2044101B23810D00AB7363 /* MutableFoundationClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MutableFoundationClass.m; path = Tests/Fixtures/FixtureClasses/MutableFoundationClass.m; sourceTree = "<group>"; };
+		9A2044131B23819500AB7363 /* MutableFoundationClass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MutableFoundationClass.json; path = Tests/Fixtures/MutableFoundationClass.json; sourceTree = SOURCE_ROOT; };
 		9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKMappingProtocol.h; sourceTree = "<group>"; };
 		9A20569F1956DF7900499FC3 /* BaseTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTestModel.h; path = Classes/Models/BaseTestModel.h; sourceTree = SOURCE_ROOT; };
 		9A2056A01956DF7900499FC3 /* BaseTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseTestModel.m; path = Classes/Models/BaseTestModel.m; sourceTree = SOURCE_ROOT; };
@@ -628,6 +635,7 @@
 				9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */,
 				9A210F361944B13A00871071 /* CommentsRecursive.json */,
 				9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */,
+				9A2044131B23819500AB7363 /* MutableFoundationClass.json */,
 			);
 			name = Fixtures;
 			path = EasyMappingExampleTests;
@@ -886,6 +894,8 @@
 				9A8420F8195723BE006DDDE3 /* Two.m */,
 				9A8420FB195723D0006DDDE3 /* Three.h */,
 				9A8420FC195723D0006DDDE3 /* Three.m */,
+				9A20440F1B23810D00AB7363 /* MutableFoundationClass.h */,
+				9A2044101B23810D00AB7363 /* MutableFoundationClass.m */,
 			);
 			name = FixtureClasses;
 			sourceTree = "<group>";
@@ -1252,6 +1262,7 @@
 				9A45121F19164705006E6022 /* Cars.json in Resources */,
 				9A45124719164705006E6022 /* PersonWithNullCar.json in Resources */,
 				9A45122B19164705006E6022 /* CarWithRoot.json in Resources */,
+				9A2044141B23819500AB7363 /* MutableFoundationClass.json in Resources */,
 				9A45124B19164705006E6022 /* PersonWithNullPhones.json in Resources */,
 				9A210F3A1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122719164705006E6022 /* CarWithNestedAttributes.json in Resources */,
@@ -1285,6 +1296,7 @@
 				9A45124819164705006E6022 /* PersonWithNullCar.json in Resources */,
 				9AC0F3151A7276C6004B2096 /* PersonWithZeroPhones.json in Resources */,
 				9A45122C19164705006E6022 /* CarWithRoot.json in Resources */,
+				9A2044151B23819500AB7363 /* MutableFoundationClass.json in Resources */,
 				9A45124C19164705006E6022 /* PersonWithNullPhones.json in Resources */,
 				9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122819164705006E6022 /* CarWithNestedAttributes.json in Resources */,
@@ -1551,6 +1563,7 @@
 				9A53E2E31A7EA77300C4D169 /* EKMappingBlocks.m in Sources */,
 				9A4511CC191646C9006E6022 /* Person.m in Sources */,
 				9A130248190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */,
+				9A2044111B23810D00AB7363 /* MutableFoundationClass.m in Sources */,
 				9A45117C19164696006E6022 /* MappingProvider.m in Sources */,
 				9A4511AC191646C9006E6022 /* Address.m in Sources */,
 				9A4511F7191646F7006E6022 /* EKObjectMappingSpec.m in Sources */,
@@ -1588,6 +1601,7 @@
 				9A13024D190BFEF30060A25C /* EKMapper.m in Sources */,
 				9A4511FC191646F7006E6022 /* EKPropertyHelperSpec.m in Sources */,
 				9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */,
+				9A2044121B23810D00AB7363 /* MutableFoundationClass.m in Sources */,
 				9A8420F6195723A6006DDDE3 /* One.m in Sources */,
 				9A8420E9195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A210F351944B10B00871071 /* CommentObject.m in Sources */,

@@ -22,6 +22,7 @@
 #import "Finger.h"
 #import "Cat.h"
 #import "CommentObject.h"
+#import "MutableFoundationClass.h"
 
 SPEC_BEGIN(EKMapperSpec)
 
@@ -828,6 +829,45 @@ describe(@"EKMapper", ^{
             [[person.car.model should] equal:@"i30"];
             [[person.car.year should] equal:@"2013"];
         });
+    });
+    
+    describe(@"#mapKeyPath:toProperty should convert properties to mutable values, if properties are mutable", ^{
+        
+        __block MutableFoundationClass * instance = nil;
+        
+        beforeEach(^{
+            
+            NSDictionary * externalRepresentation = [CMFixture buildUsingFixture:@"MutableFoundationClass"];
+            instance = [[MutableFoundationClass alloc] initWithProperties:externalRepresentation];
+        });
+        
+        it(@"should have mutable array", ^{
+            [[instance.array should] beKindOfClass:[NSMutableArray class]];
+        });
+        
+        it(@"should have mutable dictionary", ^{
+           [[[instance dictionary] should] beKindOfClass:[NSMutableDictionary class]];
+            [[theBlock(^{
+                instance.dictionary[@"it's really mutable"] = @"";
+            }) shouldNot] raise];
+        });
+        
+        it(@"should have mutable set", ^{
+            [[[instance mutableSet] should] beKindOfClass:[NSMutableSet class]];
+        });
+        
+        it(@"should have mutable ordered set", ^{
+            [[[instance mutableOrderedSet] should] beKindOfClass:[NSMutableOrderedSet class]];
+        });
+        
+        it(@"should have set", ^{
+            [[[instance set] should] beKindOfClass:[NSSet class]];
+        });
+        
+        it(@"should have ordered set", ^{
+            [[[instance orderedSet] should] beKindOfClass:[NSOrderedSet class]];
+        });
+        
     });
 });
 

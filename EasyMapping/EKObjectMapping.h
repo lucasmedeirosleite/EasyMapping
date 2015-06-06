@@ -37,6 +37,13 @@
 @property (nonatomic, assign) BOOL incrementalData;
 
 /**
+ If set to YES, mapper will introspect your class properties and try to create appropriate objects. Supported classes: NSMutableArray, NSMutableDictionary, NSSet, NSMutableSet, NSOrderedSet, NSMutableOrderedSet. 
+ 
+ Due to perfomance reasons, this property defaults to NO.
+ */
+@property (nonatomic, assign) BOOL respectPropertyFoundationTypes;
+
+/**
  Class, for which this mapping is meant to be used.
  */
 @property (nonatomic, assign, readwrite) Class objectClass;

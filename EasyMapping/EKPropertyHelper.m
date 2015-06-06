@@ -61,9 +61,9 @@ static const char scalarTypes[] = {
 	return propertyType;
 }
 
-+ (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName
++ (id)propertyRepresentation:(id)value forObject:(id)object withPropertyName:(NSString *)propertyName
 {
-    if  (!array)
+    if  (!value)
     {
         return nil;
     }
@@ -73,28 +73,30 @@ static const char scalarTypes[] = {
     {
 		NSString *type = [self propertyTypeStringRepresentationFromProperty:property];
 		if ([type isEqualToString:@"NSSet"]) {
-			return [NSSet setWithArray:array];
+			return [NSSet setWithArray:value];
 		}
 		else if ([type isEqualToString:@"NSMutableSet"]) {
-            return [NSMutableSet setWithArray:array];
+            return [NSMutableSet setWithArray:value];
 		}
 		else if ([type isEqualToString:@"NSOrderedSet"]) {
-            return [NSOrderedSet orderedSetWithArray:array];
+            return [NSOrderedSet orderedSetWithArray:value];
 		}
 		else if ([type isEqualToString:@"NSMutableOrderedSet"]) {
-            return [NSMutableOrderedSet orderedSetWithArray:array];
+            return [NSMutableOrderedSet orderedSetWithArray:value];
 		}
 		else if ([type isEqualToString:@"NSMutableArray"]) {
-            return [NSMutableArray arrayWithArray:array];
-		}
+            return [NSMutableArray arrayWithArray:value];
+        } else if ([type isEqualToString:@"NSMutableDictionary"]) {
+            return [NSMutableDictionary dictionaryWithDictionary:value];
+        } 
 	}
-    return array;
+    return value;
 }
 
 #pragma mark Property accessor methods 
 
 + (void)setProperty:(EKPropertyMapping *)propertyMapping onObject:(id)object
- fromRepresentation:(NSDictionary *)representation
+ fromRepresentation:(NSDictionary *)representation respectPropertyType:(BOOL)respectPropertyType
 {
     id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation];
     if (value == (id)[NSNull null]) {
@@ -102,6 +104,11 @@ static const char scalarTypes[] = {
             [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
         }
     } else if (value) {
+        if (respectPropertyType) {
+            value = [self propertyRepresentation:value
+                                       forObject:object
+                                withPropertyName:propertyMapping.property];
+        }
         [self setValue:value onObject:object forKeyPath:propertyMapping.property];
     }
 }
@@ -110,6 +117,7 @@ static const char scalarTypes[] = {
             onObject:(id)object
   fromRepresentation:(NSDictionary *)representation
            inContext:(NSManagedObjectContext *)context
+ respectPropertyType:(BOOL)respectPropertyType
 {
     id value = [self getValueOfManagedProperty:propertyMapping
                             fromRepresentation:representation
@@ -119,6 +127,11 @@ static const char scalarTypes[] = {
             [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
         }
     } else if (value) {
+        if (respectPropertyType) {
+            value = [self propertyRepresentation:value
+                                       forObject:object
+                                withPropertyName:propertyMapping.property];
+        }
         [self setValue:value onObject:object forKeyPath:propertyMapping.property];
     }
 }

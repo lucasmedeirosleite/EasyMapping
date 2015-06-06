@@ -37,12 +37,14 @@
 
 + (void)  setProperty:(EKPropertyMapping *)propertyMapping
              onObject:(id)object
-   fromRepresentation:(NSDictionary *)representation;
+   fromRepresentation:(NSDictionary *)representation
+  respectPropertyType:(BOOL)respectPropertyType;
 
 + (void) setProperty:(EKPropertyMapping *)propertyMapping
             onObject:(id)object
   fromRepresentation:(NSDictionary *)representation
-           inContext:(NSManagedObjectContext *)context;
+           inContext:(NSManagedObjectContext *)context
+ respectPropertyType:(BOOL)respectPropertyType;
 
 + (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
       fromRepresentation:(NSDictionary *)representation;
