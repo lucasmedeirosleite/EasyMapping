@@ -18,7 +18,7 @@
 #import "Native.h"
 #import "NativeChild.h"
 #import <CoreLocation/CoreLocation.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import "ManagedMappingProvider.h"
 #import "ManagedPerson.h"
 
