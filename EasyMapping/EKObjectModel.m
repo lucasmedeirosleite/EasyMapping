@@ -22,7 +22,7 @@
 
 -(instancetype)initWithProperties:(NSDictionary *)properties
 {
-    if (self = [super init])
+    if ((self = [super init]))
     {
         [EKMapper fillObject:self
   fromExternalRepresentation:properties
