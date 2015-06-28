@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 EasyKit. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
+@import CoreData;
 #import "EKMappingProtocol.h"
 
 /**
@@ -21,7 +21,7 @@
  
  @param properties parsed JSON NSDictionary.
  
- @context context, in which object will be created
+ @param context in which object will be created
  
  @return mapped object
  */
@@ -31,7 +31,7 @@
 /**
  Serialize mapped object back to JSON representation.
  
- @param context, from which object will be serialized
+ @param context from which object will be serialized
  
  @return NSDictionary representation of current object.
  */
