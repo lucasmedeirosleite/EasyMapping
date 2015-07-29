@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "EasyMapping"
-  s.version      = "0.15.1"
+  s.version      = "0.15.2"
   s.summary      = "The easiest way to map data from your webservice."
   s.homepage     = "https://github.com/lucasmedeirosleite/EasyMapping"
 
@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
+  s.watchos.deployment_target = '2.0'
 
   s.subspec 'Core' do |core|
     core.frameworks = 'CoreData'
