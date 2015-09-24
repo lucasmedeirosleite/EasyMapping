@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 EasyKit. All rights reserved.
 //
 
-@import CoreData;
+#import <CoreData/CoreData.h>
 #import "EKMappingProtocol.h"
 
 /**

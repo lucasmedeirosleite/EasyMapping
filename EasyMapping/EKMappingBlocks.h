@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-@import Foundation;
-@import CoreData;
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 typedef id(^EKMappingValueBlock)(NSString *key, id value);
 typedef id(^EKMappingReverseBlock)( id value);

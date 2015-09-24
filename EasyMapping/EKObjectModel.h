@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 EasyKit. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 #import "EKMappingProtocol.h"
 
 /**
