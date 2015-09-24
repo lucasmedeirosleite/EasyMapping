@@ -84,14 +84,14 @@
 		9A2A382D1AEA5AB50021E97D /* EasyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF616F2B2770003759B /* EasyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A38341AEA607E0021E97D /* EKSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16D0016F2B2770003759B /* EKSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A38351AEA607E0021E97D /* EKManagedObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A2A38361AEA607E0021E97D /* EKCoreDataImporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A2A38361AEA607E0021E97D /* EKCoreDataImporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */; };
 		9A2A38371AEA607E0021E97D /* EKManagedObjectMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A38381AEA607E0021E97D /* EKMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF916F2B2770003759B /* EKMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A38391AEA607E0021E97D /* EKObjectMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CFC16F2B2770003759B /* EKObjectMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A383A1AEA607E0021E97D /* EKPropertyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF716F2B2770003759B /* EKPropertyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A2A383B1AEA607E0021E97D /* EKRelationshipMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A170330194C820200682F00 /* EKRelationshipMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A2A383C1AEA607E0021E97D /* EKPropertyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A2A383D1AEA607E0021E97D /* NSArray+FlattenArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A2A383B1AEA607E0021E97D /* EKRelationshipMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A170330194C820200682F00 /* EKRelationshipMapping.h */; };
+		9A2A383C1AEA607E0021E97D /* EKPropertyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */; };
+		9A2A383D1AEA607E0021E97D /* NSArray+FlattenArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */; };
 		9A2A383E1AEA607E0021E97D /* EKObjectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8420E01957164E006DDDE3 /* EKObjectModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A383F1AEA607E0021E97D /* EKManagedObjectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A38401AEA607E0021E97D /* NSDateFormatter+EasyMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A53E2D81A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1040,19 +1040,19 @@
 				9A2A382C1AEA5AA10021E97D /* EasyMapping.h in Headers */,
 				9A2A38341AEA607E0021E97D /* EKSerializer.h in Headers */,
 				9A2A38351AEA607E0021E97D /* EKManagedObjectMapper.h in Headers */,
-				9A2A38361AEA607E0021E97D /* EKCoreDataImporter.h in Headers */,
 				9A2A38371AEA607E0021E97D /* EKManagedObjectMapping.h in Headers */,
 				9A2A38381AEA607E0021E97D /* EKMapper.h in Headers */,
 				9A2A38391AEA607E0021E97D /* EKObjectMapping.h in Headers */,
-				9A2A383A1AEA607E0021E97D /* EKPropertyMapping.h in Headers */,
-				9A2A383B1AEA607E0021E97D /* EKRelationshipMapping.h in Headers */,
-				9A2A383C1AEA607E0021E97D /* EKPropertyHelper.h in Headers */,
-				9A2A383D1AEA607E0021E97D /* NSArray+FlattenArray.h in Headers */,
 				9A2A383E1AEA607E0021E97D /* EKObjectModel.h in Headers */,
 				9A2A383F1AEA607E0021E97D /* EKManagedObjectModel.h in Headers */,
 				9A2A38401AEA607E0021E97D /* NSDateFormatter+EasyMappingAdditions.h in Headers */,
+				9A2A383A1AEA607E0021E97D /* EKPropertyMapping.h in Headers */,
 				9A2A38411AEA607E0021E97D /* EKMappingBlocks.h in Headers */,
 				9A2A38421AEA607F0021E97D /* EKMappingProtocol.h in Headers */,
+				9A2A383D1AEA607E0021E97D /* NSArray+FlattenArray.h in Headers */,
+				9A2A38361AEA607E0021E97D /* EKCoreDataImporter.h in Headers */,
+				9A2A383C1AEA607E0021E97D /* EKPropertyHelper.h in Headers */,
+				9A2A383B1AEA607E0021E97D /* EKRelationshipMapping.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
