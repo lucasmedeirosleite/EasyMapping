@@ -22,7 +22,6 @@
 // THE SOFTWARE.
 
 #import "EKObjectMapping.h"
-#import "EKSerializer.h"
 #import "EKManagedObjectMapping.h"
 
 /**
