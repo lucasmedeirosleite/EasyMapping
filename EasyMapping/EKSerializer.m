@@ -171,7 +171,7 @@
 + (void)setValue:(id)value forKeyPath:(NSString *)keyPath inRepresentation:(NSMutableDictionary *)representation {
     NSArray *keyPathComponents = [keyPath componentsSeparatedByString:@"."];
     if ([keyPathComponents count] == 1) {
-        [representation setObject:value forKey:keyPath];
+        [representation setObject:value ?: [NSNull null] forKey:keyPath];
     } else if ([keyPathComponents count] > 1) {
         NSString *attributeKey = [keyPathComponents lastObject];
         NSMutableArray *subPaths = [NSMutableArray arrayWithArray:keyPathComponents];
