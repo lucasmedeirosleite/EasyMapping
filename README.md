@@ -208,7 +208,7 @@ Thanks to:
 
 ## Requirements
 
-* XCode 6.3 and higher
+* Xcode 6.3 and higher
 * iOS 5 and higher
 * Mac OS X 10.7 and higher
 * ARC
