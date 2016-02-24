@@ -77,10 +77,13 @@
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
     {
         NSDictionary * value = [relationship extractObjectFromRepresentation:representation];
-        if (value && value != (id)[NSNull null])
+        if (value)
         {
-            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[relationship objectMapping]];
-            [EKPropertyHelper setValue:result onObject:object forKeyPath:relationship.property];
+            id result = nil;
+            if (value != (id)[NSNull null]) {
+			    result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[relationship objectMapping]];
+            }
+			[EKPropertyHelper setValue:result onObject:object forKeyPath:relationship.property];
         }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
