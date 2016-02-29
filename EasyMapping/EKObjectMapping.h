@@ -32,6 +32,11 @@
 @interface EKObjectMapping : NSObject
 
 /**
+ Defines if missing fields will be ignored, or as in case of relations set to nil
+ */
+@property (nonatomic, assign) BOOL ignoreMissingFields;
+
+/**
  Defines if to-many relationship data is pushed or replaced.
  */
 @property (nonatomic, assign) BOOL incrementalData;

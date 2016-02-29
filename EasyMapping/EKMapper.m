@@ -54,6 +54,12 @@
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
         NSDictionary * value = [valueMapping extractObjectFromRepresentation:representation];
+        
+        if(mapping.ignoreMissingFields && !value)
+        {
+            return;
+        }
+        
 		 if (value && value != (id)[NSNull null]) {
 			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping objectMapping]];
 			 [object setValue:result forKeyPath:valueMapping.property];
@@ -63,6 +69,11 @@
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
 		 NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
+        if(mapping.ignoreMissingFields && !arrayToBeParsed)
+        {
+            return;
+        }
+        
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
                                                                        withMapping:[valueMapping objectMapping]];
