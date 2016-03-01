@@ -10,6 +10,7 @@
 		097A5C5C1A67126900CB6CE3 /* EKMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */; };
 		49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
 		49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
+		4D612CB61C85DB8C00A167ED /* PersonWithoutRelations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */; };
 		56C7AF349C6076663D250AC4 /* libPods-MacOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB37945259736BCB28FC3749 /* libPods-MacOS Benchmark.a */; };
 		64765DB6A240E9DEA0F077A7 /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 453D7873518C068C7DC6BA9A /* libPods-iOS Tests.a */; };
 		85D1B77A1B21973C00B0555C /* CarsWithNullItem.json in Resources */ = {isa = PBXBuildFile; fileRef = 85D1B7791B21973500B0555C /* CarsWithNullItem.json */; };
@@ -376,6 +377,7 @@
 		453D7873518C068C7DC6BA9A /* libPods-iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithOtherPhones.json; path = Tests/Fixtures/PersonWithOtherPhones.json; sourceTree = SOURCE_ROOT; };
 		49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithZeroPhones.json; path = Tests/Fixtures/PersonWithZeroPhones.json; sourceTree = SOURCE_ROOT; };
+		4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithoutRelations.json; path = Tests/Fixtures/PersonWithoutRelations.json; sourceTree = SOURCE_ROOT; };
 		7A583B889DBB57062C718CB9 /* Pods-iOS Benchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark.debug.xcconfig"; sourceTree = "<group>"; };
 		85D1B7791B21973500B0555C /* CarsWithNullItem.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = CarsWithNullItem.json; path = Tests/Fixtures/CarsWithNullItem.json; sourceTree = SOURCE_ROOT; };
 		8CEE779F84323229896E4AE0 /* Pods-OS X Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OS X Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OS X Tests/Pods-OS X Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				9A45121119164705006E6022 /* PersonWithNullPhones.json */,
 				49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */,
 				49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */,
+				4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */,
 				9A45121219164705006E6022 /* Plane.json */,
 				9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */,
 				9A210F361944B13A00871071 /* CommentsRecursive.json */,
@@ -1254,6 +1257,7 @@
 				9A45123319164705006E6022 /* Male.json in Resources */,
 				9AA7CED3191FA7C400608262 /* ComplexRepresentation.json in Resources */,
 				9AC1321D1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */,
+				4D612CB61C85DB8C00A167ED /* PersonWithoutRelations.json in Resources */,
 				9A210F371944B13A00871071 /* CommentsRecursive.json in Resources */,
 				9A45123F19164705006E6022 /* Person.json in Resources */,
 				9A45122319164705006E6022 /* CarWithDate.json in Resources */,

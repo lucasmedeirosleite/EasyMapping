@@ -12,6 +12,7 @@
 #import "XCTestCase+EasyMapping.h"
 #import "Car.h"
 #import "Person.h"
+#import "Phone.h"
 
 @interface EKMappingTestCase : XCTestCase
 
@@ -103,6 +104,38 @@
     person.gender = (Gender)[genders[[expectedExternalRepresentation valueForKey:@"gender"]] integerValue];
     
     [self testSerializeObject:person withMapping:[Person objectMapping] expectedRepresentation:expectedExternalRepresentation skippingKeyPaths:@[@"phones",@"socialURL"]];
+}
+
+- (void)testIgnoreMissingFieldsProperty
+{
+    NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+    NSDictionary *externalRepresentationPartial = [CMFixture buildUsingFixture:@"PersonWithoutRelations"];
+    
+    [Person registerMapping:[MappingProvider personMapping]];
+    [Car registerMapping:[MappingProvider carMapping]];
+    [Phone registerMapping:[MappingProvider phoneMapping]];
+    EKObjectMapping *personMapping = [Person objectMapping];
+    
+    Person *person = [EKMapper objectFromExternalRepresentation:externalRepresentation
+                                                    withMapping:personMapping];
+    
+    // Check default behaviour
+    XCTAssertNotNil(person.car);
+    XCTAssertNotNil(person.phones);
+    [EKMapper fillObject:person fromExternalRepresentation:externalRepresentationPartial withMapping:personMapping];
+    XCTAssertNil(person.car);
+    XCTAssertNil(person.phones);
+    
+    // Check behaviour with set ignoreMissingFields property
+    person = [EKMapper objectFromExternalRepresentation:externalRepresentation
+                                            withMapping:personMapping];
+    
+    personMapping.ignoreMissingFields = YES;
+    XCTAssertNotNil(person.car);
+    XCTAssertNotNil(person.phones);
+    [EKMapper fillObject:person fromExternalRepresentation:externalRepresentationPartial withMapping:personMapping];
+    XCTAssertNotNil(person.car);
+    XCTAssertNotNil(person.phones);
 }
 
 @end
