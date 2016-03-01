@@ -10,8 +10,15 @@
 #import "EasyMapping.h"
 #import "ManagedPerson.h"
 #import "ManagedCar.h"
+#import "ManagedPhone.h"
 #import "ManagedMappingProvider.h"
 #import <CoreData/CoreData.h>
+#import "CMFixture.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord+Setup.h>
+#import <MagicalRecord/NSManagedObjectContext+MagicalSaves.h>
+#import <MagicalRecord/NSManagedObject+MagicalFinders.h>
+#import <MagicalRecord/NSManagedObject+MagicalRecord.h>
 
 SPEC_BEGIN(EKManagedObjectMappingSpec)
 
@@ -385,6 +392,53 @@ describe(@"EKManagedObjectMapping", ^{
         
     });
 	
+    
+    describe(@"Supports ignore missing fields property", ^{
+        
+        __block NSDictionary *externalRepresentation;
+        __block NSDictionary *externalRepresentationPartial;
+        __block EKManagedObjectMapping * personMapping;
+        __block NSManagedObjectContext* moc;
+        
+        beforeEach(^{
+            [MagicalRecord setDefaultModelFromClass:[self class]];
+            [MagicalRecord setupCoreDataStackWithInMemoryStore];
+            
+            externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+            externalRepresentationPartial = [CMFixture buildUsingFixture:@"PersonWithoutRelations"];
+            moc = [NSManagedObjectContext MR_defaultContext];
+            [ManagedPerson registerMapping:[ManagedMappingProvider personMapping]];
+            [ManagedCar registerMapping:[ManagedMappingProvider carMapping]];
+            [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
+            personMapping = [ManagedPerson objectMapping];
+        });
+        
+        specify(^{
+            ManagedPerson *person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation
+                                                            withMapping:personMapping inManagedObjectContext:moc];
+            
+            // Check default behaviour
+            [[person.car shouldNot] beNil];
+            [[person.phones shouldNot] beNil];
+            
+            [EKManagedObjectMapper fillObject:person fromExternalRepresentation:externalRepresentationPartial withMapping:personMapping inManagedObjectContext:moc];
+            
+            [[person.car should] beNil];
+            [[person.phones should] beEmpty];
+            
+            // Check behaviour with set ignoreMissingFields property
+            person = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation
+                                                    withMapping:personMapping inManagedObjectContext:moc];
+            
+            personMapping.ignoreMissingFields = YES;
+            [[person.car shouldNot] beNil];
+            [[person.phones shouldNot] beNil];
+            [EKManagedObjectMapper fillObject:person fromExternalRepresentation:externalRepresentationPartial withMapping:personMapping inManagedObjectContext:moc];
+            [[person.car shouldNot] beNil];
+            [[person.phones shouldNot] beNil];
+        });
+        
+    });
 });
 
 SPEC_END

@@ -306,6 +306,7 @@
 		9A53E2E61A7EA7F200C4D169 /* EKMappingBlocksSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */; };
 		9A53E2E71A7EA7F200C4D169 /* EKMappingBlocksSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */; };
 		9A7048131AB464A700EFD403 /* CarWithAttributesRemoved.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */; };
+		9A74F5401C85F2CE0063247E /* PersonWithoutRelations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */; };
 		9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
@@ -1309,6 +1310,7 @@
 				9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122819164705006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9A45124419164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
+				9A74F5401C85F2CE0063247E /* PersonWithoutRelations.json in Resources */,
 				9AC0D8691A728D4C003926C1 /* PersonNonNested.json in Resources */,
 				9A45125019164705006E6022 /* Plane.json in Resources */,
 				9A45123C19164705006E6022 /* NativeChild.json in Resources */,
