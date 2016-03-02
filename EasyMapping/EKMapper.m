@@ -55,7 +55,7 @@
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
         NSDictionary * value = [valueMapping extractObjectFromRepresentation:representation];
         
-        if(mapping.ignoreMissingFields  && ((!value) || (value == (id)[NSNull null])))
+        if(mapping.ignoreMissingFields  && !value)
         {
             return;
         }

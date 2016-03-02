@@ -77,7 +77,7 @@
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
     {
         NSDictionary * value = [relationship extractObjectFromRepresentation:representation];
-        if(mapping.ignoreMissingFields && (!value || value == (id)[NSNull null]))
+        if(mapping.ignoreMissingFields && !value)
         {
             return;
         }
@@ -92,7 +92,7 @@
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
     {
         NSArray * arrayToBeParsed = [representation valueForKeyPath:key];
-        if(mapping.ignoreMissingFields && (!arrayToBeParsed || arrayToBeParsed == (id)[NSNull null]))
+        if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             return;
         }
