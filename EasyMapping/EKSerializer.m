@@ -144,7 +144,7 @@
 +(void)setValueOnRepresentation:(NSMutableDictionary *)representation fromManagedObject:(id)object
             withPropertyMapping:(EKPropertyMapping *)propertyMapping inContext:(NSManagedObjectContext *)context
 {
-    id returnedValue = [object valueForKey:propertyMapping.property];
+    id returnedValue = [object valueForKeyPath:propertyMapping.property];
 
     if (returnedValue) {
 
