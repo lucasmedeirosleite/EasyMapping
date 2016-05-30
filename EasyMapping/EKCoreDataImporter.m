@@ -109,14 +109,14 @@
     NSMutableDictionary * existingPrimaryKeys = [NSMutableDictionary dictionary];
     for (NSString * entityName in self.entityNames)
     {
-        existingPrimaryKeys[entityName] = [NSSet set];
+        existingPrimaryKeys[entityName] = [NSMutableSet set];
     }
     [self inspectRepresentation:self.externalRepresentation
                    usingMapping:self.mapping
                accumulateInside:existingPrimaryKeys
                         context:context];
 
-    self.existingEntitiesPrimaryKeys = [existingPrimaryKeys copy];
+    self.existingEntitiesPrimaryKeys = existingPrimaryKeys;
 }
 
 - (void)inspectRepresentation:(id)representation
@@ -133,7 +133,7 @@
             id value = [self primaryKeyValueFromRepresentation:objectInfo usingMapping:mapping context:context];
             if (value && value != (id)[NSNull null])
             {
-                dictionary[mapping.entityName] = [dictionary[mapping.entityName] setByAddingObject:value];
+                [(NSMutableSet *)dictionary[mapping.entityName] addObject:value];
             }
         }
     }
@@ -142,7 +142,7 @@
         id value = [self primaryKeyValueFromRepresentation:rootRepresentation usingMapping:mapping context:context];
         if (value && value != (id)[NSNull null])
         {
-            dictionary[mapping.entityName] = [dictionary[mapping.entityName] setByAddingObject:value];
+            [(NSMutableSet *)dictionary[mapping.entityName] addObject:value];
         }
     }
 
