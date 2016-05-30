@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
     xctest.tvos.deployment_target = '9.0'
     xctest.dependency 'EasyMapping/Core'
     xctest.frameworks = 'XCTest'
+    xctest.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PLATFORM_DIR)/Developer/Library/Frameworks' }
     xctest.source_files = 'XCTest+EasyMapping/*.{h,m}'
   end
 
