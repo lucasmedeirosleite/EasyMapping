@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/EasyMapping/EasyMapping.png?branch=master) &nbsp;
+[![Build Status](https://travis-ci.org/lucasmedeirosleite/EasyMapping.svg?branch=master)](https://travis-ci.org/lucasmedeirosleite/EasyMapping) &nbsp;
 ![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/EasyMapping/badge.png) &nbsp; 
 ![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/EasyMapping/badge.png) &nbsp; 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
