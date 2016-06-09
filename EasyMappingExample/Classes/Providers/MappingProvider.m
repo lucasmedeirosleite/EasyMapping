@@ -33,7 +33,7 @@
 
 + (EKObjectMapping *)carWithRootKeyMapping
 {
-    return [EKObjectMapping mappingForClass:[Car class] withRootPath:@"car" withBlock:^(EKObjectMapping *mapping) {
+    return [EKObjectMapping mappingForClass:[Car class] withRootPath:@"data.car" withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromDictionary:@{@"id":@"carId"}];
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
     }];

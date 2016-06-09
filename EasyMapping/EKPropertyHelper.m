@@ -209,7 +209,7 @@ static const char scalarTypes[] = {
                                                 withMapping:(EKObjectMapping *)mapping
 {
     if (mapping.rootPath) {
-        return [externalRepresentation objectForKey:mapping.rootPath];
+        return [externalRepresentation valueForKeyPath:mapping.rootPath];
     }
     return externalRepresentation;
 }

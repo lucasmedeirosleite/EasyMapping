@@ -65,7 +65,9 @@
     }];
     
     if (mapping.rootPath.length > 0) {
-        representation = [@{mapping.rootPath : representation} mutableCopy];
+        NSMutableDictionary *rootRepresentation = [NSMutableDictionary new];
+        [self setValue:representation forKeyPath:mapping.rootPath inRepresentation:rootRepresentation];
+        representation = rootRepresentation;
     }
     return representation;
 }
@@ -124,7 +126,9 @@
     }];
     
     if (mapping.rootPath.length > 0) {
-        representation = [@{mapping.rootPath : representation} mutableCopy];
+        NSMutableDictionary *rootRepresentation = [NSMutableDictionary new];
+        [self setValue:representation forKeyPath:mapping.rootPath inRepresentation:rootRepresentation];
+        representation = rootRepresentation;
     }
     return representation;
 }

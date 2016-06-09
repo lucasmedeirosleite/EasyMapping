@@ -73,7 +73,7 @@ describe(@"EKMapper", ^{
             beforeEach(^{
                 externalRepresentation = [CMFixture buildUsingFixture:@"CarWithRoot"];
                 car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carWithRootKeyMapping]];
-                externalRepresentation = [externalRepresentation objectForKey:@"car"];
+                externalRepresentation = externalRepresentation[@"data"][@"car"];
             });
             
             specify(^{
