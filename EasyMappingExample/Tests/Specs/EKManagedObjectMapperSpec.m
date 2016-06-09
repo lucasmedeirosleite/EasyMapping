@@ -224,7 +224,7 @@ describe(@"EKManagedObjectMapper", ^{
                 moc = [NSManagedObjectContext MR_defaultContext];
                 externalRepresentation = [CMFixture buildUsingFixture:@"CarWithRoot"];
                 car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carWithRootKeyMapping] inManagedObjectContext:moc];
-                externalRepresentation = [externalRepresentation objectForKey:@"car"];
+                externalRepresentation = externalRepresentation[@"data"][@"car"];
             });
             
             specify(^{

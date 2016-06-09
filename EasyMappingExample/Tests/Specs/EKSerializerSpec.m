@@ -104,15 +104,15 @@ describe(@"EKSerializer", ^{
             });
             
             specify(^{
-                [[representation objectForKey:@"car"] shouldNotBeNil];
+                [representation[@"data"][@"car"] shouldNotBeNil];
             });
             
             specify(^{
-                [[[[representation objectForKey:@"car"] objectForKey:@"model"] should] equal:[car.model description]];
+                [[representation[@"data"][@"car"][@"model"] should] equal:[car.model description]];
             });
             
             specify(^{
-                [[[[representation objectForKey:@"car"] objectForKey:@"year"] should] equal:[car.year description]];
+                [[representation[@"data"][@"car"][@"year"] should] equal:[car.year description]];
             });
             
         });

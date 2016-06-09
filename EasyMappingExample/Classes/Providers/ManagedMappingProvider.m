@@ -26,7 +26,7 @@
 + (EKManagedObjectMapping *)carWithRootKeyMapping
 {
     return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
-                                           withRootPath:@"car"
+                                           withRootPath:@"data.car"
                                               withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
