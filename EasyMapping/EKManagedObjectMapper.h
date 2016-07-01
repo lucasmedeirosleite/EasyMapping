@@ -24,6 +24,8 @@
 #import <CoreData/CoreData.h>
 #import "EKManagedObjectMapping.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  `EKManagedObjectMapper` is used to create and fill CoreData objects. Internally, it uses `EKCoreDataImporter` class to speed up data imports. You can find more info on this in project's readme.
  */
@@ -97,5 +99,6 @@
                                               withMapping:(EKManagedObjectMapping *)mapping
                                              fetchRequest:(NSFetchRequest*)fetchRequest
                                    inManagedObjectContext:(NSManagedObjectContext *)context;
-
 @end
+
+NS_ASSUME_NONNULL_END

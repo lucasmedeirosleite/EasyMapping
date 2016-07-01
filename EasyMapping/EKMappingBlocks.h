@@ -24,11 +24,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-typedef id(^EKMappingValueBlock)(NSString *key, id value);
-typedef id(^EKMappingReverseBlock)( id value);
+NS_ASSUME_NONNULL_BEGIN
 
-typedef id(^EKManagedMappingValueBlock)(NSString * key, id value, NSManagedObjectContext * context);
-typedef id(^EKManagedMappingReverseValueBlock)(id value, NSManagedObjectContext * context);
+typedef _Nullable id(^EKMappingValueBlock)(NSString *key, _Nullable id value);
+typedef _Nullable id(^EKMappingReverseBlock)(_Nullable id value);
+
+typedef _Nullable id(^EKManagedMappingValueBlock)(NSString * key, _Nullable id value, NSManagedObjectContext * context);
+typedef _Nullable id(^EKManagedMappingReverseValueBlock)(_Nullable id value, NSManagedObjectContext * context);
 
 @interface EKMappingBlocks: NSObject
 
@@ -36,4 +38,6 @@ typedef id(^EKManagedMappingReverseValueBlock)(id value, NSManagedObjectContext 
 + (EKMappingReverseBlock)urlReverseMappingBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END
 

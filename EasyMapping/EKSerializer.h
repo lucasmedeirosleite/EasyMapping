@@ -24,6 +24,8 @@
 #import "EKObjectMapping.h"
 #import "EKManagedObjectMapping.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  `EKSerializer` is a class, that allows converting objects to their JSON representation, using `EKObjectMapping`. CoreData objects are supported too.
  */
@@ -81,3 +83,5 @@
                      withMapping:(EKManagedObjectMapping*)mapping
                      fromContext:(NSManagedObjectContext *)context;
 @end
+
+NS_ASSUME_NONNULL_END

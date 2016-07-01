@@ -23,6 +23,8 @@
 
 #import "EKObjectMapping.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  `EKMapper` provides an interface to create objective-c object from JSON representation, using `EKObjectMapping` class. For creating CoreData objects, use `EKManagedObjectMapper` class.
  */
@@ -38,7 +40,7 @@
  
  @result mapped object
  */
-+ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
++ (nullable id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                            withMapping:(EKObjectMapping *)mapping;
 
 /**
@@ -65,7 +67,9 @@
  
  @result array of mapped objects
  */
-+ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
++ (nullable NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKObjectMapping *)mapping;
 
 @end
+
+NS_ASSUME_NONNULL_END

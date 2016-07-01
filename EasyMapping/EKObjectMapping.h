@@ -25,6 +25,8 @@
 
 @protocol EKMappingProtocol;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  `EKObjectMapping` class is used to define mappings between JSON representation and objective-c object.
  */
@@ -229,7 +231,7 @@
 - (void)           hasOne:(Class)objectClass
 forDictionaryFromKeyPaths:(NSArray *)keyPaths
               forProperty:(NSString *)property
-        withObjectMapping:(EKObjectMapping *)objectMapping;
+        withObjectMapping:(nullable EKObjectMapping *)objectMapping;
 
 /**
  Map to-one relationship for keyPath.
@@ -242,7 +244,7 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
 */
-- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
+- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
 
 
 /**
@@ -276,23 +278,8 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
   @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping;
+-(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
 
 @end
 
-@interface EKObjectMapping(Deprecated)
-
-/**
- This method is deprecated and may be removed in the future releases. Please use `mapKeyPath:toProperty:withDateFormatter: method`.
- 
- Map JSON keyPath to object property. This method assumes, that value contains NSString, that can be transformed into NSDate by NSDateFormatter. Default timezone is GMT. Transformation is done by `EKTransformer` class.
- 
- @param keyPath JSON keypath, that will be used by valueForKeyPath: method
- 
- @param property Property name.
- 
- @param dateFormat Date format
- */
-- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat __deprecated;
-
-@end
+NS_ASSUME_NONNULL_END

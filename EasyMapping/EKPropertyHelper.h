@@ -26,6 +26,8 @@
 #import "EKPropertyMapping.h"
 #import "EKObjectMapping.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  `EKPropertyHelper` is internal EasyMapping class, that works with objective-c runtime to get and set values of properties.
  */
@@ -33,7 +35,7 @@
 
 + (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object;
 
-+ (id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
++ (nullable id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
 + (void)  setProperty:(EKPropertyMapping *)propertyMapping
              onObject:(id)object
@@ -48,19 +50,21 @@
  respectPropertyType:(BOOL)respectPropertyType
  ignoreMissingFields:(BOOL)ignoreMissingFields;
 
-+ (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
-      fromRepresentation:(NSDictionary *)representation
-     ignoreMissingFields:(BOOL)ignoreMissingFields;
++ (nullable id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
+               fromRepresentation:(NSDictionary *)representation
+              ignoreMissingFields:(BOOL)ignoreMissingFields;
 
-+ (id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
-             fromRepresentation:(NSDictionary *)representation
-                      inContext:(NSManagedObjectContext *)context;
++ (nullable id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
+                      fromRepresentation:(NSDictionary *)representation
+                               inContext:(NSManagedObjectContext *)context;
 
-+ (void)setValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
++ (void)setValue:(nullable id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
 
 + (void)addValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
 
-+ (NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation
-                                                withMapping:(EKObjectMapping *)mapping;
++ (nullable NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation
+                                                         withMapping:(EKObjectMapping *)mapping;
 
 @end
+
+NS_ASSUME_NONNULL_END

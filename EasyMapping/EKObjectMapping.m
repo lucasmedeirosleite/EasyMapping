@@ -81,11 +81,6 @@
     [self addPropertyMappingToDictionary:mapping];
 }
 
-- (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormat:(NSString *)dateFormat
-{
-    [self mapKeyPath:keyPath toProperty:property withDateFormatter:[NSDateFormatter ek_formatterForCurrentThread]];
-}
-
 -(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withDateFormatter:(NSDateFormatter *)formatter
 {
     NSParameterAssert(keyPath);

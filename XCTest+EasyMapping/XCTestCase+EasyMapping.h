@@ -10,6 +10,8 @@
 
 @class EKObjectMapping;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface XCTestCase (EasyMapping)
 
 - (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
@@ -19,7 +21,7 @@
 - (id)testObjectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                                         withMapping:(EKObjectMapping *)mapping
                                      expectedObject:(id)expectedObject
-                                   skippingKeyPaths:(NSArray *)keyPathsToSkip;
+                                   skippingKeyPaths:(nullable NSArray *)keyPathsToSkip;
 
 - (NSDictionary *)testSerializeObject:(id)object
                           withMapping:(EKObjectMapping *)mapping
@@ -28,7 +30,9 @@
 - (NSDictionary *)testSerializeObject:(id)object
                           withMapping:(EKObjectMapping *)mapping
                expectedRepresentation:(NSDictionary *)expectedRepresentation
-                     skippingKeyPaths:(NSArray *)keyPathsToSkip;
+                     skippingKeyPaths:(nullable NSArray *)keyPathsToSkip;
 
 
 @end
+
+NS_ASSUME_NONNULL_END

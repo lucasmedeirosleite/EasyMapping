@@ -9,6 +9,8 @@
 #import "EKObjectMapping.h"
 #import "EKMappingProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface EKRelationshipMapping : NSObject
 
 @property (nonatomic, strong) Class <EKMappingProtocol> objectClass;
@@ -19,9 +21,10 @@
 
 @property (nonatomic, strong) EKObjectMapping *objectMapping;
 
-@property (nonatomic, strong) NSArray * nonNestedKeyPaths;
+@property (nonatomic, strong, nullable) NSArray * nonNestedKeyPaths;
 
-- (NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
+- (nullable NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
 
 @end
 
+NS_ASSUME_NONNULL_END

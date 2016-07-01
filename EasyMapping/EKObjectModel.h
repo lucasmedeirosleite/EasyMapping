@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "EKMappingProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  EKModel is convenience base class, that allows transforming JSON objects to NSObjects and vice versa.
 */
@@ -41,3 +43,5 @@
 - (NSDictionary *)serializedObject;
 
 @end
+
+NS_ASSUME_NONNULL_END

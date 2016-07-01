@@ -23,8 +23,12 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSArray (FlattenArray)
 
 -(NSArray*)ek_flattenedCompactedArray;
 
 @end
+
+NS_ASSUME_NONNULL_END

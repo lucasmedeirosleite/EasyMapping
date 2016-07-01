@@ -31,11 +31,6 @@
                              fromContext:context];
 }
 
--(NSDictionary *)serializedObject
-{
-    return [self serializedObjectInContext:nil];
-}
-
 #pragma mark - EKManagedMappingProtocol
 
 +(EKManagedObjectMapping *)objectMapping

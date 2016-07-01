@@ -24,6 +24,8 @@
 @import CoreData;
 #import "EKManagedObjectMapping.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  `EKCoreDataImporter` is internal EasyMapping class and is used by `EKManagedObjectMapper` to manage CoreData imports and make them fast and efficient. It basically does 3 things:
  
@@ -75,8 +77,10 @@
  
  @result managed object
  */
-- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context;
+- (nullable id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context;
 
 - (void)cacheObject:(NSManagedObject *)object withMapping:(EKManagedObjectMapping *)mapping;
 
 @end
+
+NS_ASSUME_NONNULL_END

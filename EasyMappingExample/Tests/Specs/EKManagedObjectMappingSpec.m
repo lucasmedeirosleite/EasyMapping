@@ -67,10 +67,6 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping should] respondToSelector:@selector(mapKeyPath:toProperty:withDateFormat:)];
-        });
-        
-        specify(^{
             [[mapping should] respondToSelector:@selector(mapPropertiesFromArray:)];
         });
         

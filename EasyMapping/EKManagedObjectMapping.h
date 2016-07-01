@@ -26,6 +26,8 @@
 
 #define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  `EKManagedObjectMapping` is a subclass of `EKObjectMapping`, intended to be used with CoreData objects.
  */
@@ -40,7 +42,7 @@
 /**
  Primary key of CoreData objects
  */
-@property (nonatomic, strong) NSString *primaryKey;
+@property (nonatomic, strong, nullable) NSString *primaryKey;
 
 -(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueBlock:(EKManagedMappingValueBlock)valueBlock;
 
@@ -100,7 +102,7 @@
  
  @result property mapping
  */
-- (EKPropertyMapping *)primaryKeyPropertyMapping;
+- (nullable EKPropertyMapping *)primaryKeyPropertyMapping;
 
 #pragma mark - unavalable methods
 
@@ -125,3 +127,5 @@
 + (instancetype)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
                       withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withRootPath:withBlock);
 @end
+
+NS_ASSUME_NONNULL_END

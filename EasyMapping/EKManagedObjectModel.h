@@ -9,6 +9,8 @@
 #import <CoreData/CoreData.h>
 #import "EKMappingProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  EKManagedObjectModel is a convenience base class for NSManagedObject subclasses. It allows creating CoreData objects from JSON representation and vice versa.
  */
@@ -39,8 +41,4 @@
 
 @end
 
-@interface EKManagedObjectModel(Deprecated)
-
-- (NSDictionary *)serializedObject __deprecated_msg("Use serializedObjectInContext instead");
-
-@end
+NS_ASSUME_NONNULL_END
