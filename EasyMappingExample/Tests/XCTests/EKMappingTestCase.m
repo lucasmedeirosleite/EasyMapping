@@ -138,4 +138,23 @@
     XCTAssertNotNil(person.phones);
 }
 
+- (void) testIgnoreMissingFieldsWorksForProperties {
+    NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"Person"];
+    
+    [Person registerMapping:[MappingProvider personMappingThatAssertsOnNilInValueBlock]];
+    [Car registerMapping:[MappingProvider carMapping]];
+    [Phone registerMapping:[MappingProvider phoneMapping]];
+    EKObjectMapping *personMapping = [Person objectMapping];
+    
+    Person *person = [EKMapper objectFromExternalRepresentation:externalRepresentation
+                                                    withMapping:personMapping];
+    
+    personMapping.ignoreMissingFields = YES;
+    XCTAssertNotNil(person.car);
+    XCTAssertNotNil(person.phones);
+    [EKMapper fillObject:person fromExternalRepresentation:@{@"id":@23,@"name":@"Lucas"} withMapping:personMapping];
+    XCTAssert(person.gender == GenderMale);
+    XCTAssert([person.socialURL.absoluteString isEqual:@"https://www.twitter.com/EasyMapping"]);
+}
+
 @end

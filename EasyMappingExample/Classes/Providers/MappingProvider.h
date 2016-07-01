@@ -24,5 +24,6 @@
 + (EKObjectMapping *)personWithRelativeMapping;
 + (EKObjectMapping *)addressMapping;
 + (EKObjectMapping *)nativeMappingWithNullPropertie;
++ (EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock;
 
 @end

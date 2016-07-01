@@ -38,16 +38,19 @@
 + (void)  setProperty:(EKPropertyMapping *)propertyMapping
              onObject:(id)object
    fromRepresentation:(NSDictionary *)representation
-  respectPropertyType:(BOOL)respectPropertyType;
+  respectPropertyType:(BOOL)respectPropertyType
+ ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (void) setProperty:(EKPropertyMapping *)propertyMapping
             onObject:(id)object
   fromRepresentation:(NSDictionary *)representation
            inContext:(NSManagedObjectContext *)context
- respectPropertyType:(BOOL)respectPropertyType;
+ respectPropertyType:(BOOL)respectPropertyType
+ ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
-      fromRepresentation:(NSDictionary *)representation;
+      fromRepresentation:(NSDictionary *)representation
+     ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
              fromRepresentation:(NSDictionary *)representation

@@ -72,7 +72,8 @@
                              onObject:object
                    fromRepresentation:representation
                             inContext:self.importer.context
-         respectPropertyType:mapping.respectPropertyFoundationTypes];
+         respectPropertyType:mapping.respectPropertyFoundationTypes
+         ignoreMissingFields:mapping.ignoreMissingFields];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
     {

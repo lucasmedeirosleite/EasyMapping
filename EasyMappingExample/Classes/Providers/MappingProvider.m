@@ -112,6 +112,25 @@
     }];
 }
 
++(EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock
+{
+    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
+        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
+            if (value == nil) { [[[NSException alloc] initWithName:@"Received nil value" reason:@"In value block when ignore missing fields is turned on" userInfo:nil] raise]; }
+            return genders[value];
+        } reverseBlock:^id(id value) {
+            return [genders allKeysForObject:value].lastObject;
+        }];
+        [mapping hasOne:[Car class] forKeyPath:@"car"];
+        [mapping hasMany:[Phone class] forKeyPath:@"phones"];
+        [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
+             withValueBlock:[EKMappingBlocks urlMappingBlock]
+               reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
+    }];
+}
+
 + (EKObjectMapping *)personWithCarMapping
 {
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {

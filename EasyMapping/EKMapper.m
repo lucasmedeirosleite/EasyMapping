@@ -50,7 +50,8 @@
         [EKPropertyHelper setProperty:obj
                              onObject:object
                    fromRepresentation:representation
-                  respectPropertyType:mapping.respectPropertyFoundationTypes];
+                  respectPropertyType:mapping.respectPropertyFoundationTypes
+                  ignoreMissingFields:mapping.ignoreMissingFields];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
         NSDictionary * value = [valueMapping extractObjectFromRepresentation:representation];

@@ -96,9 +96,9 @@ static const char scalarTypes[] = {
 #pragma mark Property accessor methods 
 
 + (void)setProperty:(EKPropertyMapping *)propertyMapping onObject:(id)object
- fromRepresentation:(NSDictionary *)representation respectPropertyType:(BOOL)respectPropertyType
+ fromRepresentation:(NSDictionary *)representation respectPropertyType:(BOOL)respectPropertyType ignoreMissingFields:(BOOL)ignoreMIssingFields
 {
-    id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation];
+    id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation ignoreMissingFields:ignoreMIssingFields];
     if (value == (id)[NSNull null]) {
         if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
             [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
@@ -118,6 +118,7 @@ static const char scalarTypes[] = {
   fromRepresentation:(NSDictionary *)representation
            inContext:(NSManagedObjectContext *)context
  respectPropertyType:(BOOL)respectPropertyType
+ignoreMissingFields:(BOOL)ignoreMissingFields
 {
     id value = [self getValueOfManagedProperty:propertyMapping
                             fromRepresentation:representation
@@ -174,12 +175,15 @@ static const char scalarTypes[] = {
     }
 }
 
-+ (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping fromRepresentation:(NSDictionary *)representation
++ (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping fromRepresentation:(NSDictionary *)representation ignoreMissingFields:(BOOL)ignoreMissingFields
 {
     id value = nil;
     
     if (propertyMapping.valueBlock) {
-        value = propertyMapping.valueBlock(propertyMapping.keyPath, [representation valueForKeyPath:propertyMapping.keyPath]);
+        value = [representation valueForKeyPath:propertyMapping.keyPath];
+        if (value != nil || !ignoreMissingFields) {
+            value = propertyMapping.valueBlock(propertyMapping.keyPath, value);
+        }
     }
     else {
         value = [representation valueForKeyPath:propertyMapping.keyPath];
