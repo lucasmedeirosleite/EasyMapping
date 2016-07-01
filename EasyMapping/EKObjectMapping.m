@@ -26,6 +26,7 @@
 #import "EKRelationshipMapping.h"
 #import "EKMappingProtocol.h"
 #import "NSDateFormatter+EasyMappingAdditions.h"
+#import "EKpropertyHelper.h"
 
 @implementation EKObjectMapping
 
@@ -116,6 +117,15 @@
         NSString *pascalKey = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] uppercaseString]];
         
         [self mapKeyPath:pascalKey toProperty:key];
+    }
+}
+
+- (void)mapPropertiesFromUnderscoreToCamelCase:(NSArray *)propertyNamesArray
+{
+    for (NSString *key in propertyNamesArray) {
+        NSString *convertedKey = [EKPropertyHelper convertStringFromUnderScoreToCamelCase: key];
+        
+        [self mapKeyPath:key toProperty:convertedKey];
     }
 }
 

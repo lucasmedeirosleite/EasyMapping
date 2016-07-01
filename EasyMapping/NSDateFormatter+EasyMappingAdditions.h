@@ -42,7 +42,7 @@ static NSString * const EKISO_8601DateTimeFormat = @"yyyy-MM-dd";
 /**
  NSDateFormatter instance for current NSThread. It is lazily constructed, default date format - ISO 8601.
  
- Thos property is deprecated and stated to be removed in release for Xcode 8, which drops support for iOS 7 and lower.
+ Thos property is deprecated and slated to be removed in release for Xcode 8, which drops support for iOS 7 and lower.
  */
 + (NSDateFormatter *)ek_formatterForCurrentThread DEPRECATED_ATTRIBUTE;
 

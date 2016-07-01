@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Root JSON path. This is helpful, when all object data is inside another JSON dictionary.
  */
-@property (nonatomic, strong, readonly) NSString *rootPath;
+@property (nonatomic, strong, readonly, nullable) NSString *rootPath;
 
 /**
  Dictionary, containing property mappings for current object.
@@ -131,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property;
 
 /**
- Map JSON keyPath to object property. This method assumes, that value contains NSString, that can be transformed into NSDate by NSDateFormatter. You can get current thread date formatter by using NSDateFormatter+EasyMappingAdditions category. Default timezone is GMT. Default date format ISO 8601.
+ Map JSON keyPath to object property. This method assumes, that value contains NSString, that can be transformed into NSDate by NSDateFormatter.
  
  @param keyPath JSON keypath, that will be used by valueForKeyPath: method
  
@@ -154,6 +154,13 @@ NS_ASSUME_NONNULL_BEGIN
  @param propertyNamesArray Array of property names
  */
 - (void)mapPropertiesFromArrayToPascalCase:(NSArray *)propertyNamesArray;
+
+/**
+ Maps properties from array, making all keypaths that contain underscores - camel cased. For example, @"created_at" field in JSON will be mapped to @"createdAt" property on your model.
+ 
+ @param propertyNamesArray Array of property names.
+ */
+- (void)mapPropertiesFromUnderscoreToCamelCase:(NSArray *)propertyNamesArray;
 
 /**
  Maps properties from dictionary. Keys are keypaths in JSON, values are names of properties.

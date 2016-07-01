@@ -65,6 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation
                                                          withMapping:(EKObjectMapping *)mapping;
 
++ (NSString *)convertStringFromUnderScoreToCamelCase:(NSString *)string;
+
 @end
 
 NS_ASSUME_NONNULL_END

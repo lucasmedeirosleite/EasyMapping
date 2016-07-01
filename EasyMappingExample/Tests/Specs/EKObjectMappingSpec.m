@@ -359,6 +359,60 @@ describe(@"EKObjectMapping", ^{
         
     });
     
+    describe(@"#mapPropertiesFromUnderscoreToCamelCase", ^{
+        
+        __block EKObjectMapping *mapping;
+        
+        beforeEach(^{
+            mapping = [[EKObjectMapping alloc] initWithObjectClass:[Car class]];
+            [mapping mapPropertiesFromUnderscoreToCamelCase:@[@"model", @"year", @"created_at",@"car_id"]];
+        });
+        
+        describe(@"createdAt field", ^{
+            
+            __block EKPropertyMapping *propertyMapping;
+            
+            beforeEach(^{
+                propertyMapping = [mapping.propertyMappings objectForKey:@"created_at"];
+            });
+            
+            specify(^{
+                [[propertyMapping shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[propertyMapping.keyPath should] equal:@"created_at"];
+            });
+            
+            specify(^{
+                [[propertyMapping.property should] equal:@"createdAt"];
+            });
+        });
+        
+        describe(@"car_id field", ^{
+            
+            __block EKPropertyMapping *propertyMapping;
+            
+            beforeEach(^{
+                propertyMapping = [mapping.propertyMappings objectForKey:@"car_id"];
+            });
+            
+            specify(^{
+                [[propertyMapping shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[propertyMapping.keyPath should] equal:@"car_id"];
+            });
+            
+            specify(^{
+                [[propertyMapping.property should] equal:@"carId"];
+            });
+            
+        });
+        
+    });
+    
     
     describe(@"#mapPropertiesFromDictionary", ^{
         

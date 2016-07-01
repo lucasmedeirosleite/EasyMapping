@@ -217,4 +217,21 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     }
     return externalRepresentation;
 }
+
++ (NSString *)convertStringFromUnderScoreToCamelCase:(NSString *)string {
+    NSMutableString *output = [NSMutableString string];
+    BOOL makeNextCharacterUpperCase = NO;
+    for (NSInteger idx = 0; idx < [string length]; idx += 1) {
+        unichar c = [string characterAtIndex:idx];
+        if (c == '_') {
+            makeNextCharacterUpperCase = YES;
+        } else if (makeNextCharacterUpperCase) {
+            [output appendString:[[NSString stringWithCharacters:&c length:1] uppercaseString]];
+            makeNextCharacterUpperCase = NO;
+        } else {
+            [output appendFormat:@"%C", c];
+        }
+    }
+    return output;
+}
 @end
