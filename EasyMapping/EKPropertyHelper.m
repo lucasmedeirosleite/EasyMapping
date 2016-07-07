@@ -177,6 +177,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
 
 + (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping fromRepresentation:(NSDictionary *)representation ignoreMissingFields:(BOOL)ignoreMissingFields
 {
+    if (propertyMapping == nil) return nil;
     id value = nil;
     
     if (propertyMapping.valueBlock) {
@@ -196,6 +197,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
             fromRepresentation:(NSDictionary *)representation
                      inContext:(NSManagedObjectContext *)context
 {
+    if (mapping == nil) return nil;
     id value = nil;
     
     if (mapping.managedValueBlock) {
