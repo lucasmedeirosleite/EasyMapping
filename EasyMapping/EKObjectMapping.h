@@ -209,6 +209,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param objectClass class for child object
  
  @param keyPath keyPath to child object representation in JSON
+ 
+ @result The created relationship mapping
  */
 - (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath;
 
@@ -220,6 +222,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param keyPath keyPath to child object representation in JSON
  
  @param property Name of the property, that will receive mapped object.
+ 
+ @result The created relationship mapping
  */
 - (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
@@ -233,6 +237,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param property name of the property, that will receive mapped object
  
  @param objectMapping optional mapping override for child object
+ 
+ @result The created relationship mapping
  
  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
@@ -249,6 +255,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param property Name of the property, that will receive mapped object.
 
  @param objectMapping optional mapping override for child object
+ 
+ @result The created relationship mapping
  
  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
 */
@@ -272,6 +280,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param keyPath keyPath to child objects representation in JSON
  
  @param property Name of the property, that will receive mapped objects.
+ 
+ @result The created relationship mapping
  */
 - (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
@@ -283,6 +293,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param property Name of the property, that will receive mapped objects.
  
  @param objectMapping optional mapping override for child objects
+ 
+ @result The created relationship mapping
  
   @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
