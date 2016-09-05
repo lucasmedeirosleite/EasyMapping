@@ -54,6 +54,13 @@
                   ignoreMissingFields:mapping.ignoreMissingFields];
     }];
     [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
+        
+        if (valueMapping.condition) {
+            if (!valueMapping.condition(representation)) {
+                return;
+            }
+        }
+        
         NSDictionary * value = [valueMapping extractObjectFromRepresentation:representation];
         
         if(mapping.ignoreMissingFields  && !value)
@@ -69,7 +76,14 @@
 		 }
     }];
     [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
-		 NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
+		 
+        if (valueMapping.condition) {
+            if (!valueMapping.condition(representation)) {
+                return;
+            }
+        }
+        
+        NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             return;

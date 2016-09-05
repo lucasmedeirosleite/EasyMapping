@@ -33,3 +33,4 @@
 #import <EasyMapping/EKPropertyMapping.h>
 #import <EasyMapping/EKRelationshipMapping.h>
 #import <EasyMapping/NSDateFormatter+EasyMappingAdditions.h>
+#import <EasyMapping/EKRelationshipMapping.h>

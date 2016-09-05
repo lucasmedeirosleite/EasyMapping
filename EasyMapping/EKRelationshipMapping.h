@@ -8,6 +8,7 @@
 
 #import "EKObjectMapping.h"
 #import "EKMappingProtocol.h"
+#import "EKMappingBlocks.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) EKObjectMapping *objectMapping;
 
 @property (nonatomic, strong, nullable) NSArray * nonNestedKeyPaths;
+
+@property (nonatomic, strong) EKMappingConditionBlock condition;
 
 - (nullable NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
 

@@ -187,17 +187,17 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     [self addPropertyMappingToDictionary:mapping];
 }
 
--(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
+    return [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
 }
 
--(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
 {
-    [self hasOne:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
+    return [self hasOne:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
 }
 
--(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
     if (!objectMapping) {
         NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
@@ -213,9 +213,11 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectMapping = objectMapping;
     
     [self.hasOneMappings setObject:relationship forKey:keyPath];
+    
+    return relationship;
 }
 
--(void)hasOne:(Class)objectClass forDictionaryFromKeyPaths:(NSArray *)keyPaths forProperty:(NSString *)property withObjectMapping:(EKObjectMapping *)mapping
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forDictionaryFromKeyPaths:(NSArray *)keyPaths forProperty:(NSString *)property withObjectMapping:(EKObjectMapping *)mapping
 {
     if (!mapping) {
         NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
@@ -231,19 +233,21 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectMapping = mapping;
     
     self.hasOneMappings[keyPaths.firstObject] = relationship;
+    
+    return relationship;
 }
 
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasMany:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
+    return [self hasMany:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
 }
 
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
 {
-    [self hasMany:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
+    return [self hasMany:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
 }
 
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
     if (!objectMapping) {
         NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
@@ -259,6 +263,8 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectMapping = objectMapping;
     
     [self.hasManyMappings setObject:relationship forKey:keyPath];
+    
+    return relationship;
 }
 
 - (void)addPropertyMappingToDictionary:(EKPropertyMapping *)propertyMapping

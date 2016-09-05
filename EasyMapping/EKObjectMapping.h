@@ -23,6 +23,7 @@
 
 #import "EKMappingBlocks.h"
 
+@class EKRelationshipMapping;
 @protocol EKMappingProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -209,7 +210,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param keyPath keyPath to child object representation in JSON
  */
-- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath;
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath;
 
 /**
  Map to-one relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
@@ -220,7 +221,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param property Name of the property, that will receive mapped object.
  */
-- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
  Map to-one relationship, using keys that are on the same level as current object. They are collected into dictionary and passed along, as like they were in separate JSON dictionary.
@@ -235,10 +236,10 @@ NS_ASSUME_NONNULL_BEGIN
  
  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
-- (void)           hasOne:(Class)objectClass
-forDictionaryFromKeyPaths:(NSArray *)keyPaths
-              forProperty:(NSString *)property
-        withObjectMapping:(nullable EKObjectMapping *)objectMapping;
+- (EKRelationshipMapping *)           hasOne:(Class)objectClass
+                   forDictionaryFromKeyPaths:(NSArray *)keyPaths
+                                 forProperty:(NSString *)property
+                           withObjectMapping:(nullable EKObjectMapping *)objectMapping;
 
 /**
  Map to-one relationship for keyPath.
@@ -251,7 +252,7 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
 */
-- (void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
 
 
 /**
@@ -261,7 +262,7 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
  @param keyPath keyPath to child object representations in JSON
  */
-- (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath;
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath;
 
 /**
  Map to-many relationship for keyPath. ObjectClass should conform to `EKMappingProtocol`.
@@ -272,7 +273,7 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
  @param property Name of the property, that will receive mapped objects.
  */
-- (void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property;
 
 /**
  Map to-many relationship for keyPath.
@@ -285,7 +286,7 @@ forDictionaryFromKeyPaths:(NSArray *)keyPaths
  
   @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(nullable EKObjectMapping*)objectMapping;
 
 @end
 
