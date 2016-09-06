@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSArray * nonNestedKeyPaths;
 
-@property (nonatomic, strong) EKMappingConditionBlock condition;
+@property (nonatomic, strong, nullable) EKMappingConditionBlock condition;
 
 - (nullable NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
 
