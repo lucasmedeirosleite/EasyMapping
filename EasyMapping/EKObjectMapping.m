@@ -56,8 +56,8 @@
     if (self) {
         _objectClass = objectClass;
         _propertyMappings = [NSMutableDictionary dictionary];
-        _hasOneMappings = [NSMutableDictionary dictionary];
-        _hasManyMappings = [NSMutableDictionary dictionary];
+        _hasOneMappings = [NSMutableArray array];
+        _hasManyMappings = [NSMutableArray array];
     }
     return self;
 }
@@ -146,14 +146,12 @@
         [self addPropertyMappingToDictionary:mappingObj.propertyMappings[key]];
     }
     
-    for (NSString *key in mappingObj.hasOneMappings) {
-        EKRelationshipMapping *mapping = mappingObj.hasOneMappings[key];
-        [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+    for (EKRelationshipMapping *relationship in mappingObj.hasOneMappings) {
+        [self.hasOneMappings addObject:relationship];
     }
     
-    for (NSString *key in mappingObj.hasManyMappings) {
-         EKRelationshipMapping *mapping = mappingObj.hasManyMappings[key];
-        [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+    for (EKRelationshipMapping *relationship in mappingObj.hasManyMappings) {
+        [self.hasManyMappings addObject:relationship];
     }
 }
 
@@ -212,7 +210,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.property = property;
     relationship.objectMapping = objectMapping;
     
-    [self.hasOneMappings setObject:relationship forKey:keyPath];
+    [self.hasOneMappings addObject:relationship];
     
     return relationship;
 }
@@ -232,7 +230,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.property = property;
     relationship.objectMapping = mapping;
     
-    self.hasOneMappings[keyPaths.firstObject] = relationship;
+    [self.hasOneMappings addObject:relationship];
     
     return relationship;
 }
@@ -262,7 +260,7 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.property = property;
     relationship.objectMapping = objectMapping;
     
-    [self.hasManyMappings setObject:relationship forKey:keyPath];
+    [self.hasManyMappings addObject:relationship];
     
     return relationship;
 }

@@ -67,14 +67,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSMutableDictionary *propertyMappings;
 
 /**
- Dictionary, containing to-one relationships of current object.
+ Array, containing to-one relationships of current object.
  */
-@property (nonatomic, strong, readonly) NSMutableDictionary *hasOneMappings;
+@property (nonatomic, strong, readonly) NSMutableArray *hasOneMappings;
 
 /**
- Dictionary, containing to-many relationships of current object.
+ Array, containing to-many relationships of current object.
  */
-@property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
+@property (nonatomic, strong, readonly) NSMutableArray *hasManyMappings;
 
 /**
  Convenience initializer.

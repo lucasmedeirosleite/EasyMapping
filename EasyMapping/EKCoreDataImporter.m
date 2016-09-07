@@ -75,7 +75,7 @@
 {
     [entityNames addObject:mapping.entityName];
 
-    for (EKRelationshipMapping * oneMapping in [mapping.hasOneMappings allValues])
+    for (EKRelationshipMapping * oneMapping in mapping.hasOneMappings)
     {
         EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[oneMapping objectMapping];
         if ([self.collectedEntityNames containsObject:mapping.entityName])
@@ -88,7 +88,7 @@
         }
     }
 
-    for (EKRelationshipMapping * manyMapping in [mapping.hasManyMappings allValues])
+    for (EKRelationshipMapping * manyMapping in mapping.hasManyMappings)
     {
         EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[manyMapping objectMapping];
         if ([self.collectedEntityNames containsObject:mapping.entityName])
@@ -146,9 +146,9 @@
         }
     }
 
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
+    for (EKRelationshipMapping *relationship in mapping.hasOneMappings)
     {
-        id oneMappingRepresentation = [rootRepresentation valueForKeyPath:key];
+        id oneMappingRepresentation = [rootRepresentation valueForKeyPath:relationship.keyPath];
         if (oneMappingRepresentation && ![oneMappingRepresentation isEqual:[NSNull null]])
         {
             // This is needed, because if one of the objects in array does not contain object for key, returned structure would be something like this:
@@ -166,15 +166,15 @@
             }
 
             [self inspectRepresentation:oneMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)[mapping objectMapping]
+                           usingMapping:(EKManagedObjectMapping *)[relationship objectMapping]
                        accumulateInside:dictionary
                                 context:context];
         }
-    }];
+    }
 
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * mapping, BOOL * stop)
+    for (EKRelationshipMapping *relationship in mapping.hasManyMappings)
     {
-        NSArray * manyMappingRepresentation = [rootRepresentation valueForKeyPath:key];
+        NSArray * manyMappingRepresentation = [rootRepresentation valueForKeyPath:relationship.keyPath];
 
         if (manyMappingRepresentation && ![manyMappingRepresentation isEqual:[NSNull null]])
         {
@@ -191,11 +191,11 @@
             }
 
             [self inspectRepresentation:manyMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)[mapping objectMapping]
+                           usingMapping:(EKManagedObjectMapping *)[relationship objectMapping]
                        accumulateInside:dictionary
                                 context:context];
         }
-    }];
+    }
 }
 
 - (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context

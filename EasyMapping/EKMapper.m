@@ -53,11 +53,10 @@
                   respectPropertyType:mapping.respectPropertyFoundationTypes
                   ignoreMissingFields:mapping.ignoreMissingFields];
     }];
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
-        
+    for (EKRelationshipMapping *valueMapping in mapping.hasOneMappings) {
         if (valueMapping.condition) {
             if (!valueMapping.condition(representation)) {
-                return;
+                continue;
             }
         }
         
@@ -65,7 +64,7 @@
         
         if(mapping.ignoreMissingFields  && !value)
         {
-            return;
+            continue;
         }
         
 		 if (value && value != (id)[NSNull null]) {
@@ -74,19 +73,20 @@
 		 } else {
 			 [object setValue:nil forKey:valueMapping.property];
 		 }
-    }];
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * valueMapping, BOOL *stop) {
-		 
+    }
+    
+    for (EKRelationshipMapping *valueMapping in mapping.hasManyMappings) {
+
         if (valueMapping.condition) {
             if (!valueMapping.condition(representation)) {
-                return;
+                continue;
             }
         }
         
-        NSArray *arrayToBeParsed = [representation valueForKeyPath:key];
+        NSArray *arrayToBeParsed = [representation valueForKeyPath:valueMapping.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
-            return;
+            continue;
         }
         
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
@@ -108,7 +108,7 @@
 		 } else if(!mapping.incrementalData) {
 			 [object setValue:nil forKey:valueMapping.property];
 		 }
-    }];
+    }
     return object;
 }
 

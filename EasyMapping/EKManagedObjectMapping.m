@@ -57,8 +57,8 @@
     {
         _entityName = entityName;
         _propertyMappings = [NSMutableDictionary dictionary];
-        _hasOneMappings = [NSMutableDictionary dictionary];
-        _hasManyMappings = [NSMutableDictionary dictionary];
+        _hasOneMappings = [NSMutableArray array];
+        _hasManyMappings = [NSMutableArray array];
     }
     return self;
 }

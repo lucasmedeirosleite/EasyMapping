@@ -75,12 +75,11 @@
          respectPropertyType:mapping.respectPropertyFoundationTypes
          ignoreMissingFields:mapping.ignoreMissingFields];
     }];
-    [mapping.hasOneMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
-    {
+    for (EKRelationshipMapping *relationship in mapping.hasOneMappings) {
         NSDictionary * value = [relationship extractObjectFromRepresentation:representation];
         if(mapping.ignoreMissingFields && !value)
         {
-            return;
+            continue;
         }
         if (value && value != (id)[NSNull null]) {
             id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[relationship objectMapping]];
@@ -89,13 +88,13 @@
             [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
         }
         
-    }];
-    [mapping.hasManyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKRelationshipMapping * relationship, BOOL * stop)
-    {
-        NSArray * arrayToBeParsed = [representation valueForKeyPath:key];
+    }
+    
+    for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
+        NSArray * arrayToBeParsed = [representation valueForKeyPath:relationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
-            return;
+            continue;
         }
         
         if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null])
@@ -114,7 +113,7 @@
         } else {
             [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
         }
-    }];
+    }
     return object;
 }
 
