@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  @result mapped object
  */
 + (nullable id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
-                           withMapping:(EKObjectMapping *)mapping;
+                                    withMapping:(EKObjectMapping *)mapping;
 
 /**
  Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten.
@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result filled object
  */
-+ (id)            fillObject:(id)object
++ (id)            fillObject:(id<EKMappingProtocol>)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
                  withMapping:(EKObjectMapping *)mapping;
 
@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
  @result array of mapped objects
  */
 + (nullable NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                          withMapping:(EKObjectMapping *)mapping;
+                                                   withMapping:(EKObjectMapping *)mapping;
 
 @end
 

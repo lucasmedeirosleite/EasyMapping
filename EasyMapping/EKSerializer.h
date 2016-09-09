@@ -23,6 +23,7 @@
 
 #import "EKObjectMapping.h"
 #import "EKManagedObjectMapping.h"
+#import "EKMappingProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping;
++ (NSDictionary *)serializeObject:(id<EKMappingProtocol>)object withMapping:(EKObjectMapping *)mapping;
 
 /**
  Convert objects to JSON representation.
@@ -51,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSArray.
  */
-+ (NSArray *)serializeCollection:(NSArray *)collection withMapping:(EKObjectMapping *)mapping;
++ (NSArray *)serializeCollection:(NSArray<EKMappingProtocol> *)collection withMapping:(EKObjectMapping *)mapping;
 
 /**
  Convert CoreData managed object to JSON representation.
@@ -64,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary *)serializeObject:(id)object
++ (NSDictionary *)serializeObject:(id<EKManagedMappingProtocol>)object
                       withMapping:(EKManagedObjectMapping *)mapping
                       fromContext:(NSManagedObjectContext *)context;
 
@@ -79,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSArray.
  */
-+ (NSArray *)serializeCollection:(NSArray *)collection
++ (NSArray *)serializeCollection:(NSArray<EKManagedMappingProtocol> *)collection
                      withMapping:(EKManagedObjectMapping*)mapping
                      fromContext:(NSManagedObjectContext *)context;
 @end

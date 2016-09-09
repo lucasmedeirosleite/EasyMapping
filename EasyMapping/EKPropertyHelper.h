@@ -25,6 +25,7 @@
 @import Foundation;
 #import "EKPropertyMapping.h"
 #import "EKObjectMapping.h"
+#import "EKMappingProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -38,13 +39,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
 + (void)  setProperty:(EKPropertyMapping *)propertyMapping
-             onObject:(id)object
+             onObject:(id<EKMappingProtocol>)object
    fromRepresentation:(NSDictionary *)representation
   respectPropertyType:(BOOL)respectPropertyType
  ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (void) setProperty:(EKPropertyMapping *)propertyMapping
-            onObject:(id)object
+            onObject:(id<EKManagedMappingProtocol>)object
   fromRepresentation:(NSDictionary *)representation
            inContext:(NSManagedObjectContext *)context
  respectPropertyType:(BOOL)respectPropertyType

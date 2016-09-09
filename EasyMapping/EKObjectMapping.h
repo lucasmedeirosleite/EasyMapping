@@ -23,6 +23,8 @@
 
 #import "EKMappingBlocks.h"
 
+@class EKPropertyMapping;
+@class EKRelationshipMapping;
 @protocol EKMappingProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -63,17 +65,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Dictionary, containing property mappings for current object.
  */
-@property (nonatomic, strong, readonly) NSMutableDictionary *propertyMappings;
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSString *, EKPropertyMapping *> *propertyMappings;
 
 /**
  Dictionary, containing to-one relationships of current object.
  */
-@property (nonatomic, strong, readonly) NSMutableDictionary *hasOneMappings;
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSString *, EKRelationshipMapping *> *hasOneMappings;
 
 /**
  Dictionary, containing to-many relationships of current object.
  */
-@property (nonatomic, strong, readonly) NSMutableDictionary *hasManyMappings;
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSString *, EKRelationshipMapping *> *hasManyMappings;
 
 /**
  Convenience initializer.
@@ -146,28 +148,28 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param propertyNamesArray Array of property names
  */
-- (void)mapPropertiesFromArray:(NSArray *)propertyNamesArray;
+- (void)mapPropertiesFromArray:(NSArray<NSString *> *)propertyNamesArray;
 
 /**
  Maps properties from array. We assume, that names of keypaths and properties are the same, except for the first letter, that is uppercased. For example, property @"name" will be filled, using "Name" value of JSON.
  
  @param propertyNamesArray Array of property names
  */
-- (void)mapPropertiesFromArrayToPascalCase:(NSArray *)propertyNamesArray;
+- (void)mapPropertiesFromArrayToPascalCase:(NSArray<NSString *> *)propertyNamesArray;
 
 /**
  Maps properties from array, making all keypaths that contain underscores - camel cased. For example, @"created_at" field in JSON will be mapped to @"createdAt" property on your model.
  
  @param propertyNamesArray Array of property names.
  */
-- (void)mapPropertiesFromUnderscoreToCamelCase:(NSArray *)propertyNamesArray;
+- (void)mapPropertiesFromUnderscoreToCamelCase:(NSArray<NSString *> *)propertyNamesArray;
 
 /**
  Maps properties from dictionary. Keys are keypaths in JSON, values are names of properties.
  
  @param propertyDictionary Dictionary with keypaths and property names
  */
-- (void)mapPropertiesFromDictionary:(NSDictionary *)propertyDictionary;
+- (void)mapPropertiesFromDictionary:(NSDictionary<NSString *, NSString *> *)propertyDictionary;
 
 /**
  Map mappings from another `EKObjectMapping` object. This can be useful with inheritance.
@@ -236,7 +238,7 @@ NS_ASSUME_NONNULL_BEGIN
  @warning If you have recursive mappings, do not use this method, cause it can cause infinite recursion to happen. Or you need to handle recursive mappings situation by yourself, subclassing EKObjectMapping and providing different mappings for different mapping levels.
  */
 - (void)           hasOne:(Class)objectClass
-forDictionaryFromKeyPaths:(NSArray *)keyPaths
+forDictionaryFromKeyPaths:(NSArray<NSString *> *)keyPaths
               forProperty:(NSString *)property
         withObjectMapping:(nullable EKObjectMapping *)objectMapping;
 

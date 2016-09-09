@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) EKObjectMapping *objectMapping;
 
-@property (nonatomic, strong, nullable) NSArray * nonNestedKeyPaths;
+@property (nonatomic, strong, nullable) NSArray<NSString *> * nonNestedKeyPaths;
 
 - (nullable NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
 

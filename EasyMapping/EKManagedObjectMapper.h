@@ -23,6 +23,7 @@
 
 #import <CoreData/CoreData.h>
 #import "EKManagedObjectMapping.h"
+#import "EKMappingProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -59,10 +60,10 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result filled managed object
  */
-+ (id)            fillObject:(id)object
-  fromExternalRepresentation:(NSDictionary *)externalRepresentation
-                 withMapping:(EKManagedObjectMapping *)mapping
-      inManagedObjectContext:(NSManagedObjectContext*)context;
++ (id<EKManagedMappingProtocol>)fillObject:(id<EKManagedMappingProtocol>)object
+                fromExternalRepresentation:(NSDictionary *)externalRepresentation
+                               withMapping:(EKManagedObjectMapping *)mapping
+                    inManagedObjectContext:(NSManagedObjectContext*)context;
 
 /**
  Create array of CoreData objects. If passed JSON contains primary keys, previously existing object with these keys will be updated. Simply put, this method uses Find-Or-Create pattern.
@@ -75,9 +76,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result array of managed objects
  */
-+ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                          withMapping:(EKManagedObjectMapping *)mapping
-                               inManagedObjectContext:(NSManagedObjectContext*)context;
++ (NSArray<EKManagedMappingProtocol> *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                                                    withMapping:(EKManagedObjectMapping *)mapping
+                                                         inManagedObjectContext:(NSManagedObjectContext*)context;
 
 /** 
  Synchronize the objects in the managed object context with the objects from an external
@@ -95,10 +96,10 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result array of managed objects
  */
-+ (NSArray *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                              withMapping:(EKManagedObjectMapping *)mapping
-                                             fetchRequest:(NSFetchRequest*)fetchRequest
-                                   inManagedObjectContext:(NSManagedObjectContext *)context;
++ (NSArray<EKManagedMappingProtocol> *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                                                        withMapping:(EKManagedObjectMapping *)mapping
+                                                                       fetchRequest:(NSFetchRequest*)fetchRequest
+                                                             inManagedObjectContext:(NSManagedObjectContext *)context;
 @end
 
 NS_ASSUME_NONNULL_END
