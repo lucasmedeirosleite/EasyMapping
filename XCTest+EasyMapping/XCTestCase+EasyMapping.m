@@ -41,7 +41,7 @@
         XCTAssertEqualObjects(mappedValue, expectedValue, "Mapping failed on keypath %@. Expected value is - %@, value after mapping is - %@", keyPathString, expectedValue, mappedValue);
     }
     
-    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings.allValues) {
+    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings) {
         NSString *keyPath = hasOneMapping.property;
         if ([keyPathsToSkip containsObject:keyPath]) {
             continue;
@@ -54,7 +54,7 @@
         [self testMappedObject:relationshipObject withMapping:hasOneMapping.objectMapping expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
     }
     
-    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings.allValues) {
+    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings) {
         NSString *keyPath = hasManyMapping.property;
         if ([keyPathsToSkip containsObject:keyPath]) {
             continue;
@@ -97,7 +97,7 @@
         XCTAssertEqualObjects(propertyValue, expectedValue, "Serialization failed on keypath %@. Expected value is - %@, value after serialization is - %@", propertyKeyPath, expectedValue, propertyValue);
     }
     
-    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings.allValues) {
+    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings) {
         if (hasOneMapping.keyPath) {
             NSString *keyPath = hasOneMapping.keyPath;
             if ([keyPathsToSkip containsObject:keyPath]) {
@@ -115,7 +115,7 @@
         }
     }
     
-    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings.allValues) {
+    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings) {
         NSString *keyPath = hasManyMapping.keyPath;
         if ([keyPathsToSkip containsObject:keyPath]) {
             continue;

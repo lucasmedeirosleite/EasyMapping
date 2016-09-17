@@ -37,11 +37,6 @@
     }];
     
     for (EKRelationshipMapping *relationship in mapping.hasOneMappings) {
-        
-        if (![object isKindOfClass:mapping.class]) {
-            continue;
-        }
-        
         id hasOneObject = [object valueForKey:relationship.property];
         
         if (hasOneObject) {
@@ -64,11 +59,6 @@
     for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
 
         id hasManyObject = [object valueForKey:relationship.property];
-        
-        if (![object isKindOfClass:mapping.class]) {
-            continue;
-        }
-        
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
                                                            withMapping:[relationship objectMapping]];

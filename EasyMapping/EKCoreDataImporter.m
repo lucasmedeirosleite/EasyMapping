@@ -161,7 +161,7 @@
 
                 // if after compact, the array is empty, we should skip this
                 if ([oneMappingRepresentation count] == 0) {
-                    return;
+                    continue;
                 }
             }
 
@@ -187,7 +187,7 @@
 
             // if after compact, the array is empty, we should skip this
             if ([manyMappingRepresentation count] == 0) {
-                return;
+                continue;
             }
 
             [self inspectRepresentation:manyMappingRepresentation
