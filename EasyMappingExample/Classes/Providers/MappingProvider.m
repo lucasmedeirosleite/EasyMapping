@@ -20,6 +20,8 @@
 #import "NativeChild.h"
 #import "Cat.h"
 #import "CommentObject.h"
+#import "Dog.h"
+#import "Wolf.h"
 
 @implementation MappingProvider
 
@@ -194,6 +196,20 @@
     return [EKObjectMapping mappingForClass:[Cat class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[ @"age" ]];
     }];
+}
+
++(EKObjectMapping *)personWithPetsMapping
+{
+    EKObjectMapping * mapping = [self personMapping];
+    EKRelationshipMapping * relationship = [mapping hasMany:Dog.class forKeyPath:@"animals" forProperty:@"pets"];
+    relationship.mappingResolver = ^EKObjectMapping *(id representation){
+        if ([representation[@"type"] isEqualToString:@"dog"]) {
+            return [Dog objectMapping];
+        } else {
+            return [Wolf objectMapping];
+        }
+    };
+    return mapping;
 }
 
 @end

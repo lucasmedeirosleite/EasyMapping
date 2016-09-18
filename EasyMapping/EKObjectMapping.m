@@ -208,7 +208,18 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
-    relationship.objectMapping = objectMapping;
+    relationship.mappingResolver = ^(id representation ){
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
+    relationship.serializationResolver = ^(id object) {
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
     
     [self.hasOneMappings addObject:relationship];
     
@@ -228,7 +239,19 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.nonNestedKeyPaths = keyPaths;
     relationship.property = property;
-    relationship.objectMapping = mapping;
+    relationship.mappingResolver = ^(id representation ){
+        if (mapping != nil) {
+            return mapping;
+        }
+        return [objectClass objectMapping];
+    };
+    
+    relationship.serializationResolver = ^(id object) {
+        if (mapping != nil) {
+            return mapping;
+        }
+        return [objectClass objectMapping];
+    };
     
     [self.hasOneMappings addObject:relationship];
     
@@ -258,7 +281,18 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
-    relationship.objectMapping = objectMapping;
+    relationship.mappingResolver = ^(id representation ){
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
+    relationship.serializationResolver = ^(id object) {
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
     
     [self.hasManyMappings addObject:relationship];
     

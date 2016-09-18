@@ -68,7 +68,7 @@
         }
         
 		 if (value && value != (id)[NSNull null]) {
-			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping objectMapping]];
+			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping mappingForRepresentation:value]];
 			 [object setValue:result forKeyPath:valueMapping.property];
 		 } else {
 			 [object setValue:nil forKey:valueMapping.property];
@@ -91,7 +91,7 @@
         
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withMapping:[valueMapping objectMapping]];
+                                                                       withRelationship:valueMapping];
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
                                                         withPropertyName:[valueMapping property]];
@@ -111,6 +111,25 @@
     }
     return object;
 }
+
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                          withRelationship:(EKRelationshipMapping *)mapping
+{
+    if (![externalRepresentation isKindOfClass:[NSArray class]] ||
+        ![mapping isKindOfClass:[EKRelationshipMapping class]]) {
+        return nil;
+    }
+    
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSDictionary *representation in externalRepresentation) {
+        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:[mapping mappingForRepresentation:representation]];
+        if (parsedObject) {
+            [array addObject:parsedObject];
+        }
+    }
+    return [NSArray arrayWithArray:array];
+}
+
 
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKObjectMapping *)mapping

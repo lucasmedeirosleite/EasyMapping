@@ -82,7 +82,7 @@
             continue;
         }
         if (value && value != (id)[NSNull null]) {
-            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[relationship objectMapping]];
+            id result = [self objectFromExternalRepresentation:value withMapping:(EKManagedObjectMapping *)[relationship mappingForRepresentation:value]];
             [EKPropertyHelper setValue:result onObject:object forKeyPath:relationship.property];
         } else {
             [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
@@ -100,7 +100,7 @@
         if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null])
         {
             NSArray * parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withMapping:(EKManagedObjectMapping *)[relationship objectMapping]];
+                                                                       withRelationship:relationship];
             id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                               forObject:object
                                                        withPropertyName:[relationship property]];
@@ -118,9 +118,21 @@
 }
 
 - (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+                                     withRelationship:(EKRelationshipMapping *)mapping
+{
+    NSMutableArray * array = [NSMutableArray array];
+    for (NSDictionary * representation in externalRepresentation)
+    {
+        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:(EKManagedObjectMapping *)[mapping mappingForRepresentation:representation]];
+        [array addObject:parsedObject];
+    }
+    return [NSArray arrayWithArray:array];
+}
+
+- (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
 {
-
+    
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)
     {

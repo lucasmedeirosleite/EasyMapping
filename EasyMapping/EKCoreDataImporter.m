@@ -77,7 +77,7 @@
 
     for (EKRelationshipMapping * oneMapping in mapping.hasOneMappings)
     {
-        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[oneMapping objectMapping];
+        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[[oneMapping objectClass] objectMapping];
         if ([self.collectedEntityNames containsObject:mapping.entityName])
         {
             continue;
@@ -90,7 +90,7 @@
 
     for (EKRelationshipMapping * manyMapping in mapping.hasManyMappings)
     {
-        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[manyMapping objectMapping];
+        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[[manyMapping objectClass] objectMapping];
         if ([self.collectedEntityNames containsObject:mapping.entityName])
         {
             continue;
@@ -166,7 +166,7 @@
             }
 
             [self inspectRepresentation:oneMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)[relationship objectMapping]
+                           usingMapping:(EKManagedObjectMapping *)[relationship mappingForRepresentation:oneMappingRepresentation]
                        accumulateInside:dictionary
                                 context:context];
         }
@@ -191,7 +191,7 @@
             }
 
             [self inspectRepresentation:manyMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)[relationship objectMapping]
+                           usingMapping:(EKManagedObjectMapping *)[relationship mappingForRepresentation:manyMappingRepresentation]
                        accumulateInside:dictionary
                                 context:context];
         }

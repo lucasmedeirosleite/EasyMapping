@@ -675,7 +675,7 @@ describe(@"EKObjectMapping", ^{
         specify(^{
             EKRelationshipMapping * relationship = [mapping.hasOneMappings firstObject];
             
-            [[[relationship objectMapping] should] equal:phoneMapping];
+            [[[relationship mappingForObject:relationship] should] equal:phoneMapping];
         });
     });
     
@@ -704,7 +704,7 @@ describe(@"EKObjectMapping", ^{
         specify(^{
             EKRelationshipMapping * relationship = [mapping.hasManyMappings firstObject];
             
-            [[[relationship objectMapping] should] equal:phoneMapping];
+            [[[relationship mappingForObject:relationship] should] equal:phoneMapping];
         });
     });
     

@@ -25,5 +25,6 @@
 + (EKObjectMapping *)addressMapping;
 + (EKObjectMapping *)nativeMappingWithNullPropertie;
 + (EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock;
++ (EKObjectMapping *)personWithPetsMapping;
 
 @end

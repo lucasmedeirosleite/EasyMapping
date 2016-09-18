@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
  @result array of mapped objects
  */
 + (nullable NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                          withMapping:(EKObjectMapping *)mapping;
+                                              withMapping:(EKObjectMapping *)mapping;
 
 @end
 

@@ -12,21 +12,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef EKObjectMapping * _Nonnull (^EKMappingResolvingBlock)(id representation);
+typedef EKObjectMapping * _Nonnull (^EKSerializationResolvingBlock)(id object);
+
 @interface EKRelationshipMapping : NSObject
 
-@property (nonatomic, strong) Class <EKMappingProtocol> objectClass;
+@property (nonatomic, strong) EKMappingResolvingBlock mappingResolver;
+
+@property (nonatomic, strong) EKSerializationResolvingBlock serializationResolver;
 
 @property (nonatomic, strong) NSString * keyPath;
 
 @property (nonatomic, strong) NSString * property;
 
-@property (nonatomic, strong) EKObjectMapping *objectMapping;
+@property (nonatomic, strong) Class <EKMappingProtocol> objectClass;
 
 @property (nonatomic, strong, nullable) NSArray * nonNestedKeyPaths;
 
 @property (nonatomic, strong, nullable) EKMappingConditionBlock condition;
 
 - (nullable NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation;
+
+- (EKObjectMapping *)mappingForRepresentation:(id)representation;
+
+- (EKObjectMapping *)mappingForObject:(id)object;
 
 @end
 

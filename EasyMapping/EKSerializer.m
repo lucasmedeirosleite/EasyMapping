@@ -41,7 +41,7 @@
         
         if (hasOneObject) {
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
-                                                           withMapping:[relationship objectMapping]];
+                                                           withMapping:[relationship mappingForObject:hasOneObject]];
             
             if (relationship.nonNestedKeyPaths)
             {
@@ -61,7 +61,7 @@
         id hasManyObject = [object valueForKey:relationship.property];
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
-                                                           withMapping:[relationship objectMapping]];
+                                                           withMapping:[[relationship objectClass] objectMapping]];
             [representation setObject:hasManyRepresentation forKey:relationship.keyPath];
         }
     }
@@ -103,7 +103,7 @@
         
         if (hasOneObject) {
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
-                                                           withMapping:(EKManagedObjectMapping *)[relationship objectMapping]
+                                                           withMapping:(EKManagedObjectMapping *)[[relationship objectClass] objectMapping]
                                                            fromContext:context];
             
             if (relationship.nonNestedKeyPaths)
@@ -124,7 +124,7 @@
         id hasManyObject = [object valueForKey:relationship.property];
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
-                                                           withMapping:(EKManagedObjectMapping *)[relationship objectMapping]
+                                                           withMapping:(EKManagedObjectMapping *)[[relationship objectClass] objectMapping]
                                                            fromContext:context];
             [representation setObject:hasManyRepresentation forKey:relationship.keyPath];
         }
