@@ -10,15 +10,6 @@
 
 @implementation EKRelationshipMapping
 
-//-(EKObjectMapping*)objectMapping
-//{
-//    if (self.mappingResolver) {
-//        return self
-//    }
-//    return _objectMapping;
-////    return (_objectMapping == nil) ? [_objectClass objectMapping] : _objectMapping;
-//}
-
 -(EKObjectMapping *)mappingForRepresentation:(id)representation {
     if (self.mappingResolver) {
         return self.mappingResolver(representation);

@@ -306,6 +306,10 @@
 		9A53E2E41A7EA77300C4D169 /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A53E2E61A7EA7F200C4D169 /* EKMappingBlocksSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */; };
 		9A53E2E71A7EA7F200C4D169 /* EKMappingBlocksSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */; };
+		9A6013C31DA66A4600506062 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
+		9A6013C41DA66A4600506062 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
+		9A6013C51DA66A4D00506062 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
+		9A6013C61DA66A4D00506062 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A7048131AB464A700EFD403 /* CarWithAttributesRemoved.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */; };
 		9A74F5401C85F2CE0063247E /* PersonWithoutRelations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */; };
 		9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
@@ -1796,6 +1800,7 @@
 				9A4512D019165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A8420EA195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A45117E19164696006E6022 /* MappingProvider.m in Sources */,
+				9A6013C31DA66A4600506062 /* Dog.m in Sources */,
 				9A170334194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A4511B2191646C9006E6022 /* Alien.m in Sources */,
 				9AA7CEC1191E555300608262 /* EKManagedObjectMapper.m in Sources */,
@@ -1803,6 +1808,7 @@
 				9AA7CED9191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A4511C2191646C9006E6022 /* Finger.m in Sources */,
 				9AA7CECD191E62A100608262 /* EKCoreDataImporter.m in Sources */,
+				9A6013C51DA66A4D00506062 /* Wolf.m in Sources */,
 				9A451263191647BA006E6022 /* EKAppDelegate.m in Sources */,
 				9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9A4511DE191646C9006E6022 /* UFO.m in Sources */,
@@ -1846,6 +1852,7 @@
 				9A4512D119165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A8420EB195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A6013C41DA66A4600506062 /* Dog.m in Sources */,
 				9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A45117F19164696006E6022 /* MappingProvider.m in Sources */,
 				9AA7CEC2191E555300608262 /* EKManagedObjectMapper.m in Sources */,
@@ -1853,6 +1860,7 @@
 				9AA7CEDA191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A4511C7191646C9006E6022 /* Native.m in Sources */,
 				9A451191191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A6013C61DA66A4D00506062 /* Wolf.m in Sources */,
 				9AA7CECE191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */,
 				9A45128119164912006E6022 /* EKPropertyMapping.m in Sources */,
