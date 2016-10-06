@@ -355,8 +355,9 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasOneMappings objectForKey:@"car"] shouldNotBeNil];
-            [[mapping.hasOneMappings objectForKey:@"relative"] shouldNotBeNil];
+            [[@([mapping.hasOneMappings count]) should] equal:@2];
+            [[[mapping.hasOneMappings.firstObject keyPath] should] equal:@"car"];
+            [[[mapping.hasOneMappings.lastObject keyPath] should] equal:@"relative"];
         });
         
         specify(^{
@@ -364,7 +365,7 @@ describe(@"EKManagedObjectMapping", ^{
          });
 
         specify(^{
-            [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
+            [[@([mapping.hasManyMappings count]) should] equal:@2];
             });
        
     });
@@ -382,8 +383,7 @@ describe(@"EKManagedObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
-            [[mapping.hasManyMappings objectForKey:@"children"] shouldNotBeNil];
+            [[@([mapping.hasManyMappings count]) should] equal:@2];
         });
         
     });

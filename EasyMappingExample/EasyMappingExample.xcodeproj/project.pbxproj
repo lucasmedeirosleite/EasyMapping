@@ -306,6 +306,10 @@
 		9A53E2E41A7EA77300C4D169 /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A53E2E61A7EA7F200C4D169 /* EKMappingBlocksSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */; };
 		9A53E2E71A7EA7F200C4D169 /* EKMappingBlocksSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */; };
+		9A6013C31DA66A4600506062 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
+		9A6013C41DA66A4600506062 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
+		9A6013C51DA66A4D00506062 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
+		9A6013C61DA66A4D00506062 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A7048131AB464A700EFD403 /* CarWithAttributesRemoved.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */; };
 		9A74F5401C85F2CE0063247E /* PersonWithoutRelations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */; };
 		9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
@@ -326,6 +330,14 @@
 		9A8420FA195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
 		9A8420FD195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
 		9A8420FE195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
+		9A9FDBDD1D8E10BB009E8F47 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
+		9A9FDBDE1D8E10BB009E8F47 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
+		9A9FDBE11D8E10D2009E8F47 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
+		9A9FDBE21D8E10D2009E8F47 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
+		9A9FDBED1D8E1254009E8F47 /* PersonWithAnimals.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A9FDBEC1D8E1254009E8F47 /* PersonWithAnimals.json */; };
+		9A9FDBEE1D8E1254009E8F47 /* PersonWithAnimals.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A9FDBEC1D8E1254009E8F47 /* PersonWithAnimals.json */; };
+		9A9FDBF01D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBEF1D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m */; };
+		9A9FDBF11D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBEF1D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m */; };
 		9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
 		9AA7CEC1191E555300608262 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
@@ -504,6 +516,12 @@
 		9A8420F8195723BE006DDDE3 /* Two.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Two.m; path = Tests/Fixtures/FixtureClasses/Two.m; sourceTree = "<group>"; };
 		9A8420FB195723D0006DDDE3 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Three.h; path = Tests/Fixtures/FixtureClasses/Three.h; sourceTree = "<group>"; };
 		9A8420FC195723D0006DDDE3 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Three.m; path = Tests/Fixtures/FixtureClasses/Three.m; sourceTree = "<group>"; };
+		9A9FDBDB1D8E10BB009E8F47 /* Wolf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wolf.h; path = Tests/Fixtures/FixtureClasses/Wolf.h; sourceTree = "<group>"; };
+		9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wolf.m; path = Tests/Fixtures/FixtureClasses/Wolf.m; sourceTree = "<group>"; };
+		9A9FDBDF1D8E10D2009E8F47 /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dog.h; path = Tests/Fixtures/FixtureClasses/Dog.h; sourceTree = "<group>"; };
+		9A9FDBE01D8E10D2009E8F47 /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dog.m; path = Tests/Fixtures/FixtureClasses/Dog.m; sourceTree = "<group>"; };
+		9A9FDBEC1D8E1254009E8F47 /* PersonWithAnimals.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithAnimals.json; path = Tests/Fixtures/PersonWithAnimals.json; sourceTree = SOURCE_ROOT; };
+		9A9FDBEF1D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRelationshipMappingTestCase.m; sourceTree = "<group>"; };
 		9AA7CEBD191E555300608262 /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapper.h; sourceTree = "<group>"; };
 		9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapper.m; sourceTree = "<group>"; };
 		9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataImporter.h; sourceTree = "<group>"; };
@@ -640,6 +658,7 @@
 				9A210F361944B13A00871071 /* CommentsRecursive.json */,
 				9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */,
 				9A2044131B23819500AB7363 /* MutableFoundationClass.json */,
+				9A9FDBEC1D8E1254009E8F47 /* PersonWithAnimals.json */,
 			);
 			name = Fixtures;
 			path = EasyMappingExampleTests;
@@ -649,6 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */,
+				9A9FDBEF1D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m */,
 			);
 			name = XCTests;
 			path = Tests/XCTests;
@@ -900,6 +920,10 @@
 				9A8420FC195723D0006DDDE3 /* Three.m */,
 				9A20440F1B23810D00AB7363 /* MutableFoundationClass.h */,
 				9A2044101B23810D00AB7363 /* MutableFoundationClass.m */,
+				9A9FDBDB1D8E10BB009E8F47 /* Wolf.h */,
+				9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */,
+				9A9FDBDF1D8E10D2009E8F47 /* Dog.h */,
+				9A9FDBE01D8E10D2009E8F47 /* Dog.m */,
 			);
 			name = FixtureClasses;
 			sourceTree = "<group>";
@@ -1273,6 +1297,7 @@
 				9A45122B19164705006E6022 /* CarWithRoot.json in Resources */,
 				9A2044141B23819500AB7363 /* MutableFoundationClass.json in Resources */,
 				9A45124B19164705006E6022 /* PersonWithNullPhones.json in Resources */,
+				9A9FDBED1D8E1254009E8F47 /* PersonWithAnimals.json in Resources */,
 				9A210F3A1944B81500871071 /* PersonRecursive.json in Resources */,
 				9A45122719164705006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9A45124319164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
@@ -1308,6 +1333,7 @@
 				9A2044151B23819500AB7363 /* MutableFoundationClass.json in Resources */,
 				9A45124C19164705006E6022 /* PersonWithNullPhones.json in Resources */,
 				9A210F3B1944B81500871071 /* PersonRecursive.json in Resources */,
+				9A9FDBEE1D8E1254009E8F47 /* PersonWithAnimals.json in Resources */,
 				9A45122819164705006E6022 /* CarWithNestedAttributes.json in Resources */,
 				9A45124419164705006E6022 /* PersonWithDifferentNaming.json in Resources */,
 				9A74F5401C85F2CE0063247E /* PersonWithoutRelations.json in Resources */,
@@ -1414,7 +1440,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0CD8CD0C224141695A2C024A /* [CP] Copy Pods Resources */ = {
@@ -1519,7 +1545,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5F26013C3D0516DFE546BAD0 /* [CP] Check Pods Manifest.lock */ = {
@@ -1534,7 +1560,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7022F2498E092F514CD634C7 /* [CP] Check Pods Manifest.lock */ = {
@@ -1549,7 +1575,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		93FF53653E8283D8CFF49C76 /* [CP] Embed Pods Frameworks */ = {
@@ -1589,6 +1615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9FDBDD1D8E10BB009E8F47 /* Wolf.m in Sources */,
 				9A53E2DA1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
 				9A4511DC191646C9006E6022 /* UFO.m in Sources */,
 				9A8420E21957164E006DDDE3 /* EKObjectModel.m in Sources */,
@@ -1604,6 +1631,7 @@
 				9A8420FD195723D0006DDDE3 /* Three.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A4511C8191646C9006E6022 /* NativeChild.m in Sources */,
+				9A9FDBF01D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m in Sources */,
 				9A4511C4191646C9006E6022 /* Native.m in Sources */,
 				9A130249190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
 				9A4511D4191646C9006E6022 /* Plane.m in Sources */,
@@ -1629,6 +1657,7 @@
 				9A8420F9195723BE006DDDE3 /* Two.m in Sources */,
 				9A4511BC191646C9006E6022 /* ColoredUFO.m in Sources */,
 				9A130246190BFEF30060A25C /* EKMapper.m in Sources */,
+				9A9FDBE11D8E10D2009E8F47 /* Dog.m in Sources */,
 				9A4511B4191646C9006E6022 /* Car.m in Sources */,
 				9A53E2E31A7EA77300C4D169 /* EKMappingBlocks.m in Sources */,
 				9A4511CC191646C9006E6022 /* Person.m in Sources */,
@@ -1653,6 +1682,7 @@
 				9A4511F0191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */,
 				9A4511E8191646F7006E6022 /* EKFieldMappingSpec.m in Sources */,
 				9A4511B1191646C9006E6022 /* Alien.m in Sources */,
+				9A9FDBDE1D8E10BB009E8F47 /* Wolf.m in Sources */,
 				9A45118F191646B2006E6022 /* ManagedPhone.m in Sources */,
 				9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */,
@@ -1660,7 +1690,9 @@
 				9A8420FE195723D0006DDDE3 /* Three.m in Sources */,
 				9A130251190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A4511C9191646C9006E6022 /* NativeChild.m in Sources */,
+				9A9FDBE21D8E10D2009E8F47 /* Dog.m in Sources */,
 				9A4511C5191646C9006E6022 /* Native.m in Sources */,
+				9A9FDBF11D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m in Sources */,
 				9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */,
 				9A45118B191646B2006E6022 /* ManagedPerson.m in Sources */,
 				9A4511D5191646C9006E6022 /* Plane.m in Sources */,
@@ -1768,6 +1800,7 @@
 				9A4512D019165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A8420EA195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A45117E19164696006E6022 /* MappingProvider.m in Sources */,
+				9A6013C31DA66A4600506062 /* Dog.m in Sources */,
 				9A170334194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A4511B2191646C9006E6022 /* Alien.m in Sources */,
 				9AA7CEC1191E555300608262 /* EKManagedObjectMapper.m in Sources */,
@@ -1775,6 +1808,7 @@
 				9AA7CED9191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A4511C2191646C9006E6022 /* Finger.m in Sources */,
 				9AA7CECD191E62A100608262 /* EKCoreDataImporter.m in Sources */,
+				9A6013C51DA66A4D00506062 /* Wolf.m in Sources */,
 				9A451263191647BA006E6022 /* EKAppDelegate.m in Sources */,
 				9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
 				9A4511DE191646C9006E6022 /* UFO.m in Sources */,
@@ -1818,6 +1852,7 @@
 				9A4512D119165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A8420EB195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A6013C41DA66A4600506062 /* Dog.m in Sources */,
 				9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A45117F19164696006E6022 /* MappingProvider.m in Sources */,
 				9AA7CEC2191E555300608262 /* EKManagedObjectMapper.m in Sources */,
@@ -1825,6 +1860,7 @@
 				9AA7CEDA191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A4511C7191646C9006E6022 /* Native.m in Sources */,
 				9A451191191646B2006E6022 /* ManagedPhone.m in Sources */,
+				9A6013C61DA66A4D00506062 /* Wolf.m in Sources */,
 				9AA7CECE191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9A45118D191646B2006E6022 /* ManagedPerson.m in Sources */,
 				9A45128119164912006E6022 /* EKPropertyMapping.m in Sources */,

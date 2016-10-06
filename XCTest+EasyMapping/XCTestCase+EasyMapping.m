@@ -41,7 +41,7 @@
         XCTAssertEqualObjects(mappedValue, expectedValue, "Mapping failed on keypath %@. Expected value is - %@, value after mapping is - %@", keyPathString, expectedValue, mappedValue);
     }
     
-    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings.allValues) {
+    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings) {
         NSString *keyPath = hasOneMapping.property;
         if ([keyPathsToSkip containsObject:keyPath]) {
             continue;
@@ -51,10 +51,10 @@
         NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
         NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:keyPath
                                                               toRootKeyPath:rootKeyPath];
-        [self testMappedObject:relationshipObject withMapping:hasOneMapping.objectMapping expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+        [self testMappedObject:relationshipObject withMapping:[hasOneMapping mappingForRepresentation:@{}] expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
     }
     
-    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings.allValues) {
+    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings) {
         NSString *keyPath = hasManyMapping.property;
         if ([keyPathsToSkip containsObject:keyPath]) {
             continue;
@@ -67,7 +67,7 @@
             NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%@]", keyPath, @(idx)];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:indexKeyPath
                                                                   toRootKeyPath:rootKeyPath];
-            [self testMappedObject:relationshipObject withMapping:hasManyMapping.objectMapping expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+            [self testMappedObject:relationshipObject withMapping:[hasManyMapping mappingForRepresentation:@{}] expectedObject:expectedRelationshipObject skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
         }];
     }
 }
@@ -97,7 +97,7 @@
         XCTAssertEqualObjects(propertyValue, expectedValue, "Serialization failed on keypath %@. Expected value is - %@, value after serialization is - %@", propertyKeyPath, expectedValue, propertyValue);
     }
     
-    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings.allValues) {
+    for (EKRelationshipMapping *hasOneMapping in mapping.hasOneMappings) {
         if (hasOneMapping.keyPath) {
             NSString *keyPath = hasOneMapping.keyPath;
             if ([keyPathsToSkip containsObject:keyPath]) {
@@ -108,14 +108,14 @@
             NSArray *relationshipKeyPathsToSkip = [self extractRelationshipKeyPathsFromKeyPaths:keyPathsToSkip forRelationship:keyPath];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:keyPath
                                                                   toRootKeyPath:rootKeyPath];
-            [self testSerializedObject:relationshipRepresentation withMapping:hasOneMapping.objectMapping expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+            [self testSerializedObject:relationshipRepresentation withMapping:[hasOneMapping mappingForObject:relationshipRepresentation] expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
         }
         else {
-            [self testSerializedObject:serializedObject withMapping:hasOneMapping.objectMapping expectedRepresentation:expectedRepresentation skippingKeyPaths:keyPathsToSkip rootKeyPath:rootKeyPath];
+            [self testSerializedObject:serializedObject withMapping:[hasOneMapping mappingForObject:@{}] expectedRepresentation:expectedRepresentation skippingKeyPaths:keyPathsToSkip rootKeyPath:rootKeyPath];
         }
     }
     
-    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings.allValues) {
+    for (EKRelationshipMapping *hasManyMapping in mapping.hasManyMappings) {
         NSString *keyPath = hasManyMapping.keyPath;
         if ([keyPathsToSkip containsObject:keyPath]) {
             continue;
@@ -128,7 +128,7 @@
             NSString *indexKeyPath = [NSString stringWithFormat:@"%@[%@]", keyPath, @(idx)];
             NSString *relationshipRootKeyPath = [self keyPathByAppendingKeyPath:indexKeyPath
                                                                   toRootKeyPath:rootKeyPath];
-            [self testSerializedObject:relationshipRepresentation withMapping:hasManyMapping.objectMapping expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
+            [self testSerializedObject:relationshipRepresentation withMapping:[hasManyMapping mappingForObject:serializedObject] expectedRepresentation:expectedRelationshipRepresentation skippingKeyPaths:relationshipKeyPathsToSkip rootKeyPath:relationshipRootKeyPath];
         }];
     }
 }

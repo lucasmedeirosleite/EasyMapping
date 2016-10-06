@@ -26,6 +26,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef BOOL (^EKMappingConditionBlock)(id representation);
+
 typedef _Nullable id(^EKMappingValueBlock)(NSString *key, _Nullable id value);
 typedef _Nullable id(^EKMappingReverseBlock)(_Nullable id value);
 

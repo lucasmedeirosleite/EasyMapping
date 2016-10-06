@@ -10,9 +10,18 @@
 
 @implementation EKRelationshipMapping
 
--(EKObjectMapping*)objectMapping
-{
-    return (_objectMapping == nil) ? [_objectClass objectMapping] : _objectMapping;
+-(EKObjectMapping *)mappingForRepresentation:(id)representation {
+    if (self.mappingResolver) {
+        return self.mappingResolver(representation);
+    }
+    return [[self objectClass] objectMapping];
+}
+
+-(EKObjectMapping *)mappingForObject:(id)object {
+    if (self.serializationResolver) {
+        return self.serializationResolver(object);
+    }
+    return [[self objectClass] objectMapping];
 }
 
 -(NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation

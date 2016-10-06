@@ -56,8 +56,8 @@
     if (self) {
         _objectClass = objectClass;
         _propertyMappings = [NSMutableDictionary dictionary];
-        _hasOneMappings = [NSMutableDictionary dictionary];
-        _hasManyMappings = [NSMutableDictionary dictionary];
+        _hasOneMappings = [NSMutableArray array];
+        _hasManyMappings = [NSMutableArray array];
     }
     return self;
 }
@@ -146,14 +146,12 @@
         [self addPropertyMappingToDictionary:mappingObj.propertyMappings[key]];
     }
     
-    for (NSString *key in mappingObj.hasOneMappings) {
-        EKRelationshipMapping *mapping = mappingObj.hasOneMappings[key];
-        [self.hasOneMappings setObject:mapping forKey:mapping.keyPath];
+    for (EKRelationshipMapping *relationship in mappingObj.hasOneMappings) {
+        [self.hasOneMappings addObject:relationship];
     }
     
-    for (NSString *key in mappingObj.hasManyMappings) {
-         EKRelationshipMapping *mapping = mappingObj.hasManyMappings[key];
-        [self.hasManyMappings setObject:mapping forKey:mapping.keyPath];
+    for (EKRelationshipMapping *relationship in mappingObj.hasManyMappings) {
+        [self.hasManyMappings addObject:relationship];
     }
 }
 
@@ -187,17 +185,17 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     [self addPropertyMappingToDictionary:mapping];
 }
 
--(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
+    return [self hasOne:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
 }
 
--(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
 {
-    [self hasOne:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
+    return [self hasOne:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
 }
 
--(void)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
     if (!objectMapping) {
         NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
@@ -210,12 +208,25 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
-    relationship.objectMapping = objectMapping;
+    relationship.mappingResolver = ^(id representation ){
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
+    relationship.serializationResolver = ^(id object) {
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
     
-    [self.hasOneMappings setObject:relationship forKey:keyPath];
+    [self.hasOneMappings addObject:relationship];
+    
+    return relationship;
 }
 
--(void)hasOne:(Class)objectClass forDictionaryFromKeyPaths:(NSArray *)keyPaths forProperty:(NSString *)property withObjectMapping:(EKObjectMapping *)mapping
+- (EKRelationshipMapping *)hasOne:(Class)objectClass forDictionaryFromKeyPaths:(NSArray *)keyPaths forProperty:(NSString *)property withObjectMapping:(EKObjectMapping *)mapping
 {
     if (!mapping) {
         NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
@@ -228,22 +239,36 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.nonNestedKeyPaths = keyPaths;
     relationship.property = property;
-    relationship.objectMapping = mapping;
+    relationship.mappingResolver = ^(id representation ){
+        if (mapping != nil) {
+            return mapping;
+        }
+        return [objectClass objectMapping];
+    };
     
-    self.hasOneMappings[keyPaths.firstObject] = relationship;
+    relationship.serializationResolver = ^(id object) {
+        if (mapping != nil) {
+            return mapping;
+        }
+        return [objectClass objectMapping];
+    };
+    
+    [self.hasOneMappings addObject:relationship];
+    
+    return relationship;
 }
 
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath
 {
-    [self hasMany:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
+    return [self hasMany:objectClass forKeyPath:keyPath forProperty:keyPath withObjectMapping:nil];
 }
 
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property
 {
-    [self hasMany:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
+    return [self hasMany:objectClass forKeyPath:keyPath forProperty:property withObjectMapping:nil];
 }
 
--(void)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
+- (EKRelationshipMapping *)hasMany:(Class)objectClass forKeyPath:(NSString *)keyPath forProperty:(NSString *)property withObjectMapping:(EKObjectMapping*)objectMapping
 {
     if (!objectMapping) {
         NSParameterAssert([objectClass conformsToProtocol:@protocol(EKMappingProtocol)] ||
@@ -256,9 +281,22 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     relationship.objectClass = objectClass;
     relationship.keyPath = keyPath;
     relationship.property = property;
-    relationship.objectMapping = objectMapping;
+    relationship.mappingResolver = ^(id representation ){
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
+    relationship.serializationResolver = ^(id object) {
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
     
-    [self.hasManyMappings setObject:relationship forKey:keyPath];
+    [self.hasManyMappings addObject:relationship];
+    
+    return relationship;
 }
 
 - (void)addPropertyMappingToDictionary:(EKPropertyMapping *)propertyMapping

@@ -491,7 +491,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasOneMappings objectForKey:@"captain"] shouldNotBeNil];
+            [[[[mapping.hasOneMappings firstObject] keyPath] should] equal:@"captain"];
         });
         
         specify(^{
@@ -499,7 +499,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasManyMappings objectForKey:@"crew"] shouldNotBeNil];
+            [[[[mapping.hasManyMappings firstObject] keyPath] should] equal:@"crew"];
         });
         
     });
@@ -606,7 +606,8 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasOneMappings objectForKey:@"car"] shouldNotBeNil];
+            [[@([mapping.hasOneMappings count]) should] equal:@1];
+            [[[mapping.hasOneMappings.firstObject keyPath] should] equal:@"car"];
         });
         
         specify(^{
@@ -614,7 +615,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
+            [[[mapping.hasManyMappings.firstObject keyPath] should] equal:@"phones"];
         });
         
     });
@@ -644,7 +645,7 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasManyMappings objectForKey:@"phones"] shouldNotBeNil];
+            [[[mapping.hasManyMappings.firstObject keyPath] should] equal:@"phones"];
         });
         
     });
@@ -668,13 +669,13 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasOneMappings objectForKey:@"phone"] shouldNotBeNil];
+            [[[mapping.hasOneMappings.firstObject keyPath] should] equal:@"phone"];
         });
         
         specify(^{
-            EKRelationshipMapping * relationship = [mapping.hasOneMappings objectForKey:@"phone"];
+            EKRelationshipMapping * relationship = [mapping.hasOneMappings firstObject];
             
-            [[[relationship objectMapping] should] equal:phoneMapping];
+            [[[relationship mappingForObject:relationship] should] equal:phoneMapping];
         });
     });
     
@@ -697,13 +698,13 @@ describe(@"EKObjectMapping", ^{
         });
         
         specify(^{
-            [[mapping.hasManyMappings objectForKey:@"phone"] shouldNotBeNil];
+            [[[mapping.hasManyMappings.firstObject keyPath] should] equal:@"phone"];
         });
         
         specify(^{
-            EKRelationshipMapping * relationship = [mapping.hasManyMappings objectForKey:@"phone"];
+            EKRelationshipMapping * relationship = [mapping.hasManyMappings firstObject];
             
-            [[[relationship objectMapping] should] equal:phoneMapping];
+            [[[relationship mappingForObject:relationship] should] equal:phoneMapping];
         });
     });
     
