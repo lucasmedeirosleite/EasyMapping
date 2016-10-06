@@ -1,7 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Next
+## [0.20.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.20.0)
+
+This release requires iOS 8 / macOS 10.9 / tvOS 9.0 / watchOS 2.0 and higher.
 
 #### New
 

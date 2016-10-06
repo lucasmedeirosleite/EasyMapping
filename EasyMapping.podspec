@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "EasyMapping"
-  s.version      = "0.18.1"
+  s.version      = "0.20.0"
   s.summary      = "The easiest way to map data from your webservice."
   s.homepage     = "https://github.com/lucasmedeirosleite/EasyMapping"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
@@ -9,22 +9,22 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/lucasmedeirosleite/EasyMapping.git", :tag => s.version.to_s }
   s.requires_arc = true
 
-  s.ios.deployment_target = '5.0'
-  s.osx.deployment_target = '10.7'
+  s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.9'
   s.tvos.deployment_target = '9.0'
 
   s.subspec 'Core' do |core|
     core.watchos.deployment_target = '2.0'
-    core.ios.deployment_target = '5.0'
-    core.osx.deployment_target = '10.7'
+    core.ios.deployment_target = '8.0'
+    core.osx.deployment_target = '10.9'
     core.tvos.deployment_target = '9.0'
     core.frameworks = 'CoreData'
     core.source_files = 'EasyMapping/*.{h,m}'
   end
 
   s.subspec 'XCTest' do |xctest|
-    xctest.ios.deployment_target = '5.0'
-    xctest.osx.deployment_target = '10.7'
+    xctest.ios.deployment_target = '8.0'
+    xctest.osx.deployment_target = '10.9'
     xctest.tvos.deployment_target = '9.0'
     xctest.dependency 'EasyMapping/Core'
     xctest.frameworks = 'XCTest'
