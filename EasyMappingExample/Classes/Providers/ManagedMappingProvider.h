@@ -27,4 +27,6 @@
 // Fake mapping, is not backed up by CoreData model
 + (EKManagedObjectMapping *)complexPlaneMapping;
 
++ (NSDateFormatter *)iso8601DateFormatter;
+
 @end

@@ -65,7 +65,6 @@
 		9A2A37FB1AEA59B90021E97D /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9A2A37FC1AEA59B90021E97D /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
 		9A2A37FD1AEA59B90021E97D /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
-		9A2A37FE1AEA59B90021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
 		9A2A37FF1AEA59B90021E97D /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A2A381E1AEA5A720021E97D /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16D0116F2B2770003759B /* EKSerializer.m */; };
 		9A2A381F1AEA5A720021E97D /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */; };
@@ -79,7 +78,6 @@
 		9A2A38271AEA5A720021E97D /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
 		9A2A38281AEA5A720021E97D /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E11957164E006DDDE3 /* EKObjectModel.m */; };
 		9A2A38291AEA5A720021E97D /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
-		9A2A382A1AEA5A720021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
 		9A2A382B1AEA5A720021E97D /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A2A382C1AEA5AA10021E97D /* EasyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF616F2B2770003759B /* EasyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A382D1AEA5AB50021E97D /* EasyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF616F2B2770003759B /* EasyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -298,10 +296,6 @@
 		9A4512F519166366006E6022 /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
 		9A4512F619166366006E6022 /* Plane.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121219164705006E6022 /* Plane.json */; };
 		9A4512F819166B8E006E6022 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4512F719166B8E006E6022 /* MainMenu.xib */; };
-		9A53E2DA1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
-		9A53E2DB1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
-		9A53E2DC1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
-		9A53E2DD1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */; };
 		9A53E2E31A7EA77300C4D169 /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A53E2E41A7EA77300C4D169 /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */; };
 		9A53E2E61A7EA7F200C4D169 /* EKMappingBlocksSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */; };
@@ -503,7 +497,6 @@
 		9A4512D319165B46006E6022 /* EKCoreDataBenchmarkSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataBenchmarkSuite.m; path = Benchmarks/Classes/Becnhmark/EKCoreDataBenchmarkSuite.m; sourceTree = "<group>"; };
 		9A4512F719166B8E006E6022 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "Benchmarks/Targets/MacOS Benchmark/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 		9A53E2D81A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+EasyMappingAdditions.h"; sourceTree = "<group>"; };
-		9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+EasyMappingAdditions.m"; sourceTree = "<group>"; };
 		9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMappingBlocks.m; sourceTree = "<group>"; };
 		9A53E2E51A7EA7F200C4D169 /* EKMappingBlocksSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMappingBlocksSpec.m; path = Tests/Specs/EKMappingBlocksSpec.m; sourceTree = "<group>"; };
 		9A8420E01957164E006DDDE3 /* EKObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectModel.h; sourceTree = "<group>"; };
@@ -847,7 +840,6 @@
 				9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */,
 				9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */,
 				9A53E2D81A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.h */,
-				9A53E2D91A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m */,
 			);
 			name = Convenience;
 			sourceTree = "<group>";
@@ -1616,7 +1608,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A9FDBDD1D8E10BB009E8F47 /* Wolf.m in Sources */,
-				9A53E2DA1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
 				9A4511DC191646C9006E6022 /* UFO.m in Sources */,
 				9A8420E21957164E006DDDE3 /* EKObjectModel.m in Sources */,
 				9A4511B8191646C9006E6022 /* Cat.m in Sources */,
@@ -1709,7 +1700,6 @@
 				9A210F351944B10B00871071 /* CommentObject.m in Sources */,
 				9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */,
-				9A53E2DB1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
 				9AFC96A71A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */,
 				9A170333194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A13024C190BFEF30060A25C /* EKPropertyMapping.m in Sources */,
@@ -1748,7 +1738,6 @@
 				9A2A37FB1AEA59B90021E97D /* NSArray+FlattenArray.m in Sources */,
 				9A2A37FC1AEA59B90021E97D /* EKObjectModel.m in Sources */,
 				9A2A37FD1AEA59B90021E97D /* EKManagedObjectModel.m in Sources */,
-				9A2A37FE1AEA59B90021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
 				9A2A37FF1AEA59B90021E97D /* EKMappingBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1769,7 +1758,6 @@
 				9A2A38271AEA5A720021E97D /* NSArray+FlattenArray.m in Sources */,
 				9A2A38281AEA5A720021E97D /* EKObjectModel.m in Sources */,
 				9A2A38291AEA5A720021E97D /* EKManagedObjectModel.m in Sources */,
-				9A2A382A1AEA5A720021E97D /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
 				9A2A382B1AEA5A720021E97D /* EKMappingBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1780,7 +1768,6 @@
 			files = (
 				9A4511D6191646C9006E6022 /* Plane.m in Sources */,
 				9A4511D2191646C9006E6022 /* Phone.m in Sources */,
-				9A53E2DC1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
 				9A4511BA191646C9006E6022 /* Cat.m in Sources */,
 				9A4511B6191646C9006E6022 /* Car.m in Sources */,
 				9A4511AE191646C9006E6022 /* Address.m in Sources */,
@@ -1832,7 +1819,6 @@
 			files = (
 				9A4511DF191646C9006E6022 /* UFO.m in Sources */,
 				9A4511BB191646C9006E6022 /* Cat.m in Sources */,
-				9A53E2DD1A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.m in Sources */,
 				9A4511CB191646C9006E6022 /* NativeChild.m in Sources */,
 				9A4511D7191646C9006E6022 /* Plane.m in Sources */,
 				9A4511B3191646C9006E6022 /* Alien.m in Sources */,

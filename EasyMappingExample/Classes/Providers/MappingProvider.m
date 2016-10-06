@@ -25,6 +25,12 @@
 
 @implementation MappingProvider
 
++(NSDateFormatter *)iso8601DateFormatter {
+    NSDateFormatter * formatter = [NSDateFormatter new];
+    formatter.dateFormat = EKISO_8601DateTimeFormat;
+    return formatter;
+}
+
 + (EKObjectMapping *)carMapping
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
@@ -65,7 +71,7 @@
 {
     return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[NSDateFormatter ek_formatterForCurrentThread]];
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[self iso8601DateFormatter]];
     }];
 }
 

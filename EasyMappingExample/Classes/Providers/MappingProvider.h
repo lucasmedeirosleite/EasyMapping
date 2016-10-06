@@ -27,4 +27,6 @@
 + (EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock;
 + (EKObjectMapping *)personWithPetsMapping;
 
++ (NSDateFormatter *)iso8601DateFormatter;
+
 @end

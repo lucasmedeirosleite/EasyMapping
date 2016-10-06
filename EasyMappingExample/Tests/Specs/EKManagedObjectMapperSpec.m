@@ -292,14 +292,10 @@ describe(@"EKManagedObjectMapper", ^{
             });
             
             it(@"should populate createdAt field with a NSDate", ^{
-                
-                NSDateFormatter *format = [[NSDateFormatter alloc] init];
-                format.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-                format.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+                NSDateFormatter *format = [ManagedMappingProvider iso8601DateFormatter];
                 format.dateFormat = @"yyyy-MM-dd";
                 NSDate *expectedDate = [format dateFromString:[externalRepresentation objectForKey:@"created_at"]];
                 [[car.createdAt should] equal:expectedDate];
-                
             });
             
         });

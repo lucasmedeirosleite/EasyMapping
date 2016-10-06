@@ -13,6 +13,12 @@
 
 @implementation ManagedMappingProvider
 
++(NSDateFormatter *)iso8601DateFormatter {
+    NSDateFormatter * formatter = [NSDateFormatter new];
+    formatter.dateFormat = EKISO_8601DateTimeFormat;
+    return formatter;
+}
+
 + (EKManagedObjectMapping *)carMapping
 {
     return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
@@ -64,7 +70,7 @@
                                               withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
         [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[NSDateFormatter ek_formatterForCurrentThread]];
+        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[self iso8601DateFormatter]];
         mapping.primaryKey = @"carID";
     }];
 }
