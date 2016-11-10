@@ -74,11 +74,11 @@
     return representation;
 }
 
-+ (NSArray *)serializeCollection:(NSArray *)collection withMapping:(EKObjectMapping *)mapping
++ (NSArray *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection withMapping:(EKObjectMapping *)mapping
 {
     NSMutableArray *array = [NSMutableArray array];
     
-    for (id object in collection) {
+    for (id<EKMappingProtocol> object in collection) {
         NSDictionary *objectRepresentation = [self serializeObject:object withMapping:mapping];
         [array addObject:objectRepresentation];
     }
@@ -138,11 +138,11 @@
     return representation;
 }
 
-+(NSArray *)serializeCollection:(NSArray *)collection withMapping:(EKManagedObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
++(NSArray *)serializeCollection:(NSArray<id<EKManagedMappingProtocol>> *)collection withMapping:(EKManagedObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
 {
     NSMutableArray *array = [NSMutableArray array];
     
-    for (id object in collection) {
+    for (id<EKManagedMappingProtocol> object in collection) {
         NSDictionary *objectRepresentation = [self serializeObject:object withMapping:mapping fromContext:context];
         [array addObject:objectRepresentation];
     }
