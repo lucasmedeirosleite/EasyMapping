@@ -88,7 +88,7 @@
 		9A2A38381AEA607E0021E97D /* EKMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF916F2B2770003759B /* EKMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A38391AEA607E0021E97D /* EKObjectMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CFC16F2B2770003759B /* EKObjectMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A383A1AEA607E0021E97D /* EKPropertyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CF716F2B2770003759B /* EKPropertyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A2A383B1AEA607E0021E97D /* EKRelationshipMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A170330194C820200682F00 /* EKRelationshipMapping.h */; };
+		9A2A383B1AEA607E0021E97D /* EKRelationshipMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A170330194C820200682F00 /* EKRelationshipMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A2A383C1AEA607E0021E97D /* EKPropertyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D16CFE16F2B2770003759B /* EKPropertyHelper.h */; };
 		9A2A383D1AEA607E0021E97D /* NSArray+FlattenArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */; };
 		9A2A383E1AEA607E0021E97D /* EKObjectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8420E01957164E006DDDE3 /* EKObjectModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
