@@ -26,7 +26,7 @@
 #import "EKRelationshipMapping.h"
 #import "EKMappingProtocol.h"
 #import "NSDateFormatter+EasyMappingAdditions.h"
-#import "EKpropertyHelper.h"
+#import "EKPropertyHelper.h"
 
 @implementation EKObjectMapping
 
