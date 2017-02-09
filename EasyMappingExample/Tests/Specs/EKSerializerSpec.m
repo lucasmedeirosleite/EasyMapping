@@ -189,31 +189,71 @@ describe(@"EKSerializer", ^{
            
             __block Person *person;
             __block NSDictionary *representation;
-            
+
+            beforeEach(^{
+
+                CMFactory *factory = [CMFactory forClass:[Person class]];
+                [factory addToField:@"name" value:^{
+                    return @"Lucas";
+                }];
+                [factory addToField:@"email" value:^{
+                    return @"lucastoc@gmail.com";
+                }];
+                [factory addToField:@"gender" value:^{
+                    return @(GenderMale);
+                }];
+                [factory addToField:@"socialURL" value:^id{
+                    return [NSURL URLWithString:@"https://www.twitter.com/EasyMapping"];
+                }];
+                person = [factory build];
+
+            });
+
             context(@"using EKMappingBlocks", ^{
-                person = [Person new];
-                person.socialURL = [NSURL URLWithString:@"https://www.twitter.com/EasyMapping"];
-                
-                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
-                
-                [[representation[@"socialURL"] should] equal:@"https://www.twitter.com/EasyMapping"];
+                beforeEach(^{
+                    representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+                });
+
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
+
+                specify(^{
+                    [representation[@"socialURL"] shouldNotBeNil];
+                });
+
+                specify(^{
+                    [[representation[@"socialURL"] should] equal:@"https://www.twitter.com/EasyMapping"];
+                });
             });
             
             context(@"using mapping blocks with nil value", ^{
-                person = [Person new];
-                person.socialURL = nil;
-                
-                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
 
-                [[representation[@"socialURL"] should] equal:[NSNull null]];
+                beforeEach(^{
+                    person.socialURL = nil;
+                    representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+                });
+
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
+
+                specify(^{
+                    [representation[@"socialURL"] shouldBeNil];
+                });
+
             });
 
             context(@"ignoring socialURL property during serialization to NSDictionary", ^{
-                person = [Person new];
-                person.socialURL = [NSURL URLWithString:@"https://www.twitter.com/EasyMapping"];
 
-                EKObjectMapping *mapping = [MappingProvider personMappingThatIgnoresSocialUrlDuringSerialization];
-                representation = [EKSerializer serializeObject:person withMapping:mapping];
+                beforeEach(^{
+                    EKObjectMapping *mapping = [MappingProvider personMappingThatIgnoresSocialUrlDuringSerialization];
+                    representation = [EKSerializer serializeObject:person withMapping:mapping];
+                });
+
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
 
                 specify(^{
                     [representation[@"socialURL"] shouldBeNil];
@@ -223,22 +263,9 @@ describe(@"EKSerializer", ^{
             context(@"when male", ^{
                 
                 beforeEach(^{
-                    
-                    CMFactory *factory = [CMFactory forClass:[Person class]];
-                    [factory addToField:@"name" value:^{
-                        return @"Lucas";
-                    }];
-                    [factory addToField:@"email" value:^{
-                        return @"lucastoc@gmail.com";
-                    }];
-                    [factory addToField:@"gender" value:^{
-                        return @(GenderMale);
-                    }];
-                    person = [factory build];
                     representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personWithOnlyValueBlockMapping]];
-                    
                 });
-                
+
                 specify(^{
                     [representation shouldNotBeNil];
                 });
