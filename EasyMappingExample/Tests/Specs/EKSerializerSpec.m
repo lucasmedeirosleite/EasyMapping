@@ -204,8 +204,20 @@ describe(@"EKSerializer", ^{
                 person.socialURL = nil;
                 
                 representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
-                
+
                 [[representation[@"socialURL"] should] equal:[NSNull null]];
+            });
+
+            context(@"ignoring socialURL property during serialization to NSDictionary", ^{
+                person = [Person new];
+                person.socialURL = [NSURL URLWithString:@"https://www.twitter.com/EasyMapping"];
+
+                EKObjectMapping *mapping = [MappingProvider personMappingThatIgnoresSocialUrlDuringSerialization];
+                representation = [EKSerializer serializeObject:person withMapping:mapping];
+
+                specify(^{
+                    [representation[@"socialURL"] shouldBeNil];
+                });
             });
             
             context(@"when male", ^{
