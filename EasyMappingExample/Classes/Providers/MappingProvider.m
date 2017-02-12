@@ -218,4 +218,13 @@
     return mapping;
 }
 
++(EKObjectMapping *)personMappingThatIgnoresSocialUrlDuringSerialization
+{
+    EKObjectMapping *mapping = [self personMapping];
+    [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
+         withValueBlock:[EKMappingBlocks urlMappingBlock]
+           reverseBlock:^id _Nullable(id  _Nullable value) { return nil; }];
+    return mapping;
+}
+
 @end

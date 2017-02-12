@@ -189,44 +189,83 @@ describe(@"EKSerializer", ^{
            
             __block Person *person;
             __block NSDictionary *representation;
-            
+
+            beforeEach(^{
+
+                CMFactory *factory = [CMFactory forClass:[Person class]];
+                [factory addToField:@"name" value:^{
+                    return @"Lucas";
+                }];
+                [factory addToField:@"email" value:^{
+                    return @"lucastoc@gmail.com";
+                }];
+                [factory addToField:@"gender" value:^{
+                    return @(GenderMale);
+                }];
+                [factory addToField:@"socialURL" value:^id{
+                    return [NSURL URLWithString:@"https://www.twitter.com/EasyMapping"];
+                }];
+                person = [factory build];
+
+            });
+
             context(@"using EKMappingBlocks", ^{
-                person = [Person new];
-                person.socialURL = [NSURL URLWithString:@"https://www.twitter.com/EasyMapping"];
-                
-                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
-                
-                [[representation[@"socialURL"] should] equal:@"https://www.twitter.com/EasyMapping"];
+                beforeEach(^{
+                    representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+                });
+
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
+
+                specify(^{
+                    [representation[@"socialURL"] shouldNotBeNil];
+                });
+
+                specify(^{
+                    [[representation[@"socialURL"] should] equal:@"https://www.twitter.com/EasyMapping"];
+                });
             });
             
             context(@"using mapping blocks with nil value", ^{
-                person = [Person new];
-                person.socialURL = nil;
-                
-                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
-                
-                [[representation[@"socialURL"] should] equal:[NSNull null]];
+
+                beforeEach(^{
+                    person.socialURL = nil;
+                    representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+                });
+
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
+
+                specify(^{
+                    [representation[@"socialURL"] shouldBeNil];
+                });
+
+            });
+
+            context(@"ignoring socialURL property during serialization to NSDictionary", ^{
+
+                beforeEach(^{
+                    EKObjectMapping *mapping = [MappingProvider personMappingThatIgnoresSocialUrlDuringSerialization];
+                    representation = [EKSerializer serializeObject:person withMapping:mapping];
+                });
+
+                specify(^{
+                    [representation shouldNotBeNil];
+                });
+
+                specify(^{
+                    [representation[@"socialURL"] shouldBeNil];
+                });
             });
             
             context(@"when male", ^{
                 
                 beforeEach(^{
-                    
-                    CMFactory *factory = [CMFactory forClass:[Person class]];
-                    [factory addToField:@"name" value:^{
-                        return @"Lucas";
-                    }];
-                    [factory addToField:@"email" value:^{
-                        return @"lucastoc@gmail.com";
-                    }];
-                    [factory addToField:@"gender" value:^{
-                        return @(GenderMale);
-                    }];
-                    person = [factory build];
                     representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personWithOnlyValueBlockMapping]];
-                    
                 });
-                
+
                 specify(^{
                     [representation shouldNotBeNil];
                 });
@@ -437,47 +476,45 @@ describe(@"EKSerializer", ^{
             });
                         
         });
-		 
-		 context(@"with hasOneRelation NULL", ^{
-			 __block Person * person;
-			 __block NSDictionary * representation;
-			 
-			 beforeEach(^{
-				 NSDictionary* externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullCar"];
-				 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
-				 representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
-			 });
-			 
-			 specify(^{
-				 [[[representation objectForKey:@"phones"] shouldNot] beNil];
-			 });
-			 
-			 specify(^{
-				 [[[representation objectForKey:@"car"] should] beNil];
-			 });
-		 });
-		 
-		 
-		 context(@"with hasManyRelation NULL", ^{
-			 __block Person * person;
-			 __block NSDictionary * representation;
-			 
-			 beforeEach(^{
-				 NSDictionary* externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullPhones"];
-				 person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
-				 representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
-			 });
-			 
-			 specify(^{
-				 [[[representation objectForKey:@"phones"] should] beNil];
-			 });
-			 
-			 specify(^{
-				 [[[representation objectForKey:@"car"] shouldNot] beNil];
-			 });
-		 });
-		 
-        
+
+        context(@"with hasOneRelation NULL", ^{
+            __block Person * person;
+            __block NSDictionary * representation;
+
+            beforeEach(^{
+                NSDictionary* externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullCar"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+            });
+
+            specify(^{
+                [[[representation objectForKey:@"phones"] shouldNot] beNil];
+            });
+
+            specify(^{
+                [[[representation objectForKey:@"car"] should] beNil];
+            });
+        });
+
+        context(@"with hasManyRelation NULL", ^{
+            __block Person * person;
+            __block NSDictionary * representation;
+
+            beforeEach(^{
+                NSDictionary* externalRepresentation = [CMFixture buildUsingFixture:@"PersonWithNullPhones"];
+                person = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider personMapping]];
+                representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personMapping]];
+            });
+
+            specify(^{
+                [[[representation objectForKey:@"phones"] should] beNil];
+            });
+
+            specify(^{
+                [[[representation objectForKey:@"car"] shouldNot] beNil];
+            });
+        });
+
         context(@"with native properties", ^{
             
             __block Native *native;
@@ -559,50 +596,50 @@ describe(@"EKSerializer", ^{
             });
             
         });
-        
+
         context(@"with native properties in superclass", ^{
-            
+
             __block NativeChild *nativeChild;
             __block NSDictionary *representation;
-            
+
             beforeEach(^{
                 NSDictionary *externalRepresentation = [CMFixture buildUsingFixture:@"NativeChild"];
                 nativeChild = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[NativeChild objectMapping]];
                 representation = [EKSerializer serializeObject:nativeChild withMapping:[NativeChild objectMapping]];
             });
-            
+
             specify(^{
                 [[[representation objectForKey:@"intProperty"] should] equal:@(777)];
             });
-            
+
             specify(^{
                 [[[representation objectForKey:@"boolProperty"] should] equal:@(YES)];
             });
-            
+
             specify(^{
                 [[[representation objectForKey:@"childProperty"] should] equal:@"Hello"];
             });
-            
+
         });
-        
+
     });
-    
+
     describe(@"CoreData reverse mapping blocks", ^{
-        
+
         beforeEach(^{
             [MagicalRecord setDefaultModelFromClass:[self class]];
             [MagicalRecord setupCoreDataStackWithInMemoryStore];
         });
-        
+
         context(@"object", ^{
-            
+
             __block ManagedPerson * person = nil;
             __block NSDictionary * representation = nil;
-            
+
             beforeEach(^{
                 NSDictionary * info = [CMFixture buildUsingFixture:@"Person"];
                 NSManagedObjectContext * context = [NSManagedObjectContext MR_defaultContext];
-                
+
                 person = [EKManagedObjectMapper objectFromExternalRepresentation:info
                                                                      withMapping:[ManagedMappingProvider personWithReverseBlocksMapping]
                                                           inManagedObjectContext:context];
@@ -610,41 +647,41 @@ describe(@"EKSerializer", ^{
                                                    withMapping:[ManagedMappingProvider personWithReverseBlocksMapping]
                                                    fromContext:context];
             });
-            
+
             specify(^{
                 [[person.gender should] equal:@"husband"];
                 [[[representation objectForKey:@"gender"] should] equal:@"male"];
             });
         });
     });
-    
+
     context(@"Serialize non nested objects",^{
-        
+
         __block Person * person = nil;
         __block NSDictionary * representation = nil;
-        
+
         beforeEach(^{
             NSDictionary * info = [CMFixture buildUsingFixture:@"Person"];
-            
+
             person = [EKMapper objectFromExternalRepresentation:info
                                                     withMapping:[MappingProvider personMapping]];
             representation = [EKSerializer serializeObject:person withMapping:[MappingProvider personNonNestedMapping]];
         });
-        
+
         specify( ^{
             [[[representation objectForKey:@"carId"] should] equal:@3];
             [[[representation objectForKey:@"carModel"] should] equal:@"i30"];
             [[[representation objectForKey:@"carYear"] should] equal:@"2013"];
         });
-        
+
         specify( ^{
             [[[representation objectForKey:@"name"] should] equal:@"Lucas"];
             [[[representation objectForKey:@"email"] should] equal:@"lucastoc@gmail.com"];
             [[[representation objectForKey:@"gender"] should] equal:@"male"];
         });
-        
+
     });
-    
+
 });
 
 SPEC_END

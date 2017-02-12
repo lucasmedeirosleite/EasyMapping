@@ -26,6 +26,7 @@
 + (EKObjectMapping *)nativeMappingWithNullPropertie;
 + (EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock;
 + (EKObjectMapping *)personWithPetsMapping;
++ (EKObjectMapping *)personMappingThatIgnoresSocialUrlDuringSerialization;
 
 + (NSDateFormatter *)iso8601DateFormatter;
 
