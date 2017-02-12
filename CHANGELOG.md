@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.20.1](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.20.1)
+
+* Added ability to ignore field during serialization - #148(thanks, @vladimirbebeshko)
+* Improved types of arrays - #145(thanks, @Uncommon)
+* EKRelationshipMapping has been made public for iOS target - #147(thanks, @dvs15)
+* Fixed Xcode 8.3 warning in imports.
+
 ## [0.20.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.20.0)
 
 This release requires iOS 8 / macOS 10.9 / tvOS 9.0 / watchOS 2.0 and higher.
