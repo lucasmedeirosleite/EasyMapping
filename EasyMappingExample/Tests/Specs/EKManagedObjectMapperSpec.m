@@ -21,6 +21,7 @@
 #import <MagicalRecord/NSManagedObjectContext+MagicalSaves.h>
 #import <MagicalRecord/NSManagedObject+MagicalFinders.h>
 #import <MagicalRecord/NSManagedObject+MagicalRecord.h>
+#import "Recursive.h"
 
 SPEC_BEGIN(EKManagedObjectMapperSpec)
 
@@ -559,24 +560,24 @@ describe(@"EKManagedObjectMapper", ^{
   
     describe(@".arrayOfObjectsFromExternalRepresentation:withMapping: inserted objects", ^{
 
-    __block NSManagedObjectContext* moc;
-    __block NSArray *externalRepresentation;
-    __block NSArray *people = nil;
+        __block NSManagedObjectContext* moc;
+        __block NSArray *externalRepresentation;
+        __block NSArray *people = nil;
 
-    beforeEach(^{
-        moc = [NSManagedObjectContext MR_defaultContext];
-        externalRepresentation = [CMFixture buildUsingFixture:@"PersonsWithSamePhones"];
-        [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
-    });
+        beforeEach(^{
+            moc = [NSManagedObjectContext MR_defaultContext];
+            externalRepresentation = [CMFixture buildUsingFixture:@"PersonsWithSamePhones"];
+            [ManagedPhone registerMapping:[ManagedMappingProvider phoneMapping]];
+        });
 
-    specify(^{
-      people = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personWithPhonesMapping] inManagedObjectContext:moc];
-      
-      ManagedPhone * phone = [[people.firstObject phones] anyObject];
-      ManagedPhone * phone2 = [[people.lastObject phones] anyObject];
-      
-      [[phone should] equal:phone2];
-    });
+        specify(^{
+          people = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider personWithPhonesMapping] inManagedObjectContext:moc];
+          
+          ManagedPhone * phone = [[people.firstObject phones] anyObject];
+          ManagedPhone * phone2 = [[people.lastObject phones] anyObject];
+          
+          [[phone should] equal:phone2];
+        });
 
     });
     
@@ -609,6 +610,24 @@ describe(@"EKManagedObjectMapper", ^{
             [[person.car.year should] equal:@"2013"];
         });
     });
+    
+    
+    context(@"Recursive mappings", ^{
+        __block NSDictionary *externalRepresentation = nil;
+        
+        it(@"should collect entities recursively even if there are duplicates", ^{
+            externalRepresentation = [CMFixture buildUsingFixture:@"RecursiveDuplicates"];
+            
+            Recursive * sut = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation
+                                                              withMapping:[Recursive objectMapping]
+                                                   inManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
+            
+            [[[sut id] should] equal: @"1"];
+            [[[[sut link] id] should] equal: @"2"];
+            [[[[[sut link] link] id] should] equal: @"1"];
+        });
+    });
+    
 });
 
 SPEC_END

@@ -13,7 +13,7 @@ namespace :test do
 
   desc "Run the EasyMapping Tests for iOS"
   task :ios do
-    $ios_success = system("xcodebuild test -scheme 'iOS Tests' -workspace #{workspace_file} -destination 'name=iPhone 6' | xcpretty -tc; exit ${PIPESTATUS[0]}")
+    $ios_success = system("xcodebuild test -scheme 'iOS Tests' -workspace #{workspace_file} -destination 'name=iPhone 7' | xcpretty -tc; exit ${PIPESTATUS[0]}")
   end
 
   desc "Run the EasyMapping Tests for Mac OS X"

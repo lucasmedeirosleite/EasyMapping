@@ -53,6 +53,16 @@
         object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName
                                                inManagedObjectContext:self.importer.context];
     }
+    id primaryKey = externalRepresentation[mapping.primaryKeyPropertyMapping.keyPath];
+    if (mapping.primaryKeyPropertyMapping.managedValueBlock) {
+        primaryKey = mapping.primaryKeyPropertyMapping.managedValueBlock(mapping.primaryKeyPropertyMapping.keyPath,
+                                                                         [externalRepresentation valueForKeyPath:mapping.primaryKeyPropertyMapping.keyPath],
+                                                                         self.importer.context);
+    }
+    if (primaryKey) {
+        [object setValue:primaryKey forKey:mapping.primaryKey];
+    }
+    
     NSManagedObject * filledObject = [self fillObject:object
                            fromExternalRepresentation:externalRepresentation
                                           withMapping:mapping];

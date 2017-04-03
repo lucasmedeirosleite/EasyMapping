@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		097A5C5C1A67126900CB6CE3 /* EKMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */; };
 		32A4080E2C0280CE20CE621A /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF026E637C7C22CE0685D858 /* libPods-iOS Tests.a */; };
+		3E5D42851E929C14000EC418 /* RecursiveDuplicates.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */; };
+		3E5D42861E929C14000EC418 /* RecursiveDuplicates.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */; };
+		3E5D42891E929CD7000EC418 /* Recursive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42881E929CD7000EC418 /* Recursive.m */; };
+		3E5D428A1E929CD7000EC418 /* Recursive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42881E929CD7000EC418 /* Recursive.m */; };
 		49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
 		49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
 		4D612CB61C85DB8C00A167ED /* PersonWithoutRelations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */; };
@@ -380,6 +384,9 @@
 		02FF772618E32249002282D3 /* iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMappingTestCase.m; sourceTree = "<group>"; };
 		1D580CD9DCC1824E038EDBF1 /* Pods-iOS Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RecursiveDuplicates.json; path = Tests/Fixtures/RecursiveDuplicates.json; sourceTree = SOURCE_ROOT; };
+		3E5D42871E929CD7000EC418 /* Recursive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recursive.h; path = Classes/Models/Recursive.h; sourceTree = "<group>"; };
+		3E5D42881E929CD7000EC418 /* Recursive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recursive.m; path = Classes/Models/Recursive.m; sourceTree = "<group>"; };
 		436C49669F981A3865F82854 /* Pods-iOS Benchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark.debug.xcconfig"; sourceTree = "<group>"; };
 		49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithOtherPhones.json; path = Tests/Fixtures/PersonWithOtherPhones.json; sourceTree = SOURCE_ROOT; };
 		49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithZeroPhones.json; path = Tests/Fixtures/PersonWithZeroPhones.json; sourceTree = SOURCE_ROOT; };
@@ -652,6 +659,7 @@
 				9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */,
 				9A2044131B23819500AB7363 /* MutableFoundationClass.json */,
 				9A9FDBEC1D8E1254009E8F47 /* PersonWithAnimals.json */,
+				3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */,
 			);
 			name = Fixtures;
 			path = EasyMappingExampleTests;
@@ -916,6 +924,8 @@
 				9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */,
 				9A9FDBDF1D8E10D2009E8F47 /* Dog.h */,
 				9A9FDBE01D8E10D2009E8F47 /* Dog.m */,
+				3E5D42871E929CD7000EC418 /* Recursive.h */,
+				3E5D42881E929CD7000EC418 /* Recursive.m */,
 			);
 			name = FixtureClasses;
 			sourceTree = "<group>";
@@ -1280,6 +1290,7 @@
 				9A45122319164705006E6022 /* CarWithDate.json in Resources */,
 				49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */,
 				9A45121B19164705006E6022 /* Car.json in Resources */,
+				3E5D42851E929C14000EC418 /* RecursiveDuplicates.json in Resources */,
 				9A45123719164705006E6022 /* Native.json in Resources */,
 				9A45125919164773006E6022 /* InfoPlist.strings in Resources */,
 				9A45121719164705006E6022 /* Alien.json in Resources */,
@@ -1316,6 +1327,7 @@
 				9A45125F191647A1006E6022 /* InfoPlist.strings in Resources */,
 				9A45123819164705006E6022 /* Native.json in Resources */,
 				9A45121819164705006E6022 /* Alien.json in Resources */,
+				3E5D42861E929C14000EC418 /* RecursiveDuplicates.json in Resources */,
 				9AC0F3181A7276CB004B2096 /* PersonWithOtherPhones.json in Resources */,
 				9A45122019164705006E6022 /* Cars.json in Resources */,
 				85D1B77B1B21973C00B0555C /* CarsWithNullItem.json in Resources */,
@@ -1432,7 +1444,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0CD8CD0C224141695A2C024A /* [CP] Copy Pods Resources */ = {
@@ -1537,7 +1549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5F26013C3D0516DFE546BAD0 /* [CP] Check Pods Manifest.lock */ = {
@@ -1552,7 +1564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7022F2498E092F514CD634C7 /* [CP] Check Pods Manifest.lock */ = {
@@ -1567,7 +1579,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		93FF53653E8283D8CFF49C76 /* [CP] Embed Pods Frameworks */ = {
@@ -1651,6 +1663,7 @@
 				9A9FDBE11D8E10D2009E8F47 /* Dog.m in Sources */,
 				9A4511B4191646C9006E6022 /* Car.m in Sources */,
 				9A53E2E31A7EA77300C4D169 /* EKMappingBlocks.m in Sources */,
+				3E5D42891E929CD7000EC418 /* Recursive.m in Sources */,
 				9A4511CC191646C9006E6022 /* Person.m in Sources */,
 				9A130248190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */,
 				9A2044111B23810D00AB7363 /* MutableFoundationClass.m in Sources */,
@@ -1698,6 +1711,7 @@
 				9A8420F6195723A6006DDDE3 /* One.m in Sources */,
 				9A8420E9195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A210F351944B10B00871071 /* CommentObject.m in Sources */,
+				3E5D428A1E929CD7000EC418 /* Recursive.m in Sources */,
 				9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A13024E190BFEF30060A25C /* EKObjectMapping.m in Sources */,
 				9AFC96A71A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */,

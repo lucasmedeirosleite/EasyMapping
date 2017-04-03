@@ -23,6 +23,7 @@
 #import "One.h"
 #import "Two.h"
 #import "Three.h"
+#import "Recursive.h"
 
 @interface EKCoreDataImporter()
 @property (nonatomic, strong) NSSet * entityNames;
