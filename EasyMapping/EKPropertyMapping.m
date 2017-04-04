@@ -24,5 +24,22 @@
 #import "EKPropertyMapping.h"
 
 @implementation EKPropertyMapping
+    
++(instancetype)mappingWithKeyPath:(NSString *)keyPath forProperty:(NSString *)property {
+    EKPropertyMapping * mapping = [EKPropertyMapping new];
+    mapping.keyPath = keyPath;
+    mapping.property = property;
+    return mapping;
+}
+    
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _keyPath = @"";
+        _property = @"";
+    }
+    return self;
+}
 
 @end

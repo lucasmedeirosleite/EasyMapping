@@ -23,7 +23,7 @@
     }
     return [[self objectClass] objectMapping];
 }
-
+    
 -(NSDictionary *)extractObjectFromRepresentation:(NSDictionary *)representation
 {
     if (self.nonNestedKeyPaths == nil)
@@ -43,6 +43,24 @@
         }
         return [values copy];
     }
+}
+    
++(instancetype)mappingForClass:(Class<EKMappingProtocol>)objectClass withKeyPath:(NSString *)keyPath forProperty:(NSString *)property {
+    EKRelationshipMapping * mapping = [EKRelationshipMapping new];
+    mapping.objectClass = objectClass;
+    mapping.keyPath = keyPath;
+    mapping.property = property;
+    return mapping;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _keyPath = @"";
+        _property = @"";
+    }
+    return self;
 }
 
 @end

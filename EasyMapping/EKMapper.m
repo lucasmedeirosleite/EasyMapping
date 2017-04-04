@@ -30,14 +30,7 @@
 
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
-    NSParameterAssert([mapping isKindOfClass:[EKObjectMapping class]]);
-    
-    if (![externalRepresentation isKindOfClass:[NSDictionary class]] ||
-                ![mapping isKindOfClass:[EKObjectMapping class]])
-    {
-        return nil;
-    }
-    
+    if (![externalRepresentation isKindOfClass:NSDictionary.class]) { return nil; }
     id object = [[mapping.objectClass alloc] init];
     return [self fillObject:object fromExternalRepresentation:externalRepresentation withMapping:mapping];
 }

@@ -1,7 +1,7 @@
 //
 //  EasyMapping
 //
-//  Copyright (c) 2012-2014 Lucas Medeiros.
+//  Copyright (c) 2012-2017 Lucas Medeiros.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -40,6 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
  Name of the property, which will be receiving value.
  */
 @property (nonatomic, strong) NSString *property;
+    
+    
+- (instancetype)init DEPRECATED_MSG_ATTRIBUTE("Please use mappingWithKeyPath:forProperty: method to create EKPropertyMapping");
+    
++ (instancetype)mappingWithKeyPath:(NSString *)keyPath
+                       forProperty:(NSString *)property;
 
 /**
  Optional block to transform JSON value into objective-C object.

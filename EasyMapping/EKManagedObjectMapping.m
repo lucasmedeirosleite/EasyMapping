@@ -94,9 +94,7 @@
     NSParameterAssert(property);
     NSParameterAssert(valueBlock);
     
-    EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
-    mapping.property = property;
-    mapping.keyPath = keyPath;
+    EKPropertyMapping *mapping = [EKPropertyMapping mappingWithKeyPath:keyPath forProperty:property];
     mapping.managedValueBlock = valueBlock;
     [self addPropertyMappingToDictionary:mapping];
 }
@@ -108,9 +106,7 @@
     NSParameterAssert(valueBlock);
     NSParameterAssert(reverseBlock);
     
-    EKPropertyMapping *mapping = [[EKPropertyMapping alloc] init];
-    mapping.property = property;
-    mapping.keyPath = keyPath;
+    EKPropertyMapping *mapping = [EKPropertyMapping mappingWithKeyPath:keyPath forProperty:property];
     mapping.managedValueBlock = valueBlock;
     mapping.managedReverseBlock = reverseBlock;
     [self addPropertyMappingToDictionary:mapping];

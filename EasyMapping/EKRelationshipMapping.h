@@ -17,9 +17,9 @@ typedef EKObjectMapping * _Nonnull (^EKSerializationResolvingBlock)(id object);
 
 @interface EKRelationshipMapping : NSObject
 
-@property (nonatomic, strong) EKMappingResolvingBlock mappingResolver;
+@property (nonatomic, strong, nullable) EKMappingResolvingBlock mappingResolver;
 
-@property (nonatomic, strong) EKSerializationResolvingBlock serializationResolver;
+@property (nonatomic, strong, nullable) EKSerializationResolvingBlock serializationResolver;
 
 @property (nonatomic, strong) NSString * keyPath;
 
@@ -36,6 +36,12 @@ typedef EKObjectMapping * _Nonnull (^EKSerializationResolvingBlock)(id object);
 - (EKObjectMapping *)mappingForRepresentation:(id)representation;
 
 - (EKObjectMapping *)mappingForObject:(id)object;
+    
+- (instancetype)init DEPRECATED_MSG_ATTRIBUTE("Please use mappingForClass:withKeyPath:forProperty: method to create EKRelationshipMapping");
+    
++ (instancetype)mappingForClass:(Class <EKMappingProtocol>)objectClass
+                    withKeyPath:(NSString *)keyPath
+                    forProperty:(NSString *)property;
 
 @end
 
