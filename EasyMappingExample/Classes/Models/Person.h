@@ -10,11 +10,13 @@
 #import "BaseTestModel.h"
 
 @class Car;
-
-typedef enum {
+@class Phone;
+typedef NS_ENUM(NSInteger, Gender) {
     GenderMale,
     GenderFemale
-} Gender;
+};
+
+
 
 @interface Person : BaseTestModel
 
@@ -22,7 +24,7 @@ typedef enum {
 @property (nonatomic, copy)   NSString *email;
 @property (nonatomic, assign) Gender gender;
 @property (nonatomic, strong) Car *car;
-@property (nonatomic, strong) NSArray *phones;
+@property (nonatomic, strong) NSArray <Phone *> *phones;
 @property (nonatomic, strong) Person * relative;
 @property (nonatomic, strong) NSArray* children;
 @property (nonatomic, strong) NSURL * socialURL;

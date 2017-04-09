@@ -347,6 +347,7 @@
 		9A9BAFE61E9A757100EC1DC4 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117719164696006E6022 /* MappingProvider.m */; };
 		9A9BAFE71E9A758F00EC1DC4 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A9BAFE81E9A759300EC1DC4 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
+		9A9BAFE91E9AD1AB00EC1DC4 /* PersonWithDifferentNaming.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120F19164705006E6022 /* PersonWithDifferentNaming.json */; };
 		9A9FDBDD1D8E10BB009E8F47 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A9FDBDE1D8E10BB009E8F47 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A9FDBE11D8E10D2009E8F47 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
@@ -1410,6 +1411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9BAFE91E9AD1AB00EC1DC4 /* PersonWithDifferentNaming.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

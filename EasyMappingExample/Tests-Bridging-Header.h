@@ -4,4 +4,7 @@
 
 #import "Native.h"
 #import "Car.h"
+#import "Person.h"
+#import "Address.h"
+#import "Phone.h"
 #import "MappingProvider.h"
