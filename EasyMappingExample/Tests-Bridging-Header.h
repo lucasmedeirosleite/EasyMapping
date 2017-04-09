@@ -3,3 +3,5 @@
 //
 
 #import "Native.h"
+#import "Car.h"
+#import "MappingProvider.h"

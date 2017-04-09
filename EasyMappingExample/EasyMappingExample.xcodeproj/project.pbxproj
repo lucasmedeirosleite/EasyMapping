@@ -18,8 +18,6 @@
 		3E5D42A21E9420D4000EC418 /* EKRelationshipMappingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42A11E9420D4000EC418 /* EKRelationshipMappingTestCase.swift */; };
 		3E5D42A41E942451000EC418 /* EKMappingBlocksTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42A31E942451000EC418 /* EKMappingBlocksTestCase.swift */; };
 		3E5D42A91E94287E000EC418 /* FixtureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42A81E94287E000EC418 /* FixtureLoader.swift */; };
-		3E5D42AA1E94290B000EC418 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
-		3E5D42AB1E94292F000EC418 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
 		3E5D42AF1E942D3C000EC418 /* EKPropertyHelperTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42AE1E942D3C000EC418 /* EKPropertyHelperTestCase.swift */; };
 		49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
 		49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
@@ -330,6 +328,25 @@
 		9A8420FA195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
 		9A8420FD195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
 		9A8420FE195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
+		9A9BAFCA1E9A744F00EC1DC4 /* EKSerializerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */; };
+		9A9BAFCB1E9A74A900EC1DC4 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451197191646C9006E6022 /* Car.m */; };
+		9A9BAFD81E9A74B700EC1DC4 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
+		9A9BAFD91E9A74B700EC1DC4 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451193191646C9006E6022 /* Address.m */; };
+		9A9BAFDA1E9A74B700EC1DC4 /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451195191646C9006E6022 /* Alien.m */; };
+		9A9BAFDB1E9A74B700EC1DC4 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451199191646C9006E6022 /* Cat.m */; };
+		9A9BAFDC1E9A74B700EC1DC4 /* ColoredUFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119B191646C9006E6022 /* ColoredUFO.m */; };
+		9A9BAFDD1E9A74B700EC1DC4 /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119D191646C9006E6022 /* Finger.m */; };
+		9A9BAFDE1E9A74B700EC1DC4 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
+		9A9BAFDF1E9A74B700EC1DC4 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
+		9A9BAFE01E9A74B700EC1DC4 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
+		9A9BAFE11E9A74B700EC1DC4 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A5191646C9006E6022 /* Phone.m */; };
+		9A9BAFE21E9A74B700EC1DC4 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A7191646C9006E6022 /* Plane.m */; };
+		9A9BAFE31E9A74B700EC1DC4 /* Seaplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A9191646C9006E6022 /* Seaplane.m */; };
+		9A9BAFE41E9A74B700EC1DC4 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
+		9A9BAFE51E9A74B700EC1DC4 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A210F2F1944B0C100871071 /* CommentObject.m */; };
+		9A9BAFE61E9A757100EC1DC4 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117719164696006E6022 /* MappingProvider.m */; };
+		9A9BAFE71E9A758F00EC1DC4 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
+		9A9BAFE81E9A759300EC1DC4 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
 		9A9FDBDD1D8E10BB009E8F47 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A9FDBDE1D8E10BB009E8F47 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A9FDBE11D8E10D2009E8F47 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBE01D8E10D2009E8F47 /* Dog.m */; };
@@ -533,6 +550,7 @@
 		9A8420F8195723BE006DDDE3 /* Two.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Two.m; path = Tests/Fixtures/FixtureClasses/Two.m; sourceTree = "<group>"; };
 		9A8420FB195723D0006DDDE3 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Three.h; path = Tests/Fixtures/FixtureClasses/Three.h; sourceTree = "<group>"; };
 		9A8420FC195723D0006DDDE3 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Three.m; path = Tests/Fixtures/FixtureClasses/Three.m; sourceTree = "<group>"; };
+		9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSerializerTestCase.swift; path = Tests/Specs/EKSerializerTestCase.swift; sourceTree = "<group>"; };
 		9A9FDBDB1D8E10BB009E8F47 /* Wolf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wolf.h; path = Tests/Fixtures/FixtureClasses/Wolf.h; sourceTree = "<group>"; };
 		9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wolf.m; path = Tests/Fixtures/FixtureClasses/Wolf.m; sourceTree = "<group>"; };
 		9A9FDBDF1D8E10D2009E8F47 /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dog.h; path = Tests/Fixtures/FixtureClasses/Dog.h; sourceTree = "<group>"; };
@@ -877,6 +895,7 @@
 				9A4511E3191646F6006E6022 /* EKMapperSpec.m */,
 				9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */,
 				9A4511E6191646F6006E6022 /* EKSerializerSpec.m */,
+				9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */,
 				9AA7CECF191E69B800608262 /* EKCoreDataImporterSpec.m */,
 				3E5D428C1E9416C7000EC418 /* Tests-Bridging-Header.h */,
 			);
@@ -1301,7 +1320,7 @@
 				CLASSPREFIX = EK;
 				LastSwiftUpdateCheck = 0830;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = EasyKit;
 				TargetAttributes = {
 					02FF772518E32249002282D3 = {
@@ -1760,13 +1779,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9BAFE21E9A74B700EC1DC4 /* Plane.m in Sources */,
+				9A9BAFDB1E9A74B700EC1DC4 /* Cat.m in Sources */,
+				9A9BAFDC1E9A74B700EC1DC4 /* ColoredUFO.m in Sources */,
+				9A9BAFD91E9A74B700EC1DC4 /* Address.m in Sources */,
+				9A9BAFCB1E9A74A900EC1DC4 /* Car.m in Sources */,
+				9A9BAFDE1E9A74B700EC1DC4 /* Native.m in Sources */,
+				9A9BAFE41E9A74B700EC1DC4 /* UFO.m in Sources */,
 				3E5D42A41E942451000EC418 /* EKMappingBlocksTestCase.swift in Sources */,
-				3E5D42AB1E94292F000EC418 /* BaseTestModel.m in Sources */,
+				9A9BAFDF1E9A74B700EC1DC4 /* NativeChild.m in Sources */,
 				3E5D42AF1E942D3C000EC418 /* EKPropertyHelperTestCase.swift in Sources */,
+				9A9BAFCA1E9A744F00EC1DC4 /* EKSerializerTestCase.swift in Sources */,
+				9A9BAFE61E9A757100EC1DC4 /* MappingProvider.m in Sources */,
+				9A9BAFDA1E9A74B700EC1DC4 /* Alien.m in Sources */,
+				9A9BAFE01E9A74B700EC1DC4 /* Person.m in Sources */,
 				3E5D42A21E9420D4000EC418 /* EKRelationshipMappingTestCase.swift in Sources */,
 				3E5D42A91E94287E000EC418 /* FixtureLoader.swift in Sources */,
-				3E5D42AA1E94290B000EC418 /* Native.m in Sources */,
+				9A9BAFE11E9A74B700EC1DC4 /* Phone.m in Sources */,
+				9A9BAFDD1E9A74B700EC1DC4 /* Finger.m in Sources */,
+				9A9BAFE81E9A759300EC1DC4 /* Dog.m in Sources */,
+				9A9BAFD81E9A74B700EC1DC4 /* BaseTestModel.m in Sources */,
 				3E5D42A01E941750000EC418 /* EKPropertyMappingTestCase.swift in Sources */,
+				9A9BAFE51E9A74B700EC1DC4 /* CommentObject.m in Sources */,
+				9A9BAFE71E9A758F00EC1DC4 /* Wolf.m in Sources */,
+				9A9BAFE31E9A74B700EC1DC4 /* Seaplane.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2542,6 +2578,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2565,6 +2602,7 @@
 				3E5D429F1E94173F000EC418 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A130238190BF9380060A25C /* Build configuration list for PBXNativeTarget "OS X Tests" */ = {
 			isa = XCConfigurationList;

@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary *)serializeObject:(id<EKMappingProtocol>)object withMapping:(EKObjectMapping *)mapping;
++ (NSDictionary <NSString *, id> *)serializeObject:(id<EKMappingProtocol>)object withMapping:(EKObjectMapping *)mapping;
 
 /**
  Convert objects to JSON representation.
@@ -52,7 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSArray.
  */
-+ (NSArray *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection withMapping:(EKObjectMapping *)mapping;
++ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection
+                                                       withMapping:(EKObjectMapping *)mapping;
 
 /**
  Convert CoreData managed object to JSON representation.
@@ -65,9 +66,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary *)serializeObject:(id<EKManagedMappingProtocol>)object
-                      withMapping:(EKManagedObjectMapping *)mapping
-                      fromContext:(NSManagedObjectContext *)context;
++ (NSDictionary <NSString *, id> *)serializeObject:(id<EKManagedMappingProtocol>)object
+                                       withMapping:(EKManagedObjectMapping *)mapping
+                                       fromContext:(NSManagedObjectContext *)context;
 
 /**
  Convert CoreData managed objects to JSON representation.
@@ -80,9 +81,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSArray.
  */
-+ (NSArray *)serializeCollection:(NSArray<id<EKManagedMappingProtocol>> *)collection
-                     withMapping:(EKManagedObjectMapping*)mapping
-                     fromContext:(NSManagedObjectContext *)context;
++ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray<id<EKManagedMappingProtocol>> *)collection
+                                                       withMapping:(EKManagedObjectMapping*)mapping
+                                                       fromContext:(NSManagedObjectContext *)context;
 @end
 
 NS_ASSUME_NONNULL_END
