@@ -7,4 +7,5 @@
 #import "Person.h"
 #import "Address.h"
 #import "Phone.h"
+#import "UFO.h"
 #import "MappingProvider.h"

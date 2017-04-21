@@ -15,7 +15,6 @@
 #import "ManagedPerson.h"
 #import "Alien.h"
 #import "UFO.h"
-#import "ColoredUFO.h"
 #import "Finger.h"
 #import "MappingProvider.h"
 #import "Address.h"

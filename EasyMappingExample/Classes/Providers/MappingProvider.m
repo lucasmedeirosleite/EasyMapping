@@ -15,7 +15,6 @@
 #import "Plane.h"
 #import "Alien.h"
 #import "UFO.h"
-#import "ColoredUFO.h"
 #import "Finger.h"
 #import "NativeChild.h"
 #import "Cat.h"

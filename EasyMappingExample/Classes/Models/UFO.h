@@ -16,5 +16,11 @@
 @property (nonatomic, strong) Alien *captain;
 @property (nonatomic, strong) NSMutableArray *crew;
 
+@end
+
+
+@interface ColoredUFO : UFO
+
+@property (nonatomic, strong) NSString *color;
 
 @end
