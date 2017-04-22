@@ -200,8 +200,6 @@
 		9A4511F0191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */; };
 		9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E3191646F6006E6022 /* EKMapperSpec.m */; };
 		9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E3191646F6006E6022 /* EKMapperSpec.m */; };
-		9A4511F7191646F7006E6022 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */; };
-		9A4511F8191646F7006E6022 /* EKObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */; };
 		9A4511FF191646F7006E6022 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E6191646F6006E6022 /* EKSerializerSpec.m */; };
 		9A451200191646F7006E6022 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E6191646F6006E6022 /* EKSerializerSpec.m */; };
 		9A45121319164705006E6022 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120319164704006E6022 /* Address.json */; };
@@ -488,7 +486,6 @@
 		9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapperSpec.m; path = Tests/Specs/EKManagedObjectMapperSpec.m; sourceTree = "<group>"; };
 		9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMappingSpec.m; path = Tests/Specs/EKManagedObjectMappingSpec.m; sourceTree = "<group>"; };
 		9A4511E3191646F6006E6022 /* EKMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMapperSpec.m; path = Tests/Specs/EKMapperSpec.m; sourceTree = "<group>"; };
-		9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKObjectMappingSpec.m; path = Tests/Specs/EKObjectMappingSpec.m; sourceTree = "<group>"; };
 		9A4511E6191646F6006E6022 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKSerializerSpec.m; path = Tests/Specs/EKSerializerSpec.m; sourceTree = "<group>"; };
 		9A45120319164704006E6022 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Address.json; path = Tests/Fixtures/Address.json; sourceTree = SOURCE_ROOT; };
 		9A45120419164704006E6022 /* Alien.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Alien.json; path = Tests/Fixtures/Alien.json; sourceTree = SOURCE_ROOT; };
@@ -891,7 +888,6 @@
 				9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */,
 				9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */,
 				9A4511E3191646F6006E6022 /* EKMapperSpec.m */,
-				9A4511E4191646F6006E6022 /* EKObjectMappingSpec.m */,
 				9A4511E6191646F6006E6022 /* EKSerializerSpec.m */,
 				9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */,
 				9AA7CECF191E69B800608262 /* EKCoreDataImporterSpec.m */,
@@ -1765,7 +1761,6 @@
 				9A2044111B23810D00AB7363 /* MutableFoundationClass.m in Sources */,
 				9A45117C19164696006E6022 /* MappingProvider.m in Sources */,
 				9A4511AC191646C9006E6022 /* Address.m in Sources */,
-				9A4511F7191646F7006E6022 /* EKObjectMappingSpec.m in Sources */,
 				9A4511EB191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A130247190BFEF30060A25C /* EKObjectMapping.m in Sources */,
 				9AA7CED0191E69B800608262 /* EKCoreDataImporterSpec.m in Sources */,
@@ -1852,7 +1847,6 @@
 				9A4511CD191646C9006E6022 /* Person.m in Sources */,
 				9A45117D19164696006E6022 /* MappingProvider.m in Sources */,
 				9A4511AD191646C9006E6022 /* Address.m in Sources */,
-				9A4511F8191646F7006E6022 /* EKObjectMappingSpec.m in Sources */,
 				9A4511EC191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A13024F190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */,
 				9AA7CED1191E69B800608262 /* EKCoreDataImporterSpec.m in Sources */,

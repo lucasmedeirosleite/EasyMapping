@@ -138,6 +138,34 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
         XCTAssertNil(sut?.reverseBlock?(5))
     }
     
+    func testMapKeyPathToPropertyWithValueBlock() {
+        let genders = ["male": Gender.male, "female":Gender.female]
+        mapping.mapKeyPath("gender", toProperty: "gender") { key, value  in
+            return genders[value as? String ?? ""]
+        }
+        
+        let sut = mapping.propertyMappings["gender"] as? EKPropertyMapping
+        
+        XCTAssert(sut?.valueBlock?("gender","male") as? Gender == Gender.male)
+    }
+    
+    func testMapKeypathToPropertyWithValueBlockReverseBlock() {
+        let genders = ["male": Gender.male, "female":Gender.female]
+        mapping.mapKeyPath("gender", toProperty: "gender", withValueBlock: { _, value in
+            return genders[value as? String ?? ""]
+        }, reverse: { gender in
+            return genders.filter({ key,value in
+                value == gender as? Gender
+            }).map { $0.0 }.first
+        })
+        
+        let sut = mapping.propertyMappings["gender"] as? EKPropertyMapping
+        
+        XCTAssert(sut?.valueBlock?("gender","male") as? Gender == Gender.male)
+        XCTAssertEqual(sut?.reverseBlock?(Gender.male) as? String, "male")
+        XCTAssertEqual(sut?.reverseBlock?(Gender.female) as? String, "female")
+    }
+    
     func testMapPropertiesFromMappingObject() {
         let ufo = EKObjectMapping(objectClass: ColoredUFO.self)
         ufo.mapProperties(fromMappingObject: UFO.objectMapping())
@@ -154,5 +182,84 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
         
         XCTAssertEqual(crew?.keyPath, "crew")
         XCTAssertEqual(crew?.property, "crew")
+    }
+}
+
+class EKObjectMappingRelationshipsMappingTestCase : XCTestCase {
+    var sut : EKObjectMapping!
+    
+    override func setUp() {
+        super.setUp()
+        sut = MappingProvider.personMapping()
+    }
+    
+    func testHasOneMappingForKey() {
+        XCTAssertEqual(sut.hasOneMappings.count, 1)
+        
+        let car = sut.hasOneMappings.firstObject as? EKRelationshipMapping
+        
+        XCTAssertEqual(car?.keyPath, "car")
+        XCTAssertEqual(car?.property, "car")
+    }
+    
+    func testHasOneMappingForKeypathForProperty() {
+        sut.hasOneMappings.removeAllObjects()
+        
+        sut.hasOne(Car.self, forKeyPath: "car", forProperty:"personCar")
+        
+        let car = sut.hasOneMappings.firstObject as? EKRelationshipMapping
+        
+        XCTAssertEqual(car?.keyPath, "car")
+        XCTAssertEqual(car?.property, "personCar")
+    }
+    
+    func testHasManyMappingForKeypathForProperty() {
+        sut.hasManyMappings.removeAllObjects()
+        
+        sut.hasMany(Phone.self, forKeyPath: "phones", forProperty:"personPhones")
+        
+        let car = sut.hasManyMappings.firstObject as? EKRelationshipMapping
+        
+        XCTAssertEqual(car?.keyPath, "phones")
+        XCTAssertEqual(car?.property, "personPhones")
+    }
+    
+    func testHasManyMappingForKey() {
+        XCTAssertEqual(sut.hasManyMappings.count, 1)
+        let phones = sut.hasManyMappings.firstObject as? EKRelationshipMapping
+        
+        XCTAssertEqual(phones?.keyPath, "phones")
+        XCTAssertEqual(phones?.property, "phones")
+    }
+}
+
+class EKObjectMappingCustomRElationshipsMappingTestCase : XCTestCase {
+    var person : EKObjectMapping!
+    var phone : EKObjectMapping!
+    
+    override func setUp() {
+        super.setUp()
+        person = EKObjectMapping(objectClass: Person.self)
+        phone = Phone.objectMapping()
+    }
+    
+    func testHasOneCarMappingWithPhoneSubstitution() {
+        person.hasOne(Car.self, forKeyPath: "phone", forProperty: "car", with: phone)
+        
+        let sut = person.hasOneMappings.firstObject as? EKRelationshipMapping
+        
+        XCTAssert(sut?.mapping(for: sut as Any) === phone)
+        XCTAssertEqual(sut?.keyPath, "phone")
+        XCTAssertEqual(sut?.property, "car")
+    }
+    
+    func testHasManyPhoneMappingWithCarSubstitution() {
+        person.hasMany(Car.self, forKeyPath: "phone", forProperty: "car", with: phone)
+        
+        let sut = person.hasManyMappings.firstObject as? EKRelationshipMapping
+        
+        XCTAssert(sut?.mapping(for: sut as Any) === phone)
+        XCTAssertEqual(sut?.keyPath, "phone")
+        XCTAssertEqual(sut?.property, "car")
     }
 }
