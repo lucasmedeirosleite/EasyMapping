@@ -488,7 +488,9 @@ describe(@"EKMapper", ^{
                 car = [EKMapper objectFromExternalRepresentation:externalRepresentation withMapping:[MappingProvider carWithDateMapping]];
 
                 NSDictionary *updatedRepresentation = [CMFixture buildUsingFixture:@"CarWithAttributesRemoved"];
-                car = [EKMapper fillObject:car fromExternalRepresentation:updatedRepresentation withMapping:[MappingProvider carWithDateMapping]];
+                EKObjectMapping * mapping = [MappingProvider carWithDateMapping];
+                mapping.ignoreMissingFields = YES;
+                car = [EKMapper fillObject:car fromExternalRepresentation:updatedRepresentation withMapping:mapping];
             });
 
             specify(^{

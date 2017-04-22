@@ -115,6 +115,29 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
         XCTAssertEqual(email?.property, "email")
     }
     
+    func testMapKeyPathToPropertyWithDateFormatter() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let date = Date(timeIntervalSince1970: 0)
+        let string = formatter.string(from: date)
+        
+        mapping.mapKeyPath("birthdate", toProperty: "birthdate", with: formatter)
+        
+        let sut = mapping.propertyMappings["birthdate"] as? EKPropertyMapping
+        
+        XCTAssertEqual(sut?.keyPath, "birthdate")
+        XCTAssertEqual(sut?.property, "birthdate")
+        
+        XCTAssertEqual(sut?.valueBlock?("birthdate", string) as? Date, date)
+        XCTAssertNil(sut?.valueBlock?("birthdate", nil))
+        XCTAssertNil(sut?.valueBlock?("birthdate", 5))
+        
+        XCTAssertEqual(sut?.reverseBlock?(date) as? String, "01 Jan 1970")
+        XCTAssertNil(sut?.reverseBlock?(nil))
+        XCTAssertNil(sut?.reverseBlock?(5))
+    }
+    
     func testMapPropertiesFromMappingObject() {
         let ufo = EKObjectMapping(objectClass: ColoredUFO.self)
         ufo.mapProperties(fromMappingObject: UFO.objectMapping())

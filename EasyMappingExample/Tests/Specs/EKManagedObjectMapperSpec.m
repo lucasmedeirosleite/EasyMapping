@@ -146,7 +146,9 @@ describe(@"EKManagedObjectMapper", ^{
                 [moc save:nil];
                 
                 externalRepresentation = @{ @"id": @(1), @"model": @"i30", };
-                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carWithDateMapping] inManagedObjectContext:moc];
+                EKManagedObjectMapping * mapping = [ManagedMappingProvider carWithDateMapping];
+                mapping.ignoreMissingFields = YES;
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping inManagedObjectContext:moc];
             });
             
             specify(^{
@@ -190,7 +192,9 @@ describe(@"EKManagedObjectMapper", ^{
                 [moc save:nil];
 
                 externalRepresentation = [CMFixture buildUsingFixture:@"CarWithAttributesRemoved"];
-                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:[ManagedMappingProvider carWithDateMapping] inManagedObjectContext:moc];
+                EKManagedObjectMapping * mapping = [ManagedMappingProvider carWithDateMapping];
+                mapping.ignoreMissingFields = YES;
+                car = [EKManagedObjectMapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping inManagedObjectContext:moc];
             });
 
             specify(^{

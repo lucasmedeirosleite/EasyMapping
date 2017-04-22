@@ -96,20 +96,22 @@ static const char scalarTypes[] = {
 #pragma mark Property accessor methods 
 
 + (void)setProperty:(EKPropertyMapping *)propertyMapping onObject:(id)object
- fromRepresentation:(NSDictionary *)representation respectPropertyType:(BOOL)respectPropertyType ignoreMissingFields:(BOOL)ignoreMIssingFields
+ fromRepresentation:(NSDictionary *)representation respectPropertyType:(BOOL)respectPropertyType ignoreMissingFields:(BOOL)ignoreMissingFields
 {
-    id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation ignoreMissingFields:ignoreMIssingFields];
-    if (value == (id)[NSNull null]) {
-        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
-            [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
-        }
-    } else if (value) {
+    id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation];
+    if (value && value != (id)NSNull.null) {
         if (respectPropertyType) {
             value = [self propertyRepresentation:value
                                        forObject:object
                                 withPropertyName:propertyMapping.property];
         }
         [self setValue:value onObject:object forKeyPath:propertyMapping.property];
+    } else {
+        if (!value && ignoreMissingFields) return;
+        
+        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
+            [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
+        }
     }
 }
 
@@ -123,17 +125,19 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     id value = [self getValueOfManagedProperty:propertyMapping
                             fromRepresentation:representation
                                      inContext:context];
-    if (value == (id)[NSNull null]) {
-        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
-            [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
-        }
-    } else if (value) {
+    if (value && value != (id)NSNull.null) {
         if (respectPropertyType) {
             value = [self propertyRepresentation:value
                                        forObject:object
                                 withPropertyName:propertyMapping.property];
         }
         [self setValue:value onObject:object forKeyPath:propertyMapping.property];
+    } else {
+        if (!value && ignoreMissingFields) return;
+        
+        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
+            [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
+        }
     }
 }
 
@@ -175,22 +179,20 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     }
 }
 
-+ (id)getValueOfProperty:(EKPropertyMapping *)propertyMapping fromRepresentation:(NSDictionary *)representation ignoreMissingFields:(BOOL)ignoreMissingFields
++ (id)getValueOfProperty:(EKPropertyMapping *)mapping fromRepresentation:(NSDictionary *)representation
 {
-    if (propertyMapping == nil) return nil;
-    id value = nil;
+    if (mapping == nil) return nil;
     
-    if (propertyMapping.valueBlock) {
-        value = [representation valueForKeyPath:propertyMapping.keyPath];
-        if (value != nil || !ignoreMissingFields) {
-            value = propertyMapping.valueBlock(propertyMapping.keyPath, value);
+    if (mapping.valueBlock) {
+        id value = [representation valueForKeyPath:mapping.keyPath];
+        if (value != nil) {
+            return mapping.valueBlock(mapping.keyPath, value);
         }
+        return value;
     }
     else {
-        value = [representation valueForKeyPath:propertyMapping.keyPath];
+        return [representation valueForKeyPath:mapping.keyPath];
     }
-    
-    return value;
 }
 
 +(id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
@@ -198,17 +200,17 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
                      inContext:(NSManagedObjectContext *)context
 {
     if (mapping == nil) return nil;
-    id value = nil;
     
     if (mapping.managedValueBlock) {
-        id representationValue = [representation valueForKeyPath:mapping.keyPath];
-        value = mapping.managedValueBlock(mapping.keyPath,representationValue,context);
+        id value = [representation valueForKeyPath:mapping.keyPath];
+        if (value != nil) {
+            return mapping.managedValueBlock(mapping.keyPath,value,context);
+        }
+        return value;
     }
     else {
-        value = [representation valueForKeyPath:mapping.keyPath];
+        return [representation valueForKeyPath:mapping.keyPath];
     }
-    
-    return value;
 }
 
 + (NSDictionary *)extractRootPathFromExternalRepresentation:(NSDictionary *)externalRepresentation

@@ -201,10 +201,9 @@
 - (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context
 {
     EKPropertyMapping * primaryKeyMapping = [mapping primaryKeyPropertyMapping];
-    id primaryValue = [EKPropertyHelper getValueOfManagedProperty:primaryKeyMapping
+    return [EKPropertyHelper getValueOfManagedProperty:primaryKeyMapping
                                                fromRepresentation:representation
                                                         inContext:context];
-    return primaryValue;
 }
 
 #pragma mark - Fetching existing objects
