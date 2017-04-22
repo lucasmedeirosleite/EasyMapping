@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Next
+
+* `ignoreMissingFields` property now properly differentiates between a truly missing from JSON field and field, that contains null, which is turned into NSNull.null instance by NSJSONSerialization.
+* `mapKeyPath:toPoperty:withDateFormatter` method now creates blocks, that return nil instead of `NSNull` if received value is not a NSString or NSDate. `NSNull` instance however is left untouched.
+
 ## [0.20.1](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.20.1)
 
 * Added ability to ignore field during serialization - #148(thanks, @vladimirbebeshko)

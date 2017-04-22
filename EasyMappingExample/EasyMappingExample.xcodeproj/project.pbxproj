@@ -536,6 +536,7 @@
 		9A4512F719166B8E006E6022 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "Benchmarks/Targets/MacOS Benchmark/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 		9A53E2D81A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+EasyMappingAdditions.h"; sourceTree = "<group>"; };
 		9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMappingBlocks.m; sourceTree = "<group>"; };
+		9A766F141EAB508900164D7F /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		9A8420E01957164E006DDDE3 /* EKObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectModel.h; sourceTree = "<group>"; };
 		9A8420E11957164E006DDDE3 /* EKObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectModel.m; sourceTree = "<group>"; };
 		9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectModel.h; sourceTree = "<group>"; };
@@ -1064,6 +1065,7 @@
 		C6557E0916D6621E005D2D3E = {
 			isa = PBXGroup;
 			children = (
+				9A766F141EAB508900164D7F /* CHANGELOG.md */,
 				C6557E5016D6652A005D2D3E /* EasyMapping */,
 				9A4512C119164C0D006E6022 /* Classes */,
 				9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */,
