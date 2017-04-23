@@ -54,4 +54,26 @@ class EKMappingBlocksTestCase: XCTestCase {
         XCTAssertNil(string)
     }
     
+    func testCoreDataReverseMappingBlocks() {
+        ManagedCar.register(ManagedMappingProvider.carMapping())
+        ManagedPhone.register(ManagedMappingProvider.phoneMapping())
+        defer {
+            ManagedCar.register(nil)
+            ManagedPhone.register(nil)
+        }
+        
+        let context = Storage.shared.context
+        let info = FixtureLoader.json(fromFileNamed: "Person.json")
+        let mapping = ManagedMappingProvider.personWithReverseBlocksMapping()
+        
+        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info,
+                                                  with: mapping,
+                                                  in: context) as! ManagedPerson
+        let sut = EKSerializer.serializeObject(person, with: mapping, from: context)
+        
+        
+        XCTAssertEqual(person.gender, "husband")
+        XCTAssertEqual(sut["gender"] as? String, "male")
+    }
+    
 }

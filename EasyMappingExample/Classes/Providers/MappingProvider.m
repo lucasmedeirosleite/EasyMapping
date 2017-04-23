@@ -16,7 +16,7 @@
 #import "Alien.h"
 #import "UFO.h"
 #import "Finger.h"
-#import "NativeChild.h"
+#import "Native.h"
 #import "Cat.h"
 #import "CommentObject.h"
 #import "Dog.h"

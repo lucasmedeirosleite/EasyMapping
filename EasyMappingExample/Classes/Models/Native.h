@@ -31,3 +31,9 @@
 @property (nonatomic, readwrite) bool smallBoolProperty;
 
 @end
+
+@interface NativeChild : Native
+
+@property (nonatomic, strong) NSString *childProperty;
+
+@end

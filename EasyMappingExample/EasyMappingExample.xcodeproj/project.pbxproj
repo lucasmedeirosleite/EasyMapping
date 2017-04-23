@@ -29,7 +29,7 @@
 		85D1B77C1B21973D00B0555C /* CarsWithNullItem.json in Resources */ = {isa = PBXBuildFile; fileRef = 85D1B7791B21973500B0555C /* CarsWithNullItem.json */; };
 		85D1B77D1B21973D00B0555C /* CarsWithNullItem.json in Resources */ = {isa = PBXBuildFile; fileRef = 85D1B7791B21973500B0555C /* CarsWithNullItem.json */; };
 		958448F26B1E20D64DF3AEF0 /* libPods-iOS Benchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1814673A67105D3B8529ED /* libPods-iOS Benchmark.a */; };
-		9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
+		9A13023D190BFBCA0060A25C /* EasyMapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMapping.xcdatamodeld */; };
 		9A130245190BFEF30060A25C /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CF816F2B2770003759B /* EKPropertyMapping.m */; };
 		9A130246190BFEF30060A25C /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFA16F2B2770003759B /* EKMapper.m */; };
 		9A130247190BFEF30060A25C /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D16CFD16F2B2770003759B /* EKObjectMapping.m */; };
@@ -124,8 +124,8 @@
 		9A2A38511AEA609D0021E97D /* EKMappingProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A20569E1956CF7900499FC3 /* EKMappingProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A3178C1191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */; };
 		9A3178C2191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3178C0191E3E10006FB945 /* EKCoreDataImportBenchmarkSuite.m */; };
-		9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
-		9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
+		9A451172191644CB006E6022 /* EasyMapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMapping.xcdatamodeld */; };
+		9A451173191644CB006E6022 /* EasyMapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMapping.xcdatamodeld */; };
 		9A45117819164696006E6022 /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
 		9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
 		9A45117A19164696006E6022 /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
@@ -170,10 +170,6 @@
 		9A4511C5191646C9006E6022 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
 		9A4511C6191646C9006E6022 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
 		9A4511C7191646C9006E6022 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
-		9A4511C8191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
-		9A4511C9191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
-		9A4511CA191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
-		9A4511CB191646C9006E6022 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
 		9A4511CC191646C9006E6022 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
 		9A4511CD191646C9006E6022 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
 		9A4511CE191646C9006E6022 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
@@ -200,8 +196,6 @@
 		9A4511F0191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */; };
 		9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E3191646F6006E6022 /* EKMapperSpec.m */; };
 		9A4511F4191646F7006E6022 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E3191646F6006E6022 /* EKMapperSpec.m */; };
-		9A4511FF191646F7006E6022 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E6191646F6006E6022 /* EKSerializerSpec.m */; };
-		9A451200191646F7006E6022 /* EKSerializerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E6191646F6006E6022 /* EKSerializerSpec.m */; };
 		9A45121319164705006E6022 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120319164704006E6022 /* Address.json */; };
 		9A45121419164705006E6022 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120319164704006E6022 /* Address.json */; };
 		9A45121719164705006E6022 /* Alien.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120419164704006E6022 /* Alien.json */; };
@@ -305,6 +299,16 @@
 		9A6013C61DA66A4D00506062 /* Wolf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */; };
 		9A7048131AB464A700EFD403 /* CarWithAttributesRemoved.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */; };
 		9A74F5401C85F2CE0063247E /* PersonWithoutRelations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */; };
+		9A766F191EACF73100164D7F /* Native.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120C19164705006E6022 /* Native.json */; };
+		9A766F1A1EACFAC600164D7F /* NativeChild.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120D19164705006E6022 /* NativeChild.json */; };
+		9A766F1C1EACFECB00164D7F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A766F1B1EACFECB00164D7F /* Storage.swift */; };
+		9A766F1D1EAD075500164D7F /* ManagedMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45117519164696006E6022 /* ManagedMappingProvider.m */; };
+		9A766F1E1EAD080700164D7F /* ManagedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451183191646B2006E6022 /* ManagedPerson.m */; };
+		9A766F1F1EAD084400164D7F /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
+		9A766F201EAD084C00164D7F /* ManagedCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451181191646B2006E6022 /* ManagedCar.m */; };
+		9A766F211EAD085800164D7F /* ManagedPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451185191646B2006E6022 /* ManagedPhone.m */; };
+		9A766F221EAD088E00164D7F /* EasyMapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMapping.xcdatamodeld */; };
+		9A7B4A4C1EAD0C8F00D6A70B /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120E19164705006E6022 /* Person.json */; };
 		9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A8420DD1957068A006DDDE3 /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A41956E0EE00499FC3 /* BaseManagedTestModel.m */; };
 		9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
@@ -331,7 +335,6 @@
 		9A9BAFDB1E9A74B700EC1DC4 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451199191646C9006E6022 /* Cat.m */; };
 		9A9BAFDD1E9A74B700EC1DC4 /* Finger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119D191646C9006E6022 /* Finger.m */; };
 		9A9BAFDE1E9A74B700EC1DC4 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A45119F191646C9006E6022 /* Native.m */; };
-		9A9BAFDF1E9A74B700EC1DC4 /* NativeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A1191646C9006E6022 /* NativeChild.m */; };
 		9A9BAFE01E9A74B700EC1DC4 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A3191646C9006E6022 /* Person.m */; };
 		9A9BAFE11E9A74B700EC1DC4 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A5191646C9006E6022 /* Phone.m */; };
 		9A9BAFE21E9A74B700EC1DC4 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511A7191646C9006E6022 /* Plane.m */; };
@@ -386,7 +389,7 @@
 		9AC0F3201A7276DB004B2096 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
 		9AC1321D1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
 		9AC1321E1A2CA193001ED491 /* PersonsWithSamePhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */; };
-		9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */; };
+		9AE54FE8190BDEF5003A3B56 /* EasyMapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AE54FE5190BD9B5003A3B56 /* EasyMapping.xcdatamodeld */; };
 		9AFC96A61A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC96A51A6BF850008A295D /* XCTestCase+EasyMapping.m */; };
 		9AFC96A71A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC96A51A6BF850008A295D /* XCTestCase+EasyMapping.m */; };
 		9EC0BF2D1AB35A1D00F584DF /* CarWithAttributesRemoved.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */; };
@@ -471,8 +474,6 @@
 		9A45119D191646C9006E6022 /* Finger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Finger.m; path = Classes/Models/Finger.m; sourceTree = SOURCE_ROOT; };
 		9A45119E191646C9006E6022 /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Native.h; path = Classes/Models/Native.h; sourceTree = SOURCE_ROOT; };
 		9A45119F191646C9006E6022 /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Native.m; path = Classes/Models/Native.m; sourceTree = SOURCE_ROOT; };
-		9A4511A0191646C9006E6022 /* NativeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeChild.h; path = Classes/Models/NativeChild.h; sourceTree = SOURCE_ROOT; };
-		9A4511A1191646C9006E6022 /* NativeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeChild.m; path = Classes/Models/NativeChild.m; sourceTree = SOURCE_ROOT; };
 		9A4511A2191646C9006E6022 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Classes/Models/Person.h; sourceTree = SOURCE_ROOT; };
 		9A4511A3191646C9006E6022 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Classes/Models/Person.m; sourceTree = SOURCE_ROOT; };
 		9A4511A4191646C9006E6022 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Phone.h; path = Classes/Models/Phone.h; sourceTree = SOURCE_ROOT; };
@@ -486,7 +487,6 @@
 		9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapperSpec.m; path = Tests/Specs/EKManagedObjectMapperSpec.m; sourceTree = "<group>"; };
 		9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMappingSpec.m; path = Tests/Specs/EKManagedObjectMappingSpec.m; sourceTree = "<group>"; };
 		9A4511E3191646F6006E6022 /* EKMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMapperSpec.m; path = Tests/Specs/EKMapperSpec.m; sourceTree = "<group>"; };
-		9A4511E6191646F6006E6022 /* EKSerializerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKSerializerSpec.m; path = Tests/Specs/EKSerializerSpec.m; sourceTree = "<group>"; };
 		9A45120319164704006E6022 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Address.json; path = Tests/Fixtures/Address.json; sourceTree = SOURCE_ROOT; };
 		9A45120419164704006E6022 /* Alien.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Alien.json; path = Tests/Fixtures/Alien.json; sourceTree = SOURCE_ROOT; };
 		9A45120519164704006E6022 /* Car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Car.json; path = Tests/Fixtures/Car.json; sourceTree = SOURCE_ROOT; };
@@ -534,6 +534,7 @@
 		9A53E2D81A7E536600C4D169 /* NSDateFormatter+EasyMappingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+EasyMappingAdditions.h"; sourceTree = "<group>"; };
 		9A53E2E21A7EA77300C4D169 /* EKMappingBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMappingBlocks.m; sourceTree = "<group>"; };
 		9A766F141EAB508900164D7F /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		9A766F1B1EACFECB00164D7F /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = Tests/Utilities/Storage.swift; sourceTree = "<group>"; };
 		9A8420E01957164E006DDDE3 /* EKObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKObjectModel.h; sourceTree = "<group>"; };
 		9A8420E11957164E006DDDE3 /* EKObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectModel.m; sourceTree = "<group>"; };
 		9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectModel.h; sourceTree = "<group>"; };
@@ -563,7 +564,7 @@
 		9AC1321C1A2CA193001ED491 /* PersonsWithSamePhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonsWithSamePhones.json; path = Tests/Fixtures/PersonsWithSamePhones.json; sourceTree = SOURCE_ROOT; };
 		9AE54FE2190BD91A003A3B56 /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectMapping.h; sourceTree = "<group>"; };
 		9AE54FE3190BD91A003A3B56 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapping.m; sourceTree = "<group>"; };
-		9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMappingExample.xcdatamodel; sourceTree = "<group>"; };
+		9AE54FE6190BD9B5003A3B56 /* EasyMapping.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyMapping.xcdatamodel; sourceTree = "<group>"; };
 		9AFC96A41A6BF850008A295D /* XCTestCase+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XCTestCase+EasyMapping.h"; path = "../XCTest+EasyMapping/XCTestCase+EasyMapping.h"; sourceTree = "<group>"; };
 		9AFC96A51A6BF850008A295D /* XCTestCase+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase+EasyMapping.m"; path = "../XCTest+EasyMapping/XCTestCase+EasyMapping.m"; sourceTree = "<group>"; };
 		9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CarWithAttributesRemoved.json; path = Tests/Fixtures/CarWithAttributesRemoved.json; sourceTree = SOURCE_ROOT; };
@@ -739,6 +740,7 @@
 			isa = PBXGroup;
 			children = (
 				3E5D42A81E94287E000EC418 /* FixtureLoader.swift */,
+				9A766F1B1EACFECB00164D7F /* Storage.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -888,7 +890,6 @@
 				9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */,
 				9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */,
 				9A4511E3191646F6006E6022 /* EKMapperSpec.m */,
-				9A4511E6191646F6006E6022 /* EKSerializerSpec.m */,
 				9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */,
 				9AA7CECF191E69B800608262 /* EKCoreDataImporterSpec.m */,
 				3E5D428C1E9416C7000EC418 /* Tests-Bridging-Header.h */,
@@ -1003,8 +1004,6 @@
 				9A45119D191646C9006E6022 /* Finger.m */,
 				9A45119E191646C9006E6022 /* Native.h */,
 				9A45119F191646C9006E6022 /* Native.m */,
-				9A4511A0191646C9006E6022 /* NativeChild.h */,
-				9A4511A1191646C9006E6022 /* NativeChild.m */,
 				9A4511A2191646C9006E6022 /* Person.h */,
 				9A4511A3191646C9006E6022 /* Person.m */,
 				9A4511A4191646C9006E6022 /* Phone.h */,
@@ -1064,7 +1063,7 @@
 				9A766F141EAB508900164D7F /* CHANGELOG.md */,
 				C6557E5016D6652A005D2D3E /* EasyMapping */,
 				9A4512C119164C0D006E6022 /* Classes */,
-				9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */,
+				9AE54FE5190BD9B5003A3B56 /* EasyMapping.xcdatamodeld */,
 				9AF425C1190CEF42003FD1BD /* Tests */,
 				9AF425C2190CEF64003FD1BD /* Supporting files */,
 				9A4512C219164C20006E6022 /* Benchmarks */,
@@ -1403,7 +1402,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A766F191EACF73100164D7F /* Native.json in Resources */,
 				9A9BAFE91E9AD1AB00EC1DC4 /* PersonWithDifferentNaming.json in Resources */,
+				9A7B4A4C1EAD0C8F00D6A70B /* Person.json in Resources */,
+				9A766F1A1EACFAC600164D7F /* NativeChild.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1728,14 +1730,12 @@
 				9A4511D0191646C9006E6022 /* Phone.m in Sources */,
 				9A8420FD195723D0006DDDE3 /* Three.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
-				9A4511C8191646C9006E6022 /* NativeChild.m in Sources */,
 				9A9FDBF01D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m in Sources */,
 				9A4511C4191646C9006E6022 /* Native.m in Sources */,
 				9A130249190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
 				9A4511D4191646C9006E6022 /* Plane.m in Sources */,
 				9A45118A191646B2006E6022 /* ManagedPerson.m in Sources */,
 				9A4511D8191646C9006E6022 /* Seaplane.m in Sources */,
-				9A4511FF191646F7006E6022 /* EKSerializerSpec.m in Sources */,
 				9AFC96A61A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */,
 				9A4511C0191646C9006E6022 /* Finger.m in Sources */,
 				9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */,
@@ -1745,7 +1745,7 @@
 				9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */,
 				9A130245190BFEF30060A25C /* EKPropertyMapping.m in Sources */,
 				9A170332194C820200682F00 /* EKRelationshipMapping.m in Sources */,
-				9AE54FE8190BDEF5003A3B56 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9AE54FE8190BDEF5003A3B56 /* EasyMapping.xcdatamodeld in Sources */,
 				9AA7CECB191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9AA7CED7191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
@@ -1772,24 +1772,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A9BAFE21E9A74B700EC1DC4 /* Plane.m in Sources */,
+				9A766F211EAD085800164D7F /* ManagedPhone.m in Sources */,
 				9A9BAFDB1E9A74B700EC1DC4 /* Cat.m in Sources */,
 				9A9BAFD91E9A74B700EC1DC4 /* Address.m in Sources */,
+				9A766F221EAD088E00164D7F /* EasyMapping.xcdatamodeld in Sources */,
 				9A9BAFCB1E9A74A900EC1DC4 /* Car.m in Sources */,
 				9A9BAFDE1E9A74B700EC1DC4 /* Native.m in Sources */,
 				9A9BAFE41E9A74B700EC1DC4 /* UFO.m in Sources */,
+				9A766F1E1EAD080700164D7F /* ManagedPerson.m in Sources */,
 				3E5D42A41E942451000EC418 /* EKMappingBlocksTestCase.swift in Sources */,
-				9A9BAFDF1E9A74B700EC1DC4 /* NativeChild.m in Sources */,
 				3E5D42AF1E942D3C000EC418 /* EKPropertyHelperTestCase.swift in Sources */,
 				9A9BAFCA1E9A744F00EC1DC4 /* EKSerializerTestCase.swift in Sources */,
 				9A9BAFE61E9A757100EC1DC4 /* MappingProvider.m in Sources */,
 				9A9BAFDA1E9A74B700EC1DC4 /* Alien.m in Sources */,
+				9A766F1F1EAD084400164D7F /* BaseManagedTestModel.m in Sources */,
 				3ECAE90C1EAA20FF0041BDA4 /* EKObjectMappingTestCase.swift in Sources */,
 				9A9BAFE01E9A74B700EC1DC4 /* Person.m in Sources */,
 				3E5D42A21E9420D4000EC418 /* EKRelationshipMappingTestCase.swift in Sources */,
+				9A766F1D1EAD075500164D7F /* ManagedMappingProvider.m in Sources */,
 				3E5D42A91E94287E000EC418 /* FixtureLoader.swift in Sources */,
+				9A766F1C1EACFECB00164D7F /* Storage.swift in Sources */,
 				9A9BAFE11E9A74B700EC1DC4 /* Phone.m in Sources */,
 				9A9BAFDD1E9A74B700EC1DC4 /* Finger.m in Sources */,
 				9A9BAFE81E9A759300EC1DC4 /* Dog.m in Sources */,
+				9A766F201EAD084C00164D7F /* ManagedCar.m in Sources */,
 				9A9BAFD81E9A74B700EC1DC4 /* BaseTestModel.m in Sources */,
 				3E5D42A01E941750000EC418 /* EKPropertyMappingTestCase.swift in Sources */,
 				9A9BAFE51E9A74B700EC1DC4 /* CommentObject.m in Sources */,
@@ -1814,16 +1820,14 @@
 				9A4511D1191646C9006E6022 /* Phone.m in Sources */,
 				9A8420FE195723D0006DDDE3 /* Three.m in Sources */,
 				9A130251190BFEF30060A25C /* EKSerializer.m in Sources */,
-				9A4511C9191646C9006E6022 /* NativeChild.m in Sources */,
 				9A9FDBE21D8E10D2009E8F47 /* Dog.m in Sources */,
 				9A4511C5191646C9006E6022 /* Native.m in Sources */,
 				9A9FDBF11D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m in Sources */,
-				9A13023D190BFBCA0060A25C /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A13023D190BFBCA0060A25C /* EasyMapping.xcdatamodeld in Sources */,
 				9A45118B191646B2006E6022 /* ManagedPerson.m in Sources */,
 				9A4511D5191646C9006E6022 /* Plane.m in Sources */,
 				9A4511D9191646C9006E6022 /* Seaplane.m in Sources */,
 				9A4511C1191646C9006E6022 /* Finger.m in Sources */,
-				9A451200191646F7006E6022 /* EKSerializerSpec.m in Sources */,
 				9A13024D190BFEF30060A25C /* EKMapper.m in Sources */,
 				9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */,
 				9A2044121B23810D00AB7363 /* MutableFoundationClass.m in Sources */,
@@ -1904,7 +1908,6 @@
 				9A4511AE191646C9006E6022 /* Address.m in Sources */,
 				9A45127A19164911006E6022 /* EKPropertyMapping.m in Sources */,
 				9A8420DE1957068D006DDDE3 /* BaseTestModel.m in Sources */,
-				9A4511CA191646C9006E6022 /* NativeChild.m in Sources */,
 				9A45127B19164911006E6022 /* EKMapper.m in Sources */,
 				9A4511CE191646C9006E6022 /* Person.m in Sources */,
 				9A451190191646B2006E6022 /* ManagedPhone.m in Sources */,
@@ -1927,7 +1930,7 @@
 				9AA7CECD191E62A100608262 /* EKCoreDataImporter.m in Sources */,
 				9A6013C51DA66A4D00506062 /* Wolf.m in Sources */,
 				9A451263191647BA006E6022 /* EKAppDelegate.m in Sources */,
-				9A451172191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A451172191644CB006E6022 /* EasyMapping.xcdatamodeld in Sources */,
 				9A4511DE191646C9006E6022 /* UFO.m in Sources */,
 				9A4511DA191646C9006E6022 /* Seaplane.m in Sources */,
 				9A8420DC19570689006DDDE3 /* BaseManagedTestModel.m in Sources */,
@@ -1949,7 +1952,6 @@
 			files = (
 				9A4511DF191646C9006E6022 /* UFO.m in Sources */,
 				9A4511BB191646C9006E6022 /* Cat.m in Sources */,
-				9A4511CB191646C9006E6022 /* NativeChild.m in Sources */,
 				9A4511D7191646C9006E6022 /* Plane.m in Sources */,
 				9A4511B3191646C9006E6022 /* Alien.m in Sources */,
 				9A451270191647ED006E6022 /* EKAppDelegate.m in Sources */,
@@ -1967,7 +1969,7 @@
 				9A1B2D171A9F446F00E1FACD /* EKMappingBlocks.m in Sources */,
 				9A4512D119165B2D006E6022 /* EKBenchmarkSuite.m in Sources */,
 				9A8420EB195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
-				9A451173191644CB006E6022 /* EasyMappingExample.xcdatamodeld in Sources */,
+				9A451173191644CB006E6022 /* EasyMapping.xcdatamodeld in Sources */,
 				9A6013C41DA66A4600506062 /* Dog.m in Sources */,
 				9A170335194C820200682F00 /* EKRelationshipMapping.m in Sources */,
 				9A45117F19164696006E6022 /* MappingProvider.m in Sources */,
@@ -2649,13 +2651,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9AE54FE5190BD9B5003A3B56 /* EasyMappingExample.xcdatamodeld */ = {
+		9AE54FE5190BD9B5003A3B56 /* EasyMapping.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */,
+				9AE54FE6190BD9B5003A3B56 /* EasyMapping.xcdatamodel */,
 			);
-			currentVersion = 9AE54FE6190BD9B5003A3B56 /* EasyMappingExample.xcdatamodel */;
-			path = EasyMappingExample.xcdatamodeld;
+			currentVersion = 9AE54FE6190BD9B5003A3B56 /* EasyMapping.xcdatamodel */;
+			path = EasyMapping.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

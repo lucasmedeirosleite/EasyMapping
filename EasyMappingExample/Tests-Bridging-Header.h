@@ -8,4 +8,10 @@
 #import "Address.h"
 #import "Phone.h"
 #import "UFO.h"
+#import "Native.h"
 #import "MappingProvider.h"
+#import "ManagedMappingProvider.h"
+
+#import "ManagedPerson.h"
+#import "ManagedCar.h"
+#import "ManagedPhone.h"
