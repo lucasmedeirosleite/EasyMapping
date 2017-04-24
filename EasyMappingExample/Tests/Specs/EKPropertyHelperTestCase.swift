@@ -30,7 +30,7 @@ class EKPropertyHelperTestCase: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let json = FixtureLoader.json(fromFileNamed: "Native.json")
+        let json = FixtureLoader.dictionary(fromFileNamed: "Native.json")
         sut = EKMapper.object(fromExternalRepresentation: json, with: Native.objectMapping()) as? Native
     }
     

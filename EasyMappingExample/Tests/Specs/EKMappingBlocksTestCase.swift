@@ -63,7 +63,7 @@ class EKMappingBlocksTestCase: XCTestCase {
         }
         
         let context = Storage.shared.context
-        let info = FixtureLoader.json(fromFileNamed: "Person.json")
+        let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = ManagedMappingProvider.personWithReverseBlocksMapping()
         
         let person = EKManagedObjectMapper.object(fromExternalRepresentation: info,

@@ -24,15 +24,23 @@
 import Foundation
 
 final class FixtureLoader {
-    static func json(fromFileNamed fileName: String) -> [String:Any] {
+    static func json(fromFileNamed fileName: String) -> Any {
         let bundle = Bundle(for: self)
         if let filePath = bundle.path(forResource: fileName, ofType: nil),
             let data = NSData(contentsOfFile: filePath) as Data?
         {
             if let object = try? JSONSerialization.jsonObject(with: data, options: []) {
-                return object as? [String:Any] ?? [:]
+                return object
             }
         }
         return [:]
+    }
+    
+    static func dictionary(fromFileNamed fileName: String) -> [String:Any] {
+        return json(fromFileNamed: fileName) as? [String:Any] ?? [:]
+    }
+    
+    static func array(fromFileNamed fileName: String) -> [[String:Any]] {
+        return json(fromFileNamed: fileName) as? [[String:Any]] ?? []
     }
 }

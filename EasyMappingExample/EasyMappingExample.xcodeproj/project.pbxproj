@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		097A5C5C1A67126900CB6CE3 /* EKMappingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */; };
 		32A4080E2C0280CE20CE621A /* libPods-iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF026E637C7C22CE0685D858 /* libPods-iOS Tests.a */; };
+		3E4C8F771EAE46F700F57DBB /* EKCoreDataImporterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4C8F761EAE46F700F57DBB /* EKCoreDataImporterTestCase.swift */; };
+		3E4C8F7A1EAE4D2B00F57DBB /* Numbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* Numbers.m */; };
+		3E4C8F7B1EAE507D00F57DBB /* CarWithRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120919164705006E6022 /* CarWithRoot.json */; };
+		3E4C8F7C1EAE50A300F57DBB /* Cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45120619164705006E6022 /* Cars.json */; };
+		3E4C8F7D1EAE52E800F57DBB /* ComplexRepresentation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */; };
+		3E4C8F7E1EAE53C500F57DBB /* PersonWithNullCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121019164705006E6022 /* PersonWithNullCar.json */; };
+		3E4C8F7F1EAE545200F57DBB /* PersonWithNullPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A45121119164705006E6022 /* PersonWithNullPhones.json */; };
 		3E5D42851E929C14000EC418 /* RecursiveDuplicates.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */; };
 		3E5D42861E929C14000EC418 /* RecursiveDuplicates.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */; };
 		3E5D42891E929CD7000EC418 /* Recursive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42881E929CD7000EC418 /* Recursive.m */; };
@@ -321,12 +328,8 @@
 		9A8420E9195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
 		9A8420EA195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
 		9A8420EB195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */; };
-		9A8420F5195723A6006DDDE3 /* One.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* One.m */; };
-		9A8420F6195723A6006DDDE3 /* One.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* One.m */; };
-		9A8420F9195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
-		9A8420FA195723BE006DDDE3 /* Two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F8195723BE006DDDE3 /* Two.m */; };
-		9A8420FD195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
-		9A8420FE195723D0006DDDE3 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420FC195723D0006DDDE3 /* Three.m */; };
+		9A8420F5195723A6006DDDE3 /* Numbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* Numbers.m */; };
+		9A8420F6195723A6006DDDE3 /* Numbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8420F4195723A6006DDDE3 /* Numbers.m */; };
 		9A9BAFCA1E9A744F00EC1DC4 /* EKSerializerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */; };
 		9A9BAFCB1E9A74A900EC1DC4 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A451197191646C9006E6022 /* Car.m */; };
 		9A9BAFD81E9A74B700EC1DC4 /* BaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2056A01956DF7900499FC3 /* BaseTestModel.m */; };
@@ -361,8 +364,6 @@
 		9AA7CECC191E62A100608262 /* EKCoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */; };
 		9AA7CECD191E62A100608262 /* EKCoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */; };
 		9AA7CECE191E62A100608262 /* EKCoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */; };
-		9AA7CED0191E69B800608262 /* EKCoreDataImporterSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CECF191E69B800608262 /* EKCoreDataImporterSpec.m */; };
-		9AA7CED1191E69B800608262 /* EKCoreDataImporterSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CECF191E69B800608262 /* EKCoreDataImporterSpec.m */; };
 		9AA7CED3191FA7C400608262 /* ComplexRepresentation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */; };
 		9AA7CED4191FA7C400608262 /* ComplexRepresentation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */; };
 		9AA7CED7191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */; };
@@ -411,6 +412,8 @@
 		02FF772618E32249002282D3 /* iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		097A5C5B1A67126900CB6CE3 /* EKMappingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMappingTestCase.m; sourceTree = "<group>"; };
 		1D580CD9DCC1824E038EDBF1 /* Pods-iOS Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Tests/Pods-iOS Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E4C8F761EAE46F700F57DBB /* EKCoreDataImporterTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKCoreDataImporterTestCase.swift; path = Tests/Specs/EKCoreDataImporterTestCase.swift; sourceTree = "<group>"; };
+		3E4C8F781EAE474900F57DBB /* EKCoreDataImporter+SwiftExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EKCoreDataImporter+SwiftExtensions.h"; path = "Tests/Utilities/EKCoreDataImporter+SwiftExtensions.h"; sourceTree = "<group>"; };
 		3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RecursiveDuplicates.json; path = Tests/Fixtures/RecursiveDuplicates.json; sourceTree = SOURCE_ROOT; };
 		3E5D42871E929CD7000EC418 /* Recursive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recursive.h; path = Classes/Models/Recursive.h; sourceTree = "<group>"; };
 		3E5D42881E929CD7000EC418 /* Recursive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recursive.m; path = Classes/Models/Recursive.m; sourceTree = "<group>"; };
@@ -539,12 +542,8 @@
 		9A8420E11957164E006DDDE3 /* EKObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKObjectModel.m; sourceTree = "<group>"; };
 		9A8420E6195718A2006DDDE3 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManagedObjectModel.h; sourceTree = "<group>"; };
 		9A8420E7195718A2006DDDE3 /* EKManagedObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectModel.m; sourceTree = "<group>"; };
-		9A8420F3195723A6006DDDE3 /* One.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = One.h; path = Tests/Fixtures/FixtureClasses/One.h; sourceTree = "<group>"; };
-		9A8420F4195723A6006DDDE3 /* One.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = One.m; path = Tests/Fixtures/FixtureClasses/One.m; sourceTree = "<group>"; };
-		9A8420F7195723BE006DDDE3 /* Two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Two.h; path = Tests/Fixtures/FixtureClasses/Two.h; sourceTree = "<group>"; };
-		9A8420F8195723BE006DDDE3 /* Two.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Two.m; path = Tests/Fixtures/FixtureClasses/Two.m; sourceTree = "<group>"; };
-		9A8420FB195723D0006DDDE3 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Three.h; path = Tests/Fixtures/FixtureClasses/Three.h; sourceTree = "<group>"; };
-		9A8420FC195723D0006DDDE3 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Three.m; path = Tests/Fixtures/FixtureClasses/Three.m; sourceTree = "<group>"; };
+		9A8420F3195723A6006DDDE3 /* Numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Numbers.h; path = Tests/Fixtures/FixtureClasses/Numbers.h; sourceTree = "<group>"; };
+		9A8420F4195723A6006DDDE3 /* Numbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Numbers.m; path = Tests/Fixtures/FixtureClasses/Numbers.m; sourceTree = "<group>"; };
 		9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSerializerTestCase.swift; path = Tests/Specs/EKSerializerTestCase.swift; sourceTree = "<group>"; };
 		9A9FDBDB1D8E10BB009E8F47 /* Wolf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wolf.h; path = Tests/Fixtures/FixtureClasses/Wolf.h; sourceTree = "<group>"; };
 		9A9FDBDC1D8E10BB009E8F47 /* Wolf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wolf.m; path = Tests/Fixtures/FixtureClasses/Wolf.m; sourceTree = "<group>"; };
@@ -556,7 +555,6 @@
 		9AA7CEBE191E555300608262 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManagedObjectMapper.m; sourceTree = "<group>"; };
 		9AA7CEC9191E62A100608262 /* EKCoreDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataImporter.h; sourceTree = "<group>"; };
 		9AA7CECA191E62A100608262 /* EKCoreDataImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataImporter.m; sourceTree = "<group>"; };
-		9AA7CECF191E69B800608262 /* EKCoreDataImporterSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataImporterSpec.m; path = Tests/Specs/EKCoreDataImporterSpec.m; sourceTree = "<group>"; };
 		9AA7CED2191FA7C400608262 /* ComplexRepresentation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ComplexRepresentation.json; path = Tests/Fixtures/ComplexRepresentation.json; sourceTree = SOURCE_ROOT; };
 		9AA7CED5191FCFFE00608262 /* NSArray+FlattenArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FlattenArray.h"; sourceTree = "<group>"; };
 		9AA7CED6191FCFFE00608262 /* NSArray+FlattenArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FlattenArray.m"; sourceTree = "<group>"; };
@@ -891,7 +889,8 @@
 				9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */,
 				9A4511E3191646F6006E6022 /* EKMapperSpec.m */,
 				9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */,
-				9AA7CECF191E69B800608262 /* EKCoreDataImporterSpec.m */,
+				3E4C8F761EAE46F700F57DBB /* EKCoreDataImporterTestCase.swift */,
+				3E4C8F781EAE474900F57DBB /* EKCoreDataImporter+SwiftExtensions.h */,
 				3E5D428C1E9416C7000EC418 /* Tests-Bridging-Header.h */,
 			);
 			name = Specs;
@@ -969,12 +968,8 @@
 		9A8420F219572382006DDDE3 /* FixtureClasses */ = {
 			isa = PBXGroup;
 			children = (
-				9A8420F3195723A6006DDDE3 /* One.h */,
-				9A8420F4195723A6006DDDE3 /* One.m */,
-				9A8420F7195723BE006DDDE3 /* Two.h */,
-				9A8420F8195723BE006DDDE3 /* Two.m */,
-				9A8420FB195723D0006DDDE3 /* Three.h */,
-				9A8420FC195723D0006DDDE3 /* Three.m */,
+				9A8420F3195723A6006DDDE3 /* Numbers.h */,
+				9A8420F4195723A6006DDDE3 /* Numbers.m */,
 				9A20440F1B23810D00AB7363 /* MutableFoundationClass.h */,
 				9A2044101B23810D00AB7363 /* MutableFoundationClass.m */,
 				9A9FDBDB1D8E10BB009E8F47 /* Wolf.h */,
@@ -1403,7 +1398,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A766F191EACF73100164D7F /* Native.json in Resources */,
+				3E4C8F7D1EAE52E800F57DBB /* ComplexRepresentation.json in Resources */,
+				3E4C8F7E1EAE53C500F57DBB /* PersonWithNullCar.json in Resources */,
+				3E4C8F7B1EAE507D00F57DBB /* CarWithRoot.json in Resources */,
+				3E4C8F7C1EAE50A300F57DBB /* Cars.json in Resources */,
 				9A9BAFE91E9AD1AB00EC1DC4 /* PersonWithDifferentNaming.json in Resources */,
+				3E4C8F7F1EAE545200F57DBB /* PersonWithNullPhones.json in Resources */,
 				9A7B4A4C1EAD0C8F00D6A70B /* Person.json in Resources */,
 				9A766F1A1EACFAC600164D7F /* NativeChild.json in Resources */,
 			);
@@ -1728,7 +1728,6 @@
 				9A2056A11956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117819164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D0191646C9006E6022 /* Phone.m in Sources */,
-				9A8420FD195723D0006DDDE3 /* Three.m in Sources */,
 				9A13024A190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A9FDBF01D8E12FC009E8F47 /* EKRelationshipMappingTestCase.m in Sources */,
 				9A4511C4191646C9006E6022 /* Native.m in Sources */,
@@ -1739,7 +1738,7 @@
 				9AFC96A61A6BF850008A295D /* XCTestCase+EasyMapping.m in Sources */,
 				9A4511C0191646C9006E6022 /* Finger.m in Sources */,
 				9AA7CEBF191E555300608262 /* EKManagedObjectMapper.m in Sources */,
-				9A8420F5195723A6006DDDE3 /* One.m in Sources */,
+				9A8420F5195723A6006DDDE3 /* Numbers.m in Sources */,
 				9A8420E8195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A210F341944B10A00871071 /* CommentObject.m in Sources */,
 				9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */,
@@ -1750,7 +1749,6 @@
 				9AA7CED7191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A2056A51956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451186191646B2006E6022 /* ManagedCar.m in Sources */,
-				9A8420F9195723BE006DDDE3 /* Two.m in Sources */,
 				9A130246190BFEF30060A25C /* EKMapper.m in Sources */,
 				9A9FDBE11D8E10D2009E8F47 /* Dog.m in Sources */,
 				9A4511B4191646C9006E6022 /* Car.m in Sources */,
@@ -1763,7 +1761,6 @@
 				9A4511AC191646C9006E6022 /* Address.m in Sources */,
 				9A4511EB191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A130247190BFEF30060A25C /* EKObjectMapping.m in Sources */,
-				9AA7CED0191E69B800608262 /* EKCoreDataImporterSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1771,6 +1768,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4C8F7A1EAE4D2B00F57DBB /* Numbers.m in Sources */,
 				9A9BAFE21E9A74B700EC1DC4 /* Plane.m in Sources */,
 				9A766F211EAD085800164D7F /* ManagedPhone.m in Sources */,
 				9A9BAFDB1E9A74B700EC1DC4 /* Cat.m in Sources */,
@@ -1790,6 +1788,7 @@
 				9A9BAFE01E9A74B700EC1DC4 /* Person.m in Sources */,
 				3E5D42A21E9420D4000EC418 /* EKRelationshipMappingTestCase.swift in Sources */,
 				9A766F1D1EAD075500164D7F /* ManagedMappingProvider.m in Sources */,
+				3E4C8F771EAE46F700F57DBB /* EKCoreDataImporterTestCase.swift in Sources */,
 				3E5D42A91E94287E000EC418 /* FixtureLoader.swift in Sources */,
 				9A766F1C1EACFECB00164D7F /* Storage.swift in Sources */,
 				9A9BAFE11E9A74B700EC1DC4 /* Phone.m in Sources */,
@@ -1818,7 +1817,6 @@
 				9A2056A21956DF7900499FC3 /* BaseTestModel.m in Sources */,
 				9A45117919164696006E6022 /* ManagedMappingProvider.m in Sources */,
 				9A4511D1191646C9006E6022 /* Phone.m in Sources */,
-				9A8420FE195723D0006DDDE3 /* Three.m in Sources */,
 				9A130251190BFEF30060A25C /* EKSerializer.m in Sources */,
 				9A9FDBE21D8E10D2009E8F47 /* Dog.m in Sources */,
 				9A4511C5191646C9006E6022 /* Native.m in Sources */,
@@ -1831,7 +1829,7 @@
 				9A13024D190BFEF30060A25C /* EKMapper.m in Sources */,
 				9AA7CEC0191E555300608262 /* EKManagedObjectMapper.m in Sources */,
 				9A2044121B23810D00AB7363 /* MutableFoundationClass.m in Sources */,
-				9A8420F6195723A6006DDDE3 /* One.m in Sources */,
+				9A8420F6195723A6006DDDE3 /* Numbers.m in Sources */,
 				9A8420E9195718A2006DDDE3 /* EKManagedObjectModel.m in Sources */,
 				9A210F351944B10B00871071 /* CommentObject.m in Sources */,
 				3E5D428A1E929CD7000EC418 /* Recursive.m in Sources */,
@@ -1844,7 +1842,6 @@
 				9AA7CED8191FCFFE00608262 /* NSArray+FlattenArray.m in Sources */,
 				9A2056A61956E0EE00499FC3 /* BaseManagedTestModel.m in Sources */,
 				9A451187191646B2006E6022 /* ManagedCar.m in Sources */,
-				9A8420FA195723BE006DDDE3 /* Two.m in Sources */,
 				9A53E2E41A7EA77300C4D169 /* EKMappingBlocks.m in Sources */,
 				9A130250190BFEF30060A25C /* EKPropertyHelper.m in Sources */,
 				9A4511B5191646C9006E6022 /* Car.m in Sources */,
@@ -1853,7 +1850,6 @@
 				9A4511AD191646C9006E6022 /* Address.m in Sources */,
 				9A4511EC191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A13024F190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */,
-				9AA7CED1191E69B800608262 /* EKCoreDataImporterSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

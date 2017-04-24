@@ -161,7 +161,7 @@ class EKSerializerTestCase: XCTestCase {
     }
     
     func testNativePropertiesSerialization() {
-        let dictionary = FixtureLoader.json(fromFileNamed: "Native.json")
+        let dictionary = FixtureLoader.dictionary(fromFileNamed: "Native.json")
         let native = EKMapper.object(fromExternalRepresentation: dictionary, with: Native.objectMapping()) as! Native
         let sut = EKSerializer.serializeObject(native, with: Native.objectMapping())
         
@@ -188,7 +188,7 @@ class EKSerializerTestCase: XCTestCase {
     }
     
     func testNativePropertiesSerializationInSubclasses() {
-        let dictionary = FixtureLoader.json(fromFileNamed: "NativeChild.json")
+        let dictionary = FixtureLoader.dictionary(fromFileNamed: "NativeChild.json")
         let native = EKMapper.object(fromExternalRepresentation: dictionary, with: NativeChild.objectMapping()) as! Native
         let sut = EKSerializer.serializeObject(native, with: NativeChild.objectMapping())
         

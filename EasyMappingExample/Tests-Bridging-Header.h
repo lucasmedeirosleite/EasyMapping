@@ -15,3 +15,7 @@
 #import "ManagedPerson.h"
 #import "ManagedCar.h"
 #import "ManagedPhone.h"
+
+#import "EKCoreDataImporter+SwiftExtensions.h"
+#import "Numbers.h"
+#import "Plane.h"
