@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKPropertyHelper.h"
+#import <string.h>
 @import ObjectiveC.runtime;
 
 static const char scalarTypes[] = {
@@ -43,7 +44,7 @@ static const char scalarTypes[] = {
     objc_property_t property = class_getProperty(object_getClass(object), [propertyName UTF8String]);
 	NSString *type = property ? [self propertyTypeStringRepresentationFromProperty:property] : nil;
     
-	return (type.length == 1) && (NSNotFound != [@(scalarTypes) rangeOfString:type].location);
+	return (type.length == 1) && memchr(scalarTypes, type.UTF8String[0], sizeof(scalarTypes));
 }
 
 + (NSString *) propertyTypeStringRepresentationFromProperty:(objc_property_t)property
