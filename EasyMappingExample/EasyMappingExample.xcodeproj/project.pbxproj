@@ -26,7 +26,15 @@
 		3E5D42A41E942451000EC418 /* EKMappingBlocksTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42A31E942451000EC418 /* EKMappingBlocksTestCase.swift */; };
 		3E5D42A91E94287E000EC418 /* FixtureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42A81E94287E000EC418 /* FixtureLoader.swift */; };
 		3E5D42AF1E942D3C000EC418 /* EKPropertyHelperTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42AE1E942D3C000EC418 /* EKPropertyHelperTestCase.swift */; };
+		3EB67CCA1EAF95F100C5F41C /* EKManagedObjectMapperTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB67CC91EAF95F100C5F41C /* EKManagedObjectMapperTestCase.swift */; };
 		3ECAE90C1EAA20FF0041BDA4 /* EKObjectMappingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECAE90B1EAA20FF0041BDA4 /* EKObjectMappingTestCase.swift */; };
+		3ED355B51EB0B95800DBD81B /* CarWithAttributesRemoved.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EC0BF2C1AB35A1D00F584DF /* CarWithAttributesRemoved.json */; };
+		3ED355B61EB0C5EE00DBD81B /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
+		3ED355B71EB0C85F00DBD81B /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
+		3ED355B81EB0CB8F00DBD81B /* PersonRecursive.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A210F391944B81500871071 /* PersonRecursive.json */; };
+		3ED355B91EB0CF5C00DBD81B /* PersonNonNested.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0D8671A728D4C003926C1 /* PersonNonNested.json */; };
+		3ED355BA1EB0CF9800DBD81B /* Recursive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D42881E929CD7000EC418 /* Recursive.m */; };
+		3ED355BB1EB0D04D00DBD81B /* RecursiveDuplicates.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5D42841E929C14000EC418 /* RecursiveDuplicates.json */; };
 		49498DD31A4C41F900158E19 /* PersonWithOtherPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */; };
 		49498DD51A4C492300158E19 /* PersonWithZeroPhones.json in Resources */ = {isa = PBXBuildFile; fileRef = 49498DD41A4C492300158E19 /* PersonWithZeroPhones.json */; };
 		4D612CB61C85DB8C00A167ED /* PersonWithoutRelations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D612CB51C85DB8C00A167ED /* PersonWithoutRelations.json */; };
@@ -197,8 +205,6 @@
 		9A4511DD191646C9006E6022 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
 		9A4511DE191646C9006E6022 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
 		9A4511DF191646C9006E6022 /* UFO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511AB191646C9006E6022 /* UFO.m */; };
-		9A4511EB191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */; };
-		9A4511EC191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */; };
 		9A4511EF191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */; };
 		9A4511F0191646F7006E6022 /* EKManagedObjectMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */; };
 		9A4511F3191646F7006E6022 /* EKMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4511E3191646F6006E6022 /* EKMapperSpec.m */; };
@@ -425,6 +431,7 @@
 		3E5D42A31E942451000EC418 /* EKMappingBlocksTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMappingBlocksTestCase.swift; path = Tests/Specs/EKMappingBlocksTestCase.swift; sourceTree = "<group>"; };
 		3E5D42A81E94287E000EC418 /* FixtureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixtureLoader.swift; path = Tests/Utilities/FixtureLoader.swift; sourceTree = "<group>"; };
 		3E5D42AE1E942D3C000EC418 /* EKPropertyHelperTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKPropertyHelperTestCase.swift; path = Tests/Specs/EKPropertyHelperTestCase.swift; sourceTree = "<group>"; };
+		3EB67CC91EAF95F100C5F41C /* EKManagedObjectMapperTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKManagedObjectMapperTestCase.swift; path = Tests/Specs/EKManagedObjectMapperTestCase.swift; sourceTree = "<group>"; };
 		3ECAE90B1EAA20FF0041BDA4 /* EKObjectMappingTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKObjectMappingTestCase.swift; path = Tests/Specs/EKObjectMappingTestCase.swift; sourceTree = "<group>"; };
 		436C49669F981A3865F82854 /* Pods-iOS Benchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Benchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Benchmark/Pods-iOS Benchmark.debug.xcconfig"; sourceTree = "<group>"; };
 		49498DD21A4C41F900158E19 /* PersonWithOtherPhones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PersonWithOtherPhones.json; path = Tests/Fixtures/PersonWithOtherPhones.json; sourceTree = SOURCE_ROOT; };
@@ -487,7 +494,6 @@
 		9A4511A9191646C9006E6022 /* Seaplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Seaplane.m; path = Classes/Models/Seaplane.m; sourceTree = SOURCE_ROOT; };
 		9A4511AA191646C9006E6022 /* UFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UFO.h; path = Classes/Models/UFO.h; sourceTree = SOURCE_ROOT; };
 		9A4511AB191646C9006E6022 /* UFO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UFO.m; path = Classes/Models/UFO.m; sourceTree = SOURCE_ROOT; };
-		9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapperSpec.m; path = Tests/Specs/EKManagedObjectMapperSpec.m; sourceTree = "<group>"; };
 		9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMappingSpec.m; path = Tests/Specs/EKManagedObjectMappingSpec.m; sourceTree = "<group>"; };
 		9A4511E3191646F6006E6022 /* EKMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMapperSpec.m; path = Tests/Specs/EKMapperSpec.m; sourceTree = "<group>"; };
 		9A45120319164704006E6022 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Address.json; path = Tests/Fixtures/Address.json; sourceTree = SOURCE_ROOT; };
@@ -885,7 +891,7 @@
 				3E5D42A31E942451000EC418 /* EKMappingBlocksTestCase.swift */,
 				3E5D42AE1E942D3C000EC418 /* EKPropertyHelperTestCase.swift */,
 				3ECAE90B1EAA20FF0041BDA4 /* EKObjectMappingTestCase.swift */,
-				9A4511E1191646F6006E6022 /* EKManagedObjectMapperSpec.m */,
+				3EB67CC91EAF95F100C5F41C /* EKManagedObjectMapperTestCase.swift */,
 				9A4511E2191646F6006E6022 /* EKManagedObjectMappingSpec.m */,
 				9A4511E3191646F6006E6022 /* EKMapperSpec.m */,
 				9A9BAFC91E9A744F00EC1DC4 /* EKSerializerTestCase.swift */,
@@ -1398,12 +1404,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A766F191EACF73100164D7F /* Native.json in Resources */,
+				3ED355B71EB0C85F00DBD81B /* PersonWithZeroPhones.json in Resources */,
 				3E4C8F7D1EAE52E800F57DBB /* ComplexRepresentation.json in Resources */,
 				3E4C8F7E1EAE53C500F57DBB /* PersonWithNullCar.json in Resources */,
 				3E4C8F7B1EAE507D00F57DBB /* CarWithRoot.json in Resources */,
+				3ED355B81EB0CB8F00DBD81B /* PersonRecursive.json in Resources */,
+				3ED355B51EB0B95800DBD81B /* CarWithAttributesRemoved.json in Resources */,
 				3E4C8F7C1EAE50A300F57DBB /* Cars.json in Resources */,
 				9A9BAFE91E9AD1AB00EC1DC4 /* PersonWithDifferentNaming.json in Resources */,
+				3ED355B91EB0CF5C00DBD81B /* PersonNonNested.json in Resources */,
 				3E4C8F7F1EAE545200F57DBB /* PersonWithNullPhones.json in Resources */,
+				3ED355B61EB0C5EE00DBD81B /* PersonWithOtherPhones.json in Resources */,
+				3ED355BB1EB0D04D00DBD81B /* RecursiveDuplicates.json in Resources */,
 				9A7B4A4C1EAD0C8F00D6A70B /* Person.json in Resources */,
 				9A766F1A1EACFAC600164D7F /* NativeChild.json in Resources */,
 			);
@@ -1759,7 +1771,6 @@
 				9A2044111B23810D00AB7363 /* MutableFoundationClass.m in Sources */,
 				9A45117C19164696006E6022 /* MappingProvider.m in Sources */,
 				9A4511AC191646C9006E6022 /* Address.m in Sources */,
-				9A4511EB191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A130247190BFEF30060A25C /* EKObjectMapping.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1785,12 +1796,14 @@
 				9A9BAFDA1E9A74B700EC1DC4 /* Alien.m in Sources */,
 				9A766F1F1EAD084400164D7F /* BaseManagedTestModel.m in Sources */,
 				3ECAE90C1EAA20FF0041BDA4 /* EKObjectMappingTestCase.swift in Sources */,
+				3EB67CCA1EAF95F100C5F41C /* EKManagedObjectMapperTestCase.swift in Sources */,
 				9A9BAFE01E9A74B700EC1DC4 /* Person.m in Sources */,
 				3E5D42A21E9420D4000EC418 /* EKRelationshipMappingTestCase.swift in Sources */,
 				9A766F1D1EAD075500164D7F /* ManagedMappingProvider.m in Sources */,
 				3E4C8F771EAE46F700F57DBB /* EKCoreDataImporterTestCase.swift in Sources */,
 				3E5D42A91E94287E000EC418 /* FixtureLoader.swift in Sources */,
 				9A766F1C1EACFECB00164D7F /* Storage.swift in Sources */,
+				3ED355BA1EB0CF9800DBD81B /* Recursive.m in Sources */,
 				9A9BAFE11E9A74B700EC1DC4 /* Phone.m in Sources */,
 				9A9BAFDD1E9A74B700EC1DC4 /* Finger.m in Sources */,
 				9A9BAFE81E9A759300EC1DC4 /* Dog.m in Sources */,
@@ -1848,7 +1861,6 @@
 				9A4511CD191646C9006E6022 /* Person.m in Sources */,
 				9A45117D19164696006E6022 /* MappingProvider.m in Sources */,
 				9A4511AD191646C9006E6022 /* Address.m in Sources */,
-				9A4511EC191646F7006E6022 /* EKManagedObjectMapperSpec.m in Sources */,
 				9A13024F190BFEF30060A25C /* EKManagedObjectMapping.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

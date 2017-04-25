@@ -97,12 +97,10 @@ final class Storage {
     }
     
     var context: NSManagedObjectContext {
-        get {
-            if #available(iOS 10.0, *) {
-                return persistentContainer.viewContext
-            } else {
-                return managedObjectContext
-            }
+        if #available(iOS 10.0, *) {
+            return persistentContainer.viewContext
+        } else {
+            return managedObjectContext
         }
     }
     
@@ -117,6 +115,28 @@ final class Storage {
             }
         }
         return .hasNoChanges
+    }
+    
+    func resetStorage() {
+        let coordinator : NSPersistentStoreCoordinator
+        if #available(iOS 10.0, *) {
+            coordinator = persistentContainer.persistentStoreCoordinator
+        } else {
+            coordinator = persistentStoreCoordinator!
+        }
+        if let store = coordinator.persistentStores.first {
+            do {
+                try persistentContainer.persistentStoreCoordinator.remove(store)
+                try persistentContainer.persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType,
+                                                                                      configurationName: nil,
+                                                                                      at: nil,
+                                                                                      options: store.options)
+            }
+            catch {
+                print(error)
+            }
+            
+        }
     }
     
 }

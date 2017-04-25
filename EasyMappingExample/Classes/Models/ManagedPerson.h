@@ -11,6 +11,7 @@
 #import "BaseManagedTestModel.h"
 
 @class ManagedCar;
+@class ManagedPhone;
 
 @interface ManagedPerson : BaseManagedTestModel
 
@@ -19,10 +20,10 @@
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) ManagedCar *car;
 
-@property (nonatomic, strong) NSSet * children;
+@property (nonatomic, strong) NSSet<ManagedPerson *> * children;
 @property (nonatomic, strong) ManagedPerson *relative;
 
-@property (nonatomic, retain) NSSet *phones;
+@property (nonatomic, retain) NSSet<ManagedPhone *> *phones;
 @property (nonatomic, retain) NSString * gender;
 @end
 
