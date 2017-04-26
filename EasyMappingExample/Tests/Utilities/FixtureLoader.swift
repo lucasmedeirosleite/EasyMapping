@@ -43,4 +43,8 @@ final class FixtureLoader {
     static func array(fromFileNamed fileName: String) -> [[String:Any]] {
         return json(fromFileNamed: fileName) as? [[String:Any]] ?? []
     }
+    
+    static func optionalArray(fromFileNamed fileName: String) -> [[String:Any]?] {
+        return json(fromFileNamed: fileName) as? [[String:Any]?] ?? []
+    }
 }

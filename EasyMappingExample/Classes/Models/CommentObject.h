@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * message;
-@property (nonatomic, strong) NSArray * subComments;
+@property (nonatomic, strong) NSArray <CommentObject * > * subComments;
 
 @end

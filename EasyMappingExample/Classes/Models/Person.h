@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, Gender) {
 @property (nonatomic, strong) Car *car;
 @property (nonatomic, strong) NSArray <Phone *> *phones;
 @property (nonatomic, strong) Person * relative;
-@property (nonatomic, strong) NSArray* children;
+@property (nonatomic, strong) NSArray<Person *> * children;
 @property (nonatomic, strong) NSURL * socialURL;
 @property (nonatomic, strong) NSArray * pets;
 

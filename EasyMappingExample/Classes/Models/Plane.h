@@ -17,3 +17,10 @@
 @property (nonatomic, strong) NSMutableOrderedSet *stars;
 
 @end
+
+@interface Seaplane : BaseTestModel
+
+@property (nonatomic, strong) NSNumber *flightNumber;
+@property (nonatomic, strong) NSSet *passengers;
+
+@end

@@ -20,3 +20,6 @@
 #import "Numbers.h"
 #import "Plane.h"
 #import "Recursive.h"
+#import "Cat.h"
+#import "CommentObject.h"
+#import "MutableFoundationClass.h"
