@@ -39,4 +39,16 @@ class EKRelationshipMappingTestCase: XCTestCase {
         XCTAssertEqual(sut.property, "bar")
     }
     
+    func testPersonMappingIncludesAnimals() {
+        let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithAnimals.json")
+        let person = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.personWithPetsMapping()) as? Person
+        
+        XCTAssertEqual(person?.pets.count, 4)
+        let dog = person?.pets.first as? Dog
+        let wolf = person?.pets.last as? Wolf
+        
+        XCTAssertEqual(dog?.family, "Macintosh")
+        XCTAssertEqual(wolf?.pack, "Bronzebeard")
+    }
+    
 }

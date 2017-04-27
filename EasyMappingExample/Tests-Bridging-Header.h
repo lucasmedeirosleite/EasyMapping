@@ -9,6 +9,8 @@
 #import "Phone.h"
 #import "UFO.h"
 #import "Native.h"
+#import "Dog.h"
+#import "Wolf.h"
 #import "MappingProvider.h"
 #import "ManagedMappingProvider.h"
 
@@ -23,3 +25,5 @@
 #import "Cat.h"
 #import "CommentObject.h"
 #import "MutableFoundationClass.h"
+
+#import "XCTestCase+EasyMapping.h"
