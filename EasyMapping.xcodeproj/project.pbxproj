@@ -36,7 +36,6 @@
 		3E9A91241EB24816006305D1 /* NSArray+FlattenArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E9A91051EB24816006305D1 /* NSArray+FlattenArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E9A91251EB24816006305D1 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A91061EB24816006305D1 /* NSArray+FlattenArray.m */; };
 		3E9A91261EB24816006305D1 /* NSDateFormatter+EasyMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E9A91071EB24816006305D1 /* NSDateFormatter+EasyMappingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3E9A91271EB24816006305D1 /* XCTestCase+EasyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E9A91081EB24816006305D1 /* XCTestCase+EasyMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E9A91391EB2483C006305D1 /* EasyMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A912C1EB2483C006305D1 /* EasyMappingTests.swift */; };
 		3E9A913A1EB2483C006305D1 /* EKCoreDataImporterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A912D1EB2483C006305D1 /* EKCoreDataImporterTestCase.swift */; };
 		3E9A913B1EB2483C006305D1 /* EKManagedObjectMapperTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A912E1EB2483C006305D1 /* EKManagedObjectMapperTestCase.swift */; };
@@ -541,7 +540,6 @@
 				3E9A91241EB24816006305D1 /* NSArray+FlattenArray.h in Headers */,
 				3E9A91111EB24816006305D1 /* EKManagedObjectModel.h in Headers */,
 				3E9A910A1EB24816006305D1 /* EasyMapping.h in Headers */,
-				3E9A91271EB24816006305D1 /* XCTestCase+EasyMapping.h in Headers */,
 				3E9A91131EB24816006305D1 /* EKMapper.h in Headers */,
 				3E9A91181EB24816006305D1 /* EKObjectMapping.h in Headers */,
 				3E9A91261EB24816006305D1 /* NSDateFormatter+EasyMappingAdditions.h in Headers */,

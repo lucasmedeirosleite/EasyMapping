@@ -27,7 +27,7 @@ extension NSPersistentStoreCoordinator {
     /// Return NSPersistentStoreCoordinator object
     static func coordinator(name: String) throws -> NSPersistentStoreCoordinator? {
         
-        guard let modelURL = Bundle.main.url(forResource: name, withExtension: "momd") else {
+        guard let modelURL = Bundle(for: Storage.self).url(forResource: name, withExtension: "momd") else {
             throw CoordinatorError.modelFileNotFound
         }
         
