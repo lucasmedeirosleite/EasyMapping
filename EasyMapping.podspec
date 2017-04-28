@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
     core.osx.deployment_target = '10.9'
     core.tvos.deployment_target = '9.0'
     core.frameworks = 'CoreData'
-    core.source_files = 'EasyMapping/*.{h,m}'
+    core.source_files = 'Sources/EasyMapping/*.{h,m}'
   end
 
   s.subspec 'XCTest' do |xctest|
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
     xctest.dependency 'EasyMapping/Core'
     xctest.frameworks = 'XCTest'
     xctest.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PLATFORM_DIR)/Developer/Library/Frameworks' }
-    xctest.source_files = 'XCTest+EasyMapping/*.{h,m}'
+    xctest.source_files = 'Sources/EasyMapping+XCTestCase/*.{h,m}'
   end
 
   s.default_subspec = 'Core'

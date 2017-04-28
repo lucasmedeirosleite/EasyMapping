@@ -8,6 +8,16 @@ matrix:
       env: ACTION=test_ios10
     - os: osx
       env: ACTION=test_ios9
+    - os: osx
+      env: ACTION=test_macos
+    - os: osx
+      env: ACTION=test_tvos10
+    - os: osx
+      env: ACTION=build_watchos
+    - os: osx
+      env: ACTION=carthage_build
+    - os: osx
+      env: ACTION=spm_macos
 
 script:
   - bundle exec fastlane $ACTION
