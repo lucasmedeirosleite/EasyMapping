@@ -2,11 +2,12 @@ language: objective-c
 sudo: false
 osx_image: xcode8.3
 
+matrix:
+  include:
+    - os: osx
+      env: ACTION=test_ios10
+    - os: osx
+      env: ACTION=test_ios9
 
-before_install:
-  - gem install xcpretty --no-document --quiet
-  - gem install cocoapods --no-document --quiet
-  - cd EasyMappingExample
-  - export LANG=en_US.UTF-8
-
-script: rake
+script:
+  - bundle exec fastlane $ACTION

@@ -1,0 +1,9 @@
+fastlane_version "1.98.0"
+
+lane :test_ios10 do
+  scan(devices: ["iPhone 7 (10.3)"])
+end
+
+lane :test_ios9 do
+  scan(devices: ["iPhone 6s (9.3)"])
+end
