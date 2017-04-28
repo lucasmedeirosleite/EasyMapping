@@ -14,6 +14,7 @@ end
 
 lane :test_macos do
   scan(destination: "arch=x86_64")
+  sh "bash ../codecov.sh"
 end
 
 lane :build_watchos do
