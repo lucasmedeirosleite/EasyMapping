@@ -27,3 +27,5 @@
 #import "MutableFoundationClass.h"
 
 #import "XCTestCase+EasyMapping.h"
+
+#import "EKCoreDataManager.h"

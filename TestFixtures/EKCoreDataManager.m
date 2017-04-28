@@ -33,7 +33,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"EasyMappingExample" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"EasyMapping" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -82,7 +82,7 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;
@@ -109,7 +109,7 @@
 
 + (NSURL *)applicationDocumentsDirectory
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 #elif TARGET_OS_MAC
@@ -189,7 +189,7 @@
         [[NSApplication sharedApplication] presentError:error];*/
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     
     return _managedObjectContext;

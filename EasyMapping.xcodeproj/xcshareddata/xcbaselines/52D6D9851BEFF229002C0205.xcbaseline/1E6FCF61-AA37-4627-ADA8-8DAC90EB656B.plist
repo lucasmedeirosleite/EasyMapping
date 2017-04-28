@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>classNames</key>
+	<dict>
+		<key>EasyMappingCoreDataPerfomanceTests</key>
+		<dict>
+			<key>testCar()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.045673</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCarWithDate()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.045739</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCarWithNestedAttributes()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.039965</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCarWithRoot()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.053927</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCoreDataImport()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.9325</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testMale()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.05452</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testPerson()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.10781</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testPersonWithNullCar()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.08552</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testPersonWithNullPhones()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.079072</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>EasyMappingNSObjectPerfomanceTests</key>
+		<dict>
+			<key>testAddress()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.015233</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testAlien()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.029782</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCar()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.013186</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCarWithDate()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.045347</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCarWithNestedAttributes()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.013517</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testCarWithRoot()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.0083767</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testMale()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.014526</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testNative()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.063827</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testNativeChild()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.013364</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testPerson()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.049913</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testPersonWithNullCar()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.02712</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testPersonWithNullPhones()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.020594</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+			<key>testPlane()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.038433</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>28 апр. 2017 г., 16:28:23</string>
+				</dict>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

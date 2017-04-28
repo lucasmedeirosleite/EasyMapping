@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52D6D9871BEFF229002C0205 /* EasyMapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* EasyMapping.framework */; };
+		9A0274BE1EB37927003AF7A5 /* EKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0274BD1EB37927003AF7A5 /* EKCoreDataManager.m */; };
 		9A420CFA1EB35622002306BF /* FixtureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A420CF81EB35622002306BF /* FixtureLoader.swift */; };
 		9A420CFB1EB35622002306BF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A420CF91EB35622002306BF /* Storage.swift */; };
 		9A420D051EB3564E002306BF /* BaseManagedTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A420CFE1EB3564E002306BF /* BaseManagedTestModel.m */; };
@@ -106,6 +107,7 @@
 		9A420DD11EB359DE002306BF /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A420DB41EB359DE002306BF /* NSArray+FlattenArray.m */; };
 		9A420DD21EB359DE002306BF /* NSDateFormatter+EasyMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A420DB51EB359DE002306BF /* NSDateFormatter+EasyMappingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A420DD61EB359F6002306BF /* XCTestCase+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A420DD51EB359F6002306BF /* XCTestCase+EasyMapping.m */; };
+		9A420DE81EB36E2A002306BF /* EasyMappingPerfomanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A420DE71EB36E2A002306BF /* EasyMappingPerfomanceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		3E9A90E91EB24789006305D1 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* EasyMapping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyMapping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0274BC1EB37927003AF7A5 /* EKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataManager.h; path = TestFixtures/EKCoreDataManager.h; sourceTree = "<group>"; };
+		9A0274BD1EB37927003AF7A5 /* EKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataManager.m; path = TestFixtures/EKCoreDataManager.m; sourceTree = "<group>"; };
 		9A420CF71EB35622002306BF /* EKCoreDataImporter+SwiftExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EKCoreDataImporter+SwiftExtensions.h"; path = "TestFixtures/Utilities/EKCoreDataImporter+SwiftExtensions.h"; sourceTree = "<group>"; };
 		9A420CF81EB35622002306BF /* FixtureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixtureLoader.swift; path = TestFixtures/Utilities/FixtureLoader.swift; sourceTree = "<group>"; };
 		9A420CF91EB35622002306BF /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = TestFixtures/Utilities/Storage.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 		9A420DB51EB359DE002306BF /* NSDateFormatter+EasyMappingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+EasyMappingAdditions.h"; path = "Sources/EasyMapping/NSDateFormatter+EasyMappingAdditions.h"; sourceTree = "<group>"; };
 		9A420DD41EB359F6002306BF /* XCTestCase+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XCTestCase+EasyMapping.h"; path = "Sources/EasyMapping+XCTestCase/XCTestCase+EasyMapping.h"; sourceTree = "<group>"; };
 		9A420DD51EB359F6002306BF /* XCTestCase+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase+EasyMapping.m"; path = "Sources/EasyMapping+XCTestCase/XCTestCase+EasyMapping.m"; sourceTree = "<group>"; };
+		9A420DE71EB36E2A002306BF /* EasyMappingPerfomanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EasyMappingPerfomanceTests.swift; path = Tests/EasyMappingTests/EasyMappingPerfomanceTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* EasyMapping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyMapping.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* EasyMappingTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyMappingTests.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -311,6 +316,7 @@
 		3E9A91291EB2481E006305D1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9A420DD71EB36B7B002306BF /* Benchmarks */,
 				9A420CFC1EB3562B002306BF /* Tests-Bridging-Header.h */,
 				3E9A92041EB24A81006305D1 /* Utilities */,
 				3E9A91911EB248B1006305D1 /* Models */,
@@ -345,6 +351,7 @@
 				9A420D891EB356AC002306BF /* EKSerializerTestCase.swift */,
 				9A420D8A1EB356AC002306BF /* LinuxMain.swift */,
 				9A420D8B1EB356AC002306BF /* XCTestEasyMappingSupportTestCase.swift */,
+				9A420DE71EB36E2A002306BF /* EasyMappingPerfomanceTests.swift */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -518,6 +525,15 @@
 				9A420DD51EB359F6002306BF /* XCTestCase+EasyMapping.m */,
 			);
 			name = "XCTestCase+Additions";
+			sourceTree = "<group>";
+		};
+		9A420DD71EB36B7B002306BF /* Benchmarks */ = {
+			isa = PBXGroup;
+			children = (
+				9A0274BC1EB37927003AF7A5 /* EKCoreDataManager.h */,
+				9A0274BD1EB37927003AF7A5 /* EKCoreDataManager.m */,
+			);
+			name = Benchmarks;
 			sourceTree = "<group>";
 		};
 		DD7502721C68FC1B006590AF /* Frameworks */ = {
@@ -737,9 +753,11 @@
 				9A420D251EB3565E002306BF /* BaseTestModel.m in Sources */,
 				9A420D441EB3568A002306BF /* Wolf.m in Sources */,
 				9A420D051EB3564E002306BF /* BaseManagedTestModel.m in Sources */,
+				9A420DE81EB36E2A002306BF /* EasyMappingPerfomanceTests.swift in Sources */,
 				9A420D231EB3565E002306BF /* Address.m in Sources */,
 				9A420D2F1EB3565E002306BF /* UFO.m in Sources */,
 				9A420CFB1EB35622002306BF /* Storage.swift in Sources */,
+				9A0274BE1EB37927003AF7A5 /* EKCoreDataManager.m in Sources */,
 				9A420D941EB356AC002306BF /* EKPropertyMappingTestCase.swift in Sources */,
 				9A420D411EB3568A002306BF /* Dog.m in Sources */,
 				9A420D271EB3565E002306BF /* Cat.m in Sources */,
