@@ -64,6 +64,11 @@ fastlane carthage_build
 fastlane spm_macos
 ```
 
+### release
+```
+fastlane release
+```
+
 
 ----
 

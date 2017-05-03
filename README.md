@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/lucasmedeirosleite/EasyMapping.svg?branch=master)](https://travis-ci.org/lucasmedeirosleite/EasyMapping) &nbsp;
-![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/EasyMapping/badge.png) &nbsp; 
-![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/EasyMapping/badge.png) &nbsp; 
+[![codecov.io](http://codecov.io/github/lucasmedeirosleite/EasyMapping/coverage.svg?branch=master)](http://codecov.io/github/lucasmedeirosleite/EasyMapping?branch=master)
+![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/EasyMapping/badge.png) &nbsp;
+![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/EasyMapping/badge.png) &nbsp;
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 
@@ -121,8 +122,8 @@ typedef enum {
 {
     return [EKObjectMapping mappingForClass:self withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[
-         @"integerProperty", @"unsignedIntegerProperty", 
-         @"cgFloatProperty", @"doubleProperty", 
+         @"integerProperty", @"unsignedIntegerProperty",
+         @"cgFloatProperty", @"doubleProperty",
          @"boolProperty"
         ]];
     }];
@@ -134,10 +135,10 @@ typedef enum {
 * Converting a NSDictionary or NSArray to a object class or collection now becomes easy:
 
 ```objective-c
-Person *person = [EKMapper objectFromExternalRepresentation:personRepresentation 
+Person *person = [EKMapper objectFromExternalRepresentation:personRepresentation
                                                 withMapping:[Person objectMapping]];
 
-NSArray *carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:carsRepresentation 
+NSArray *carsArray = [EKMapper arrayOfObjectsFromExternalRepresentation:carsRepresentation
                                                             withMapping:[Car objectMapping]];
 ```
 
@@ -153,7 +154,7 @@ NSArray *collectionRepresentation = [EKSerializer serializeCollection:cars withM
 Suppose you have something like this:
 
 ```objective-c
-Person *person = [Person alloc] init]	
+Person *person = [Person alloc] init]
 ```
 
 To fill an already instantiated object you can do this:
@@ -197,7 +198,7 @@ Sometimes you can encounter situation, where your JSON will contain objects with
 
 ## Thanks
 
-Thanks to: 
+Thanks to:
 
 * [basitali](https://github.com/basitali) who added the fillObject functionality on EKMapper!
 * [Alejandro](https://github.com/aleph7) who added CoreData support!
@@ -205,6 +206,7 @@ Thanks to:
 * [Dany L'Hébreux](https://github.com/danylhebreux) who added the NSSet support!
 * [Jack](https://github.com/Jack-s) who added mapFieldsFromMappingObject and mapFieldsFromArrayToPascalCase functionality
 * [Yuri Kotov](https://github.com/advantis) and [Dmitriy](https://github.com/poteryaysya) which added a lot of performance improvements
+* [Moya organization](https://github.com/Moya/Moya) for awesome automated release process.
 
 ## Requirements
 
