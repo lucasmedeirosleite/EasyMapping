@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## Next
 
+* Fixed potential buffer overflow when using scalar Objective-C properties(#155, #156).
+* Added support for installation using Carthage and Swift Package Manager.
 * `ignoreMissingFields` property now properly differentiates between a truly missing from JSON field and field, that contains null, which is turned into NSNull.null instance by NSJSONSerialization.
 * `mapKeyPath:toPoperty:withDateFormatter` method now creates blocks, that return nil instead of `NSNull` if received value is not a NSString or NSDate. `NSNull` instance however is left untouched.
 

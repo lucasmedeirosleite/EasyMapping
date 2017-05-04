@@ -219,13 +219,35 @@ Thanks to:
 
 Using [CocoaPods](https://cocoapods.org):
 
-	pod 'EasyMapping', '~> 0.15.0'
+	pod 'EasyMapping', '~> 0.20'
 
 Using [Carthage](https://github.com/Carthage/Carthage):
 
     github "EasyMapping/EasyMapping"
 
 Carthage uses dynamic frameworks, which require iOS 8.
+
+Using [Swift Package Manager](https://github.com/apple/swift-package-manager):
+
+Add the following as a dependency to your `Package.swift`:
+
+```swift
+.Package(url: "https://github.com/lucasmedeirosleite/EasyMapping", majorVersion: 0, minorVersion: 2)
+```
+
+and then specify `.Target(name: "EasyMapping")` as a dependency of the Target in which you wish to use EasyMapping.
+Here's an example `PackageDescription`:
+
+```swift
+import PackageDescription
+
+let package = Package(
+  name: "MyApp",
+  dependencies: [
+    .Package(url: "https://github.com/lucasmedeirosleite/EasyMapping", majorVersion: 0, minorVersion: 2)
+  ]
+)
+```
 
 ## The idea
 
