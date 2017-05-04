@@ -3,8 +3,6 @@ All notable changes to this project will be documented in this file.
 
 ## Next
 
-## [0.21.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.21.0)
-
 * Fixed potential buffer overflow when using scalar Objective-C properties(#155, #156).
 * Added support for installation using Carthage and Swift Package Manager.
 * `ignoreMissingFields` property now properly differentiates between a truly missing from JSON field and field, that contains null, which is turned into NSNull.null instance by NSJSONSerialization.
