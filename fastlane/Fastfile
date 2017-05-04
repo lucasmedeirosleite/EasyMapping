@@ -24,6 +24,10 @@ lane :build_watchos do
   )
 end
 
+lane :pod_lint do
+  pod_lib_lint(allow_warnings: true, verbose: true)
+end
+
 lane :carthage_build do
   carthage(command: "build", no_skip_current: true, verbose: true)
 end
@@ -41,7 +45,7 @@ lane :release do |params|
   increment_version_number(version_number: version)
 
   Dir.chdir("..") do
-    
+
     puts "Updating podspec."
     filename = "EasyMapping.podspec"
     contents = File.read(filename)

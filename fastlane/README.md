@@ -54,6 +54,11 @@ fastlane test_macos
 fastlane build_watchos
 ```
 
+### pod_lint
+```
+fastlane pod_lint
+```
+
 ### carthage_build
 ```
 fastlane carthage_build
