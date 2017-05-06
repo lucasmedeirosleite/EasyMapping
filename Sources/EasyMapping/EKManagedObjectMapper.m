@@ -120,7 +120,7 @@
             else {
                 [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:relationship.property];
             }
-        } else {
+        } else if (!mapping.incrementalData) {
             [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
         }
     }

@@ -161,21 +161,24 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
 +(void)addValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath
 {
     id _value = [object valueForKeyPath:keyPath];
-    if(![_value isKindOfClass:[NSSet class]]) {
-        [self setValue:value onObject:object forKeyPath:keyPath];
-    }
-    else {
-        if ([object isKindOfClass:[NSManagedObject class]])
-        {
-            // Reducing update times in CoreData
-            if(_value != value && ![value isSubsetOfSet:_value]) {
-                _value = [_value setByAddingObjectsFromSet:value];
-                [object setValue:_value forKey:keyPath];
-            }
-        }
-        else {
+    
+    if ([object isKindOfClass:[NSManagedObject class]])
+    {
+        // Reducing update times in CoreData
+        if(_value != value && ![value isSubsetOfSet:_value]) {
             _value = [_value setByAddingObjectsFromSet:value];
             [object setValue:_value forKey:keyPath];
+        }
+    }
+    else {
+        if ([_value isKindOfClass:NSSet.class]) {
+            _value = [_value setByAddingObjectsFromSet:value];
+            [object setValue:_value forKey:keyPath];
+        } else if ([_value isKindOfClass:NSArray.class]) {
+            _value = [_value arrayByAddingObjectsFromArray:value];
+            [object setValue:_value forKey:keyPath];
+        } else {
+            [self setValue:value onObject:object forKeyPath:keyPath];
         }
     }
 }

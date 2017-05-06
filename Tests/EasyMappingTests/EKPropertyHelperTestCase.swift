@@ -44,4 +44,35 @@ class EKPropertyHelperTestCase: XCTestCase {
         XCTAssert(EKPropertyHelper.propertyNameIsScalar("boolProperty", from: sut))
     }
     
+    func testIdIdentification() {
+        let object = MutableFoundationClass()
+        XCTAssertFalse(EKPropertyHelper.propertyNameIsScalar("idObject", from: object))
+        
+        let id = EKPropertyHelper.propertyRepresentation([1,2,3], for: object, withPropertyName: "idObject")
+        
+        XCTAssertNotNil(id)
+    }
+    
+    func testAddSetObjectsOnNSObject() {
+        let object = MutableFoundationClass()
+        object.mutableSet = NSMutableSet(array: [1,2,3])
+        EKPropertyHelper.addValue(Set([4,5]), on: object, forKeyPath: "mutableSet")
+        
+        XCTAssertEqual(object.mutableSet.count, 5)
+        XCTAssertEqual(object.mutableSet.allObjects.flatMap { $0 as? Int }.sorted(by: { $0 < $1 }), [1,2,3,4,5])
+    }
+}
+
+class EKPropertyHelperManagedTestCase : ManagedTestCase {
+    func testRespectPropertyRepresentationForManagedType() {
+        let withoutPhones = FixtureLoader.dictionary(fromFileNamed: "PersonWithoutPhones.json")
+        let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
+        let person = EKManagedObjectMapper.object(fromExternalRepresentation: withoutPhones,
+                                                  with: ManagedMappingProvider.personMapping(),
+                                                  in: Storage.shared.context) as! ManagedPerson
+        let mapping = ManagedMappingProvider.personMapping()
+        mapping.respectPropertyFoundationTypes = true
+        EKManagedObjectMapper.fillObject(person, fromExternalRepresentation: info, with: mapping, in: Storage.shared.context)
+        XCTAssertEqual(person.phones.count, 2)
+    }
 }

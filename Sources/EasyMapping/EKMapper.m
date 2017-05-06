@@ -68,15 +68,15 @@
 		 }
     }
     
-    for (EKRelationshipMapping *valueMapping in mapping.hasManyMappings) {
+    for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
 
-        if (valueMapping.condition) {
-            if (!valueMapping.condition(representation)) {
+        if (relationship.condition) {
+            if (!relationship.condition(representation)) {
                 continue;
             }
         }
         
-        NSArray *arrayToBeParsed = [representation valueForKeyPath:valueMapping.keyPath];
+        NSArray *arrayToBeParsed = [representation valueForKeyPath:relationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             continue;
@@ -84,22 +84,18 @@
         
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withRelationship:valueMapping];
+                                                                       withRelationship:relationship];
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
-                                                        withPropertyName:[valueMapping property]];
-
-             id _value = [object valueForKeyPath:valueMapping.property];
-             
-             if(mapping.incrementalData && _value!=nil) {
-                 _value = [_value arrayByAddingObjectsFromArray:parsedObjects];
-                 [object setValue:_value forKey:valueMapping.property];
+                                                        withPropertyName:[relationship property]];
+             if(mapping.incrementalData) {
+                 [EKPropertyHelper addValue:parsedObjects onObject:object forKeyPath:relationship.property];
              }
              else {
-                 [object setValue:parsedObjects forKeyPath:valueMapping.property];
+                 [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:relationship.property];
              }
 		 } else if(!mapping.incrementalData) {
-			 [object setValue:nil forKey:valueMapping.property];
+			 [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
 		 }
     }
     return object;

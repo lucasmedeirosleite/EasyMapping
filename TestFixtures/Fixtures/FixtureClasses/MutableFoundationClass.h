@@ -17,4 +17,6 @@
 @property (nonatomic, strong) NSMutableSet * mutableSet;
 @property (nonatomic, strong) NSOrderedSet * orderedSet;
 @property (nonatomic, strong) NSMutableOrderedSet * mutableOrderedSet;
+@property (nonatomic, strong) id idObject;
+
 @end
