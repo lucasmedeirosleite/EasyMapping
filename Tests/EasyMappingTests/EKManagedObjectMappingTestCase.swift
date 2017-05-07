@@ -60,6 +60,19 @@ class EKManagedObjectMappingTestCase: XCTestCase {
         XCTAssertEqual(property?.property, "createdAt")
     }
     
+    func testMapKeyPathToPropertyWithValueBlock() {
+        let mapping = EKManagedObjectMapping(entityName: "ManagedCar")
+        mapping.mapKeyPath("id", toProperty: "identifier") { key, value, context in
+            return (Int(value as? String ?? "") ?? 0) + 1
+        }
+        
+        let property = mapping.propertyMappings["id"] as? EKPropertyMapping
+        
+        XCTAssertEqual(property?.keyPath, "id")
+        XCTAssertEqual(property?.property, "identifier")
+        XCTAssertEqual(property?.managedValueBlock?("id","3",Storage.shared.context) as? Int, 4)
+    }
+    
     func testMapPropertiesFromArray() {
         let mapping = EKManagedObjectMapping(forEntityName: "Car") {
             $0.mapProperties(from: ["name","email"])

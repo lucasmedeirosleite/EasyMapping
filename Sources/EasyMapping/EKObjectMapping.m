@@ -198,19 +198,10 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     EKRelationshipMapping * relationship = [EKRelationshipMapping mappingForClass:objectClass
                                                                       withKeyPath:keyPath
                                                                       forProperty:property];
-    relationship.mappingResolver = ^(id representation ){
-        if (objectMapping != nil) {
-            return objectMapping;
-        }
-        return [objectClass objectMapping];
-    };
-    relationship.serializationResolver = ^(id object) {
-        if (objectMapping != nil) {
-            return objectMapping;
-        }
-        return [objectClass objectMapping];
-    };
-    
+    relationship.mappingResolver = [self defaultMappingResolveBlockFor:objectClass
+                                                                  with:objectMapping];
+    relationship.serializationResolver = [self defaultSerializationResolveBlockFor:objectClass
+                                                                              with:objectMapping];
     [self.hasOneMappings addObject:relationship];
     
     return relationship;
@@ -229,20 +220,10 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
                                                                       withKeyPath:@""
                                                                       forProperty:property];
     relationship.nonNestedKeyPaths = keyPaths;
-    relationship.mappingResolver = ^(id representation ){
-        if (mapping != nil) {
-            return mapping;
-        }
-        return [objectClass objectMapping];
-    };
-    
-    relationship.serializationResolver = ^(id object) {
-        if (mapping != nil) {
-            return mapping;
-        }
-        return [objectClass objectMapping];
-    };
-    
+    relationship.mappingResolver = [self defaultMappingResolveBlockFor:objectClass
+                                                                  with:mapping];
+    relationship.serializationResolver = [self defaultSerializationResolveBlockFor:objectClass
+                                                                              with:mapping];
     [self.hasOneMappings addObject:relationship];
     
     return relationship;
@@ -270,19 +251,10 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
     EKRelationshipMapping * relationship = [EKRelationshipMapping mappingForClass:objectClass
                                                                       withKeyPath:keyPath
                                                                       forProperty:property];
-    relationship.mappingResolver = ^(id representation ){
-        if (objectMapping != nil) {
-            return objectMapping;
-        }
-        return [objectClass objectMapping];
-    };
-    relationship.serializationResolver = ^(id object) {
-        if (objectMapping != nil) {
-            return objectMapping;
-        }
-        return [objectClass objectMapping];
-    };
-    
+    relationship.mappingResolver = [self defaultMappingResolveBlockFor:objectClass
+                                                                  with:objectMapping];
+    relationship.serializationResolver = [self defaultSerializationResolveBlockFor:objectClass
+                                                                              with:objectMapping];
     [self.hasManyMappings addObject:relationship];
     
     return relationship;
@@ -291,6 +263,24 @@ withValueBlock:(id (^)(NSString *, id))valueBlock reverseBlock:(id (^)(id))rever
 - (void)addPropertyMappingToDictionary:(EKPropertyMapping *)propertyMapping
 {
     [self.propertyMappings setObject:propertyMapping forKey:propertyMapping.keyPath];
+}
+
+-(EKMappingResolvingBlock)defaultMappingResolveBlockFor:(Class)objectClass with:(EKObjectMapping *) mapping {
+    return ^(id representation ){
+        if (mapping != nil) {
+            return mapping;
+        }
+        return [objectClass objectMapping];
+    };
+}
+
+-(EKSerializationResolvingBlock)defaultSerializationResolveBlockFor:(Class)objectClass with:(EKObjectMapping *)objectMapping {
+    return ^(id object) {
+        if (objectMapping != nil) {
+            return objectMapping;
+        }
+        return [objectClass objectMapping];
+    };
 }
 
 @end

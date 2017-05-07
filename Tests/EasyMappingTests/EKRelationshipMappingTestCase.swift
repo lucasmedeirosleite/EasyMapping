@@ -51,4 +51,32 @@ class EKRelationshipMappingTestCase: XCTestCase {
         XCTAssertEqual(wolf?.pack, "Bronzebeard")
     }
     
+    func testConditionalHasOneMapping() {
+        Car.register(MappingProvider.carMapping())
+        defer { Car.register(nil) }
+        let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
+        let mapping = MappingProvider.personMapping()
+        let relationship = mapping.hasOneMappings.lastObject as? EKRelationshipMapping
+        relationship?.condition = { _ in
+            false
+        }
+        let person = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Person
+        
+        XCTAssertNil(person?.car)
+    }
+    
+    func testConditionalHasManyMapping() {
+        let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithAnimals.json")
+        let mapping = MappingProvider.personWithPetsMapping()
+        let relationship = mapping.hasManyMappings.lastObject as? EKRelationshipMapping
+        relationship?.condition = { representation in
+            return false
+        }
+        
+        let person = EKMapper.object(fromExternalRepresentation: info,
+                                     with: mapping) as? Person
+        
+        XCTAssertNil(person?.pets)
+    }
+    
 }

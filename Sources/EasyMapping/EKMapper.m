@@ -46,14 +46,14 @@
                   respectPropertyType:mapping.respectPropertyFoundationTypes
                   ignoreMissingFields:mapping.ignoreMissingFields];
     }];
-    for (EKRelationshipMapping *valueMapping in mapping.hasOneMappings) {
-        if (valueMapping.condition) {
-            if (!valueMapping.condition(representation)) {
+    for (EKRelationshipMapping *oneRelationship in mapping.hasOneMappings) {
+        if (oneRelationship.condition) {
+            if (!oneRelationship.condition(representation)) {
                 continue;
             }
         }
         
-        NSDictionary * value = [valueMapping extractObjectFromRepresentation:representation];
+        NSDictionary * value = [oneRelationship extractObjectFromRepresentation:representation];
         
         if(mapping.ignoreMissingFields  && !value)
         {
@@ -61,22 +61,22 @@
         }
         
 		 if (value && value != (id)[NSNull null]) {
-			 id result = [self objectFromExternalRepresentation:value withMapping:[valueMapping mappingForRepresentation:value]];
-			 [object setValue:result forKeyPath:valueMapping.property];
+			 id result = [self objectFromExternalRepresentation:value withMapping:[oneRelationship mappingForRepresentation:value]];
+			 [object setValue:result forKeyPath:oneRelationship.property];
 		 } else {
-			 [object setValue:nil forKey:valueMapping.property];
+			 [object setValue:nil forKey:oneRelationship.property];
 		 }
     }
     
-    for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
+    for (EKRelationshipMapping *manyRelationship in mapping.hasManyMappings) {
 
-        if (relationship.condition) {
-            if (!relationship.condition(representation)) {
+        if (manyRelationship.condition) {
+            if (!manyRelationship.condition(representation)) {
                 continue;
             }
         }
         
-        NSArray *arrayToBeParsed = [representation valueForKeyPath:relationship.keyPath];
+        NSArray *arrayToBeParsed = [representation valueForKeyPath:manyRelationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             continue;
@@ -84,18 +84,18 @@
         
 		 if (arrayToBeParsed && arrayToBeParsed != (id)[NSNull null]) {
 			 NSArray *parsedArray = [self arrayOfObjectsFromExternalRepresentation:arrayToBeParsed
-                                                                       withRelationship:relationship];
+                                                                       withRelationship:manyRelationship];
              id parsedObjects = [EKPropertyHelper propertyRepresentation:parsedArray
                                                                forObject:object
-                                                        withPropertyName:[relationship property]];
+                                                        withPropertyName:[manyRelationship property]];
              if(mapping.incrementalData) {
-                 [EKPropertyHelper addValue:parsedObjects onObject:object forKeyPath:relationship.property];
+                 [EKPropertyHelper addValue:parsedObjects onObject:object forKeyPath:manyRelationship.property];
              }
              else {
-                 [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:relationship.property];
+                 [EKPropertyHelper setValue:parsedObjects onObject:object forKeyPath:manyRelationship.property];
              }
 		 } else if(!mapping.incrementalData) {
-			 [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
+			 [EKPropertyHelper setValue:nil onObject:object forKeyPath:manyRelationship.property];
 		 }
     }
     return object;
