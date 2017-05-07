@@ -125,6 +125,7 @@
 /* Begin PBXFileReference section */
 		3E1FB69B1EBE334A007CB0F4 /* EKObjectModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKObjectModelTestCase.swift; path = Tests/EasyMappingTests/EKObjectModelTestCase.swift; sourceTree = "<group>"; };
 		3E1FB69D1EBE36D0007CB0F4 /* EKManagedObjectModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKManagedObjectModelTestCase.swift; path = Tests/EasyMappingTests/EKManagedObjectModelTestCase.swift; sourceTree = "<group>"; };
+		3E1FB6A01EBF95D9007CB0F4 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		3E9A90E71EB24789006305D1 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
 		3E9A90E81EB24789006305D1 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
 		3E9A90E91EB24789006305D1 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
@@ -280,6 +281,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E1FB69F1EBF95B9007CB0F4 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				3E1FB6A01EBF95D9007CB0F4 /* CHANGELOG.md */,
+			);
+			name = Docs;
+			sourceTree = "<group>";
+		};
 		3E9A90EA1EB24809006305D1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +504,7 @@
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
+				3E1FB69F1EBF95B9007CB0F4 /* Docs */,
 				3E9A912A1EB24827006305D1 /* Example */,
 				3E9A91291EB2481E006305D1 /* Tests */,
 				3E9A90EA1EB24809006305D1 /* Source */,

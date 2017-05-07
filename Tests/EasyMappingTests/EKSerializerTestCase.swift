@@ -119,6 +119,28 @@ class EKSerializerTestCase: XCTestCase {
         XCTAssertEqual(car?["year"] as? String, "2013")
     }
     
+    func testSerializesManagedObjectWithRootPath() {
+        ManagedPhone.register(ManagedMappingProvider.phoneMapping())
+        ManagedCar.register(ManagedMappingProvider.carMapping())
+        ManagedPerson.register(ManagedMappingProvider.personMapping())
+        defer {
+            ManagedCar.register(nil)
+            ManagedPerson.register(nil)
+            ManagedPhone.register(nil)
+        }
+        
+        let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
+        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info, with: ManagedMappingProvider.personMapping(), in: Storage.shared.context) as? ManagedPerson
+        
+        let serialized = EKSerializer.serializeObject(person!.car!, with: ManagedMappingProvider.carWithRootKeyMapping(), from: Storage.shared.context)
+        
+        let data = serialized["data"] as? [String:Any]
+        let car = data?["car"] as? [String:Any]
+        
+        XCTAssertEqual(car?["model"] as? String, "i30")
+        XCTAssertEqual(car?["year"] as? String, "2013")
+    }
+    
     func testSerializerShouldSerializeNestedKeypaths() {
         let sut = EKSerializer.serializeObject(Car.i30, with: MappingProvider.carNestedAttributesMapping())
         
@@ -291,5 +313,54 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
         XCTAssertEqual(sut["name"] as? String, "Lucas")
         XCTAssertEqual(sut["email"] as? String, "lucastoc@gmail.com")
         XCTAssertEqual(sut["gender"] as? String, "male")
+    }
+    
+    func testSerializationOfNonNestedManagedObjects() {
+        ManagedCar.register(ManagedMappingProvider.carMapping())
+        ManagedPhone.register(ManagedMappingProvider.phoneMapping())
+        ManagedPerson.register(ManagedMappingProvider.personMapping())
+        defer {
+            ManagedCar.register(nil)
+            ManagedPhone.register(nil)
+            ManagedPerson.register(nil)
+        }
+        let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
+        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info,
+                                                  with: ManagedMappingProvider.personMapping(),
+                                                  in: Storage.shared.context) as? ManagedPerson
+        let sut = EKSerializer.serializeObject(person!, with: ManagedMappingProvider.personNonNestedMapping(), from: Storage.shared.context)
+        
+        XCTAssertEqual(sut["carId"] as? Int, 3)
+        XCTAssertEqual(sut["carModel"] as? String, "i30")
+        XCTAssertEqual(sut["carYear"] as? String, "2013")
+        
+        XCTAssertEqual(sut["name"] as? String, "Lucas")
+        XCTAssertEqual(sut["email"] as? String, "lucastoc@gmail.com")
+        XCTAssertEqual(sut["gender"] as? String, "male")
+    }
+    
+    func testSerializeCollectionOfHasManyObjects() {
+        ManagedCar.register(ManagedMappingProvider.carMapping())
+        ManagedPhone.register(ManagedMappingProvider.phoneMapping())
+        ManagedPerson.register(ManagedMappingProvider.personMapping())
+        defer {
+            ManagedCar.register(nil)
+            ManagedPhone.register(nil)
+            ManagedPerson.register(nil)
+        }
+        let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
+        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info,
+                                                  with: ManagedMappingProvider.personMapping(),
+                                                  in: Storage.shared.context) as? ManagedPerson
+        let sut = EKSerializer.serializeObject(person!,
+                                               with: ManagedMappingProvider.personMapping(),
+                                               from: Storage.shared.context)
+        
+        guard let phones = sut["phones"] as? [[String:Any]] else { XCTFail(); return }
+        
+        XCTAssertEqual(phones.count, 2)
+        let numbers = phones.map { $0["number"] as? String }
+        XCTAssert(numbers.contains(where: { $0 == "1111-1111"}))
+        XCTAssert(numbers.contains(where: { $0 == "2222-222" }))
     }
 }

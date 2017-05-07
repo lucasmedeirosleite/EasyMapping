@@ -103,9 +103,8 @@
         
         if (hasOneObject) {
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
-                                                           withMapping:(EKManagedObjectMapping *)[[relationship objectClass] objectMapping]
+                                                           withMapping:(EKManagedObjectMapping *)[relationship mappingForObject:hasOneObject]
                                                            fromContext:context];
-            
             if (relationship.nonNestedKeyPaths)
             {
                 for (NSString * key in hasOneRepresentation.allKeys)
