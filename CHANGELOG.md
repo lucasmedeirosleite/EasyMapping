@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## Next
 
+## [0.21.1](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.21.1)
+
 * Fixed a bug in `EKSerializer` that prevented has one relationships from being properly serialized with non-nested keypaths.
 
 ## [0.21.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.21.0)
