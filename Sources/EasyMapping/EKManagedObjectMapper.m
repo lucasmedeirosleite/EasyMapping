@@ -53,26 +53,23 @@
         object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName
                                                inManagedObjectContext:self.importer.context];
     }
-    id primaryKey = externalRepresentation[mapping.primaryKeyPropertyMapping.keyPath];
-    if (mapping.primaryKeyPropertyMapping.managedValueBlock) {
-        primaryKey = mapping.primaryKeyPropertyMapping.managedValueBlock(mapping.primaryKeyPropertyMapping.keyPath,
-                                                                         [externalRepresentation valueForKeyPath:mapping.primaryKeyPropertyMapping.keyPath],
-                                                                         self.importer.context);
-    }
-    if (primaryKey) {
-        [object setValue:primaryKey forKey:mapping.primaryKey];
-    }
+    [self fillObjectProperties:object
+    fromExternalRepresentation:externalRepresentation
+                   withMapping:mapping];
+    [self.importer cacheObject:object
+                   withMapping:mapping];
+    [self fillObjectOneRelationships:object
+          fromExternalRepresentation:externalRepresentation
+                         withMapping:mapping];
+    [self fillObjectManyRelationships:object
+           fromExternalRepresentation:externalRepresentation
+                          withMapping:mapping];
     
-    NSManagedObject * filledObject = [self fillObject:object
-                           fromExternalRepresentation:externalRepresentation
-                                          withMapping:mapping];
-    [self.importer cacheObject:filledObject withMapping:mapping];
-    
-    return filledObject;
+    return object;
 }
 
-- (id)fillObject:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
-     withMapping:(EKManagedObjectMapping *)mapping
+- (void)fillObjectProperties:(id)object fromExternalRepresentation:(NSDictionary *)externalRepresentation
+               withMapping:(EKManagedObjectMapping *)mapping
 {
     NSDictionary * representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
                                                                                     withMapping:mapping];
@@ -85,6 +82,14 @@
          respectPropertyType:mapping.respectPropertyFoundationTypes
          ignoreMissingFields:mapping.ignoreMissingFields];
     }];
+}
+
+- (void)fillObjectOneRelationships:(id)object
+        fromExternalRepresentation:(NSDictionary *)externalRepresentation
+                       withMapping:(EKManagedObjectMapping *)mapping
+{
+    NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
+                                                                                   withMapping:mapping];
     for (EKRelationshipMapping *relationship in mapping.hasOneMappings) {
         NSDictionary * value = [relationship extractObjectFromRepresentation:representation];
         if(mapping.ignoreMissingFields && !value)
@@ -99,7 +104,14 @@
         }
         
     }
-    
+}
+
+- (void)fillObjectManyRelationships:(id)object
+         fromExternalRepresentation:(NSDictionary *)externalRepresentation
+                        withMapping:(EKManagedObjectMapping *)mapping
+{
+    NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
+                                                                                    withMapping:mapping];
     for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
         NSArray * arrayToBeParsed = [representation valueForKeyPath:relationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
@@ -124,7 +136,6 @@
             [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
         }
     }
-    return object;
 }
 
 - (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
@@ -178,7 +189,15 @@
             object = [NSEntityDescription insertNewObjectForEntityForName:mapping.entityName
                                                    inManagedObjectContext:self.importer.context];
 
-        [self fillObject:object fromExternalRepresentation:representation withMapping:mapping];
+        [self fillObjectProperties:object
+        fromExternalRepresentation:representation
+                       withMapping:mapping];
+        [self fillObjectOneRelationships:object
+              fromExternalRepresentation:representation
+                             withMapping:mapping];
+        [self fillObjectManyRelationships:object
+               fromExternalRepresentation:representation
+                              withMapping:mapping];
         [array addObject:object];
     }
 
@@ -222,9 +241,17 @@
     EKCoreDataImporter * importer = [EKCoreDataImporter importerWithMapping:mapping
                                                      externalRepresentation:externalRepresentation
                                                                     context:context];
-    return [[self mapperWithImporter:importer] fillObject:object
-                               fromExternalRepresentation:externalRepresentation
-                                              withMapping:mapping];
+    EKManagedObjectMapper *mapper = [self mapperWithImporter:importer];
+    [mapper fillObjectProperties:object
+      fromExternalRepresentation:externalRepresentation
+                     withMapping:mapping];
+    [mapper fillObjectOneRelationships:object
+            fromExternalRepresentation:externalRepresentation
+                           withMapping:mapping];
+    [mapper fillObjectManyRelationships:object
+             fromExternalRepresentation:externalRepresentation
+                            withMapping:mapping];
+    return object;
 }
 
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation

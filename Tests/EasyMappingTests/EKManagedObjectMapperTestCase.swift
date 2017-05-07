@@ -252,6 +252,24 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
                 .value(forKey: "id") as? String,"1"
         )
     }
+    
+    func testSyncArrayFromExternalRepresentationSamePhones() {
+        let phones = FixtureLoader.dictionary(fromFileNamed: "Person.json")["phones"] as? [[String:Any]] ?? []
+        let zeroPhones = FixtureLoader.dictionary(fromFileNamed: "PersonWithZeroPhones.json")["phones"] as? [[String:Any]] ?? []
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ManagedPhone")
+        var phonesArray = EKManagedObjectMapper.syncArrayOfObjects(fromExternalRepresentation: phones, with: ManagedMappingProvider.phoneMapping(), fetchRequest: request, in: Storage.shared.context)
+        
+        XCTAssertEqual(phonesArray.count, 2)
+        XCTAssertEqual(numberOfObjects(ManagedPhone.self), 2)
+        
+        phonesArray = EKManagedObjectMapper.syncArrayOfObjects(fromExternalRepresentation: zeroPhones,
+                                                               with: ManagedMappingProvider.phoneMapping(),
+                                                               fetchRequest: request,
+                                                               in: Storage.shared.context)
+        XCTAssertEqual(phonesArray.count, 0)
+        XCTAssertEqual(numberOfObjects(ManagedPhone.self), 0)
+    }
 }
 
 class EKManagedObjectMapperIncrementalDataTests: ManagedTestCase {
