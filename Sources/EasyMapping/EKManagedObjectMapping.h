@@ -24,7 +24,7 @@
 #import "EKObjectMapping.h"
 #import "EKPropertyMapping.h"
 
-#define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
+//#define EKDesignatedInitializer(__SEL__) __attribute__((unavailable("Invoke the designated initializer `" # __SEL__ "` instead.")))
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,100 +32,93 @@ NS_ASSUME_NONNULL_BEGIN
  `EKManagedObjectMapping` is a subclass of `EKObjectMapping`, intended to be used with CoreData objects.
  */
 
-@interface EKManagedObjectMapping : EKObjectMapping
-
-/**
- Entity name of CoreData object.
- */
-@property (nonatomic, strong, readonly) NSString* entityName;
-
-/**
- Primary key of CoreData objects
- */
-@property (nonatomic, strong, nullable) NSString *primaryKey;
-
--(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueBlock:(EKManagedMappingValueBlock)valueBlock;
-
--(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
-   withValueBlock:(EKManagedMappingValueBlock)valueBlock
-     reverseBlock:(EKManagedMappingReverseValueBlock)reverseBlock;
-
-/**
- Convenience constructor for `EKManagedObjectMapping`.
- 
- @param entityName Name of CoreData entity.
- 
- @param mappingBlock Block, that contains managed object mapping.
- 
- @result managed object mapping.
- */
-+ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
-                                       withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
-
-/**
- Convenience constructor for `EKManagedObjectMapping`.
- 
- @param entityName Name of CoreData entity.
- 
- @param rootPath rootPath for mapping.
- 
- @param mappingBlock Block, that contains managed object mapping
- 
- @result managed object mapping.
- */
-+ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
-                                    withRootPath:(NSString *)rootPath
-                                       withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock;
-
-/**
- Designated initializer for `EKManagedObjectMapping`.
- 
- @param entityName CoreData entity name.
- 
- @result managed object mapping.
- */
-- (instancetype)initWithEntityName:(NSString *)entityName;
-
-/**
- Designated initializer for `EKManagedObjectMapping`.
- 
- @param entityName CoreData entity name.
- 
- @param rootPath rootPath for mapping.
- 
- @result managed object mapping.
- */
-- (instancetype)initWithEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath;
-
-/**
- Property mapping for primary key of managed object.
- 
- @result property mapping
- */
-- (nullable EKPropertyMapping *)primaryKeyPropertyMapping;
-
-#pragma mark - unavalable methods
-
-/**
- This method is unavailable for `EKManagedObjectMapping`. Use `initWithEntityName:` method instead.
- */
-- (instancetype)initWithObjectClass:(Class)objectClass EKDesignatedInitializer(initWithEntityName:);
-
-/**
- This method is unavailable for `EKManagedObjectMapping`. Use `initWithEntityName:rootPath:` method instead.
- */
-- (instancetype)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath EKDesignatedInitializer(initWithEntityName:withRootPath:);
-
-/**
- This method is unavailable for `EKManagedObjectMapping`. Use `mappingForEntityName:withBlock:` method instead.
- */
-+ (instancetype)mappingForClass:(Class)objectClass withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withBlock:);
-
-/**
- This method is unavailable for `EKManagedObjectMapping`. Use `mappingForEntityName:rootPath:withBlock:` method instead.
- */
-+ (instancetype)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
-                      withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withRootPath:withBlock);
-@end
+//@interface EKManagedObjectMapping : EKObjectMapping
+//
+///**
+// Entity name of CoreData object.
+// */
+//@property (nonatomic, strong, readonly) NSString* entityName;
+//
+///**
+// Primary key of CoreData objects
+// */
+//@property (nonatomic, strong, nullable) NSString *primaryKey;
+//
+//-(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property withValueBlock:(EKMappingBlock)valueBlock;
+//
+//-(void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
+//   withValueBlock:(EKMappingBlock)valueBlock
+//     reverseBlock:(EKMappingBlock)reverseBlock;
+//
+///**
+// Convenience constructor for `EKManagedObjectMapping`.
+// 
+// @param entityName Name of CoreData entity.
+// 
+// @param mappingBlock Block, that contains managed object mapping.
+// 
+// @result managed object mapping.
+// */
+//+ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
+//                                       withBlock:(void(^)(EKManagedObjectMapping *mapping))mappingBlock;
+//
+///**
+// Convenience constructor for `EKManagedObjectMapping`.
+// 
+// @param entityName Name of CoreData entity.
+// 
+// @param rootPath rootPath for mapping.
+// 
+// @param mappingBlock Block, that contains managed object mapping
+// 
+// @result managed object mapping.
+// */
+//+ (EKManagedObjectMapping *)mappingForEntityName:(NSString *)entityName
+//                                    withRootPath:(NSString *)rootPath
+//                                       withBlock:(void (^)(EKManagedObjectMapping *mapping))mappingBlock;
+//
+///**
+// Designated initializer for `EKManagedObjectMapping`.
+// 
+// @param entityName CoreData entity name.
+// 
+// @result managed object mapping.
+// */
+//- (instancetype)initWithEntityName:(NSString *)entityName;
+//
+///**
+// Designated initializer for `EKManagedObjectMapping`.
+// 
+// @param entityName CoreData entity name.
+// 
+// @param rootPath rootPath for mapping.
+// 
+// @result managed object mapping.
+// */
+//- (instancetype)initWithEntityName:(NSString *)entityName withRootPath:(NSString *)rootPath;
+//
+//#pragma mark - unavalable methods
+//
+///**
+// This method is unavailable for `EKManagedObjectMapping`. Use `initWithEntityName:` method instead.
+// */
+//- (instancetype)initWithObjectClass:(Class)objectClass EKDesignatedInitializer(initWithEntityName:);
+//
+///**
+// This method is unavailable for `EKManagedObjectMapping`. Use `initWithEntityName:rootPath:` method instead.
+// */
+//- (instancetype)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath EKDesignatedInitializer(initWithEntityName:withRootPath:);
+//
+///**
+// This method is unavailable for `EKManagedObjectMapping`. Use `mappingForEntityName:withBlock:` method instead.
+// */
+//+ (instancetype)mappingForClass:(Class)objectClass withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withBlock:);
+//
+///**
+// This method is unavailable for `EKManagedObjectMapping`. Use `mappingForEntityName:rootPath:withBlock:` method instead.
+// */
+//+ (instancetype)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
+//                      withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock EKDesignatedInitializer(mappingForEntityName:withRootPath:withBlock);
+//@end
 
 NS_ASSUME_NONNULL_END

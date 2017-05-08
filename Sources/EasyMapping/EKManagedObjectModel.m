@@ -10,32 +10,33 @@
 #import "EKManagedObjectMapper.h"
 #import "EKManagedObjectMapping.h"
 #import "EKSerializer.h"
+#import "EKManagedMappingContextProvider.h"
 
 @implementation EKManagedObjectModel
 
 #pragma mark - constructors
 
-+(instancetype)objectWithProperties:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context
-{
-    return [EKManagedObjectMapper objectFromExternalRepresentation:properties
-                                                       withMapping:[self objectMapping]
-                                            inManagedObjectContext:context];
-}
+//+(instancetype)objectWithProperties:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context
+//{
+//    return [EKManagedObjectMapper objectFromExternalRepresentation:properties
+//                                                       withMapping:[self objectMapping]
+//                                            inManagedObjectContext:context];
+//}
 
 #pragma mark - serialization
 
-- (NSDictionary *)serializedObjectInContext:(NSManagedObjectContext *)context
-{
-    return [EKSerializer serializeObject:self
-                             withMapping:[self.class objectMapping]
-                             fromContext:context];
-}
+//- (NSDictionary *)serializedObjectInContext:(NSManagedObjectContext *)context
+//{
+//    return [EKSerializer serializeObject:self
+//                             withMapping:[self.class objectMapping]
+//                             fromContext:context];
+//}
 
-#pragma mark - EKManagedMappingProtocol
+#pragma mark - EKMappingProtocol
 
-+(EKManagedObjectMapping *)objectMapping
++(EKObjectMapping *)objectMapping
 {
-    return [[EKManagedObjectMapping alloc] initWithEntityName:NSStringFromClass(self)];
+    return [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:self]];
 }
 
 @end

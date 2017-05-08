@@ -1,7 +1,7 @@
 //
 //  EasyMapping
 //
-//  Copyright (c) 2012-2014 Lucas Medeiros.
+//  Copyright (c) 2012-2017 Lucas Medeiros.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
 #import "EKPropertyHelper.h"
 #import "NSArray+FlattenArray.h"
 #import "EKRelationshipMapping.h"
+#import "EKManagedMappingContextProvider.h"
 
 @interface EKCoreDataImporter ()
 
@@ -42,21 +43,47 @@
 
 @implementation EKCoreDataImporter
 
-+ (instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
-             externalRepresentation:(id)externalRepresentation
-                            context:(NSManagedObjectContext *)context
-{
-    EKCoreDataImporter * importer = [self new];
+-(instancetype)initWithContext:(NSManagedObjectContext *)context store:(EKManagedMappingStore *)store {
+    self = [super init];
+    if (self) {
+        self.context = context;
+        self.fetchedExistingEntities = [NSMutableDictionary dictionary];
+        self.store = store;
+    }
+    return self;
+}
 
-    importer.mapping = mapping;
-    importer.externalRepresentation = externalRepresentation;
-    importer.context = context;
+//+ (instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
+//             externalRepresentation:(id)externalRepresentation
+//                            context:(NSManagedObjectContext *)context
+//{
+//    EKCoreDataImporter * importer = [self new];
+//
+//    importer.mapping = mapping;
+//    importer.externalRepresentation = externalRepresentation;
+//    importer.context = context;
+//
+//    importer.fetchedExistingEntities = [NSMutableDictionary dictionary];
+//    [importer collectEntityNames];
+//    [importer inspectRepresentationInContext:context];
+//
+//    return importer;
+//}
 
-    importer.fetchedExistingEntities = [NSMutableDictionary dictionary];
-    [importer collectEntityNames];
-    [importer inspectRepresentationInContext:context];
+-(void)inspectRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping {
+    NSParameterAssert([[mapping contextProvider] isKindOfClass:EKManagedMappingContextProvider.class]);
+    
+    self.externalRepresentation = representation;
+    self.mapping = mapping;
+    [self collectEntityNames];
+    [self inspectRepresentationInContext:self.context];
+}
 
-    return importer;
+-(void)flushAllObjects {
+    self.externalRepresentation = nil;
+    [self.fetchedExistingEntities removeAllObjects];
+    [self.collectedEntityNames removeAllObjects];
+    self.existingEntitiesPrimaryKeys = [NSDictionary dictionary];
 }
 
 #pragma mark - collect entity names
@@ -71,32 +98,40 @@
     self.entityNames = [entityNames copy];
 }
 
-- (void)collectEntityNamesRecursively:(NSMutableSet *)entityNames mapping:(EKManagedObjectMapping *)mapping
+- (void)collectEntityNamesRecursively:(NSMutableSet *)entityNames mapping:(EKObjectMapping *)objectMapping
 {
-    [entityNames addObject:mapping.entityName];
+    [entityNames addObject:[(EKManagedMappingContextProvider *)[objectMapping contextProvider] entityName]];
 
-    for (EKRelationshipMapping * oneMapping in mapping.hasOneMappings)
+    for (EKRelationshipMapping * oneMapping in objectMapping.hasOneMappings)
     {
-        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[[oneMapping objectClass] objectMapping];
-        if ([self.collectedEntityNames containsObject:mapping.entityName])
+        EKObjectMapping * mapping = [[oneMapping objectClass] objectMapping];
+        
+        NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+        
+        EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider *)mapping.contextProvider;
+        if ([self.collectedEntityNames containsObject:provider.entityName])
         {
             continue;
         }
         else {
-            [self.collectedEntityNames addObject:mapping.entityName];
+            [self.collectedEntityNames addObject:provider.entityName];
             [self collectEntityNamesRecursively:entityNames mapping:mapping];
         }
     }
 
-    for (EKRelationshipMapping * manyMapping in mapping.hasManyMappings)
+    for (EKRelationshipMapping * manyMapping in objectMapping.hasManyMappings)
     {
-        EKManagedObjectMapping * mapping = (EKManagedObjectMapping *)[[manyMapping objectClass] objectMapping];
-        if ([self.collectedEntityNames containsObject:mapping.entityName])
+        EKObjectMapping * mapping = [[manyMapping objectClass] objectMapping];
+        
+        NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+        
+        EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider *)mapping.contextProvider;
+        if ([self.collectedEntityNames containsObject:provider.entityName])
         {
             continue;
         }
         else {
-            [self.collectedEntityNames addObject:mapping.entityName];
+            [self.collectedEntityNames addObject:provider.entityName];
             [self collectEntityNamesRecursively:entityNames mapping:mapping];
         }
     }
@@ -113,36 +148,35 @@
     }
     [self inspectRepresentation:self.externalRepresentation
                    usingMapping:self.mapping
-               accumulateInside:existingPrimaryKeys
-                        context:context];
+               accumulateInside:existingPrimaryKeys];
 
     self.existingEntitiesPrimaryKeys = existingPrimaryKeys;
 }
 
 - (void)inspectRepresentation:(id)representation
-                 usingMapping:(EKManagedObjectMapping *)mapping
+                 usingMapping:(EKObjectMapping *)mapping
              accumulateInside:(NSMutableDictionary *)dictionary
-                      context:(NSManagedObjectContext *)context
 {
     id rootRepresentation = [EKPropertyHelper extractRootPathFromExternalRepresentation:representation
                                                                             withMapping:mapping];
+    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
     if ([rootRepresentation isKindOfClass:[NSArray class]])
     {
         for (NSDictionary * objectInfo in rootRepresentation)
         {
-            id value = [self primaryKeyValueFromRepresentation:objectInfo usingMapping:mapping context:context];
+            id value = [self primaryKeyValueFromRepresentation:objectInfo usingMapping:mapping];
             if (value && value != (id)[NSNull null])
             {
-                [(NSMutableSet *)dictionary[mapping.entityName] addObject:value];
+                [(NSMutableSet *)dictionary[provider.entityName] addObject:value];
             }
         }
     }
     else if ([rootRepresentation isKindOfClass:[NSDictionary class]])
     {
-        id value = [self primaryKeyValueFromRepresentation:rootRepresentation usingMapping:mapping context:context];
+        id value = [self primaryKeyValueFromRepresentation:rootRepresentation usingMapping:mapping];
         if (value && value != (id)[NSNull null])
         {
-            [(NSMutableSet *)dictionary[mapping.entityName] addObject:value];
+            [(NSMutableSet *)dictionary[provider.entityName] addObject:value];
         }
     }
 
@@ -166,9 +200,8 @@
             }
 
             [self inspectRepresentation:oneMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)[relationship mappingForRepresentation:oneMappingRepresentation]
-                       accumulateInside:dictionary
-                                context:context];
+                           usingMapping:[relationship mappingForRepresentation:oneMappingRepresentation]
+                       accumulateInside:dictionary];
         }
     }
 
@@ -191,30 +224,30 @@
             }
 
             [self inspectRepresentation:manyMappingRepresentation
-                           usingMapping:(EKManagedObjectMapping *)[relationship mappingForRepresentation:manyMappingRepresentation]
-                       accumulateInside:dictionary
-                                context:context];
+                           usingMapping:[relationship mappingForRepresentation:manyMappingRepresentation]
+                       accumulateInside:dictionary];
         }
     }
 }
 
-- (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context
-{
+- (id)primaryKeyValueFromRepresentation:(id)representation usingMapping:(EKObjectMapping *)mapping {
     EKPropertyMapping * primaryKeyMapping = [mapping primaryKeyPropertyMapping];
-    return [EKPropertyHelper getValueOfManagedProperty:primaryKeyMapping
-                                               fromRepresentation:representation
-                                                        inContext:context];
+    return [EKPropertyHelper getValueOfProperty:primaryKeyMapping
+                             fromRepresentation:representation
+                                        inStore:self.store
+                                contextProvider:mapping.contextProvider];
 }
 
 #pragma mark - Fetching existing objects
 
-- (NSMutableDictionary *)fetchExistingObjectsForMapping:(EKManagedObjectMapping *)mapping
+- (NSMutableDictionary *)fetchExistingObjectsForMapping:(EKObjectMapping *)mapping
 {
-    NSSet * lookupValues = self.existingEntitiesPrimaryKeys[mapping.entityName];
+    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
+    NSSet * lookupValues = self.existingEntitiesPrimaryKeys[provider.entityName];
     if (lookupValues.count == 0) return [NSMutableDictionary dictionary];
 
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:mapping.entityName];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"%K IN %@", mapping.primaryKey, lookupValues];
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:provider.entityName];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"%K IN %@", provider.primaryKey, lookupValues];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setFetchLimit:lookupValues.count];
 
@@ -222,44 +255,52 @@
     NSArray * existingObjects = [self.context executeFetchRequest:fetchRequest error:NULL];
     for (NSManagedObject * object in existingObjects)
     {
-        output[[object valueForKey:mapping.primaryKey]] = object;
+        output[[object valueForKey:provider.primaryKey]] = object;
     }
 
     return output;
 }
 
-- (NSMutableDictionary *)cachedObjectsForMapping:(EKManagedObjectMapping *)mapping
+- (NSMutableDictionary *)cachedObjectsForMapping:(EKObjectMapping *)mapping
 {
-    NSMutableDictionary * entityObjectsMap = self.fetchedExistingEntities[mapping.entityName];
+    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
+    NSMutableDictionary * entityObjectsMap = self.fetchedExistingEntities[provider.entityName];
     if (!entityObjectsMap)
     {
         entityObjectsMap = [self fetchExistingObjectsForMapping:mapping];
-        self.fetchedExistingEntities[mapping.entityName] = entityObjectsMap;
+        self.fetchedExistingEntities[provider.entityName] = entityObjectsMap;
     }
 
     return entityObjectsMap;
 }
 
-- (id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context
+- (id)existingObjectForRepresentation:(id)representation mapping:(EKObjectMapping *)mapping
 {
+    NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+    
     NSDictionary * entityObjectsMap = [self cachedObjectsForMapping:mapping];
 
-    id primaryKeyValue = [EKPropertyHelper getValueOfManagedProperty:[mapping primaryKeyPropertyMapping]
-                                                  fromRepresentation:representation
-                                                           inContext:context];
+    id primaryKeyValue = [EKPropertyHelper getValueOfProperty:[mapping primaryKeyPropertyMapping]
+                                           fromRepresentation:representation
+                                                      inStore:self.store
+                                              contextProvider:mapping.contextProvider];
     if (primaryKeyValue == nil || primaryKeyValue == NSNull.null) return nil;
 
     return entityObjectsMap[primaryKeyValue];
 }
 
--(void)cacheObject:(NSManagedObject *)object withMapping:(EKManagedObjectMapping *)mapping
+-(void)cacheObject:(NSManagedObject *)object withMapping:(EKObjectMapping *)mapping
 {
-    if(!mapping.primaryKey) return;
-    if (![object valueForKey:mapping.primaryKey]) return;
+    NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+    
+    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
+    
+    if(!provider.primaryKey) return;
+    if (![object valueForKey:provider.primaryKey]) return;
 
-    NSMutableDictionary *entityObjectsMap = self.fetchedExistingEntities[mapping.entityName];
-    entityObjectsMap[[object valueForKey:mapping.primaryKey]] = object;
-    self.fetchedExistingEntities[mapping.entityName] = entityObjectsMap;
+    NSMutableDictionary *entityObjectsMap = self.fetchedExistingEntities[provider.entityName];
+    entityObjectsMap[[object valueForKey:provider.primaryKey]] = object;
+    self.fetchedExistingEntities[provider.entityName] = entityObjectsMap;
 }
 
 @end

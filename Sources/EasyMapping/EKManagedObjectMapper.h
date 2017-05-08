@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  `EKManagedObjectMapper` is used to create and fill CoreData objects. Internally, it uses `EKCoreDataImporter` class to speed up data imports. You can find more info on this in project's readme.
  */
-@interface EKManagedObjectMapper : NSObject
+//@interface EKManagedObjectMapper : NSObject
 
 /**
  Creates object from JSON representation, using `mapping` in `context`.
@@ -43,9 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result mapped managed object
  */
-+ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
-                           withMapping:(EKManagedObjectMapping *)mapping
-                inManagedObjectContext:(NSManagedObjectContext*)context;
+//+ (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
+//                           withMapping:(EKManagedObjectMapping *)mapping
+//                inManagedObjectContext:(NSManagedObjectContext*)context;
 
 /**
  Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten.
@@ -60,10 +60,10 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result filled managed object
  */
-+ (id<EKManagedMappingProtocol>)fillObject:(id<EKManagedMappingProtocol>)object
-                fromExternalRepresentation:(NSDictionary *)externalRepresentation
-                               withMapping:(EKManagedObjectMapping *)mapping
-                    inManagedObjectContext:(NSManagedObjectContext*)context;
+//+ (id<EKManagedMappingProtocol>)fillObject:(id<EKManagedMappingProtocol>)object
+//                fromExternalRepresentation:(NSDictionary *)externalRepresentation
+//                               withMapping:(EKManagedObjectMapping *)mapping
+//                    inManagedObjectContext:(NSManagedObjectContext*)context;
 
 /**
  Create array of CoreData objects. If passed JSON contains primary keys, previously existing object with these keys will be updated. Simply put, this method uses Find-Or-Create pattern.
@@ -76,9 +76,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result array of managed objects
  */
-+ (NSArray<EKManagedMappingProtocol> *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                                                    withMapping:(EKManagedObjectMapping *)mapping
-                                                         inManagedObjectContext:(NSManagedObjectContext*)context;
+//+ (NSArray<EKManagedMappingProtocol> *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+//                                                                    withMapping:(EKManagedObjectMapping *)mapping
+//                                                         inManagedObjectContext:(NSManagedObjectContext*)context;
 
 /** 
  Synchronize the objects in the managed object context with the objects from an external
@@ -96,10 +96,10 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result array of managed objects
  */
-+ (NSArray<EKManagedMappingProtocol> *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                                                        withMapping:(EKManagedObjectMapping *)mapping
-                                                                       fetchRequest:(NSFetchRequest*)fetchRequest
-                                                             inManagedObjectContext:(NSManagedObjectContext *)context;
-@end
+//+ (NSArray<EKManagedMappingProtocol> *)syncArrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+//                                                                        withMapping:(EKManagedObjectMapping *)mapping
+//                                                                       fetchRequest:(NSFetchRequest*)fetchRequest
+//                                                             inManagedObjectContext:(NSManagedObjectContext *)context;
+//@end
 
 NS_ASSUME_NONNULL_END

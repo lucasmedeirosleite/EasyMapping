@@ -25,23 +25,23 @@
 
 @implementation EKMappingBlocks
 
-+(EKMappingValueBlock)urlMappingBlock
++(EKMappingBlock)urlMappingBlock
 {
-    return ^id(NSString * key, id value) {
-        if ([value isKindOfClass:[NSString class]])
+    return ^id(EKMappingContext * context) {
+        if ([context.value isKindOfClass:[NSString class]])
         {
-            return [NSURL URLWithString:value];
+            return [NSURL URLWithString:context.value];
         }
         return nil;
     };
 }
 
-+(EKMappingReverseBlock)urlReverseMappingBlock
++(EKMappingBlock)urlReverseMappingBlock
 {
-    return ^id(id value){
-        if ([value isKindOfClass:[NSURL class]])
+    return ^id(EKMappingContext * context){
+        if ([context.value isKindOfClass:[NSURL class]])
         {
-            return [value absoluteString];
+            return [context.value absoluteString];
         }
         return nil;
     };

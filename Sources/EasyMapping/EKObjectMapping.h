@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKMappingBlocks.h"
+#import "EKMappingContextProvider.h"
 
 @class EKPropertyMapping;
 @class EKRelationshipMapping;
@@ -33,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  `EKObjectMapping` class is used to define mappings between JSON representation and objective-c object.
  */
 
-@interface EKObjectMapping : NSObject
+@interface EKObjectMapping<__covariant ObjectType> : NSObject
 
 /**
  Defines if missing fields will be ignored, or as in case of relations set to nil
@@ -55,7 +56,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Class, for which this mapping is meant to be used.
  */
-@property (nonatomic, assign, readwrite) Class objectClass;
+@property (nonatomic, assign, readwrite) ObjectType objectClass;
+
+
+@property (nonatomic, strong) EKMappingContextProvider <ObjectType> * contextProvider;
 
 /**
  Root JSON path. This is helpful, when all object data is inside another JSON dictionary.
@@ -86,8 +90,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-+ (EKObjectMapping *)mappingForClass:(Class)objectClass
-                           withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock;
+//+ (EKObjectMapping *)mappingForClass:(ObjectType)objectClass
+//                           withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock;
 
 /**
  Convenience initializer.
@@ -100,8 +104,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-+ (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
-                           withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
+//+ (EKObjectMapping *)mappingForClass:(ObjectType)objectClass withRootPath:(NSString *)rootPath
+//                           withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
 
 /**
  Designated initializer
@@ -110,7 +114,18 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-- (instancetype)initWithObjectClass:(Class)objectClass;
+//- (instancetype)initWithObjectClass:(ObjectType)objectClass;
+
+- (instancetype)initWithContextProvider:(EKMappingContextProvider <ObjectType> *)provider;
+
+- (instancetype)initWithContextProvider:(EKMappingContextProvider <ObjectType> *)provider rootPath:(NSString *)rootPath;
+
+/**
+ Property mapping for primary key of managed object.
+ 
+ @result property mapping
+ */
+- (nullable EKPropertyMapping *)primaryKeyPropertyMapping;
 
 /**
  Designated initializer
@@ -121,7 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-- (instancetype)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath;
+//- (instancetype)initWithObjectClass:(ObjectType)objectClass withRootPath:(NSString *)rootPath;
 
 /**
  Map JSON keyPath to object property.
@@ -186,7 +201,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param valueBlock block to transform JSON value into property value.
  */
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
-    withValueBlock:(EKMappingValueBlock)valueBlock;
+    withValueBlock:(EKMappingBlock)valueBlock;
 
 /**
  Map JSON keyPath to object property, using valueBlock. Include serialization block, that does reverse this operation.
@@ -201,8 +216,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)mapKeyPath:(NSString *)keyPath
         toProperty:(NSString *)property
-    withValueBlock:(EKMappingValueBlock)valueBlock
-      reverseBlock:(EKMappingReverseBlock)reverseBlock;
+    withValueBlock:(EKMappingBlock)valueBlock
+      reverseBlock:(EKMappingBlock)reverseBlock;
 
 /**
  Map to-one relationship for keyPath. Assuming keyPath and property name are equal. ObjectClass should conform to `EKMappingProtocol`.

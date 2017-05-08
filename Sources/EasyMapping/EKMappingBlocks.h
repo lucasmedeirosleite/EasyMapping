@@ -23,21 +23,24 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "EKMappingContextProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef BOOL (^EKMappingConditionBlock)(id representation);
 
-typedef _Nullable id(^EKMappingValueBlock)(NSString *key, _Nullable id value);
-typedef _Nullable id(^EKMappingReverseBlock)(_Nullable id value);
+typedef _Nullable id(^EKMappingBlock)(EKMappingContext * context);
 
-typedef _Nullable id(^EKManagedMappingValueBlock)(NSString * key, _Nullable id value, NSManagedObjectContext * context);
-typedef _Nullable id(^EKManagedMappingReverseValueBlock)(_Nullable id value, NSManagedObjectContext * context);
+//typedef _Nullable id(^EKMappingValueBlock)(NSString *key, _Nullable id value);
+//typedef _Nullable id(^EKMappingReverseBlock)(_Nullable id value);
+//
+//typedef _Nullable id(^EKManagedMappingValueBlock)(NSString * key, _Nullable id value, NSManagedObjectContext * context);
+//typedef _Nullable id(^EKManagedMappingReverseValueBlock)(_Nullable id value, NSManagedObjectContext * context);
 
 @interface EKMappingBlocks: NSObject
 
-+ (EKMappingValueBlock)urlMappingBlock;
-+ (EKMappingReverseBlock)urlReverseMappingBlock;
++ (EKMappingBlock)urlMappingBlock;
++ (EKMappingBlock)urlReverseMappingBlock;
 
 @end
 

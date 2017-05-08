@@ -33,15 +33,15 @@ NS_ASSUME_NONNULL_BEGIN
  
  EasyMapping provides convenience EKManagedObjectModel class, that already implements this protocol.
  */
-@protocol EKManagedMappingProtocol
+//@protocol EKManagedMappingProtocol
 
 /**
  EKManagedObjectMapping instance, that will be used in mapping process.
  
  @return object mapping
  */
-+(EKManagedObjectMapping *)objectMapping;
+//+(EKManagedObjectMapping *)objectMapping;
 
-@end
+//@end
 
 NS_ASSUME_NONNULL_END

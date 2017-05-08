@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  EKManagedObjectModel is a convenience base class for NSManagedObject subclasses. It allows creating CoreData objects from JSON representation and vice versa.
  */
-@interface EKManagedObjectModel : NSManagedObject <EKManagedMappingProtocol>
+@interface EKManagedObjectModel : NSManagedObject <EKMappingProtocol>
 
 /**
  Create CoreData object using provided JSON dictionary within provided NSManagedObjectContext. 
@@ -27,8 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return mapped object
  */
-+(instancetype)objectWithProperties:(NSDictionary *)properties
-                          inContext:(NSManagedObjectContext *)context;
+//+(instancetype)objectWithProperties:(NSDictionary *)properties
+//                          inContext:(NSManagedObjectContext *)context;
 
 /**
  Serialize mapped object back to JSON representation.
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return NSDictionary representation of current object.
  */
-- (NSDictionary *)serializedObjectInContext:(NSManagedObjectContext *)context;
+//- (NSDictionary *)serializedObjectInContext:(NSManagedObjectContext *)context;
 
 @end
 

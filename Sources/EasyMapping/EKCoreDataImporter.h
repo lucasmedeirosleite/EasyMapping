@@ -22,7 +22,9 @@
 // THE SOFTWARE.
 
 @import CoreData;
-#import "EKManagedObjectMapping.h"
+#import "EKManagedMappingStore.h"
+
+@class EKManagedMappingStore;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,15 +45,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSManagedObjectContext * context;
 
+@property (nonatomic, assign) EKManagedMappingStore * store;
+
 /**
  Mapping for the JSON, that was passed to importer.
  */
-@property (nonatomic, strong) EKManagedObjectMapping * mapping;
+@property (nonatomic, strong, nullable) EKObjectMapping * mapping;
 
 /**
  JSON representation of data to import.
  */
-@property (nonatomic, strong) id externalRepresentation;
+@property (nonatomic, strong, nullable) id externalRepresentation;
 
 /**
  Create instance of `EKCoreDataImporter` and start collecting data from JSON and mapping. This is designated initializer.
@@ -64,9 +68,16 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result CoreData importer
  */
-+ (instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
-            externalRepresentation:(id)externalRepresentation
-                           context:(NSManagedObjectContext *)context;
+//+ (instancetype)importerWithMapping:(EKManagedObjectMapping *)mapping
+//            externalRepresentation:(id)externalRepresentation
+//                           context:(NSManagedObjectContext *)context;
+
+- (instancetype)initWithContext:(NSManagedObjectContext *)context store:(EKManagedMappingStore *)store;
+
+-(void)inspectRepresentation:(id)representation
+                 withMapping:(EKObjectMapping *)mapping;
+
+-(void)flushAllObjects;
 
 /**
  Get's existing object by it's primary key value. Returns nil, if object does not exist in CoreData database.
@@ -77,9 +88,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result managed object
  */
-- (nullable id)existingObjectForRepresentation:(id)representation mapping:(EKManagedObjectMapping *)mapping context:(NSManagedObjectContext *)context;
+- (nullable id)existingObjectForRepresentation:(id)representation mapping:(EKObjectMapping *)mapping;
 
-- (void)cacheObject:(NSManagedObject *)object withMapping:(EKManagedObjectMapping *)mapping;
+- (void)cacheObject:(id)object withMapping:(EKObjectMapping *)mapping;
 
 @end
 

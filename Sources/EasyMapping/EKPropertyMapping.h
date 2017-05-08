@@ -50,22 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Optional block to transform JSON value into objective-C object.
  */
-@property (nonatomic, strong, nullable) EKMappingValueBlock valueBlock;
+@property (nonatomic, strong, nullable) EKMappingBlock valueBlock;
 
 /**
  Optional block to serialize objective-c object into JSON representation.
  */
-@property (nonatomic, strong, nullable) EKMappingReverseBlock reverseBlock;
+@property (nonatomic, strong, nullable) EKMappingBlock reverseBlock;
 
-/**
- Optional block to transform JSON value into CoreData object.
- */
-@property (nonatomic, strong, nullable) EKManagedMappingValueBlock managedValueBlock;
-
-/**
- Optional block to serialize CoreData object into JSON representation.
- */
-@property (nonatomic, strong, nullable) EKManagedMappingReverseValueBlock managedReverseBlock;
 
 @end
 

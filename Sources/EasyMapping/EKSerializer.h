@@ -24,13 +24,41 @@
 #import "EKObjectMapping.h"
 #import "EKManagedObjectMapping.h"
 #import "EKMappingProtocol.h"
+#import "EKMappingStore.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  `EKSerializer` is a class, that allows converting objects to their JSON representation, using `EKObjectMapping`. CoreData objects are supported too.
  */
-@interface EKSerializer : NSObject
+@interface EKSerializer<__covariant StoreType: EKMappingStore *> : NSObject
+
+@property (nonatomic, strong) StoreType store;
+
+-(instancetype)initWithMappingStore:(StoreType)store;
+
+/**
+ Convert object to JSON representation.
+ 
+ @param object object to convert.
+ 
+ @param mapping object mapping.
+ 
+ @result parsed JSON in a form of NSDictionary.
+ */
+- (NSDictionary <NSString *, id> *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping;
+
+/**
+ Convert objects to JSON representation.
+ 
+ @param collection objects to convert.
+ 
+ @param mapping object mapping.
+ 
+ @result parsed JSON in a form of NSArray.
+ */
+- (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
+withMapping:(EKObjectMapping *)mapping;
 
 /**
  Convert object to JSON representation.
@@ -66,9 +94,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary <NSString *, id> *)serializeObject:(id<EKManagedMappingProtocol>)object
-                                       withMapping:(EKManagedObjectMapping *)mapping
-                                       fromContext:(NSManagedObjectContext *)context;
+//+ (NSDictionary <NSString *, id> *)serializeObject:(id<EKManagedMappingProtocol>)object
+//                                       withMapping:(EKManagedObjectMapping *)mapping
+//                                       fromContext:(NSManagedObjectContext *)context;
 
 /**
  Convert CoreData managed objects to JSON representation.
@@ -81,9 +109,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSArray.
  */
-+ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray<id<EKManagedMappingProtocol>> *)collection
-                                                       withMapping:(EKManagedObjectMapping*)mapping
-                                                       fromContext:(NSManagedObjectContext *)context;
+//+ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray<id<EKManagedMappingProtocol>> *)collection
+//                                                       withMapping:(EKManagedObjectMapping*)mapping
+//                                                       fromContext:(NSManagedObjectContext *)context;
 @end
 
 NS_ASSUME_NONNULL_END

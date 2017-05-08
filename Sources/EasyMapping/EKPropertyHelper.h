@@ -38,25 +38,39 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
-+ (void)  setProperty:(EKPropertyMapping *)propertyMapping
-             onObject:(id<EKMappingProtocol>)object
-   fromRepresentation:(NSDictionary *)representation
-  respectPropertyType:(BOOL)respectPropertyType
- ignoreMissingFields:(BOOL)ignoreMissingFields;
+//+ (void)  setProperty:(EKPropertyMapping *)propertyMapping
+//             onObject:(id<EKMappingProtocol>)object
+//   fromRepresentation:(NSDictionary *)representation
+//  respectPropertyType:(BOOL)respectPropertyType
+// ignoreMissingFields:(BOOL)ignoreMissingFields;
+//
+//+ (void) setProperty:(EKPropertyMapping *)propertyMapping
+//            onObject:(id<EKManagedMappingProtocol>)object
+//  fromRepresentation:(NSDictionary *)representation
+//           inContext:(NSManagedObjectContext *)context
+// respectPropertyType:(BOOL)respectPropertyType
+// ignoreMissingFields:(BOOL)ignoreMissingFields;
+//
+//+ (nullable id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
+//               fromRepresentation:(NSDictionary *)representation;
+//
+//+ (nullable id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
+//                      fromRepresentation:(NSDictionary *)representation
+//                               inContext:(NSManagedObjectContext *)context;
 
-+ (void) setProperty:(EKPropertyMapping *)propertyMapping
-            onObject:(id<EKManagedMappingProtocol>)object
-  fromRepresentation:(NSDictionary *)representation
-           inContext:(NSManagedObjectContext *)context
- respectPropertyType:(BOOL)respectPropertyType
- ignoreMissingFields:(BOOL)ignoreMissingFields;
++(void) setProperty:(EKPropertyMapping *)propertyMapping
+           onObject:(id<EKMappingProtocol>)object
+ fromRepresentation:(NSDictionary *)representation
+    contextProvider:(EKMappingContextProvider *)context
+              store:(EKMappingStore *)store
+respectPropertyType:(BOOL)respectPropertyType
+ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (nullable id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
-               fromRepresentation:(NSDictionary *)representation;
+               fromRepresentation:(NSDictionary *)representation
+                          inStore:(EKMappingStore *)store
+                        contextProvider:(EKMappingContextProvider *)context;
 
-+ (nullable id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
-                      fromRepresentation:(NSDictionary *)representation
-                               inContext:(NSManagedObjectContext *)context;
 
 + (void)setValue:(nullable id)value onObject:(id)object forKeyPath:(NSString *)keyPath;
 

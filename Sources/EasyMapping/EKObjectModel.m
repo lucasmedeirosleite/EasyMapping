@@ -9,6 +9,7 @@
 #import "EKObjectModel.h"
 #import "EKMapper.h"
 #import "EKSerializer.h"
+#import "EKMappingContextProvider.h"
 
 @implementation EKObjectModel
 
@@ -43,7 +44,7 @@
 
 +(EKObjectMapping *)objectMapping
 {
-    return [[EKObjectMapping alloc] initWithObjectClass:self];
+    return [[EKObjectMapping alloc] initWithContextProvider:[[EKMappingContextProvider alloc] initWithObjectClass:self]];
 }
 
 @end

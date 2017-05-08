@@ -25,24 +25,35 @@
 #import "EKPropertyMapping.h"
 #import "EKPropertyHelper.h"
 #import "EKRelationshipMapping.h"
+#import "EKManagedMappingStore.h"
 
 @implementation EKSerializer
 
-+ (NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping
-{
-    NSMutableDictionary *representation = [NSMutableDictionary dictionary];
+-(instancetype)initWithMappingStore:(EKMappingStore *)store {
+    self = [super init];
+    if (self) {
+        self.store = store;
+    }
+    return self;
+}
 
+-(NSDictionary<NSString *,id> *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping {
+    NSMutableDictionary *representation = [NSMutableDictionary dictionary];
+    
     [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKPropertyMapping *propertyMapping, BOOL *stop) {
-        [self setValueOnRepresentation:representation fromObject:object withPropertyMapping:propertyMapping];
+        [self setValueOnRepresentation:representation
+                            fromObject:object
+                   withPropertyMapping:propertyMapping
+                       contextProvider:mapping.contextProvider];
     }];
     
     for (EKRelationshipMapping *relationship in mapping.hasOneMappings) {
+        
         id hasOneObject = [object valueForKey:relationship.property];
         
         if (hasOneObject) {
             NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
                                                            withMapping:[relationship mappingForObject:hasOneObject]];
-            
             if (relationship.nonNestedKeyPaths)
             {
                 for (NSString * key in hasOneRepresentation.allKeys)
@@ -57,7 +68,7 @@
     }
     
     for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
-
+        
         id hasManyObject = [object valueForKey:relationship.property];
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
@@ -74,8 +85,7 @@
     return representation;
 }
 
-+ (NSArray *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection withMapping:(EKObjectMapping *)mapping
-{
+- (NSArray<NSDictionary<NSString *,id> *> *)serializeCollection:(NSArray *)collection withMapping:(EKObjectMapping *)mapping {
     NSMutableArray *array = [NSMutableArray array];
     
     for (id<EKMappingProtocol> object in collection) {
@@ -86,97 +96,47 @@
     return [NSArray arrayWithArray:array];
 }
 
-+(NSDictionary *)serializeObject:(id)object withMapping:(EKManagedObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
++ (NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping
 {
-    NSMutableDictionary *representation = [NSMutableDictionary dictionary];
-    
-    [mapping.propertyMappings enumerateKeysAndObjectsUsingBlock:^(id key, EKPropertyMapping *propertyMapping, BOOL *stop) {
-        [self setValueOnRepresentation:representation
-                     fromManagedObject:object
-                   withPropertyMapping:propertyMapping
-                             inContext:context];
-    }];
-    
-    for (EKRelationshipMapping *relationship in mapping.hasOneMappings) {
-        
-        id hasOneObject = [object valueForKey:relationship.property];
-        
-        if (hasOneObject) {
-            NSDictionary *hasOneRepresentation = [self serializeObject:hasOneObject
-                                                           withMapping:(EKManagedObjectMapping *)[relationship mappingForObject:hasOneObject]
-                                                           fromContext:context];
-            if (relationship.nonNestedKeyPaths)
-            {
-                for (NSString * key in hasOneRepresentation.allKeys)
-                {
-                    representation[key]=hasOneRepresentation[key];
-                }
-            }
-            else {
-                [representation setObject:hasOneRepresentation forKey:relationship.keyPath];
-            }
-        }
-    }
-    
-    for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
-
-        id hasManyObject = [object valueForKey:relationship.property];
-        if (hasManyObject) {
-            NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
-                                                           withMapping:(EKManagedObjectMapping *)[[relationship objectClass] objectMapping]
-                                                           fromContext:context];
-            [representation setObject:hasManyRepresentation forKey:relationship.keyPath];
-        }
-    }
-    
-    if (mapping.rootPath.length > 0) {
-        NSMutableDictionary *rootRepresentation = [NSMutableDictionary new];
-        [self setValue:representation forKeyPath:mapping.rootPath inRepresentation:rootRepresentation];
-        representation = rootRepresentation;
-    }
-    return representation;
+    EKSerializer<EKMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[EKMappingStore new]];
+    return [serializer serializeObject:object withMapping:mapping];
 }
 
-+(NSArray *)serializeCollection:(NSArray<id<EKManagedMappingProtocol>> *)collection withMapping:(EKManagedObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
++ (NSArray *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection withMapping:(EKObjectMapping *)mapping
 {
-    NSMutableArray *array = [NSMutableArray array];
-    
-    for (id<EKManagedMappingProtocol> object in collection) {
-        NSDictionary *objectRepresentation = [self serializeObject:object withMapping:mapping fromContext:context];
-        [array addObject:objectRepresentation];
-    }
-    
-    return [NSArray arrayWithArray:array];
+    EKSerializer<EKMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[EKMappingStore new]];
+    return [serializer serializeCollection:collection withMapping:mapping];
 }
 
-+(void)setValueOnRepresentation:(NSMutableDictionary *)representation fromManagedObject:(id)object
-            withPropertyMapping:(EKPropertyMapping *)propertyMapping inContext:(NSManagedObjectContext *)context
++(NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
 {
-    id returnedValue = [object valueForKeyPath:propertyMapping.property];
-
-    if (returnedValue) {
-
-        if (propertyMapping.managedReverseBlock) {
-            returnedValue = propertyMapping.managedReverseBlock(returnedValue,context);
-        }
-        [self setValue:returnedValue forKeyPath:propertyMapping.keyPath inRepresentation:representation];
-    }
+    EKSerializer<EKManagedMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[[EKManagedMappingStore alloc] initWithContext:context]];
+    return [serializer serializeObject:object withMapping:mapping];
 }
 
-+ (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping
++(NSArray *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection withMapping:(EKObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
+{
+    EKSerializer<EKManagedMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[[EKManagedMappingStore alloc] initWithContext:context]];
+    return [serializer serializeCollection:collection withMapping:mapping];
+}
+
+- (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping contextProvider:(EKMappingContextProvider *)provider
 {
     id returnedValue = [object valueForKeyPath:propertyMapping.property];
     
     if (returnedValue) {
         
         if (propertyMapping.reverseBlock) {
-            returnedValue = propertyMapping.reverseBlock(returnedValue);
+            EKMappingContext * context = [provider mappingContextFor:propertyMapping.keyPath
+                                                               value:returnedValue
+                                                               store:self.store];
+            returnedValue = propertyMapping.reverseBlock(context);
         }
         [self setValue:returnedValue forKeyPath:propertyMapping.keyPath inRepresentation:representation];
     }
 }
 
-+ (void)setValue:(id)value forKeyPath:(NSString *)keyPath inRepresentation:(NSMutableDictionary *)representation {
+- (void)setValue:(id)value forKeyPath:(NSString *)keyPath inRepresentation:(NSMutableDictionary *)representation {
     NSArray *keyPathComponents = [keyPath componentsSeparatedByString:@"."];
     if ([keyPathComponents count] == 1) {
         representation[keyPath] = value;

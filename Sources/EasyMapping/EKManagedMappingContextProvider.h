@@ -1,7 +1,7 @@
 //
 //  EasyMapping
 //
-//  Copyright (c) 2012-2014 Lucas Medeiros.
+//  Copyright (c) 2012-2017 Lucas Medeiros.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,21 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <EasyMapping/EKMapper.h>
-#import <EasyMapping/EKSerializer.h>
-#import <EasyMapping/EKObjectMapping.h>
-#import <EasyMapping/EKManagedObjectMapper.h>
-#import <EasyMapping/EKManagedObjectMapping.h>
-#import <EasyMapping/EKMappingBlocks.h>
-#import <EasyMapping/EKObjectModel.h>
-#import <EasyMapping/EKManagedObjectModel.h>
-#import <EasyMapping/EKMappingProtocol.h>
-#import <EasyMapping/EKPropertyMapping.h>
-#import <EasyMapping/EKRelationshipMapping.h>
-#import <EasyMapping/NSDateFormatter+EasyMappingAdditions.h>
-#import <EasyMapping/EKRelationshipMapping.h>
-#import <EasyMapping/EKPropertyHelper.h>
-#import <EasyMapping/EKCoreDataImporter.h>
-#import <EasyMapping/NSArray+FlattenArray.h>
-#import <EasyMapping/EKMappingStore.h>
-#import <EasyMapping/EKManagedMappingStore.h>
+#import "EKMappingContextProvider.h"
+
+@interface EKManagedMappingContextProvider<__covariant ObjectType>: EKMappingContextProvider
+@property (nonatomic, strong, nonnull) NSString * entityName;
+@end
