@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Next
+# Next
 
 ## [0.21.1](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.21.1)
 
