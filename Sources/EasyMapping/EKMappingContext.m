@@ -25,7 +25,7 @@
 
 @implementation EKMappingContext
 
--(instancetype)initWithKeyPath:(NSString *)keyPath value:(NSString *)value store:(EKMappingStore *)store {
+-(instancetype)initWithKeyPath:(NSString *)keyPath value:(id)value store:(id<EKMappingStore>)store {
     self = [super init];
     if (self) {
         self.keyPath = keyPath;
@@ -33,6 +33,10 @@
         self.store = store;
     }
     return self;
+}
+
+-(instancetype)initWithKeyPath:(NSString *)keyPath value:(id)value {
+    return [self initWithKeyPath:keyPath value:value store:nil];
 }
 
 @end

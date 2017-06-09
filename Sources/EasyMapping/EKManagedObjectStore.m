@@ -21,15 +21,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <EasyMapping/EasyMapping.h>
+#import "EKManagedObjectStore.h"
+#import "EKCoreDataImporter.h"
 
-@interface EKManagedMappingStore : EKMappingStore
+@interface EKManagedObjectStore ()
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+@property (nonatomic,strong) EKCoreDataImporter * importer;
 
-@property (nonatomic, strong, readonly) NSManagedObjectContext * context;
+@end
 
--(instancetype)initWithContext:(NSManagedObjectContext *)context NS_DESIGNATED_INITIALIZER;
+@implementation EKManagedObjectStore
+
+-(instancetype)initWithContext:(NSManagedObjectContext *)context {
+    self = [super init];
+    if (self) {
+        _context = context;
+        self.importer = [[EKCoreDataImporter alloc] initWithStore:self];
+    }
+    return self;
+}
+
+-(void)startMappingForRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping {
+    [self.importer inspectRepresentation:representation withMapping:mapping];
+}
+
+-(void)finishMapping {
+    [self.importer flushAllObjects];
+}
+
+-(void)cacheObject:(id)object withMapping:(EKObjectMapping *)mapping {
+    [self.importer cacheObject:object withMapping:mapping];
+}
+
+-(id)existingObjectForRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping {
+    return [self.importer existingObjectForRepresentation:representation mapping:mapping];
+}
 
 @end

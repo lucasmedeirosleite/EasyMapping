@@ -10,11 +10,11 @@
 
 @implementation BaseManagedTestModel
 
-+(void)registerMapping:(EKManagedObjectMapping *)objectMapping
++(void)registerMapping:(EKObjectMapping *)objectMapping
 {
 }
 
-+(EKManagedObjectMapping *)objectMapping
++(EKObjectMapping *)objectMapping
 {
     return nil;
 }

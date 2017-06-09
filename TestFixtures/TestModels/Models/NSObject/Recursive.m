@@ -13,9 +13,9 @@
 @dynamic id;
 @dynamic link;
     
-+(EKManagedObjectMapping *)objectMapping
++(EKObjectMapping *)objectMapping
 {
-    EKManagedObjectMapping * mapping = [super objectMapping];
+    EKObjectMapping * mapping = [super objectMapping];
     
     [mapping mapKeyPath:@"id" toProperty:@"id"];
     [mapping hasOne:[Recursive class] forKeyPath:@"link"];

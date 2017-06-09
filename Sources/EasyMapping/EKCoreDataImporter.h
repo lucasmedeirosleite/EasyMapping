@@ -22,9 +22,9 @@
 // THE SOFTWARE.
 
 @import CoreData;
-#import "EKManagedMappingStore.h"
+#import "EKManagedObjectStore.h"
 
-@class EKManagedMappingStore;
+@class EKManagedObjectStore;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,12 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EKCoreDataImporter : NSObject
 
-/**
- Context, on which import will be happening.
- */
-@property (nonatomic, strong) NSManagedObjectContext * context;
 
-@property (nonatomic, assign) EKManagedMappingStore * store;
+@property (nonatomic, assign) EKManagedObjectStore * store;
 
 /**
  Mapping for the JSON, that was passed to importer.
@@ -72,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 //            externalRepresentation:(id)externalRepresentation
 //                           context:(NSManagedObjectContext *)context;
 
-- (instancetype)initWithContext:(NSManagedObjectContext *)context store:(EKManagedMappingStore *)store;
+- (instancetype)initWithStore:(EKManagedObjectStore *)store;
 
 -(void)inspectRepresentation:(id)representation
                  withMapping:(EKObjectMapping *)mapping;

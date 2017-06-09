@@ -130,9 +130,9 @@ class EKSerializerTestCase: XCTestCase {
         }
         
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info, with: ManagedMappingProvider.personMapping(), in: Storage.shared.context) as? ManagedPerson
+        let person = EKMapper.object(fromExternalRepresentation: info, with: ManagedMappingProvider.personMapping()) as? ManagedPerson
         
-        let serialized = EKSerializer.serializeObject(person!.car!, with: ManagedMappingProvider.carWithRootKeyMapping(), from: Storage.shared.context)
+        let serialized = EKSerializer.serializeObject(person!.car!, with: ManagedMappingProvider.carWithRootKeyMapping())
         
         let data = serialized["data"] as? [String:Any]
         let car = data?["car"] as? [String:Any]
@@ -325,10 +325,9 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
             ManagedPerson.register(nil)
         }
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info,
-                                                  with: ManagedMappingProvider.personMapping(),
-                                                  in: Storage.shared.context) as? ManagedPerson
-        let sut = EKSerializer.serializeObject(person!, with: ManagedMappingProvider.personNonNestedMapping(), from: Storage.shared.context)
+        let person = EKMapper.object(fromExternalRepresentation: info,
+                                                  with: ManagedMappingProvider.personMapping()) as? ManagedPerson
+        let sut = EKSerializer.serializeObject(person!, with: ManagedMappingProvider.personNonNestedMapping())
         
         XCTAssertEqual(sut["carId"] as? Int, 3)
         XCTAssertEqual(sut["carModel"] as? String, "i30")
@@ -349,12 +348,10 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
             ManagedPerson.register(nil)
         }
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info,
-                                                  with: ManagedMappingProvider.personMapping(),
-                                                  in: Storage.shared.context) as? ManagedPerson
+        let person = EKMapper.object(fromExternalRepresentation: info,
+                                                  with: ManagedMappingProvider.personMapping()) as? ManagedPerson
         let sut = EKSerializer.serializeObject(person!,
-                                               with: ManagedMappingProvider.personMapping(),
-                                               from: Storage.shared.context)
+                                               with: ManagedMappingProvider.personMapping())
         
         guard let phones = sut["phones"] as? [[String:Any]] else { XCTFail(); return }
         

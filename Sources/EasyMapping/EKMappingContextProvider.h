@@ -27,17 +27,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EKMappingContextProvider<__covariant ObjectType> : NSObject
+@protocol EKMappingContextProviding <NSObject>
 
-@property (nonatomic, strong) ObjectType objectClass;
+@property (nonatomic, strong) Class objectClass;
 
 @property (nonatomic, strong, nullable) NSString * primaryKey;
 
--(instancetype)initWithObjectClass:(ObjectType)objectClass;
+-(instancetype)initWithObjectClass:(Class)objectClass;
 
--(EKMappingContext *)mappingContextFor:(NSString *)keyPath value:(id)value store:(EKMappingStore *)store;
+-(EKMappingContext *)mappingContextFor:(NSString *)keyPath value:(id)value store:(id<EKMappingStore>)store;
 
--(ObjectType)createNewEmptyObjectInStore:(EKMappingStore *)store;
+-(id)createNewEmptyObjectInStore:(id<EKMappingStore>)store;
+
+@end
+
+@interface EKMappingContextProvider : NSObject <EKMappingContextProviding>
 
 @end
 

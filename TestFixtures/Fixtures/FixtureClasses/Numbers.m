@@ -12,9 +12,9 @@
 
 @dynamic two;
 
-+(EKManagedObjectMapping *)objectMapping
++(EKObjectMapping *)objectMapping
 {
-    EKManagedObjectMapping * mapping = [super objectMapping];
+    EKObjectMapping * mapping = [super objectMapping];
     
     [mapping hasOne:[Two class] forKeyPath:@"two"];
     
@@ -27,9 +27,9 @@
 
 @dynamic three;
 
-+(EKManagedObjectMapping *)objectMapping
++(EKObjectMapping *)objectMapping
 {
-    EKManagedObjectMapping * mapping = [super objectMapping];
+    EKObjectMapping * mapping = [super objectMapping];
     
     [mapping hasOne:[Three class] forKeyPath:@"three"];
     
@@ -43,9 +43,9 @@
 @dynamic one;
 @dynamic twos;
 
-+(EKManagedObjectMapping *)objectMapping
++(EKObjectMapping *)objectMapping
 {
-    EKManagedObjectMapping * mapping = [super objectMapping];
+    EKObjectMapping * mapping = [super objectMapping];
     
     [mapping hasOne:[One class] forKeyPath:@"one"];
     [mapping hasMany:[Two class] forKeyPath:@"twos"];

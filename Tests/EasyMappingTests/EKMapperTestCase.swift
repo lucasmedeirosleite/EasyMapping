@@ -131,7 +131,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testHasOneMappingWithDifferentNaming() {
         let expected = Car.i30
-        let mapping = EKObjectMapping(objectClass: Person.self)
+        let mapping = EKObjectMapping(contextProvider: EKMappingContextProvider(objectClass: Person.self))
         mapping.hasOne(Car.self, forKeyPath: "vehicle", forProperty: "car")
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithDifferentNaming.json")
         

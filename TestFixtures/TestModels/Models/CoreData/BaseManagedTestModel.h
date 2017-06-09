@@ -10,8 +10,8 @@
 #import "EKManagedObjectMapping.h"
 #import "EKMappingProtocol.h"
 
-@interface BaseManagedTestModel : NSManagedObject <EKManagedMappingProtocol>
+@interface BaseManagedTestModel : NSManagedObject <EKMappingProtocol>
 
-+(void)registerMapping:(EKManagedObjectMapping *)objectMapping;
++(void)registerMapping:(EKObjectMapping *)objectMapping;
 
 @end

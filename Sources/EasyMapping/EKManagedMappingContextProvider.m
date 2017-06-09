@@ -23,7 +23,7 @@
 
 #import "EKManagedMappingContextProvider.h"
 #import "EKMappingContextProvider.h"
-#import "EKManagedMappingStore.h"
+#import "EKManagedObjectStore.h"
 
 @implementation EKManagedMappingContextProvider
 
@@ -35,9 +35,9 @@
     return self;
 }
 
--(id)createNewEmptyObjectInStore:(EKMappingStore *)store {
-    NSParameterAssert([store isKindOfClass:[EKManagedMappingStore class]]);
-    EKManagedMappingStore * managedStore = (EKManagedMappingStore *)store;
+-(id)createNewEmptyObjectInStore:(id<EKMappingStore>)store {
+    NSParameterAssert([store isKindOfClass:[EKManagedObjectStore class]]);
+    EKManagedObjectStore * managedStore = (EKManagedObjectStore *)store;
     return [NSEntityDescription insertNewObjectForEntityForName:self.entityName
                                          inManagedObjectContext:managedStore.context];
 }

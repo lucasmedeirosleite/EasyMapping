@@ -144,42 +144,53 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
         
         XCTAssertEqual(sut?.keyPath, "birthdate")
         XCTAssertEqual(sut?.property, "birthdate")
+        let context = EKMappingContext(keyPath: "birthdate", value: string)
+        XCTAssertEqual(sut?.valueBlock?(context) as? Date, date)
+        let nilAny : String? = nil
+        let nilValue = EKMappingContext(keyPath: "birthdate", value: nilAny as Any)
+        XCTAssertNil(sut?.valueBlock?(nilValue))
         
-        XCTAssertEqual(sut?.valueBlock?("birthdate", string) as? Date, date)
-        XCTAssertNil(sut?.valueBlock?("birthdate", nil))
-        XCTAssertNil(sut?.valueBlock?("birthdate", 5))
+        let intValue = EKMappingContext(keyPath: "birthdate", value: 5)
+        XCTAssertNil(sut?.valueBlock?(intValue))
         
-        XCTAssertEqual(sut?.reverseBlock?(date) as? String, "01 Jan 1970")
-        XCTAssertNil(sut?.reverseBlock?(nil))
-        XCTAssertNil(sut?.reverseBlock?(5))
+        let reverseContext = EKMappingContext(keyPath: "birthdate", value: date)
+        XCTAssertEqual(sut?.reverseBlock?(reverseContext) as? String, "01 Jan 1970")
+        
+        let nilContext = EKMappingContext(keyPath: "birthdate", value: nilAny as Any)
+        XCTAssertNil(sut?.reverseBlock?(nilContext))
+        
+        let intContext = EKMappingContext(keyPath: "birthdate", value: nilAny as Any)
+        XCTAssertNil(sut?.reverseBlock?(intContext))
     }
     
     func testMapKeyPathToPropertyWithValueBlock() {
         let genders = ["male": Gender.male, "female":Gender.female]
-        mapping.mapKeyPath("gender", toProperty: "gender") { key, value  in
-            return genders[value as? String ?? ""]
+        mapping.mapKeyPath("gender", toProperty: "gender") { context in
+            return genders[context.keyPath]
         }
         
         let sut = mapping.propertyMappings["gender"] as? EKPropertyMapping
         
-        XCTAssert(sut?.valueBlock?("gender","male") as? Gender == Gender.male)
+        let context = EKMappingContext(keyPath: "gender", value: "male")
+        XCTAssert(sut?.valueBlock?(context) as? Gender == Gender.male)
     }
     
     func testMapKeypathToPropertyWithValueBlockReverseBlock() {
         let genders = ["male": Gender.male, "female":Gender.female]
-        mapping.mapKeyPath("gender", toProperty: "gender", withValueBlock: { _, value in
-            return genders[value as? String ?? ""]
-        }, reverse: { gender in
+        mapping.mapKeyPath("gender", toProperty: "gender", withValueBlock: { context in
+            return genders[context.value as? String ?? ""]
+        }, reverse: { context in
             return genders.filter({ key,value in
-                value == gender as? Gender
+                value == context.value as? Gender
             }).map { $0.0 }.first
         })
         
         let sut = mapping.propertyMappings["gender"] as? EKPropertyMapping
         
-        XCTAssert(sut?.valueBlock?("gender","male") as? Gender == Gender.male)
-        XCTAssertEqual(sut?.reverseBlock?(Gender.male) as? String, "male")
-        XCTAssertEqual(sut?.reverseBlock?(Gender.female) as? String, "female")
+        
+        XCTAssert(sut?.valueBlock?(EKMappingContext(keyPath: "gender", value: "male")) as? Gender == Gender.male)
+        XCTAssertEqual(sut?.reverseBlock?(EKMappingContext(keyPath: "gender", value: Gender.male)) as? String, "male")
+        XCTAssertEqual(sut?.reverseBlock?(EKMappingContext(keyPath: "gender", value: Gender.female)) as? String, "female")
     }
     
     func testMapPropertiesFromMappingObject() {

@@ -28,28 +28,31 @@ class EKMappingBlocksTestCase: XCTestCase {
     
     func testBlockShouldConvertFromStringToURL() {
         let string = "http://www.google.com"
-        let url = EKMappingBlocks.urlMappingBlock()("foo", string) as? URL
+        let context = EKMappingContext(keyPath: "foo", value: string)
+        let url = EKMappingBlocks.urlMappingBlock()(context) as? URL
     
         XCTAssertEqual(url?.absoluteString, string)
     }
     
     func testShouldReturnNilOnNonStringValue() {
-        let number = 6
-        let nilURL = EKMappingBlocks.urlMappingBlock()("foo", number)
+        let context = EKMappingContext(keyPath: "foo", value: 6)
+        let nilURL = EKMappingBlocks.urlMappingBlock()(context)
         
         XCTAssertNil(nilURL)
     }
     
     func testShouldReverseConvertURLToString() {
         let url = URL(string: "http://www.google.com")
-        let string = EKMappingBlocks.urlReverseMappingBlock()(url) as? String
+        let context = EKMappingContext(keyPath: "url", value: url as Any)
+        let string = EKMappingBlocks.urlReverseMappingBlock()(context) as? String
     
         XCTAssertEqual(string, url?.absoluteString)
     }
     
     func testURLStringShouldBeNilIfURLIsNil() {
         let url : URL? = nil
-        let string = EKMappingBlocks.urlReverseMappingBlock()(url)
+        let context = EKMappingContext(keyPath: "url", value: url as Any)
+        let string = EKMappingBlocks.urlReverseMappingBlock()(context)
         
         XCTAssertNil(string)
     }
@@ -62,14 +65,13 @@ class EKMappingBlocksTestCase: XCTestCase {
             ManagedPhone.register(nil)
         }
         
-        let context = Storage.shared.context
+//        let context = Storage.shared.context
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = ManagedMappingProvider.personWithReverseBlocksMapping()
         
-        let person = EKManagedObjectMapper.object(fromExternalRepresentation: info,
-                                                  with: mapping,
-                                                  in: context) as! ManagedPerson
-        let sut = EKSerializer.serializeObject(person, with: mapping, from: context)
+        let person = EKMapper.object(fromExternalRepresentation: info,
+                                                  with: mapping) as! ManagedPerson
+        let sut = EKSerializer.serializeObject(person, with: mapping)
         
         
         XCTAssertEqual(person.gender, "husband")

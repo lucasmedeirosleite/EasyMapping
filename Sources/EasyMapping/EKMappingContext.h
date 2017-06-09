@@ -28,13 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EKMappingContext : NSObject
 
-@property (nonatomic, strong, nullable) NSString * keyPath;
+@property (nonatomic, strong) NSString * keyPath;
 
 @property (nonatomic, strong, nullable) id value;
 
-@property (nonatomic, weak, nullable) EKMappingStore * store;
+@property (nonatomic, weak, nullable) id<EKMappingStore> store;
 
--(instancetype)initWithKeyPath:(NSString*)keyPath value:(NSString *)value store:(EKMappingStore *)store;
+-(instancetype)initWithKeyPath:(NSString*)keyPath value:(id)value store:(nullable id<EKMappingStore>)store;
+
+-(instancetype)initWithKeyPath:(NSString *)keyPath value:(id)value;
 
 @end
 

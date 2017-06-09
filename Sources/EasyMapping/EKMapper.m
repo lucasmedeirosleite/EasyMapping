@@ -28,7 +28,7 @@
 
 @implementation EKMapper
 
--(instancetype)initWithMappingStore:(EKMappingStore *)store {
+-(instancetype)initWithMappingStore:(id<EKMappingStore>)store {
     self = [super init];
     if (self) {
         self.store = store;
@@ -184,7 +184,7 @@
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
     if (![externalRepresentation isKindOfClass:NSDictionary.class]) { return nil; }
-    EKMappingStore * store = [[EKMappingStore alloc] init];
+    EKObjectStore * store = [EKObjectStore new];
     EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:store];
     return [mapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];
 }
@@ -193,7 +193,7 @@
      withMapping:(EKObjectMapping *)mapping
 {
     if (![externalRepresentation isKindOfClass:NSDictionary.class]) { return nil; }
-    EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[EKMappingStore new]];
+    EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[EKObjectStore new]];
     return [mapper fillObject:object fromExternalRepresentation:externalRepresentation
                   withMapping:mapping];
 }
@@ -205,7 +205,7 @@
         ![mapping isKindOfClass:[EKRelationshipMapping class]]) {
         return nil;
     }
-    EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[EKMappingStore new]];
+    EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[EKObjectStore new]];
     return [mapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withRelationship:mapping];
 }
 
@@ -218,7 +218,7 @@
         return nil;
     }
     
-    EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[EKMappingStore new]];
+    EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[EKObjectStore new]];
     return [mapper arrayOfObjectsFromExternalRepresentation:externalRepresentation withMapping:mapping];
 }
 

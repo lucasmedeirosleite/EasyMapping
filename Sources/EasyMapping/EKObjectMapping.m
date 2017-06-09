@@ -38,39 +38,32 @@
     return self.contextProvider.objectClass;
 }
 
-//+ (EKObjectMapping *)mappingForClass:(Class)objectClass withBlock:(void (^)(EKObjectMapping *))mappingBlock
-//{
-//    EKObjectMapping *mapping = [[EKObjectMapping alloc] initWithObjectClass:objectClass];
-//    if (mappingBlock)
-//    {
-//        mappingBlock(mapping);
-//    }
-//    return mapping;
-//}
-//
-//+ (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath withBlock:(void (^)(EKObjectMapping *))mappingBlock
-//{
-//    EKObjectMapping *mapping = [[EKObjectMapping alloc] initWithObjectClass:objectClass withRootPath:rootPath];
-//    if (mappingBlock)
-//    {
-//       mappingBlock(mapping);
-//    }
-//    return mapping;
-//}
++ (EKObjectMapping *)mappingForClass:(Class)objectClass withBlock:(void (^)(EKObjectMapping *))mappingBlock
+{
+    EKObjectMapping *mapping = [[EKObjectMapping alloc] initWithObjectClass:objectClass];
+    if (mappingBlock)
+    {
+        mappingBlock(mapping);
+    }
+    return mapping;
+}
 
-//- (id)initWithObjectClass:(Class)objectClass
-//{
-//    self = [super init];
-//    if (self) {
-//        _objectClass = objectClass;
-//        _propertyMappings = [NSMutableDictionary dictionary];
-//        _hasOneMappings = [NSMutableArray array];
-//        _hasManyMappings = [NSMutableArray array];
-//    }
-//    return self;
-//}
++ (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath withBlock:(void (^)(EKObjectMapping *))mappingBlock
+{
+    EKObjectMapping *mapping = [[EKObjectMapping alloc] initWithObjectClass:objectClass withRootPath:rootPath];
+    if (mappingBlock)
+    {
+       mappingBlock(mapping);
+    }
+    return mapping;
+}
 
--(instancetype)initWithContextProvider:(EKMappingContextProvider *)provider {
+- (id)initWithObjectClass:(Class)objectClass
+{
+    return [self initWithContextProvider:[[EKMappingContextProvider alloc] initWithObjectClass:objectClass]];
+}
+
+-(instancetype)initWithContextProvider:(id <EKMappingContextProviding>)provider {
     self = [super init];
     
     _propertyMappings = [NSMutableDictionary dictionary];
@@ -80,7 +73,7 @@
     return self;
 }
 
--(instancetype)initWithContextProvider:(EKMappingContextProvider *)provider rootPath:(NSString *)rootPath {
+-(instancetype)initWithContextProvider:(id <EKMappingContextProviding>)provider rootPath:(NSString *)rootPath {
     self = [self initWithContextProvider:provider];
     _rootPath = rootPath;
     return self;
@@ -101,14 +94,11 @@
     return primaryKeyMapping;
 }
 
-//- (id)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath
-//{
-//    self = [self initWithObjectClass:objectClass];
-//    if (self) {
-//        _rootPath = rootPath;
-//    }
-//    return self;
-//}
+- (id)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath
+{
+    return [self initWithContextProvider:[[EKMappingContextProvider alloc] initWithObjectClass:objectClass]
+                                rootPath:rootPath];
+}
 
 - (void)mapKeyPath:(NSString *)keyPath toProperty:(NSString *)property
 {

@@ -26,7 +26,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EKMappingStore : NSObject
+@protocol EKMappingStore <NSObject>
 
 -(void)startMappingForRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping;
 
@@ -36,6 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(nullable id)existingObjectForRepresentation:(id)representation
                                   withMapping:(EKObjectMapping *)mapping;
+
+@end
+
+@interface EKObjectStore : NSObject <EKMappingStore>
 
 @end
 

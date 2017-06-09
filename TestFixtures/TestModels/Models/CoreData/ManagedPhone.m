@@ -17,14 +17,14 @@
 @dynamic ddd;
 @dynamic number;
 
-static EKManagedObjectMapping * mapping = nil;
+static EKObjectMapping * mapping = nil;
 
-+(void)registerMapping:(EKManagedObjectMapping *)objectMapping
++(void)registerMapping:(EKObjectMapping *)objectMapping
 {
     mapping = objectMapping;
 }
 
-+(EKManagedObjectMapping *)objectMapping
++(EKObjectMapping *)objectMapping
 {
     return mapping;
 }

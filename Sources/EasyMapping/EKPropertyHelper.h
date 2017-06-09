@@ -61,15 +61,15 @@ NS_ASSUME_NONNULL_BEGIN
 +(void) setProperty:(EKPropertyMapping *)propertyMapping
            onObject:(id<EKMappingProtocol>)object
  fromRepresentation:(NSDictionary *)representation
-    contextProvider:(EKMappingContextProvider *)context
-              store:(EKMappingStore *)store
+    contextProvider:(id <EKMappingContextProviding>)context
+              store:(id <EKMappingStore>)store
 respectPropertyType:(BOOL)respectPropertyType
 ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (nullable id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
                fromRepresentation:(NSDictionary *)representation
-                          inStore:(EKMappingStore *)store
-                        contextProvider:(EKMappingContextProvider *)context;
+                          inStore:(id <EKMappingStore>)store
+                        contextProvider:(id <EKMappingContextProviding>)context;
 
 
 + (void)setValue:(nullable id)value onObject:(id)object forKeyPath:(NSString *)keyPath;

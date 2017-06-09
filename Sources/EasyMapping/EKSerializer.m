@@ -25,11 +25,11 @@
 #import "EKPropertyMapping.h"
 #import "EKPropertyHelper.h"
 #import "EKRelationshipMapping.h"
-#import "EKManagedMappingStore.h"
+#import "EKManagedObjectStore.h"
 
 @implementation EKSerializer
 
--(instancetype)initWithMappingStore:(EKMappingStore *)store {
+-(instancetype)initWithMappingStore:(id <EKMappingStore>)store {
     self = [super init];
     if (self) {
         self.store = store;
@@ -98,29 +98,29 @@
 
 + (NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping
 {
-    EKSerializer<EKMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[EKMappingStore new]];
+    EKSerializer * serializer = [[EKSerializer alloc] initWithMappingStore:[EKObjectStore new]];
     return [serializer serializeObject:object withMapping:mapping];
 }
 
 + (NSArray *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection withMapping:(EKObjectMapping *)mapping
 {
-    EKSerializer<EKMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[EKMappingStore new]];
+    EKSerializer * serializer = [[EKSerializer alloc] initWithMappingStore:[EKObjectStore new]];
     return [serializer serializeCollection:collection withMapping:mapping];
 }
 
 +(NSDictionary *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
 {
-    EKSerializer<EKManagedMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[[EKManagedMappingStore alloc] initWithContext:context]];
+    EKSerializer * serializer = [[EKSerializer alloc] initWithMappingStore:[[EKManagedObjectStore alloc] initWithContext:context]];
     return [serializer serializeObject:object withMapping:mapping];
 }
 
 +(NSArray *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection withMapping:(EKObjectMapping *)mapping fromContext:(NSManagedObjectContext *)context
 {
-    EKSerializer<EKManagedMappingStore *> * serializer = [[EKSerializer alloc] initWithMappingStore:[[EKManagedMappingStore alloc] initWithContext:context]];
+    EKSerializer * serializer = [[EKSerializer alloc] initWithMappingStore:[[EKManagedObjectStore alloc] initWithContext:context]];
     return [serializer serializeCollection:collection withMapping:mapping];
 }
 
-- (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping contextProvider:(EKMappingContextProvider *)provider
+- (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping contextProvider:(id <EKMappingContextProviding>)provider
 {
     id returnedValue = [object valueForKeyPath:propertyMapping.property];
     

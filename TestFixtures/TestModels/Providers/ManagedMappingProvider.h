@@ -8,26 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "EasyMapping.h"
-#import "EKManagedObjectMapping.h"
+#import "EKObjectMapping.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ManagedMappingProvider : NSObject
 
-+ (EKManagedObjectMapping *)carMapping;
-+ (EKManagedObjectMapping *)carWithRootKeyMapping;
-+ (EKManagedObjectMapping *)carNestedAttributesMapping;
-+ (EKManagedObjectMapping *)carWithDateMapping;
-+ (EKManagedObjectMapping *)phoneMapping;
-+ (EKManagedObjectMapping *)personNonNestedMapping;
-+ (EKManagedObjectMapping *)personMapping;
-+ (EKManagedObjectMapping *)personWithCarMapping;
-+ (EKManagedObjectMapping *)personWithOnlyValueBlockMapping;
-+ (EKManagedObjectMapping *)personWithPhonesMapping;
-+ (EKManagedObjectMapping *)personWithReverseBlocksMapping;
++ (EKObjectMapping *)carMapping;
++ (EKObjectMapping *)carWithRootKeyMapping;
++ (EKObjectMapping *)carNestedAttributesMapping;
++ (EKObjectMapping *)carWithDateMapping;
++ (EKObjectMapping *)phoneMapping;
++ (EKObjectMapping *)personNonNestedMapping;
++ (EKObjectMapping *)personMapping;
++ (EKObjectMapping *)personWithCarMapping;
++ (EKObjectMapping *)personWithOnlyValueBlockMapping;
++ (EKObjectMapping *)personWithPhonesMapping;
++ (EKObjectMapping *)personWithReverseBlocksMapping;
 
 // Fake mapping, is not backed up by CoreData model
-+ (EKManagedObjectMapping *)complexPlaneMapping;
++ (EKObjectMapping *)complexPlaneMapping;
 
 + (NSDateFormatter *)iso8601DateFormatter;
 

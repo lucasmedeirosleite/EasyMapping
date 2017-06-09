@@ -11,7 +11,7 @@ import XCTest
 fileprivate class TestManagedObjectModel : EKManagedObjectModel {
     @NSManaged var foo: String
     
-    override static func objectMapping() -> EKManagedObjectMapping {
+    override static func objectMapping() -> EKObjectMapping {
         let mapping = super.objectMapping()
         mapping.mapKeyPath("bar", toProperty: "foo")
         return mapping
@@ -23,6 +23,6 @@ class EKManagedObjectModelTestCase: XCTestCase {
     func testObjectMapping() {
         let mapping = TestManagedObjectModel.objectMapping()
         
-        XCTAssert(mapping.entityName.contains("TestManagedObjectModel"))
+        XCTAssert((mapping.contextProvider as? EKManagedMappingContextProvider)?.entityName.contains("TestManagedObjectModel") ?? false)
     }
 }

@@ -13,11 +13,11 @@
 		3E1FB6A51EC05575007CB0F4 /* EKMappingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FB6A31EC05575007CB0F4 /* EKMappingStore.m */; };
 		3E1FB6A61EC05B44007CB0F4 /* EKMappingContextProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1FB6A11EBFA60E007CB0F4 /* EKMappingContextProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E1FB6AA1EC065F2007CB0F4 /* EKMappingContextProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FB6A91EC065F2007CB0F4 /* EKMappingContextProvider.m */; };
-		3E1FB6AD1EC067B5007CB0F4 /* EKManagedMappingStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1FB6AB1EC067B5007CB0F4 /* EKManagedMappingStore.h */; };
-		3E1FB6AE1EC067B5007CB0F4 /* EKManagedMappingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FB6AC1EC067B5007CB0F4 /* EKManagedMappingStore.m */; };
-		3E1FB6B11EC0A246007CB0F4 /* EKManagedMappingContextProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1FB6AF1EC0A246007CB0F4 /* EKManagedMappingContextProvider.h */; };
+		3E1FB6AD1EC067B5007CB0F4 /* EKManagedObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1FB6AB1EC067B5007CB0F4 /* EKManagedObjectStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E1FB6AE1EC067B5007CB0F4 /* EKManagedObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FB6AC1EC067B5007CB0F4 /* EKManagedObjectStore.m */; };
+		3E1FB6B11EC0A246007CB0F4 /* EKManagedMappingContextProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1FB6AF1EC0A246007CB0F4 /* EKManagedMappingContextProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E1FB6B21EC0A246007CB0F4 /* EKManagedMappingContextProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FB6B01EC0A246007CB0F4 /* EKManagedMappingContextProvider.m */; };
-		3E1FB6B51EC0A2C4007CB0F4 /* EKMappingContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1FB6B31EC0A2C4007CB0F4 /* EKMappingContext.h */; };
+		3E1FB6B51EC0A2C4007CB0F4 /* EKMappingContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1FB6B31EC0A2C4007CB0F4 /* EKMappingContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E1FB6B61EC0A2C4007CB0F4 /* EKMappingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FB6B41EC0A2C4007CB0F4 /* EKMappingContext.m */; };
 		52D6D9871BEFF229002C0205 /* EasyMapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* EasyMapping.framework */; };
 		9A0274BE1EB37927003AF7A5 /* EKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0274BD1EB37927003AF7A5 /* EKCoreDataManager.m */; };
@@ -140,8 +140,8 @@
 		3E1FB6A21EC05575007CB0F4 /* EKMappingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKMappingStore.h; path = Sources/EasyMapping/EKMappingStore.h; sourceTree = "<group>"; };
 		3E1FB6A31EC05575007CB0F4 /* EKMappingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMappingStore.m; path = Sources/EasyMapping/EKMappingStore.m; sourceTree = "<group>"; };
 		3E1FB6A91EC065F2007CB0F4 /* EKMappingContextProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKMappingContextProvider.m; path = Sources/EasyMapping/EKMappingContextProvider.m; sourceTree = "<group>"; };
-		3E1FB6AB1EC067B5007CB0F4 /* EKManagedMappingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKManagedMappingStore.h; path = Sources/EasyMapping/EKManagedMappingStore.h; sourceTree = "<group>"; };
-		3E1FB6AC1EC067B5007CB0F4 /* EKManagedMappingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedMappingStore.m; path = Sources/EasyMapping/EKManagedMappingStore.m; sourceTree = "<group>"; };
+		3E1FB6AB1EC067B5007CB0F4 /* EKManagedObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectStore.h; path = Sources/EasyMapping/EKManagedObjectStore.h; sourceTree = "<group>"; };
+		3E1FB6AC1EC067B5007CB0F4 /* EKManagedObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectStore.m; path = Sources/EasyMapping/EKManagedObjectStore.m; sourceTree = "<group>"; };
 		3E1FB6AF1EC0A246007CB0F4 /* EKManagedMappingContextProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKManagedMappingContextProvider.h; path = Sources/EasyMapping/EKManagedMappingContextProvider.h; sourceTree = "<group>"; };
 		3E1FB6B01EC0A246007CB0F4 /* EKManagedMappingContextProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EKManagedMappingContextProvider.m; path = Sources/EasyMapping/EKManagedMappingContextProvider.m; sourceTree = "<group>"; };
 		3E1FB6B31EC0A2C4007CB0F4 /* EKMappingContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKMappingContext.h; path = Sources/EasyMapping/EKMappingContext.h; sourceTree = "<group>"; };
@@ -354,8 +354,8 @@
 				9A420D9F1EB359DE002306BF /* EKManagedObjectMapping.m */,
 				9A420DA01EB359DE002306BF /* EKManagedObjectModel.h */,
 				9A420DA11EB359DE002306BF /* EKManagedObjectModel.m */,
-				3E1FB6AB1EC067B5007CB0F4 /* EKManagedMappingStore.h */,
-				3E1FB6AC1EC067B5007CB0F4 /* EKManagedMappingStore.m */,
+				3E1FB6AB1EC067B5007CB0F4 /* EKManagedObjectStore.h */,
+				3E1FB6AC1EC067B5007CB0F4 /* EKManagedObjectStore.m */,
 				3E1FB6AF1EC0A246007CB0F4 /* EKManagedMappingContextProvider.h */,
 				3E1FB6B01EC0A246007CB0F4 /* EKManagedMappingContextProvider.m */,
 			);
@@ -626,10 +626,8 @@
 				9A420DC31EB359DE002306BF /* EKMappingProtocol.h in Headers */,
 				9A420DBF1EB359DE002306BF /* EKMapper.h in Headers */,
 				9A420DC81EB359DE002306BF /* EKPropertyHelper.h in Headers */,
-				3E1FB6B51EC0A2C4007CB0F4 /* EKMappingContext.h in Headers */,
 				9A420DC61EB359DE002306BF /* EKObjectModel.h in Headers */,
 				9A420DD01EB359DE002306BF /* NSArray+FlattenArray.h in Headers */,
-				3E1FB6AD1EC067B5007CB0F4 /* EKManagedMappingStore.h in Headers */,
 				9A420DC11EB359DE002306BF /* EKMappingBlocks.h in Headers */,
 				9A420DCE1EB359DE002306BF /* EKSerializer.h in Headers */,
 				9A420DBB1EB359DE002306BF /* EKManagedObjectMapping.h in Headers */,
@@ -638,6 +636,8 @@
 				3E1FB6A61EC05B44007CB0F4 /* EKMappingContextProvider.h in Headers */,
 				9A420DCC1EB359DE002306BF /* EKRelationshipMapping.h in Headers */,
 				3E1FB6A41EC05575007CB0F4 /* EKMappingStore.h in Headers */,
+				3E1FB6B51EC0A2C4007CB0F4 /* EKMappingContext.h in Headers */,
+				3E1FB6AD1EC067B5007CB0F4 /* EKManagedObjectStore.h in Headers */,
 				3E1FB6B11EC0A246007CB0F4 /* EKManagedMappingContextProvider.h in Headers */,
 				9A420DCA1EB359DE002306BF /* EKPropertyMapping.h in Headers */,
 				9A420DBD1EB359DE002306BF /* EKManagedObjectModel.h in Headers */,
@@ -783,7 +783,7 @@
 				9A420DBA1EB359DE002306BF /* EKManagedObjectMapper.m in Sources */,
 				9A420DCD1EB359DE002306BF /* EKRelationshipMapping.m in Sources */,
 				3E1FB6AA1EC065F2007CB0F4 /* EKMappingContextProvider.m in Sources */,
-				3E1FB6AE1EC067B5007CB0F4 /* EKManagedMappingStore.m in Sources */,
+				3E1FB6AE1EC067B5007CB0F4 /* EKManagedObjectStore.m in Sources */,
 				9A420DD11EB359DE002306BF /* NSArray+FlattenArray.m in Sources */,
 				9A420DBE1EB359DE002306BF /* EKManagedObjectModel.m in Sources */,
 				9A420DC51EB359DE002306BF /* EKObjectMapping.m in Sources */,

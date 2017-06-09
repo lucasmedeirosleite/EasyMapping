@@ -67,12 +67,11 @@ class EKPropertyHelperManagedTestCase : ManagedTestCase {
     func testRespectPropertyRepresentationForManagedType() {
         let withoutPhones = FixtureLoader.dictionary(fromFileNamed: "PersonWithoutPhones.json")
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKManagedObjectMapper.object(fromExternalRepresentation: withoutPhones,
-                                                  with: ManagedMappingProvider.personMapping(),
-                                                  in: Storage.shared.context) as! ManagedPerson
+        let person = EKMapper.object(fromExternalRepresentation: withoutPhones,
+                                                  with: ManagedMappingProvider.personMapping()) as! ManagedPerson
         let mapping = ManagedMappingProvider.personMapping()
         mapping.respectPropertyFoundationTypes = true
-        EKManagedObjectMapper.fillObject(person, fromExternalRepresentation: info, with: mapping, in: Storage.shared.context)
+        EKMapper.fillObject(person, fromExternalRepresentation: info, with: mapping)
         XCTAssertEqual(person.phones.count, 2)
     }
 }

@@ -36,8 +36,8 @@ final class FixtureLoader {
         return [:]
     }
     
-    static func dictionary(fromFileNamed fileName: String) -> [String:Any] {
-        return json(fromFileNamed: fileName) as? [String:Any] ?? [:]
+    static func dictionary(fromFileNamed fileName: String) -> [AnyHashable:Any] {
+        return json(fromFileNamed: fileName) as? [AnyHashable:Any] ?? [:]
     }
     
     static func array(fromFileNamed fileName: String) -> [[String:Any]] {

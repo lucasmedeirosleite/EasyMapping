@@ -23,7 +23,7 @@
 
 #import "EKMappingStore.h"
 
-@implementation EKMappingStore
+@implementation EKObjectStore
 
 -(void)startMappingForRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping {
     

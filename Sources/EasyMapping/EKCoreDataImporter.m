@@ -43,10 +43,10 @@
 
 @implementation EKCoreDataImporter
 
--(instancetype)initWithContext:(NSManagedObjectContext *)context store:(EKManagedMappingStore *)store {
+-(instancetype)initWithStore:(EKManagedObjectStore *)store {
     self = [super init];
     if (self) {
-        self.context = context;
+//        self.context = [store context];
         self.fetchedExistingEntities = [NSMutableDictionary dictionary];
         self.store = store;
     }
@@ -76,7 +76,7 @@
     self.externalRepresentation = representation;
     self.mapping = mapping;
     [self collectEntityNames];
-    [self inspectRepresentationInContext:self.context];
+    [self inspectRepresentationInContext:self.store.context];
 }
 
 -(void)flushAllObjects {
@@ -252,7 +252,7 @@
     [fetchRequest setFetchLimit:lookupValues.count];
 
     NSMutableDictionary * output = [NSMutableDictionary new];
-    NSArray * existingObjects = [self.context executeFetchRequest:fetchRequest error:NULL];
+    NSArray * existingObjects = [self.store.context executeFetchRequest:fetchRequest error:NULL];
     for (NSManagedObject * object in existingObjects)
     {
         output[[object valueForKey:provider.primaryKey]] = object;

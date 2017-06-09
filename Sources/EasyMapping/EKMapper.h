@@ -30,11 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
  `EKMapper` provides an interface to create objective-c object from JSON representation, using `EKObjectMapping` class. For creating CoreData objects, use `EKManagedObjectMapper` class.
  */
 
-@interface EKMapper<__covariant StoreType: EKMappingStore *> : NSObject
+@interface EKMapper : NSObject
 
-@property (nonatomic,strong) StoreType store;
+@property (nonatomic,strong) id<EKMappingStore> store;
 
--(instancetype)initWithMappingStore:(StoreType)store;
+-(instancetype)initWithMappingStore:(id<EKMappingStore>)store;
 
 /**
  Creates object from JSON representation, using mapping.
@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result array of mapped objects
  */
-- (nullable NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
+- (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                                    withMapping:(EKObjectMapping *)mapping;
 
 /**
@@ -131,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result array of mapped objects
  */
-+ (nullable NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
++ (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                                    withMapping:(EKObjectMapping *)mapping;
 
 @end

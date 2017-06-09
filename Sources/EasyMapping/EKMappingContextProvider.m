@@ -25,6 +25,8 @@
 
 @implementation EKMappingContextProvider
 
+@synthesize objectClass = _objectClass, primaryKey = _primaryKey;
+
 -(instancetype)initWithObjectClass:(id)objectClass {
     self = [super init];
     if (self) {
@@ -32,13 +34,13 @@
     }
     return self;
 }
--(EKMappingContext *)mappingContextFor:(NSString *)keyPath value:(id)value store:(EKMappingStore *)store {
+-(EKMappingContext *)mappingContextFor:(NSString *)keyPath value:(id)value store:(id <EKMappingStore>)store {
     return [[EKMappingContext alloc] initWithKeyPath:keyPath
                                                value:value
                                                store:store];
 }
 
--(id)createNewEmptyObjectInStore:(EKMappingStore *)store {
+-(id)createNewEmptyObjectInStore:(id<EKMappingStore>)store {
     return [[self.objectClass alloc] init];
 }
 

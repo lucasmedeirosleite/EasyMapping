@@ -42,36 +42,42 @@ class EKCoreDataImporterTestCase: XCTestCase {
     }
     
     func testImporterIsAbleToCollectEntityNames() {
-        let importer = EKCoreDataImporter(mapping: ManagedMappingProvider.personMapping(), externalRepresentation: [:], context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let importer = EKCoreDataImporter(store: store)
+        importer.inspectRepresentation([:], with: ManagedMappingProvider.personMapping())
         
         XCTAssertEqual(importer.entityNames, Set(["ManagedPerson", "ManagedCar", "ManagedPhone"]))
     }
     
     func testImporterAbleToCollectEntitiesWithRootKey() {
-        let importer = EKCoreDataImporter(mapping: ManagedMappingProvider.carWithRootKeyMapping(), externalRepresentation: [:], context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let importer = EKCoreDataImporter(store: store)
+        importer.inspectRepresentation([:], with: ManagedMappingProvider.carWithRootKeyMapping())
         
         XCTAssertEqual(importer.entityNames, Set(["ManagedCar"]))
     }
     
     func testImporterCanCollectEntitiesWithComplexStructure() {
-        let mapping = EKManagedObjectMapping(entityName: "ManagedPerson")
+        let mapping = EKObjectMapping(contextProvider: EKManagedMappingContextProvider(objectClass: ManagedPerson.self))
         ManagedCar.register(ManagedMappingProvider.carWithRootKeyMapping())
         mapping.hasOne(ManagedCar.self, forKeyPath: "car")
         mapping.hasOne(ManagedPhone.self, forKeyPath: "phone")
-        let addressMapping = EKManagedObjectMapping(forEntityName: "Address") {
-            $0.hasOne(ManagedPerson.self, forKeyPath: "postman")
-        }
+        let addressMapping = EKObjectMapping(contextProvider: EKManagedMappingContextProvider(objectClass: Address.self))
+        addressMapping.hasOne(ManagedPerson.self, forKeyPath: "postman")
         Address.register(addressMapping)
         mapping.hasOne(Address.self, forKeyPath: "addressBook")
         
-        let sut = EKCoreDataImporter(mapping: mapping, externalRepresentation: [:],
-                                     context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation([:], with: mapping)
         
         XCTAssertEqual(sut.entityNames, Set(["ManagedPerson","ManagedCar","ManagedPhone","Address"]))
     }
     
     func testImporterIsAbleToCollectFromRecursiveMapping() {
-        let sut = EKCoreDataImporter(mapping: One.objectMapping(), externalRepresentation: [:], context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation([:], with: One.objectMapping())
         
         XCTAssertEqual(sut.entityNames, Set(["One","Two", "Three"]))
     }
@@ -79,7 +85,9 @@ class EKCoreDataImporterTestCase: XCTestCase {
     func testImporterIsAbleToCollectEntitiesWithRootKeypath() {
         let info = FixtureLoader.json(fromFileNamed: "CarWithRoot.json")
         
-        let sut = EKCoreDataImporter(mapping: ManagedMappingProvider.carWithRootKeyMapping(), externalRepresentation: info, context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation(info, with:ManagedMappingProvider.carWithRootKeyMapping())
         
         XCTAssertEqual(sut.existingEntitiesPrimaryKeys, ["ManagedCar":Set([1])])
     }
@@ -87,9 +95,9 @@ class EKCoreDataImporterTestCase: XCTestCase {
     func testImporterIsAbleToCollectEntitiesFromArrayOfObjects() {
         let info = FixtureLoader.array(fromFileNamed: "Cars.json")
         
-        let sut = EKCoreDataImporter(mapping: ManagedMappingProvider.carMapping(),
-                                     externalRepresentation: info,
-                                     context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation(info, with:ManagedMappingProvider.carMapping())
         
         XCTAssertEqual(sut.existingEntitiesPrimaryKeys, ["ManagedCar":Set([1,2])])
     }
@@ -97,9 +105,9 @@ class EKCoreDataImporterTestCase: XCTestCase {
     func testShouldCollectEntitiesFromHasOneAndHasManyRelationships() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         
-        let sut = EKCoreDataImporter(mapping: ManagedMappingProvider.personMapping(),
-                                     externalRepresentation: info,
-                                     context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation(info, with:ManagedMappingProvider.personMapping())
         
         XCTAssertEqual(sut.existingEntitiesPrimaryKeys, [
             "ManagedCar":Set([3]),
@@ -113,9 +121,9 @@ class EKCoreDataImporterTestCase: XCTestCase {
         Plane.register(ManagedMappingProvider.complexPlaneMapping())
         defer { Plane.register(nil) }
         
-        let sut = EKCoreDataImporter(mapping: ManagedMappingProvider.complexPlaneMapping(),
-                                     externalRepresentation: info,
-                                     context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation(info, with: ManagedMappingProvider.complexPlaneMapping())
         
         XCTAssertEqual(sut.existingEntitiesPrimaryKeys, [
             "ManagedCar":Set([3,8]),
@@ -127,10 +135,9 @@ class EKCoreDataImporterTestCase: XCTestCase {
     
     func testShouldCollectEntitiesWhenHasOneMappingHasNull() {
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithNullCar.json")
-        
-        let sut = EKCoreDataImporter(mapping: ManagedMappingProvider.personMapping(),
-                                     externalRepresentation: info,
-                                     context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation(info, with: ManagedMappingProvider.personMapping())
         
         XCTAssertEqual(sut.existingEntitiesPrimaryKeys, [
             "ManagedCar":Set<Int>(),
@@ -141,10 +148,9 @@ class EKCoreDataImporterTestCase: XCTestCase {
     
     func testShouldCollectEntitiesWhenHasManyMappingHasNull() {
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithNullPhones.json")
-        
-        let sut = EKCoreDataImporter(mapping: ManagedMappingProvider.personMapping(),
-                                     externalRepresentation: info,
-                                     context: Storage.shared.context)
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let sut = EKCoreDataImporter(store: store)
+        sut.inspectRepresentation(info, with: ManagedMappingProvider.personMapping())
         
         XCTAssertEqual(sut.existingEntitiesPrimaryKeys, [
             "ManagedCar":Set([56]),

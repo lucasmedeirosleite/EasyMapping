@@ -19,122 +19,113 @@
     return formatter;
 }
 
-+ (EKManagedObjectMapping *)carMapping
++ (EKObjectMapping *)carMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
-        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        mapping.primaryKey = @"carID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
+    [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+    mapping.contextProvider.primaryKey = @"carID";
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)carWithRootKeyMapping
++ (EKObjectMapping *)carWithRootKeyMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
-                                           withRootPath:@"data.car"
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
-        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        mapping.primaryKey = @"carID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class] rootPath:@"data.car"];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
+    [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+    mapping.contextProvider.primaryKey = @"carID";
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)carNonNestedMapping {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class]) withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{
-                                               @"carId": @"carID",
-                                               @"carModel":@"model",
-                                               @"carYear":@"year"
-                                               }];
-        mapping.primaryKey = @"carID";
-    }];
++ (EKObjectMapping *)carNonNestedMapping {
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    [mapping mapPropertiesFromDictionary:@{
+                                           @"carId": @"carID",
+                                           @"carModel":@"model",
+                                           @"carYear":@"year"
+                                           }];
+    mapping.contextProvider.primaryKey = @"carID";
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)carNestedAttributesMapping
++ (EKObjectMapping *)carNestedAttributesMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
-        [mapping mapPropertiesFromArray:@[@"model"]];
-        [mapping mapPropertiesFromDictionary:@{
-            @"information.year" : @"year"
-         }];
-        mapping.primaryKey = @"carID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
+    [mapping mapPropertiesFromArray:@[@"model"]];
+    [mapping mapPropertiesFromDictionary:@{
+                                           @"information.year" : @"year"
+                                           }];
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)carWithDateMapping
++ (EKObjectMapping *)carWithDateMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedCar class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
-        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[self iso8601DateFormatter]];
-        mapping.primaryKey = @"carID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
+    [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+    [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[self iso8601DateFormatter]];
+    mapping.contextProvider.primaryKey = @"carID";
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)phoneMapping
++ (EKObjectMapping *)phoneMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPhone class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"phoneID" }];
-        [mapping mapPropertiesFromArray:@[@"number"]];
-        [mapping mapPropertiesFromDictionary:@{
-            @"ddi" : @"ddi",
-            @"ddd" : @"ddd"
-         }];
-        mapping.primaryKey = @"phoneID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPhone.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"phoneID" }];
+    [mapping mapPropertiesFromArray:@[@"number"]];
+    [mapping mapPropertiesFromDictionary:@{
+                                           @"ddi" : @"ddi",
+                                           @"ddd" : @"ddd"
+                                           }];
+    mapping.contextProvider.primaryKey = @"phoneID";
+    return mapping;
 }
 
-+(EKManagedObjectMapping *)personNonNestedMapping
++(EKObjectMapping *)personNonNestedMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class]) withBlock:
-            ^(EKManagedObjectMapping *mapping) {
-      [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
-      
-      [mapping hasOne:[ManagedCar class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
-          forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
-                mapping.primaryKey = @"personID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
+    
+    [mapping hasOne:[ManagedCar class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
+        forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
+    mapping.contextProvider.primaryKey = @"personID";
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)personMapping
++ (EKObjectMapping *)personMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
-        [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
-        [mapping hasOne:ManagedCar.class forKeyPath:@"car"];
-        [mapping hasOne:ManagedPerson.class forKeyPath:@"relative"];
-        [mapping hasMany:ManagedPerson.class forKeyPath:@"children"];
-        [mapping hasMany:ManagedPhone.class forKeyPath:@"phones"];
-        mapping.primaryKey = @"personID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
+    [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
+    [mapping hasOne:ManagedCar.class forKeyPath:@"car"];
+    [mapping hasOne:ManagedPerson.class forKeyPath:@"relative"];
+    [mapping hasMany:ManagedPerson.class forKeyPath:@"children"];
+    [mapping hasMany:ManagedPhone.class forKeyPath:@"phones"];
+    mapping.contextProvider.primaryKey = @"personID";
+    return mapping;
 }
 
-+(EKManagedObjectMapping *)personWithReverseBlocksMapping
++(EKObjectMapping *)personWithReverseBlocksMapping
 {
-    EKManagedObjectMapping * personMapping = [self personWithCarMapping];
+    EKObjectMapping * personMapping = [self personWithCarMapping];
     [personMapping mapKeyPath:@"gender" toProperty:@"gender"
-               withValueBlock:^id(NSString *key, id value, NSManagedObjectContext *context) {
-                   if ([value isEqualToString:@"male"])
+               withValueBlock:^id(EKMappingContext * context) {
+                   if ([context.value isEqualToString:@"male"])
                    {
                        return @"husband";
                    }
-                   else if ([value isEqualToString:@"female"])
+                   else if ([context.value isEqualToString:@"female"])
                    {
                        return @"wife";
                    }
                    return nil;
-               } reverseBlock:^id(id value, NSManagedObjectContext *context) {
-                   if ([value isEqualToString:@"husband"])
+               } reverseBlock:^id(EKMappingContext * context) {
+                   if ([context.value isEqualToString:@"husband"])
                    {
                        return @"male";
                    }
-                   else if ([value isEqualToString:@"wife"])
+                   else if ([context.value isEqualToString:@"wife"])
                    {
                        return @"female";
                    }
@@ -144,41 +135,38 @@
     return personMapping;
 }
 
-+ (EKManagedObjectMapping *)personWithCarMapping
++ (EKObjectMapping *)personWithCarMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping hasOne:[ManagedCar class] forKeyPath:@"car"];
-        mapping.primaryKey = @"personID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping hasOne:[ManagedCar class] forKeyPath:@"car"];
+    mapping.contextProvider.primaryKey = @"personID";
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)personWithPhonesMapping
++ (EKObjectMapping *)personWithPhonesMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping hasMany:[ManagedPhone class] forKeyPath:@"phones"];
-        mapping.primaryKey = @"personID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping hasMany:[ManagedPhone class] forKeyPath:@"phones"];
+    mapping.contextProvider.primaryKey = @"personID";
+    return mapping;
 }
 
-+ (EKManagedObjectMapping *)personWithOnlyValueBlockMapping
++ (EKObjectMapping *)personWithOnlyValueBlockMapping
 {
-    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([ManagedPerson class])
-                                              withBlock:^(EKManagedObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
-        [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
-        mapping.primaryKey = @"personID";
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
+    [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
+    mapping.contextProvider.primaryKey = @"personID";
+    return mapping;
 }
 
-+(EKManagedObjectMapping *)complexPlaneMapping
++(EKObjectMapping *)complexPlaneMapping
 {
-    EKManagedObjectMapping * mapping = [[EKManagedObjectMapping alloc] initWithEntityName:@"Plane"];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
     [mapping hasOne:[ManagedPerson class] forKeyPath:@"captain"];
     [mapping hasMany:[ManagedPerson class] forKeyPath:@"persons"];
     return mapping;

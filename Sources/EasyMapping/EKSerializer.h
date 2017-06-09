@@ -31,11 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  `EKSerializer` is a class, that allows converting objects to their JSON representation, using `EKObjectMapping`. CoreData objects are supported too.
  */
-@interface EKSerializer<__covariant StoreType: EKMappingStore *> : NSObject
+@interface EKSerializer : NSObject
 
-@property (nonatomic, strong) StoreType store;
+@property (nonatomic, strong) id<EKMappingStore> store;
 
--(instancetype)initWithMappingStore:(StoreType)store;
+-(instancetype)initWithMappingStore:(id<EKMappingStore>)store;
 
 /**
  Convert object to JSON representation.

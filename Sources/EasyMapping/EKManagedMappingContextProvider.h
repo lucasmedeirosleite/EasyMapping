@@ -23,6 +23,6 @@
 
 #import "EKMappingContextProvider.h"
 
-@interface EKManagedMappingContextProvider<__covariant ObjectType>: EKMappingContextProvider
+@interface EKManagedMappingContextProvider: EKMappingContextProvider
 @property (nonatomic, strong, nonnull) NSString * entityName;
 @end

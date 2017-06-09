@@ -128,11 +128,11 @@ class EasyMappingCoreDataPerfomanceTests: XCTestCase {
         ManagedPerson.register(nil)
     }
     
-    func benchmark(fixture: String, mapping: EKManagedObjectMapping, times: Int) {
+    func benchmark(fixture: String, mapping: EKObjectMapping, times: Int) {
         let info = FixtureLoader.dictionary(fromFileNamed: fixture)
         
         for _ in 0...times {
-            _ = EKManagedObjectMapper.object(fromExternalRepresentation: info, with: mapping, in: EKCoreDataManager.sharedInstance().managedObjectContext)
+            _ = EKMapper.object(fromExternalRepresentation: info, with: mapping)
             _ = try? EKCoreDataManager.sharedInstance().managedObjectContext.save()
         }
     }
@@ -228,9 +228,8 @@ class EasyMappingCoreDataPerfomanceTests: XCTestCase {
     
     func testCoreDataImport() {
         measure {
-            EKManagedObjectMapper.arrayOfObjects(fromExternalRepresentation: self.importData,
-                                                 with: ManagedMappingProvider.personWithPhonesMapping(),
-                                                 in: EKCoreDataManager.sharedInstance().managedObjectContext)
+            EKMapper.arrayOfObjects(fromExternalRepresentation: self.importData,
+                                                 with: ManagedMappingProvider.personWithPhonesMapping())
         }
     }
 }

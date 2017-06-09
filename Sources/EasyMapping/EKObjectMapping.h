@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  `EKObjectMapping` class is used to define mappings between JSON representation and objective-c object.
  */
 
-@interface EKObjectMapping<__covariant ObjectType> : NSObject
+@interface EKObjectMapping : NSObject
 
 /**
  Defines if missing fields will be ignored, or as in case of relations set to nil
@@ -56,10 +56,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Class, for which this mapping is meant to be used.
  */
-@property (nonatomic, assign, readwrite) ObjectType objectClass;
+@property (nonatomic, assign, readwrite) Class objectClass;
 
 
-@property (nonatomic, strong) EKMappingContextProvider <ObjectType> * contextProvider;
+@property (nonatomic, strong) id <EKMappingContextProviding> contextProvider;
 
 /**
  Root JSON path. This is helpful, when all object data is inside another JSON dictionary.
@@ -90,8 +90,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-//+ (EKObjectMapping *)mappingForClass:(ObjectType)objectClass
-//                           withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock;
++ (EKObjectMapping *)mappingForClass:(Class)objectClass
+                           withBlock:(void(^)(EKObjectMapping *mapping))mappingBlock DEPRECATED_MSG_ATTRIBUTE("Please use initWithContextProvider: method to create EKObjectMapping");
 
 /**
  Convenience initializer.
@@ -104,8 +104,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-//+ (EKObjectMapping *)mappingForClass:(ObjectType)objectClass withRootPath:(NSString *)rootPath
-//                           withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock;
++ (EKObjectMapping *)mappingForClass:(Class)objectClass withRootPath:(NSString *)rootPath
+                           withBlock:(void (^)(EKObjectMapping *mapping))mappingBlock DEPRECATED_MSG_ATTRIBUTE("Please use initWithContextProvider:rootPath: method to create EKObjectMapping");
 
 /**
  Designated initializer
@@ -114,11 +114,11 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-//- (instancetype)initWithObjectClass:(ObjectType)objectClass;
+- (instancetype)initWithObjectClass:(Class)objectClass DEPRECATED_MSG_ATTRIBUTE("Please use initWithContextProvider: method to create EKObjectMapping");
 
-- (instancetype)initWithContextProvider:(EKMappingContextProvider <ObjectType> *)provider;
+- (instancetype)initWithContextProvider:(id <EKMappingContextProviding>)provider;
 
-- (instancetype)initWithContextProvider:(EKMappingContextProvider <ObjectType> *)provider rootPath:(NSString *)rootPath;
+- (instancetype)initWithContextProvider:(id <EKMappingContextProviding>)provider rootPath:(NSString *)rootPath;
 
 /**
  Property mapping for primary key of managed object.
@@ -136,7 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result object mapping
  */
-//- (instancetype)initWithObjectClass:(ObjectType)objectClass withRootPath:(NSString *)rootPath;
+- (instancetype)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath DEPRECATED_MSG_ATTRIBUTE("Please use initWithContextProvider:rootPath: method to create EKObjectMapping");
 
 /**
  Map JSON keyPath to object property.

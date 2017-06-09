@@ -99,8 +99,8 @@ static const char scalarTypes[] = {
 +(void)setProperty:(EKPropertyMapping *)propertyMapping
           onObject:(id<EKMappingProtocol>)object
 fromRepresentation:(NSDictionary *)representation
-   contextProvider:(EKMappingContextProvider *)contextProvider
-             store:(EKMappingStore *)store
+   contextProvider:(id <EKMappingContextProviding>)contextProvider
+             store:(id <EKMappingStore>)store
 respectPropertyType:(BOOL)respectPropertyType
 ignoreMissingFields:(BOOL)ignoreMissingFields
 {
@@ -126,8 +126,8 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
 
 +(id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
      fromRepresentation:(NSDictionary *)representation
-                inStore:(EKMappingStore *)store
-        contextProvider:(EKMappingContextProvider *)contextProvider
+                inStore:(id<EKMappingStore>)store
+        contextProvider:(id <EKMappingContextProviding>)contextProvider
 {
     if (propertyMapping == nil) return nil;
     

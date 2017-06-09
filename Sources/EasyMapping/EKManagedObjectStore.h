@@ -21,40 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "EKManagedMappingStore.h"
-#import "EKCoreDataImporter.h"
+#import <EasyMapping/EasyMapping.h>
 
-@interface EKManagedMappingStore ()
+NS_ASSUME_NONNULL_BEGIN
 
-@property (nonatomic,strong) EKCoreDataImporter * importer;
+@interface EKManagedObjectStore : EKObjectStore
 
-@end
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
-@implementation EKManagedMappingStore
+@property (nonatomic, strong, readonly) NSManagedObjectContext * context;
 
--(instancetype)initWithContext:(NSManagedObjectContext *)context {
-    self = [super init];
-    if (self) {
-        _context = context;
-        self.importer = [[EKCoreDataImporter alloc] initWithContext:context store:self];
-    }
-    return self;
-}
-
--(void)startMappingForRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping {
-    [self.importer inspectRepresentation:representation withMapping:mapping];
-}
-
--(void)finishMapping {
-    [self.importer flushAllObjects];
-}
-
--(void)cacheObject:(id)object withMapping:(EKObjectMapping *)mapping {
-    [self.importer cacheObject:object withMapping:mapping];
-}
-
--(id)existingObjectForRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping {
-    return [self.importer existingObjectForRepresentation:representation mapping:mapping];
-}
+-(instancetype)initWithContext:(NSManagedObjectContext *)context NS_DESIGNATED_INITIALIZER;
 
 @end
+
+
+NS_ASSUME_NONNULL_END

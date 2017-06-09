@@ -90,10 +90,10 @@
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
         [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
-            return genders[value];
-        } reverseBlock:^id(id value) {
-            return [genders allKeysForObject:value].lastObject;
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+            return genders[context.value];
+        } reverseBlock:^id(EKMappingContext * context) {
+            return [genders allKeysForObject:context.value].lastObject;
         }];
         
         [mapping hasOne:[Car class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
@@ -106,10 +106,10 @@
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
         [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
-            return genders[value];
-        } reverseBlock:^id(id value) {
-           return [genders allKeysForObject:value].lastObject;
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+            return genders[context.value];
+        } reverseBlock:^id(EKMappingContext * context) {
+           return [genders allKeysForObject:context.value].lastObject;
         }];
         [mapping hasOne:[Car class] forKeyPath:@"car"];
         [mapping hasMany:[Phone class] forKeyPath:@"phones"];
@@ -124,11 +124,11 @@
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
         [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
-            if (value == nil) { [[[NSException alloc] initWithName:@"Received nil value" reason:@"In value block when ignore missing fields is turned on" userInfo:nil] raise]; }
-            return genders[value];
-        } reverseBlock:^id(id value) {
-            return [genders allKeysForObject:value].lastObject;
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+            if (context.value == nil) { [[[NSException alloc] initWithName:@"Received nil value" reason:@"In value block when ignore missing fields is turned on" userInfo:nil] raise]; }
+            return genders[context.value];
+        } reverseBlock:^id(EKMappingContext * context) {
+            return [genders allKeysForObject:context.value].lastObject;
         }];
         [mapping hasOne:[Car class] forKeyPath:@"car"];
         [mapping hasMany:[Phone class] forKeyPath:@"phones"];
@@ -159,10 +159,10 @@
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
         [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
-            return genders[value];
-        } reverseBlock:^id(id value) {
-            return [[genders allKeysForObject:value] lastObject];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+            return genders[context.value];
+        } reverseBlock:^id(EKMappingContext * context) {
+            return [[genders allKeysForObject:context.value] lastObject];
         }];
     }];
 }
@@ -172,10 +172,10 @@
     return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
         NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
         [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(NSString *key, id value) {
-            return genders[value];
-        } reverseBlock:^id(id value) {
-            return [[genders allKeysForObject:value] lastObject];
+        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+            return genders[context.value];
+        } reverseBlock:^id(EKMappingContext * context) {
+            return [[genders allKeysForObject:context.value] lastObject];
         }];
         [mapping hasOne:[Person class] forKeyPath:@"relative"];
         [mapping hasMany:[Person class] forKeyPath:@"children"];
@@ -186,12 +186,12 @@
 {
     return [EKObjectMapping mappingForClass:[Address class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[@"street"]];
-        [mapping mapKeyPath:@"location" toProperty:@"location" withValueBlock:^(NSString *key, NSArray *locationArray) {
-            CLLocationDegrees latitudeValue = [[locationArray objectAtIndex:0] doubleValue];
-            CLLocationDegrees longitudeValue = [[locationArray objectAtIndex:1] doubleValue];
+        [mapping mapKeyPath:@"location" toProperty:@"location" withValueBlock:^(EKMappingContext * context) {
+            CLLocationDegrees latitudeValue = [[context.value objectAtIndex:0] doubleValue];
+            CLLocationDegrees longitudeValue = [[context.value objectAtIndex:1] doubleValue];
             return [[CLLocation alloc] initWithLatitude:latitudeValue longitude:longitudeValue];
-        } reverseBlock:^(CLLocation *location) {
-            return @[ @(location.coordinate.latitude), @(location.coordinate.longitude) ];
+        } reverseBlock:^(EKMappingContext * context) {
+            return @[ @([context.value coordinate].latitude), @([context.value coordinate].longitude) ];
         }];
     }];
 }
