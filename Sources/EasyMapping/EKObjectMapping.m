@@ -60,7 +60,7 @@
 
 - (id)initWithObjectClass:(Class)objectClass
 {
-    return [self initWithContextProvider:[[EKMappingContextProvider alloc] initWithObjectClass:objectClass]];
+    return [self initWithContextProvider:[[EKObjectContextProvider alloc] initWithObjectClass:objectClass]];
 }
 
 -(instancetype)initWithContextProvider:(id <EKMappingContextProviding>)provider {
@@ -96,7 +96,7 @@
 
 - (id)initWithObjectClass:(Class)objectClass withRootPath:(NSString *)rootPath
 {
-    return [self initWithContextProvider:[[EKMappingContextProvider alloc] initWithObjectClass:objectClass]
+    return [self initWithContextProvider:[[EKObjectContextProvider alloc] initWithObjectClass:objectClass]
                                 rootPath:rootPath];
 }
 

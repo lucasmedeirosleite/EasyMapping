@@ -12,9 +12,9 @@
 
 +(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Finger class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[@"name"]];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Finger.class]];
+    [mapping mapPropertiesFromArray:@[@"name"]];
+    return mapping;
 }
 
 @end

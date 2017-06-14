@@ -27,13 +27,13 @@ import EasyMapping
 class EKManagedObjectMappingTestCase: XCTestCase {
     
     func testMappingWithEntityName() {
-        let mapping = EKObjectMapping(contextProvider: EKManagedMappingContextProvider(objectClass: Car.self))
-        XCTAssertEqual((mapping.contextProvider as? EKManagedMappingContextProvider)?.entityName, "Car")
+        let mapping = EKObjectMapping(contextProvider: EKManagedObjectContextProvider(objectClass: Car.self))
+        XCTAssertEqual((mapping.contextProvider as? EKManagedObjectContextProvider)?.entityName, "Car")
     }
     
     func testMappingForClassWithRootPath() {
-        let mapping = EKObjectMapping(contextProvider: EKManagedMappingContextProvider(objectClass: Car.self), rootPath: "car")
-        XCTAssertEqual((mapping.contextProvider as? EKManagedMappingContextProvider)?.entityName, "Car")
+        let mapping = EKObjectMapping(contextProvider: EKManagedObjectContextProvider(objectClass: Car.self), rootPath: "car")
+        XCTAssertEqual((mapping.contextProvider as? EKManagedObjectContextProvider)?.entityName, "Car")
         XCTAssertEqual(mapping.rootPath, "car")
     }
     

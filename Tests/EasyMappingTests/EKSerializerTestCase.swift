@@ -102,14 +102,14 @@ class EKSerializerTestCase: XCTestCase {
     
     func testSerializerSerializesProperties() {
         let car = Car.i30
-        let sut = EKSerializer.serializeObject(car, with: MappingProvider.carMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(car, with: MappingProvider.carMapping())
         
         XCTAssertEqual(sut["model"] as? String, "i30")
         XCTAssertEqual(sut["year"] as? String, "2013")
     }
     
     func testSerializerSerializesObjectWithRootPath() {
-        let sut = EKSerializer.serializeObject(Car.i30, with: MappingProvider.carWithRootKeyMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Car.i30, with: MappingProvider.carWithRootKeyMapping())
         XCTAssertNotNil(sut)
         
         let data = sut["data"] as? [String:Any]
@@ -130,9 +130,12 @@ class EKSerializerTestCase: XCTestCase {
         }
         
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKMapper.object(fromExternalRepresentation: info, with: ManagedMappingProvider.personMapping()) as? ManagedPerson
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        let serializer = EKSerializer(mappingStore: store)
+        let person = mapper.object(fromExternalRepresentation: info, with: ManagedMappingProvider.personMapping()) as? ManagedPerson
         
-        let serialized = EKSerializer.serializeObject(person!.car!, with: ManagedMappingProvider.carWithRootKeyMapping())
+        let serialized = serializer.serializeObject(person!.car!, with: ManagedMappingProvider.carWithRootKeyMapping())
         
         let data = serialized["data"] as? [String:Any]
         let car = data?["car"] as? [String:Any]
@@ -142,7 +145,7 @@ class EKSerializerTestCase: XCTestCase {
     }
     
     func testSerializerShouldSerializeNestedKeypaths() {
-        let sut = EKSerializer.serializeObject(Car.i30, with: MappingProvider.carNestedAttributesMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Car.i30, with: MappingProvider.carNestedAttributesMapping())
         
         XCTAssertEqual(sut["model"] as? String, "i30")
         XCTAssertEqual((sut["information"] as? [String:Any])?["year"] as? String, "2013")
@@ -155,52 +158,52 @@ class EKSerializerTestCase: XCTestCase {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         let dateString = formatter.string(from: Date())
         
-        let sut = EKSerializer.serializeObject(Car.i30, with: MappingProvider.carWithDateMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Car.i30, with: MappingProvider.carWithDateMapping())
         
         XCTAssertEqual(sut["model"] as? String, "i30")
         XCTAssertEqual(sut["created_at"] as? String, dateString)
     }
     
     func testSerializeObjectUsingEKMappingBlocks() {
-        let sut = EKSerializer.serializeObject(Person.socialPerson, with: MappingProvider.personMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.socialPerson, with: MappingProvider.personMapping())
         
         XCTAssertEqual(sut["socialURL"] as? String, "https://www.twitter.com/EasyMapping")
     }
     
     func testSerializerObjectUsingEKMappingBlocksAndNilValue() {
-        let sut = EKSerializer.serializeObject(Person.antiSocialPerson, with: MappingProvider.personMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.antiSocialPerson, with: MappingProvider.personMapping())
         
         XCTAssertNil(sut["socialURL"])
     }
     
     func testSerializerIsAbleToSkipNilledOutFields() {
-        let sut = EKSerializer.serializeObject(Person.socialPerson, with: MappingProvider.personMappingThatIgnoresSocialUrlDuringSerialization())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.socialPerson, with: MappingProvider.personMappingThatIgnoresSocialUrlDuringSerialization())
         
         XCTAssertNil(sut["socialURL"])
     }
     
     func testReverseMappingIsAbleToSerializeEnums() {
-        let sut = EKSerializer.serializeObject(Person.antiSocialPerson, with: MappingProvider.personWithOnlyValueBlockMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.antiSocialPerson, with: MappingProvider.personWithOnlyValueBlockMapping())
         
         XCTAssertEqual(sut["gender"] as? String, "male")
     }
     
     func testAllEnumCasesAreSerializable() {
-        let sut = EKSerializer.serializeObject(Person.woman, with: MappingProvider.personWithOnlyValueBlockMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.woman, with: MappingProvider.personWithOnlyValueBlockMapping())
 
         XCTAssertEqual(sut["gender"] as? String, "female")
     }
     
     func testReverseBlockWithCustomObject() {
-        let sut = EKSerializer.serializeObject(Address.simple, with: MappingProvider.addressMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Address.simple, with: MappingProvider.addressMapping())
         
         XCTAssertEqual(sut["location"] as? [Double] ?? [], [-30.12345,-3.12345])
     }
     
     func testNativePropertiesSerialization() {
         let dictionary = FixtureLoader.dictionary(fromFileNamed: "Native.json")
-        let native = EKMapper.object(fromExternalRepresentation: dictionary, with: Native.objectMapping()) as! Native
-        let sut = EKSerializer.serializeObject(native, with: Native.objectMapping())
+        let native = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: dictionary, with: Native.objectMapping()) as! Native
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(native, with: Native.objectMapping())
         
         XCTAssertEqual(sut["charProperty"] as? Int, 99)
         XCTAssertEqual(sut["unsignedCharProperty"] as? Int, 117)
@@ -226,8 +229,8 @@ class EKSerializerTestCase: XCTestCase {
     
     func testNativePropertiesSerializationInSubclasses() {
         let dictionary = FixtureLoader.dictionary(fromFileNamed: "NativeChild.json")
-        let native = EKMapper.object(fromExternalRepresentation: dictionary, with: NativeChild.objectMapping()) as! Native
-        let sut = EKSerializer.serializeObject(native, with: NativeChild.objectMapping())
+        let native = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: dictionary, with: NativeChild.objectMapping()) as! Native
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(native, with: NativeChild.objectMapping())
         
         XCTAssertEqual(sut["intProperty"] as? Int, 777)
         XCTAssertEqual(sut["boolProperty"] as? Bool, true)
@@ -240,7 +243,7 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mapping = EKObjectMapping(objectClass: Person.self)
+        mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Person.self))
         Phone.register(MappingProvider.phoneMapping())
         Car.register(MappingProvider.carMapping())
     }
@@ -254,14 +257,14 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
     func testHasOneMappingWithDifferentNaming() {
         mapping.hasOne(Car.self, forKeyPath: "vehicle", forProperty: "car")
         
-        let sut = EKSerializer.serializeObject(Person.driver, with: mapping)
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.driver, with: mapping)
         
         guard let car = sut["vehicle"] as? [String:Any] else { XCTFail(); return }
         XCTAssertEqual(car["model"] as? String, "i30")
     }
     
     func testHasOneRelationSerialization() {
-        let sut = EKSerializer.serializeObject(Person.driver, with: MappingProvider.personWithCarMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.driver, with: MappingProvider.personWithCarMapping())
         
         guard let car = sut["car"] as? [String:Any] else { XCTFail(); return }
         XCTAssertEqual(car["model"] as? String, "i30")
@@ -269,7 +272,7 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
     }
     
     func testHasManyRelationship() {
-        let sut = EKSerializer.serializeObject(Person.withDualSim, with: MappingProvider.personWithPhonesMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.withDualSim, with: MappingProvider.personWithPhonesMapping())
         
         guard let phones = sut["phones"] as? [[String:Any]] else { XCTFail(); return }
         
@@ -281,7 +284,7 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
     func testHasManyWithDifferentNaming() {
         mapping.hasMany(Phone.self, forKeyPath: "cellphones", forProperty: "phones")
         
-        let sut = EKSerializer.serializeObject(Person.withDualSim, with: mapping)
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.withDualSim, with: mapping)
         guard let phones = sut["cellphones"] as? [[String:Any]] else { XCTFail(); return }
         
         XCTAssertEqual(phones.count, 2)
@@ -290,21 +293,21 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
     }
     
     func testHasOneRelationWithNullObject() {
-        let sut = EKSerializer.serializeObject(Person.withDualSim, with: MappingProvider.personMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.withDualSim, with: MappingProvider.personMapping())
         
         XCTAssertNil(sut["car"])
         XCTAssertEqual((sut["phones"] as? [[String:Any]])?.count, 2)
     }
     
     func testHasManyRelationWithNullObject() {
-        let sut = EKSerializer.serializeObject(Person.driver, with: MappingProvider.personMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.driver, with: MappingProvider.personMapping())
         
         XCTAssertNil(sut["phones"])
         XCTAssertNotNil(sut["car"])
     }
     
     func testSerializationOfNonNestedObjects() {
-        let sut = EKSerializer.serializeObject(Person.driver, with: MappingProvider.personNonNestedMapping())
+        let sut = EKSerializer(mappingStore: EKObjectStore()).serializeObject(Person.driver, with: MappingProvider.personNonNestedMapping())
         
         XCTAssertEqual(sut["carId"] as? Int, 3)
         XCTAssertEqual(sut["carModel"] as? String, "i30")
@@ -325,9 +328,12 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
             ManagedPerson.register(nil)
         }
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        let serializer = EKSerializer(mappingStore: store)
+        let person = mapper.object(fromExternalRepresentation: info,
                                                   with: ManagedMappingProvider.personMapping()) as? ManagedPerson
-        let sut = EKSerializer.serializeObject(person!, with: ManagedMappingProvider.personNonNestedMapping())
+        let sut = serializer.serializeObject(person!, with: ManagedMappingProvider.personNonNestedMapping())
         
         XCTAssertEqual(sut["carId"] as? Int, 3)
         XCTAssertEqual(sut["carModel"] as? String, "i30")
@@ -348,9 +354,12 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
             ManagedPerson.register(nil)
         }
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        let serializer = EKSerializer(mappingStore: store)
+        let person = mapper.object(fromExternalRepresentation: info,
                                                   with: ManagedMappingProvider.personMapping()) as? ManagedPerson
-        let sut = EKSerializer.serializeObject(person!,
+        let sut = serializer.serializeObject(person!,
                                                with: ManagedMappingProvider.personMapping())
         
         guard let phones = sut["phones"] as? [[String:Any]] else { XCTFail(); return }

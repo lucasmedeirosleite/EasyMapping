@@ -69,7 +69,7 @@ withMapping:(EKObjectMapping *)mapping;
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary <NSString *, id> *)serializeObject:(id<EKMappingProtocol>)object withMapping:(EKObjectMapping *)mapping;
++ (NSDictionary <NSString *, id> *)serializeObject:(id<EKMappingProtocol>)object withMapping:(EKObjectMapping *)mapping DEPRECATED_MSG_ATTRIBUTE("Create EKSerializer using initWithMappingStore method and call serializeObject:withMapping: method");
 
 /**
  Convert objects to JSON representation.
@@ -81,7 +81,7 @@ withMapping:(EKObjectMapping *)mapping;
  @result parsed JSON in a form of NSArray.
  */
 + (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection
-                                                       withMapping:(EKObjectMapping *)mapping;
+                                                       withMapping:(EKObjectMapping *)mapping DEPRECATED_MSG_ATTRIBUTE("Create EKSerializer using initWithMappingStore method and call serializeCOllection:withMapping: method");
 
 /**
  Convert CoreData managed object to JSON representation.

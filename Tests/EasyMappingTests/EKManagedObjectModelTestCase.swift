@@ -23,6 +23,6 @@ class EKManagedObjectModelTestCase: XCTestCase {
     func testObjectMapping() {
         let mapping = TestManagedObjectModel.objectMapping()
         
-        XCTAssert((mapping.contextProvider as? EKManagedMappingContextProvider)?.entityName.contains("TestManagedObjectModel") ?? false)
+        XCTAssert((mapping.contextProvider as? EKManagedObjectContextProvider)?.entityName.contains("TestManagedObjectModel") ?? false)
     }
 }

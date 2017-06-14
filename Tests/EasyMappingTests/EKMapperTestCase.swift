@@ -43,7 +43,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testSimpleObject() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Car.json")
-        let car = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.carMapping()) as? Car
+        let car = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.carMapping()) as? Car
         
         XCTAssertNotNil(car?.model)
         XCTAssertNotNil(car?.year)
@@ -53,7 +53,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func simpleObjectWithRootPath() {
         let info = FixtureLoader.dictionary(fromFileNamed: "CarWithRoot.json")
-        let car = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.carWithRootKeyMapping()) as? Car
+        let car = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.carWithRootKeyMapping()) as? Car
         
         XCTAssertNotNil(car?.model)
         XCTAssertNotNil(car?.year)
@@ -64,7 +64,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testWithNestedInformation() {
         let info = FixtureLoader.dictionary(fromFileNamed: "CarWithNestedAttributes.json")
-        let car = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.carNestedAttributesMapping()) as? Car
+        let car = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.carNestedAttributesMapping()) as? Car
         
         XCTAssertNotNil(car?.model)
         XCTAssertNotNil(car?.year)
@@ -74,7 +74,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testWithDateFormattter() {
         let info = FixtureLoader.dictionary(fromFileNamed: "CarWithDate.json")
-        let car = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.carWithDateMapping()) as? Car
+        let car = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.carWithDateMapping()) as? Car
         
         XCTAssertNotNil(car?.model)
         XCTAssertNotNil(car?.year)
@@ -86,9 +86,9 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     }
     
     func testWithValueBlock() {
-        let male = EKMapper.object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Male.json"),
+        let male = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Male.json"),
                                    with: MappingProvider.personWithOnlyValueBlockMapping()) as? Person
-        let female = EKMapper.object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Female.json"),
+        let female = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Female.json"),
                                      with: MappingProvider.personWithOnlyValueBlockMapping()) as? Person
         
         XCTAssert(male?.gender == .male)
@@ -96,25 +96,25 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     }
     
     func testWithCustomObjectInValueBlock() {
-        let address = EKMapper.object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Address.json"), with: MappingProvider.addressMapping()) as? Address
+        let address = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Address.json"), with: MappingProvider.addressMapping()) as? Address
         
         XCTAssertNotNil(address?.location)
     }
     
     func testUsingMappingBlocks() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
         XCTAssertEqual(person?.socialURL, URL(string: "https://www.twitter.com/EasyMapping"))
     }
     
     func testDateMappingNull() {
         let info = FixtureLoader.dictionary(fromFileNamed: "CarWithDate.json")
-        var car = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.carWithDateMapping()) as? Car
+        var car = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.carWithDateMapping()) as? Car
         
         let infoRemovedAttributes = FixtureLoader.dictionary(fromFileNamed: "CarWithAttributesRemoved.json")
         let mapping = MappingProvider.carWithDateMapping()
         mapping.ignoreMissingFields = true
-        car = EKMapper.fillObject(car!, fromExternalRepresentation: infoRemovedAttributes, with: mapping) as? Car
+        car = EKMapper(mappingStore: EKObjectStore()).fillObject(car!, fromExternalRepresentation: infoRemovedAttributes, with: mapping) as? Car
         
         XCTAssertNotNil(car?.year)
         XCTAssertNil(car?.model)
@@ -123,7 +123,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testHasOneMapping() {
         let expected = Car.i30
-        let person = EKMapper.object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Person.json"), with: MappingProvider.personMapping()) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Person.json"), with: MappingProvider.personMapping()) as? Person
         
         XCTAssertEqual(person?.car.model, expected.model)
         XCTAssertEqual(person?.car.year, expected.year)
@@ -131,11 +131,11 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testHasOneMappingWithDifferentNaming() {
         let expected = Car.i30
-        let mapping = EKObjectMapping(contextProvider: EKMappingContextProvider(objectClass: Person.self))
+        let mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Person.self))
         mapping.hasOne(Car.self, forKeyPath: "vehicle", forProperty: "car")
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithDifferentNaming.json")
         
-        let person = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Person
         
         XCTAssertNotNil(person?.car)
         XCTAssertEqual(person?.car.model, expected.model)
@@ -144,7 +144,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testHasOneMappingWithNull() {
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithNullCar.json")
-        let person = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
         
         XCTAssertNotNil(person?.phones)
         XCTAssertNil(person?.car)
@@ -152,16 +152,16 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testHasManyMapping() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
         
         XCTAssertEqual(person?.phones.count, 2)
     }
     
     func testHasManyMappingWithDifferentNaming() {
-        let mapping = EKObjectMapping(objectClass: Person.self)
+        let mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Person.self))
         mapping.hasMany(Phone.self, forKeyPath: "cellphones", forProperty: "phones")
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithDifferentNaming.json")
-        let person = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Person
         
         XCTAssertEqual(person?.phones.count, 2)
         XCTAssertEqual(person?.phones.last?.number, "2222-222")
@@ -169,7 +169,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testHasManyMappingWithNull() {
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonWithNullPhones.json")
-        let person = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.personMapping()) as? Person
         
         XCTAssertNil(person?.phones)
         XCTAssertNotNil(person)
@@ -178,7 +178,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testWithNativeProperties() {
         let mapping = Native.objectMapping()
-        let native = EKMapper.object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Native.json"), with: mapping) as? Native
+        let native = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: FixtureLoader.dictionary(fromFileNamed: "Native.json"), with: mapping) as? Native
         
         XCTAssertEqual(native?.charProperty, 99)
         XCTAssertEqual(native?.unsignedCharProperty, 117)
@@ -205,7 +205,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     func testWithNativePropertyThatIsNull() {
         let mapping = MappingProvider.nativeMappingWithNullPropertie()
         let values = ["age":NSNull()]
-        let cat = EKMapper.object(fromExternalRepresentation: values, with: mapping) as? Cat
+        let cat = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: values, with: mapping) as? Cat
         
         XCTAssertNotNil(cat)
         XCTAssertEqual(cat?.age, 0)
@@ -213,27 +213,26 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testArrayOfObjects() {
         let info = FixtureLoader.array(fromFileNamed: "Cars.json")
-        let cars = EKMapper.arrayOfObjects(fromExternalRepresentation: info, with: MappingProvider.carMapping()) as? [Car]
+        let cars = EKMapper(mappingStore: EKObjectStore()).arrayOfObjects(fromExternalRepresentation: info, with: MappingProvider.carMapping()) as? [Car]
         
         XCTAssertEqual(cars?.count, 2)
     }
     
     func testArrayOfObjectsWithNullItems() {
         let info = FixtureLoader.optionalArray(fromFileNamed: "CarsWithNullItem.json")
-        let cars = EKMapper.arrayOfObjects(fromExternalRepresentation: info.map { $0 as Any }, with: MappingProvider.carMapping()) as? [Car]
+        let cars = EKMapper(mappingStore: EKObjectStore()).arrayOfObjects(fromExternalRepresentation: info.map { $0 as Any }, with: MappingProvider.carMapping()) as? [Car]
         
         XCTAssertEqual(cars?.count, info.count - 1)
     }
     
     func testDifferentSetRepresentations() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Plane.json")
-        let mapping = EKObjectMapping(for: Plane.self) {
-            $0.hasMany(Person.self, forKeyPath: "persons")
-            $0.hasMany(Person.self, forKeyPath: "pilots")
-            $0.hasMany(Person.self, forKeyPath: "stewardess")
-            $0.hasMany(Person.self, forKeyPath: "stars")
-        }
-        let plane = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Plane
+        let mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Plane.self))
+        mapping.hasMany(Person.self, forKeyPath: "persons")
+        mapping.hasMany(Person.self, forKeyPath: "pilots")
+        mapping.hasMany(Person.self, forKeyPath: "stewardess")
+        mapping.hasMany(Person.self, forKeyPath: "stars")
+        let plane = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Plane
         
         XCTAssertEqual(plane?.persons.count, 3)
         XCTAssertEqual(plane?.pilots.count, 2)
@@ -244,24 +243,23 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testHasManyMappingWithDifferentKeyName() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Plane.json")
-        let mapping = EKObjectMapping(for: Seaplane.self) {
-            $0.hasMany(Person.self, forKeyPath: "persons", forProperty: "passengers")
-        }
-        let plane = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Seaplane
+        let mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Seaplane.self))
+        mapping.hasMany(Person.self, forKeyPath: "persons", forProperty: "passengers")
+        let plane = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Seaplane
         
         XCTAssertEqual(plane?.passengers.count, 3)
     }
     
     func testHasManyMappingWithMutableArray() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Alien.json")
-        let alien = EKMapper.object(fromExternalRepresentation: info, with: Alien.objectMapping()) as? Alien
+        let alien = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: Alien.objectMapping()) as? Alien
         
         XCTAssertEqual(alien?.fingers.count, 2)
     }
     
     func testRecursiveHasManyMapping() {
         let info = FixtureLoader.dictionary(fromFileNamed: "CommentsRecursive.json")["comments"] as? [[String:Any]] ?? []
-        let comments = EKMapper.arrayOfObjects(fromExternalRepresentation: info, with: CommentObject.objectMapping()) as? [CommentObject]
+        let comments = EKMapper(mappingStore: EKObjectStore()).arrayOfObjects(fromExternalRepresentation: info, with: CommentObject.objectMapping()) as? [CommentObject]
         
         XCTAssertEqual(comments?.count, 2)
         XCTAssertEqual(comments?.first?.subComments.count, 1)
@@ -278,7 +276,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
         Person.register(MappingProvider.personWithRelativeMapping())
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonRecursive.json")
         
-        let person = EKMapper.object(fromExternalRepresentation: info, with: MappingProvider.personWithRelativeMapping()) as? Person
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: MappingProvider.personWithRelativeMapping()) as? Person
         
         XCTAssertEqual(person?.relative.name, "Loreen")
         XCTAssertEqual(person?.relative.email, "loreen@gmail.com")
@@ -292,7 +290,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonNonNested.json")
         Person.register(MappingProvider.personNonNestedMapping())
         
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info,
                                      with: MappingProvider.personNonNestedMapping()) as? Person
         
         XCTAssertEqual(person?.name, "Lucas")
@@ -329,9 +327,9 @@ class EKMapperIncrementalDataTestCase: EKMapperBaseTestCase
     func testHasManyMappingWithoutIncrementalData() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = MappingProvider.personMapping()
-        var person = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Person
+        var person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Person
         let otherInfo = FixtureLoader.dictionary(fromFileNamed: "PersonWithOtherPhones.json")
-        person = EKMapper.fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
+        person = EKMapper(mappingStore: EKObjectStore()).fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
         
         XCTAssertEqual(person?.phones.count, 2)
     }
@@ -339,9 +337,9 @@ class EKMapperIncrementalDataTestCase: EKMapperBaseTestCase
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = MappingProvider.personMapping()
         mapping.incrementalData = true
-        var person = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Person
+        var person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Person
         let otherInfo = FixtureLoader.dictionary(fromFileNamed: "PersonWithOtherPhones.json")
-        person = EKMapper.fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
+        person = EKMapper(mappingStore: EKObjectStore()).fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
         
         XCTAssertEqual(person?.phones.count, 4)
     }
@@ -349,9 +347,9 @@ class EKMapperIncrementalDataTestCase: EKMapperBaseTestCase
     func testHasManyMappingEmptyAndNoIncrementalData() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = MappingProvider.personMapping()
-        var person = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Person
+        var person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Person
         let otherInfo = FixtureLoader.dictionary(fromFileNamed: "PersonWithZeroPhones.json")
-        person = EKMapper.fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
+        person = EKMapper(mappingStore: EKObjectStore()).fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
         
         XCTAssertNotNil(person?.phones)
         XCTAssertEqual(person?.phones.count, 0)
@@ -361,9 +359,9 @@ class EKMapperIncrementalDataTestCase: EKMapperBaseTestCase
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = MappingProvider.personMapping()
         mapping.incrementalData = true
-        var person = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? Person
+        var person = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping) as? Person
         let otherInfo = FixtureLoader.dictionary(fromFileNamed: "PersonWithZeroPhones.json")
-        person = EKMapper.fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
+        person = EKMapper(mappingStore: EKObjectStore()).fillObject(person!, fromExternalRepresentation: otherInfo, with: mapping) as? Person
         
         XCTAssertEqual(person?.phones.count, 2)
     }

@@ -58,11 +58,11 @@ class EKCoreDataImporterTestCase: XCTestCase {
     }
     
     func testImporterCanCollectEntitiesWithComplexStructure() {
-        let mapping = EKObjectMapping(contextProvider: EKManagedMappingContextProvider(objectClass: ManagedPerson.self))
+        let mapping = EKObjectMapping(contextProvider: EKManagedObjectContextProvider(objectClass: ManagedPerson.self))
         ManagedCar.register(ManagedMappingProvider.carWithRootKeyMapping())
         mapping.hasOne(ManagedCar.self, forKeyPath: "car")
         mapping.hasOne(ManagedPhone.self, forKeyPath: "phone")
-        let addressMapping = EKObjectMapping(contextProvider: EKManagedMappingContextProvider(objectClass: Address.self))
+        let addressMapping = EKObjectMapping(contextProvider: EKManagedObjectContextProvider(objectClass: Address.self))
         addressMapping.hasOne(ManagedPerson.self, forKeyPath: "postman")
         Address.register(addressMapping)
         mapping.hasOne(Address.self, forKeyPath: "addressBook")

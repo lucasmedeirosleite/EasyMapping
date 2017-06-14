@@ -9,7 +9,7 @@
 #import "EKObjectModel.h"
 #import "EKMapper.h"
 #import "EKSerializer.h"
-#import "EKMappingContextProvider.h"
+#import "EKObjectContextProvider.h"
 
 @implementation EKObjectModel
 
@@ -17,15 +17,17 @@
 
 +(instancetype)objectWithProperties:(NSDictionary *)properties
 {
-    return [EKMapper objectFromExternalRepresentation:properties
-                                          withMapping:[self objectMapping]];
+    EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[[EKObjectStore alloc] init]];
+    return [mapper objectFromExternalRepresentation:properties
+                                        withMapping:[self objectMapping]];
 }
 
 -(instancetype)initWithProperties:(NSDictionary *)properties
 {
     if (self = [super init])
     {
-        [EKMapper fillObject:self
+        EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:[[EKObjectStore alloc] init]];
+        [mapper fillObject:self
   fromExternalRepresentation:properties
                  withMapping:[self.class objectMapping]];
     }
@@ -36,7 +38,8 @@
 
 - (NSDictionary *)serializedObject
 {
-    return [EKSerializer serializeObject:self
+    EKSerializer * serializer = [[EKSerializer alloc] initWithMappingStore:[[EKObjectStore alloc] init]];
+    return [serializer serializeObject:self
                              withMapping:[self.class objectMapping]];
 }
 
@@ -44,7 +47,7 @@
 
 +(EKObjectMapping *)objectMapping
 {
-    return [[EKObjectMapping alloc] initWithContextProvider:[[EKMappingContextProvider alloc] initWithObjectClass:self]];
+    return [[EKObjectMapping alloc] initWithContextProvider:[[EKObjectContextProvider alloc] initWithObjectClass:self]];
 }
 
 @end

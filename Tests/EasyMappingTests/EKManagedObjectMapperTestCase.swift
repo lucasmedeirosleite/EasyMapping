@@ -60,7 +60,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     
     func testSimpleObjectFromExternalRepresentationWithMapping() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Car.json")
-        let car = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let car = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                with: ManagedMappingProvider.carMapping()) as! ManagedCar
         
         XCTAssertEqual(car.model, info["model"] as? String)
@@ -69,7 +70,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     
     func testObjectWithRootKey() {
         let rootInfo = FixtureLoader.dictionary(fromFileNamed: "CarWithRoot.json")
-        let car = EKMapper.object(fromExternalRepresentation: rootInfo,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let car = EKMapper(mappingStore: store).object(fromExternalRepresentation: rootInfo,
                                                with: ManagedMappingProvider.carWithRootKeyMapping()) as? ManagedCar
         let info = (rootInfo["data"] as? [String:Any])?["car"] as? [String:Any]
         
@@ -79,8 +81,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     
     func testNestedInformation() {
         let info = FixtureLoader.dictionary(fromFileNamed: "CarWithNestedAttributes.json")
-        
-        let car = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let car = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                with: ManagedMappingProvider.carNestedAttributesMapping()) as? ManagedCar
         
         XCTAssertEqual(car?.model, info["model"] as? String)
@@ -89,8 +91,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     
     func testObjectWithDateFormatter() {
         let info = FixtureLoader.dictionary(fromFileNamed: "CarWithDate.json")
-        
-        let car = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let car = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                with: ManagedMappingProvider.carWithDateMapping()) as? ManagedCar
         
         XCTAssertEqual(car?.model, info["model"] as? String)
@@ -112,8 +114,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
         try! context.save()
         
         let info = ["id":1,"model":"i30","year":"2013"] as [String : Any]
-        
-        let car = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let car = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                with: ManagedMappingProvider.carMapping()) as! ManagedCar
         
         XCTAssertEqual(car, oldCar)
@@ -135,7 +137,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
         let info = ["id":1,"model":"i30"] as [String : Any]
         let mapping = ManagedMappingProvider.carWithDateMapping()
         mapping.ignoreMissingFields = true
-        let car = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let car = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                with: mapping) as! ManagedCar
         
         XCTAssertEqual(car.carID, old.carID)
@@ -156,7 +159,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
         let info = FixtureLoader.dictionary(fromFileNamed: "CarWithAttributesRemoved.json")
         let mapping = ManagedMappingProvider.carWithDateMapping()
         mapping.ignoreMissingFields = true
-        let car = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let car = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                with: mapping) as? ManagedCar
         
         XCTAssertEqual(car?.carID, old.carID)
@@ -172,8 +176,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
         expected.year = "2013"
         
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let person = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                   with: ManagedMappingProvider.personMapping()) as! ManagedPerson
         
         XCTAssertEqual(person.car.model, expected.model)
@@ -183,8 +187,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     func testHasOneMappingWithSeveralNonNestedKeys() {
         let info = FixtureLoader.dictionary(fromFileNamed: "PersonNonNested.json")
         ManagedPerson.register(ManagedMappingProvider.personNonNestedMapping())
-        
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let person = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                   with: ManagedMappingProvider.personNonNestedMapping()) as? ManagedPerson
         
         XCTAssertEqual(person?.name, "Lucas")
@@ -195,8 +199,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     
     func testHasManyMapping() {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let person = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                   with: ManagedMappingProvider.personMapping()) as? ManagedPerson
         
         XCTAssertEqual(person?.phones.count, 2)
@@ -207,7 +211,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     func testArrayOfObjects() {
         let info = FixtureLoader.array(fromFileNamed: "Cars.json")
         
-        let cars = EKMapper.arrayOfObjects(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let cars = EKMapper(mappingStore: store).arrayOfObjects(fromExternalRepresentation: info,
                                                         with: ManagedMappingProvider.carMapping())
         cars.forEach { XCTAssert($0 is ManagedCar) }
         XCTAssertEqual(cars.count, info.count)
@@ -216,7 +221,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     func testArrayOfObjectsWithSameObjects() {
         let info = FixtureLoader.array(fromFileNamed: "PersonsWithSamePhones.json")
         
-        let people = EKMapper.arrayOfObjects(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let people = EKMapper(mappingStore: store).arrayOfObjects(fromExternalRepresentation: info,
                                                           with: ManagedMappingProvider.personWithPhonesMapping()) as? [ManagedPerson]
         let phone = people?.first?.phones.first
         let phone2 = people?.last?.phones.first
@@ -227,7 +233,8 @@ class EKManagedObjectMapperTestCase: ManagedTestCase {
     func testRecursiveMappings() {
         let info = FixtureLoader.dictionary(fromFileNamed: "RecursiveDuplicates.json")
         
-        let recursive = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let recursive = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                      with: Recursive.objectMapping()) as? NSManagedObject
         
         XCTAssertEqual(recursive?.value(forKey: "id") as? String, "1")
@@ -265,7 +272,8 @@ class EKManagedObjectMapperIncrementalDataTests: ManagedTestCase {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = ManagedMappingProvider.personMapping()
         mapping.incrementalData = true
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let person = EKMapper(mappingStore: store).object(fromExternalRepresentation: info,
                                                   with: mapping) as? ManagedPerson
         
         XCTAssertEqual(person?.phones.count, 2)
@@ -277,10 +285,11 @@ class EKManagedObjectMapperIncrementalDataTests: ManagedTestCase {
         let personInfo = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let personWithPhones = FixtureLoader.dictionary(fromFileNamed: "PersonWithOtherPhones.json")
         let mapping = ManagedMappingProvider.personMapping()
-        
-        var person = EKMapper.object(fromExternalRepresentation: personInfo,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        var person = mapper.object(fromExternalRepresentation: personInfo,
                                                   with: mapping) as? ManagedPerson
-        person = EKMapper.object(fromExternalRepresentation: personWithPhones,
+        person = mapper.object(fromExternalRepresentation: personWithPhones,
                                               with: mapping) as? ManagedPerson
         
         XCTAssertEqual(person?.phones.count, 2)
@@ -292,9 +301,11 @@ class EKManagedObjectMapperIncrementalDataTests: ManagedTestCase {
         let mapping = ManagedMappingProvider.personMapping()
         mapping.incrementalData = true
         
-        var person = EKMapper.object(fromExternalRepresentation: personInfo,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        var person = mapper.object(fromExternalRepresentation: personInfo,
                                                   with: mapping) as? ManagedPerson
-        person = EKMapper.object(fromExternalRepresentation: personWithPhones,
+        person = mapper.object(fromExternalRepresentation: personWithPhones,
                                               with: mapping) as? ManagedPerson
         
         XCTAssertEqual(person?.phones.count, 4)
@@ -304,10 +315,11 @@ class EKManagedObjectMapperIncrementalDataTests: ManagedTestCase {
         let personInfo = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let personWithPhones = FixtureLoader.dictionary(fromFileNamed: "PersonWithZeroPhones.json")
         let mapping = ManagedMappingProvider.personMapping()
-        
-        var person = EKMapper.object(fromExternalRepresentation: personInfo,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        var person = mapper.object(fromExternalRepresentation: personInfo,
                                                   with: mapping) as? ManagedPerson
-        person = EKMapper.object(fromExternalRepresentation: personWithPhones,
+        person = mapper.object(fromExternalRepresentation: personWithPhones,
                                               with: mapping) as? ManagedPerson
         
         XCTAssertEqual(person?.phones.count, 0)
@@ -319,9 +331,11 @@ class EKManagedObjectMapperIncrementalDataTests: ManagedTestCase {
         let mapping = ManagedMappingProvider.personMapping()
         mapping.incrementalData = true
         
-        var person = EKMapper.object(fromExternalRepresentation: personInfo,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        var person = mapper.object(fromExternalRepresentation: personInfo,
                                                   with: mapping) as? ManagedPerson
-        person = EKMapper.object(fromExternalRepresentation: personWithPhones,
+        person = mapper.object(fromExternalRepresentation: personWithPhones,
                                               with: mapping) as? ManagedPerson
         
         XCTAssertEqual(person?.phones.count, 2)
@@ -332,7 +346,9 @@ class EKManagedObjectMapperIncrementalDataTests: ManagedTestCase {
         let mapping = ManagedMappingProvider.personMapping()
         mapping.incrementalData = true
         
-        let person = EKMapper.object(fromExternalRepresentation: personRecursive,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        let person = mapper.object(fromExternalRepresentation: personRecursive,
                                                   with: mapping) as? ManagedPerson
         
         XCTAssertEqual(person?.relative.name, "Loreen")
@@ -358,27 +374,29 @@ class EKManagedObjectMapperIgnoreMissingFieldsTestCase : ManagedTestCase
         let infoPartial = FixtureLoader.dictionary(fromFileNamed: "PersonWithoutRelations.json")
         let mapping = ManagedMappingProvider.personMapping()
         
-        var person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        var person = mapper.object(fromExternalRepresentation: info,
                                                   with: mapping) as? ManagedPerson
         // Check default behaviour
         XCTAssertNotNil(person?.car)
         XCTAssertNotNil(person?.phones)
         
-        EKMapper.fillObject(person!,
+        mapper.fillObject(person!,
                                          fromExternalRepresentation: infoPartial,
                                          with: mapping)
         XCTAssertNil(person?.car)
         XCTAssertEqual(person?.phones.count, 0)
         
         // Check behaviour with set ignoreMissingFields property
-        person = EKMapper.object(fromExternalRepresentation: info,
+        person = mapper.object(fromExternalRepresentation: info,
                                               with: mapping) as? ManagedPerson
         XCTAssertNotNil(person?.car)
         XCTAssertNotNil(person?.phones)
         
         mapping.ignoreMissingFields = true
         
-        EKMapper.fillObject(person!,
+        mapper.fillObject(person!,
                                          fromExternalRepresentation: infoPartial,
                                          with: mapping)
         XCTAssertNotNil(person?.car)

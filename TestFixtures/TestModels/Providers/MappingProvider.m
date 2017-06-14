@@ -21,7 +21,7 @@
 #import "CommentObject.h"
 #import "Dog.h"
 #import "Wolf.h"
-
+#import <EasyMapping/EKObjectContextProvider.h>
 @implementation MappingProvider
 
 +(NSDateFormatter *)iso8601DateFormatter {
@@ -32,175 +32,176 @@
 
 + (EKObjectMapping *)carMapping
 {
-    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapKeyPath:@"id" toProperty:@"carId"];
-        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Car.class]];
+    [mapping mapKeyPath:@"id" toProperty:@"carId"];
+    [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+    return mapping;
 }
 
 + (EKObjectMapping *)carWithRootKeyMapping
 {
-    return [EKObjectMapping mappingForClass:[Car class] withRootPath:@"data.car" withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{@"id":@"carId"}];
-        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Car.class]
+                                                                        rootPath:@"data.car"];
+    [mapping mapPropertiesFromDictionary:@{@"id":@"carId"}];
+    [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+    return mapping;
 }
 
 + (EKObjectMapping *)carNestedAttributesMapping
 {
-    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[@"model"]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Car.class]];
+    [mapping mapPropertiesFromArray:@[@"model"]];
         [mapping mapPropertiesFromDictionary:@{
             @"information.year" : @"year"
         }];
-    }];
+    return mapping;
 }
 
 +(EKObjectMapping *)carNonNestedMapping {
-    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromDictionary:@{
-                                               @"carId": @"carId",
-                                               @"carModel":@"model",
-                                               @"carYear":@"year"
-                                               }];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Car.class]];
+    [mapping mapPropertiesFromDictionary:@{
+                                           @"carId": @"carId",
+                                           @"carModel":@"model",
+                                           @"carYear":@"year"
+                                           }];
+    return mapping;
 }
 
 + (EKObjectMapping *)carWithDateMapping
 {
-    return [EKObjectMapping mappingForClass:[Car class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[@"model", @"year"]];
-        [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[self iso8601DateFormatter]];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Car.class]];
+    [mapping mapPropertiesFromArray:@[@"model", @"year"]];
+    [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[self iso8601DateFormatter]];
+    return mapping;
 }
 
 + (EKObjectMapping *)phoneMapping
 {
-    return [EKObjectMapping mappingForClass:[Phone class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[@"number"]];
-        [mapping mapPropertiesFromDictionary:@{
-            @"ddi" : @"DDI",
-            @"ddd" : @"DDD"
-         }];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Phone.class]];
+    [mapping mapPropertiesFromArray:@[@"number"]];
+    [mapping mapPropertiesFromDictionary:@{
+                                           @"ddi" : @"DDI",
+                                           @"ddd" : @"DDD"
+                                           }];
+    return mapping;
 }
 
 +(EKObjectMapping *)personNonNestedMapping
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
-            return genders[context.value];
-        } reverseBlock:^id(EKMappingContext * context) {
-            return [genders allKeysForObject:context.value].lastObject;
-        }];
-        
-        [mapping hasOne:[Car class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
-            forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
-  }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Person.class]];
+    NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+        return genders[context.value];
+    } reverseBlock:^id(EKMappingContext * context) {
+        return [genders allKeysForObject:context.value].lastObject;
+    }];
+    
+    [mapping hasOne:[Car class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
+        forProperty:@"car" withObjectMapping:[self carNonNestedMapping]];
+    return mapping;
 }
 
 + (EKObjectMapping *)personMapping
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
-            return genders[context.value];
-        } reverseBlock:^id(EKMappingContext * context) {
-           return [genders allKeysForObject:context.value].lastObject;
-        }];
-        [mapping hasOne:[Car class] forKeyPath:@"car"];
-        [mapping hasMany:[Phone class] forKeyPath:@"phones"];
-        [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
-             withValueBlock:[EKMappingBlocks urlMappingBlock]
-               reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Person.class]];
+    NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+        return genders[context.value];
+    } reverseBlock:^id(EKMappingContext * context) {
+        return [genders allKeysForObject:context.value].lastObject;
     }];
+    [mapping hasOne:[Car class] forKeyPath:@"car"];
+    [mapping hasMany:[Phone class] forKeyPath:@"phones"];
+    [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
+         withValueBlock:[EKMappingBlocks urlMappingBlock]
+           reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
+    return mapping;
 }
 
 +(EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
-            if (context.value == nil) { [[[NSException alloc] initWithName:@"Received nil value" reason:@"In value block when ignore missing fields is turned on" userInfo:nil] raise]; }
-            return genders[context.value];
-        } reverseBlock:^id(EKMappingContext * context) {
-            return [genders allKeysForObject:context.value].lastObject;
-        }];
-        [mapping hasOne:[Car class] forKeyPath:@"car"];
-        [mapping hasMany:[Phone class] forKeyPath:@"phones"];
-        [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
-             withValueBlock:[EKMappingBlocks urlMappingBlock]
-               reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Person.class]];
+    NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+        if (context.value == nil) { [[[NSException alloc] initWithName:@"Received nil value" reason:@"In value block when ignore missing fields is turned on" userInfo:nil] raise]; }
+        return genders[context.value];
+    } reverseBlock:^id(EKMappingContext * context) {
+        return [genders allKeysForObject:context.value].lastObject;
     }];
+    [mapping hasOne:[Car class] forKeyPath:@"car"];
+    [mapping hasMany:[Phone class] forKeyPath:@"phones"];
+    [mapping mapKeyPath:@"socialURL" toProperty:@"socialURL"
+         withValueBlock:[EKMappingBlocks urlMappingBlock]
+           reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
+    return mapping;
 }
 
 + (EKObjectMapping *)personWithCarMapping
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping hasOne:[Car class] forKeyPath:@"car"];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Person.class]];
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping hasOne:[Car class] forKeyPath:@"car"];
+    return mapping;
 }
 
 + (EKObjectMapping *)personWithPhonesMapping
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping hasMany:[Phone class] forKeyPath:@"phones"];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Person.class]];
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping hasMany:[Phone class] forKeyPath:@"phones"];
+    return mapping;
 }
 
 + (EKObjectMapping *)personWithOnlyValueBlockMapping
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
-            return genders[context.value];
-        } reverseBlock:^id(EKMappingContext * context) {
-            return [[genders allKeysForObject:context.value] lastObject];
-        }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Person.class]];
+    NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+        return genders[context.value];
+    } reverseBlock:^id(EKMappingContext * context) {
+        return [[genders allKeysForObject:context.value] lastObject];
     }];
+    return mapping;
 }
 
 + (EKObjectMapping *)personWithRelativeMapping
 {
-    return [EKObjectMapping mappingForClass:[Person class] withBlock:^(EKObjectMapping *mapping) {
-        NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
-        [mapping mapPropertiesFromArray:@[@"name", @"email"]];
-        [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
-            return genders[context.value];
-        } reverseBlock:^id(EKMappingContext * context) {
-            return [[genders allKeysForObject:context.value] lastObject];
-        }];
-        [mapping hasOne:[Person class] forKeyPath:@"relative"];
-        [mapping hasMany:[Person class] forKeyPath:@"children"];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Person.class]];
+    NSDictionary *genders = @{ @"male": @(GenderMale), @"female": @(GenderFemale) };
+    [mapping mapPropertiesFromArray:@[@"name", @"email"]];
+    [mapping mapKeyPath:@"gender" toProperty:@"gender" withValueBlock:^(EKMappingContext * context) {
+        return genders[context.value];
+    } reverseBlock:^id(EKMappingContext * context) {
+        return [[genders allKeysForObject:context.value] lastObject];
     }];
+    [mapping hasOne:[Person class] forKeyPath:@"relative"];
+    [mapping hasMany:[Person class] forKeyPath:@"children"];
+    return mapping;
 }
 
 + (EKObjectMapping *)addressMapping
 {
-    return [EKObjectMapping mappingForClass:[Address class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[@"street"]];
-        [mapping mapKeyPath:@"location" toProperty:@"location" withValueBlock:^(EKMappingContext * context) {
-            CLLocationDegrees latitudeValue = [[context.value objectAtIndex:0] doubleValue];
-            CLLocationDegrees longitudeValue = [[context.value objectAtIndex:1] doubleValue];
-            return [[CLLocation alloc] initWithLatitude:latitudeValue longitude:longitudeValue];
-        } reverseBlock:^(EKMappingContext * context) {
-            return @[ @([context.value coordinate].latitude), @([context.value coordinate].longitude) ];
-        }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Address.class]];
+    [mapping mapPropertiesFromArray:@[@"street"]];
+    [mapping mapKeyPath:@"location" toProperty:@"location" withValueBlock:^(EKMappingContext * context) {
+        CLLocationDegrees latitudeValue = [[context.value objectAtIndex:0] doubleValue];
+        CLLocationDegrees longitudeValue = [[context.value objectAtIndex:1] doubleValue];
+        return [[CLLocation alloc] initWithLatitude:latitudeValue longitude:longitudeValue];
+    } reverseBlock:^(EKMappingContext * context) {
+        return @[ @([context.value coordinate].latitude), @([context.value coordinate].longitude) ];
     }];
+    return mapping;
 }
 
 + (EKObjectMapping *)nativeMappingWithNullPropertie
 {
-    return [EKObjectMapping mappingForClass:[Cat class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapPropertiesFromArray:@[ @"age" ]];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKObjectContextProvider providerWithObjectClass:Cat.class]];
+    [mapping mapPropertiesFromArray:@[ @"age" ]];
+    return mapping;
 }
 
 +(EKObjectMapping *)personWithPetsMapping

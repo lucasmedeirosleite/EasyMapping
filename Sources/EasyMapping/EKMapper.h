@@ -105,7 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
  @result mapped object
  */
 + (nullable id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
-                                    withMapping:(EKObjectMapping *)mapping;
+                                    withMapping:(EKObjectMapping *)mapping DEPRECATED_MSG_ATTRIBUTE("Create EKMapper using initWithMappingStore method and call objectFromExternalRepresentation:withMapping: method");
 
 /**
  Fills previously existed object with values, provided in JSON representation. All values, that are included in mapping and were filled prior to calling this method, will be overwritten.
@@ -120,7 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (id)            fillObject:(id<EKMappingProtocol>)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
-                 withMapping:(EKObjectMapping *)mapping;
+                 withMapping:(EKObjectMapping *)mapping DEPRECATED_MSG_ATTRIBUTE("Create EKMapper using initWithMappingStore method and call fillObjectFromExternalRepresentation:withMapping: method");
 
 /**
  Convenience method to create array of objects from JSON.
@@ -132,7 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
  @result array of mapped objects
  */
 + (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
-                                                   withMapping:(EKObjectMapping *)mapping;
+                                                   withMapping:(EKObjectMapping *)mapping DEPRECATED_MSG_ATTRIBUTE("Create EKMapper using initWithMappingStore method and call arrayOfObjectsFromExternalRepresentation:withMapping: method");
 
 @end
 

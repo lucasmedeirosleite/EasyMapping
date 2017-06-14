@@ -21,8 +21,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "EKMappingContextProvider.h"
+@import Foundation;
+#import "EKMappingStore.h"
+#import "EKMappingContext.h"
 
-@interface EKManagedMappingContextProvider: EKMappingContextProvider
-@property (nonatomic, strong, nonnull) NSString * entityName;
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol EKMappingContextProviding <NSObject>
+
+@property (nonatomic, strong) Class objectClass;
+
+@property (nonatomic, strong, nullable) NSString * primaryKey;
+
+-(instancetype)initWithObjectClass:(Class)objectClass;
+
+-(EKMappingContext *)mappingContextFor:(NSString *)keyPath value:(id)value store:(id<EKMappingStore>)store;
+
+-(id)createNewEmptyObjectInStore:(id<EKMappingStore>)store;
+
 @end
+
+@interface EKObjectContextProvider : NSObject <EKMappingContextProviding>
+    
++(instancetype)providerWithObjectClass:(Class)objectClass;
+
+@end
+
+NS_ASSUME_NONNULL_END

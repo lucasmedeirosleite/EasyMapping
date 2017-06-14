@@ -25,7 +25,7 @@
 #import "EKPropertyHelper.h"
 #import "NSArray+FlattenArray.h"
 #import "EKRelationshipMapping.h"
-#import "EKManagedMappingContextProvider.h"
+#import "EKManagedObjectContextProvider.h"
 
 @interface EKCoreDataImporter ()
 
@@ -71,7 +71,7 @@
 //}
 
 -(void)inspectRepresentation:(id)representation withMapping:(EKObjectMapping *)mapping {
-    NSParameterAssert([[mapping contextProvider] isKindOfClass:EKManagedMappingContextProvider.class]);
+    NSParameterAssert([[mapping contextProvider] isKindOfClass:EKManagedObjectContextProvider.class]);
     
     self.externalRepresentation = representation;
     self.mapping = mapping;
@@ -100,15 +100,15 @@
 
 - (void)collectEntityNamesRecursively:(NSMutableSet *)entityNames mapping:(EKObjectMapping *)objectMapping
 {
-    [entityNames addObject:[(EKManagedMappingContextProvider *)[objectMapping contextProvider] entityName]];
+    [entityNames addObject:[(EKManagedObjectContextProvider *)[objectMapping contextProvider] entityName]];
 
     for (EKRelationshipMapping * oneMapping in objectMapping.hasOneMappings)
     {
         EKObjectMapping * mapping = [[oneMapping objectClass] objectMapping];
         
-        NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+        NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedObjectContextProvider class]]);
         
-        EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider *)mapping.contextProvider;
+        EKManagedObjectContextProvider * provider = (EKManagedObjectContextProvider *)mapping.contextProvider;
         if ([self.collectedEntityNames containsObject:provider.entityName])
         {
             continue;
@@ -123,9 +123,9 @@
     {
         EKObjectMapping * mapping = [[manyMapping objectClass] objectMapping];
         
-        NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+        NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedObjectContextProvider class]]);
         
-        EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider *)mapping.contextProvider;
+        EKManagedObjectContextProvider * provider = (EKManagedObjectContextProvider *)mapping.contextProvider;
         if ([self.collectedEntityNames containsObject:provider.entityName])
         {
             continue;
@@ -159,7 +159,7 @@
 {
     id rootRepresentation = [EKPropertyHelper extractRootPathFromExternalRepresentation:representation
                                                                             withMapping:mapping];
-    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
+    EKManagedObjectContextProvider * provider = (EKManagedObjectContextProvider * )mapping.contextProvider;
     if ([rootRepresentation isKindOfClass:[NSArray class]])
     {
         for (NSDictionary * objectInfo in rootRepresentation)
@@ -242,7 +242,7 @@
 
 - (NSMutableDictionary *)fetchExistingObjectsForMapping:(EKObjectMapping *)mapping
 {
-    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
+    EKManagedObjectContextProvider * provider = (EKManagedObjectContextProvider * )mapping.contextProvider;
     NSSet * lookupValues = self.existingEntitiesPrimaryKeys[provider.entityName];
     if (lookupValues.count == 0) return [NSMutableDictionary dictionary];
 
@@ -263,7 +263,7 @@
 
 - (NSMutableDictionary *)cachedObjectsForMapping:(EKObjectMapping *)mapping
 {
-    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
+    EKManagedObjectContextProvider * provider = (EKManagedObjectContextProvider * )mapping.contextProvider;
     NSMutableDictionary * entityObjectsMap = self.fetchedExistingEntities[provider.entityName];
     if (!entityObjectsMap)
     {
@@ -276,7 +276,7 @@
 
 - (id)existingObjectForRepresentation:(id)representation mapping:(EKObjectMapping *)mapping
 {
-    NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+    NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedObjectContextProvider class]]);
     
     NSDictionary * entityObjectsMap = [self cachedObjectsForMapping:mapping];
 
@@ -291,9 +291,9 @@
 
 -(void)cacheObject:(NSManagedObject *)object withMapping:(EKObjectMapping *)mapping
 {
-    NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedMappingContextProvider class]]);
+    NSParameterAssert([mapping.contextProvider isKindOfClass:[EKManagedObjectContextProvider class]]);
     
-    EKManagedMappingContextProvider * provider = (EKManagedMappingContextProvider * )mapping.contextProvider;
+    EKManagedObjectContextProvider * provider = (EKManagedObjectContextProvider * )mapping.contextProvider;
     
     if(!provider.primaryKey) return;
     if (![object valueForKey:provider.primaryKey]) return;

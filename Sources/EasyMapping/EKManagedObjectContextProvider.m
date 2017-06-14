@@ -21,11 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "EKManagedMappingContextProvider.h"
-#import "EKMappingContextProvider.h"
+#import "EKManagedObjectContextProvider.h"
+#import "EKObjectContextProvider.h"
 #import "EKManagedObjectStore.h"
 
-@implementation EKManagedMappingContextProvider
+@implementation EKManagedObjectContextProvider
 
 -(instancetype)initWithObjectClass:(id)objectClass {
     self = [super initWithObjectClass:objectClass];

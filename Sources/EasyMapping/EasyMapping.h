@@ -38,7 +38,7 @@
 #import <EasyMapping/EKCoreDataImporter.h>
 #import <EasyMapping/NSArray+FlattenArray.h>
 #import <EasyMapping/EKMappingStore.h>
-#import <EasyMapping/EKMappingContextProvider.h>
-#import <EasyMapping/EKManagedMappingContextProvider.h>
+#import <EasyMapping/EKObjectContextProvider.h>
+#import <EasyMapping/EKManagedObjectContextProvider.h>
 #import <EasyMapping/EKManagedObjectStore.h>
 #import <EasyMapping/EKMappingContext.h>

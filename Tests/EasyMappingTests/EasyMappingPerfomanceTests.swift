@@ -28,7 +28,7 @@ class EasyMappingNSObjectPerfomanceTests: XCTestCase {
         let info = FixtureLoader.dictionary(fromFileNamed: fixture)
         
         for _ in 0...times {
-            _ = EKMapper.object(fromExternalRepresentation: info, with: mapping)
+            _ = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: info, with: mapping)
         }
     }
     
@@ -130,9 +130,10 @@ class EasyMappingCoreDataPerfomanceTests: XCTestCase {
     
     func benchmark(fixture: String, mapping: EKObjectMapping, times: Int) {
         let info = FixtureLoader.dictionary(fromFileNamed: fixture)
-        
+        let store = EKManagedObjectStore(context: EKCoreDataManager.sharedInstance().managedObjectContext)
+        let mapper = EKMapper(mappingStore: store)
         for _ in 0...times {
-            _ = EKMapper.object(fromExternalRepresentation: info, with: mapping)
+            _ = mapper.object(fromExternalRepresentation: info, with: mapping)
             _ = try? EKCoreDataManager.sharedInstance().managedObjectContext.save()
         }
     }
@@ -186,7 +187,7 @@ class EasyMappingCoreDataPerfomanceTests: XCTestCase {
     }
     
     var importData : [[String:Any]] {
-        return (0...5000).map { index in
+        return (0...50).map { index in
             [
                 "id":index,
                 "name":"Name \(index)",
@@ -227,8 +228,10 @@ class EasyMappingCoreDataPerfomanceTests: XCTestCase {
     }
     
     func testCoreDataImport() {
+        let store = EKManagedObjectStore(context: EKCoreDataManager.sharedInstance().managedObjectContext)
+        let mapper = EKMapper(mappingStore: store)
         measure {
-            EKMapper.arrayOfObjects(fromExternalRepresentation: self.importData,
+            mapper.arrayOfObjects(fromExternalRepresentation: self.importData,
                                                  with: ManagedMappingProvider.personWithPhonesMapping())
         }
     }

@@ -27,26 +27,14 @@ import EasyMapping
 class EKObjectMappingTestCase: XCTestCase {
     
     func testMappingForClassConstructor() {
-        let mapping = EKObjectMapping(objectClass: Car.self)
+        let mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Car.self))
         
         XCTAssert(mapping.objectClass == Car.self)
     }
     
     func testMappingForClassWithRootPathConstructor() {
-        let mapping = EKObjectMapping(objectClass: Car.self, withRootPath: "car")
-        
-        XCTAssert(mapping.objectClass == Car.self)
-        XCTAssertEqual(mapping.rootPath, "car")
-    }
-    
-    func testMappingForClassWithBlockConstructor() {
-        let mapping = EKObjectMapping(for: Car.self) { _ in }
-        
-        XCTAssert(mapping.objectClass == Car.self)
-    }
-    
-    func testMappingForClassWithBlockAndRootPathConstructor() {
-        let mapping = EKObjectMapping(for: Car.self, withRootPath: "car", with: { _ in })
+        let mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Car.self),
+                                      rootPath: "car")
         
         XCTAssert(mapping.objectClass == Car.self)
         XCTAssertEqual(mapping.rootPath, "car")
@@ -59,7 +47,7 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mapping = EKObjectMapping(objectClass: Car.self)
+        mapping = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Car.self))
     }
     
     func testMapKeyPathToProperty() {
@@ -148,7 +136,7 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
         XCTAssertEqual(sut?.valueBlock?(context) as? Date, date)
         let nilAny : String? = nil
         let nilValue = EKMappingContext(keyPath: "birthdate", value: nilAny as Any)
-        XCTAssertNil(sut?.valueBlock?(nilValue))
+        XCTAssert(sut?.valueBlock?(nilValue) as? NSNull === NSNull())
         
         let intValue = EKMappingContext(keyPath: "birthdate", value: 5)
         XCTAssertNil(sut?.valueBlock?(intValue))
@@ -166,7 +154,7 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
     func testMapKeyPathToPropertyWithValueBlock() {
         let genders = ["male": Gender.male, "female":Gender.female]
         mapping.mapKeyPath("gender", toProperty: "gender") { context in
-            return genders[context.keyPath]
+            return genders[context.value as? String ?? ""]
         }
         
         let sut = mapping.propertyMappings["gender"] as? EKPropertyMapping
@@ -194,7 +182,7 @@ class EKObjectMappingPropertyMappingTestCase : XCTestCase {
     }
     
     func testMapPropertiesFromMappingObject() {
-        let ufo = EKObjectMapping(objectClass: ColoredUFO.self)
+        let ufo = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: ColoredUFO.self))
         ufo.mapProperties(fromMappingObject: UFO.objectMapping())
         
         let shape = ufo.propertyMappings["shape"] as? EKPropertyMapping
@@ -266,7 +254,7 @@ class EKObjectMappingCustomRElationshipsMappingTestCase : XCTestCase {
     
     override func setUp() {
         super.setUp()
-        person = EKObjectMapping(objectClass: Person.self)
+        person = EKObjectMapping(contextProvider: EKObjectContextProvider(objectClass: Person.self))
         phone = Phone.objectMapping()
     }
     

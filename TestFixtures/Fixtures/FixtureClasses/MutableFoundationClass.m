@@ -12,7 +12,7 @@
 
 +(EKObjectMapping *)objectMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithObjectClass:self];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKObjectContextProvider alloc] initWithObjectClass:self]];
     
     [mapping mapPropertiesFromArray:@[@"array",@"dictionary", @"set"]];
     [mapping mapKeyPath:@"ordered_set" toProperty:@"orderedSet"];

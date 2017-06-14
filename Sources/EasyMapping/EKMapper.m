@@ -47,6 +47,7 @@
 
 -(id)_objectFromExternalRepresentation:(NSDictionary *)externalRepresentation
                            withMapping:(EKObjectMapping *)mapping {
+    if (![externalRepresentation isKindOfClass:NSDictionary.class]) { return nil; }
     id object = [self.store existingObjectForRepresentation:externalRepresentation
                                                 withMapping:mapping];
     if (!object) {
@@ -99,6 +100,9 @@
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
                                                                                    withMapping:mapping];
     for (EKRelationshipMapping *relationship in mapping.hasOneMappings) {
+        if (relationship.condition && !relationship.condition(representation)) {
+            continue;
+        }
         NSDictionary * value = [relationship extractObjectFromRepresentation:representation];
         if(mapping.ignoreMissingFields && !value)
         {
@@ -121,6 +125,9 @@
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
                                                                                    withMapping:mapping];
     for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
+        if (relationship.condition && !relationship.condition(representation)) {
+            continue;
+        }
         NSArray * arrayToBeParsed = [representation valueForKeyPath:relationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
@@ -175,7 +182,9 @@
     for (NSDictionary * representation in externalRepresentation)
     {
         id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];
-        [array addObject:parsedObject];
+        if (parsedObject) {
+            [array addObject:parsedObject];
+        }
     }
     return [NSArray arrayWithArray:array];
 }
@@ -183,7 +192,6 @@
 
 + (id)objectFromExternalRepresentation:(NSDictionary *)externalRepresentation withMapping:(EKObjectMapping *)mapping
 {
-    if (![externalRepresentation isKindOfClass:NSDictionary.class]) { return nil; }
     EKObjectStore * store = [EKObjectStore new];
     EKMapper * mapper = [[EKMapper alloc] initWithMappingStore:store];
     return [mapper objectFromExternalRepresentation:externalRepresentation withMapping:mapping];

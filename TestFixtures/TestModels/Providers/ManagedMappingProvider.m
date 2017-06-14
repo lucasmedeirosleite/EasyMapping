@@ -21,7 +21,7 @@
 
 + (EKObjectMapping *)carMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedCar.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
     [mapping mapPropertiesFromArray:@[@"model", @"year"]];
     mapping.contextProvider.primaryKey = @"carID";
@@ -30,7 +30,8 @@
 
 + (EKObjectMapping *)carWithRootKeyMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class] rootPath:@"data.car"];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedCar.class]
+                                                                        rootPath:@"data.car"];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
     [mapping mapPropertiesFromArray:@[@"model", @"year"]];
     mapping.contextProvider.primaryKey = @"carID";
@@ -38,7 +39,7 @@
 }
 
 + (EKObjectMapping *)carNonNestedMapping {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedCar.class]];
     [mapping mapPropertiesFromDictionary:@{
                                            @"carId": @"carID",
                                            @"carModel":@"model",
@@ -50,7 +51,7 @@
 
 + (EKObjectMapping *)carNestedAttributesMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedCar.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
     [mapping mapPropertiesFromArray:@[@"model"]];
     [mapping mapPropertiesFromDictionary:@{
@@ -61,7 +62,7 @@
 
 + (EKObjectMapping *)carWithDateMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedCar.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedCar.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"carID" }];
     [mapping mapPropertiesFromArray:@[@"model", @"year"]];
     [mapping mapKeyPath:@"created_at" toProperty:@"createdAt" withDateFormatter:[self iso8601DateFormatter]];
@@ -71,7 +72,7 @@
 
 + (EKObjectMapping *)phoneMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPhone.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPhone.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"phoneID" }];
     [mapping mapPropertiesFromArray:@[@"number"]];
     [mapping mapPropertiesFromDictionary:@{
@@ -84,7 +85,7 @@
 
 +(EKObjectMapping *)personNonNestedMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPerson.class]];
     [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
     
     [mapping hasOne:[ManagedCar class] forDictionaryFromKeyPaths:@[@"carId",@"carModel",@"carYear"]
@@ -95,7 +96,7 @@
 
 + (EKObjectMapping *)personMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPerson.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
     [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
     [mapping hasOne:ManagedCar.class forKeyPath:@"car"];
@@ -137,7 +138,7 @@
 
 + (EKObjectMapping *)personWithCarMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPerson.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
     [mapping mapPropertiesFromArray:@[@"name", @"email"]];
     [mapping hasOne:[ManagedCar class] forKeyPath:@"car"];
@@ -147,7 +148,7 @@
 
 + (EKObjectMapping *)personWithPhonesMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPerson.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
     [mapping mapPropertiesFromArray:@[@"name", @"email"]];
     [mapping hasMany:[ManagedPhone class] forKeyPath:@"phones"];
@@ -157,7 +158,7 @@
 
 + (EKObjectMapping *)personWithOnlyValueBlockMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPerson.class]];
     [mapping mapPropertiesFromDictionary:@{ @"id": @"personID" }];
     [mapping mapPropertiesFromArray:@[@"name", @"email", @"gender"]];
     mapping.contextProvider.primaryKey = @"personID";
@@ -166,7 +167,7 @@
 
 +(EKObjectMapping *)complexPlaneMapping
 {
-    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:ManagedPerson.class]];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPerson.class]];
     [mapping hasOne:[ManagedPerson class] forKeyPath:@"captain"];
     [mapping hasMany:[ManagedPerson class] forKeyPath:@"persons"];
     return mapping;

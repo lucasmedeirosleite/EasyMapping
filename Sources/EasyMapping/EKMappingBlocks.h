@@ -23,7 +23,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "EKMappingContextProvider.h"
+#import "EKObjectContextProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

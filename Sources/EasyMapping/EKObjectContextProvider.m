@@ -21,28 +21,35 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-@import Foundation;
-#import "EKMappingStore.h"
-#import "EKMappingContext.h"
+#import "EKObjectContextProvider.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation EKObjectContextProvider
 
-@protocol EKMappingContextProviding <NSObject>
+@synthesize objectClass = _objectClass, primaryKey = _primaryKey;
 
-@property (nonatomic, strong) Class objectClass;
+-(instancetype)initWithObjectClass:(id)objectClass {
+    self = [super init];
+    if (self) {
+        self.objectClass = objectClass;
+    }
+    return self;
+}
+    
++(instancetype)providerWithObjectClass:(Class)objectClass {
+    return [[self alloc] initWithObjectClass:objectClass];
+}
+    
+-(EKMappingContext *)mappingContextFor:(NSString *)keyPath value:(id)value store:(id <EKMappingStore>)store {
+    return [[EKMappingContext alloc] initWithKeyPath:keyPath
+                                               value:value
+                                               store:store];
+}
 
-@property (nonatomic, strong, nullable) NSString * primaryKey;
+-(id)createNewEmptyObjectInStore:(id<EKMappingStore>)store {
+    NSParameterAssert([store isKindOfClass:[EKObjectStore class]]);
+    return [[self.objectClass alloc] init];
+}
 
--(instancetype)initWithObjectClass:(Class)objectClass;
-
--(EKMappingContext *)mappingContextFor:(NSString *)keyPath value:(id)value store:(id<EKMappingStore>)store;
-
--(id)createNewEmptyObjectInStore:(id<EKMappingStore>)store;
 
 @end
 
-@interface EKMappingContextProvider : NSObject <EKMappingContextProviding>
-
-@end
-
-NS_ASSUME_NONNULL_END

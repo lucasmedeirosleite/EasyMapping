@@ -69,9 +69,12 @@ class EKMappingBlocksTestCase: XCTestCase {
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
         let mapping = ManagedMappingProvider.personWithReverseBlocksMapping()
         
-        let person = EKMapper.object(fromExternalRepresentation: info,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        let serializer = EKSerializer(mappingStore: store)
+        let person = mapper.object(fromExternalRepresentation: info,
                                                   with: mapping) as! ManagedPerson
-        let sut = EKSerializer.serializeObject(person, with: mapping)
+        let sut = serializer.serializeObject(person, with: mapping)
         
         
         XCTAssertEqual(person.gender, "husband")

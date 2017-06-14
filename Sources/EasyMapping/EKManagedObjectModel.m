@@ -10,7 +10,7 @@
 #import "EKManagedObjectMapper.h"
 #import "EKManagedObjectMapping.h"
 #import "EKSerializer.h"
-#import "EKManagedMappingContextProvider.h"
+#import "EKManagedObjectContextProvider.h"
 
 @implementation EKManagedObjectModel
 
@@ -36,7 +36,7 @@
 
 +(EKObjectMapping *)objectMapping
 {
-    return [[EKObjectMapping alloc] initWithContextProvider:[[EKManagedMappingContextProvider alloc] initWithObjectClass:self]];
+    return [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:self]];
 }
 
 @end

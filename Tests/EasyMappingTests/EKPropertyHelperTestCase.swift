@@ -31,7 +31,7 @@ class EKPropertyHelperTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         let json = FixtureLoader.dictionary(fromFileNamed: "Native.json")
-        sut = EKMapper.object(fromExternalRepresentation: json, with: Native.objectMapping()) as? Native
+        sut = EKMapper(mappingStore: EKObjectStore()).object(fromExternalRepresentation: json, with: Native.objectMapping()) as? Native
     }
     
     func testNativePropertiesAreDetected() {
@@ -67,11 +67,13 @@ class EKPropertyHelperManagedTestCase : ManagedTestCase {
     func testRespectPropertyRepresentationForManagedType() {
         let withoutPhones = FixtureLoader.dictionary(fromFileNamed: "PersonWithoutPhones.json")
         let info = FixtureLoader.dictionary(fromFileNamed: "Person.json")
-        let person = EKMapper.object(fromExternalRepresentation: withoutPhones,
+        let store = EKManagedObjectStore(context: Storage.shared.context)
+        let mapper = EKMapper(mappingStore: store)
+        let person = mapper.object(fromExternalRepresentation: withoutPhones,
                                                   with: ManagedMappingProvider.personMapping()) as! ManagedPerson
         let mapping = ManagedMappingProvider.personMapping()
         mapping.respectPropertyFoundationTypes = true
-        EKMapper.fillObject(person, fromExternalRepresentation: info, with: mapping)
+        mapper.fillObject(person, fromExternalRepresentation: info, with: mapping)
         XCTAssertEqual(person.phones.count, 2)
     }
 }

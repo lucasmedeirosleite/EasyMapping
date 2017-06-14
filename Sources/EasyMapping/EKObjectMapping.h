@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "EKMappingBlocks.h"
-#import "EKMappingContextProvider.h"
+#import "EKObjectContextProvider.h"
 
 @class EKPropertyMapping;
 @class EKRelationshipMapping;

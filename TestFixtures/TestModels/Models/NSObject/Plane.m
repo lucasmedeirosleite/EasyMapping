@@ -8,15 +8,16 @@
 
 #import "Plane.h"
 #import "Person.h"
+#import <EasyMapping/EasyMapping.h>
 
 @implementation Plane
 
 +(EKObjectMapping *)objectMapping
 {
-    return [EKObjectMapping mappingForClass:[Plane class] withBlock:^(EKObjectMapping *mapping) {
-        [mapping mapKeyPath:@"flight_number" toProperty:@"flightNumber"];
-        [mapping hasMany:[Person class] forKeyPath:@"persons"];
-    }];
+    EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[[EKObjectContextProvider alloc] initWithObjectClass:Plane.class]];
+    [mapping mapKeyPath:@"flight_number" toProperty:@"flightNumber"];
+    [mapping hasMany:[Person class] forKeyPath:@"persons"];
+    return mapping;
 }
 
 @end
