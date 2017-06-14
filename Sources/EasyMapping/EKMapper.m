@@ -109,7 +109,7 @@
             continue;
         }
         if (value && value != (id)[NSNull null]) {
-            id result = [self objectFromExternalRepresentation:value withMapping:[relationship mappingForRepresentation:value]];
+            id result = [self _objectFromExternalRepresentation:value withMapping:[relationship mappingForRepresentation:value]];
             [EKPropertyHelper setValue:result onObject:object forKeyPath:relationship.property];
         } else {
             [EKPropertyHelper setValue:nil onObject:object forKeyPath:relationship.property];
@@ -159,7 +159,7 @@
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)
     {
-        id parsedObject = [self objectFromExternalRepresentation:representation
+        id parsedObject = [self _objectFromExternalRepresentation:representation
                                                      withMapping:[mapping mappingForRepresentation:representation]];
         [array addObject:parsedObject];
     }
@@ -181,7 +181,7 @@
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)
     {
-        id parsedObject = [self objectFromExternalRepresentation:representation withMapping:mapping];
+        id parsedObject = [self _objectFromExternalRepresentation:representation withMapping:mapping];
         if (parsedObject) {
             [array addObject:parsedObject];
         }

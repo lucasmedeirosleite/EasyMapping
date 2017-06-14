@@ -168,6 +168,7 @@
 +(EKObjectMapping *)complexPlaneMapping
 {
     EKObjectMapping * mapping = [[EKObjectMapping alloc] initWithContextProvider:[EKManagedObjectContextProvider providerWithObjectClass:ManagedPerson.class]];
+    [(EKManagedObjectContextProvider *)mapping.contextProvider setEntityName:@"Plane"];
     [mapping hasOne:[ManagedPerson class] forKeyPath:@"captain"];
     [mapping hasMany:[ManagedPerson class] forKeyPath:@"persons"];
     return mapping;

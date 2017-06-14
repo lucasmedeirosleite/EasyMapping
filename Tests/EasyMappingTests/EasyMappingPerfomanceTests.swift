@@ -187,7 +187,7 @@ class EasyMappingCoreDataPerfomanceTests: XCTestCase {
     }
     
     var importData : [[String:Any]] {
-        return (0...50).map { index in
+        return (0...5000).map { index in
             [
                 "id":index,
                 "name":"Name \(index)",
@@ -230,8 +230,9 @@ class EasyMappingCoreDataPerfomanceTests: XCTestCase {
     func testCoreDataImport() {
         let store = EKManagedObjectStore(context: EKCoreDataManager.sharedInstance().managedObjectContext)
         let mapper = EKMapper(mappingStore: store)
+        let data = self.importData
         measure {
-            mapper.arrayOfObjects(fromExternalRepresentation: self.importData,
+            mapper.arrayOfObjects(fromExternalRepresentation: data,
                                                  with: ManagedMappingProvider.personWithPhonesMapping())
         }
     }
