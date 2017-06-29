@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.21.2](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.21.2)
+
 * `EKSerializer` no longer implies that serializable objects need to conform to `EKMappingProtocol` or `EKManagedMappingProtocol`.
 
 ## [0.21.1](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.21.1)
