@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary <NSString *, id> *)serializeObject:(id<EKMappingProtocol>)object withMapping:(EKObjectMapping *)mapping;
++ (NSDictionary <NSString *, id> *)serializeObject:(id)object withMapping:(EKObjectMapping *)mapping;
 
 /**
  Convert objects to JSON representation.
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSArray.
  */
-+ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray<id<EKMappingProtocol>> *)collection
++ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
                                                        withMapping:(EKObjectMapping *)mapping;
 
 /**
@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSDictionary.
  */
-+ (NSDictionary <NSString *, id> *)serializeObject:(id<EKManagedMappingProtocol>)object
++ (NSDictionary <NSString *, id> *)serializeObject:(id)object
                                        withMapping:(EKManagedObjectMapping *)mapping
                                        fromContext:(NSManagedObjectContext *)context;
 
@@ -81,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result parsed JSON in a form of NSArray.
  */
-+ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray<id<EKManagedMappingProtocol>> *)collection
++ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
                                                        withMapping:(EKManagedObjectMapping*)mapping
                                                        fromContext:(NSManagedObjectContext *)context;
 @end
