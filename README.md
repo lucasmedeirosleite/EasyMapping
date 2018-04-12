@@ -9,7 +9,7 @@
 
 An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML or just a NSDictionary) into a Class and vice versa.
 
-##Contact:
+## Contact:
 
 Developed by [Lucas Medeiros](https://www.twitter.com/aspmedeiros) and [Denys Telezhkin](https://www.twitter.com/DTCoder)
 
