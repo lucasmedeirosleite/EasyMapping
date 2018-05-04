@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @result filled object
  */
-+ (id)            fillObject:(id<EKMappingProtocol>)object
++ (id)            fillObject:(id)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
                  withMapping:(EKObjectMapping *)mapping;
 
