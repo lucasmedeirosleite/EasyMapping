@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.22.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.22.0)
+
+* Removed too strict generic constraints from `EKMapper` and `EKManagedObjectMapper` classes.
+
 ## [0.21.2](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.21.2)
 
 * `EKSerializer` no longer implies that serializable objects need to conform to `EKMappingProtocol` or `EKManagedMappingProtocol`.
