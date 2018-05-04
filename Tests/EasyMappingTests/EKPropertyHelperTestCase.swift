@@ -59,7 +59,7 @@ class EKPropertyHelperTestCase: XCTestCase {
         EKPropertyHelper.addValue(Set([4,5]), on: object, forKeyPath: "mutableSet")
         
         XCTAssertEqual(object.mutableSet.count, 5)
-        XCTAssertEqual(object.mutableSet.allObjects.flatMap { $0 as? Int }.sorted(by: { $0 < $1 }), [1,2,3,4,5])
+        XCTAssertEqual(object.mutableSet.allObjects.compactMap { $0 as? Int }.sorted(by: { $0 < $1 }), [1,2,3,4,5])
     }
 }
 

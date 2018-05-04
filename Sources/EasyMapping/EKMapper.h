@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (id)            fillObject:(id)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
-                 withMapping:(EKObjectMapping *)mapping;
+                 withMapping:(EKObjectMapping *)mapping NS_SWIFT_NAME(fillObject(_:fromExternalRepresentation:with:));
 
 /**
  Convenience method to create array of objects from JSON.

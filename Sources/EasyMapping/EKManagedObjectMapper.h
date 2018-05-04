@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (id)            fillObject:(id)object
   fromExternalRepresentation:(NSDictionary *)externalRepresentation
                  withMapping:(EKManagedObjectMapping *)mapping
-      inManagedObjectContext:(NSManagedObjectContext*)context;
+      inManagedObjectContext:(NSManagedObjectContext*)context NS_SWIFT_NAME(fillObject(_:fromExternalRepresentation:with:in:));
 
 /**
  Create array of CoreData objects. If passed JSON contains primary keys, previously existing object with these keys will be updated. Simply put, this method uses Find-Or-Create pattern.

@@ -9,7 +9,7 @@
 import XCTest
 
 fileprivate final class TestObjectModel: EKObjectModel {
-    var foo: String!
+    @objc var foo: String!
     
     override static func objectMapping() -> EKObjectMapping {
         let mapping = super.objectMapping()
