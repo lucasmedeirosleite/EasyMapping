@@ -22,4 +22,5 @@ matrix:
       env: ACTION=spm_macos
 
 script:
+  - instruments -s devices # List all available simulators
   - bundle exec fastlane $ACTION
