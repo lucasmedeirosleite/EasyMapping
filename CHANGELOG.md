@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.22.1](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.22.1)
+
+* Added support for recognizing structs as native types, for example `CLLocationCoordinate2D` - #168(thanks, @sebastianludwig)
+
 ## [0.22.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.22.0)
 
 * Removed too strict generic constraints from `EKMapper` and `EKManagedObjectMapper` classes.
