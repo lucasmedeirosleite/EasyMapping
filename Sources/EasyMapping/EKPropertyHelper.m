@@ -39,12 +39,14 @@ static const char scalarTypes[] = {
 
 #pragma mark - Property introspection
 
-+ (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object
++ (BOOL)propertyNameIsNativeProperty:(NSString *)propertyName fromObject:(id)object
 {
     objc_property_t property = class_getProperty(object_getClass(object), [propertyName UTF8String]);
 	NSString *type = property ? [self propertyTypeStringRepresentationFromProperty:property] : nil;
     
-	return (type.length == 1) && memchr(scalarTypes, type.UTF8String[0], sizeof(scalarTypes));
+    BOOL isScalar = (type.length == 1) && memchr(scalarTypes, type.UTF8String[0], sizeof(scalarTypes));
+    BOOL isStruct = (type.length > 2) && [type characterAtIndex:0] == '{' && [type characterAtIndex:type.length - 1] == '}';
+	return isScalar || isStruct;
 }
 
 + (NSString *) propertyTypeStringRepresentationFromProperty:(objc_property_t)property
@@ -110,7 +112,7 @@ static const char scalarTypes[] = {
     } else {
         if (!value && ignoreMissingFields) return;
         
-        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
+        if (![self propertyNameIsNativeProperty:propertyMapping.property fromObject:object]) {
             [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
         }
     }
@@ -136,7 +138,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     } else {
         if (!value && ignoreMissingFields) return;
         
-        if (![self propertyNameIsScalar:propertyMapping.property fromObject:object]) {
+        if (![self propertyNameIsNativeProperty:propertyMapping.property fromObject:object]) {
             [self setValue:nil onObject:object forKeyPath:propertyMapping.property];
         }
     }
