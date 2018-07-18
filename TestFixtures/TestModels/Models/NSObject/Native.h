@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <CoreLocation/CoreLocation.h>
 #import "BaseTestModel.h"
 
 @interface Native : BaseTestModel
@@ -29,6 +30,7 @@
 @property (nonatomic, readwrite) double doubleProperty;
 @property (nonatomic, readwrite) BOOL boolProperty;
 @property (nonatomic, readwrite) bool smallBoolProperty;
+@property (nonatomic, readwrite) CLLocationCoordinate2D locationCoordinateProperty;
 
 @end
 

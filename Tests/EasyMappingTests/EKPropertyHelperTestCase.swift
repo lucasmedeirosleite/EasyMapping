@@ -38,15 +38,15 @@ class EKPropertyHelperTestCase: XCTestCase {
         let mapping = Native.objectMapping()
         let properties = mapping.propertyMappings as? [String:EKPropertyMapping] ?? [:]
         for property in properties.values {
-            XCTAssert(EKPropertyHelper.propertyNameIsScalar(property.property, from: sut))
+            XCTAssert(EKPropertyHelper.propertyNameIsNativeProperty(property.property, from: sut))
         }
         
-        XCTAssert(EKPropertyHelper.propertyNameIsScalar("boolProperty", from: sut))
+        XCTAssert(EKPropertyHelper.propertyNameIsNativeProperty("boolProperty", from: sut))
     }
     
     func testIdIdentification() {
         let object = MutableFoundationClass()
-        XCTAssertFalse(EKPropertyHelper.propertyNameIsScalar("idObject", from: object))
+        XCTAssertFalse(EKPropertyHelper.propertyNameIsNativeProperty("idObject", from: object))
         
         let id = EKPropertyHelper.propertyRepresentation([1,2,3], for: object, withPropertyName: "idObject")
         

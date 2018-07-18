@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface EKPropertyHelper : NSObject
 
-+ (BOOL)propertyNameIsScalar:(NSString *)propertyName fromObject:(id)object;
++ (BOOL)propertyNameIsNativeProperty:(NSString *)propertyName fromObject:(id)object;
 
 + (nullable id)propertyRepresentation:(NSArray *)array forObject:(id)object withPropertyName:(NSString *)propertyName;
 
