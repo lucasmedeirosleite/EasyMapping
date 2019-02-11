@@ -11,7 +11,7 @@ An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML 
 
 ## Contact:
 
-Developed by [Lucas Medeiros](https://www.twitter.com/aspmedeiros) and [Denys Telezhkin](https://www.twitter.com/DTCoder)
+Developed by [Lucas Medeiros](https://www.twitter.com/aspmedeiros) and [Denys Telezhkin](https://www.twitter.com/DenTelezhkin)
 
 E-mail: lucastoc@gmail.com
 
