@@ -123,7 +123,7 @@
         id hasManyObject = [object valueForKey:relationship.property];
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
-                                                           withMapping:(EKManagedObjectMapping *)[[relationship objectClass] objectMapping]
+                                                           withMapping:(EKManagedObjectMapping *)[relationship mappingForObject:hasManyObject]
                                                            fromContext:context];
             [representation setObject:hasManyRepresentation forKey:relationship.keyPath];
         }

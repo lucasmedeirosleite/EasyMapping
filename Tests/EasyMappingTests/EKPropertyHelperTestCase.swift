@@ -38,10 +38,10 @@ class EKPropertyHelperTestCase: XCTestCase {
         let mapping = Native.objectMapping()
         let properties = mapping.propertyMappings as? [String:EKPropertyMapping] ?? [:]
         for property in properties.values {
-            XCTAssert(EKPropertyHelper.propertyNameIsNativeProperty(property.property, from: sut))
+            XCTAssert(EKPropertyHelper.propertyNameIsNativeProperty(property.property, from: sut as Any))
         }
         
-        XCTAssert(EKPropertyHelper.propertyNameIsNativeProperty("boolProperty", from: sut))
+        XCTAssert(EKPropertyHelper.propertyNameIsNativeProperty("boolProperty", from: sut as Any))
     }
     
     func testIdIdentification() {

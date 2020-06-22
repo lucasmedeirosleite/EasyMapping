@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+#### Changed
+
+* Has many relationships now correctly recognize nested custom mappings during serialization (thanks, @armandzwan)
+
 ## [0.22.1](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.22.1)
 
 * Added support for recognizing structs as native types, for example `CLLocationCoordinate2D` - #168(thanks, @sebastianludwig)
