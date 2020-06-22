@@ -4,4 +4,6 @@ source "https://rubygems.org"
 gem "fastlane"
 gem 'octokit'
 gem 'netrc'
-gem 'cocoapods', '~> 1.0'
+gem 'cocoapods'
+gem 'mime-types'
+gem 'cocoapods-trunk'
