@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.23.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.23.0)
+
 #### Changed
 
 * Has many relationships now correctly recognize nested custom mappings during serialization (thanks, @armandzwan)
