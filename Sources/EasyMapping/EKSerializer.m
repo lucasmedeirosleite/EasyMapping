@@ -61,7 +61,7 @@
         id hasManyObject = [object valueForKey:relationship.property];
         if (hasManyObject) {
             NSArray *hasManyRepresentation = [self serializeCollection:hasManyObject
-                                                           withMapping:[[relationship objectClass] objectMapping]];
+                                                           withMapping:[relationship mappingForObject:hasManyObject]];
             [representation setObject:hasManyRepresentation forKey:relationship.keyPath];
         }
     }
