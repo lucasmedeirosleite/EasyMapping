@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+### Changed
+
+* `EKSerializer` now uses `serializeCollection:withRelationship:` method under the hood instead of `serializeCollection:withMapping:` to support custom serialization resolvers for collection of objects (thanks, @armandzwan)
+
+### Deprecated
+
+* `EKSerializer.serializeCollection:withMapping` in favor of `EKSerializer.serializeCollection:withRelationship`. This allows to support custom serialization resolvers when serializing collections. Similar deprecation applied to `serializeCollection:withMapping:fromContext:`.
+
 ## [0.23.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.23.0)
 
 #### Changed

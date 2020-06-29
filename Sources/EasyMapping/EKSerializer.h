@@ -53,7 +53,20 @@ NS_ASSUME_NONNULL_BEGIN
  @result parsed JSON in a form of NSArray.
  */
 + (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
-                                                       withMapping:(EKObjectMapping *)mapping;
+                                                       withMapping:(EKObjectMapping *)mapping
+DEPRECATED_MSG_ATTRIBUTE("Use serializeCollection:withRelationship: instead.");
+
+/**
+ Convert objects to JSON representation.
+ 
+ @param collection objects to convert.
+ 
+ @param relationship object to use during serialization.
+ 
+ @result parsed JSON in a form of NSArray.
+ */
++ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
+                                                       withRelationship:(EKRelationshipMapping *)relationship;
 
 /**
  Convert CoreData managed object to JSON representation.
@@ -83,7 +96,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
                                                        withMapping:(EKManagedObjectMapping*)mapping
+                                                       fromContext:(NSManagedObjectContext *)context
+DEPRECATED_MSG_ATTRIBUTE("Use serializeCollection:withRelationship:fromContext: instead.");
+
+/**
+ Convert CoreData managed objects to JSON representation.
+ 
+ @param collection objects to convert.
+ 
+ @param relationship object to use during serialization.
+ 
+ @param context NSManagedObjectContext objects are in. If you don't use context lookups in reverse blocks, you can simply pass nil.
+ 
+ @result parsed JSON in a form of NSArray.
+ */
++ (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
+                                                       withRelationship:(EKRelationshipMapping*)relationship
                                                        fromContext:(NSManagedObjectContext *)context;
+
 @end
 
 NS_ASSUME_NONNULL_END

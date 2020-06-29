@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock;
 + (EKObjectMapping *)personWithPetsMapping;
 + (EKObjectMapping *)personMappingThatIgnoresSocialUrlDuringSerialization;
-
++ (EKRelationshipMapping *)animalCollectionRelationship;
 + (NSDateFormatter *)iso8601DateFormatter;
 
 @end

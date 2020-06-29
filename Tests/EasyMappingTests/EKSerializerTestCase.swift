@@ -87,6 +87,12 @@ extension Person {
         person.phones = [Phone.one, Phone.two]
         return person
     }
+    
+    static var withAnimals: Person {
+        let person = socialPerson
+        person.pets = [Dog.fido, Dog.fifi, Wolf.alaska, Wolf.blizzard]
+        return person
+    }
 }
 
 extension Address {
@@ -95,6 +101,33 @@ extension Address {
         address.street = "A street"
         address.location = CLLocation(latitude: -30.12345, longitude: -3.12345)
         return address
+    }
+}
+
+extension Dog {
+    static var fido: Dog {
+        let dog = Dog()
+        dog.family = "Teckel"
+        return dog
+    }
+    
+    static var fifi: Dog {
+        let dog = Dog()
+        dog.family = "Bulldog"
+        return dog
+    }
+}
+
+extension Wolf {
+    static var alaska: Wolf {
+        let wolf = Wolf()
+        wolf.pack = "Arctic"
+        return wolf
+    }
+    static var blizzard: Wolf {
+        let wolf = Wolf()
+        wolf.pack = "Gray"
+        return wolf
     }
 }
 
@@ -362,5 +395,31 @@ class EKSerializerRelationshipsTestCase: XCTestCase {
         let numbers = phones.map { $0["number"] as? String }
         XCTAssert(numbers.contains(where: { $0 == "1111-1111"}))
         XCTAssert(numbers.contains(where: { $0 == "2222-222" }))
+    }
+    
+    func testSerializationResolver() {
+        let person = EKSerializer.serializeObject(Person.withAnimals, with: MappingProvider.personWithPetsMapping())
+        guard let animals = person["animals"] as? [[String:Any]] else { XCTFail(); return }
+
+        let dogs = animals.compactMap { $0["family"] as? String }
+        let wolfs = animals.compactMap { $0["pack"] as? String }
+        XCTAssertEqual(dogs.count, 2)
+        XCTAssertEqual(wolfs.count, 2)
+
+        XCTAssertEqual(dogs.first, "Teckel")
+        XCTAssertEqual(dogs.last, "Bulldog")
+
+        XCTAssertEqual(wolfs.first, "Arctic")
+        XCTAssertEqual(wolfs.last, "Gray")
+    }
+    
+    func testSerializeCollection() {
+        let collection = [Dog.fido, Dog.fifi, Wolf.alaska, Wolf.blizzard]
+        
+        let array = EKSerializer.serializeCollection(collection, withRelationship: MappingProvider.animalCollectionRelationship())
+        
+        XCTAssertEqual(array.count, 4)
+        XCTAssertEqual(array[0]["family"] as? String, "Teckel")
+        XCTAssertEqual(array.last?["pack"] as? String, "Gray")
     }
 }

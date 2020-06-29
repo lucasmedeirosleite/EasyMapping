@@ -206,7 +206,14 @@
 +(EKObjectMapping *)personWithPetsMapping
 {
     EKObjectMapping * mapping = [self personMapping];
-    EKRelationshipMapping * relationship = [mapping hasMany:Dog.class forKeyPath:@"animals" forProperty:@"pets"];
+    [mapping.hasManyMappings addObject:[self animalCollectionRelationship]];
+    return mapping;
+}
+
++(EKRelationshipMapping *)animalCollectionRelationship {
+    EKRelationshipMapping * relationship = [EKRelationshipMapping mappingForClass:Dog.class
+                                                                 withKeyPath:@"animals"
+                                                                 forProperty:@"pets"];
     relationship.mappingResolver = ^EKObjectMapping *(id representation){
         if ([representation[@"type"] isEqualToString:@"dog"]) {
             return [Dog objectMapping];
@@ -214,7 +221,14 @@
             return [Wolf objectMapping];
         }
     };
-    return mapping;
+    relationship.serializationResolver = ^EKObjectMapping * _Nonnull(id  _Nonnull object) {
+        if ([object isKindOfClass:Dog.class]) {
+            return Dog.objectMapping;
+        } else {
+            return Wolf.objectMapping;
+        }
+    };
+    return relationship;
 }
 
 +(EKObjectMapping *)personMappingThatIgnoresSocialUrlDuringSerialization
