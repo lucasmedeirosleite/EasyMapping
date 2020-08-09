@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "EasyMapping"
-  s.version      = "0.23.0"
+  s.version      = "0.24.0"
   s.summary      = "The easiest way to map data from your webservice."
   s.homepage     = "https://github.com/lucasmedeirosleite/EasyMapping"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

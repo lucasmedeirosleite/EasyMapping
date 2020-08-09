@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.24.0](https://github.com/lucasmedeirosleite/EasyMapping/releases/tag/0.24.0)
+
 ### Added
 
 * Support for Xcode 12.
