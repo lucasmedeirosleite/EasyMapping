@@ -3,8 +3,13 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+### Added
+
+* Support for Xcode 12.
+
 ### Changed
 
+* Requires iOS 9 and higher to support Xcode 12
 * `EKSerializer` now uses `serializeCollection:withRelationship:` method under the hood instead of `serializeCollection:withMapping:` to support custom serialization resolvers for collection of objects (thanks, @armandzwan)
 
 ### Deprecated

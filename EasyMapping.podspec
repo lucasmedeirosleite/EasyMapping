@@ -9,13 +9,13 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/lucasmedeirosleite/EasyMapping.git", :tag => s.version.to_s }
   s.requires_arc = true
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.9'
   s.tvos.deployment_target = '9.0'
 
   s.subspec 'Core' do |core|
     core.watchos.deployment_target = '2.0'
-    core.ios.deployment_target = '8.0'
+    core.ios.deployment_target = '9.0'
     core.osx.deployment_target = '10.9'
     core.tvos.deployment_target = '9.0'
     core.frameworks = 'CoreData'
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'XCTest' do |xctest|
-    xctest.ios.deployment_target = '8.0'
+    xctest.ios.deployment_target = '9.0'
     xctest.osx.deployment_target = '10.9'
     xctest.tvos.deployment_target = '9.0'
     xctest.dependency 'EasyMapping/Core'
