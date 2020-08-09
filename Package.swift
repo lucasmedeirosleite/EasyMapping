@@ -1,12 +1,11 @@
-import PackageDescription
+// swift-tools-version:5.2
 
-let library  = [
-    Target(name: "EasyMapping")
-    // Target(name: "EasyMapping+XCTestCase", dependencies: [ .Target(name: "EasyMapping")])
-]
+import PackageDescription
 
 let package = Package(
     name: "EasyMapping",
-    targets: library,
-    exclude: ["Sources/EasyMapping+XCTestCase"]
+    products: [.library(name: "EasyMapping", targets: ["EasyMapping"])],
+    targets: [
+        .target(name: "EasyMapping", exclude: ["Sources/EasyMapping+XCTestCase"])
+    ]
 )
