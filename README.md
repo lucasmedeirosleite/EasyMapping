@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/lucasmedeirosleite/EasyMapping.svg?branch=master)](https://travis-ci.org/lucasmedeirosleite/EasyMapping) &nbsp;
+![CI](https://github.com/lucasmedeirosleite/EasyMapping/workflows/CI/badge.svg)
 [![codecov.io](http://codecov.io/github/lucasmedeirosleite/EasyMapping/coverage.svg?branch=master)](http://codecov.io/github/lucasmedeirosleite/EasyMapping?branch=master)
 ![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/EasyMapping/badge.png) &nbsp;
 ![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/EasyMapping/badge.png) &nbsp;
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 
 # EasyMapping
@@ -14,6 +14,28 @@ An easy way to unmarshall a Dictionary of attributes (which came from JSON, XML 
 Developed by [Lucas Medeiros](https://www.twitter.com/aspmedeiros) and [Denys Telezhkin](https://www.twitter.com/DenTelezhkin)
 
 E-mail: lucastoc@gmail.com
+
+## Requirements
+
+* Xcode 11 and higher
+* iOS 9 / tvOS 9 and higher
+* Mac OS X 10.10 and higher
+* watchOS 2.0 and higher
+* ARC
+
+## Installation
+
+### Swift Package Manager(requires Xcode 11)
+
+Add package into Project settings -> Swift Packages
+
+### [CocoaPods](https://cocoapods.org):
+
+	pod 'EasyMapping', '~> 0.20'
+
+### [Carthage](https://github.com/Carthage/Carthage):
+
+  github "EasyMapping/EasyMapping"
 
 ## Usage
 
@@ -207,47 +229,6 @@ Thanks to:
 * [Jack](https://github.com/Jack-s) who added mapFieldsFromMappingObject and mapFieldsFromArrayToPascalCase functionality
 * [Yuri Kotov](https://github.com/advantis) and [Dmitriy](https://github.com/poteryaysya) which added a lot of performance improvements
 * [Moya organization](https://github.com/Moya/Moya) for awesome automated release process.
-
-## Requirements
-
-* Xcode 6.3 and higher
-* iOS 5 and higher
-* Mac OS X 10.7 and higher
-* ARC
-
-## Installation
-
-Using [CocoaPods](https://cocoapods.org):
-
-	pod 'EasyMapping', '~> 0.20'
-
-Using [Carthage](https://github.com/Carthage/Carthage):
-
-    github "EasyMapping/EasyMapping"
-
-Carthage uses dynamic frameworks, which require iOS 8.
-
-Using [Swift Package Manager](https://github.com/apple/swift-package-manager):
-
-Add the following as a dependency to your `Package.swift`:
-
-```swift
-.Package(url: "https://github.com/lucasmedeirosleite/EasyMapping", majorVersion: 0, minorVersion: 2)
-```
-
-and then specify `.Target(name: "EasyMapping")` as a dependency of the Target in which you wish to use EasyMapping.
-Here's an example `PackageDescription`:
-
-```swift
-import PackageDescription
-
-let package = Package(
-  name: "MyApp",
-  dependencies: [
-    .Package(url: "https://github.com/lucasmedeirosleite/EasyMapping", majorVersion: 0, minorVersion: 2)
-  ]
-)
-```
 
 ## The idea
 
