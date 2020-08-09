@@ -21,19 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <EasyMapping/EKMapper.h>
-#import <EasyMapping/EKSerializer.h>
-#import <EasyMapping/EKObjectMapping.h>
-#import <EasyMapping/EKManagedObjectMapper.h>
-#import <EasyMapping/EKManagedObjectMapping.h>
-#import <EasyMapping/EKMappingBlocks.h>
-#import <EasyMapping/EKObjectModel.h>
-#import <EasyMapping/EKManagedObjectModel.h>
-#import <EasyMapping/EKMappingProtocol.h>
-#import <EasyMapping/EKPropertyMapping.h>
-#import <EasyMapping/EKRelationshipMapping.h>
-#import <EasyMapping/NSDateFormatter+EasyMappingAdditions.h>
-#import <EasyMapping/EKRelationshipMapping.h>
-#import <EasyMapping/EKPropertyHelper.h>
-#import <EasyMapping/EKCoreDataImporter.h>
-#import <EasyMapping/NSArray+FlattenArray.h>
+#import "EKMapper.h"
+#import "EKSerializer.h"
+#import "EKObjectMapping.h"
+#import "EKManagedObjectMapper.h"
+#import "EKManagedObjectMapping.h"
+#import "EKMappingBlocks.h"
+#import "EKObjectModel.h"
+#import "EKManagedObjectModel.h"
+#import "EKMappingProtocol.h"
+#import "EKPropertyMapping.h"
+#import "EKRelationshipMapping.h"
+#import "NSDateFormatter+EasyMappingAdditions.h"
+#import "EKRelationshipMapping.h"
+#import "EKPropertyHelper.h"
+#import "EKCoreDataImporter.h"
+#import "NSArray+FlattenArray.h"

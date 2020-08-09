@@ -184,8 +184,7 @@ class EKSerializerTestCase: XCTestCase {
     func testSerializerSupportsDates() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale.current
         let dateString = formatter.string(from: Date())
         
         let sut = EKSerializer.serializeObject(Car.i30, with: MappingProvider.carWithDateMapping())

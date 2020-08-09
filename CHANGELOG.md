@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 * Support for Xcode 12.
+* Support for Swift Package Manager in Xcode 11 and Xcode 12
 
 ### Changed
 
