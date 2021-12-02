@@ -71,3 +71,7 @@ fastlane/screenshots
 fastlane/test_output
 
 # End of https://www.gitignore.io/api/swift
+
+# Ignore Ruby CI setup
+vendor/bundle
+.bundle/config

@@ -640,7 +640,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = EasyMapping;
 				TargetAttributes = {
 					52D6D97B1BEFF229002C0205 = {

@@ -1,45 +1,54 @@
 fastlane_version "1.98.0"
 
 lane :test_ios14 do
-  scan(devices: ["iPhone 11 Pro (14.0)"], scheme: 'Tests-iOS')
-  sh "bash ../codecov.sh"
+  scan(devices: ["iPhone 12 Pro (14.5)"])
 end
 
-lane :test_ios13 do
-  scan(devices: ["iPad Pro (12.9-inch) (3rd generation) (13.5)"])
-  sh "bash ../codecov.sh"
+lane :test_ios15 do
+  scan(devices: ["iPhone 13 Pro Max (15.0)"])
 end
 
 lane :test_tvos14 do
-  scan(device: "Apple TV 4K (14.0)")
+  scan(device: "Apple TV 4K (14.5)")
 end
 
-lane :test_tvos13 do
-  scan(device: "Apple TV 4K (13.3)")
+lane :test_tvos15 do
+  scan(device: "Apple TV 4K (15.0)")
 end
 
 lane :test_macos do
-  scan(destination: "arch=x86_64")
-  sh "bash ../codecov.sh"
+  scan(destination: "platform=macOS", disable_slide_to_type: false)
 end
 
 lane :build_watchos do
   xcodebuild(
     build: true,
-    destination: "OS=6.2.1,name=Apple Watch Series 4 - 44mm"
+    destination: "OS=8.0,name=Apple Watch Series 6 - 44mm",
+    scheme: 'EasyMapping'
   )
 end
 
 lane :build_watchos_xcode12 do
   xcodebuild(
     build: true,
-    destination: "OS=7.0,name=Apple Watch Series 4 - 44mm"
+    destination: "OS=7.4,name=Apple Watch Series 6 - 44mm",
+    scheme: 'EasyMapping'
   )
 end
 
 lane :pod_lint do
   sh "bundle exec pod repo update"
   pod_lib_lint(allow_warnings: true, verbose: true)
+end
+
+lane :generate_code_coverage do
+  slather(
+    proj: "EasyMapping.xcodeproj",
+    scheme: "EasyMapping",
+    # arch: "x86_64",
+    verbose: true,
+    cobertura_xml: true
+  )
 end
 
 lane :carthage_build do
@@ -77,6 +86,9 @@ lane :release do |params|
     sh "git commit -am '#{message}'"
     sh "git tag #{version} -m '#{message}'"
     sh "git push --follow-tags"
+
+    puts "Updating Specs repo"
+    sh "bundle exec pod repo update"
 
     puts "Pushing to CocoaPods trunk."
     sh "bundle exec pod trunk push EasyMapping.podspec --allow-warnings"
